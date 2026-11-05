@@ -9,3 +9,6 @@ playwright-report/
 *.log
 .DS_Store
 Thumbs.db
+
+# report build intermediates
+docs/deliverable-1/*.tmp.pdf
