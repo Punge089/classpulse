@@ -4,6 +4,8 @@ Issue ของคุณ: **I-03** (System SDS), **I-05** (Foundation), **I-08**
 และงานคู่: **I-01**, **I-06** (คุณเป็นคน review PR), **I-11**
 คุณเป็นคน review PR ของ A ใน I-02, I-04, I-07, I-10
 
+**หน้าตาของแอป:** ใช้ธีม "Pulse" ตาม `docs/plan.md` §2.9 (สี ฟอนต์ และคอมโพเนนต์ `PulseLine`, `RatingDots`) ใน I-05 คุณเป็นคนทำไฟล์ธีมนี้ และ I-08/I-09 ใช้ต่อ ห้ามใส่สีเองนอกเหนือจากที่กำหนด
+
 ## ตั้งค่าครั้งเดียว
 1. ยอมรับคำเชิญ collaborator ที่ https://github.com/Punge089/classpulse/invitations (บัญชี `book6349`)
 2. `git clone https://github.com/Punge089/classpulse.git` แล้ว `cd classpulse`

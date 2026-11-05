@@ -293,6 +293,45 @@ All paths under `/api`, JSON in/out. Check order on every protected route: **401
 Shared behaviour: navbar shows `fullName · role` + Logout; loading spinner while fetching;
 empty-state text on empty lists; `ApiClientError.message` in a Bootstrap alert; field
 `details` shown under the matching input; buttons disabled while a request is in flight.
+Every page uses the visual identity in §2.9 (no ad-hoc colours, no per-page styling).
+
+### 2.9 Visual identity — "Pulse"
+
+A calm paper-and-ink look with one coral accent and a heartbeat-line motif (the name = the pulse
+of the classroom). Bootstrap 5 stays as the layout base. Everything below is a CSS variable in
+`client/src/theme.css`, imported **after** Bootstrap, so no page hard-codes a colour.
+
+| Token | Value | Use | Contrast (measured) |
+|---|---|---|---|
+| `--cp-paper` | `#FAF7F2` | page background | — |
+| `--cp-card` | `#FFFFFF` | cards, forms | — |
+| `--cp-ink` | `#14213D` | body text, headings | 14.95 : 1 on paper |
+| `--cp-muted` | `#5B6478` | secondary text | 5.55 : 1 on paper |
+| `--cp-accent` | `#C8431D` | primary buttons, links, active rating dot | white on it 4.91 : 1; as text on paper 4.60 : 1 |
+| `--cp-accent-soft` | `#FBE3DA` | selected / hover tint | ink on it 13.01 : 1 |
+| `--cp-line` | `#E3DDD2` | borders, dividers | decorative only |
+| `--cp-ok` / `--cp-danger` | `#2F7D5B` / `#B3261E` | success and error alerts, status badges | 4.67 : 1 / 6.12 : 1 on paper |
+
+Do **not** use `#E4572E` (brighter coral): white text on it is only 3.68 : 1, which fails.
+
+- **Type:** headings Fraunces 600, body Inter 400/500 (Google Fonts `<link>` in `client/index.html`;
+  fallbacks `Georgia, serif` and `system-ui, sans-serif`, so offline and test runs still render).
+- **Shape:** 12 px radius on cards, 8 px on inputs and buttons, 1 px `--cp-line` borders, no heavy shadows.
+- **Two signature components** (in `client/src/components/pulse/`):
+  - `PulseLine`: a thin SVG heartbeat line, props `{ width?: number | string; animate?: boolean }`. Used
+    as the divider under page titles, and as the loading indicator (animated only when `animate` and
+    `prefers-reduced-motion` is not set).
+  - `RatingDots`: `{ value: number | null; onChange?: (n: 1|2|3|4|5) => void; readOnly?: boolean; name: string }`.
+    Five round buttons (min 40 px hit area, 44 px on touch), filled up to `value`. Real `<input type="radio">`
+    underneath so keyboard and screen readers work; `aria-label="Rating 1 of 5"` … `"Rating 5 of 5"`.
+    Used in the answer form (I-08), the confirmation page (I-08) and the summary (I-09, read-only).
+- **Summary charts (I-09):** one horizontal bar per option or rating value drawn as a thin coral line on a
+  `--cp-line` track, with the count and percentage as text next to it (never colour alone).
+- **Status badges:** DRAFT = muted outline, PUBLISHED = `--cp-ok` fill, CLOSED = ink outline.
+- **Layout:** one centred column, max width 760 px; at 375 px width no horizontal scroll (NFR-10 is checked
+  properly in Sprint 3, but do not break it now).
+- **Copy tone:** short and friendly ("Thanks — your response is in."), but identified surveys always show
+  "Identified survey — your name is stored with your answers".
 
 ### 2.8 Contract template — `docs/sprints/sprint-1/<ID>-<slug>.md`
 
@@ -462,10 +501,10 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 **Owner:** B · **Reviewer:** A · **Branch:** `feature/<n>-foundation` · **Depends on:** I-03 data model (may start from §2.4 before I-03 merges) · **Checkpoint:** merged Sat 7 Nov 12:00
 
 **Files:**
-- Create: `server/` (package.json scripts as TokTickIT: `dev`, `build`, `start`, `prisma:migrate`, `prisma:seed`, `test`), `server/src/{index.ts,app.ts,prisma.ts,lib/errors.ts,lib/params.ts,lib/password.ts}`, `server/prisma/{schema.prisma,seed.ts}`, `server/tests/{setup.ts,helpers/fixture.ts}`, `server/tests/db/constraints.test.ts`, `server/tests/api/health.test.ts`, `server/.env.example`, `client/` (Vite React TS + Bootstrap + react-router, `src/api.ts`, placeholder pages per §2.7, `vite.config.ts` proxy `/api → http://localhost:3000`), root `package.json` + `playwright.config.ts` (TokTickIT config, `webServer` for both apps, 1 worker).
+- Create: `server/` (package.json scripts as TokTickIT: `dev`, `build`, `start`, `prisma:migrate`, `prisma:seed`, `test`), `server/src/{index.ts,app.ts,prisma.ts,lib/errors.ts,lib/params.ts,lib/password.ts}`, `server/prisma/{schema.prisma,seed.ts}`, `server/tests/{setup.ts,helpers/fixture.ts}`, `server/tests/db/constraints.test.ts`, `server/tests/api/health.test.ts`, `server/.env.example`, `client/` (Vite React TS + Bootstrap + react-router, `src/api.ts`, `src/theme.css` + `src/components/pulse/{PulseLine,RatingDots}.tsx` per §2.9, placeholder pages per §2.7, `vite.config.ts` proxy `/api → http://localhost:3000`), root `package.json` + `playwright.config.ts` (TokTickIT config, `webServer` for both apps, 1 worker).
 - Create: `docs/sprints/sprint-1/SR-01-foundation.md` (contract template §2.8; UI: "shell only").
 
-- [ ] **Step 1:** Commit contract `SR-01-foundation.md` with AC-50 "DB rejects a second Response for the same (survey, respondent)", AC-51 "DB rejects rating outside 1–5", AC-52 "non-numeric or unknown ids return 404 error shape, malformed JSON returns 400 error shape, never 500", AC-53 "seed is repeatable and creates the §2.4 fixture". Commit `docs(SR-01): contract v1.0`.
+- [ ] **Step 1:** Commit contract `SR-01-foundation.md` with AC-50 "DB rejects a second Response for the same (survey, respondent)", AC-51 "DB rejects rating outside 1–5", AC-52 "non-numeric or unknown ids return 404 error shape, malformed JSON returns 400 error shape, never 500", AC-53 "seed is repeatable and creates the §2.4 fixture", AC-54 "`RatingDots` renders five radios, selecting dot n reports n, `readOnly` ignores input, arrow keys change the value (§2.9)". Commit `docs(SR-01): contract v1.0`.
 - [ ] **Step 2: Write failing tests**
 
 ```ts
@@ -490,8 +529,9 @@ test("TEST-53 seed twice yields exactly 5 users and 2 courses", async () => {});
 ```
 - [ ] **Step 3:** Run `cd server && npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/SR-01-red.txt` → expected FAIL (no schema/app). Commit `test(SR-01): failing foundation tests (red)`.
 - [ ] **Step 4:** Implement schema (§2.4), `prisma migrate dev --name sprint1_init`, hand-add the CHECK to the generated `migration.sql`, `seed.ts` (upsert by email/code, `hashPassword(process.env.SEED_PASSWORD)`), `createApp`, `errorHandler` (JSON parse error → 400 `VALIDATION_ERROR`), `parseId`, fixture helpers, client shell + `apiFetch` (`credentials: "include"`, throws `ApiClientError`).
-- [ ] **Step 5:** Run `npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/SR-01-green.txt` → PASS 4/4; `npm run build` in `server` and `client` succeed; `npm run dev` in both → browser shows shell at :5173, `/api/health` via proxy returns ok.
-- [ ] **Step 6:** README "Local setup" section: prerequisites, `cp .env.example .env` (+ `.env.test`), migrate, seed, run, test commands. Commit `feat(SR-01): skeleton, schema, seed, harness (green)`.
+- [ ] **Step 5:** Run `npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/SR-01-green.txt` → PASS 4/4 server tests plus the client `TEST-54` tests (`cd client && npx vitest run`); `npm run build` in `server` and `client` succeed; `npm run dev` in both → browser shows shell at :5173, `/api/health` via proxy returns ok.
+- [ ] **Step 5b: Visual identity** (use the `frontend-design` and `ui-ux-pro-max` skills, but §2.9 is the decision, so do not invent a new look). Add `theme.css` with the §2.9 tokens overriding Bootstrap (`--bs-body-bg`, `--bs-body-color`, `--bs-primary` …), the font `<link>`, and `PulseLine` + `RatingDots`. Add client component tests `TEST-54 RatingDots` (renders 5 radios; clicking dot 4 calls `onChange(4)`; `readOnly` ignores clicks; arrow keys move the value) in `client/tests/RatingDots.test.tsx`; write them failing first like every other test (red output → `SR-01-red.txt`), then make them pass. Check by eye at 1280 px and 375 px that the shell has no horizontal scroll, and save two screenshots to `docs/sprints/sprint-1/evidence/theme-*.png`.
+- [ ] **Step 6:** README "Local setup" section: prerequisites, `cp .env.example .env` (+ `.env.test`), migrate, seed, run, test commands. Commit `feat(SR-01): skeleton, schema, seed, harness, Pulse theme (green)`.
 - [ ] **Step 7:** PR → staging; **A reviews by running setup from scratch on A's laptop** and reports the result in the review (strong, specific evidence).
 
 ---
@@ -609,7 +649,7 @@ test("TEST-19 another owner cannot publish my survey", async () => {
 - Create: `docs/sprints/sprint-1/F-04-response-submission.md`
 - Create: `server/src/lib/responseValidation.ts`, `server/src/routes/{surveys.ts,responses.ts}`, `server/tests/unit/responseValidation.test.ts`, `server/tests/api/responses.test.ts`
 - Modify: `server/src/app.ts` (mount `/api/surveys`, `/api/responses` with `requireAuth, requireRole("RESPONDENT")`), `server/tests/api/unauthenticated.test.ts` (append 4 routes)
-- Create: `client/src/pages/respondent/{SurveyListPage.tsx,AnswerSurveyPage.tsx,ConfirmationPage.tsx}`, `e2e/respond.spec.ts`
+- Create: `client/src/pages/respondent/{SurveyListPage.tsx,AnswerSurveyPage.tsx,ConfirmationPage.tsx}` (rating questions use `RatingDots` from I-05, §2.9), `e2e/respond.spec.ts`
 
 **AC:**
 AC-20 student1 list shows PUBLISHED CPE334 surveys only (no DRAFT, no CPE231), each with `hasResponded` ·
@@ -658,7 +698,7 @@ test("TEST-30 a student cannot read another student's response", async () => {
 **Owner:** B · **Reviewer:** A · **Branch:** `feature/<n>-summary` · **Depends on:** I-06 (API), I-05 (unit)
 
 **Files:**
-- Create: `docs/sprints/sprint-1/F-05-aggregate-summary.md`, `server/src/lib/summary.ts`, `server/src/routes/ownerSummary.ts` (own router, so it does not depend on or conflict with I-07's `ownerSurveys.ts`), `server/tests/unit/summary.test.ts`, `server/tests/api/summary.test.ts`, `client/src/pages/owner/SurveySummaryPage.tsx`
+- Create: `docs/sprints/sprint-1/F-05-aggregate-summary.md`, `server/src/lib/summary.ts`, `server/src/routes/ownerSummary.ts` (own router, so it does not depend on or conflict with I-07's `ownerSurveys.ts`), `server/tests/unit/summary.test.ts`, `server/tests/api/summary.test.ts`, `client/src/pages/owner/SurveySummaryPage.tsx` (bars and read-only `RatingDots` per §2.9)
 - Modify: `server/src/app.ts` (mount `ownerSummary` at `/api/owner/surveys` behind `requireAuth, requireRole("OWNER")`; one line — expect a trivial merge with I-07), `unauthenticated.test.ts` (append 1 route)
 
 **Response shape:**
