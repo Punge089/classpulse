@@ -388,10 +388,16 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 
 **Files:** Create `README.md` (title + "setup coming in I-05"), `docs/plan.md` (this file), `docs/design.md`, `docs/partner-guide.md`, `docs/comment-playbook.md`, `.github/pull_request_template.md`, `.gitignore` (node_modules, dist, .env, .env.test, test-results, playwright-report), `CLAUDE.md` + identical `AGENTS.md` (≤ 30 lines: "read docs/plan.md Global Constraints + §2 + your Issue; contract → red → green; never skip tests; never merge; AI drafts, humans post comments").
 
-- [ ] **Step 1 (human):** A creates GitHub repo `classpulse` (private is fine if TAs are added later; public is simplest), adds B as collaborator with write access.
-- [ ] **Step 2:** Commit the files above on `main`; create `sprint-1-staging` from `main`; push both.
-- [ ] **Step 3:** Create labels, milestone and project board from §3; create GitHub Issues I-01…I-11 from §4 (Claude can do this with `gh` after you approve), assign owners (both for pair Issues), add to board. Record the mapping `I-0x → #n` in a table at the top of this file.
-- [ ] **Step 4 (both laptops):** Install Node 22 + PostgreSQL 16; create DBs `classpulse` and `classpulse_test`; confirm `psql` connects. Each student sets `git config user.name/user.email` to the identity linked to their GitHub account.
+- [x] **Step 1 (human):** Public repo `Punge089/classpulse` created; `book6349` invited with write access (6 Nov).
+- [x] **Step 2:** Baseline commit `2fa7ae0` on `main`; `sprint-1-staging` created from it; both pushed.
+- [x] **Step 3:** Labels, milestone, board (projects/5) and Issues #1–#11 created; mapping in §3.
+- [ ] **Step 4 (both laptops):** Node 22 or newer (A has 24) + PostgreSQL 16 or newer (A has 18). Create the local dev role and both DBs with one command (asks for your own `postgres` password; `classpulse`/`classpulse` is a local-only dev credential, the same on both laptops and in `server/.env.example`):
+  ```bash
+  psql -h localhost -U postgres -c "CREATE ROLE classpulse LOGIN PASSWORD 'classpulse' CREATEDB;" -c "CREATE DATABASE classpulse OWNER classpulse;" -c "CREATE DATABASE classpulse_test OWNER classpulse;"
+  ```
+  Verify: `psql "postgresql://classpulse:classpulse@localhost:5432/classpulse_test" -c "select 1"`. I-05 uses
+  `DATABASE_URL="postgresql://classpulse:classpulse@localhost:5432/classpulse?schema=public"` (`.env`) and `…/classpulse_test…` (`.env.test`).
+  Each student sets `git config user.name/user.email` to the identity linked to their GitHub account.
 - [ ] **Step 5:** Verify: `gh issue list --state all` shows 11 Issues; board shows them in Backlog; both students can push a test branch (delete it after).
 
 ---
