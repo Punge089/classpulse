@@ -1,7 +1,7 @@
 # F-04 — Response submission
 
 **Owner:** Student B (`book6349`) · **Reviewer:** Student A (`Punge089`) · **Issue:** #8
-**Version:** 1.0 · **Date:** 6 Nov 2026
+**Version:** 1.1 · **Date:** 6 Nov 2026
 **Requirements:** FR-06, FR-07, BR-04, BR-05, BR-06, BR-07, BR-09, BR-10; depends on SR-01 and F-01.
 
 ## 1. Feature
@@ -11,7 +11,7 @@ Allow an authenticated respondent to find published surveys for enrolled courses
 ## 2. Behaviour and workflow
 
 1. The respondent opens `/surveys`; the API returns only PUBLISHED surveys for courses in which the respondent is enrolled, with `hasResponded` for each item.
-2. The respondent opens a survey and sees its questions and the notice: “Identified survey — your name is stored with your answers”. The detail endpoint returns 404 for a DRAFT survey or a respondent not enrolled in its course.
+2. The respondent opens a survey and sees its questions and the notice: “Identified survey — your name is stored with your answers”. The detail endpoint returns 404 for a DRAFT or CLOSED survey or a respondent not enrolled in its course.
 3. The respondent submits answers once. The server validates eligibility, survey status, and the full answer set, then stores one `Response` and its `Answer` rows in one database transaction.
 4. The client shows a confirmation with the submission time and a link to the saved response. The list then shows “Submitted”.
 5. A repeat submission receives the server's `ALREADY_RESPONDED` message; the form is not submitted again. The database unique constraint handles simultaneous submissions.
@@ -28,7 +28,7 @@ Allow an authenticated respondent to find published surveys for enrolled courses
 
 ### Response check order
 
-For protected endpoints, apply 401 unauthenticated, then 403 wrong role, then resolve a numeric resource ID and return 404 for a missing resource. For `POST /api/surveys/:id/responses`, after the survey exists, check enrollment first (403 `NOT_ELIGIBLE`), then status (409 `SURVEY_NOT_OPEN`), then answer shape and fields (400 `VALIDATION_ERROR`), then persist. This is the POST-specific order in addition to the shared route order. The survey detail GET intentionally returns 404 for an unpublished survey or a respondent who is not enrolled; it does not use the POST response code.
+For protected endpoints, apply 401 unauthenticated, then 403 wrong role, then resolve a numeric resource ID and return 404 for a missing resource. For `POST /api/surveys/:id/responses`, after the survey exists, check enrollment first (403 `NOT_ELIGIBLE`), then status (409 `SURVEY_NOT_OPEN`), then answer shape and fields (400 `VALIDATION_ERROR`), then persist. This is the POST-specific order in addition to the shared route order. The survey detail GET intentionally returns 404 for an unpublished survey or a respondent who is not enrolled; it does not use the POST response code. TEST-26 and TEST-27 exercise the precedence: a non-enrolled respondent posting to a DRAFT survey gets 403, while an enrolled respondent posting invalid answers to a CLOSED survey gets 409. An unknown POST survey ID gets 404 before eligibility, status, or answer validation.
 
 ## 4. Permissions
 
@@ -56,7 +56,7 @@ All endpoints use JSON and require an authenticated session cookie `cp_session` 
 | `GET /api/surveys` | — | 200 `{surveys:[{id,title,courseCode,mode,status,hasResponded}]}` for PUBLISHED surveys in enrolled courses | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER |
 | `GET /api/surveys/:id` | — | 200 `{survey}` with questions and options | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN`; 404 `NOT_FOUND` for non-numeric/missing ID, DRAFT/CLOSED survey, or non-enrolled respondent |
 | `POST /api/surveys/:id/responses` | `{answers:[{questionId,ratingValue?} \| {questionId,optionId?}]}` | 201 `{response:{id,surveyId,submittedAt}}` | 400 `VALIDATION_ERROR` with `details[]`; 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` or `NOT_ELIGIBLE`; 404 `NOT_FOUND` for invalid/missing survey ID; 409 `SURVEY_NOT_OPEN` or `ALREADY_RESPONDED` |
-| `GET /api/responses/:id` | — | 200 `{response:{id,surveyId,submittedAt,answers:[...]}}` for the current respondent's response | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER; 404 `NOT_FOUND` for invalid/missing/other respondent's response |
+| `GET /api/responses/:id` | — | 200 `{response:{id,surveyId,submittedAt,answers:[{questionId,prompt,type,ratingValue?,optionId?,optionLabel?}]}}` for the current respondent's response. A rating answer includes `ratingValue`; a choice answer includes `optionId` and `optionLabel`. | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER; 404 `NOT_FOUND` for invalid/missing/other respondent's response |
 | `PUT /api/responses/:id`, `DELETE /api/responses/:id` | — | No route in Sprint 1 | 404 `NOT_FOUND` |
 
 All error bodies follow `{error:{code,message,details?}}`; do not expose stack traces. Use `parseId` for path IDs. Use `loginAs` in API tests and append the protected routes to `PROTECTED_ROUTES` in the same test file change.
@@ -86,22 +86,24 @@ No schema change. Use `Survey`, `Question`, `QuestionOption`, `Response`, and `A
 - **AC-26:** student2 receives 404 when reading student1's response; response JSON does not disclose rating data for another respondent; `PUT` and `DELETE` are absent (404).
 - **AC-27:** owner1 receives 403 when posting a response or reading a respondent response.
 - **AC-28:** the respondent sees the identified-survey notice before answering; successful submission shows a timestamped confirmation; the list shows “Submitted”; Submit is disabled while sending; a 409 shows the server message without resubmitting.
+- **AC-29:** student1 receives 200 for an enrolled PUBLISHED survey detail; receives 404 for a DRAFT or CLOSED survey, a survey in a non-enrolled course, or a non-numeric ID; owner1 receives 403.
 
 ## 10. STS
 
 | Test ID | AC | Level | Precondition & input | Action | Expected result | Planned file |
 |---|---|---|---|---|---|---|
 | TEST-22 | AC-20 | API-DB | Seeded student1, student3; PUBLISHED CPE334 survey plus a DRAFT CPE334 survey and PUBLISHED CPE231 survey | GET `/api/surveys` as student1 | Only PUBLISHED CPE334 survey appears and includes `hasResponded`; other statuses/course excluded | `server/tests/api/responses.test.ts` |
-| TEST-23 | AC-21 | API-DB | Seeded fixture; published CPE334 survey with one rating and one choice question | Submit valid answers, then GET returned response ID | 201; one Response and the two matching Answer rows persist and are returned | `server/tests/api/responses.test.ts` |
+| TEST-23 | AC-21 | API-DB | Seeded fixture; published CPE334 survey with one rating and one choice question | Submit valid answers, then GET returned response ID | 201; one Response and the two matching Answer rows persist and are returned. Each answer has `questionId`, `prompt`, and `type`; the rating answer has `ratingValue`, and the choice answer has `optionId` and `optionLabel`. | `server/tests/api/responses.test.ts` |
 | TEST-24 | AC-22 | API-DB | One published survey; student1 has already submitted | Submit the same valid answers again | 409 `ALREADY_RESPONDED`; Response count stays exactly 1 | `server/tests/api/responses.test.ts` |
 | TEST-25 | AC-22 | API-DB | One published survey; student1 has not submitted | Send two identical POST requests simultaneously | Sorted statuses are `[201,409]`; Response count is exactly 1 | `server/tests/api/responses.test.ts` |
-| TEST-26 | AC-23 | API-DB | CPE334 surveys in DRAFT and CLOSED states | Submit valid answers to each | Each returns 409 `SURVEY_NOT_OPEN`; no Response or Answer is stored | `server/tests/api/responses.test.ts` |
-| TEST-27 | AC-24 | API-DB | Published CPE334 survey; student3 enrolled only in CPE231 | Submit valid answers as student3 | 403 `NOT_ELIGIBLE`; no Response or Answer is stored | `server/tests/api/responses.test.ts` |
+| TEST-26 | AC-23 | API-DB | CPE334 surveys in DRAFT and CLOSED states; student1 is enrolled in CPE334; unknown survey ID | Submit valid answers to each status, invalid answers to the CLOSED survey as student1, and a request with an unknown survey ID | DRAFT and CLOSED with valid answers return 409 `SURVEY_NOT_OPEN`; CLOSED with invalid answers also returns 409 before validation; unknown ID returns 404; no Response or Answer is stored | `server/tests/api/responses.test.ts` |
+| TEST-27 | AC-24 | API-DB | DRAFT CPE334 survey; student3 enrolled only in CPE231 | Submit valid answers as student3 | 403 `NOT_ELIGIBLE` before DRAFT status is checked; no Response or Answer is stored | `server/tests/api/responses.test.ts` |
 | TEST-28 | AC-25 | Unit | Question fixtures cover required/optional RATING and SINGLE_CHOICE; test table contains every AC-25 invalid shape | Call `validateAnswers` for each invalid input | Each case returns `ok:false` with expected field detail; optional omitted answer is valid and yields no answer row input | `server/tests/unit/responseValidation.test.ts` |
 | TEST-29 | AC-25 | API-DB | Published survey with a RATING question | Submit values 1, 5, 0, 6, 2.5 and `"3"` in isolated cases | 1 and 5 return 201; 0, 6, decimal, and string values return 400 | `server/tests/api/responses.test.ts` |
-| TEST-30 | AC-26 | API-DB | student1 has submitted to a published survey; student2 is logged in separately | GET student1's response as student2 | 404 `NOT_FOUND`; no response/answer values or respondent identity are disclosed | `server/tests/api/responses.test.ts` |
+| TEST-30 | AC-26 | API-DB | student1 has submitted to a published survey; student2 is logged in separately | GET student1's response as student2; then PUT and DELETE the response as student1 | GET by student2, PUT, and DELETE each return 404 `NOT_FOUND`; the GET response contains no response/answer values or respondent identity | `server/tests/api/responses.test.ts` |
 | TEST-31 | AC-27 | API-DB | Owner1 authenticated; a respondent response exists | POST a response and GET that response ID as owner1 | Both requests return 403 `FORBIDDEN` | `server/tests/api/responses.test.ts` |
-| TEST-32 | AC-28 | E2E | Published CPE334 survey with rating and choice questions; student1 eligible | Open the survey, inspect notice, submit, double-click Submit, then revisit list | Notice precedes form; one confirmation and response; button disables while sending; list says “Submitted”; server 409 message is shown without second submission | `e2e/respond.spec.ts` |
+| TEST-32 | AC-28 | E2E | For each run, create and publish a fresh CPE334 survey through the owner UI with rating and choice questions and a run-unique title; student1 is eligible and has not answered this new survey | Open the new survey, inspect notice, submit, double-click Submit, then revisit list | Notice precedes form; one confirmation and response; button disables while sending; list says “Submitted”; server 409 message is shown without second submission. The test never reuses a seeded/demo survey or response. | `e2e/respond.spec.ts` |
+| TEST-39 | AC-29 | API-DB | Seeded student1 enrolled in CPE334; PUBLISHED, DRAFT, and CLOSED CPE334 surveys; PUBLISHED CPE231 survey; owner1 authenticated | GET detail as student1 for each survey and for a non-numeric ID; GET the PUBLISHED CPE334 detail as owner1 | Student1 gets 200 only for the enrolled PUBLISHED survey and 404 for DRAFT, CLOSED, non-enrolled, and non-numeric IDs; owner1 gets 403 | `server/tests/api/responses.test.ts` |
 
 ## 11. Completion evidence checklist
 
@@ -116,3 +118,4 @@ No schema change. Use `Survey`, `Question`, `QuestionOption`, `Response`, and `A
 | Version | Date | Author | Change |
 |---|---|---|---|
 | v1.0 | 6 Nov 2026 | Student B (`book6349`) | Initial contract based on plan I-08 and shared API/data contracts. |
+| v1.1 | 6 Nov 2026 | Student B (`book6349`) | Incorporated C3: specified the response GET answer shape, added survey-detail AC/test coverage and write-route 404 assertions, clarified POST error precedence, and made TEST-32 create a fresh survey per run to avoid seeded response collisions. |
