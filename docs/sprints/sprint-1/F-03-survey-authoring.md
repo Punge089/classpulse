@@ -122,7 +122,7 @@ Levels: **unit** = pure function, no DB; **API/DB** = Supertest against the app 
 | TEST-18 | AC-16 | API/DB | student1 logged in | each of the six `/api/owner/*` routes | every response 403 `FORBIDDEN`; survey count unchanged | `server/tests/api/ownerSurveys.test.ts` |
 | TEST-19 | AC-17 | API/DB | owner1's DRAFT survey; owner2 logged in | GET, publish and close that survey | each 404; DB status still `DRAFT` | `server/tests/api/ownerSurveys.test.ts` |
 | TEST-20 | AC-18 | API/DB | owner1 has 2 surveys (one with 1 response), owner2 has 1 | GET list as owner1 | exactly owner1's 2 surveys, `responseCount` 1 and 0 | `server/tests/api/ownerSurveys.test.ts` |
-| TEST-21 | AC-19 | E2E | seeded owner1 | log in, create a 2-question survey, publish; separately submit an empty title | list shows the survey as Draft, then the detail shows "Published"; the empty title shows a message under the title field | `e2e/owner-survey.spec.ts` |
+| TEST-21 | AC-19 | E2E | seeded owner1 | (a) log in, create a 2-question survey, publish; (b) separately, submit an empty title | (a) list shows the survey as Draft, then the detail shows "Published"; (b) the empty title shows a message under the title field. Two Playwright tests, named TEST-21a and TEST-21b | `e2e/owner-survey.spec.ts` |
 | TEST-58 | AC-18 | API/DB | fixture owner1 (owns CPE334) and owner2 (owns CPE231) | GET `/api/owner/courses` as owner1 | 200 and exactly `[{ id, code: "CPE334", title }]`; CPE231 is absent | `server/tests/api/ownerSurveys.test.ts` |
 
 TEST-58 is the next free ID after TEST-57 (F-01); v1.0 and v1.1 had the course-list check under TEST-20 as well, which gave two tests the same ID.
@@ -168,4 +168,4 @@ All six owner routes are also appended to `PROTECTED_ROUTES` in `server/tests/ap
 |---|---|---|---|
 | v1.0 | 2026-11-06 | Punge089 | Initial contract, written before tests and code. |
 | v1.1 | 2026-11-06 | Punge089 | After C3 review by book6349: (1) the check order for create now follows plan §2.5 (course ownership 404 before field validation 400; a malformed `courseId` is 400), with a test case for a foreign course plus an invalid title; (2) TEST-11 lists its 18 cases explicitly, including the duplicate pair `"Yes"` and `" yes "`. |
-| v1.2 | 2026-11-07 | Punge089 | After the review of PR #18: two tests carried the ID TEST-20 (the survey list and the course list). The survey list keeps TEST-20; the course-list check becomes TEST-58, and AC-18 now names the course list so the test has a criterion. No behaviour change. |
+| v1.2 | 2026-11-07 | Punge089 | After the review of PR #18: two tests carried the ID TEST-20 (the survey list and the course list). The survey list keeps TEST-20; the course-list check becomes TEST-58, and AC-18 now names the course list so the test has a criterion. The two E2E scenarios of TEST-21 are named TEST-21a and TEST-21b. No behaviour change. |

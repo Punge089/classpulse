@@ -6,7 +6,7 @@ import { seedPassword, signIn } from "./helpers";
 test.use({ actionTimeout: 5_000 });
 test.describe.configure({ timeout: 30_000 });
 
-test("TEST-21 an owner creates a two-question survey, sees it as Draft, publishes it and sees Published", async ({ page }) => {
+test("TEST-21a an owner creates a two-question survey, sees it as Draft, publishes it and sees Published", async ({ page }) => {
   const title = "E2E feedback " + Date.now();
   await signIn(page, "ann.lee@classpulse.test", seedPassword());
   await expect(page).toHaveURL(/\/owner$/, { timeout: 5_000 });
@@ -44,7 +44,7 @@ test("TEST-21 an owner creates a two-question survey, sees it as Draft, publishe
   await expect(page.getByRole("button", { name: "Close" })).toBeVisible();
 });
 
-test("TEST-21 an empty title shows a message under the title field and creates nothing", async ({ page }) => {
+test("TEST-21b an empty title shows a message under the title field and creates nothing", async ({ page }) => {
   await signIn(page, "ann.lee@classpulse.test", seedPassword());
   await page.getByRole("link", { name: "New survey" }).click();
   await page.getByLabel("Course", { exact: true }).selectOption({ label: "CPE334 — Software Engineering" });

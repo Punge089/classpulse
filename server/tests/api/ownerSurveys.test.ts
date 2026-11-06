@@ -228,7 +228,7 @@ describe("F-03 lists", () => {
     expect(byId.get(draft.id)).toMatchObject({ status: "DRAFT", responseCount: 0 });
   });
 
-  test("TEST-20 the course list holds only the caller's courses", async () => {
+  test("TEST-58 the course list holds only the caller's courses", async () => {
     const owner = await ownerAgent();
     const res = await owner.get("/api/owner/courses");
     expect(res.status).toBe(200);
