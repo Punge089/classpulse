@@ -125,4 +125,29 @@ describe("F-01 login, session and current user", () => {
     expect(sessionSetCookie(raw)).toBeUndefined();
     expect(await prisma.session.count()).toBe(0);
   });
+
+  test("TEST-56 the session cookie is Secure in production (login and logout) and not in test", async () => {
+    const original = process.env.NODE_ENV;
+    const secure = /;\s*Secure\b/i;
+    try {
+      process.env.NODE_ENV = "production";
+      const productionLogin = await login({ email: "student1@classpulse.test", password });
+      expect(productionLogin.status).toBe(200);
+      expect(sessionSetCookie(productionLogin)).toMatch(secure);
+
+      const productionLogout = await request(app).post("/api/auth/logout")
+        .set("Cookie", sessionCookiePair(productionLogin));
+      expect(productionLogout.status).toBe(204);
+      expect(sessionSetCookie(productionLogout)).toMatch(secure);
+
+      process.env.NODE_ENV = "test";
+      const testLogin = await login({ email: "student1@classpulse.test", password });
+      expect(testLogin.status).toBe(200);
+      expect(sessionSetCookie(testLogin)).toBeDefined();
+      expect(sessionSetCookie(testLogin)).not.toMatch(secure);
+    } finally {
+      if (original === undefined) delete process.env.NODE_ENV;
+      else process.env.NODE_ENV = original;
+    }
+  });
 });
