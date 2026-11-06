@@ -77,17 +77,21 @@ After the checks in §1 pass, tell B in two or three sentences which Issue you a
 Read docs/partner-ai-brief.md, then CLAUDE.md, then work as Student B (book6349). Run the setup checks, then start Issue #5 (I-05 foundation) following docs/plan.md. Show me every GitHub comment before posting it.
 ```
 
-## 7. Optional: autopilot for B's agent (B must opt in; nothing here is switched on by default)
+## 7. Optional: autopilot for B's agent (B opts in; nothing here is switched on by default)
 
-Student A's agent checks GitHub on a timer and continues by itself, so B's agent can do the same instead of waiting for B to type. The two agents hand over through GitHub only: labels `waiting-on:A` / `waiting-on:B`, Issue and PR comments, PR reviews. **B decides whether to enable this** (B's machine, B's account, B's risk) and can stop it at any time.
+A timer on B's computer starts B's agent non-interactively every ~20 minutes with the prompt in `tools/autopilot-b-prompt.txt`, so work continues without B typing. The two agents hand over through GitHub only: labels `waiting-on:A` / `waiting-on:B`, Issue and PR comments, PR reviews. B's machine, B's account, B's decision; B can stop it any time (create a file `autopilot/STOP`, or close the window).
 
-What B may allow: the routine status comments (C1, C2, C4, C5, C6, C8, C10) and continuing the work of B's own Issues (#3, #5, #8, #9) step by step.
-What stays with B every time: C3, C7, C9 verdicts, approving or merging any PR, a contract scope change. Prepare a short digest of what you actually ran and found, notify B, wait for B's approval.
+**What the agent does by itself:** the next step of B's own Issues (#5, then #3, #8, #9), routine status comments (C1, C2, C4, C5, C6, C8, C10), and the *whole* review work on A's contracts and PRs: check out, run the tests, read the diff, run the playbook checks, and write the complete review text.
 
-How to run it: a timer on B's computer that starts the agent non-interactively about every 20 minutes with the prompt below (for Codex, `codex exec` in a loop or a scheduled task; the exact flags depend on the version, check `codex --help`). Stop after 2 failed attempts on the same cause and tell B.
+**Gates, enforced by files, not by promises.** For C3, C7 and C9 verdicts, approving or merging a PR, and any contract scope change, the agent only *prepares*: it appends to `autopilot/gates.md` what it ran, what it found, the exact text it would post and its recommendation, then stops. B reads that file (about a minute per item) and, if B agrees, writes one line in `autopilot/approvals.txt`, for example `approve C7 PR 12`. On the next run the agent posts that item. **The agent never creates or edits `autopilot/approvals.txt`; only B does.** An entry that does not name an exact pending item is ignored. Both files stay local (`autopilot/` is git-ignored).
 
-**Prompt for B's timer:**
+**Run it** (PowerShell, in the repo folder; `autopilot/run-*.log` keeps each run):
 
+```powershell
+codex exec --help        # look up the flags that let it run without prompts in this folder
+.\tools\autopilot-loop.ps1 -AgentCommand "codex exec --full-auto"
 ```
-You are working for Student B (book6349) on ClassPulse. Read docs/partner-ai-brief.md and CLAUDE.md first. Check GitHub: gh issue list / gh pr list for items labelled waiting-on:B, comments or reviews by Punge089 since your last check, whether the invitation is accepted, and whether origin/sprint-1-staging has changed. If nothing needs B, say so in one line and stop. Otherwise do the next step of B's own Issues (#5 first, then #3, #8, #9) following docs/plan.md and the playbook. Post routine status comments without asking if B has allowed it; for every gate (C3, C7, C9 verdicts, approving or merging, scope change) write a digest of what you ran and found and wait for B. Never touch A's Issues, never post as A, never force-push, never skip or weaken a test. Update the waiting-on label for whoever moves next.
-```
+
+Use the flags your CLI version documents; the script only repeats the command, passing the prompt as the last argument, every `-IntervalMinutes` (default 20) until `-StopAt` (default 8 Nov 2026 23:59) or `autopilot/STOP`. It beeps and prints a line when `autopilot/gates.md` changes.
+
+Stop after 2 failed attempts on the same cause and write it in `autopilot/gates.md`.
