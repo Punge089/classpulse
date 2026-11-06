@@ -1,7 +1,7 @@
 # ClassPulse component and deployment view
 
 ```mermaid
-flowchart LR
+flowchart TD
     people[Survey Owner / Respondent]
 
     subgraph Local[Local development]
