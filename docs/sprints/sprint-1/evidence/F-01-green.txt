@@ -100,3 +100,18 @@ Run on: 2026-11-06 22:44 +0700, Windows, Node v24.19.0
 Summary: server 14 passed, 0 failed, 0 skipped; client 1 passed; Playwright 3 passed; both builds exit 0.
 TEST-56 covers behaviour that already existed, so it passed on first run. Its strength was shown by mutation checks
 (source restored after each): cookieSecure() always false -> TEST-56 fails (1 failed); cookieSecure() always true -> TEST-56 fails (1 failed).
+
+==================================================================
+Addendum 2 after the review of PR #12 (contract v1.3, TEST-57 for NFR-01: no password or session token in the server's console output)
+Tested commit: 243d73b9e4e288d486ba96616cc2b90da9a6fe16 (test(F-01): TEST-57 asserts no password or session token reaches the server console)
+Run on: 2026-11-06 23:23 +0700, Windows, Node v24.19.0, test database classpulse_test
+
+== npm --prefix server run test
+ Test Files  5 passed (5)
+      Tests  15 passed (15)
+== npm --prefix server run build: exit code 0
+
+Summary: server 15 passed, 0 failed, 0 skipped on staging plus this change (F-01 auth tests: 8, incl. TEST-57). Only the server was run: no client or E2E code changed.
+TEST-57 covers behaviour that already existed (the server logs nothing sensitive), so it passed on first run. Mutation checks (source restored after each):
+  log the plaintext password on a failed login -> TEST-57 fails (1 failed)
+  log the session token on login               -> TEST-57 fails (1 failed)
