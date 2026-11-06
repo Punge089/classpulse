@@ -1,7 +1,7 @@
 # F-04 — Response submission
 
-**Owner:** Student B (`book6349`) · **Reviewer:** Student A (`Punge089`) · **Issue:** #8  
-**Version:** 1.0 · **Date:** 6 Nov 2026  
+**Owner:** Student B (`book6349`) · **Reviewer:** Student A (`Punge089`) · **Issue:** #8
+**Version:** 1.0 · **Date:** 6 Nov 2026
 **Requirements:** FR-06, FR-07, BR-04, BR-05, BR-06, BR-07, BR-09, BR-10; depends on SR-01 and F-01.
 
 ## 1. Feature
