@@ -111,3 +111,18 @@ AssertionError: expected 404 to be 401 // Object.is equality
 ownerSurveys.test.ts: 10 tests, 10 failed (TEST-10, 12, 13, 14, 16, 17, 18, 19, 20 twice). unauthenticated.test.ts: 8 tests, 6 failed (the six owner routes of TEST-07).
 All other server tests pass (auth 7, surveyValidation 27, surveyLifecycle 6, constraints 3, health 1, password 1).
 Failure reasons: every API assertion gets 404 because /api/owner/* does not exist yet (expected 404 to be 200 x5, to be 400 x2, to be 403 x1, to be 401 x1, to be 201 x1, plus the rest).
+
+==================================================================
+F-03 red run, stage 2 UI: E2E TEST-21 written before the pages (contract v1.1)
+Tested commit: ee8b6e396975d067c19ac1a498e4fe8688d056bb (test(F-03): failing E2E TEST-21 for owner survey create and publish (red)) with the new UI stashed, so the placeholder pages are served.
+Order note: the spec was drafted after the page code, so red is shown by committing the spec first, stashing the UI changes and running it against the placeholder UI.
+Run on: 2026-11-06 23:06 +0700, Windows, Node v24.19.0
+
+== Command: npx playwright test e2e/owner-survey.spec.ts --reporter=list
+  x  1 owner-survey.spec.ts:9:5 › TEST-21 an owner creates a two-question survey, sees it as Draft, publishes it and sees Published (6.0s)
+  x  2 owner-survey.spec.ts:47:5 › TEST-21 an empty title shows a message under the title field and creates nothing (6.2s)
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+  2 failed
+
+== Summary: 2 tests, 2 failed, 0 passed, 0 skipped (TEST-21 create/publish and TEST-21 empty title). Both time out because the placeholder page has no 'New survey' link.
