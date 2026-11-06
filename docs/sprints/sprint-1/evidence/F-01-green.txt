@@ -1,0 +1,102 @@
+F-01 green run: implementation of contract v1.1
+Tested commit: f30ed0f69d35cfab733389260c3bd85d21a58a8f (feat(F-01): login, logout, current user, role middleware and login UI (green))
+Run on: 2026-11-06 21:32 +0700, Windows, Node v24.19.0, test database classpulse_test
+
+== Command 1: npm --prefix server run test
+﻿
+> classpulse-server@0.1.0 test
+> vitest run
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ✓ tests/api/auth.test.ts (6 tests) 998ms
+ ✓ tests/db/constraints.test.ts (3 tests) 940ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 587ms
+ ✓ tests/api/health.test.ts (1 test) 61ms
+ ✓ tests/unit/password.test.ts (1 test) 312ms
+ ✓ tests/api/unauthenticated.test.ts (2 tests) 17ms
+ Test Files  5 passed (5)
+      Tests  13 passed (13)
+
+== Command 2: npm --prefix client run test
+﻿
+> classpulse-client@0.1.0 test
+> vitest run
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/client
+ ✓ tests/RatingDots.test.tsx (1 test) 290ms
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+
+== Command 3: npx playwright test e2e/auth.spec.ts --reporter=list
+﻿node.exe : [WebServer] (node:51396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being 
+set.
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:43572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+Running 3 tests using 1 worker
+(node:10476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (904ms)
+  ok 2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (785ms)
+  ok 3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (769ms)
+  3 passed (6.7s)
+
+== Command 4: npm --prefix server run build
+﻿
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+exit code 0
+
+== Command 5: npm --prefix client run build
+﻿
+> classpulse-client@0.1.0 build
+> tsc --noEmit && vite build
+vite v6.0.15 building for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.69 kB │ gzip:  0.38 kB
+dist/assets/index-BGdhdzwi.css  233.49 kB │ gzip: 31.47 kB
+dist/assets/index-BBm_IULR.js   170.32 kB │ gzip: 55.86 kB
+✓ built in 641ms
+exit code 0
+
+== Summary (counted from the output above)
+Server 13 passed, 0 failed, 0 skipped (F-01: TEST-01..07, TEST-55; plus the 4 SR-01 tests). Client 1 passed (TEST-54). E2E 3 passed, 0 failed, 0 skipped (TEST-08, TEST-09 owner, TEST-09 respondent).
+Red to green: the 11 F-01 tests that failed in F-01-red.txt (commit 8a97d0f) now pass; TEST-06 passed in both runs.
+
+== Mutation checks (tests must fail when the behaviour is broken; the source was restored after each)
+skip deleting the session on logout        -> TEST-04 fails (1 failed)
+ignore isActive at login                   -> TEST-02 fails (1 failed)
+set the session cookie without HttpOnly    -> TEST-01 fails (1 failed)
+
+==================================================================
+Addendum after the review of PR #17 (contract v1.2, TEST-56 for the production Secure cookie flag)
+Tested commit: 98f053016c9038cd6597582476c86879f4705524 (test(F-01): TEST-56 asserts the Secure cookie flag in production and not in test)
+Run on: 2026-11-06 22:44 +0700, Windows, Node v24.19.0
+
+== npm --prefix server run test
+ ✓ tests/api/auth.test.ts (7 tests) 1334ms
+ ✓ tests/db/constraints.test.ts (3 tests) 982ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 624ms
+ ✓ tests/api/health.test.ts (1 test) 86ms
+ ✓ tests/unit/password.test.ts (1 test) 362ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 348ms
+ ✓ tests/api/unauthenticated.test.ts (2 tests) 20ms
+ Test Files  5 passed (5)
+      Tests  14 passed (14)
+== npm --prefix client run test
+ ✓ tests/RatingDots.test.tsx (1 test) 312ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 312ms
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+== npx playwright test e2e/auth.spec.ts --reporter=list
+  3 passed (14.3s)
+== npm --prefix server run build: exit code 0;  npm --prefix client run build: exit code 0
+
+Summary: server 14 passed, 0 failed, 0 skipped; client 1 passed; Playwright 3 passed; both builds exit 0.
+TEST-56 covers behaviour that already existed, so it passed on first run. Its strength was shown by mutation checks
+(source restored after each): cookieSecure() always false -> TEST-56 fails (1 failed); cookieSecure() always true -> TEST-56 fails (1 failed).
