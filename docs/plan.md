@@ -159,7 +159,7 @@ Failure modes the spec implies but no AC names directly. Each has a test added t
 
 | ID | Requirement and measurable target | Verification | Sprint |
 |---|---|---|---|
-| NFR-01 | Passwords stored only as scrypt hashes; no plaintext anywhere in DB or logs. | DB/unit test TEST-06 | 1 |
+| NFR-01 | Passwords stored only as scrypt hashes; no plaintext anywhere in DB or logs. | DB/unit test TEST-06 (stored hash) and API test TEST-57 (no password or session token in the server's console output) | 1 |
 | NFR-02 | 100 % of protected endpoints return 401 with no private data when unauthenticated. | Table-driven API test TEST-07 | 1 |
 | NFR-03 | 100 % of protected operations in the role/permission matrix have at least one passing negative API test (wrong role and, where records are owned, wrong owner). | API tests TEST-18, 19, 30, 31, 36 + matrix-to-test check in `test-results.md` | 1 |
 | NFR-04 | Session expires after `SESSION_TTL_HOURS` (8 h); logout invalidates it server-side immediately. | API tests TEST-04, TEST-05 | 1 |
