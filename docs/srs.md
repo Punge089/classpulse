@@ -1,6 +1,6 @@
 # Software Requirements Specification — ClassPulse
 
-**Version 1.0 · 6 Nov 2026 · Author: Punge089 (Student A) · Reviewer: book6349 (Student B)**
+**Version 1.1 · 6 Nov 2026 · Author: Punge089 (Student A) · Reviewer: book6349 (Student B)** · see the version history at the end
 Course CPE 334, Project Deliverable 1, theme #10 (Review, Feedback, and Survey System).
 Source of the registry: `docs/plan.md` §2.2 (IDs are stable and never renumbered).
 
@@ -99,7 +99,7 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
 
 | ID | Requirement and measurable target | Verification | Sprint |
 |---|---|---|---|
-| NFR-01 | Passwords stored only as scrypt hashes; no plaintext anywhere in DB or logs. | DB/unit test TEST-06 | 1 |
+| NFR-01 | Passwords stored only as scrypt hashes; no plaintext anywhere in DB or logs. | DB/unit test TEST-06 (stored hash) and API test TEST-57 (no password or session token in the server's console output during login, failed login, `/me` and logout) | 1 |
 | NFR-02 | 100 % of protected endpoints return 401 with no private data when unauthenticated. | Table-driven API test TEST-07 | 1 |
 | NFR-03 | 100 % of protected operations in the role/permission matrix have at least one passing negative API test (wrong role and, where records are owned, wrong owner). | API tests TEST-18, 19, 30, 31, 36 + matrix-to-test check in `test-results.md` | 1 |
 | NFR-04 | Session expires after `SESSION_TTL_HOURS` (8 h); logout invalidates it server-side immediately. | API tests TEST-04, TEST-05 | 1 |
@@ -127,7 +127,7 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
 | D-01 | Context is university course feedback. | Clear eligibility rule (enrolment) and easy synthetic data. |
 | D-02 | Sprint 1 surveys are identified only. | Anonymous mode needs identity/answer separation that must be specified and tested; the theme allows it later. Identifiable responses are never labelled anonymous (BR-10). |
 | D-03 | Owners see aggregates only in Sprint 1. | Smallest slice; raw access is decided with export (FR-17) in Sprint 3. |
-| D-04 | One response per respondent per survey; no edit or delete. | Keeps counts trustworthy; enforced by a database unique constraint (BR-06, BR-09). |
+| D-04 | One response per respondent per survey (BR-06); a submitted response cannot be edited or deleted (BR-09). | Keeps counts trustworthy. The two rules are enforced differently: BR-06 by a database unique constraint on (survey, respondent), which also stops simultaneous attempts; BR-09 by the API exposing no update or delete route for responses. |
 | D-05 | Wrong role → 403; a record the caller does not own → 404. | A 404 does not reveal that another owner's survey or another student's response exists. |
 | D-06 | Opaque session token in an httpOnly cookie, hash stored in a `Session` table. | Logout can invalidate immediately (NFR-04); no token in client code. |
 | D-07 | Ratings are integers 1–5. | Simple, comparable averages and distributions. |
@@ -141,3 +141,10 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
 | Q-02 | May a respondent edit a submitted response? | No (BR-09, D-04). |
 | Q-03 | Is anonymity needed in Sprint 1? | No. Allowed later by the course specification; planned as F-11 in Sprint 3. |
 | Q-04 | What happens to an optional question left blank? | No answer row is stored (clarification under BR-07). |
+
+## 11. Version history
+
+| Version | Date | Change and reason |
+|---|---|---|
+| 1.0 | 6 Nov 2026 | Initial SRS. |
+| 1.1 | 6 Nov 2026 | After the review of PR #12 by book6349: D-04 no longer attributes both BR-06 and BR-09 to one database constraint (BR-06 is the unique constraint, BR-09 is the API exposing no write route); NFR-01's verification now includes TEST-57, which checks that no plaintext password or session token reaches the server's logs. |
