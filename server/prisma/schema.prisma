@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  RESPONDENT
+}
+
+enum SurveyMode {
+  IDENTIFIED
+}
+
+enum SurveyStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+}
+
+enum QuestionType {
+  RATING
+  SINGLE_CHOICE
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  email        String       @unique
+  fullName     String
+  role         Role
+  passwordHash String
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  sessions     Session[]
+  courses      Course[]
+  enrollments  Enrollment[]
+  surveys      Survey[]
+  responses    Response[]
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  tokenHash String   @unique
+  userId    Int
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  code        String       @unique
+  title       String
+  ownerId     Int
+  owner       User         @relation(fields: [ownerId], references: [id])
+  enrollments Enrollment[]
+  surveys     Survey[]
+}
+
+model Enrollment {
+  id       Int    @id @default(autoincrement())
+  courseId Int
+  userId   Int
+  course   Course @relation(fields: [courseId], references: [id])
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@unique([courseId, userId])
+}
+
+model Survey {
+  id          Int          @id @default(autoincrement())
+  courseId    Int
+  ownerId     Int
+  title       String
+  description String?
+  mode        SurveyMode   @default(IDENTIFIED)
+  status      SurveyStatus @default(DRAFT)
+  publishedAt DateTime?
+  closedAt    DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  course      Course       @relation(fields: [courseId], references: [id])
+  owner       User         @relation(fields: [ownerId], references: [id])
+  questions   Question[]
+  responses   Response[]
+}
+
+model Question {
+  id       Int              @id @default(autoincrement())
+  surveyId Int
+  position Int
+  prompt   String
+  type     QuestionType
+  required Boolean          @default(true)
+  survey   Survey           @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  options  QuestionOption[]
+  answers  Answer[]
+
+  @@unique([surveyId, position])
+}
+
+model QuestionOption {
+  id         Int      @id @default(autoincrement())
+  questionId Int
+  position   Int
+  label      String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  answers    Answer[]
+
+  @@unique([questionId, position])
+}
+
+model Response {
+  id           Int      @id @default(autoincrement())
+  surveyId     Int
+  respondentId Int
+  submittedAt  DateTime @default(now())
+  survey       Survey   @relation(fields: [surveyId], references: [id])
+  respondent   User     @relation(fields: [respondentId], references: [id])
+  answers      Answer[]
+
+  @@unique([surveyId, respondentId])
+}
+
+model Answer {
+  id          Int             @id @default(autoincrement())
+  responseId  Int
+  questionId  Int
+  ratingValue Int?            @map("rating_value")
+  optionId    Int?
+  response    Response        @relation(fields: [responseId], references: [id], onDelete: Cascade)
+  question    Question        @relation(fields: [questionId], references: [id])
+  option      QuestionOption? @relation(fields: [optionId], references: [id])
+
+  @@unique([responseId, questionId])
+}
