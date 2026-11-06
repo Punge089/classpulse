@@ -1,6 +1,6 @@
 # Requirements traceability — ClassPulse
 
-**Version 1.1 · 6 Nov 2026 · Author: Punge089 · Reviewer: book6349** · see the version history at the end
+**Version 1.2 · 7 Nov 2026 · Author: Punge089 · Reviewer: book6349** · see the version history at the end
 
 One row per baseline requirement (18 FR + 14 BR + 10 NFR = 42). Sprint 1 AC and test IDs come from the
 Sprint 1 contracts (`docs/sprints/sprint-1/`). The last two columns are filled from real execution output
@@ -42,7 +42,7 @@ on the release commit (Issue I-10); until then they say "not run yet", never "pa
 | BR-14 | F-11 Anonymous mode | 3 | to be defined in the Sprint 2/3 contract | planned later | not run yet | not run yet |
 | NFR-01 | F-01 Authentication, session and access control | 1 | AC-06 | TEST-06 (stored hash), TEST-57 (no password or token in the server's console output) | not run yet | not run yet |
 | NFR-02 | F-01 Authentication, session and access control | 1 | AC-07 | TEST-07 | not run yet | not run yet |
-| NFR-03 | F-01 Authentication, session and access control (the middleware); the wrong-role and ownership negative tests live in F-03 (AC-16, AC-17), F-04 (AC-26, AC-27, AC-29) and F-05 (AC-32) | 1 | AC-16, AC-17, AC-26, AC-27, AC-29, AC-32 | TEST-18, 19, 30, 31, 39, 36 | not run yet | not run yet |
+| NFR-03 | F-01 Authentication, session and access control (the middleware); the wrong-role and ownership negative tests live in F-03 (AC-16, AC-17), F-04 (AC-20 owner on the list, AC-26, AC-27, AC-29) and F-05 (AC-32) | 1 | AC-16, AC-17, AC-20, AC-26, AC-27, AC-29, AC-32 | TEST-18, 19, 22, 30, 31, 39, 36 | not run yet | not run yet |
 | NFR-04 | F-01 Authentication, session and access control | 1 | AC-04, AC-05 | TEST-04, 05 | not run yet | not run yet |
 | NFR-05 | SR-01 Persistence foundation: schema, migrations, seed, test DB | 1 / Lab 5 | manual check in DEMO-1 (restart, then reload saved response) | manual, no automated test | not run yet | not run yet |
 | NFR-06 | F-14 Hardening: performance, responsive UI, error handling | 3 | to be defined in the Sprint 2/3 contract | planned later | not run yet | not run yet |
@@ -57,7 +57,6 @@ on the release commit (Issue I-10); until then they say "not run yet", never "pa
 - NFR-06 (performance) has no acceptance criterion yet; it is specified and measured in Sprint 3 (F-14).
 - NFR-07 is verified for 3 forms and 3 lists in Sprint 1; the remaining screens are verified in Sprint 3.
 - NFR-10 (375 px layout) is verified in Sprint 3; Sprint 1 only avoids breaking it.
-- NFR-03 asks for a wrong-role negative test for every protected operation. One operation has none yet: `GET /api/surveys` as an owner (F-04 §6 specifies 403, but TEST-22, TEST-31 and TEST-39 never call the list as an owner). Raised with the F-04 owner; until a test exists this row is marked as a gap, not as covered.
 - NFR-05 and NFR-09 have no automated Sprint 1 test; they use a manual check and a release-PR review checklist, which is disclosed here on purpose.
 - All Sprint 2 and Sprint 3 FR/BR/NFR rows have a feature and sprint but no AC or test yet; this is allowed at this checkpoint and is filled when each sprint's contracts are written.
 
@@ -73,3 +72,4 @@ on the release commit (Issue I-10); until then they say "not run yet", never "pa
 |---|---|---|
 | 1.0 | 6 Nov 2026 | Initial matrix of the 42 baseline requirements. |
 | 1.1 | 6 Nov 2026 | After the review of PR #13 by book6349: NFR-03 now maps the negative tests of F-03, F-04 (including the new survey-detail test AC-29/TEST-39) and F-05, and names the one operation without a test (`GET /api/surveys` as an owner) as a coverage gap. Also brought up to date with the contracts as they stand: FR-01 gains AC-09/TEST-55 and TEST-56 (F-01 v1.1, v1.2), FR-06 gains AC-29/TEST-39, BR-09 notes that TEST-30 asserts PUT/DELETE (F-04 v1.1), NFR-01 gains TEST-57 (F-01 v1.3). |
+| 1.2 | 7 Nov 2026 | The NFR-03 gap named in v1.1 is closed: F-04 v1.2 (book6349, commit 42826b8) adds the owner-role `GET /api/surveys` request to TEST-22, which asserts 403 `FORBIDDEN` with no survey list in the body. I read the test in `server/tests/api/responses.test.ts` at that commit before removing the gap. NFR-03 now maps TEST-22 and AC-20, and the gap bullet is gone. |
