@@ -1,0 +1,84 @@
+F-03 red run, stage 1 (pure functions): tests written before implementation (contract v1.1, commit e05a509)
+Tested commit: 9d1dfa7018e0a37933f7fe396668d337c723db92 (test(F-03): failing lifecycle and validation unit tests TEST-11, TEST-15 with stubs (red))
+Run on: 2026-11-06 21:37 +0700, Windows, Node v24.19.0
+The source files exist only as stubs that throw 'has not been implemented'; they are placeholders, not an implementation.
+
+== Command: npm --prefix server run test -- tests/unit/surveyLifecycle.test.ts tests/unit/surveyValidation.test.ts
+﻿
+> classpulse-server@0.1.0 test
+> vitest run tests/unit/surveyLifecycle.test.ts tests/unit/surveyValidation.test.ts
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ❯ tests/unit/surveyValidation.test.ts (27 tests | 27 failed) 10ms
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 1 title empty is rejected and names the field 3ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 2 title spaces only is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 3 title of 121 characters is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 4 description of 1001 characters is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 5 questions empty array is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 6 21 questions is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 7 questions not an array is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 8 prompt empty is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 9 prompt of 301 characters is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 10 unknown type TEXT is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 11 RATING with options is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 12 SINGLE_CHOICE with 1 option is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 13 SINGLE_CHOICE with 7 options is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 14 SINGLE_CHOICE with an empty option is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 15 SINGLE_CHOICE duplicates after trimming and ignoring case is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 16 SINGLE_CHOICE with an option of 101 characters is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 17 required is not a boolean is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 18a courseId 'abc' is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 18b courseId 0 is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 18c courseId -1 is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 18d courseId 1.5 is rejected and names the field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > several bad fields are all listed, one entry per field 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > a body that is not an object is rejected 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 boundaries that are valid (AC-11) > title of 120, description of 1000, prompt of 300, option of 100, 2 and 6 options 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 boundaries that are valid (AC-11) > 20 questions are accepted 0ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 boundaries that are valid (AC-11) > required defaults to true, RATING accepts options: [], and text is trimmed 1ms
+     → validateSurveyInput has not been implemented
+   × TEST-11 boundaries that are valid (AC-11) > a missing description is stored as null 0ms
+     → validateSurveyInput has not been implemented
+ ❯ tests/unit/surveyLifecycle.test.ts (6 tests | 6 failed) 6ms
+   × TEST-15 survey status transitions (BR-03) > DRAFT + publish → PUBLISHED 3ms
+     → nextStatus has not been implemented
+   × TEST-15 survey status transitions (BR-03) > PUBLISHED + close → CLOSED 0ms
+     → nextStatus has not been implemented
+   × TEST-15 survey status transitions (BR-03) > PUBLISHED + publish is rejected with 409 INVALID_TRANSITION 2ms
+     → expected Error: nextStatus has not been implemented to be an instance of ApiError
+   × TEST-15 survey status transitions (BR-03) > CLOSED + publish is rejected with 409 INVALID_TRANSITION 0ms
+     → expected Error: nextStatus has not been implemented to be an instance of ApiError
+   × TEST-15 survey status transitions (BR-03) > DRAFT + close is rejected with 409 INVALID_TRANSITION 0ms
+     → expected Error: nextStatus has not been implemented to be an instance of ApiError
+   × TEST-15 survey status transitions (BR-03) > CLOSED + close is rejected with 409 INVALID_TRANSITION 0ms
+     → expected Error: nextStatus has not been implemented to be an instance of ApiError
+⎯⎯⎯⎯⎯⎯ Failed Tests 33 ⎯⎯⎯⎯⎯⎯⎯
+
+== Summary (counted from the output)
+33 tests, 33 failed, 0 passed, 0 skipped: TEST-11 (27 tests in surveyValidation.test.ts) and TEST-15 (6 tests in surveyLifecycle.test.ts).
+Stage 2 (TEST-10, 12, 13, 14, 16-21: API, database and E2E tests) is written after F-01 is merged, because it needs login.
