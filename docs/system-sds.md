@@ -1,6 +1,6 @@
 # ClassPulse — System-Level Software Design Specification
 
-**Version:** 1.0 · **Owner:** Student B (`book6349`) · **Issue:** #3 · **Date:** 6 Nov 2026
+**Version:** 1.1 · **Owner:** Student B (`book6349`) · **Issue:** #3 · **Date:** 6 Nov 2026
 **Scope:** Part C of Deliverable 1; Sprint 1 architecture and planned deployment boundary.
 
 This SDS describes the whole ClassPulse system and marks later-sprint elements as planned. The shared source of truth is [`plan.md`](plan.md), especially §§2.4–2.9 and I-03. The approved product decisions are in [`design.md`](design.md). PR #15 has merged the SR-01 schema, migration, seed, API shell, client shell and test harness into `sprint-1-staging`; authentication and the feature routes are implemented by the subsequent Issues in the plan.
@@ -75,7 +75,7 @@ flowchart TD
     login -->|Logout| login
 ```
 
-Shared states are consistent across forms and lists: show a loading spinner during fetches; clear empty-state copy for empty lists or summaries; show `ApiClientError.message` in an alert; place field-level `details` below the matching input; disable submit/action buttons while a request is in flight. A failed request leaves the user on the current screen with a recoverable error. The navigation guard improves UX only; the API still checks every request.
+Shared states are consistent across forms and lists: show `PulseLine` during fetches; clear empty-state copy for empty lists or summaries; show `ApiClientError.message` in an alert; place field-level `details` below the matching input; disable submit/action buttons while a request is in flight. A failed request leaves the user on the current screen with a recoverable error. The navigation guard improves UX only; the API still checks every request.
 
 ## 4. API conventions
 
@@ -99,7 +99,7 @@ Every endpoint is under `/api` and uses JSON. Path IDs are positive decimal inte
 | `POST /api/surveys/:id/responses` | Respondent | `{answers:[...]}` | `201 {response:{id,surveyId,submittedAt}}` |
 | `GET /api/responses/:id` | Respondent | — | `200` own response with answers; `404` for another respondent's response |
 
-Protected-route processing order is **401 unauthenticated → 403 wrong role → 404 missing or not owned → business-rule checks → 400 field validation → persistence**. This avoids disclosing another owner's resource. Use consistent error JSON `{error:{code,message,details?}}`:
+Protected-route processing order is **401 unauthenticated → 403 wrong role → 404 missing or not owned → business-rule checks → 400 field validation → persistence**. For `POST /api/surveys/:id/responses`, first resolve the numeric survey ID and return 404 if the survey does not exist; then check enrollment (403 `NOT_ELIGIBLE`), survey status (409 `SURVEY_NOT_OPEN` for DRAFT or CLOSED), answer fields (400 `VALIDATION_ERROR`), and only then persist. The respondent detail route remains 404 for an unpublished survey or a respondent who is not enrolled, as specified in §2.5. Use consistent error JSON `{error:{code,message,details?}}`:
 
 | Code | HTTP | Meaning |
 |---|---:|---|
@@ -121,10 +121,13 @@ Protected-route processing order is **401 unauthenticated → 403 wrong role →
 |---|---|---|---|
 | Login | Public | Public | Public |
 | `/me` / logout | Rejected: 401 | Own session | Own session |
+| List own courses | 401 | 403 | Own courses only |
 | List/create/publish/close survey | 401 | 403 | Own courses/surveys only; otherwise 404 |
+| Read own survey detail | 401 | 403 | Own surveys only; otherwise 404 |
 | View summary | 401 | 403 | Own surveys only; otherwise 404 |
-| List/open published surveys | 401 | Enrolled courses only | 403 |
-| Submit response | 401 | Enrolled, PUBLISHED survey, once | 403 |
+| List published surveys | 401 | Enrolled courses only | 403 |
+| Read published survey detail | 401 | Enrolled + PUBLISHED; otherwise 404 | 403 |
+| Submit response | 401 | Existing survey → enrollment 403 → status 409 → fields 400; once | 403 |
 | Read a response | 401 | Own response only; otherwise 404 | 403; aggregates only in Sprint 1 |
 
 A hidden frontend control is not authorization; every cell is enforced in `server/src/middleware/auth.ts` plus route handlers and tested.
@@ -133,10 +136,10 @@ A hidden frontend control is not authorization; every cell is enforced in `serve
 
 1. Login looks up the account and verifies its password with `node:crypto` scrypt using a 16-byte salt. The stored representation is `salt:hash`. Unknown email, wrong password and inactive user all receive the same `401 INVALID_CREDENTIALS` response.
 2. After successful verification, the API creates a 32-byte cryptographically random token, sends it only in the `cp_session` HttpOnly, SameSite=Lax cookie, and stores only its SHA-256 hash in `Session.tokenHash`. The raw token is never written to logs or the database.
-3. `requireAuth` hashes the presented cookie and looks up a live session; expired, missing or invalid sessions receive `401 UNAUTHENTICATED`. It attaches the authenticated `AuthUser` to the request. `requireRole` returns `403 FORBIDDEN` for a role mismatch. Resource lookups apply owner/respondent filters and return 404 for records the caller must not discover.
+3. `requireAuth` hashes the presented cookie and looks up a live session; expired, missing, invalid, or belonging to an inactive user sessions receive `401 UNAUTHENTICATED`. The session lookup treats an inactive user as having no valid session, even if that user's session row has not yet expired. It attaches the authenticated `AuthUser` to the request. `requireRole` returns `403 FORBIDDEN` for a role mismatch. Resource lookups apply owner/respondent filters and return 404 for records the caller must not discover.
 4. `/api/auth/me` returns the current public user fields. Logout deletes that session row and clears the cookie, so replaying the old cookie fails immediately.
 
-`SESSION_TTL_HOURS` configures the session lifetime (8 hours in Sprint 1). `COOKIE_SECURE` controls the Secure cookie flag for the deployment environment. The client `AuthProvider` requests `/api/auth/me` on load; the client route guard is not a substitute for backend middleware.
+`SESSION_TTL_HOURS` configures the session lifetime (8 hours in Sprint 1). The `cp_session` cookie has `Secure` set when `NODE_ENV=production` and not set in development or test; production must use HTTPS. The client `AuthProvider` requests `/api/auth/me` on load; the client route guard is not a substitute for backend middleware.
 
 ## 7. Configuration and deployment
 
@@ -149,8 +152,13 @@ All configuration is supplied through environment variables; `.env` and `.env.te
 | `SESSION_TTL_HOURS` | Server-side session lifetime; Sprint 1 is 8 hours. |
 | `SEED_PASSWORD` | Synthetic password used by deterministic seeds; never commit its value. |
 | `NODE_ENV` | Runtime environment (`development`, `test` or `production`). |
-| `COOKIE_SECURE` | Whether the session cookie has the Secure attribute; off for local HTTP, on for HTTPS deployment. |
 
 The current local workflow is documented in [`README.md`](../README.md): install locked dependencies, copy `server/.env.example` and `server/.env.test.example`, migrate/seed development, deploy the same migration to the test database, and run the API and Vite client. Keep passwords synthetic and ensure tests cannot reset the development database.
 
 Cloud deployment is planned for Lab 5, outside the Sprint 1 build: one Docker image containing the Express API and `client/dist` on Cloud Run, PostgreSQL on Cloud SQL, credentials in Secret Manager, and images in Artifact Registry. Apply committed migrations with `prisma migrate deploy` at release. Persist state in Cloud SQL; do not rely on a Cloud Run container's local disk. Use HTTPS and the Secure session-cookie setting in production.
+
+## Version history
+
+| Version | Change | Reason |
+|---|---|---|
+| 1.1 | Clarified response endpoint check order, inactive-session handling, and production cookie security; split the role matrix by operation and named the PulseLine loading state. | Addressed the review on PR #16 and aligned the SDS with plan §§2.5/2.9 and F-01 §3. |
