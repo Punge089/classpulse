@@ -74,7 +74,7 @@ No schema change: uses `User` and `Session` from SR-01. Logging in creates one n
 
 | ID | Observable outcome |
 |---|---|
-| AC-01 | Valid login → 200 with `{ user }` (no `passwordHash`) and a `cp_session` cookie with `HttpOnly` and `SameSite=Lax` |
+| AC-01 | Valid login → 200 with `{ user }` (no `passwordHash`) and a `cp_session` cookie with `HttpOnly` and `SameSite=Lax`; the cookie (and the cookie that clears it on logout) carries `Secure` exactly when `NODE_ENV=production` |
 | AC-02 | Wrong password and unknown email → both 401 `INVALID_CREDENTIALS` with identical message and no cookie; an inactive user gets the same 401 |
 | AC-03 | `GET /api/auth/me` with a valid cookie returns the current user; without a cookie → 401 `UNAUTHENTICATED` |
 | AC-04 | After logout the **same cookie value, replayed by hand**, gets 401 on `/api/auth/me`; the `Session` row no longer exists; the logout response clears the cookie |
@@ -101,7 +101,9 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 | TEST-09 | AC-08 | E2E | seeded owner1 and, in a second case, seeded student1 | log in, note the landing URL, reload the page, then press Logout | owner1: lands on `/owner`, navbar shows `Dr. Ann Lee · OWNER` after login and after reload. student1: lands on `/surveys`, navbar shows `Student 1 · RESPONDENT`. In both cases Logout ends on `/login` | `e2e/auth.spec.ts` |
 | TEST-55 | AC-09 | API/DB | no cookie; bodies `{}`, `{ "email": "ann.lee@classpulse.test" }`, `{ "password": "x" }`, `{ "email": 123, "password": "x" }`, and a raw non-JSON body | POST login for each | every response 400 `VALIDATION_ERROR` (JSON bodies list the bad field in `details`); no `Set-Cookie`; `Session` count unchanged | `server/tests/api/auth.test.ts` |
 
-`TEST-55` is the next free ID after SR-01's TEST-50…54 (TEST-10…21 belong to F-03), so F-01's AC-09 test is numbered out of sequence on purpose.
+| TEST-56 | AC-01 | API/DB | seeded student1; the process runs once with `NODE_ENV=production` and once with `NODE_ENV=test` (restored afterwards) | POST login, then POST logout with the saved cookie in production; POST login in test | in production the login `Set-Cookie` and the logout `Set-Cookie` both contain the `Secure` attribute; with `NODE_ENV=test` the login cookie has no `Secure` attribute | `server/tests/api/auth.test.ts` |
+
+`TEST-55` and `TEST-56` are the next free IDs after SR-01's TEST-50…54 (TEST-10…21 belong to F-03), so F-01's AC-09 and AC-01 (Secure flag) tests are numbered out of sequence on purpose.
 
 `PROTECTED_ROUTES` starts with `GET /api/auth/me` and `POST /api/auth/logout`; I-07, I-08 and I-09 append their routes.
 
@@ -121,3 +123,4 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 |---|---|---|---|
 | v1.0 | 2026-11-06 | Punge089 | Initial contract draft for pair review, written before tests and code. |
 | v1.1 | 2026-11-06 | Punge089 | After C3 review by book6349: added AC-09 and TEST-55 (400 on a malformed login body); TEST-04 now saves the cookie and replays it by hand, because a client agent drops the cleared cookie and could pass without the server rejecting the old session; TEST-09 now covers both roles' landing pages. |
+| v1.2 | 2026-11-06 | Punge089 | After the review of PR #17 by book6349: the Secure rule already stated in §3 (NODE_ENV=production) had no test, so AC-01 now names it and TEST-56 asserts it for the login cookie and the logout cookie, in production and not in test. No behaviour change. |
