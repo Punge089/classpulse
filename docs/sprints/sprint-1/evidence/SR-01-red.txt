@@ -1,0 +1,11 @@
+Contract commit: 2307ede79f1f98d20b121702b9f1c4c4d0b1c46c
+Tested tree before evidence: 5d377a4f815e0613ee4db8cd434b58cf7ee36584
+Node: v24.14.0
+
+> server : npm run test -- --reporter=verbose --no-color
+System.Object[]
+Exit code: 1
+
+> client : npm run test -- --reporter=verbose --no-color
+System.Object[]
+Exit code: 1
