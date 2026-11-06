@@ -33,6 +33,13 @@ describe("F-04 respondent survey access", () => {
     const responded = await makeSurvey({ course: f.cpe334, owner: f.owner1 });
     const draft = await makeSurvey({ course: f.cpe334, owner: f.owner1, status: "DRAFT" });
     const otherCourse = await makeSurvey({ course: f.cpe231, owner: f.owner2 });
+
+    const owner = await loginAs(app, "ann.lee@classpulse.test");
+    const ownerList = await owner.get("/api/surveys");
+    expect(ownerList.status).toBe(403);
+    expect(ownerList.body.error.code).toBe("FORBIDDEN");
+    expect(ownerList.body).not.toHaveProperty("surveys");
+
     const agent = await loginAs(app, "student1@classpulse.test");
     const submitted = await agent.post("/api/surveys/" + responded.id + "/responses").send(validAnswers(responded));
     expect(submitted.status).toBe(201);
