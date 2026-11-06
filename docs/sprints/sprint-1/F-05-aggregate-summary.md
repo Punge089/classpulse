@@ -1,7 +1,7 @@
 # F-05 — Aggregate survey summary
 
 **Owner:** Student B (book6349) · **Reviewer:** Student A (Punge089) · **Issue:** #9
-**Version:** 1.0 · **Date:** 6 Nov 2026
+**Version:** 1.1 · **Date:** 6 Nov 2026
 **Requirement:** FR-08. Depends on SR-01 and F-01.
 
 ## 1. Feature
@@ -18,6 +18,7 @@ Give a survey owner aggregate results for one of their surveys. The API returns 
 ## 3. Business rules and validation
 
 - Rating average is the arithmetic mean rounded to two decimal places using round-half-up. Preserve decimal semantics at the half-cent boundary; for example, 4.335 becomes 4.34 and 4.345 becomes 4.35.
+- Compute each rating average and distribution from RATING answer rows for that question only. A respondent who omitted an optional rating question contributes no rating answer and is excluded from that question's average denominator.
 - Rating distribution always contains buckets 1 through 5, including zero-count buckets. If there are no ratings, average is null.
 - Choice counts include every option in its stored position order, including zero-count options.
 - responseCount is the count of submitted responses for this survey. Empty surveys return zero and zero for all count buckets.
@@ -41,7 +42,7 @@ The check order is 401 unauthenticated → 403 wrong role → 404 missing, non-n
 
 ## 6. API spec
 
-Mount the owner-summary router at /api/owner/surveys behind requireAuth and requireRole("OWNER").
+Mount the owner-summary router at /api/owner/surveys behind requireAuth and requireRole("OWNER"). Register `GET /api/owner/surveys/:id/summary` in `PROTECTED_ROUTES` in the API test file.
 
 | Method and path | Request | Success | Errors |
 |---|---|---|---|
@@ -75,10 +76,10 @@ No schema change. Read Survey, Question, QuestionOption, Response, and Answer fr
 
 | Test ID | AC | Level | Precondition & input | Action | Expected result | Planned file |
 |---|---|---|---|---|---|---|
-| TEST-33 | AC-30 | Unit | One RATING question with answers [4,4,5]; boundary inputs whose exact averages are 4.335 and 4.345 | Call summarize with literal question/answer inputs | Average 4.33 and exact distribution for [4,4,5]; boundaries round half-up to 4.34 and 4.35 | server/tests/unit/summary.test.ts |
+| TEST-33 | AC-30 | Unit | One RATING question with answers [4,4,5]; two boundary fixtures each contain 200 ratings: 133 ratings of 4 plus 67 of 5 (867/200 = 4.335), and 131 ratings of 4 plus 69 of 5 (869/200 = 4.345) | Call summarize separately with each literal 200-answer fixture | [4,4,5] averages 4.33 with its exact distribution; 4.335 rounds half-up to 4.34 and 4.345 rounds half-up to 4.35 | server/tests/unit/summary.test.ts |
 | TEST-34 | AC-30 | API-DB | Published survey with one rating and one choice question; three responses contain ratings [4,4,5] and three Yes choices | GET summary as owner1 | 200 with expected average/distribution, response count 3, Yes count 3, No count 0, and stable option order | server/tests/api/summary.test.ts |
 | TEST-35 | AC-31 | Unit | One rating and one choice question with no answers and response count 0 | Call summarize | responseCount 0, rating average null, all rating/choice buckets zero | server/tests/unit/summary.test.ts |
-| TEST-36 | AC-32 | API-DB | Survey belongs to owner1; owner2 and student1 are authenticated separately | GET summary as owner2 and student1 | owner2 gets 404 NOT_FOUND; student1 gets 403 FORBIDDEN | server/tests/api/summary.test.ts |
+| TEST-36 | AC-31, AC-32 | API-DB | An empty survey with a RATING and SINGLE_CHOICE question belongs to owner1; owner2 and student1 are authenticated separately | GET summary as owner1, owner2, and student1; GET a missing numeric survey ID and a non-numeric survey ID as owner1 | Owner1 receives 200 with responseCount 0, rating average null, all rating buckets zero, and all option counts zero; owner2 receives 404 `NOT_FOUND`; student1 receives 403 `FORBIDDEN`; missing and non-numeric IDs both return 404 | server/tests/api/summary.test.ts |
 | TEST-37 | AC-33 | API-DB | Summary fixture includes seeded respondent identities | Serialize the owner1 summary response and search identity keys and seeded emails/names | No respondentId, email, fullName, seeded respondent identifier, or per-response row appears | server/tests/api/summary.test.ts |
 | TEST-38 | AC-34 | E2E | The TEST-40 I-10 journey has a survey with one rating and one choice question and a submitted response | Open its owner summary page; also exercise the empty state before submission | Response count and aggregate results are visible; empty state says “No responses yet” before any response | e2e/journey.spec.ts (owned by I-10) |
 
@@ -95,3 +96,4 @@ No schema change. Read Survey, Question, QuestionOption, Response, and Answer fr
 | Version | Date | Author | Change |
 |---|---|---|---|
 | v1.0 | 6 Nov 2026 | Student B (book6349) | Initial contract based on plan I-09 and shared API/data contracts. |
+| v1.1 | 6 Nov 2026 | Student B (book6349) | Incorporated C3: added literal 200-rating half-up fixtures, API coverage for empty summaries and invalid IDs, protected-route registration, and clarified that each average uses only submitted rating answers for its question. |
