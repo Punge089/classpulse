@@ -23,6 +23,6 @@ and the reviewing student must still verify (see `docs/ai-use.md`).
 
 ## Defense-in-depth notes (below the reporting threshold, not vulnerabilities)
 
-* The `Secure` cookie flag is on when `COOKIE_SECURE=true`, or by default when `NODE_ENV=production`. A deployment that runs over HTTPS but is not marked production must set `COOKIE_SECURE=true` (to be decided and written into the SDS and F-01 contract; open in PR #16 review).
+* The `Secure` cookie flag is on exactly when `NODE_ENV=production` (decided in the SDS v1.1 and F-01 §3; an earlier draft also read a `COOKIE_SECURE` variable, which was removed to keep one documented rule). A deployment served over HTTPS must therefore run with `NODE_ENV=production`.
 * There is no rate limiting or account lockout on `POST /api/auth/login` (out of scope for Sprint 1; excluded by the review rules).
 * Sessions are not rotated on privilege change and old sessions of a user are not revoked on password change; Sprint 1 has no password-change feature.

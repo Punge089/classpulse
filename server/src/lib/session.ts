@@ -17,12 +17,9 @@ function hashToken(token: string): string {
   return createHash("sha256").update(token).digest("hex");
 }
 
-/** Secure flag: COOKIE_SECURE=true/false wins, otherwise on in production. */
+/** Secure flag: on when NODE_ENV=production (SDS §6, contract F-01 §3); production must be served over HTTPS. */
 function cookieSecure(): boolean {
-  const explicit = process.env.COOKIE_SECURE;
-  return explicit === undefined || explicit === ""
-    ? process.env.NODE_ENV === "production"
-    : explicit.toLowerCase() === "true";
+  return process.env.NODE_ENV === "production";
 }
 
 export function sessionCookieOptions(): CookieOptions {
