@@ -107,12 +107,13 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 
 ## 11. Completion evidence (filled as the work happens)
 
-- [ ] Contract commit (this file, v1.0; v1.1 after C3) and `definition-of-done.md`: `<sha>`
-- [ ] Red output `docs/sprints/sprint-1/evidence/F-01-red.txt` and commit `<sha>`
-- [ ] Green output `docs/sprints/sprint-1/evidence/F-01-green.txt` and commit `<sha>`
-- [ ] Test counts (passed / failed / skipped): —
-- [ ] PR `#<n>`, reviewer comment, merge commit on `sprint-1-staging`: —
-- [ ] Traceability rows FR-01, NFR-01…04 updated with real test names; security-review run on the diff
+- [x] Contract commit (this file, v1.0 `e535f5e`; v1.1 after C3 `19c0d8d`) and `definition-of-done.md` (`e535f5e`)
+- [x] Red output `docs/sprints/sprint-1/evidence/F-01-red.txt` (`87b40ca`), failing tests commit `8a97d0f`: 11 F-01 tests failed
+- [x] Green output `docs/sprints/sprint-1/evidence/F-01-green.txt`, tested on implementation commit `f30ed0f`
+- [x] Test counts on `f30ed0f` (passed / failed / skipped): server 13 / 0 / 0, client 1 / 0 / 0, Playwright 3 / 0 / 0; server and client builds exit 0
+- [ ] PR `#<n>`, reviewer comment, merge commit on `sprint-1-staging`: filled after the review
+- [ ] Traceability rows FR-01, NFR-01…04 updated with real test names (done in I-10 on the release commit)
+- [x] security-review run on the diff: `docs/sprints/sprint-1/evidence/F-01-security-review.md` (no HIGH or MEDIUM findings)
 
 ## 12. Version history
 

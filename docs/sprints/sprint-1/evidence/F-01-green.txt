@@ -1,0 +1,74 @@
+F-01 green run: implementation of contract v1.1
+Tested commit: f30ed0f69d35cfab733389260c3bd85d21a58a8f (feat(F-01): login, logout, current user, role middleware and login UI (green))
+Run on: 2026-11-06 21:32 +0700, Windows, Node v24.19.0, test database classpulse_test
+
+== Command 1: npm --prefix server run test
+﻿
+> classpulse-server@0.1.0 test
+> vitest run
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ✓ tests/api/auth.test.ts (6 tests) 998ms
+ ✓ tests/db/constraints.test.ts (3 tests) 940ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 587ms
+ ✓ tests/api/health.test.ts (1 test) 61ms
+ ✓ tests/unit/password.test.ts (1 test) 312ms
+ ✓ tests/api/unauthenticated.test.ts (2 tests) 17ms
+ Test Files  5 passed (5)
+      Tests  13 passed (13)
+
+== Command 2: npm --prefix client run test
+﻿
+> classpulse-client@0.1.0 test
+> vitest run
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/client
+ ✓ tests/RatingDots.test.tsx (1 test) 290ms
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+
+== Command 3: npx playwright test e2e/auth.spec.ts --reporter=list
+﻿node.exe : [WebServer] (node:51396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being 
+set.
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:43572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+Running 3 tests using 1 worker
+(node:10476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (904ms)
+  ok 2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (785ms)
+  ok 3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (769ms)
+  3 passed (6.7s)
+
+== Command 4: npm --prefix server run build
+﻿
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+exit code 0
+
+== Command 5: npm --prefix client run build
+﻿
+> classpulse-client@0.1.0 build
+> tsc --noEmit && vite build
+vite v6.0.15 building for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.69 kB │ gzip:  0.38 kB
+dist/assets/index-BGdhdzwi.css  233.49 kB │ gzip: 31.47 kB
+dist/assets/index-BBm_IULR.js   170.32 kB │ gzip: 55.86 kB
+✓ built in 641ms
+exit code 0
+
+== Summary (counted from the output above)
+Server 13 passed, 0 failed, 0 skipped (F-01: TEST-01..07, TEST-55; plus the 4 SR-01 tests). Client 1 passed (TEST-54). E2E 3 passed, 0 failed, 0 skipped (TEST-08, TEST-09 owner, TEST-09 respondent).
+Red to green: the 11 F-01 tests that failed in F-01-red.txt (commit 8a97d0f) now pass; TEST-06 passed in both runs.
+
+== Mutation checks (tests must fail when the behaviour is broken; the source was restored after each)
+skip deleting the session on logout        -> TEST-04 fails (1 failed)
+ignore isActive at login                   -> TEST-02 fails (1 failed)
+set the session cookie without HttpOnly    -> TEST-01 fails (1 failed)
