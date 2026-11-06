@@ -1,5 +1,7 @@
 # ClassPulse — rules for AI agents
 
+**If you are working for Student B (`book6349`), read `docs/partner-ai-brief.md` first.** Each AI works only for its own student and never posts as the other.
+
 1. Read `docs/plan.md`: *Global Constraints*, §2 Shared Contracts, §4.1, and **only your Issue** (I-xx = GitHub #xx).
 2. Read `docs/comment-playbook.md` for every Issue/PR comment. Fill slots only from real data
    (`git`, `gh`, `evidence/` files, checks you actually ran). Show the text to the human and post it with `gh` only after they say ok.
