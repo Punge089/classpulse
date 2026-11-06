@@ -7,7 +7,14 @@ type Method = "get" | "post";
 /** Every protected route; each feature Issue appends its own routes here. */
 export const PROTECTED_ROUTES: Array<[Method, string]> = [
   ["get", "/api/auth/me"],
-  ["post", "/api/auth/logout"]
+  ["post", "/api/auth/logout"],
+  // F-03 owner routes (I-07)
+  ["get", "/api/owner/courses"],
+  ["get", "/api/owner/surveys"],
+  ["post", "/api/owner/surveys"],
+  ["get", "/api/owner/surveys/1"],
+  ["post", "/api/owner/surveys/1/publish"],
+  ["post", "/api/owner/surveys/1/close"]
 ];
 
 const app = createApp();
