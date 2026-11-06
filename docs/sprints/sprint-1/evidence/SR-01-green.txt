@@ -1,0 +1,78 @@
+Tested commit: 94e548f10b746d8980c2625f59e859e542f581f5
+Node: v24.14.0
+PostgreSQL: 16.15 (development and separate classpulse_test databases)
+
+> server : npm run test -- --reporter=verbose --no-color
+
+> classpulse-server@0.1.0 test
+> vitest run --reporter=verbose --no-color
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 <repo>/server
+
+ ✓ tests/db/constraints.test.ts > TEST-50 rejects a second response for the same survey and respondent
+ ✓ tests/db/constraints.test.ts > TEST-51 rejects ratings outside 1–5 with the PostgreSQL check
+ ✓ tests/db/constraints.test.ts > TEST-53 seeds the same fixture identities, relationships and credentials twice 587ms
+ ✓ tests/api/health.test.ts > TEST-52 health, invalid or unknown IDs, and malformed JSON use the API contract
+
+ Test Files  2 passed (2)
+      Tests  4 passed (4)
+   Start at  20:37:43
+   Duration  1.85s (transform 76ms, setup 35ms, collect 252ms, tests 1.03s, environment 0ms, prepare 196ms)
+
+Exit code: 0
+
+> server : npm run build
+
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+
+Exit code: 0
+
+> client : npm run test -- --reporter=verbose --no-color
+
+> classpulse-client@0.1.0 test
+> vitest run --reporter=verbose --no-color
+
+
+ RUN  v2.1.9 <repo>/client
+
+ ✓ tests/RatingDots.test.tsx > TEST-54 rating exposes five radios, supports arrows and ignores read-only input
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  20:37:47
+   Duration  2.34s (transform 49ms, setup 15ms, collect 408ms, tests 298ms, environment 959ms, prepare 298ms)
+
+Exit code: 0
+
+> client : npm run build
+
+> classpulse-client@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.0.15 building for production...
+transforming...
+✓ 32 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.68 kB │ gzip:  0.37 kB
+dist/assets/index-BGdhdzwi.css  233.49 kB │ gzip: 31.47 kB
+dist/assets/index-rBDPSSas.js   166.00 kB │ gzip: 54.46 kB
+✓ built in 795ms
+Exit code: 0
+
+> Local browser smoke via Playwright (Chrome headless), server and Vite on 3000/5173
+ClassPulse API listening on port 3000
+
+  VITE v6.0.15  ready in 303 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+Vite health proxy: 200 {"status":"ok"}
+Shell 1280 px: heading visible and no horizontal overflow
+Shell 375 px: heading visible and no horizontal overflow
+Exit code: 0
+
+Evidence screenshots from the same client shell: theme-1280.png and theme-375.png.
+Foundation Vitest totals: 5 passed, 0 failed, 0 skipped.
