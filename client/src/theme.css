@@ -65,3 +65,16 @@ h1, h2, h3, .cp-brand {
 @media (pointer: coarse) {
   .cp-rating-option { min-width: 44px; min-height: 44px; }
 }
+
+/* Survey status badges (plan §2.9): DRAFT muted outline, PUBLISHED ok fill, CLOSED ink outline. */
+.cp-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.cp-badge-draft { color: var(--cp-muted); border-color: var(--cp-muted); }
+.cp-badge-published { color: #FFFFFF; background: var(--cp-ok); border-color: var(--cp-ok); }
+.cp-badge-closed { color: var(--cp-ink); border-color: var(--cp-ink); }
