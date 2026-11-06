@@ -72,3 +72,31 @@ Red to green: the 11 F-01 tests that failed in F-01-red.txt (commit 8a97d0f) now
 skip deleting the session on logout        -> TEST-04 fails (1 failed)
 ignore isActive at login                   -> TEST-02 fails (1 failed)
 set the session cookie without HttpOnly    -> TEST-01 fails (1 failed)
+
+==================================================================
+Addendum after the review of PR #17 (contract v1.2, TEST-56 for the production Secure cookie flag)
+Tested commit: 98f053016c9038cd6597582476c86879f4705524 (test(F-01): TEST-56 asserts the Secure cookie flag in production and not in test)
+Run on: 2026-11-06 22:44 +0700, Windows, Node v24.19.0
+
+== npm --prefix server run test
+ ✓ tests/api/auth.test.ts (7 tests) 1334ms
+ ✓ tests/db/constraints.test.ts (3 tests) 982ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 624ms
+ ✓ tests/api/health.test.ts (1 test) 86ms
+ ✓ tests/unit/password.test.ts (1 test) 362ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 348ms
+ ✓ tests/api/unauthenticated.test.ts (2 tests) 20ms
+ Test Files  5 passed (5)
+      Tests  14 passed (14)
+== npm --prefix client run test
+ ✓ tests/RatingDots.test.tsx (1 test) 312ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 312ms
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+== npx playwright test e2e/auth.spec.ts --reporter=list
+  3 passed (14.3s)
+== npm --prefix server run build: exit code 0;  npm --prefix client run build: exit code 0
+
+Summary: server 14 passed, 0 failed, 0 skipped; client 1 passed; Playwright 3 passed; both builds exit 0.
+TEST-56 covers behaviour that already existed, so it passed on first run. Its strength was shown by mutation checks
+(source restored after each): cookieSecure() always false -> TEST-56 fails (1 failed); cookieSecure() always true -> TEST-56 fails (1 failed).

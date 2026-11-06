@@ -113,7 +113,8 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 - [x] Red output `docs/sprints/sprint-1/evidence/F-01-red.txt` (`87b40ca`), failing tests commit `8a97d0f`: 11 F-01 tests failed
 - [x] Green output `docs/sprints/sprint-1/evidence/F-01-green.txt`, tested on implementation commit `f30ed0f`
 - [x] Test counts on `f30ed0f` (passed / failed / skipped): server 13 / 0 / 0, client 1 / 0 / 0, Playwright 3 / 0 / 0; server and client builds exit 0
-- [ ] PR `#<n>`, reviewer comment, merge commit on `sprint-1-staging`: filled after the review
+- [x] After the PR #17 review (contract v1.2 `c8e7c2e`, TEST-56 `98f0530`): server 14 / 0 / 0, client 1 / 0 / 0, Playwright 3 / 0 / 0; builds exit 0 (addendum in `F-01-green.txt`)
+- [ ] PR #17: reviewer approval and merge commit on `sprint-1-staging`: filled after the review
 - [ ] Traceability rows FR-01, NFR-01…04 updated with real test names (done in I-10 on the release commit)
 - [x] security-review run on the diff: `docs/sprints/sprint-1/evidence/F-01-security-review.md` (no HIGH or MEDIUM findings)
 
