@@ -1,4 +1,19 @@
-import type { FieldError } from "./errors";
+import { ApiError, type FieldError } from "./errors";
+
+/** Largest value of the database integer id columns. */
+const MAX_ID = 2147483647;
+const validCourseId = (value: unknown): value is number =>
+  typeof value === "number" && Number.isInteger(value) && value >= 1 && value <= MAX_ID;
+
+/** The `courseId` of a create-survey body, or a 400 naming `courseId`. The route calls this before it looks the course up. */
+export function parseCourseId(body: unknown): number {
+  const id = typeof body === "object" && body !== null ? (body as Record<string, unknown>).courseId : undefined;
+  if (!validCourseId(id)) {
+    const message = "Choose one of your courses";
+    throw new ApiError(400, "VALIDATION_ERROR", message, [{ field: "courseId", message }]);
+  }
+  return id;
+}
 
 export interface QuestionInput {
   prompt: string;
@@ -40,9 +55,7 @@ export function validateSurveyInput(body: unknown): SurveyValidation {
   };
 
   const courseId = input.courseId;
-  if (typeof courseId !== "number" || !Number.isInteger(courseId) || courseId < 1) {
-    fail("courseId", "Choose one of your courses");
-  }
+  if (!validCourseId(courseId)) fail("courseId", "Choose one of your courses");
 
   const title = typeof input.title === "string" ? input.title.trim() : "";
   if (title.length < 1 || title.length > MAX_TITLE) fail("title", `Title must be 1 to ${MAX_TITLE} characters`);
