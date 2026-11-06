@@ -20,8 +20,8 @@ ClassPulse, a CPE 334 group project (deliverable due **Sun 8 Nov 2026 23:59**) b
 gh auth status                      # must be logged in as book6349
 gh api user --jq .login             # book6349
 git config user.name && git config user.email   # must be B's own identity linked to the GitHub account
-git clone https://github.com/Punge089/classpulse.git && cd classpulse
-git checkout sprint-1-staging && git pull
+git clone -b sprint-1-staging https://github.com/Punge089/classpulse.git && cd classpulse   # the default branch main does NOT have this brief; always work from sprint-1-staging
+git pull
 gh api repos/Punge089/classpulse/invitations 2>&1 | head -3   # if the invite is still pending, B must accept it at https://github.com/Punge089/classpulse/invitations
 ```
 
