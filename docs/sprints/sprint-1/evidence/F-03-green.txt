@@ -1,0 +1,49 @@
+F-03 green run, stage 1 (pure functions: TEST-11, TEST-15), contract v1.1
+Tested commit: 9ad0126820227ab5fe75d46c689e9562726f7ad8 (feat(F-03): survey status transitions and create-survey validation (green, stage 1))
+Run on: 2026-11-06 21:39 +0700, Windows, Node v24.19.0, test database classpulse_test
+
+== Command 1: npm --prefix server run test -- tests/unit/surveyLifecycle.test.ts tests/unit/surveyValidation.test.ts
+﻿
+> classpulse-server@0.1.0 test
+> vitest run tests/unit/surveyLifecycle.test.ts tests/unit/surveyValidation.test.ts
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 5ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 2ms
+ Test Files  2 passed (2)
+      Tests  33 passed (33)
+   Start at  21:38:00
+   Duration  410ms (transform 44ms, setup 22ms, collect 43ms, tests 7ms, environment 0ms, prepare 111ms)
+
+== Command 2: npm --prefix server run test (whole server suite)
+﻿
+> classpulse-server@0.1.0 test
+> vitest run
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 5ms
+ ✓ tests/db/constraints.test.ts (3 tests) 990ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 581ms
+ ✓ tests/api/health.test.ts (1 test) 56ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 2ms
+ Test Files  4 passed (4)
+      Tests  37 passed (37)
+   Start at  21:38:32
+   Duration  2.00s (transform 83ms, setup 31ms, collect 225ms, tests 1.05s, environment 0ms, prepare 215ms)
+
+== Command 3: npm --prefix server run build
+﻿
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+exit code 0
+
+== Summary
+Stage 1: 33 tests passed, 0 failed, 0 skipped (TEST-11: 27, TEST-15: 6). Whole server suite: 4 files, 37 tests passed, 0 failed, 0 skipped.
+Red to green: the same 33 tests that failed in F-03-red.txt now pass.
+
+== Mutation checks (tests must fail when behaviour is broken; the source was restored after each)
+allow closing a DRAFT survey                         -> surveyLifecycle.test.ts: 1 of 6 failed
+compare duplicate options case-sensitively           -> surveyValidation.test.ts: 1 of 27 failed (case 15)
+do not trim the title                                -> surveyValidation.test.ts: 2 of 27 failed
+
+== Not covered yet (stage 2, after F-01 is merged): TEST-10, 12, 13, 14, 16-21 (API, database, E2E), the owner routes, and the UI.
