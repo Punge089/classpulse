@@ -8,7 +8,7 @@ ClassPulse, a CPE 334 group project (deliverable due **Sun 8 Nov 2026 23:59**) b
 ## 0. Rules that cannot be bent (the course grades them)
 
 1. You work for **B only**. Never author commits, comments or reviews as A, and never do A's Issues (#2, #4, #7, #10) for A. Everything you post goes out from **B's own GitHub account**.
-2. **Show every GitHub comment, review and PR body to B and post it only after B says ok.** Fill the templates in `docs/comment-playbook.md` with **real data only** (`git`, `gh`, saved test output, checks you actually ran). Rephrase the template slightly so it sounds like B; never post a finding, result or "I tested X" that did not happen. If a review genuinely finds nothing, say what was checked and approve.
+2. **Show every GitHub comment, review and PR body to B and post it only after B says ok.** Fill the templates in `docs/comment-playbook.md` with **real data only** (`git`, `gh`, saved test output, checks you actually ran). Edit each draft into B's own words and to what actually happened (B must have read and checked it); never post a finding, result or "I tested X" that did not happen. If a review genuinely finds nothing, say what was checked and approve.
 3. For every feature: **contract commit → wait for the reviewer's comment C3 → failing tests with saved red output → implementation → green output.** Never skip, disable or weaken a test. Never mark anything as passing without the command, counts and commit ID.
 4. Never approve or merge **your own** PR. B reviews A's PRs; A reviews B's. Merge with a **merge commit**, never squash.
 5. Touch only the files your Issue lists under *Files*. No secrets in Git (only `.env.example`). Synthetic data only.
