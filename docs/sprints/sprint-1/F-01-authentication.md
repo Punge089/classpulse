@@ -63,7 +63,8 @@ No schema change: uses `User` and `Session` from SR-01. Logging in creates one n
 
 ## 8. Failure and boundary cases
 
-- Missing or non-string `email` or `password` → 400 `VALIDATION_ERROR` through the shared error handler. This has no acceptance criterion of its own in Sprint 1; adding **AC-09** is an open question for the reviewer (see Issue #6).
+- Missing or non-string `email` or `password`, and a non-JSON body → 400 `VALIDATION_ERROR` with no cookie and no new `Session` row (AC-09, added in v1.1 after C3).
+- Logout clears the cookie in its response, so a client that obeys it stops sending the old token. The server must therefore reject the old token itself: the logout test replays the saved cookie instead of trusting the client (AC-04).
 - Unknown email, wrong password and inactive user are indistinguishable (AC-02).
 - A cookie holding a random or tampered token → 401, same as no cookie.
 - A session exactly at `expiresAt` is treated as expired.
@@ -76,11 +77,12 @@ No schema change: uses `User` and `Session` from SR-01. Logging in creates one n
 | AC-01 | Valid login → 200 with `{ user }` (no `passwordHash`) and a `cp_session` cookie with `HttpOnly` and `SameSite=Lax` |
 | AC-02 | Wrong password and unknown email → both 401 `INVALID_CREDENTIALS` with identical message and no cookie; an inactive user gets the same 401 |
 | AC-03 | `GET /api/auth/me` with a valid cookie returns the current user; without a cookie → 401 `UNAUTHENTICATED` |
-| AC-04 | After logout the old cookie gets 401 on `/api/auth/me` and the `Session` row no longer exists |
+| AC-04 | After logout the **same cookie value, replayed by hand**, gets 401 on `/api/auth/me`; the `Session` row no longer exists; the logout response clears the cookie |
 | AC-05 | A session whose `expiresAt` is in the past → 401 |
 | AC-06 | The stored `passwordHash` differs from the plaintext and verifies; a wrong password does not verify |
 | AC-07 | Every route in `PROTECTED_ROUTES` without a cookie → 401 with a body that contains only `error` |
-| AC-08 | UI: bad credentials show the error alert; a good login shows `fullName · ROLE` in the navbar and lands on `/owner` or `/surveys` by role; Logout returns to `/login`; a reload keeps the identity |
+| AC-08 | UI: bad credentials show the error alert; a good login shows `fullName · ROLE` in the navbar and lands on `/owner` for an owner and on `/surveys` for a respondent; Logout returns to `/login`; a reload keeps the identity |
+| AC-09 | A login request with a missing or non-string `email` or `password`, or a non-JSON body → 400 `VALIDATION_ERROR` (with a `details` entry per bad field when the body is JSON); no cookie is set and no `Session` row is created |
 
 ## 10. Software Test Specification
 
@@ -91,18 +93,21 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 | TEST-01 | AC-01 | API/DB | seeded `ann.lee@classpulse.test`, correct password | POST login | 200; `user` has `id`, `email`, `fullName`, `role` and no `passwordHash`; `Set-Cookie` is `cp_session` with `HttpOnly` and `SameSite=Lax` and a lifetime of about `SESSION_TTL_HOURS` | `server/tests/api/auth.test.ts` |
 | TEST-02 | AC-02 | API/DB | wrong password; unknown email; a user with `isActive=false` | POST login for each | all 401 `INVALID_CREDENTIALS` with the same `message`; no `Set-Cookie` | `server/tests/api/auth.test.ts` |
 | TEST-03 | AC-03 | API/DB | student1 logged in via `loginAs`; a separate request without cookie | GET `/api/auth/me` for each | 200 with student1's user; 401 `UNAUTHENTICATED` | `server/tests/api/auth.test.ts` |
-| TEST-04 | AC-04 | API/DB | student1 logged in | POST logout, then GET `/api/auth/me` with the same agent | 204, then 401; `Session` count for student1 is 0 | `server/tests/api/auth.test.ts` |
+| TEST-04 | AC-04 | API/DB | student1 logs in with a plain request (not an agent); the `cp_session=…` cookie value is saved from the login response | POST logout with that cookie; then a **new request** GET `/api/auth/me` that sets the saved cookie by hand | logout 204 and its `Set-Cookie` clears `cp_session`; the replayed cookie gets 401 `UNAUTHENTICATED`; `Session` count for student1 is 0 | `server/tests/api/auth.test.ts` |
 | TEST-05 | AC-05 | API/DB | student1 logged in; the session's `expiresAt` set to one minute in the past via Prisma | GET `/api/auth/me` | 401 `UNAUTHENTICATED` | `server/tests/api/auth.test.ts` |
 | TEST-06 | AC-06 | unit + DB | `hashPassword("secret")`; the seeded owner1 row | verify | hash is not `"secret"`; `verifyPassword("secret", hash)` true; wrong password false; two hashes of the same password differ; owner1's stored hash is not the seed password | `server/tests/unit/password.test.ts` |
 | TEST-07 | AC-07 | API | each `[method, path]` in `PROTECTED_ROUTES`, no cookie | request | 401 and `Object.keys(body)` equals `["error"]` | `server/tests/api/unauthenticated.test.ts` |
 | TEST-08 | AC-08 | E2E | seeded owner1 | submit the login form with a wrong password | error alert with the server message is visible; still on `/login` | `e2e/auth.spec.ts` |
-| TEST-09 | AC-08 | E2E | seeded owner1 | log in, reload the page, then press Logout | navbar shows `Dr. Ann Lee · OWNER` after login and after reload; after Logout the URL is `/login` | `e2e/auth.spec.ts` |
+| TEST-09 | AC-08 | E2E | seeded owner1 and, in a second case, seeded student1 | log in, note the landing URL, reload the page, then press Logout | owner1: lands on `/owner`, navbar shows `Dr. Ann Lee · OWNER` after login and after reload. student1: lands on `/surveys`, navbar shows `Student 1 · RESPONDENT`. In both cases Logout ends on `/login` | `e2e/auth.spec.ts` |
+| TEST-55 | AC-09 | API/DB | no cookie; bodies `{}`, `{ "email": "ann.lee@classpulse.test" }`, `{ "password": "x" }`, `{ "email": 123, "password": "x" }`, and a raw non-JSON body | POST login for each | every response 400 `VALIDATION_ERROR` (JSON bodies list the bad field in `details`); no `Set-Cookie`; `Session` count unchanged | `server/tests/api/auth.test.ts` |
+
+`TEST-55` is the next free ID after SR-01's TEST-50…54 (TEST-10…21 belong to F-03), so F-01's AC-09 test is numbered out of sequence on purpose.
 
 `PROTECTED_ROUTES` starts with `GET /api/auth/me` and `POST /api/auth/logout`; I-07, I-08 and I-09 append their routes.
 
 ## 11. Completion evidence (filled as the work happens)
 
-- [ ] Contract commit (this file, v1.0) and `definition-of-done.md`: `<sha>`
+- [ ] Contract commit (this file, v1.0; v1.1 after C3) and `definition-of-done.md`: `<sha>`
 - [ ] Red output `docs/sprints/sprint-1/evidence/F-01-red.txt` and commit `<sha>`
 - [ ] Green output `docs/sprints/sprint-1/evidence/F-01-green.txt` and commit `<sha>`
 - [ ] Test counts (passed / failed / skipped): —
@@ -114,3 +119,4 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 | Version | Date | Author | Change and reason |
 |---|---|---|---|
 | v1.0 | 2026-11-06 | Punge089 | Initial contract draft for pair review, written before tests and code. |
+| v1.1 | 2026-11-06 | Punge089 | After C3 review by book6349: added AC-09 and TEST-55 (400 on a malformed login body); TEST-04 now saves the cookie and replays it by hand, because a client agent drops the cleared cookie and could pass without the server rejecting the old session; TEST-09 now covers both roles' landing pages. |
