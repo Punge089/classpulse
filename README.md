@@ -58,7 +58,60 @@ npm --prefix server run build
 npm --prefix client run build
 ```
 
-Server tests use `.env.test` and reset only `classpulse_test`. The Playwright configuration starts both servers for future E2E specs. When those specs are present, run `npx playwright install chromium` once and `npm run test:e2e` from the repository root.
+Server tests use `.env.test` and reset only `classpulse_test`. Playwright starts both servers itself; install its browser once with `npx playwright install chromium`, then run `npm run test:e2e` from the repository root. The E2E specs log in to the **development** database, so run `npm run prisma:seed` (above) first, with the same `SEED_PASSWORD` that is in `server/.env`.
+
+If `npm ci` was run but the server tests say the Prisma client "did not initialize", run `npx prisma generate` once from `server` (the migrate step in the setup above does this too).
+
+## Database login (local development only)
+
+The setup above assumes this local role and these two databases. Run it once as the PostgreSQL superuser (you are asked for that password; the `classpulse` password below is a local development value, never a real one):
+
+```powershell
+psql -h localhost -U postgres -c "CREATE ROLE classpulse LOGIN PASSWORD 'classpulse' CREATEDB;" -c "CREATE DATABASE classpulse OWNER classpulse;" -c "CREATE DATABASE classpulse_test OWNER classpulse;"
+```
+
+## Seeded accounts
+
+Every account uses the password you set as `SEED_PASSWORD` in `server/.env` (it is never stored in Git). All addresses are synthetic.
+
+| Email | Role | Notes |
+|---|---|---|
+| `ann.lee@classpulse.test` | Survey Owner | owns CPE334 |
+| `ben.kim@classpulse.test` | Survey Owner | owns CPE231 |
+| `student1@classpulse.test` | Respondent | enrolled in CPE334 |
+| `student2@classpulse.test` | Respondent | enrolled in CPE334 |
+| `student3@classpulse.test` | Respondent | enrolled in CPE231 only |
+
+The development seed also creates one closed CPE334 survey, "Week 1 pulse".
+
+## Running all the checks
+
+From the repository root, in PowerShell:
+
+```powershell
+npm --prefix server run test
+npm --prefix client run test
+npm --prefix server run build
+npm --prefix client run build
+npm run test:e2e
+```
+
+`python tools/test_results.py` runs the three test suites with JSON reporters and writes `docs/sprints/sprint-1/test-results.md`: every acceptance criterion from the contracts, its planned tests, the tests that actually ran, and the result, plus the commit that was tested. Nothing in that table is typed by hand. Run it on a clean checkout of the release commit.
+
+## The Deliverable 1 report (PDF)
+
+`pip install -r tools/requirements.txt`, then `python tools/build_report.py` builds a draft PDF from the documents in `docs/` (it needs Microsoft Edge or Chrome and, for the diagrams, internet access to cdnjs.cloudflare.com). Run it from PowerShell, not from a sandboxed shell. `python tools/build_report.py --final` refuses to build while a `TODO` or a missing document remains.
+
+## Where things are
+
+| Path | What |
+|---|---|
+| `server/` | Express API, Prisma schema and migration, seed, server tests |
+| `client/` | React app (Vite, Bootstrap, the "Pulse" theme), component tests |
+| `e2e/` | Playwright journeys |
+| `docs/srs.md`, `docs/features.md`, `docs/traceability.md`, `docs/system-sds.md`, `docs/sprints/` | the requirements, design, plan and per-feature contracts |
+| `docs/sprints/sprint-1/evidence/` | saved red and green test output for each feature |
+| `tools/` | report builder, results table generator, autopilot helpers |
 
 ## Branches
 
