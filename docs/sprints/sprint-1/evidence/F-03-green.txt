@@ -82,3 +82,10 @@ owner routes without the OWNER role check         -> TEST-18 fails
 TEST-13 also asserts one extra boundary beyond the contract's five cases: a courseId above the database integer range is a 400 naming courseId, not a 500.
 No automated test covers two simultaneous publish requests (disclosed in contract section 8).
 TEST-21 creates surveys with unique titles in the development database on every run; there is no delete route in Sprint 1.
+
+==================================================================
+Addendum after the review of PR #18 (contract v1.2): unique test IDs, rename only
+Tested commit: 1b93957061fc2bc713eb1acec3e4b5c6f760efa7 (test(F-03): TEST-58 for the course list, TEST-21a and TEST-21b for the two E2E scenarios; unique IDs)
+Run on: 2026-11-07 00:40 +0700, Windows, Node v24.19.0
+Server: 8 files, 63 tests passed, 0 failed, 0 skipped. Playwright: 5 passed, 0 failed, 0 skipped. Client build exit 0.
+Changes: the course-list API test is now TEST-58 (it shared TEST-20 with the survey-list test); the two E2E tests are TEST-21a and TEST-21b. No assertion changed, so the counts equal the stage 2 run.
