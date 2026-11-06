@@ -82,3 +82,5 @@ The source files exist only as stubs that throw 'has not been implemented'; they
 == Summary (counted from the output)
 33 tests, 33 failed, 0 passed, 0 skipped: TEST-11 (27 tests in surveyValidation.test.ts) and TEST-15 (6 tests in surveyLifecycle.test.ts).
 Stage 2 (TEST-10, 12, 13, 14, 16-21: API, database and E2E tests) is written after F-01 is merged, because it needs login.
+
+== Vitest summary lines (appended; the listing above was cut at 80 lines)
