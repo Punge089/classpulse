@@ -1,16 +1,22 @@
-import { StrictMode } from "react";
+import { StrictMode, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./theme.css";
+import { AuthProvider } from "./auth/AuthProvider";
+import { RequireRole } from "./auth/RequireRole";
+import { NavBar } from "./components/NavBar";
 import { PulseLine } from "./components/pulse/PulseLine";
+import { LoginPage } from "./pages/LoginPage";
 
-const pages = [
-  ["/login", "Sign in"],
+// Placeholder screens for the feature Issues (I-07 owner pages, I-08 respondent pages, I-09 summary).
+const ownerPages = [
   ["/owner", "Your surveys"],
   ["/owner/surveys/new", "New survey"],
   ["/owner/surveys/:id", "Survey details"],
-  ["/owner/surveys/:id/summary", "Survey summary"],
+  ["/owner/surveys/:id/summary", "Survey summary"]
+];
+const respondentPages = [
   ["/surveys", "Available surveys"],
   ["/surveys/:id", "Answer survey"],
   ["/responses/:id", "Response submitted"]
@@ -29,23 +35,27 @@ function ShellPage({ title }: { title: string }) {
 }
 
 function App() {
+  const guarded = (role: "OWNER" | "RESPONDENT", pages: string[][]): ReactNode[] =>
+    pages.map(([path, title]) => (
+      <Route
+        key={path} path={path}
+        element={<RequireRole role={role}><ShellPage title={title} /></RequireRole>}
+      />
+    ));
+
   return (
-    <>
-      <header className="cp-header">
-        <div className="container cp-shell py-3">
-          <Link to="/login" className="cp-brand fs-4 text-decoration-none">ClassPulse</Link>
-        </div>
-      </header>
+    <AuthProvider>
+      <NavBar />
       <main className="container cp-shell py-4">
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
-          {pages.map(([path, title]) => (
-            <Route key={path} path={path} element={<ShellPage title={title} />} />
-          ))}
+          <Route path="/login" element={<LoginPage />} />
+          {guarded("OWNER", ownerPages)}
+          {guarded("RESPONDENT", respondentPages)}
           <Route path="*" element={<ShellPage title="Page not found" />} />
         </Routes>
       </main>
-    </>
+    </AuthProvider>
   );
 }
 
