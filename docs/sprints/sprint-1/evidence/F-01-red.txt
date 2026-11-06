@@ -1,0 +1,218 @@
+F-01 red run: tests written before implementation (contract v1.1, commit 19c0d8d)
+Tested commit: 8a97d0f4c851c7989de7c5927be0679f6df36f47 (test(F-01): failing auth tests TEST-01..09 and TEST-55 (red))
+Run on: 2026-11-06 21:28 +0700, Windows, Node v24.19.0, PostgreSQL test database classpulse_test
+
+== Command 1: npm --prefix server run test
+﻿
+> classpulse-server@0.1.0 test
+> vitest run
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ❯ tests/api/auth.test.ts (6 tests | 6 failed) 807ms
+   × F-01 login, session and current user > TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie 285ms
+     → expected 404 to be 200 // Object.is equality
+   × F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable 106ms
+     → expected 404 to be 401 // Object.is equality
+   × F-01 login, session and current user > TEST-03 /me returns the current user with a cookie and 401 without one 103ms
+     → loginAs(student1@classpulse.test) expected 200 but got 404
+   × F-01 login, session and current user > TEST-04 logout deletes the session and the replayed cookie is rejected 98ms
+     → Response did not set a cp_session cookie
+   × F-01 login, session and current user > TEST-05 a session whose expiresAt has passed is rejected 101ms
+     → loginAs(student1@classpulse.test) expected 200 but got 404
+   × F-01 login, session and current user > TEST-55 a malformed login body is a 400 with no cookie and no session 100ms
+     → expected 404 to be 400 // Object.is equality
+ ✓ tests/db/constraints.test.ts (3 tests) 960ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 636ms
+ ✓ tests/api/health.test.ts (1 test) 46ms
+ ✓ tests/unit/password.test.ts (1 test) 327ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 311ms
+ ❯ tests/api/unauthenticated.test.ts (2 tests | 2 failed) 20ms
+   × TEST-07 get /api/auth/me requires login 16ms
+     → expected 404 to be 401 // Object.is equality
+   × TEST-07 post /api/auth/logout requires login 3ms
+     → expected 404 to be 401 // Object.is equality
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-01 valid login returns the user and an 
+HttpOnly SameSite=Lax cp_session cookie
+AssertionError: expected 404 to be 200 // Object.is equality
+- Expected
++ Received
+- 200
++ 404
+ ❯ tests/api/auth.test.ts:27:24
+     25|   test("TEST-01 valid login returns the user and an HttpOnly SameSite=…
+     26|     const res = await login({ email: "ann.lee@classpulse.test", passwo…
+     27|     expect(res.status).toBe(200);
+       |                        ^
+     28|     expect(Object.keys(res.body)).toEqual(["user"]);
+     29|     expect(res.body.user).toEqual({
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-02 wrong password, unknown email and an 
+inactive user are indistinguishable
+AssertionError: expected 404 to be 401 // Object.is equality
+- Expected
++ Received
+- 401
++ 404
+ ❯ tests/api/auth.test.ts:57:26
+     55|     ];
+     56|     for (const res of attempts) {
+     57|       expect(res.status).toBe(401);
+       |                          ^
+     58|       expect(res.body.error.code).toBe("INVALID_CREDENTIALS");
+     59|       expect(res.body.error.message).toBe(attempts[0].body.error.messa…
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-03 /me returns the current user with a 
+cookie and 401 without one
+Error: loginAs(student1@classpulse.test) expected 200 but got 404
+ ❯ Module.loginAs tests/helpers/auth.ts:13:11
+     11|   const response = await agent.post("/api/auth/login").send({ email, p…
+     12|   if (response.status !== 200) {
+     13|     throw new Error("loginAs(" + email + ") expected 200 but got " + r…
+       |           ^
+     14|   }
+     15|   return agent;
+ ❯ tests/api/auth.test.ts:66:19
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-04 logout deletes the session and the 
+replayed cookie is rejected
+Error: Response did not set a cp_session cookie
+ ❯ Module.sessionCookiePair tests/helpers/auth.ts:33:20
+     31| export function sessionCookiePair(response: { headers: Record<string, …
+     32|   const line = sessionSetCookie(response);
+     33|   if (!line) throw new Error("Response did not set a cp_session cookie…
+       |                    ^
+     34|   return line.split(";")[0];
+     35| }
+ ❯ tests/api/auth.test.ts:80:25
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-05 a session whose expiresAt has passed is 
+rejected
+Error: loginAs(student1@classpulse.test) expected 200 but got 404
+ ❯ Module.loginAs tests/helpers/auth.ts:13:11
+     11|   const response = await agent.post("/api/auth/login").send({ email, p…
+     12|   if (response.status !== 200) {
+     13|     throw new Error("loginAs(" + email + ") expected 200 but got " + r…
+       |           ^
+     14|   }
+     15|   return agent;
+ ❯ tests/api/auth.test.ts:97:19
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-55 a malformed login body is a 400 with no 
+cookie and no session
+AssertionError: expected 404 to be 400 // Object.is equality
+- Expected
++ Received
+- 400
++ 404
+ ❯ tests/api/auth.test.ts:116:26
+    114|     for (const [body, fields] of cases) {
+    115|       const res = await login(body);
+    116|       expect(res.status).toBe(400);
+       |                          ^
+    117|       expect(res.body.error.code).toBe("VALIDATION_ERROR");
+    118|       expect(res.body.error.details.map((d: { field: string }) => d.fi…
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 get /api/auth/me requires login
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 post /api/auth/logout requires login
+AssertionError: expected 404 to be 401 // Object.is equality
+- Expected
++ Received
+- 401
++ 404
+ ❯ tests/api/unauthenticated.test.ts:17:22
+     15| test.each(PROTECTED_ROUTES)("TEST-07 %s %s requires login", async (met…
+     16|   const res = await request(app)[method](path);
+     17|   expect(res.status).toBe(401);
+       |                      ^
+     18|   expect(Object.keys(res.body)).toEqual(["error"]);
+     19|   expect(res.body.error.code).toBe("UNAUTHENTICATED");
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+ Test Files  2 failed | 3 passed (5)
+      Tests  8 failed | 5 passed (13)
+   Start at  21:27:10
+   Duration  3.54s (transform 80ms, setup 35ms, collect 482ms, tests 2.16s, environment 1ms, prepare 260ms)
+
+== Command 2: npx playwright test e2e/auth.spec.ts --reporter=list
+﻿node.exe : [WebServer] (node:54480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being 
+set.
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:30416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+Running 3 tests using 1 worker
+(node:45804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (12.9s)
+(node:47288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (5.5s)
+(node:35792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (5.4s)
+  1) auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login ─────────
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Email')
+       at helpers.ts:20
+      18 | export async function signIn(page: Page, email: string, password: string): Promise<void> {
+      19 |   await page.goto("/login");
+    > 20 |   await page.getByLabel("Email").fill(email);
+         |                                  ^
+      21 |   await page.getByLabel("Password").fill(password);
+      22 |   await page.getByRole("button", { name: "Sign in" }).click();
+      23 | }
+        at signIn (C:\Users\MSII\OneDrive\Desktop\Soft_eng\classpulse\e2e\helpers.ts:20:34)
+        at C:\Users\MSII\OneDrive\Desktop\Soft_eng\classpulse\e2e\auth.spec.ts:9:3
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\auth-TEST-08-bad-credentia-3603e-r-s-error-and-stay-on-login\trace.zip
+    Usage:
+        npx playwright show-trace test-results\auth-TEST-08-bad-credentia-3603e-r-s-error-and-stay-on-login\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2) auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login 
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Email')
+       at helpers.ts:20
+      18 | export async function signIn(page: Page, email: string, password: string): Promise<void> {
+      19 |   await page.goto("/login");
+    > 20 |   await page.getByLabel("Email").fill(email);
+         |                                  ^
+      21 |   await page.getByLabel("Password").fill(password);
+      22 |   await page.getByRole("button", { name: "Sign in" }).click();
+      23 | }
+        at signIn (C:\Users\MSII\OneDrive\Desktop\Soft_eng\classpulse\e2e\helpers.ts:20:34)
+        at C:\Users\MSII\OneDrive\Desktop\Soft_eng\classpulse\e2e\auth.spec.ts:15:3
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\auth-TEST-09-owner-lands-o-a6595-and-Logout-returns-to-login\trace.zip
+    Usage:
+        npx playwright show-trace test-results\auth-TEST-09-owner-lands-o-a6595-and-Logout-returns-to-login\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  3) auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login 
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Email')
+       at helpers.ts:20
+      18 | export async function signIn(page: Page, email: string, password: string): Promise<void> {
+      19 |   await page.goto("/login");
+    > 20 |   await page.getByLabel("Email").fill(email);
+         |                                  ^
+      21 |   await page.getByLabel("Password").fill(password);
+      22 |   await page.getByRole("button", { name: "Sign in" }).click();
+      23 | }
+        at signIn (C:\Users\MSII\OneDrive\Desktop\Soft_eng\classpulse\e2e\helpers.ts:20:34)
+        at C:\Users\MSII\OneDrive\Desktop\Soft_eng\classpulse\e2e\auth.spec.ts:28:3
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\auth-TEST-09-respondent-la-852c8-and-Logout-returns-to-login\trace.zip
+
+== Summary (counted from the output above)
+Server: 13 tests, 8 failed, 5 passed, 0 skipped. The 8 failures are TEST-01, 02, 03, 04, 05, 55 and TEST-07 twice (one row per protected route).
+        The 5 passes are the 4 SR-01 tests from I-05 plus TEST-06, which passes at red because hashPassword/verifyPassword were delivered by I-05.
+E2E:    3 tests, 3 failed, 0 passed, 0 skipped (TEST-08, TEST-09 owner, TEST-09 respondent).
+Why they fail: every API test gets 404 because /api/auth/* does not exist yet; the E2E tests time out because the login page has no Email field yet.
