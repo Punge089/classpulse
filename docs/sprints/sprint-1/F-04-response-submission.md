@@ -1,7 +1,7 @@
 # F-04 — Response submission
 
 **Owner:** Student B (`book6349`) · **Reviewer:** Student A (`Punge089`) · **Issue:** #8
-**Version:** 1.1 · **Date:** 6 Nov 2026
+**Version:** 1.2 · **Date:** 7 Nov 2026
 **Requirements:** FR-06, FR-07, BR-04, BR-05, BR-06, BR-07, BR-09, BR-10; depends on SR-01 and F-01.
 
 ## 1. Feature
@@ -92,7 +92,7 @@ No schema change. Use `Survey`, `Question`, `QuestionOption`, `Response`, and `A
 
 | Test ID | AC | Level | Precondition & input | Action | Expected result | Planned file |
 |---|---|---|---|---|---|---|
-| TEST-22 | AC-20 | API-DB | Seeded student1, student3; PUBLISHED CPE334 survey plus a DRAFT CPE334 survey and PUBLISHED CPE231 survey | GET `/api/surveys` as student1 | Only PUBLISHED CPE334 survey appears and includes `hasResponded`; other statuses/course excluded | `server/tests/api/responses.test.ts` |
+| TEST-22 | AC-20, NFR-03 | API-DB | Seeded student1, owner1, student3; PUBLISHED CPE334 survey plus a DRAFT CPE334 survey and PUBLISHED CPE231 survey | GET `/api/surveys` as student1 and owner1 | Student1 sees only PUBLISHED CPE334 surveys with `hasResponded`; other statuses/course are excluded. Owner1 receives 403 `FORBIDDEN`, with no survey list in the response. | `server/tests/api/responses.test.ts` |
 | TEST-23 | AC-21 | API-DB | Seeded fixture; published CPE334 survey with one rating and one choice question | Submit valid answers, then GET returned response ID | 201; one Response and the two matching Answer rows persist and are returned. Each answer has `questionId`, `prompt`, and `type`; the rating answer has `ratingValue`, and the choice answer has `optionId` and `optionLabel`. | `server/tests/api/responses.test.ts` |
 | TEST-24 | AC-22 | API-DB | One published survey; student1 has already submitted | Submit the same valid answers again | 409 `ALREADY_RESPONDED`; Response count stays exactly 1 | `server/tests/api/responses.test.ts` |
 | TEST-25 | AC-22 | API-DB | One published survey; student1 has not submitted | Send two identical POST requests simultaneously | Sorted statuses are `[201,409]`; Response count is exactly 1 | `server/tests/api/responses.test.ts` |
@@ -119,3 +119,4 @@ No schema change. Use `Survey`, `Question`, `QuestionOption`, `Response`, and `A
 |---|---|---|---|
 | v1.0 | 6 Nov 2026 | Student B (`book6349`) | Initial contract based on plan I-08 and shared API/data contracts. |
 | v1.1 | 6 Nov 2026 | Student B (`book6349`) | Incorporated C3: specified the response GET answer shape, added survey-detail AC/test coverage and write-route 404 assertions, clarified POST error precedence, and made TEST-32 create a fresh survey per run to avoid seeded response collisions. |
+| v1.2 | 7 Nov 2026 | Student B (`book6349`) | Closed the NFR-03 gap noted in PR #13 by adding the owner-role `GET /api/surveys` 403 assertion to TEST-22; the route is already specified as respondent-only in §4. |
