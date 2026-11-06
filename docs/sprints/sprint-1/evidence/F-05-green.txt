@@ -1,0 +1,61 @@
+
+> classpulse-server@0.1.0 test
+> vitest run
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/server
+
+ ✓ tests/api/auth.test.ts (7 tests) 2295ms
+   ✓ F-01 login, session and current user > TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie 405ms
+   ✓ F-01 login, session and current user > TEST-55 a malformed login body is a 400 with no cookie and no session 405ms
+   ✓ F-01 login, session and current user > TEST-56 the session cookie is Secure in production (login and logout) and not in test 581ms
+ ✓ tests/api/summary.test.ts (3 tests) 1117ms
+   ✓ F-05 owner survey summary > TEST-34 owner gets aggregates for ratings [4,4,5] and ordered choices 546ms
+   ✓ F-05 owner survey summary > TEST-36 empty summary, ownership, role and invalid-id checks 374ms
+ ✓ tests/db/constraints.test.ts (3 tests) 2179ms
+   ✓ TEST-50 rejects a second response for the same survey and respondent 451ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 1497ms
+ ✓ tests/unit/summary.test.ts (4 tests) 9ms
+ ✓ tests/api/health.test.ts (1 test) 144ms
+ ✓ tests/unit/password.test.ts (1 test) 360ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 350ms
+ ✓ tests/api/unauthenticated.test.ts (3 tests) 36ms
+
+ Test Files  7 passed (7)
+      Tests  22 passed (22)
+   Start at  00:20:34
+   Duration  13.06s (transform 439ms, setup 159ms, collect 2.79s, tests 6.14s, environment 2ms, prepare 1.41s)
+
+
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 463ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 461ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  00:20:52
+   Duration  5.16s (transform 136ms, setup 51ms, collect 1.41s, tests 463ms, environment 2.53s, prepare 273ms)
+
+
+> classpulse-client@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.0.15 building for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.69 kB │ gzip:  0.38 kB
+dist/assets/index-BGdhdzwi.css  233.49 kB │ gzip: 31.47 kB
+dist/assets/index-BBm_IULR.js   170.32 kB │ gzip: 55.86 kB
+✓ built in 982ms
