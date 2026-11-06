@@ -189,6 +189,11 @@ describe("F-03 access control", () => {
 
   test("TEST-19 another owner gets 404 reading, publishing or closing my survey and nothing changes", async () => {
     const draft = await makeSurvey({ course: f.cpe334, owner: f.owner1, status: "DRAFT" });
+    // Positive control: the real owner can read it, so the 404s below come from ownership, not a missing route.
+    const own = await (await ownerAgent()).get(`/api/owner/surveys/${draft.id}`);
+    expect(own.status).toBe(200);
+    expect(own.body.survey.id).toBe(draft.id);
+
     const other = await otherOwnerAgent();
     for (const res of [
       await other.get(`/api/owner/surveys/${draft.id}`),
