@@ -8,7 +8,7 @@ ClassPulse, a CPE 334 group project (deliverable due **Sun 8 Nov 2026 23:59**) b
 ## 0. Rules that cannot be bent (the course grades them)
 
 1. You work for **B only**. Never author commits, comments or reviews as A, and never do A's Issues (#2, #4, #7, #10) for A. Everything you post goes out from **B's own GitHub account**.
-2. **Show every GitHub comment, review and PR body to B and post it only after B says ok.** Fill the templates in `docs/comment-playbook.md` with **real data only** (`git`, `gh`, saved test output, checks you actually ran). Edit each draft into B's own words and to what actually happened (B must have read and checked it); never post a finding, result or "I tested X" that did not happen. If a review genuinely finds nothing, say what was checked and approve.
+2. **By default, show every GitHub comment, review and PR body to B and post it only after B says ok.** B may give you a standing OK for **routine status comments only** (C1, C2, C4, C5, C6, C8, C10, see section 7). **Review verdicts (C3, C7, C9), approving or merging a PR, and any scope change in a contract always need B's explicit approval each time.** Fill the templates in `docs/comment-playbook.md` with **real data only** (`git`, `gh`, saved test output, checks you actually ran). Edit each draft into B's own words and to what actually happened (B must have read and checked it); never post a finding, result or "I tested X" that did not happen. If a review genuinely finds nothing, say what was checked and approve.
 3. For every feature: **contract commit → wait for the reviewer's comment C3 → failing tests with saved red output → implementation → green output.** Never skip, disable or weaken a test. Never mark anything as passing without the command, counts and commit ID.
 4. Never approve or merge **your own** PR. B reviews A's PRs; A reviews B's. Merge with a **merge commit**, never squash.
 5. Touch only the files your Issue lists under *Files*. No secrets in Git (only `.env.example`). Synthetic data only.
@@ -75,4 +75,19 @@ After the checks in §1 pass, tell B in two or three sentences which Issue you a
 
 ```
 Read docs/partner-ai-brief.md, then CLAUDE.md, then work as Student B (book6349). Run the setup checks, then start Issue #5 (I-05 foundation) following docs/plan.md. Show me every GitHub comment before posting it.
+```
+
+## 7. Optional: autopilot for B's agent (B must opt in; nothing here is switched on by default)
+
+Student A's agent checks GitHub on a timer and continues by itself, so B's agent can do the same instead of waiting for B to type. The two agents hand over through GitHub only: labels `waiting-on:A` / `waiting-on:B`, Issue and PR comments, PR reviews. **B decides whether to enable this** (B's machine, B's account, B's risk) and can stop it at any time.
+
+What B may allow: the routine status comments (C1, C2, C4, C5, C6, C8, C10) and continuing the work of B's own Issues (#3, #5, #8, #9) step by step.
+What stays with B every time: C3, C7, C9 verdicts, approving or merging any PR, a contract scope change. Prepare a short digest of what you actually ran and found, notify B, wait for B's approval.
+
+How to run it: a timer on B's computer that starts the agent non-interactively about every 20 minutes with the prompt below (for Codex, `codex exec` in a loop or a scheduled task; the exact flags depend on the version, check `codex --help`). Stop after 2 failed attempts on the same cause and tell B.
+
+**Prompt for B's timer:**
+
+```
+You are working for Student B (book6349) on ClassPulse. Read docs/partner-ai-brief.md and CLAUDE.md first. Check GitHub: gh issue list / gh pr list for items labelled waiting-on:B, comments or reviews by Punge089 since your last check, whether the invitation is accepted, and whether origin/sprint-1-staging has changed. If nothing needs B, say so in one line and stop. Otherwise do the next step of B's own Issues (#5 first, then #3, #8, #9) following docs/plan.md and the playbook. Post routine status comments without asking if B has allowed it; for every gate (C3, C7, C9 verdicts, approving or merging, scope change) write a digest of what you ran and found and wait for B. Never touch A's Issues, never post as A, never force-push, never skip or weaken a test. Update the waiting-on label for whoever moves next.
 ```
