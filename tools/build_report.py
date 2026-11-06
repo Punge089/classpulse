@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 import markdown
@@ -29,7 +30,7 @@ PARTS = [
     ("A", "SRS and product scope", ["docs/srs.md"], "FR-01…18, BR-01…14, NFR-01…10, D-01…08"),
     ("B", "Feature inventory and traceability", ["docs/features.md", "docs/traceability.md"],
      "SR-01, F-01…F-14; 42 requirement rows; coverage gaps"),
-    ("C", "System-Level SDS", ["docs/system-sds.md"],
+    ("C", "System-Level SDS", ["docs/system-sds.md", "docs/diagrams/architecture.md", "docs/diagrams/er.md"],
      "role/permission matrix, data model, API conventions, authentication, deployment plan"),
     ("D", "Three-sprint plan", ["docs/sprints/plan.md"], "Sprint 1–3 and feature allocation"),
     ("E", "Sprint 1 engineering contracts",
@@ -52,7 +53,7 @@ h4, h5, h6 { font-size: 10.5pt; margin: 10px 0 3px; page-break-after: avoid; }
 table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; font-size: 8.3pt; }
 th, td { border: 1px solid #cfc8bb; padding: 3px 5px; vertical-align: top; text-align: left; overflow-wrap: break-word; }
 .id { white-space: nowrap; }
-td code { word-break: break-all; }
+td code.path { word-break: break-all; }
 th { background: #FBE3DA; }
 tr { page-break-inside: avoid; }
 code { font-family: Consolas, "Courier New", monospace; font-size: 8.6pt; background: #f3efe8; padding: 0 2px; }
@@ -67,6 +68,8 @@ blockquote { border-left: 3px solid #C8431D; margin: 6px 0; padding: 2px 10px; c
 .toc td, .nav td, .nav th { font-size: 9pt; }
 .nav th:nth-child(2), .nav td:nth-child(2) { width: 62px; white-space: nowrap; }
 .cover th { display: none; }
+.mermaid { text-align: center; margin: 8px 0 12px; page-break-inside: avoid; }
+.mermaid svg { max-width: 100%; height: auto; }
 .toc td.pg { text-align: right; width: 48px; }
 """
 
@@ -118,8 +121,17 @@ def keep_ids_together(html_text: str) -> str:
     return "".join(out)
 
 
+MERMAID_BLOCK = re.compile(r'<pre><code class="language-mermaid">(.*?)</code></pre>', re.DOTALL)
+# Pinned release on cdnjs; the diagrams are drawn in the browser while Edge prints, so the build needs internet.
+MERMAID_SRC = "https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"
+
+
 def md(text: str) -> str:
-    return keep_ids_together(markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists"]))
+    rendered = keep_ids_together(markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists"]))
+    # Only file paths and URLs (they contain "/") may be broken in the middle of a word inside narrow table cells.
+    rendered = re.sub(r"<code>([^<]*/[^<]*)</code>", r'<code class="path">\1</code>', rendered)
+    # ```mermaid blocks become <div class="mermaid">; the entities stay escaped and are decoded by the browser.
+    return MERMAID_BLOCK.sub(lambda m: f'<div class="mermaid">{m.group(1)}</div>', rendered)
 
 
 def collect(final: bool):
@@ -173,9 +185,13 @@ def render(parts, pages, front_md: str) -> str:
         for dt, b in docs:
             body.append(b)
     front = md(front_md)
+    has_diagrams = any('class="mermaid"' in b for _l, _t, _i, docs in parts for _d, b in docs)
+    mermaid = (f'<script src="{MERMAID_SRC}"></script>'
+               '<script>mermaid.initialize({startOnLoad:true,theme:"neutral",securityLevel:"strict"});</script>'
+               if has_diagrams else "")
     return (
         "<!doctype html><html><head><meta charset='utf-8'><title>ClassPulse — CPE 334 Deliverable 1</title>"
-        f"<style>{CSS}</style></head><body>"
+        f"<style>{CSS}</style>{mermaid}</head><body>"
         f"<div class='cover'>{front}</div>"
         "<h2>Navigation table</h2><table class='nav'><tr><th>Part</th><th>Pages</th><th>Relevant IDs</th></tr>"
         f"{nav_rows}</table>"
@@ -197,15 +213,51 @@ def find_browser() -> str:
     sys.exit("No Edge/Chrome found; install one to print the PDF.")
 
 
+def wait_for_pdf(pdf: Path, timeout: float = 90.0) -> bool:
+    """Edge can return before the PDF is fully written (seen on a teammate's Windows machine), so wait until
+    the file exists, is non-empty and has stopped growing, and PyMuPDF can open it."""
+    deadline = time.time() + timeout
+    last_size = -1
+    while time.time() < deadline:
+        if pdf.exists():
+            size = pdf.stat().st_size
+            if size > 0 and size == last_size:
+                try:
+                    pymupdf.open(pdf).close()
+                    return True
+                except Exception:
+                    pass  # still being written
+            last_size = size
+        time.sleep(1.0)
+    return False
+
+
 def to_pdf(html_text: str, pdf: Path) -> None:
+    pdf.unlink(missing_ok=True)  # never mistake an old file for this run's output
+    has_diagrams = 'class="mermaid"' in html_text
     with tempfile.TemporaryDirectory() as tmp:
         src = Path(tmp) / "report.html"
         src.write_text(html_text, encoding="utf-8")
-        subprocess.run([find_browser(), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
-                        f"--user-data-dir={Path(tmp) / 'profile'}", f"--print-to-pdf={pdf}", src.as_uri()],
-                       check=True, timeout=180, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    if not pdf.exists():
-        sys.exit("The browser did not produce a PDF.")
+        command = [find_browser(), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+                   f"--user-data-dir={Path(tmp) / 'profile'}", f"--print-to-pdf={pdf}"]
+        if has_diagrams:
+            command.append("--virtual-time-budget=20000")  # let mermaid.js fetch and draw before printing
+        command.append(src.as_uri())
+        # The exit code is not trusted: success means a complete PDF exists afterwards.
+        subprocess.run(command, timeout=240, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if not wait_for_pdf(pdf):
+            sys.exit("The browser did not produce a readable PDF (check that Edge or Chrome can start headless, "
+                     "and that cdnjs.cloudflare.com is reachable when the document has diagrams).")
+
+
+def warn_unrendered_diagrams(pdf: Path) -> None:
+    doc = pymupdf.open(pdf)
+    leaked = [i + 1 for i in range(doc.page_count)
+              if re.search(r"erDiagram|flowchart (LR|TD)|sequenceDiagram|classDiagram", doc[i].get_text())]
+    doc.close()
+    if leaked:
+        print(f"WARNING: diagram source text appears on pages {leaked}; the diagrams were not drawn "
+              "(no internet access to cdnjs.cloudflare.com?). Fix this before submitting.")
 
 
 def measure(parts, pdf: Path):
@@ -280,6 +332,7 @@ def main():
         pages = new
     to_pdf(render(parts, pages, front_md_html), tmp_pdf)
     total = stamp(tmp_pdf, Path(args.out))
+    warn_unrendered_diagrams(Path(args.out))
     tmp_pdf.unlink(missing_ok=True)
     print(f"wrote {args.out} ({total} pages)" + ("" if not problems else " [DRAFT: see problems above]"))
 
