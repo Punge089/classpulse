@@ -1,6 +1,6 @@
 # SR-01 Foundation engineering contract
 
-**Issue #5 (I-05) · Owner: book6349 (Student B) · Reviewer: Punge089 (Student A) · Sprint 1**
+**Issue #5 (I-05) · Owner: book6349 (Student B) · Reviewer: Punge089 (Student A) · Sprint 1 · v1.1**
 
 ## 1. Feature and linked requirements
 
@@ -8,7 +8,7 @@ SR-01 provides the Express and TypeScript server, the Prisma and PostgreSQL data
 
 ## 2. Behaviour and workflow
 
-1. Configure the server database URL and `SEED_PASSWORD` locally. Keep `DATABASE_URL` for automated tests in `server/.env.test` and point it at the separate `classpulse_test` database.
+1. Configure the server database URL and `SEED_PASSWORD` locally. Copy the test settings from `server/.env.test.example` to `server/.env.test`. The example documents `DATABASE_URL` for the separate `classpulse_test` database and a synthetic `SEED_PASSWORD` for fixture logins.
 2. Apply the `sprint1_init` migration and seed the development database. Re-running the seed keeps the same fixture users, courses, enrolments, and closed demo survey.
 3. Start Express on port 3000 and Vite on port 5173. Vite proxies `/api` to Express, so a request to `/api/health` works from the client origin.
 4. Run database and API tests against a migrated test database. Reset test state between cases that mutate the database. Run client tests for `RatingDots` and configure Playwright to start both apps with one worker.
@@ -40,11 +40,31 @@ Shared errors use `{"error":{"code":"...","message":"..."}}` with optional `deta
 
 `createApp()` constructs the Express app without listening. `getPrisma()` provides the lazy Prisma client. `apiFetch` includes credentials and maps API failures to `ApiClientError` with `status`, `code`, `message`, and optional `details`.
 
+| Shared helper | Contract |
+|---|---|
+| `resetDb(): Promise<void>` | Clears records only in the configured test database. |
+| `seedFixture(): Promise<Fixture>` | Returns `owner1`, `owner2`, `student1`, `student2`, `student3` as `User` records and `cpe334`, `cpe231` as `Course` records. Creates the five accounts, two courses and three enrolments without creating any surveys. |
+| `makeSurvey(opts): Promise<SurveyWithQuestions>` | Requires `course: Course` and `owner: User`. Optional `status: SurveyStatus` defaults to `PUBLISHED`. Optional `questions: QuestionSpec[]` defaults to one rating and one single-choice question with `Yes` and `No`; the result includes questions and their options. |
+| `hashPassword(plain): Promise<string>` | Creates a scrypt hash with a random salt. |
+| `verifyPassword(plain, hash): Promise<boolean>` | Checks the supplied password against the stored hash. |
+
+Fixture helpers live in `server/tests/helpers/fixture.ts`. Password helpers live in `server/src/lib/password.ts`.
+
 ## 7. Data spec and migration
 
 Apply plan §2.4 in `server/prisma/schema.prisma`: `User`, `Session`, `Course`, `Enrollment`, `Survey`, `Question`, `QuestionOption`, `Response`, and `Answer`. Use the specified foreign keys, unique pairs, enum values, defaults, and cascade rules. Add the named rating `CHECK` to `sprint1_init/migration.sql` because the Prisma schema does not express it.
 
-Seed five synthetic users, two courses, and three enrolments. Owner 1 owns CPE334 and Owner 2 owns CPE231. Students 1 and 2 are enrolled in CPE334, and Student 3 is enrolled only in CPE231. The development seed also creates the closed CPE334 survey `Week 1 pulse`. Upsert the fixture records or otherwise use stable keys so that rerunning the seed does not duplicate any of them.
+Seed five synthetic users, two courses, and three enrolments. Owner 1 owns CPE334 and Owner 2 owns CPE231. Students 1 and 2 are enrolled in CPE334, and Student 3 is enrolled only in CPE231. The development seed also creates the closed CPE334 survey `Week 1 pulse`. `Week 1 pulse` is development-seed only. Upsert the fixture records or otherwise use stable keys so that rerunning the seed does not duplicate any of them.
+
+| Email | `fullName` | Role |
+|---|---|---|
+| `ann.lee@classpulse.test` | Dr. Ann Lee | `OWNER` |
+| `ben.kim@classpulse.test` | Dr. Ben Kim | `OWNER` |
+| `student1@classpulse.test` | Student 1 | `RESPONDENT` |
+| `student2@classpulse.test` | Student 2 | `RESPONDENT` |
+| `student3@classpulse.test` | Student 3 | `RESPONDENT` |
+
+Plan §2.4 gives the owner display names. The three student display names above are synthetic fixture values.
 
 ## 8. Failure and boundary cases
 
@@ -60,7 +80,7 @@ Seed five synthetic users, two courses, and three enrolments. Owner 1 owns CPE33
 | AC-50 | PostgreSQL rejects a second `Response` for the same `(surveyId, respondentId)`. Exactly one matching response remains. |
 | AC-51 | PostgreSQL rejects ratings outside 1–5 through the rating check constraint. Values 1 and 5 and a null rating on a choice answer are accepted. |
 | AC-52 | The public health endpoint returns 200. Invalid or unknown IDs return the 404 error shape and malformed JSON returns the 400 error shape, with no stack trace. |
-| AC-53 | Running the seed twice on a fresh database produces the fixture from plan §2.4 without duplicate records. |
+| AC-53 | Running the seed twice on a fresh database produces the fixture from plan §2.4 without duplicate records. Every fixture user has the specified email, display name, and role, and their stored hash verifies against `SEED_PASSWORD`. Only the development seed adds the demo survey. |
 | AC-54 | `RatingDots` renders five labelled radios. Selecting dot n reports n, arrow keys change the value, and `readOnly` ignores input. |
 
 ## 10. Software Test Specification
@@ -70,7 +90,7 @@ Seed five synthetic users, two courses, and three enrolments. Owner 1 owns CPE33
 | TEST-50 | AC-50 | DB | Migrated test database, valid survey and eligible student | Insert the same response pair twice | Second insert fails with `P2002`; matching count is 1 | `server/tests/db/constraints.test.ts` |
 | TEST-51 | AC-51 | DB | Valid response with rating and choice questions, and a valid option | Write ratings 0, 6, 1 and 5, and write a choice answer with a null rating | 0 and 6 fail the rating check and are not stored; 1, 5 and the null rating succeed | `server/tests/db/constraints.test.ts` |
 | TEST-52 | AC-52 | API | Real app for health and a test-only Express app using `express.json()`, `parseId` and `errorHandler` for error paths | Request health, then send an invalid ID, a known-absent valid ID, and malformed JSON | Health returns 200 with `status: ok`. Errors are 404 `NOT_FOUND`, 404 `NOT_FOUND` and 400 `VALIDATION_ERROR`, respectively, with no stack | `server/tests/api/health.test.ts` |
-| TEST-53 | AC-53 | DB | Empty migrated test database and synthetic `SEED_PASSWORD` | Run the development seed against the test database twice, checking fixture records after each run | Exactly 5 users, 2 courses, 3 enrolments, and 1 closed demo survey with the expected identities and relations on both runs | `server/tests/db/constraints.test.ts` |
+| TEST-53 | AC-53 | DB | Empty migrated test database and synthetic `SEED_PASSWORD` | Run `seedFixture()` and confirm it adds no survey. Reset the test database, then run the development seed twice, checking records after each run | Exactly 5 users, 2 courses, 3 enrolments, and 1 closed demo survey with the specified course ownership and enrolments on both runs. Each user's email, `fullName`, and role match §7, and `verifyPassword(SEED_PASSWORD, passwordHash)` is true for every stored hash | `server/tests/db/constraints.test.ts` |
 | TEST-54 | AC-54 | UI component | `RatingDots` rendered in editable and `readOnly` modes | Count and read the radios, select dot 4, change rating with an arrow key, and attempt pointer and keyboard input in `readOnly` | Five labelled radios, editable changes report the expected number, and `readOnly` calls no handler and retains its rating | `client/tests/RatingDots.test.tsx` |
 
 ## 11. Completion evidence
@@ -86,3 +106,4 @@ Seed five synthetic users, two courses, and three enrolments. Owner 1 owns CPE33
 | Version | Date | Author | Change and reason |
 |---|---|---|---|
 | v1.0 | 2026-11-06 | book6349 | Initial contract and test design for I-05, before tests and implementation. |
+| v1.1 | 2026-11-06 | book6349 | Applied Issue #5 C3. Specify fixture identity and password assertions in TEST-53, the test and password helper interfaces, and the test environment example so I-06 and I-07 can rely on repeatable fixtures. Keep the demo survey in the development seed only. |
