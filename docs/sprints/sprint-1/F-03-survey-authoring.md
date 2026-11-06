@@ -152,11 +152,11 @@ All six owner routes are also appended to `PROTECTED_ROUTES` in `server/tests/ap
 
 ## 11. Completion evidence (filled as the work happens)
 
-- [ ] Contract commit (this file, v1.0; v1.1 after C3): `<sha>`
-- [ ] Red output `docs/sprints/sprint-1/evidence/F-03-red.txt` and commit `<sha>`
-- [ ] Green output `docs/sprints/sprint-1/evidence/F-03-green.txt` and commit `<sha>`
-- [ ] Test counts (passed / failed / skipped): —
-- [ ] PR `#<n>`, reviewer comment, merge commit on `sprint-1-staging`: —
+- [x] Contract commit (this file, v1.0 `01117e4`; v1.1 after C3 `e05a509`)
+- [x] Red output `docs/sprints/sprint-1/evidence/F-03-red.txt`: stage 1 unit tests `9d1dfa7` (33 failing); stage 2 API tests `bc3b59f` (16 failing); UI/E2E `ee8b6e3` (2 failing)
+- [x] Green output `docs/sprints/sprint-1/evidence/F-03-green.txt`: stage 1 `9ad0126`, API routes `8337e09`, UI `24f7936`
+- [x] Test counts on `24f7936` (passed / failed / skipped): server 63 / 0 / 0, client 1 / 0 / 0, Playwright 5 / 0 / 0 (TEST-21 twice plus the 3 auth tests); server and client builds exit 0
+- [ ] PR (number in the Issue thread), reviewer approval and merge commit on `sprint-1-staging`: filled after the review
 - [ ] Traceability rows FR-02…05, FR-09, BR-02, BR-03, BR-08 updated with real test names
 
 ## 12. Version history

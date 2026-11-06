@@ -47,3 +47,38 @@ compare duplicate options case-sensitively           -> surveyValidation.test.ts
 do not trim the title                                -> surveyValidation.test.ts: 2 of 27 failed
 
 == Not covered yet (stage 2, after F-01 is merged): TEST-10, 12, 13, 14, 16-21 (API, database, E2E), the owner routes, and the UI.
+
+==================================================================
+F-03 green run, stage 2 (API, database, access and UI): contract v1.1
+Tested commit: 24f79366db5bd04539af0310650fcf2eaff4054d (feat(F-03): owner pages ... (green, UI)); API routes were committed earlier in 8337e09
+Run on: 2026-11-06 23:07 +0700, Windows, Node v24.19.0, test database classpulse_test, seeded development database for E2E
+
+== npm --prefix server run test
+ Test Files  8 passed (8)
+      Tests  63 passed (63)
+== npm --prefix client run test
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+== npx playwright test --reporter=list
+  ok 1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (650ms)
+  ok 2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (826ms)
+  ok 3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (883ms)
+  ok 4 owner-survey.spec.ts:9:5 › TEST-21 an owner creates a two-question survey, sees it as Draft, publishes it and sees Published (1.9s)
+  ok 5 owner-survey.spec.ts:47:5 › TEST-21 an empty title shows a message under the title field and creates nothing (2.1s)
+  5 passed (11.5s)
+== npm --prefix server run build: exit code 0;  npm --prefix client run build: exit code 0
+
+== Summary
+Server 63 passed, 0 failed, 0 skipped (F-03: TEST-10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 and the six owner routes of TEST-07). Client 1 passed. Playwright 5 passed, 0 failed, 0 skipped (3 auth + TEST-21 twice).
+Red to green: the 16 server tests of F-03-red.txt stage 2 and the 2 E2E tests of the UI red run now pass.
+
+== Mutation checks on the API (source restored after each; each broke exactly one test)
+read a survey without the ownership filter       -> TEST-19 fails
+create a survey for a course the owner does not own -> TEST-13 fails
+list every owner's surveys                        -> TEST-20 fails
+owner routes without the OWNER role check         -> TEST-18 fails
+
+== Notes
+TEST-13 also asserts one extra boundary beyond the contract's five cases: a courseId above the database integer range is a 400 naming courseId, not a 500.
+No automated test covers two simultaneous publish requests (disclosed in contract section 8).
+TEST-21 creates surveys with unique titles in the development database on every run; there is no delete route in Sprint 1.
