@@ -1,0 +1,21 @@
+F-05 aggregate summary — final green verification
+Final code/test commit: b55a162
+Contract: v1.2 (7e35e49)
+Mutation evidence: F-05-mutation-checks.txt (three mutants each caused the intended focused test failure; source restored)
+
+=== npm --prefix server run test ===
+Test Files: 12 passed (12)
+Tests: 101 passed (101), 0 failed, 0 skipped.
+
+=== npm --prefix client run test ===
+Test Files: 1 passed (1)
+Tests: 1 passed (1), 0 failed, 0 skipped.
+
+=== npm run test:e2e ===
+Playwright: 6 passed, 0 failed, 0 skipped.
+
+=== Builds on b55a162 ===
+npm --prefix server run build: exit 0.
+npm --prefix client run build: exit 0.
+
+TEST-38 remains covered by the I-10 journey; no duplicate E2E was added. No tests were skipped, disabled, or weakened. Local workspace paths are omitted.

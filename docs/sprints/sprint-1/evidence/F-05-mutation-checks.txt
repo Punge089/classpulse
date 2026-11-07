@@ -1,0 +1,240 @@
+F-05 targeted mutation checks
+Test commit: b55a162 (includes e17283d)
+Each production mutation below was temporary; source files were restored after each test run.
+
+
+=== Mutant 1: Math.round average with zero-count null preserved; exit 1 ===
+
+> classpulse-server@0.1.0 test
+> vitest run tests/unit/summary.test.ts
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 <workspace>/server
+
+ ❯ tests/unit/summary.test.ts (6 tests | 2 failed) 15ms
+   × TEST-33 round-half-up rating averages (AC-30) > 39 ratings of 1 plus 1 ratings of 2 round 1.025 half-up to 1.03 9ms
+     → expected { questionId: 10, …(3) } to match object { rating: { average: 1.03 } }
+(9 matching properties omitted from actual)
+   × TEST-33 round-half-up rating averages (AC-30) > 31 ratings of 4 plus 9 ratings of 5 round 4.225 half-up to 4.23 1ms
+     → expected { questionId: 10, …(3) } to match object { rating: { average: 4.23 } }
+(9 matching properties omitted from actual)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/summary.test.ts > TEST-33 round-half-up rating averages (AC-30) > 39 ratings of 1 plus 1 ratings of 2 round 1.025 half-up to 1.03
+AssertionError: expected { questionId: 10, …(3) } to match object { rating: { average: 1.03 } }
+(9 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+    "rating": Object {
+-     "average": 1.03,
++     "average": 1.02,
+    },
+  }
+
+ ❯ tests/unit/summary.test.ts:72:33
+     70|     ];
+     71|     const result = summarize([question], answers, answers.length);
+     72|     expect(result.questions[0]).toMatchObject({ rating: { average: exp…
+       |                                 ^
+     73|   });
+     74| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/summary.test.ts > TEST-33 round-half-up rating averages (AC-30) > 31 ratings of 4 plus 9 ratings of 5 round 4.225 half-up to 4.23
+AssertionError: expected { questionId: 10, …(3) } to match object { rating: { average: 4.23 } }
+(9 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+    "rating": Object {
+-     "average": 4.23,
++     "average": 4.22,
+    },
+  }
+
+ ❯ tests/unit/summary.test.ts:72:33
+     70|     ];
+     71|     const result = summarize([question], answers, answers.length);
+     72|     expect(result.questions[0]).toMatchObject({ rating: { average: exp…
+       |                                 ^
+     73|   });
+     74| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 4 passed (6)
+   Start at  20:59:01
+   Duration  409ms (transform 61ms, setup 43ms, collect 38ms, tests 15ms, environment 0ms, prepare 107ms)
+
+
+
+=== Mutant 2: unscoped response.count(); exit 1 ===
+
+> classpulse-server@0.1.0 test
+> vitest run tests/api/summary.test.ts
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 <workspace>/server
+
+ ❯ tests/api/summary.test.ts (3 tests | 1 failed) 825ms
+   × F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 404ms
+     → expected { surveyId: 101, …(3) } to match object { surveyId: 101, …(3) }
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api/summary.test.ts > F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average
+AssertionError: expected { surveyId: 101, …(3) } to match object { surveyId: 101, …(3) }
+
+- Expected
++ Received
+
+  Object {
+    "questions": Array [
+      Object {
+        "prompt": "Pace of lectures",
+        "questionId": 184,
+        "rating": Object {
+          "average": 4.33,
+          "distribution": Object {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 2,
+            "5": 1,
+          },
+        },
+        "type": "RATING",
+      },
+      Object {
+        "choice": Object {
+          "options": Array [
+            Object {
+              "count": 4,
+              "label": "Yes",
+              "optionId": 167,
+            },
+            Object {
+              "count": 0,
+              "label": "No",
+              "optionId": 168,
+            },
+          ],
+        },
+        "prompt": "Would you recommend it?",
+        "questionId": 185,
+        "type": "SINGLE_CHOICE",
+      },
+    ],
+-   "responseCount": 4,
++   "responseCount": 6,
+    "status": "PUBLISHED",
+    "surveyId": 101,
+  }
+
+ ❯ tests/api/summary.test.ts:76:30
+     74|     const res = await owner.get("/api/owner/surveys/" + survey.id + "/…
+     75|     expect(res.status).toBe(200);
+     76|     expect(res.body.summary).toMatchObject({
+       |                              ^
+     77|       surveyId: survey.id,
+     78|       status: "PUBLISHED",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  20:59:02
+   Duration  1.71s (transform 155ms, setup 33ms, collect 490ms, tests 825ms, environment 0ms, prepare 137ms)
+
+
+
+=== Mutant 3: responseCount used as rating-answer denominator; exit 1 ===
+
+> classpulse-server@0.1.0 test
+> vitest run tests/api/summary.test.ts
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 <workspace>/server
+
+ ❯ tests/api/summary.test.ts (3 tests | 1 failed) 714ms
+   × F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 303ms
+     → expected { surveyId: 105, …(3) } to match object { surveyId: 105, …(3) }
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api/summary.test.ts > F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average
+AssertionError: expected { surveyId: 105, …(3) } to match object { surveyId: 105, …(3) }
+
+- Expected
++ Received
+
+  Object {
+    "questions": Array [
+      Object {
+        "prompt": "Pace of lectures",
+        "questionId": 192,
+        "rating": Object {
+-         "average": 4.33,
++         "average": 3.25,
+          "distribution": Object {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 2,
+            "5": 1,
+          },
+        },
+        "type": "RATING",
+      },
+      Object {
+        "choice": Object {
+          "options": Array [
+            Object {
+              "count": 4,
+              "label": "Yes",
+              "optionId": 175,
+            },
+            Object {
+              "count": 0,
+              "label": "No",
+              "optionId": 176,
+            },
+          ],
+        },
+        "prompt": "Would you recommend it?",
+        "questionId": 193,
+        "type": "SINGLE_CHOICE",
+      },
+    ],
+    "responseCount": 4,
+    "status": "PUBLISHED",
+    "surveyId": 105,
+  }
+
+ ❯ tests/api/summary.test.ts:76:30
+     74|     const res = await owner.get("/api/owner/surveys/" + survey.id + "/…
+     75|     expect(res.status).toBe(200);
+     76|     expect(res.body.summary).toMatchObject({
+       |                              ^
+     77|       surveyId: survey.id,
+     78|       status: "PUBLISHED",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  20:59:05
+   Duration  1.57s (transform 156ms, setup 31ms, collect 504ms, tests 714ms, environment 0ms, prepare 108ms)
+
+

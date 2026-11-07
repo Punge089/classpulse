@@ -1,0 +1,116 @@
+
+> classpulse-server@0.1.0 test
+> vitest run
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.9 <workspace>/server
+
+ ✓ tests/api/auth.test.ts (7 tests) 1131ms
+ ❯ tests/api/summary.test.ts (3 tests | 3 failed) 566ms
+   × F-05 owner survey summary > TEST-34 owner gets aggregates for ratings [4,4,5] and ordered choices 238ms
+     → expected 404 to be 200 // Object.is equality
+   × F-05 owner survey summary > TEST-36 empty summary, ownership, role and invalid-id checks 189ms
+     → expected 404 to be 200 // Object.is equality
+   × F-05 owner survey summary > TEST-37 summary JSON contains no respondent identity or individual answer rows 130ms
+     → expected 404 to be 200 // Object.is equality
+ ✓ tests/db/constraints.test.ts (3 tests) 882ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 564ms
+ ❯ tests/unit/summary.test.ts (0 test)
+ ✓ tests/api/health.test.ts (1 test) 78ms
+ ✓ tests/unit/password.test.ts (1 test) 302ms
+ ❯ tests/api/unauthenticated.test.ts (3 tests | 1 failed) 25ms
+   × TEST-07 get /api/owner/surveys/1/summary requires login 6ms
+     → expected 404 to be 401 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/summary.test.ts [ tests/unit/summary.test.ts ]
+Error: Failed to load url ../../src/lib/summary (resolved id: ../../src/lib/summary) in <workspace>/server/tests/unit/summary.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/server/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api/summary.test.ts > F-05 owner survey summary > TEST-34 owner gets aggregates for ratings [4,4,5] and ordered choices
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/summary.test.ts:52:24
+     50|     const owner = await loginAs(app, "ann.lee@classpulse.test");
+     51|     const res = await owner.get("/api/owner/surveys/" + survey.id + "/…
+     52|     expect(res.status).toBe(200);
+       |                        ^
+     53|     expect(res.body.summary).toMatchObject({
+     54|       surveyId: survey.id,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/api/summary.test.ts > F-05 owner survey summary > TEST-36 empty summary, ownership, role and invalid-id checks
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/summary.test.ts:87:26
+     85| 
+     86|     const empty = await owner1.get("/api/owner/surveys/" + survey.id +…
+     87|     expect(empty.status).toBe(200);
+       |                          ^
+     88|     expect(empty.body.summary).toMatchObject({
+     89|       surveyId: survey.id,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/api/summary.test.ts > F-05 owner survey summary > TEST-37 summary JSON contains no respondent identity or individual answer rows
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/summary.test.ts:133:24
+    131|     const owner = await loginAs(app, "ann.lee@classpulse.test");
+    132|     const res = await owner.get("/api/owner/surveys/" + survey.id + "/…
+    133|     expect(res.status).toBe(200);
+       |                        ^
+    134|     const serialized = JSON.stringify(res.body);
+    135|     expect(serialized).not.toMatch(/respondentId|email|fullName|studen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 get /api/owner/surveys/1/summary requires login
+AssertionError: expected 404 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 404
+
+ ❯ tests/api/unauthenticated.test.ts:19:22
+     17| test.each(PROTECTED_ROUTES)("TEST-07 %s %s requires login", async (met…
+     18|   const res = await request(app)[method](path);
+     19|   expect(res.status).toBe(401);
+       |                      ^
+     20|   expect(Object.keys(res.body)).toEqual(["error"]);
+     21|   expect(res.body.error.code).toBe("UNAUTHENTICATED");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+ Test Files  3 failed | 4 passed (7)
+      Tests  4 failed | 14 passed (18)
+   Start at  23:37:21
+   Duration  5.84s (transform 116ms, setup 61ms, collect 1.06s, tests 2.98s, environment 1ms, prepare 617ms)
+

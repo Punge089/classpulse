@@ -2,6 +2,7 @@ import express, { type Express } from "express";
 import { ApiError, errorHandler } from "./lib/errors";
 import { requireAuth, requireRole } from "./middleware/auth";
 import { authRouter } from "./routes/auth";
+import { ownerSummaryRouter } from "./routes/ownerSummary";
 import { responsesRouter, surveyResponsesRouter } from "./routes/responses";
 import { surveysRouter } from "./routes/surveys";
 import { ownerSurveysRouter } from "./routes/ownerSurveys";
@@ -15,6 +16,7 @@ export function createApp(): Express {
   });
 
   app.use("/api/auth", authRouter);
+  app.use("/api/owner/surveys", requireAuth, requireRole("OWNER"), ownerSummaryRouter);
   app.use("/api/surveys", requireAuth, requireRole("RESPONDENT"), surveysRouter);
   app.use("/api/surveys", requireAuth, requireRole("RESPONDENT"), surveyResponsesRouter);
   app.use("/api/responses", requireAuth, requireRole("RESPONDENT"), responsesRouter);

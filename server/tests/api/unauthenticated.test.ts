@@ -8,6 +8,8 @@ type Method = "get" | "post";
 export const PROTECTED_ROUTES: Array<[Method, string]> = [
   ["get", "/api/auth/me"],
   ["post", "/api/auth/logout"],
+  // F-05 owner summary route (I-09)
+  ["get", "/api/owner/surveys/1/summary"],
   // F-04 respondent routes (I-08)
   ["get", "/api/surveys"],
   ["get", "/api/surveys/1"],
