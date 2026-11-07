@@ -1,14 +1,9 @@
-import { Router, type NextFunction, type Request, type RequestHandler, type Response } from "express";
+import { Router } from "express";
+import { asyncRoute } from "../lib/asyncRoute";
 import { ApiError } from "../lib/errors";
 import { parseId } from "../lib/params";
 import { summarize } from "../lib/summary";
 import { getPrisma } from "../prisma";
-
-function asyncRoute(handler: (req: Request, res: Response) => Promise<void>): RequestHandler {
-  return (req, res, next: NextFunction) => {
-    void handler(req, res).catch(next);
-  };
-}
 
 export const ownerSummaryRouter = Router();
 
