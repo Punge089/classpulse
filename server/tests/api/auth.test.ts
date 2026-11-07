@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import request from "supertest";
-import { afterAll, beforeEach, describe, expect, test } from "vitest";
+import { afterAll, beforeEach, describe, expect, test, vi } from "vitest";
 import { createApp } from "../../src/app";
 import { getPrisma } from "../../src/prisma";
 import { loginAs, sessionCookiePair, sessionSetCookie } from "../helpers/auth";
@@ -148,6 +148,33 @@ describe("F-01 login, session and current user", () => {
     } finally {
       if (original === undefined) delete process.env.NODE_ENV;
       else process.env.NODE_ENV = original;
+    }
+  });
+
+  test("TEST-57 the server never writes a password or a session token to its console", async () => {
+    const methods = ["log", "info", "warn", "error", "debug"] as const;
+    const spies = methods.map(method => vi.spyOn(console, method).mockImplementation(() => undefined));
+    const wrongPassword = "wrong-password-for-test-57";
+    const ghostPassword = "ghost-password-for-test-57";
+    try {
+      const ok = await login({ email: "student1@classpulse.test", password });
+      expect(ok.status).toBe(200);
+      const token = sessionCookiePair(ok).slice("cp_session=".length);
+      const cookie = "cp_session=" + token;
+
+      await login({ email: "student1@classpulse.test", password: wrongPassword });
+      await login({ email: "ghost@classpulse.test", password: ghostPassword });
+      await request(app).post("/api/auth/login").set("Content-Type", "application/json").send("{");
+      await request(app).get("/api/auth/me").set("Cookie", cookie);
+      await request(app).post("/api/auth/logout").set("Cookie", cookie);
+
+      const written = spies.flatMap(spy => spy.mock.calls).map(args => args.map(String).join(" ")).join("\n");
+      for (const secret of [password, wrongPassword, ghostPassword, token]) {
+        expect(secret.length).toBeGreaterThan(8);
+        expect(written).not.toContain(secret);
+      }
+    } finally {
+      spies.forEach(spy => spy.mockRestore());
     }
   });
 });
