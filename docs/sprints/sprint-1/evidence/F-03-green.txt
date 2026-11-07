@@ -1,0 +1,91 @@
+F-03 green run, stage 1 (pure functions: TEST-11, TEST-15), contract v1.1
+Tested commit: 9ad0126820227ab5fe75d46c689e9562726f7ad8 (feat(F-03): survey status transitions and create-survey validation (green, stage 1))
+Run on: 2026-11-06 21:39 +0700, Windows, Node v24.19.0, test database classpulse_test
+
+== Command 1: npm --prefix server run test -- tests/unit/surveyLifecycle.test.ts tests/unit/surveyValidation.test.ts
+﻿
+> classpulse-server@0.1.0 test
+> vitest run tests/unit/surveyLifecycle.test.ts tests/unit/surveyValidation.test.ts
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 5ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 2ms
+ Test Files  2 passed (2)
+      Tests  33 passed (33)
+   Start at  21:38:00
+   Duration  410ms (transform 44ms, setup 22ms, collect 43ms, tests 7ms, environment 0ms, prepare 111ms)
+
+== Command 2: npm --prefix server run test (whole server suite)
+﻿
+> classpulse-server@0.1.0 test
+> vitest run
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/server
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 5ms
+ ✓ tests/db/constraints.test.ts (3 tests) 990ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 581ms
+ ✓ tests/api/health.test.ts (1 test) 56ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 2ms
+ Test Files  4 passed (4)
+      Tests  37 passed (37)
+   Start at  21:38:32
+   Duration  2.00s (transform 83ms, setup 31ms, collect 225ms, tests 1.05s, environment 0ms, prepare 215ms)
+
+== Command 3: npm --prefix server run build
+﻿
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+exit code 0
+
+== Summary
+Stage 1: 33 tests passed, 0 failed, 0 skipped (TEST-11: 27, TEST-15: 6). Whole server suite: 4 files, 37 tests passed, 0 failed, 0 skipped.
+Red to green: the same 33 tests that failed in F-03-red.txt now pass.
+
+== Mutation checks (tests must fail when behaviour is broken; the source was restored after each)
+allow closing a DRAFT survey                         -> surveyLifecycle.test.ts: 1 of 6 failed
+compare duplicate options case-sensitively           -> surveyValidation.test.ts: 1 of 27 failed (case 15)
+do not trim the title                                -> surveyValidation.test.ts: 2 of 27 failed
+
+== Not covered yet (stage 2, after F-01 is merged): TEST-10, 12, 13, 14, 16-21 (API, database, E2E), the owner routes, and the UI.
+
+==================================================================
+F-03 green run, stage 2 (API, database, access and UI): contract v1.1
+Tested commit: 24f79366db5bd04539af0310650fcf2eaff4054d (feat(F-03): owner pages ... (green, UI)); API routes were committed earlier in 8337e09
+Run on: 2026-11-06 23:07 +0700, Windows, Node v24.19.0, test database classpulse_test, seeded development database for E2E
+
+== npm --prefix server run test
+ Test Files  8 passed (8)
+      Tests  63 passed (63)
+== npm --prefix client run test
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+== npx playwright test --reporter=list
+  ok 1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (650ms)
+  ok 2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (826ms)
+  ok 3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (883ms)
+  ok 4 owner-survey.spec.ts:9:5 › TEST-21 an owner creates a two-question survey, sees it as Draft, publishes it and sees Published (1.9s)
+  ok 5 owner-survey.spec.ts:47:5 › TEST-21 an empty title shows a message under the title field and creates nothing (2.1s)
+  5 passed (11.5s)
+== npm --prefix server run build: exit code 0;  npm --prefix client run build: exit code 0
+
+== Summary
+Server 63 passed, 0 failed, 0 skipped (F-03: TEST-10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 and the six owner routes of TEST-07). Client 1 passed. Playwright 5 passed, 0 failed, 0 skipped (3 auth + TEST-21 twice).
+Red to green: the 16 server tests of F-03-red.txt stage 2 and the 2 E2E tests of the UI red run now pass.
+
+== Mutation checks on the API (source restored after each; each broke exactly one test)
+read a survey without the ownership filter       -> TEST-19 fails
+create a survey for a course the owner does not own -> TEST-13 fails
+list every owner's surveys                        -> TEST-20 fails
+owner routes without the OWNER role check         -> TEST-18 fails
+
+== Notes
+TEST-13 also asserts one extra boundary beyond the contract's five cases: a courseId above the database integer range is a 400 naming courseId, not a 500.
+No automated test covers two simultaneous publish requests (disclosed in contract section 8).
+TEST-21 creates surveys with unique titles in the development database on every run; there is no delete route in Sprint 1.
+
+==================================================================
+Addendum after the review of PR #18 (contract v1.2): unique test IDs, rename only
+Tested commit: 1b93957061fc2bc713eb1acec3e4b5c6f760efa7 (test(F-03): TEST-58 for the course list, TEST-21a and TEST-21b for the two E2E scenarios; unique IDs)
+Run on: 2026-11-07 00:40 +0700, Windows, Node v24.19.0
+Server: 8 files, 63 tests passed, 0 failed, 0 skipped. Playwright: 5 passed, 0 failed, 0 skipped. Client build exit 0.
+Changes: the course-list API test is now TEST-58 (it shared TEST-20 with the survey-list test); the two E2E tests are TEST-21a and TEST-21b. No assertion changed, so the counts equal the stage 2 run.
