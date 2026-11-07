@@ -1,0 +1,65 @@
+﻿# I-10 results generator: fresh-clone run (PR #20 fix)
+
+Fresh clone of branch feature/10-evidence-tools at b8a534ef101bd4b33c59f1aad7a852c8c096d0c6 (git clone, git status clean), Python 3.14.6, Node v24.19.0, PostgreSQL 18, Windows 11, PowerShell.
+classpulse_test was dropped and recreated empty (0 tables) first, then migrated with the README step. Paths below are shortened: <fresh-clone> is the clone folder.
+The branch is based on sprint-1-staging 0f89c86, so it holds the auth tests only (server 14, client 1, e2e 3), not the I-07 survey tests.
+
+## 1. README steps, run one by one (exit code, then the runner summary line)
+== npm --prefix server run test -> exit 0
+   Test Files  5 passed (5)
+   Tests  14 passed (14)
+== npm --prefix client run test -> exit 0
+   Test Files  1 passed (1)
+   Tests  1 passed (1)
+== npm --prefix server run build -> exit 0
+== npm --prefix client run build -> exit 0
+== npm run test:e2e -> exit 0
+   3 passed (15.9s)
+
+## 2. python tools\test_results.py on b8a534e (the final run)
+== npm --prefix server run test -- --reporter=json --outputFile=<fresh-clone>\tools\.results\server.json
+   exit code 0
+== npm --prefix client run test -- --reporter=json --outputFile=<fresh-clone>\tools\.results\client.json
+   exit code 0
+== npx playwright test --reporter=json
+   exit code 0
+wrote <fresh-clone>\docs\sprints\sprint-1\test-results.md: 18 executed tests, 0 failed, 0 planned tests not executed
+PASSED
+GENERATOR EXIT STATUS: 0
+
+## 3. Drill with the real runners: server/tests/unit/zz_broken.test.ts imports a module that does not exist (fresh clone only, file deleted afterwards)
+== npm --prefix server run test -- --reporter=json --outputFile=<fresh-clone>\tools\.results\server.json
+   exit code 1
+   last output lines:
+   | > classpulse-server@0.1.0 test
+   | > vitest run --reporter=json --outputFile=C:\Users\MSII\AppData\Local\Temp\claude\d8dda8bf21cedde4\***\scratchpad\fresh-clone\tools\.results\server.json
+   | 
+   | JSON report written to C:/Users/MSII/AppData/Local/Temp/claude/d8dda8bf21cedde4/1daead6f-8834-4107-a9aa-3ee05066e2dc/scratchpad/fresh-clone/tools/.results/server.json
+   | [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+== npm --prefix client run test -- --reporter=json --outputFile=<fresh-clone>\tools\.results\client.json
+   exit code 0
+== npx playwright test --reporter=json
+   exit code 0
+wrote <fresh-clone>\docs\sprints\sprint-1\test-results.md: 19 executed tests, 1 failed, 0 planned tests not executed
+FAILED: 3 problem(s)
+  - server: the test runner exited with exit code 1
+  - server: 1 failed test(s) or suite(s)
+  - server: FAILED `server/tests/unit/zz_broken.test.ts` :: (suite failed to run) Failed to load url ../../src/does-not-exist (resolved id: ../../src/does-not-exist) in C:/Users/MSII/AppData/Local/Temp/claude/d8dda8bf21cedde4/1daead6f-8834-41
+GENERATOR EXIT STATUS: 1
+
+The real Vitest report for that file: status "failed", assertionResults empty (length 0), success false, numFailedTestSuites 1, numTotalTests 14.
+
+## 4. The same reports read by the old script (7f03e40, before this fix)
+wrote <scratch>\old-table.md: 18 executed tests, 0 failed, 0 planned tests not executed
+OLD SCRIPT EXIT STATUS: 0   (a green-looking table with the broken suite missing)
+
+## 5. After deleting the broken file, the fixed generator again
+== npm --prefix server run test -- --reporter=json --outputFile=<fresh-clone>\tools\.results\server.json
+   exit code 0
+== npm --prefix client run test -- --reporter=json --outputFile=<fresh-clone>\tools\.results\client.json
+   exit code 0
+== npx playwright test --reporter=json
+   exit code 0
+wrote <fresh-clone>\docs\sprints\sprint-1\test-results.md: 18 executed tests, 0 failed, 0 planned tests not executed
+PASSED
+GENERATOR EXIT STATUS: 0   (the FAILED table from step 3 was replaced)
