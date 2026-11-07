@@ -11,7 +11,7 @@
 
 ## F.2 Program demonstrations
 
-*The screenshots and the API log were produced by `node tools/demo_screenshots.js`, which drives the real browser and API with the seeded accounts, on commit TODO (code identical to the release; only documents differ). The log with every call and status is `docs/sprints/sprint-1/evidence/screenshots/demo-api-log.txt`.*
+*The screenshots and the API log were produced by `node tools/demo_screenshots.js`, which drives the real browser and API with the seeded accounts, on commit TODO (code identical to the release; only documents differ). The log `docs/sprints/sprint-1/evidence/screenshots/demo-api-log.txt` holds the API calls the script makes itself (method, path, status and response body; login bodies are not written) and, marked `browser`, the method, path and status of every `/api` request the browser pages make during the demos (login, create, publish, list, submit, logout). Request bodies, cookies and passwords are never written.*
 
 ### DEMO-1 Normal journey and persistence (F-03, F-04, F-05; AC-10, AC-13, AC-19, AC-21, AC-28, AC-30; NFR-05)
 

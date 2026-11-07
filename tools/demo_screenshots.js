@@ -5,7 +5,11 @@
    It starts the API and the Vite client itself (ports 3000 and 5173 must be free), drives the real browser with the
    seeded accounts, restarts the API once for DEMO-1 (NFR-05), and writes
      docs/sprints/sprint-1/evidence/screenshots/demo*.png
-     docs/sprints/sprint-1/evidence/screenshots/demo-api-log.txt   (every API call the demos make, status and body)
+     docs/sprints/sprint-1/evidence/screenshots/demo-api-log.txt
+   The log has two kinds of lines: the API calls this script makes itself (method, path, status and the response body,
+   except the body of a login, which is not written) and, marked "browser", the method, path and status of every /api
+   request the browser pages make while the demos run (login, create, publish, list, submit, logout). Request bodies,
+   cookies and passwords are never written.
    The development database must be seeded (README). Surveys created by a run stay in the development database.
    The password is read from SEED_PASSWORD or server/.env and is never written to any output. */
 const { spawn, execSync } = require("node:child_process");
@@ -28,10 +32,19 @@ function seedPassword() {
 }
 
 const logLines = [];
+let currentDemo = "run";
 function log(demo, text) {
   const line = `[${demo}] ${text}`;
   logLines.push(line);
   console.log(line);
+}
+/** Log method, path and status (nothing else) of every /api request a browser page makes. */
+function watch(page, who) {
+  page.on("response", res => {
+    const url = new URL(res.url());
+    if (!url.pathname.startsWith("/api/")) return;
+    log(currentDemo, `browser (${who}): ${res.request().method()} ${url.pathname} -> ${res.status()}`);
+  });
 }
 
 function start(name, args) {
@@ -70,6 +83,10 @@ async function shot(page, file) {
 }
 async function call(demo, ctx, method, url, data) {
   const res = await ctx.fetch(API + url, { method, data });
+  if (url === "/api/auth/login") {
+    log(demo, `${method} ${url} -> ${res.status()} (script call; body not written)`);
+    return res;
+  }
   let body = "";
   try { body = JSON.stringify(await res.json()); } catch { body = "(no JSON body)"; }
   log(demo, `${method} ${url} -> ${res.status()} ${body.length > 300 ? body.slice(0, 300) + "…" : body}`);
@@ -95,8 +112,10 @@ async function main() {
     log("run", `commit ${execSync("git rev-parse HEAD", { cwd: ROOT }).toString().trim()}  ${new Date().toISOString()}`);
 
     // ---------------- DEMO-1: normal journey and persistence ----------------
+    currentDemo = "DEMO-1";
     const ownerCtx = await browser.newContext(view);
     const owner = await ownerCtx.newPage();
+    watch(owner, "owner1");
     await signIn(owner, "ann.lee@classpulse.test", password);
     await owner.waitForURL(/\/owner$/);
     await owner.getByRole("link", { name: "New survey" }).click();
@@ -119,6 +138,7 @@ async function main() {
 
     const studentCtx = await browser.newContext(view);
     const student = await studentCtx.newPage();
+    watch(student, "student1");
     await signIn(student, "student1@classpulse.test", password);
     await student.waitForURL(/\/surveys$/);
     const row = student.getByRole("listitem").filter({ hasText: title });
@@ -135,8 +155,7 @@ async function main() {
     const responseId = Number(student.url().match(/\/responses\/(\d+)$/)[1]);
     await shot(student, "demo1-05-student-confirmation.png");
     const studentApi = await request.newContext({ baseURL: API });
-    await call("login", studentApi, "POST", "/api/auth/login", { email: "student1@classpulse.test", password }).then(r => { if (r.status() !== 200) throw new Error("student login failed"); });
-    logLines.pop(); // the login body would show the account only, keep the log free of anything credential-like
+    await call("DEMO-1", studentApi, "POST", "/api/auth/login", { email: "student1@classpulse.test", password }).then(r => { if (r.status() !== 200) throw new Error("student login failed"); });
     const before = await call("DEMO-1", studentApi, "GET", `/api/responses/${responseId}`);
     const beforeBody = JSON.stringify(await before.json());
 
@@ -160,6 +179,7 @@ async function main() {
     log("DEMO-1", `owner1 summary of survey ${surveyId}: response count 1, average 4.00 (AC-30)`);
 
     // ---------------- DEMO-2: business-rule rejections ----------------
+    currentDemo = "DEMO-2";
     await student.goto(`${BASE}/surveys/${surveyId}`);
     await student.getByLabel("Rating 4 of 5").locator("xpath=..").click();
     await student.getByLabel("Yes", { exact: true }).check();
@@ -173,8 +193,7 @@ async function main() {
       answers: [{ questionId: ratingQ.id, ratingValue: 4 }, { questionId: choiceQ.id, optionId: choiceQ.options[0].id }]
     });
     const ownerApi = await request.newContext({ baseURL: API });
-    await call("login", ownerApi, "POST", "/api/auth/login", { email: "ann.lee@classpulse.test", password });
-    logLines.pop();
+    await call("DEMO-2", ownerApi, "POST", "/api/auth/login", { email: "ann.lee@classpulse.test", password });
     const owned = await (await ownerApi.fetch(`${API}/api/owner/surveys`)).json();
     const closed = owned.surveys.find(s => s.title === "Week 1 pulse");
     log("DEMO-2", `seed survey "Week 1 pulse" is id ${closed.id}, status ${closed.status}`);
@@ -184,8 +203,10 @@ async function main() {
     await call("DEMO-2", studentApi, "POST", `/api/surveys/${closed.id}/responses`, { answers: [] });
 
     // ---------------- DEMO-3: login, logout, forbidden operations ----------------
+    currentDemo = "DEMO-3";
     const guestCtx = await browser.newContext(view);
     const guest = await guestCtx.newPage();
+    watch(guest, "student1 (login and logout)");
     await guest.goto(BASE + "/login");
     await guest.getByLabel("Email").fill("student1@classpulse.test");
     await guest.getByLabel("Password").fill("wrong-password-for-demo");
@@ -204,14 +225,14 @@ async function main() {
     await call("DEMO-3", studentApi, "POST", "/api/owner/surveys", { courseId: 1, title: "should not be created", questions: [{ prompt: "x", type: "RATING" }] });
     const benCtx = await browser.newContext(view);
     const ben = await benCtx.newPage();
+    watch(ben, "owner2");
     await signIn(ben, "ben.kim@classpulse.test", password);
     await ben.waitForURL(/\/owner$/);
     await ben.goto(`${BASE}/owner/surveys/${surveyId}/summary`);
     await ben.getByRole("alert").waitFor();
     await shot(ben, "demo3-04-other-owner-opens-summary.png");
     const benApi = await request.newContext({ baseURL: API });
-    await call("login", benApi, "POST", "/api/auth/login", { email: "ben.kim@classpulse.test", password });
-    logLines.pop();
+    await call("DEMO-3", benApi, "POST", "/api/auth/login", { email: "ben.kim@classpulse.test", password });
     await call("DEMO-3", benApi, "GET", `/api/owner/surveys/${surveyId}/summary`);
     log("run", "done");
   } finally {

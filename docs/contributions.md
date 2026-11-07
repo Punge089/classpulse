@@ -28,4 +28,9 @@ Student A (`Punge089`) owns I-02, I-04, I-07 and I-10; Student B (`book6349`) ow
 
 **Student A (`Punge089`):** I planned the product and the split of work, wrote the SRS, the feature inventory and traceability, the authentication and survey-authoring features, the journey test and the results tooling, and reviewed B's foundation, SDS, response-submission and summary work by running the code, not only reading it. I used Claude Code for drafting and for running tests; I approved every review verdict and every merge myself.
 
-**Student B (`book6349`):** TODO Student B's own lines (what they built and reviewed).
+**Student B (`book6349`)**, in the words of Student B:
+
+- I built the I-05 foundation, including the server and client shell, database schema and seed, and shared test helpers.
+- I wrote the I-03 System SDS and diagrams, then revised them after review.
+- I implemented the I-08 respondent flow and I-09 aggregate summary, including the API, UI, and tests.
+- I reviewed the SRS, traceability, PDF, authentication, survey-authoring, log-check, results-tooling, and journey PRs, running the checks reported in my reviews.
