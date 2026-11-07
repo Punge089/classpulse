@@ -106,6 +106,8 @@ npm run test:e2e
 
 Its exit status is the answer: **0 means everything passed, 1 means it did not.** It exits 1 when any runner exits nonzero, a suite fails to load, a report is missing, empty or invalid, a test fails or is skipped, a planned `TEST-nn` never ran, or an acceptance criterion has no executed test. In that case the first lines of the table say `Overall result: FAILED` with the reasons, and the table is never reused from an earlier run. Commit `test-results.md` only from a run that printed `PASSED` and exited 0. `--skip-run` rebuilds the table from the reports and exit codes of the last run. The generator's own checks run with `python -m unittest tools.test_test_results -v` from the repository root.
 
+On the Sprint 1 integration commit `4eb2dce` a clean run gives server 101, client 1 and e2e 8 passed with 0 failed and 0 skipped, `Overall result: PASSED`, and exit status 0; all 39 acceptance criteria in `docs/sprints/sprint-1/test-results.md` pass. Use these numbers to check a fresh clone.
+
 ## The Deliverable 1 report (PDF)
 
 `pip install -r tools/requirements.txt`, then `python tools/build_report.py` builds a draft PDF from the documents in `docs/` (it needs Microsoft Edge or Chrome and, for the diagrams, internet access to cdnjs.cloudflare.com). Run it from PowerShell, not from a sandboxed shell. `python tools/build_report.py --final` refuses to build while a `TODO` or a missing document remains.
