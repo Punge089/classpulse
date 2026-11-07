@@ -4,7 +4,7 @@
 
 [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
 
- RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/server
+ RUN  v2.1.9 <workspace>/server
 
  ✓ tests/api/auth.test.ts (7 tests) 1131ms
  ❯ tests/api/summary.test.ts (3 tests | 3 failed) 566ms
@@ -26,7 +26,7 @@
 ⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
 
  FAIL  tests/unit/summary.test.ts [ tests/unit/summary.test.ts ]
-Error: Failed to load url ../../src/lib/summary (resolved id: ../../src/lib/summary) in C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/server/tests/unit/summary.test.ts. Does the file exist?
+Error: Failed to load url ../../src/lib/summary (resolved id: ../../src/lib/summary) in <workspace>/server/tests/unit/summary.test.ts. Does the file exist?
  ❯ loadAndTransform ../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/server/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
