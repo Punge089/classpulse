@@ -37,7 +37,9 @@ test("TEST-32 a respondent submits an identified survey once and sees confirmati
   const notice = page.getByText("Identified survey — your name is stored with your answers", { exact: true });
   await expect(notice).toBeVisible();
   await expect(page.getByRole("heading", { name: title })).toBeVisible();
-  await page.getByLabel("Rating 4 of 5").check();
+  const ratingFour = page.getByLabel("Rating 4 of 5");
+  await ratingFour.locator("xpath=..").click();
+  await expect(ratingFour).toBeChecked();
   await page.getByLabel("Yes", { exact: true }).check();
 
   let submitRequests = 0;
@@ -46,14 +48,20 @@ test("TEST-32 a respondent submits an identified survey once and sees confirmati
       submitRequests += 1;
     }
   });
-  await page.route(`**/api/surveys/${surveyId}/responses`, async route => {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    await route.continue();
+  await page.route(/\/api\/surveys\/\d+\/responses$/, async route => {
+    if (route.request().method() !== "POST") {
+      await route.continue();
+      return;
+    }
+    const response = await route.fetch();
+    await new Promise(resolve => setTimeout(resolve, 750));
+    await route.fulfill({ response });
   });
 
-  const submit = page.getByRole("button", { name: "Submit", exact: true });
-  await Promise.all([submit.click({ force: true }), submit.click({ force: true })]);
+  const submit = page.locator("form button[type=submit]");
+  await submit.click();
   await expect(submit).toBeDisabled();
+  await submit.click({ force: true });
   await expect(page).toHaveURL(/\/responses\/\d+$/, { timeout: 5_000 });
   await expect(page.getByText("Thanks — your response is in.", { exact: true })).toBeVisible();
   await expect(page.locator("time")).toBeVisible();
@@ -61,7 +69,9 @@ test("TEST-32 a respondent submits an identified survey once and sees confirmati
 
   // A later explicit retry receives the API's duplicate response; the page does not auto-resubmit.
   await page.goto(`/surveys/${surveyId}`);
-  await page.getByLabel("Rating 4 of 5").check();
+  const retryRatingFour = page.getByLabel("Rating 4 of 5");
+  await retryRatingFour.locator("xpath=..").click();
+  await expect(retryRatingFour).toBeChecked();
   await page.getByLabel("Yes", { exact: true }).check();
   await page.getByRole("button", { name: "Submit", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("You have already submitted this survey");
