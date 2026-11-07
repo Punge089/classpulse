@@ -1,0 +1,327 @@
+
+> classpulse-server@0.1.0 test
+> vitest run
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/server
+
+ ❯ tests/api/responses.test.ts (10 tests | 10 failed) 1547ms
+   × F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 236ms
+     → expected 404 to be 403 // Object.is equality
+   × F-04 respondent survey access > TEST-39 detail is visible only to an enrolled respondent for a published survey 153ms
+     → expected 404 to be 200 // Object.is equality
+   × F-04 response submission > TEST-23 a valid response stores one answer per question and returns the saved answer shape 141ms
+     → expected 404 to be 201 // Object.is equality
+   × F-04 response submission > TEST-24 a sequential duplicate submission returns ALREADY_RESPONDED and stores one response 137ms
+     → expected 404 to be 201 // Object.is equality
+   × F-04 response submission > TEST-25 simultaneous submissions store exactly one response 139ms
+     → expected [ 404, 404 ] to deeply equal [ 201, 409 ]
+   × F-04 response submission > TEST-26 closed and draft surveys reject before answer validation; unknown survey is 404 143ms
+     → expected [ 404, 'NOT_FOUND' ] to deeply equal [ 409, 'SURVEY_NOT_OPEN' ]
+   × F-04 response submission > TEST-27 a non-enrolled student gets NOT_ELIGIBLE before DRAFT status 143ms
+     → expected 404 to be 403 // Object.is equality
+   × F-04 response submission > TEST-29 rating boundaries accept 1 and 5 and reject 0, 6, decimals and strings 134ms
+     → expected 404 to be 201 // Object.is equality
+   × F-04 response submission > TEST-30 respondents cannot read another student's response or edit/delete a response 167ms
+     → expected 404 to be 201 // Object.is equality
+   × F-04 response submission > TEST-31 an owner cannot submit or read a respondent response 135ms
+     → expected 404 to be 201 // Object.is equality
+ ✓ tests/api/auth.test.ts (7 tests) 1220ms
+ ✓ tests/db/constraints.test.ts (3 tests) 966ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 623ms
+ ❯ tests/unit/responseValidation.test.ts (0 test)
+ ✓ tests/api/health.test.ts (1 test) 92ms
+ ✓ tests/unit/password.test.ts (1 test) 344ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 324ms
+ ❯ tests/api/unauthenticated.test.ts (6 tests | 4 failed) 39ms
+   × TEST-07 get /api/surveys requires login 8ms
+     → expected 404 to be 401 // Object.is equality
+   × TEST-07 get /api/surveys/1 requires login 3ms
+     → expected 404 to be 401 // Object.is equality
+   × TEST-07 post /api/surveys/1/responses requires login 3ms
+     → expected 404 to be 401 // Object.is equality
+   × TEST-07 get /api/responses/1 requires login 3ms
+     → expected 404 to be 401 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/responseValidation.test.ts [ tests/unit/responseValidation.test.ts ]
+Error: Failed to load url ../../src/lib/responseValidation (resolved id: ../../src/lib/responseValidation) in C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/server/tests/unit/responseValidation.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/server/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/15]⎯
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded
+AssertionError: expected 404 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 404
+
+ ❯ tests/api/responses.test.ts:39:30
+     37|     const owner = await loginAs(app, "ann.lee@classpulse.test");
+     38|     const ownerList = await owner.get("/api/surveys");
+     39|     expect(ownerList.status).toBe(403);
+       |                              ^
+     40|     expect(ownerList.body.error.code).toBe("FORBIDDEN");
+     41|     expect(ownerList.body).not.toHaveProperty("surveys");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 respondent survey access > TEST-39 detail is visible only to an enrolled respondent for a published survey
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/responses.test.ts:71:28
+     69|
+     70|     const visible = await student.get("/api/surveys/" + published.id);
+     71|     expect(visible.status).toBe(200);
+       |                            ^
+     72|     expect(visible.body.survey).toMatchObject({
+     73|       id: published.id, courseCode: "CPE334", status: "PUBLISHED"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-23 a valid response stores one answer per question and returns the saved answer shape
+AssertionError: expected 404 to be 201 // Object.is equality
+
+- Expected
++ Received
+
+- 201
++ 404
+
+ ❯ tests/api/responses.test.ts:96:27
+     94|     const agent = await loginAs(app, "student1@classpulse.test");
+     95|     const posted = await agent.post("/api/surveys/" + survey.id + "/re…
+     96|     expect(posted.status).toBe(201);
+       |                           ^
+     97|     expect(posted.body.response).toMatchObject({ surveyId: survey.id }…
+     98|     expect(Number.isNaN(Date.parse(posted.body.response.submittedAt)))…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-24 a sequential duplicate submission returns ALREADY_RESPONDED and stores one response
+AssertionError: expected 404 to be 201 // Object.is equality
+
+- Expected
++ Received
+
+- 201
++ 404
+
+ ❯ tests/api/responses.test.ts:131:26
+    129|     const first = await agent.post("/api/surveys/" + survey.id + "/res…
+    130|     const second = await agent.post("/api/surveys/" + survey.id + "/re…
+    131|     expect(first.status).toBe(201);
+       |                          ^
+    132|     expect(second.status).toBe(409);
+    133|     expect(second.body.error.code).toBe("ALREADY_RESPONDED");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-25 simultaneous submissions store exactly one response
+AssertionError: expected [ 404, 404 ] to deeply equal [ 201, 409 ]
+
+- Expected
++ Received
+
+  Array [
+-   201,
+-   409,
++   404,
++   404,
+  ]
+
+ ❯ tests/api/responses.test.ts:145:43
+    143|       agent.post("/api/surveys/" + survey.id + "/responses").send(body)
+    144|     ]);
+    145|     expect([r1.status, r2.status].sort()).toEqual([201, 409]);
+       |                                           ^
+    146|     expect(await prisma.response.count({ where: { surveyId: survey.id …
+    147|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-26 closed and draft surveys reject before answer validation; unknown survey is 404
+AssertionError: expected [ 404, 'NOT_FOUND' ] to deeply equal [ 409, 'SURVEY_NOT_OPEN' ]
+
+- Expected
++ Received
+
+  Array [
+-   409,
+-   "SURVEY_NOT_OPEN",
++   404,
++   "NOT_FOUND",
+  ]
+
+ ❯ tests/api/responses.test.ts:158:63
+    156|     const missing = await agent.post("/api/surveys/2147483647/response…
+    157|
+    158|     expect([draftResult.status, draftResult.body.error.code]).toEqual(…
+       |                                                               ^
+    159|     expect([closedResult.status, closedResult.body.error.code]).toEqua…
+    160|     expect([closedInvalid.status, closedInvalid.body.error.code]).toEq…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-27 a non-enrolled student gets NOT_ELIGIBLE before DRAFT status
+AssertionError: expected 404 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 404
+
+ ❯ tests/api/responses.test.ts:170:24
+    168|     const student3 = await loginAs(app, "student3@classpulse.test");
+    169|     const res = await student3.post("/api/surveys/" + draft.id + "/res…
+    170|     expect(res.status).toBe(403);
+       |                        ^
+    171|     expect(res.body.error.code).toBe("NOT_ELIGIBLE");
+    172|     expect(await prisma.response.count()).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-29 rating boundaries accept 1 and 5 and reject 0, 6, decimals and strings
+AssertionError: expected 404 to be 201 // Object.is equality
+
+- Expected
++ Received
+
+- 201
++ 404
+
+ ❯ tests/api/responses.test.ts:189:26
+    187|       const res = await agent.post("/api/surveys/" + survey.id + "/res…
+    188|         .send({ answers: [{ questionId: survey.questions[0].id, rating…
+    189|       expect(res.status).toBe(expectedStatus);
+       |                          ^
+    190|       if (expectedStatus === 400) expect(res.body.error.code).toBe("VA…
+    191|       expect(await prisma.response.count({ where: { surveyId: survey.i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-30 respondents cannot read another student's response or edit/delete a response
+AssertionError: expected 404 to be 201 // Object.is equality
+
+- Expected
++ Received
+
+- 201
++ 404
+
+ ❯ tests/api/responses.test.ts:201:27
+    199|     const student2 = await loginAs(app, "student2@classpulse.test");
+    200|     const posted = await student1.post("/api/surveys/" + survey.id + "…
+    201|     expect(posted.status).toBe(201);
+       |                           ^
+    202|     const responseId = posted.body.response.id as number;
+    203|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/15]⎯
+
+ FAIL  tests/api/responses.test.ts > F-04 response submission > TEST-31 an owner cannot submit or read a respondent response
+AssertionError: expected 404 to be 201 // Object.is equality
+
+- Expected
++ Received
+
+- 201
++ 404
+
+ ❯ tests/api/responses.test.ts:222:27
+    220|     const student = await loginAs(app, "student1@classpulse.test");
+    221|     const posted = await student.post("/api/surveys/" + survey.id + "/…
+    222|     expect(posted.status).toBe(201);
+       |                           ^
+    223|     const responseId = posted.body.response.id as number;
+    224|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/15]⎯
+
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 get /api/surveys requires login
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 get /api/surveys/1 requires login
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 post /api/surveys/1/responses requires login
+ FAIL  tests/api/unauthenticated.test.ts > TEST-07 get /api/responses/1 requires login
+AssertionError: expected 404 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 404
+
+ ❯ tests/api/unauthenticated.test.ts:22:22
+     20| test.each(PROTECTED_ROUTES)("TEST-07 %s %s requires login", async (met…
+     21|   const res = await request(app)[method](path);
+     22|   expect(res.status).toBe(401);
+       |                      ^
+     23|   expect(Object.keys(res.body)).toEqual(["error"]);
+     24|   expect(res.body.error.code).toBe("UNAUTHENTICATED");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/15]⎯
+
+ Test Files  3 failed | 4 passed (7)
+      Tests  14 failed | 14 passed (28)
+   Start at  00:05:40
+   Duration  7.33s (transform 135ms, setup 67ms, collect 1.19s, tests 4.21s, environment 1ms, prepare 648ms)
+
+[WebServer] (node:26836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:3252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:23960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:23960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation (11.1s)
+
+
+  1) respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation 
+
+    Error: [31mTimed out 5000ms waiting for [39m[2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m
+
+    Locator: getByRole('listitem').filter({ hasText: 'E2E response 1794053635645' })
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      [2m- expect.toBeVisible with timeout 5000ms[22m
+    [2m  - waiting for getByRole('listitem').filter({ hasText: 'E2E response 1794053635645' })[22m
+
+
+      30 |   await expect(page).toHaveURL(/\/surveys$/, { timeout: 5_000 });
+      31 |   const surveyRow = page.getByRole("listitem").filter({ hasText: title });
+    > 32 |   await expect(surveyRow).toBeVisible();
+         |                           ^
+      33 |   await expect(surveyRow.getByText("Submitted", { exact: true })).toHaveCount(0);
+      34 |   await surveyRow.getByRole("link", { name: title }).click();
+      35 |   await expect(page).toHaveURL(new RegExp(`/surveys/${surveyId}$`));
+
+        at C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\e2e\respond.spec.ts:32:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\respond-TEST-32-a-responde-a53fb--once-and-sees-confirmation\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\respond-TEST-32-a-responde-a53fb--once-and-sees-confirmation\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation 

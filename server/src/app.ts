@@ -2,6 +2,8 @@ import express, { type Express } from "express";
 import { ApiError, errorHandler } from "./lib/errors";
 import { requireAuth, requireRole } from "./middleware/auth";
 import { authRouter } from "./routes/auth";
+import { responsesRouter, surveyResponsesRouter } from "./routes/responses";
+import { surveysRouter } from "./routes/surveys";
 import { ownerSurveysRouter } from "./routes/ownerSurveys";
 
 export function createApp(): Express {
@@ -13,6 +15,9 @@ export function createApp(): Express {
   });
 
   app.use("/api/auth", authRouter);
+  app.use("/api/surveys", requireAuth, requireRole("RESPONDENT"), surveysRouter);
+  app.use("/api/surveys", requireAuth, requireRole("RESPONDENT"), surveyResponsesRouter);
+  app.use("/api/responses", requireAuth, requireRole("RESPONDENT"), responsesRouter);
   app.use("/api/owner", requireAuth, requireRole("OWNER"), ownerSurveysRouter);
 
   // Mount feature routers before the shared 404 and error handler.
