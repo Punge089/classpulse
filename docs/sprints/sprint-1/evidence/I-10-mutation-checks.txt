@@ -1,0 +1,356 @@
+﻿I-10 sensitivity checks for e2e/journey.spec.ts (TEST-40, TEST-38)
+Each production mutation below was temporary; the file was restored with git checkout after each run.
+Command for every run: npx playwright test e2e/journey.spec.ts --reporter=list   (base commit 8b386d5, dev database seeded)
+
+=== Mutant: summary route returns responseCount 0 (file: server/src/routes/ownerSummary.ts); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (9.6s)
+  x  2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (6.7s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: getByLabel('Response count: 1')
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByLabel('Response count: 1')
+      19 |   count: number; average: string; ratingCounts: Record<string, string>; choice: Record<string, number>;
+      20 | }): Promise<void> {
+    > 21 |   await expect(page.getByLabel(`Response count: ${expected.count}`)).toBeVisible();
+         |                                                                      ^
+      22 |   const rating = page.locator("article").filter({ hasText: RATING_PROMPT });
+      23 |   await expect(rating.getByText("Average:")).toContainText(expected.average);
+      24 |   for (const [star, count] of Object.entries(expected.ratingCounts)) {
+        at expectSummary (<repo>\e2e\journey.spec.ts:21:70)
+        at <repo>\e2e\journey.spec.ts:92:9
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2) journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: getByLabel('Response count: 2')
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByLabel('Response count: 2')
+      19 |   count: number; average: string; ratingCounts: Record<string, string>; choice: Record<string, number>;
+      20 | }): Promise<void> {
+    > 21 |   await expect(page.getByLabel(`Response count: ${expected.count}`)).toBeVisible();
+         |                                                                      ^
+      22 |   const rating = page.locator("article").filter({ hasText: RATING_PROMPT });
+      23 |   await expect(rating.getByText("Average:")).toContainText(expected.average);
+      24 |   for (const [star, count] of Object.entries(expected.ratingCounts)) {
+        at expectSummary (<repo>\e2e\journey.spec.ts:21:70)
+        at <repo>\e2e\journey.spec.ts:160:11
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+
+=== Mutant: average shifted by 0.10 (file: server/src/lib/summary.ts); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (9.0s)
+  x  2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (6.8s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: Timed out 5000ms waiting for expect(locator).toContainText(expected)
+    Locator: locator('article').filter({ hasText: 'How was the pace of the lectures?' }).getByText('Average:')
+    Expected string: "4.00"
+    Received string: "Average: 4.10"
+    Call log:
+      - expect.toContainText with timeout 5000ms
+      - waiting for locator('article').filter({ hasText: 'How was the pace of the lectures?' }).getByText('Average:')
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.10"
+      21 |   await expect(page.getByLabel(`Response count: ${expected.count}`)).toBeVisible();
+      22 |   const rating = page.locator("article").filter({ hasText: RATING_PROMPT });
+    > 23 |   await expect(rating.getByText("Average:")).toContainText(expected.average);
+         |                                              ^
+      24 |   for (const [star, count] of Object.entries(expected.ratingCounts)) {
+      25 |     await expect(rating.getByText(`Rating ${star}`, { exact: true }).locator("xpath=following-sibling::dd")).toHaveText(count);
+      26 |   }
+        at expectSummary (<repo>\e2e\journey.spec.ts:23:46)
+        at <repo>\e2e\journey.spec.ts:92:3
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2) journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+    Error: Timed out 5000ms waiting for expect(locator).toContainText(expected)
+    Locator: locator('article').filter({ hasText: 'How was the pace of the lectures?' }).getByText('Average:')
+    Expected string: "4.50"
+    Received string: "Average: 4.60"
+    Call log:
+      - expect.toContainText with timeout 5000ms
+      - waiting for locator('article').filter({ hasText: 'How was the pace of the lectures?' }).getByText('Average:')
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      -   locator resolved to <p class="mb-1">…</p>
+      -   unexpected value "Average: 4.60"
+      21 |   await expect(page.getByLabel(`Response count: ${expected.count}`)).toBeVisible();
+      22 |   const rating = page.locator("article").filter({ hasText: RATING_PROMPT });
+    > 23 |   await expect(rating.getByText("Average:")).toContainText(expected.average);
+         |                                              ^
+      24 |   for (const [star, count] of Object.entries(expected.ratingCounts)) {
+      25 |     await expect(rating.getByText(`Rating ${star}`, { exact: true }).locator("xpath=following-sibling::dd")).toHaveText(count);
+      26 |   }
+        at expectSummary (<repo>\e2e\journey.spec.ts:23:46)
+        at <repo>\e2e\journey.spec.ts:160:5
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+
+=== Mutant: choice counts always 0 (file: server/src/lib/summary.ts); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (9.1s)
+  x  2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (6.8s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: locator('article').filter({ hasText: 'Would you recommend this course?' }).getByRole('img', { name: 'Yes: 1 responses' })
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for locator('article').filter({ hasText: 'Would you recommend this course?' }).getByRole('img', { name: 'Yes: 1 responses' })
+      27 |   const choice = page.locator("article").filter({ hasText: CHOICE_PROMPT });
+      28 |   for (const [label, count] of Object.entries(expected.choice)) {
+    > 29 |     await expect(choice.getByRole("img", { name: `${label}: ${count} responses` })).toBeVisible();
+         |                                                                                     ^
+      30 |   }
+      31 | }
+      32 |
+        at expectSummary (<repo>\e2e\journey.spec.ts:29:85)
+        at <repo>\e2e\journey.spec.ts:92:3
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2) journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: locator('article').filter({ hasText: 'Would you recommend this course?' }).getByRole('img', { name: 'Yes: 1 responses' })
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for locator('article').filter({ hasText: 'Would you recommend this course?' }).getByRole('img', { name: 'Yes: 1 responses' })
+      27 |   const choice = page.locator("article").filter({ hasText: CHOICE_PROMPT });
+      28 |   for (const [label, count] of Object.entries(expected.choice)) {
+    > 29 |     await expect(choice.getByRole("img", { name: `${label}: ${count} responses` })).toBeVisible();
+         |                                                                                     ^
+      30 |   }
+      31 | }
+      32 |
+        at expectSummary (<repo>\e2e\journey.spec.ts:29:85)
+        at <repo>\e2e\journey.spec.ts:160:5
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+
+=== Mutant: empty-state text removed from the summary page (file: client/src/pages/owner/SurveySummaryPage.tsx); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (7.3s)
+  x  2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (6.4s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: getByText('No responses yet')
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByText('No responses yet')
+      58 |   await page.getByRole("link", { name: "View summary" }).click();
+      59 |   await expect(page).toHaveURL(new RegExp(`/owner/surveys/${surveyId}/summary$`));
+    > 60 |   await expect(page.getByText("No responses yet")).toBeVisible();
+         |                                                    ^
+      61 |   await expect(page.getByLabel("Response count: 0")).toBeVisible();
+      62 |   await logout(page);
+      63 |
+        at <repo>\e2e\journey.spec.ts:60:52
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2) journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: getByText('No responses yet')
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByText('No responses yet')
+      150 |     await page.goto(`/owner/surveys/${surveyId}/summary`);
+      151 |     await expect(page.getByRole("heading", { name: "Survey summary" })).toBeVisible();
+    > 152 |     await expect(page.getByText("No responses yet")).toBeVisible();
+          |                                                      ^
+      153 |     await expect(page.getByLabel("Response count: 0")).toBeVisible();
+      154 |     await expect(page.locator("article").filter({ hasText: RATING_PROMPT }).getByText("Average:")).toContainText("—");
+      155 |
+        at <repo>\e2e\journey.spec.ts:152:54
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-38-the-owner--570b8-erages-from-two-respondents\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  2 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents 
+
+=== Mutant: respondent name rendered on the summary page (file: client/src/pages/owner/SurveySummaryPage.tsx); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (4.7s)
+  ok 2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (2.0s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: expect(received).not.toMatch(expected)
+    Expected pattern: not /student1@classpulse\.test|Student 1/
+    Received string:      "Survey summary
+    
+    Responses (Student 1): 1
+    
+    How was the pace of the lectures?
+    
+    Average: 4.00
+    
+    Rating 1
+    0
+    Rating 2
+    0
+    Rating 3
+    0
+    Rating 4
+    1
+    Rating 5
+    0
+    Would you recommend this course?
+    Yes
+    1
+    No
+    0"
+       95 |   await expect(page.getByText("No responses yet")).toHaveCount(0);
+       96 |   const pageText = await page.locator("main").innerText();
+    >  97 |   expect(pageText).not.toMatch(/student1@classpulse\.test|Student 1/);
+          |                        ^
+       98 | });
+       99 |
+      100 | // ---- TEST-38: the owner summary page (AC-34). The survey and the answers are set up through the API; the page is the UI under test.
+        at <repo>\e2e\journey.spec.ts:97:24
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  1 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+  1 passed (14.2s)
+
+=== Mutant: Submitted badge removed from the student list (file: client/src/pages/respondent/SurveyListPage.tsx); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (8.1s)
+  ok 2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (1.6s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: getByRole('listitem').filter({ hasText: 'Lecture feedback W10 1794067150657' }).getByText('Submitted', { exact: true })
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByRole('listitem').filter({ hasText: 'Lecture feedback W10 1794067150657' }).getByText('Submitted', { exact: true })
+      81 |   await expect(page.locator("time")).toBeVisible();
+      82 |   await page.getByRole("link", { name: "Back to surveys" }).first().click();
+    > 83 |   await expect(page.getByRole("listitem").filter({ hasText: title }).getByText("Submitted", { exact: true })).toBeVisible();
+         |                                                                                                               ^
+      84 |   await logout(page);
+      85 |
+      86 |   // 4. The owner reads the aggregate; a reload shows the same stored numbers; no respondent identity is on the page.
+        at <repo>\e2e\journey.spec.ts:83:111
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  1 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+  1 passed (17.3s)
+
+=== Mutant: identified notice removed from the answer page (file: client/src/pages/respondent/AnswerSurveyPage.tsx); exit 1
+Running 2 tests using 1 worker
+  x  1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (7.6s)
+  ok 2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (1.4s)
+  1) journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+    Locator: getByText('Identified survey — your name is stored with your answers', { exact: true })
+    Expected: visible
+    Received: <element(s) not found>
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByText('Identified survey — your name is stored with your answers', { exact: true })
+      71 |   await listRow.getByRole("link", { name: title }).click();
+      72 |   await expect(page).toHaveURL(new RegExp(`/surveys/${surveyId}$`));
+    > 73 |   await expect(page.getByText("Identified survey — your name is stored with your answers", { exact: true })).toBeVisible();
+         |                                                                                                              ^
+      74 |   const ratingFour = page.getByLabel("Rating 4 of 5");
+      75 |   await ratingFour.locator("xpath=..").click();
+      76 |   await expect(ratingFour).toBeChecked();
+        at <repo>\e2e\journey.spec.ts:73:110
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    Usage:
+        npx playwright show-trace test-results\journey-TEST-40-full-Sprin-33260-e-owner-reads-the-aggregate\trace.zip
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+  1 failed
+    journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate 
+  1 passed (15.5s)
+
+=== Control: restored tree
+Running 2 tests using 1 worker
+  ok 1 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (3.6s)
+  ok 2 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (1.1s)
+  2 passed (9.8s)
