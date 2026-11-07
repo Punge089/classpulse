@@ -79,7 +79,7 @@ No schema change: uses `User` and `Session` from SR-01. Logging in creates one n
 | AC-03 | `GET /api/auth/me` with a valid cookie returns the current user; without a cookie → 401 `UNAUTHENTICATED` |
 | AC-04 | After logout the **same cookie value, replayed by hand**, gets 401 on `/api/auth/me`; the `Session` row no longer exists; the logout response clears the cookie |
 | AC-05 | A session whose `expiresAt` is in the past → 401 |
-| AC-06 | The stored `passwordHash` differs from the plaintext and verifies; a wrong password does not verify |
+| AC-06 | The stored `passwordHash` differs from the plaintext and verifies; a wrong password does not verify; and neither a password nor a session token appears in anything the server writes to its console during a successful login, a failed login, a malformed login, `/me` and logout (NFR-01) |
 | AC-07 | Every route in `PROTECTED_ROUTES` without a cookie → 401 with a body that contains only `error` |
 | AC-08 | UI: bad credentials show the error alert; a good login shows `fullName · ROLE` in the navbar and lands on `/owner` for an owner and on `/surveys` for a respondent; Logout returns to `/login`; a reload keeps the identity |
 | AC-09 | A login request with a missing or non-string `email` or `password`, or a non-JSON body → 400 `VALIDATION_ERROR` (with a `details` entry per bad field when the body is JSON); no cookie is set and no `Session` row is created |
@@ -103,7 +103,9 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 
 | TEST-56 | AC-01 | API/DB | seeded student1; the process runs once with `NODE_ENV=production` and once with `NODE_ENV=test` (restored afterwards) | POST login, then POST logout with the saved cookie in production; POST login in test | in production the login `Set-Cookie` and the logout `Set-Cookie` both contain the `Secure` attribute; with `NODE_ENV=test` the login cookie has no `Secure` attribute | `server/tests/api/auth.test.ts` |
 
-`TEST-55` and `TEST-56` are the next free IDs after SR-01's TEST-50…54 (TEST-10…21 belong to F-03), so F-01's AC-09 and AC-01 (Secure flag) tests are numbered out of sequence on purpose.
+| TEST-57 | AC-06 | API/DB | `console.log`, `info`, `warn`, `error` and `debug` are spied on; seeded student1; a wrong password and an unknown email, both made up for the test | POST login (correct), POST login with the wrong password, POST login for the unknown email, POST login with a raw non-JSON body, GET `/api/auth/me` and POST logout with the session cookie | everything the server wrote to the console during those requests contains none of: the seed password, the wrong password, the unknown-email password, the session token (cookie value) | `server/tests/api/auth.test.ts` |
+
+`TEST-55`, `TEST-56` and `TEST-57` are the next free IDs after SR-01's TEST-50…54 (TEST-10…21 belong to F-03), so F-01's AC-09, AC-01 (Secure flag) and AC-06 (logs) tests are numbered out of sequence on purpose. The server writes only through `console` (no other logger), which is what TEST-57 watches; if a logger is added later the test must watch it too.
 
 `PROTECTED_ROUTES` starts with `GET /api/auth/me` and `POST /api/auth/logout`; I-07, I-08 and I-09 append their routes.
 
@@ -125,3 +127,4 @@ Fixture users are those of plan §2.4; `loginAs(app, email)` returns a Supertest
 | v1.0 | 2026-11-06 | Punge089 | Initial contract draft for pair review, written before tests and code. |
 | v1.1 | 2026-11-06 | Punge089 | After C3 review by book6349: added AC-09 and TEST-55 (400 on a malformed login body); TEST-04 now saves the cookie and replays it by hand, because a client agent drops the cleared cookie and could pass without the server rejecting the old session; TEST-09 now covers both roles' landing pages. |
 | v1.2 | 2026-11-06 | Punge089 | After the review of PR #17 by book6349: the Secure rule already stated in §3 (NODE_ENV=production) had no test, so AC-01 now names it and TEST-56 asserts it for the login cookie and the logout cookie, in production and not in test. No behaviour change. |
+| v1.3 | 2026-11-06 | Punge089 | After the review of PR #12 (SRS) by book6349: NFR-01 promises that no plaintext password appears in logs, but TEST-06 only checked the stored hash. AC-06 now includes the log promise and TEST-57 checks it by watching the console during login, failed login, malformed login, `/me` and logout. No behaviour change. |

@@ -9,7 +9,19 @@ export const PROTECTED_ROUTES: Array<[Method, string]> = [
   ["get", "/api/auth/me"],
   ["post", "/api/auth/logout"],
   // F-05 owner summary route (I-09)
-  ["get", "/api/owner/surveys/1/summary"]
+  ["get", "/api/owner/surveys/1/summary"],
+  // F-04 respondent routes (I-08)
+  ["get", "/api/surveys"],
+  ["get", "/api/surveys/1"],
+  ["post", "/api/surveys/1/responses"],
+  ["get", "/api/responses/1"],
+  // F-03 owner routes (I-07)
+  ["get", "/api/owner/courses"],
+  ["get", "/api/owner/surveys"],
+  ["post", "/api/owner/surveys"],
+  ["get", "/api/owner/surveys/1"],
+  ["post", "/api/owner/surveys/1/publish"],
+  ["post", "/api/owner/surveys/1/close"]
 ];
 
 const app = createApp();

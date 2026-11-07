@@ -8,20 +8,17 @@ import { RequireRole } from "./auth/RequireRole";
 import { NavBar } from "./components/NavBar";
 import { PulseLine } from "./components/pulse/PulseLine";
 import { LoginPage } from "./pages/LoginPage";
+import { NewSurveyPage } from "./pages/owner/NewSurveyPage";
+import { OwnerSurveysPage } from "./pages/owner/OwnerSurveysPage";
+import { SurveyDetailPage } from "./pages/owner/SurveyDetailPage";
+import { AnswerSurveyPage } from "./pages/respondent/AnswerSurveyPage";
+import { ConfirmationPage } from "./pages/respondent/ConfirmationPage";
+import { SurveyListPage } from "./pages/respondent/SurveyListPage";
 
-// Placeholder screens for the feature Issues (I-07 owner pages, I-08 respondent pages, I-09 summary).
+// Placeholder screens for the feature Issues still to come (I-08 respondent pages, I-09 summary).
 const ownerPages = [
-  ["/owner", "Your surveys"],
-  ["/owner/surveys/new", "New survey"],
-  ["/owner/surveys/:id", "Survey details"],
   ["/owner/surveys/:id/summary", "Survey summary"]
 ];
-const respondentPages = [
-  ["/surveys", "Available surveys"],
-  ["/surveys/:id", "Answer survey"],
-  ["/responses/:id", "Response submitted"]
-];
-
 function ShellPage({ title }: { title: string }) {
   return (
     <>
@@ -50,8 +47,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/owner" element={<RequireRole role="OWNER"><OwnerSurveysPage /></RequireRole>} />
+          <Route path="/owner/surveys/new" element={<RequireRole role="OWNER"><NewSurveyPage /></RequireRole>} />
+          <Route path="/owner/surveys/:id" element={<RequireRole role="OWNER"><SurveyDetailPage /></RequireRole>} />
           {guarded("OWNER", ownerPages)}
-          {guarded("RESPONDENT", respondentPages)}
+          <Route path="/surveys" element={<RequireRole role="RESPONDENT"><SurveyListPage /></RequireRole>} />
+          <Route path="/surveys/:id" element={<RequireRole role="RESPONDENT"><AnswerSurveyPage /></RequireRole>} />
+          <Route path="/responses/:id" element={<RequireRole role="RESPONDENT"><ConfirmationPage /></RequireRole>} />
           <Route path="*" element={<ShellPage title="Page not found" />} />
         </Routes>
       </main>
