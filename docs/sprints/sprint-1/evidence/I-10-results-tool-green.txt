@@ -14,6 +14,6 @@ test_vitest_suite_failure_with_no_assertion_results (tools.test_test_results.Exi
 test_failing_runner_with_a_stale_green_report_still_fails (tools.test_test_results.RunPath.test_failing_runner_with_a_stale_green_report_still_fails) ... ok
 
 ----------------------------------------------------------------------
-Ran 14 tests in 4.452s
+Ran 14 tests in 4.894s
 
 OK

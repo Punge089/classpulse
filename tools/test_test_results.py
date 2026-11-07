@@ -4,7 +4,8 @@
 
 Each case builds a throw-away repository layout in a temporary directory (a copy of the generator, one small
 contract, and fake Vitest / Playwright reports), runs the generator on it with --skip-run and reads its exit status
-and the table it wrote. The two reporter formats are copied from real runs of this repository.
+and the table it wrote. The fields the fixtures use were checked against the real reports of this repository (Vitest 2 and Playwright 1.48.2), including
+the report of a suite that cannot be imported (status "failed", empty assertionResults, success false).
 """
 import json
 import os
