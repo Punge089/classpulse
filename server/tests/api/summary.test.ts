@@ -38,14 +38,37 @@ async function insertResponse(
 }
 
 describe("F-05 owner survey summary", () => {
-  test("TEST-34 owner gets aggregates for ratings [4,4,5] and ordered choices", async () => {
+  test("TEST-34 scopes response counts and excludes omitted optional ratings from the average", async () => {
     const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1 });
     await prisma.enrollment.create({ data: { courseId: f.cpe334.id, userId: f.student3.id } });
     const questionIds: [number, number] = [survey.questions[0].id, survey.questions[1].id];
+    await prisma.question.update({ where: { id: questionIds[0] }, data: { required: false } });
     const yesId = survey.questions[1].options[0].id;
     await insertResponse(survey.id, f.student1.id, questionIds, 4, yesId);
     await insertResponse(survey.id, f.student2.id, questionIds, 4, yesId);
     await insertResponse(survey.id, f.student3.id, questionIds, 5, yesId);
+
+    const student4 = await prisma.user.create({
+      data: {
+        email: "student4@classpulse.test",
+        fullName: "Student 4",
+        role: "RESPONDENT",
+        passwordHash: "unused-test-hash"
+      }
+    });
+    await prisma.enrollment.create({ data: { courseId: f.cpe334.id, userId: student4.id } });
+    await prisma.response.create({
+      data: {
+        surveyId: survey.id,
+        respondentId: student4.id,
+        answers: { create: [{ questionId: questionIds[1], optionId: yesId }] }
+      }
+    });
+
+    const secondSurvey = await makeSurvey({ course: f.cpe334, owner: f.owner1 });
+    const secondQuestionIds: [number, number] = [secondSurvey.questions[0].id, secondSurvey.questions[1].id];
+    await insertResponse(secondSurvey.id, f.student1.id, secondQuestionIds, 3, secondSurvey.questions[1].options[0].id);
+    await insertResponse(secondSurvey.id, f.student2.id, secondQuestionIds, 3, secondSurvey.questions[1].options[0].id);
 
     const owner = await loginAs(app, "ann.lee@classpulse.test");
     const res = await owner.get("/api/owner/surveys/" + survey.id + "/summary");
@@ -53,7 +76,7 @@ describe("F-05 owner survey summary", () => {
     expect(res.body.summary).toMatchObject({
       surveyId: survey.id,
       status: "PUBLISHED",
-      responseCount: 3,
+      responseCount: 4,
       questions: [
         {
           questionId: questionIds[0],
@@ -67,14 +90,17 @@ describe("F-05 owner survey summary", () => {
           type: "SINGLE_CHOICE",
           choice: {
             options: [
-              { optionId: yesId, label: "Yes", count: 3 },
+              { optionId: yesId, label: "Yes", count: 4 },
               { optionId: survey.questions[1].options[1].id, label: "No", count: 0 }
             ]
           }
         }
       ]
     });
-    expect(await prisma.response.count({ where: { surveyId: survey.id } })).toBe(3);
+    expect(await prisma.response.count({ where: { surveyId: survey.id } })).toBe(4);
+    expect(await prisma.response.count({ where: { surveyId: secondSurvey.id } })).toBe(2);
+    const secondSummary = await owner.get("/api/owner/surveys/" + secondSurvey.id + "/summary");
+    expect(secondSummary.body.summary.responseCount).toBe(2);
   });
 
   test("TEST-36 empty summary, ownership, role and invalid-id checks", async () => {

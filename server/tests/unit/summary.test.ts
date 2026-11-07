@@ -58,15 +58,17 @@ describe("TEST-33 round-half-up rating averages (AC-30)", () => {
   });
 
   test.each([
-    [133, 67, 4.335, 4.34],
-    [131, 69, 4.345, 4.35]
-  ])("%i ratings of 4 plus %i ratings of 5 round %f half-up to %f", (count4, count5, _mean, expected) => {
+    [133, 67, 4, 5, 4.335, 4.34],
+    [131, 69, 4, 5, 4.345, 4.35],
+    [39, 1, 1, 2, 1.025, 1.03],
+    [31, 9, 4, 5, 4.225, 4.23]
+  ])("%i ratings of %i plus %i ratings of %i round %f half-up to %f", (countLow, countHigh, lowValue, highValue, _mean, expected) => {
     const question = ratingQuestion(10);
     const answers = [
-      ...Array.from({ length: count4 }, (_value, index) => ratingAnswer(10, 4, index + 1)),
-      ...Array.from({ length: count5 }, (_value, index) => ratingAnswer(10, 5, count4 + index + 1))
+      ...Array.from({ length: countLow }, (_value, index) => ratingAnswer(10, lowValue, index + 1)),
+      ...Array.from({ length: countHigh }, (_value, index) => ratingAnswer(10, highValue, countLow + index + 1))
     ];
-    const result = summarize([question], answers, 200);
+    const result = summarize([question], answers, answers.length);
     expect(result.questions[0]).toMatchObject({ rating: { average: expected } });
   });
 });
