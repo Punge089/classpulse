@@ -1,7 +1,7 @@
 # F-05 — Aggregate survey summary
 
 **Owner:** Student B (book6349) · **Reviewer:** Student A (Punge089) · **Issue:** #9
-**Version:** 1.1 · **Date:** 6 Nov 2026
+**Version:** 1.2 · **Date:** 7 Nov 2026
 **Requirement:** FR-08. Depends on SR-01 and F-01.
 
 ## 1. Feature
@@ -76,8 +76,8 @@ No schema change. Read Survey, Question, QuestionOption, Response, and Answer fr
 
 | Test ID | AC | Level | Precondition & input | Action | Expected result | Planned file |
 |---|---|---|---|---|---|---|
-| TEST-33 | AC-30 | Unit | One RATING question with answers [4,4,5]; two boundary fixtures each contain 200 ratings: 133 ratings of 4 plus 67 of 5 (867/200 = 4.335), and 131 ratings of 4 plus 69 of 5 (869/200 = 4.345) | Call summarize separately with each literal 200-answer fixture | [4,4,5] averages 4.33 with its exact distribution; 4.335 rounds half-up to 4.34 and 4.345 rounds half-up to 4.35 | server/tests/unit/summary.test.ts |
-| TEST-34 | AC-30 | API-DB | Published survey with one rating and one choice question; three responses contain ratings [4,4,5] and three Yes choices | GET summary as owner1 | 200 with expected average/distribution, response count 3, Yes count 3, No count 0, and stable option order | server/tests/api/summary.test.ts |
+| TEST-33 | AC-30 | Unit | One RATING question with answers [4,4,5]; two 200-answer boundaries (133 fours + 67 fives = 867/200 = 4.335; 131 fours + 69 fives = 869/200 = 4.345); two discriminating 40-answer boundaries (39 ones + 1 two = 41/40 = 1.025; 31 fours + 9 fives = 169/40 = 4.225) | Call summarize separately with each literal answer fixture | [4,4,5] averages 4.33 with its exact distribution; boundaries round half-up to 4.34, 4.35, 1.03 and 4.23 respectively, including cases that distinguish decimal half-up from binary-float Math.round | server/tests/unit/summary.test.ts |
+| TEST-34 | AC-30, AC-31 | API-DB | First published survey has an optional rating and a choice question, three responses with ratings [4,4,5], and a fourth response with a choice answer but no rating; a second survey has two responses | GET summary for the first survey as owner1 | 200 with responseCount 4 scoped to the first survey; rating average 4.33 and rating distribution based on its three rating answers only; choice count includes all four first-survey responses; second-survey responses do not change the first count | server/tests/api/summary.test.ts |
 | TEST-35 | AC-31 | Unit | One rating and one choice question with no answers and response count 0 | Call summarize | responseCount 0, rating average null, all rating/choice buckets zero | server/tests/unit/summary.test.ts |
 | TEST-36 | AC-31, AC-32 | API-DB | An empty survey with a RATING and SINGLE_CHOICE question belongs to owner1; owner2 and student1 are authenticated separately | GET summary as owner1, owner2, and student1; GET a missing numeric survey ID and a non-numeric survey ID as owner1 | Owner1 receives 200 with responseCount 0, rating average null, all rating buckets zero, and all option counts zero; owner2 receives 404 `NOT_FOUND`; student1 receives 403 `FORBIDDEN`; missing and non-numeric IDs both return 404 | server/tests/api/summary.test.ts |
 | TEST-37 | AC-33 | API-DB | Summary fixture includes seeded respondent identities | Serialize the owner1 summary response and search identity keys and seeded emails/names | No respondentId, email, fullName, seeded respondent identifier, or per-response row appears | server/tests/api/summary.test.ts |
@@ -97,3 +97,4 @@ No schema change. Read Survey, Question, QuestionOption, Response, and Answer fr
 |---|---|---|---|
 | v1.0 | 6 Nov 2026 | Student B (book6349) | Initial contract based on plan I-09 and shared API/data contracts. |
 | v1.1 | 6 Nov 2026 | Student B (book6349) | Incorporated C3: added literal 200-rating half-up fixtures, API coverage for empty summaries and invalid IDs, protected-route registration, and clarified that each average uses only submitted rating answers for its question. |
+| v1.2 | 7 Nov 2026 | Student B (book6349) | Incorporated C7 review feedback: added half-up fixtures that distinguish binary-float rounding, verified per-survey response-count scoping, and tested that an omitted optional rating answer is excluded from its average denominator. |
