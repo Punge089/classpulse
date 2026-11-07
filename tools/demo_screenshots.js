@@ -9,7 +9,8 @@
    The log has two kinds of lines: the API calls this script makes itself (method, path, status and the response body,
    except the body of a login, which is not written) and, marked "browser", the method, path and status of every /api
    request the browser pages make while the demos run (login, create, publish, list, submit, logout). Request bodies,
-   cookies and passwords are never written.
+   cookies and passwords are never written. The script's own calls all go through one helper, so none is missing; the polling
+   of /api/health while the servers start is the only request left out.
    The development database must be seeded (README). Surveys created by a run stay in the development database.
    The password is read from SEED_PASSWORD or server/.env and is never written to any output. */
 const { spawn, execSync } = require("node:child_process");
@@ -186,7 +187,7 @@ async function main() {
     await student.getByRole("button", { name: "Submit", exact: true }).click();
     await student.getByRole("alert").getByText("You have already submitted this survey").waitFor();
     await shot(student, "demo2-01-student-resubmit-already-responded.png");
-    const detail = await (await studentApi.fetch(`${API}/api/surveys/${surveyId}`)).json();
+    const detail = await (await call("DEMO-2", studentApi, "GET", `/api/surveys/${surveyId}`)).json();
     const ratingQ = detail.survey.questions.find(q => q.type === "RATING");
     const choiceQ = detail.survey.questions.find(q => q.type === "SINGLE_CHOICE");
     await call("DEMO-2", studentApi, "POST", `/api/surveys/${surveyId}/responses`, {
@@ -194,7 +195,7 @@ async function main() {
     });
     const ownerApi = await request.newContext({ baseURL: API });
     await call("DEMO-2", ownerApi, "POST", "/api/auth/login", { email: "ann.lee@classpulse.test", password });
-    const owned = await (await ownerApi.fetch(`${API}/api/owner/surveys`)).json();
+    const owned = await (await call("DEMO-2", ownerApi, "GET", "/api/owner/surveys")).json();
     const closed = owned.surveys.find(s => s.title === "Week 1 pulse");
     log("DEMO-2", `seed survey "Week 1 pulse" is id ${closed.id}, status ${closed.status}`);
     await student.goto(`${BASE}/surveys/${closed.id}`);
