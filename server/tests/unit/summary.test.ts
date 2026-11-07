@@ -58,11 +58,11 @@ describe("TEST-33 round-half-up rating averages (AC-30)", () => {
   });
 
   test.each([
-    [133, 67, 4, 5, 4.335, 4.34],
-    [131, 69, 4, 5, 4.345, 4.35],
+    [133, 4, 67, 5, 4.335, 4.34],
+    [131, 4, 69, 5, 4.345, 4.35],
     [39, 1, 1, 2, 1.025, 1.03],
-    [31, 9, 4, 5, 4.225, 4.23]
-  ])("%i ratings of %i plus %i ratings of %i round %f half-up to %f", (countLow, countHigh, lowValue, highValue, _mean, expected) => {
+    [31, 4, 9, 5, 4.225, 4.23]
+  ])("%i ratings of %i plus %i ratings of %i round %f half-up to %f", (countLow, lowValue, countHigh, highValue, _mean, expected) => {
     const question = ratingQuestion(10);
     const answers = [
       ...Array.from({ length: countLow }, (_value, index) => ratingAnswer(10, lowValue, index + 1)),
