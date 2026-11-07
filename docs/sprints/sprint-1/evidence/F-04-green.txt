@@ -126,3 +126,120 @@ TEST-25 focused repeat 5/5
    Start at  00:23:10
    Duration  2.26s (transform 218ms, setup 44ms, collect 834ms, tests 843ms, environment 0ms, prepare 173ms)
 
+
+=== Final commit 10cb8d7: npm --prefix server run test ===
+
+> classpulse-server@0.1.0 test
+> vitest run
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/server
+
+ ✓ tests/api/responses.test.ts (10 tests) 6712ms
+   ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 851ms
+   ✓ F-04 respondent survey access > TEST-39 detail is visible only to an enrolled respondent for a published survey 839ms
+   ✓ F-04 response submission > TEST-23 a valid response stores one answer per question and returns the saved answer shape 482ms
+   ✓ F-04 response submission > TEST-24 a sequential duplicate submission returns ALREADY_RESPONDED and stores one response 536ms
+   ✓ F-04 response submission > TEST-25 simultaneous submissions store exactly one response 586ms
+   ✓ F-04 response submission > TEST-26 closed and draft surveys reject before answer validation; unknown survey is 404 630ms
+   ✓ F-04 response submission > TEST-27 a non-enrolled student gets NOT_ELIGIBLE before DRAFT status 464ms
+   ✓ F-04 response submission > TEST-29 rating boundaries accept 1 and 5 and reject 0, 6, decimals and strings 757ms
+   ✓ F-04 response submission > TEST-30 respondents cannot read another student's response or edit/delete a response 946ms
+   ✓ F-04 response submission > TEST-31 an owner cannot submit or read a respondent response 605ms
+ ✓ tests/api/ownerSurveys.test.ts (10 tests) 4788ms
+   ✓ F-03 create a survey > TEST-10 an owner creates a DRAFT survey with ordered questions and options 531ms
+   ✓ F-03 create a survey > TEST-12 invalid bodies are 400 VALIDATION_ERROR with details and store nothing 327ms
+   ✓ F-03 create a survey > TEST-13 course ownership (404) is checked before field validation (400) 307ms
+   ✓ F-03 publish and close > TEST-17 closing a PUBLISHED survey makes it CLOSED with closedAt 340ms
+   ✓ F-03 access control > TEST-18 a respondent gets 403 FORBIDDEN on every owner route and nothing is created 903ms
+   ✓ F-03 access control > TEST-19 another owner gets 404 reading, publishing or closing my survey and nothing changes 674ms
+   ✓ F-03 lists > TEST-20 the survey list holds only the caller's surveys with their response counts 643ms
+   ✓ F-03 lists > TEST-58 the course list holds only the caller's courses 486ms
+ ✓ tests/api/auth.test.ts (8 tests) 3487ms
+   ✓ F-01 login, session and current user > TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie 424ms
+   ✓ F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable 418ms
+   ✓ F-01 login, session and current user > TEST-04 logout deletes the session and the replayed cookie is rejected 325ms
+   ✓ F-01 login, session and current user > TEST-05 a session whose expiresAt has passed is rejected 311ms
+   ✓ F-01 login, session and current user > TEST-55 a malformed login body is a 400 with no cookie and no session 360ms
+   ✓ F-01 login, session and current user > TEST-56 the session cookie is Secure in production (login and logout) and not in test 615ms
+   ✓ F-01 login, session and current user > TEST-57 the server never writes a password or a session token to its console 766ms
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 13ms
+ ✓ tests/db/constraints.test.ts (3 tests) 1722ms
+   ✓ TEST-50 rejects a second response for the same survey and respondent 403ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 1103ms
+ ✓ tests/unit/responseValidation.test.ts (13 tests) 9ms
+ ✓ tests/api/health.test.ts (1 test) 185ms
+ ✓ tests/unit/password.test.ts (1 test) 541ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 520ms
+ ✓ tests/api/unauthenticated.test.ts (12 tests) 107ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 9ms
+
+ Test Files  10 passed (10)
+      Tests  91 passed (91)
+   Start at  19:21:47
+   Duration  27.79s (transform 801ms, setup 258ms, collect 4.02s, tests 17.57s, environment 3ms, prepare 2.34s)
+
+
+=== Final commit 10cb8d7: npm --prefix server run build ===
+
+> classpulse-server@0.1.0 build
+> tsc -p tsconfig.json
+
+
+=== Final commit 10cb8d7: npm --prefix client run test ===
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 469ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 467ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  19:22:44
+   Duration  11.60s (transform 533ms, setup 647ms, collect 3.22s, tests 469ms, environment 6.12s, prepare 519ms)
+
+
+=== Final commit 10cb8d7: npm --prefix client run build ===
+
+> classpulse-client@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.0.15 building for production...
+transforming...
+✓ 45 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.69 kB │ gzip:  0.38 kB
+dist/assets/index-BU5Qbnca.css  233.83 kB │ gzip: 31.58 kB
+dist/assets/index-CuCSmP9R.js   187.27 kB │ gzip: 59.30 kB
+✓ built in 893ms
+
+=== Final commit 10cb8d7: npm run test:e2e ===
+
+> classpulse@0.1.0 test:e2e
+> playwright test
+
+[WebServer] (node:27208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:28940) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:31372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (2.1s)
+  ok 2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (2.3s)
+  ok 3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (1.7s)
+  ok 4 owner-survey.spec.ts:9:5 › TEST-21a an owner creates a two-question survey, sees it as Draft, publishes it and sees Published (3.5s)
+  ok 5 owner-survey.spec.ts:47:5 › TEST-21b an empty title shows a message under the title field and creates nothing (1.3s)
+  ok 6 respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation (8.2s)
+
+  6 passed (29.5s)
