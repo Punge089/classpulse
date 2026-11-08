@@ -28,4 +28,4 @@ All AI output was inspected before it was accepted; tests were run by the studen
 
 Student A: Claude Code drafted most of the text and code and ran the tests; A directed the work, approved every review verdict and every merge before it was posted (pull request #17 was merged by its own author, see `docs/contributions.md`), and relied on the tests, the other student's reviews and the mutation checks to find mistakes.
 
-Student B: AI-generated drafts and code can contain mistakes, so B checked owned code, test assertions, and evidence. Local machine/setup facts are only declared complete after both students verify them; Issue #1 remains open until its remaining checks are complete.
+Student B: AI-generated drafts and code can contain mistakes, so B checked owned code, test assertions, and evidence. Local machine/setup facts are only declared complete after both students verify them; Student B's checks on their laptop (database connections, and pushing then deleting a test branch) are recorded in the comments of Issue #1, which is now closed.
