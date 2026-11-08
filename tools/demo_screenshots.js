@@ -78,8 +78,8 @@ async function signIn(page, email, password) {
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Sign in" }).click();
 }
-async function shot(page, file) {
-  await page.screenshot({ path: path.join(OUT, file), fullPage: true });
+async function shot(page, file, fullPage = true) {
+  await page.screenshot({ path: path.join(OUT, file), fullPage });
   console.log("   screenshot " + file);
 }
 async function call(demo, ctx, method, url, data) {
@@ -144,7 +144,8 @@ async function main() {
     await student.waitForURL(/\/surveys$/);
     const row = student.getByRole("listitem").filter({ hasText: title });
     await row.waitFor();
-    await shot(student, "demo1-03-student-survey-list.png");
+    await row.scrollIntoViewIfNeeded(); // the list grows with every run, so show the part with the demo survey
+    await shot(student, "demo1-03-student-survey-list.png", false);
     await row.getByRole("link", { name: title }).click();
     await student.getByText("Identified survey — your name is stored with your answers", { exact: true }).waitFor();
     await student.getByLabel("Rating 4 of 5").locator("xpath=..").click();
@@ -216,7 +217,7 @@ async function main() {
     await shot(guest, "demo3-01-login-wrong-password.png");
     await signIn(guest, "student1@classpulse.test", password);
     await guest.waitForURL(/\/surveys$/);
-    await shot(guest, "demo3-02-login-success-navbar.png");
+    await shot(guest, "demo3-02-login-success-navbar.png", false);
     const cookie = (await guestCtx.cookies()).find(c => c.name === "cp_session");
     await guest.getByRole("button", { name: "Logout" }).click();
     await guest.waitForURL(/\/login$/);

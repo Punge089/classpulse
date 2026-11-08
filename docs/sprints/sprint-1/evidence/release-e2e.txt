@@ -1,0 +1,22 @@
+﻿Release run on tag v1.0.0-sprint1 (tag object 7f2a63d8a105b73206d76afd999e5d719241c937, commit d4bad74211729032697164f378638efb834a67b6)
+Command: npm run test:e2e
+Exit code: 0
+Node v24.19.0, Windows 11, PostgreSQL 18
+
+
+> classpulse@0.1.0 test:e2e
+> playwright test
+
+
+Running 8 tests using 1 worker
+
+  ok 1 auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login (8.3s)
+  ok 2 auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login (840ms)
+  ok 3 auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login (900ms)
+  ok 4 journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate (3.7s)
+  ok 5 journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents (1.3s)
+  ok 6 owner-survey.spec.ts:9:5 › TEST-21a an owner creates a two-question survey, sees it as Draft, publishes it and sees Published (1.9s)
+  ok 7 owner-survey.spec.ts:47:5 › TEST-21b an empty title shows a message under the title field and creates nothing (759ms)
+  ok 8 respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation (4.8s)
+
+  8 passed (27.8s)
