@@ -42,6 +42,11 @@ Branches `main` ← `sprint-1-staging` ← `feature/<issue>-<slug>`; release tag
 Survey states DRAFT → PUBLISHED → CLOSED only. One response per respondent per survey,
 enforced by a DB unique constraint. Owners see aggregates only in Sprint 1.
 
+## Visual identity (Claude's call, user: "anything that looks good")
+"Pulse": paper background, navy ink, one coral accent (`#C8431D`, chosen over a brighter coral for
+contrast), heartbeat-line motif, rating as five dots. Light theme on purpose, so screenshots stay
+readable when the report is printed. Tokens, components and contrast numbers are in docs/plan.md §2.9.
+
 ## Skills
 Design and plan used the brainstorming and writing-plans skills. All installed skills were
 scanned; the per-Issue choice (TDD, verification, UI/UX, dataviz, code/security review, docx/pdf,

@@ -159,7 +159,7 @@ Failure modes the spec implies but no AC names directly. Each has a test added t
 
 | ID | Requirement and measurable target | Verification | Sprint |
 |---|---|---|---|
-| NFR-01 | Passwords stored only as scrypt hashes; no plaintext anywhere in DB or logs. | DB/unit test TEST-06 | 1 |
+| NFR-01 | Passwords stored only as scrypt hashes; no plaintext anywhere in DB or logs. | DB/unit test TEST-06 (stored hash) and API test TEST-57 (no password or session token in the server's console output) | 1 |
 | NFR-02 | 100 % of protected endpoints return 401 with no private data when unauthenticated. | Table-driven API test TEST-07 | 1 |
 | NFR-03 | 100 % of protected operations in the role/permission matrix have at least one passing negative API test (wrong role and, where records are owned, wrong owner). | API tests TEST-18, 19, 30, 31, 36 + matrix-to-test check in `test-results.md` | 1 |
 | NFR-04 | Session expires after `SESSION_TTL_HOURS` (8 h); logout invalidates it server-side immediately. | API tests TEST-04, TEST-05 | 1 |
@@ -293,6 +293,45 @@ All paths under `/api`, JSON in/out. Check order on every protected route: **401
 Shared behaviour: navbar shows `fullName · role` + Logout; loading spinner while fetching;
 empty-state text on empty lists; `ApiClientError.message` in a Bootstrap alert; field
 `details` shown under the matching input; buttons disabled while a request is in flight.
+Every page uses the visual identity in §2.9 (no ad-hoc colours, no per-page styling).
+
+### 2.9 Visual identity — "Pulse"
+
+A calm paper-and-ink look with one coral accent and a heartbeat-line motif (the name = the pulse
+of the classroom). Bootstrap 5 stays as the layout base. Everything below is a CSS variable in
+`client/src/theme.css`, imported **after** Bootstrap, so no page hard-codes a colour.
+
+| Token | Value | Use | Contrast (measured) |
+|---|---|---|---|
+| `--cp-paper` | `#FAF7F2` | page background | — |
+| `--cp-card` | `#FFFFFF` | cards, forms | — |
+| `--cp-ink` | `#14213D` | body text, headings | 14.95 : 1 on paper |
+| `--cp-muted` | `#5B6478` | secondary text | 5.55 : 1 on paper |
+| `--cp-accent` | `#C8431D` | primary buttons, links, active rating dot | white on it 4.91 : 1; as text on paper 4.60 : 1 |
+| `--cp-accent-soft` | `#FBE3DA` | selected / hover tint | ink on it 13.01 : 1 |
+| `--cp-line` | `#E3DDD2` | borders, dividers | decorative only |
+| `--cp-ok` / `--cp-danger` | `#2F7D5B` / `#B3261E` | success and error alerts, status badges | 4.67 : 1 / 6.12 : 1 on paper |
+
+Do **not** use `#E4572E` (brighter coral): white text on it is only 3.68 : 1, which fails.
+
+- **Type:** headings Fraunces 600, body Inter 400/500 (Google Fonts `<link>` in `client/index.html`;
+  fallbacks `Georgia, serif` and `system-ui, sans-serif`, so offline and test runs still render).
+- **Shape:** 12 px radius on cards, 8 px on inputs and buttons, 1 px `--cp-line` borders, no heavy shadows.
+- **Two signature components** (in `client/src/components/pulse/`):
+  - `PulseLine`: a thin SVG heartbeat line, props `{ width?: number | string; animate?: boolean }`. Used
+    as the divider under page titles, and as the loading indicator (animated only when `animate` and
+    `prefers-reduced-motion` is not set).
+  - `RatingDots`: `{ value: number | null; onChange?: (n: 1|2|3|4|5) => void; readOnly?: boolean; name: string }`.
+    Five round buttons (min 40 px hit area, 44 px on touch), filled up to `value`. Real `<input type="radio">`
+    underneath so keyboard and screen readers work; `aria-label="Rating 1 of 5"` … `"Rating 5 of 5"`.
+    Used in the answer form (I-08), the confirmation page (I-08) and the summary (I-09, read-only).
+- **Summary charts (I-09):** one horizontal bar per option or rating value drawn as a thin coral line on a
+  `--cp-line` track, with the count and percentage as text next to it (never colour alone).
+- **Status badges:** DRAFT = muted outline, PUBLISHED = `--cp-ok` fill, CLOSED = ink outline.
+- **Layout:** one centred column, max width 760 px; at 375 px width no horizontal scroll (NFR-10 is checked
+  properly in Sprint 3, but do not break it now).
+- **Copy tone:** short and friendly ("Thanks — your response is in."), but identified surveys always show
+  "Identified survey — your name is stored with your answers".
 
 ### 2.8 Contract template — `docs/sprints/sprint-1/<ID>-<slug>.md`
 
@@ -388,10 +427,16 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 
 **Files:** Create `README.md` (title + "setup coming in I-05"), `docs/plan.md` (this file), `docs/design.md`, `docs/partner-guide.md`, `docs/comment-playbook.md`, `.github/pull_request_template.md`, `.gitignore` (node_modules, dist, .env, .env.test, test-results, playwright-report), `CLAUDE.md` + identical `AGENTS.md` (≤ 30 lines: "read docs/plan.md Global Constraints + §2 + your Issue; contract → red → green; never skip tests; never merge; AI drafts, humans post comments").
 
-- [ ] **Step 1 (human):** A creates GitHub repo `classpulse` (private is fine if TAs are added later; public is simplest), adds B as collaborator with write access.
-- [ ] **Step 2:** Commit the files above on `main`; create `sprint-1-staging` from `main`; push both.
-- [ ] **Step 3:** Create labels, milestone and project board from §3; create GitHub Issues I-01…I-11 from §4 (Claude can do this with `gh` after you approve), assign owners (both for pair Issues), add to board. Record the mapping `I-0x → #n` in a table at the top of this file.
-- [ ] **Step 4 (both laptops):** Install Node 22 + PostgreSQL 16; create DBs `classpulse` and `classpulse_test`; confirm `psql` connects. Each student sets `git config user.name/user.email` to the identity linked to their GitHub account.
+- [x] **Step 1 (human):** Public repo `Punge089/classpulse` created; `book6349` invited with write access (6 Nov).
+- [x] **Step 2:** Baseline commit `2fa7ae0` on `main`; `sprint-1-staging` created from it; both pushed.
+- [x] **Step 3:** Labels, milestone, board (projects/5) and Issues #1–#11 created; mapping in §3.
+- [ ] **Step 4 (both laptops):** Node 22 or newer (A has 24) + PostgreSQL 16 or newer (A has 18). Create the local dev role and both DBs with one command (asks for your own `postgres` password; `classpulse`/`classpulse` is a local-only dev credential, the same on both laptops and in `server/.env.example`):
+  ```bash
+  psql -h localhost -U postgres -c "CREATE ROLE classpulse LOGIN PASSWORD 'classpulse' CREATEDB;" -c "CREATE DATABASE classpulse OWNER classpulse;" -c "CREATE DATABASE classpulse_test OWNER classpulse;"
+  ```
+  Verify: `psql "postgresql://classpulse:classpulse@localhost:5432/classpulse_test" -c "select 1"`. I-05 uses
+  `DATABASE_URL="postgresql://classpulse:classpulse@localhost:5432/classpulse?schema=public"` (`.env`) and `…/classpulse_test…` (`.env.test`).
+  Each student sets `git config user.name/user.email` to the identity linked to their GitHub account.
 - [ ] **Step 5:** Verify: `gh issue list --state all` shows 11 Issues; board shows them in Backlog; both students can push a test branch (delete it after).
 
 ---
@@ -456,10 +501,10 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 **Owner:** B · **Reviewer:** A · **Branch:** `feature/<n>-foundation` · **Depends on:** I-03 data model (may start from §2.4 before I-03 merges) · **Checkpoint:** merged Sat 7 Nov 12:00
 
 **Files:**
-- Create: `server/` (package.json scripts as TokTickIT: `dev`, `build`, `start`, `prisma:migrate`, `prisma:seed`, `test`), `server/src/{index.ts,app.ts,prisma.ts,lib/errors.ts,lib/params.ts,lib/password.ts}`, `server/prisma/{schema.prisma,seed.ts}`, `server/tests/{setup.ts,helpers/fixture.ts}`, `server/tests/db/constraints.test.ts`, `server/tests/api/health.test.ts`, `server/.env.example`, `client/` (Vite React TS + Bootstrap + react-router, `src/api.ts`, placeholder pages per §2.7, `vite.config.ts` proxy `/api → http://localhost:3000`), root `package.json` + `playwright.config.ts` (TokTickIT config, `webServer` for both apps, 1 worker).
+- Create: `server/` (package.json scripts as TokTickIT: `dev`, `build`, `start`, `prisma:migrate`, `prisma:seed`, `test`), `server/src/{index.ts,app.ts,prisma.ts,lib/errors.ts,lib/params.ts,lib/password.ts}`, `server/prisma/{schema.prisma,seed.ts}`, `server/tests/{setup.ts,helpers/fixture.ts}`, `server/tests/db/constraints.test.ts`, `server/tests/api/health.test.ts`, `server/.env.example`, `client/` (Vite React TS + Bootstrap + react-router, `src/api.ts`, `src/theme.css` + `src/components/pulse/{PulseLine,RatingDots}.tsx` per §2.9, placeholder pages per §2.7, `vite.config.ts` proxy `/api → http://localhost:3000`), root `package.json` + `playwright.config.ts` (TokTickIT config, `webServer` for both apps, 1 worker).
 - Create: `docs/sprints/sprint-1/SR-01-foundation.md` (contract template §2.8; UI: "shell only").
 
-- [ ] **Step 1:** Commit contract `SR-01-foundation.md` with AC-50 "DB rejects a second Response for the same (survey, respondent)", AC-51 "DB rejects rating outside 1–5", AC-52 "non-numeric or unknown ids return 404 error shape, malformed JSON returns 400 error shape, never 500", AC-53 "seed is repeatable and creates the §2.4 fixture". Commit `docs(SR-01): contract v1.0`.
+- [ ] **Step 1:** Commit contract `SR-01-foundation.md` with AC-50 "DB rejects a second Response for the same (survey, respondent)", AC-51 "DB rejects rating outside 1–5", AC-52 "non-numeric or unknown ids return 404 error shape, malformed JSON returns 400 error shape, never 500", AC-53 "seed is repeatable and creates the §2.4 fixture", AC-54 "`RatingDots` renders five radios, selecting dot n reports n, `readOnly` ignores input, arrow keys change the value (§2.9)". Commit `docs(SR-01): contract v1.0`.
 - [ ] **Step 2: Write failing tests**
 
 ```ts
@@ -484,8 +529,9 @@ test("TEST-53 seed twice yields exactly 5 users and 2 courses", async () => {});
 ```
 - [ ] **Step 3:** Run `cd server && npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/SR-01-red.txt` → expected FAIL (no schema/app). Commit `test(SR-01): failing foundation tests (red)`.
 - [ ] **Step 4:** Implement schema (§2.4), `prisma migrate dev --name sprint1_init`, hand-add the CHECK to the generated `migration.sql`, `seed.ts` (upsert by email/code, `hashPassword(process.env.SEED_PASSWORD)`), `createApp`, `errorHandler` (JSON parse error → 400 `VALIDATION_ERROR`), `parseId`, fixture helpers, client shell + `apiFetch` (`credentials: "include"`, throws `ApiClientError`).
-- [ ] **Step 5:** Run `npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/SR-01-green.txt` → PASS 4/4; `npm run build` in `server` and `client` succeed; `npm run dev` in both → browser shows shell at :5173, `/api/health` via proxy returns ok.
-- [ ] **Step 6:** README "Local setup" section: prerequisites, `cp .env.example .env` (+ `.env.test`), migrate, seed, run, test commands. Commit `feat(SR-01): skeleton, schema, seed, harness (green)`.
+- [ ] **Step 5:** Run `npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/SR-01-green.txt` → PASS 4/4 server tests plus the client `TEST-54` tests (`cd client && npx vitest run`); `npm run build` in `server` and `client` succeed; `npm run dev` in both → browser shows shell at :5173, `/api/health` via proxy returns ok.
+- [ ] **Step 5b: Visual identity** (use the `frontend-design` and `ui-ux-pro-max` skills, but §2.9 is the decision, so do not invent a new look). Add `theme.css` with the §2.9 tokens overriding Bootstrap (`--bs-body-bg`, `--bs-body-color`, `--bs-primary` …), the font `<link>`, and `PulseLine` + `RatingDots`. Add client component tests `TEST-54 RatingDots` (renders 5 radios; clicking dot 4 calls `onChange(4)`; `readOnly` ignores clicks; arrow keys move the value) in `client/tests/RatingDots.test.tsx`; write them failing first like every other test (red output → `SR-01-red.txt`), then make them pass. Check by eye at 1280 px and 375 px that the shell has no horizontal scroll, and save two screenshots to `docs/sprints/sprint-1/evidence/theme-*.png`.
+- [ ] **Step 6:** README "Local setup" section: prerequisites, `cp .env.example .env` (+ `.env.test`), migrate, seed, run, test commands. Commit `feat(SR-01): skeleton, schema, seed, harness, Pulse theme (green)`.
 - [ ] **Step 7:** PR → staging; **A reviews by running setup from scratch on A's laptop** and reports the result in the review (strong, specific evidence).
 
 ---
@@ -603,7 +649,7 @@ test("TEST-19 another owner cannot publish my survey", async () => {
 - Create: `docs/sprints/sprint-1/F-04-response-submission.md`
 - Create: `server/src/lib/responseValidation.ts`, `server/src/routes/{surveys.ts,responses.ts}`, `server/tests/unit/responseValidation.test.ts`, `server/tests/api/responses.test.ts`
 - Modify: `server/src/app.ts` (mount `/api/surveys`, `/api/responses` with `requireAuth, requireRole("RESPONDENT")`), `server/tests/api/unauthenticated.test.ts` (append 4 routes)
-- Create: `client/src/pages/respondent/{SurveyListPage.tsx,AnswerSurveyPage.tsx,ConfirmationPage.tsx}`, `e2e/respond.spec.ts`
+- Create: `client/src/pages/respondent/{SurveyListPage.tsx,AnswerSurveyPage.tsx,ConfirmationPage.tsx}` (rating questions use `RatingDots` from I-05, §2.9), `e2e/respond.spec.ts`
 
 **AC:**
 AC-20 student1 list shows PUBLISHED CPE334 surveys only (no DRAFT, no CPE231), each with `hasResponded` ·
@@ -652,7 +698,7 @@ test("TEST-30 a student cannot read another student's response", async () => {
 **Owner:** B · **Reviewer:** A · **Branch:** `feature/<n>-summary` · **Depends on:** I-06 (API), I-05 (unit)
 
 **Files:**
-- Create: `docs/sprints/sprint-1/F-05-aggregate-summary.md`, `server/src/lib/summary.ts`, `server/src/routes/ownerSummary.ts` (own router, so it does not depend on or conflict with I-07's `ownerSurveys.ts`), `server/tests/unit/summary.test.ts`, `server/tests/api/summary.test.ts`, `client/src/pages/owner/SurveySummaryPage.tsx`
+- Create: `docs/sprints/sprint-1/F-05-aggregate-summary.md`, `server/src/lib/summary.ts`, `server/src/routes/ownerSummary.ts` (own router, so it does not depend on or conflict with I-07's `ownerSurveys.ts`), `server/tests/unit/summary.test.ts`, `server/tests/api/summary.test.ts`, `client/src/pages/owner/SurveySummaryPage.tsx` (bars and read-only `RatingDots` per §2.9)
 - Modify: `server/src/app.ts` (mount `ownerSummary` at `/api/owner/surveys` behind `requireAuth, requireRole("OWNER")`; one line — expect a trivial merge with I-07), `unauthenticated.test.ts` (append 1 route)
 
 **Response shape:**
@@ -719,7 +765,7 @@ npx playwright test 2>&1 | tee docs/sprints/sprint-1/evidence/integration-e2e.tx
   - **DEMO-3** access: login/logout (AC-01, 04); student `curl -b cookie -X POST /api/owner/surveys` → 403 (AC-16); owner2 opens owner1's summary URL → 404 (AC-32); plus the TEST-07/18/30 output lines.
 - [ ] **Step 4: Process evidence:** screenshots of I-07 and I-08 Issue → branch → PR (author/reviewer, review comment) → merge into staging → release PR → tag (one chain per student); final board; `git log --graph --date=iso --format="%h %ad %an %s" main` excerpt showing for F-03 and F-04: contract commit → red commit → green commit with dates.
 - [ ] **Step 5: Write** `docs/contributions.md` (table: Issue, author, reviewer, pair?, summary) and `docs/ai-use.md` (each student lists tools + tasks assisted; "all AI output was reviewed and tests run by the owner").
-- [ ] **Step 6: Assemble the PDF** in `docs/deliverable-1/report.md` with these headings in this order: Cover (names, IDs, theme #10 + ClassPulse context, repo URL, tag + commit SHA) · Navigation table (Part, pages, IDs) · Table of contents · **Part A SRS** · **Part B Feature inventory and traceability** · **Part C System-Level SDS** · **Part D Three-sprint plan** · **Part E Sprint 1 engineering contracts** (SR-01, F-01, F-03, F-04, F-05, Product DoD) · **Part F Working Sprint 1 and verification** (F.1 setup summary, F.2 demonstrations, F.3 build/test results, F.4 AC→test results table, F.5 two test excerpts — TEST-25 (domain rule) and TEST-19 (ownership) — with their results and red→green versions, F.6 Issue/PR chains + board + release, F.7 history sequence, F.8 contributions, F.9 AI-use, F.10 known limitations & failed/skipped tests). Convert (e.g. `pandoc report.md -o report.docx`), insert TOC with page numbers in Word/Google Docs, fill page numbers in the navigation table, export PDF.
+- [ ] **Step 6: Assemble the PDF** in `docs/deliverable-1/report.md` with these headings in this order: Cover (names, IDs, theme #10 + ClassPulse context, repo URL, tag + commit SHA) · Navigation table (Part, pages, IDs) · Table of contents · **Part A SRS** · **Part B Feature inventory and traceability** · **Part C System-Level SDS** · **Part D Three-sprint plan** · **Part E Sprint 1 engineering contracts** (SR-01, F-01, F-03, F-04, F-05, Product DoD) · **Part F Working Sprint 1 and verification** (F.1 setup summary, F.2 demonstrations, F.3 build/test results, F.4 AC→test results table, F.5 two test excerpts — TEST-25 (domain rule) and TEST-19 (ownership) — with their results and red→green versions, F.6 Issue/PR chains + board + release, F.7 history sequence, F.8 contributions, F.9 AI-use, F.10 known limitations & failed/skipped tests). **Tooling already prepared (PR for Issue #11):** `tools/build_report.py` assembles exactly these Parts from the repo docs, prints the PDF with Edge, finds each heading's real page with PyMuPDF so the navigation table and TOC carry correct page numbers, and stamps "page n / N" on every page. Fill `docs/deliverable-1/front-matter.md` (names, IDs, SHA) and the `TODO` markers in `docs/deliverable-1/part-f.md`, then run from **PowerShell** (not a sandboxed shell, which blocks Edge): `pip install -r tools/requirements.txt; python tools/build_report.py` for a draft with visible placeholders, and `python tools/build_report.py --final` for the submission (it refuses while any `TODO` or missing document remains). Open the PDF and check every page for readability before uploading.
 - [ ] **Step 7:** Final checklist (§5 of the D1 PDF) item by item; upload to LEB2 by 23:00; do not push to `main` after submission.
 
 ---

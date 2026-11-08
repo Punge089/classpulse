@@ -1,0 +1,133 @@
+Tested commit: 6ce709f0c59e149bf59ad3527224c4d7ba0fe1a7
+Node: v24.14.0
+
+> server : npm run test -- --reporter=verbose --no-color
+
+> classpulse-server@0.1.0 test
+> vitest run --reporter=verbose --no-color
+
+
+ RUN  v2.1.9 <repo>/server
+
+ × tests/db/constraints.test.ts > TEST-50 rejects a second response for the same survey and respondent
+   → Failed to load url ../setup (resolved id: ../setup) in <repo>/server/tests/db/constraints.test.ts. Does the file exist?
+ × tests/db/constraints.test.ts > TEST-51 rejects ratings outside 1–5 with the PostgreSQL check
+   → Failed to load url ../setup (resolved id: ../setup) in <repo>/server/tests/db/constraints.test.ts. Does the file exist?
+ × tests/db/constraints.test.ts > TEST-53 seeds the same fixture identities, relationships and credentials twice
+   → Failed to load url ../setup (resolved id: ../setup) in <repo>/server/tests/db/constraints.test.ts. Does the file exist?
+ × tests/api/health.test.ts > TEST-52 health, invalid or unknown IDs, and malformed JSON use the API contract
+   → Failed to load url ../../src/app (resolved id: ../../src/app) in <repo>/server/tests/api/health.test.ts. Does the file exist?
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api/health.test.ts > TEST-52 health, invalid or unknown IDs, and malformed JSON use the API contract
+Error: Failed to load url ../../src/app (resolved id: ../../src/app) in <repo>/server/tests/api/health.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/server/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/db/constraints.test.ts > TEST-50 rejects a second response for the same survey and respondent
+ FAIL  tests/db/constraints.test.ts > TEST-51 rejects ratings outside 1–5 with the PostgreSQL check
+ FAIL  tests/db/constraints.test.ts > TEST-53 seeds the same fixture identities, relationships and credentials twice
+Error: Failed to load url ../setup (resolved id: ../setup) in <repo>/server/tests/db/constraints.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/server/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ Test Files  2 failed (2)
+      Tests  4 failed (4)
+   Start at  20:29:37
+   Duration  1.18s (transform 133ms, setup 0ms, collect 402ms, tests 13ms, environment 0ms, prepare 624ms)
+
+Exit code: 1
+
+> client : npm run test -- --reporter=verbose --no-color
+
+> classpulse-client@0.1.0 test
+> vitest run --reporter=verbose --no-color
+
+
+ RUN  v2.1.9 <repo>/client
+
+stderr | tests/RatingDots.test.tsx > TEST-54 rating exposes five radios, supports arrows and ignores read-only input
+Error: Uncaught [Error: RatingDots has not been implemented]
+    at reportException (<repo>\client\node_modules\jsdom\lib\jsdom\living\helpers\runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:353:9)
+    at invokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (<repo>\client\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:4213:16)
+    at invokeGuardedCallback (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:4277:31)
+    at beginWork$1 (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:27490:7)
+    at performUnitOfWork (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:26599:12) Error: RatingDots has not been implemented
+    at RatingDots (<repo>\client\src\components\pulse\RatingDots.tsx:7:9)
+    at renderWithHooks (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:15486:18)
+    at mountIndeterminateComponent (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:20103:13)
+    at beginWork (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (<repo>\client\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
+    at innerInvokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:350:25)
+    at invokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+Error: Uncaught [Error: RatingDots has not been implemented]
+    at reportException (<repo>\client\node_modules\jsdom\lib\jsdom\living\helpers\runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:353:9)
+    at invokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (<repo>\client\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:4213:16)
+    at invokeGuardedCallback (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:4277:31)
+    at beginWork$1 (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:27490:7)
+    at performUnitOfWork (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:26599:12) Error: RatingDots has not been implemented
+    at RatingDots (<repo>\client\src\components\pulse\RatingDots.tsx:7:9)
+    at renderWithHooks (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:15486:18)
+    at mountIndeterminateComponent (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:20103:13)
+    at beginWork (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback (<repo>\client\node_modules\react-dom\cjs\react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (<repo>\client\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
+    at innerInvokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:350:25)
+    at invokeEventListeners (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (<repo>\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+The above error occurred in the <RatingDots> component:
+
+    at RatingDots (<repo>\client\src\components\pulse\RatingDots.tsx:2:9)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+ × tests/RatingDots.test.tsx > TEST-54 rating exposes five radios, supports arrows and ignores read-only input
+   → RatingDots has not been implemented
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/RatingDots.test.tsx > TEST-54 rating exposes five radios, supports arrows and ignores read-only input
+Error: RatingDots has not been implemented
+ ❯ RatingDots src/components/pulse/RatingDots.tsx:7:9
+      5|   readOnly?: boolean;
+      6| }): never {
+      7|   throw new Error("RatingDots has not been implemented");
+       |         ^
+      8| }
+      9|
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom.development.js:15486:18
+ ❯ mountIndeterminateComponent node_modules/react-dom/cjs/react-dom.development.js:20103:13
+ ❯ beginWork node_modules/react-dom/cjs/react-dom.development.js:21626:16
+ ❯ beginWork$1 node_modules/react-dom/cjs/react-dom.development.js:27465:14
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom.development.js:26599:12
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom.development.js:26505:5
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom.development.js:26473:7
+ ❯ recoverFromConcurrentError node_modules/react-dom/cjs/react-dom.development.js:25889:20
+ ❯ performConcurrentWorkOnRoot node_modules/react-dom/cjs/react-dom.development.js:25789:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  20:29:39
+   Duration  2.02s (transform 81ms, setup 0ms, collect 437ms, tests 32ms, environment 929ms, prepare 291ms)
+
+Exit code: 1
