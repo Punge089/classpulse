@@ -1,6 +1,6 @@
 # AI-use declaration — ClassPulse (Deliverable 1)
 
-**Draft 6 Nov 2026. Each student confirms and completes their own part before the report is built (every `TODO` must be replaced).**
+**Declaration of 8 Nov 2026 for the release `v1.0.0-sprint1`. Each student wrote and answers for their own part: Student A in this file's history before 8 Nov, Student B in pull request #23.**
 
 ## Tools
 
@@ -22,8 +22,10 @@
 
 ## Responsibility
 
-All AI output was inspected before it was accepted; tests were run by the student who owns the Issue and the counts were checked. Each student can explain the requirements, tests and design decisions they own. At the time of Punge089's review of `c22da58`, Student B (`book6349`) had authored 41 commits; none had a `Co-Authored-By` trailer, although Codex helped write them. Student B's commits from now on include the required trailer.
+All AI output was inspected before it was accepted; tests were run by the student who owns the Issue and the counts were checked. Each student can explain the requirements, tests and design decisions they own. At the time of Punge089's review of `c22da58`, Student B (`book6349`) had authored 41 commits; none had a `Co-Authored-By` trailer, although Codex helped write them. Student B's commits from now on include the required trailer. Student A's commits carry a `Co-Authored-By` trailer (Claude Opus 5.5 or Claude Sonnet 5.5) with seven exceptions: the baseline commit `2fa7ae0`, which was AI-assisted, and the six merge commits that GitHub created for pull requests #15, #16, #17, #21, #22 and #23 when Student A's account merged them.
 
 ## Known limits of this declaration
 
-Student B: AI-generated drafts and code can contain mistakes, so B checked owned code, test assertions, and evidence. Local machine/setup facts are only declared complete after both students verify them; Issue #1 remains open until its remaining checks are complete.
+Student A: Claude Code drafted most of the text and code and ran the tests; A directed the work, approved every review verdict and every merge before it was posted (pull request #17 was merged by its own author, see `docs/contributions.md`), and relied on the tests, the other student's reviews and the mutation checks to find mistakes.
+
+Student B: AI-generated drafts and code can contain mistakes, so B checked owned code, test assertions, and evidence. Local machine/setup facts are only declared complete after both students verify them; Student B's checks on their laptop (database connections, and pushing then deleting a test branch) are recorded in the comments of Issue #1, which is now closed.
