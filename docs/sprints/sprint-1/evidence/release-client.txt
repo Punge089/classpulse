@@ -1,0 +1,33 @@
+﻿Release run on tag v1.0.0-sprint1 (tag object 7f2a63d8a105b73206d76afd999e5d719241c937, commit d4bad74211729032697164f378638efb834a67b6)
+Command: npm --prefix client run build && npm --prefix client run test
+Exit code: 0
+Node v24.19.0, Windows 11, PostgreSQL 18
+
+
+> classpulse-client@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.0.15 building for production...
+transforming...
+✓ 46 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.69 kB │ gzip:  0.38 kB
+dist/assets/index-BU5Qbnca.css  233.83 kB │ gzip: 31.58 kB
+dist/assets/index-Bi1ZvEdG.js   189.33 kB │ gzip: 59.79 kB
+✓ built in 780ms
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 <repo>/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 303ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 302ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  16:32:14
+   Duration  1.65s (transform 42ms, setup 15ms, collect 233ms, tests 303ms, environment 518ms, prepare 117ms)
+

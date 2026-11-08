@@ -1,0 +1,75 @@
+[run] commit d4bad74211729032697164f378638efb834a67b6  2026-11-08T09:45:51.965Z
+[DEMO-1] browser (owner1): GET /api/auth/me -> 401
+[DEMO-1] browser (owner1): GET /api/auth/me -> 401
+[DEMO-1] browser (owner1): POST /api/auth/login -> 200
+[DEMO-1] browser (owner1): GET /api/owner/surveys -> 200
+[DEMO-1] browser (owner1): GET /api/owner/surveys -> 200
+[DEMO-1] browser (owner1): GET /api/owner/courses -> 200
+[DEMO-1] browser (owner1): GET /api/owner/courses -> 200
+[DEMO-1] browser (owner1): POST /api/owner/surveys -> 201
+[DEMO-1] browser (owner1): GET /api/owner/surveys/72 -> 200
+[DEMO-1] browser (owner1): GET /api/owner/surveys/72 -> 200
+[DEMO-1] browser (owner1): POST /api/owner/surveys/72/publish -> 200
+[DEMO-1] owner1 created and published survey 72 "Lecture feedback W10 demo 1794131151863" in CPE334 (AC-10, AC-13, AC-19)
+[DEMO-1] browser (student1): GET /api/auth/me -> 401
+[DEMO-1] browser (student1): GET /api/auth/me -> 401
+[DEMO-1] browser (student1): POST /api/auth/login -> 200
+[DEMO-1] browser (student1): GET /api/surveys -> 200
+[DEMO-1] browser (student1): GET /api/surveys -> 200
+[DEMO-1] browser (student1): GET /api/surveys/72 -> 200
+[DEMO-1] browser (student1): GET /api/surveys/72 -> 200
+[DEMO-1] browser (student1): POST /api/surveys/72/responses -> 201
+[DEMO-1] browser (student1): GET /api/responses/86 -> 200
+[DEMO-1] browser (student1): GET /api/responses/86 -> 200
+[DEMO-1] POST /api/auth/login -> 200 (script call; body not written)
+[DEMO-1] GET /api/responses/86 -> 200 {"response":{"id":86,"surveyId":72,"submittedAt":"2026-11-08T09:45:55.675Z","answers":[{"questionId":142,"prompt":"How was the pace of the lectures?","type":"RATING","ratingValue":4},{"questionId":143,"prompt":"Would you recommend this course?","type":"SINGLE_CHOICE","optionId":141,"optionLabel":"Ye…
+[DEMO-1] API process stopped; starting it again (NFR-05)
+[DEMO-1] API is back after the restart
+[DEMO-1] browser (student1): GET /api/auth/me -> 200
+[DEMO-1] browser (student1): GET /api/auth/me -> 200
+[DEMO-1] browser (student1): GET /api/responses/86 -> 200
+[DEMO-1] browser (student1): GET /api/responses/86 -> 200
+[DEMO-1] GET /api/responses/86 -> 200 {"response":{"id":86,"surveyId":72,"submittedAt":"2026-11-08T09:45:55.675Z","answers":[{"questionId":142,"prompt":"How was the pace of the lectures?","type":"RATING","ratingValue":4},{"questionId":143,"prompt":"Would you recommend this course?","type":"SINGLE_CHOICE","optionId":141,"optionLabel":"Ye…
+[DEMO-1] response 86 identical before and after the restart: true
+[DEMO-1] browser (owner1): GET /api/auth/me -> 200
+[DEMO-1] browser (owner1): GET /api/auth/me -> 200
+[DEMO-1] browser (owner1): GET /api/owner/surveys/72/summary -> 200
+[DEMO-1] browser (owner1): GET /api/owner/surveys/72/summary -> 200
+[DEMO-1] owner1 summary of survey 72: response count 1, average 4.00 (AC-30)
+[DEMO-2] browser (student1): GET /api/auth/me -> 200
+[DEMO-2] browser (student1): GET /api/auth/me -> 200
+[DEMO-2] browser (student1): GET /api/surveys/72 -> 200
+[DEMO-2] browser (student1): GET /api/surveys/72 -> 200
+[DEMO-2] browser (student1): POST /api/surveys/72/responses -> 409
+[DEMO-2] GET /api/surveys/72 -> 200 {"survey":{"id":72,"courseId":1,"courseCode":"CPE334","title":"Lecture feedback W10 demo 1794131151863","description":null,"mode":"IDENTIFIED","status":"PUBLISHED","publishedAt":"2026-11-08T09:45:54.536Z","questions":[{"id":142,"position":1,"prompt":"How was the pace of the lectures?","type":"RATING…
+[DEMO-2] POST /api/surveys/72/responses -> 409 {"error":{"code":"ALREADY_RESPONDED","message":"You have already submitted this survey"}}
+[DEMO-2] POST /api/auth/login -> 200 (script call; body not written)
+[DEMO-2] GET /api/owner/surveys -> 200 {"surveys":[{"id":72,"title":"Lecture feedback W10 demo 1794131151863","status":"PUBLISHED","courseCode":"CPE334","responseCount":1},{"id":71,"title":"Lecture feedback W10 demo 1794130431849","status":"PUBLISHED","courseCode":"CPE334","responseCount":1},{"id":70,"title":"E2E response 1794130399901",…
+[DEMO-2] seed survey "Week 1 pulse" is id 1, status CLOSED
+[DEMO-2] browser (student1): GET /api/auth/me -> 200
+[DEMO-2] browser (student1): GET /api/auth/me -> 200
+[DEMO-2] browser (student1): GET /api/surveys/1 -> 404
+[DEMO-2] browser (student1): GET /api/surveys/1 -> 404
+[DEMO-2] POST /api/surveys/1/responses -> 409 {"error":{"code":"SURVEY_NOT_OPEN","message":"This survey is not open for responses"}}
+[DEMO-3] browser (student1 (login and logout)): GET /api/auth/me -> 401
+[DEMO-3] browser (student1 (login and logout)): GET /api/auth/me -> 401
+[DEMO-3] browser (student1 (login and logout)): POST /api/auth/login -> 401
+[DEMO-3] browser (student1 (login and logout)): GET /api/auth/me -> 401
+[DEMO-3] browser (student1 (login and logout)): GET /api/auth/me -> 401
+[DEMO-3] browser (student1 (login and logout)): POST /api/auth/login -> 200
+[DEMO-3] browser (student1 (login and logout)): GET /api/surveys -> 200
+[DEMO-3] browser (student1 (login and logout)): GET /api/surveys -> 200
+[DEMO-3] browser (student1 (login and logout)): POST /api/auth/logout -> 204
+[DEMO-3] GET /api/auth/me with the cookie of the session that was just logged out -> 401 {"error":{"code":"UNAUTHENTICATED","message":"Please sign in to continue"}} (AC-04)
+[DEMO-3] POST /api/owner/surveys -> 403 {"error":{"code":"FORBIDDEN","message":"You do not have permission to do that"}}
+[DEMO-3] browser (owner2): GET /api/auth/me -> 401
+[DEMO-3] browser (owner2): GET /api/auth/me -> 401
+[DEMO-3] browser (owner2): POST /api/auth/login -> 200
+[DEMO-3] browser (owner2): GET /api/owner/surveys -> 200
+[DEMO-3] browser (owner2): GET /api/auth/me -> 200
+[DEMO-3] browser (owner2): GET /api/auth/me -> 200
+[DEMO-3] browser (owner2): GET /api/owner/surveys/72/summary -> 404
+[DEMO-3] browser (owner2): GET /api/owner/surveys/72/summary -> 404
+[DEMO-3] POST /api/auth/login -> 200 (script call; body not written)
+[DEMO-3] GET /api/owner/surveys/72/summary -> 404 {"error":{"code":"NOT_FOUND","message":"Survey not found"}}
+[run] done

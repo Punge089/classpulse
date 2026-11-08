@@ -1,17 +1,17 @@
 # Part F — Working Sprint 1 and verification (evidence)
 
-*Every `TODO` below must be replaced with real evidence before `python tools/build_report.py --final` will build the PDF. Evidence comes from the release, never from an AI statement.*
+*Evidence comes from the release tag `v1.0.0-sprint1` and from the repository history, never from an AI statement.*
 
 ## F.1 Release and setup summary
 
-- Release tag and commit: TODO (full SHA, date). Tested commit for every result below: TODO (same SHA, or state the exception).
+- Release tag and commit: annotated tag `v1.0.0-sprint1` (tag object `7f2a63d8a105b73206d76afd999e5d719241c937`, tagger book6349) on commit `d4bad74211729032697164f378638efb834a67b6`, the merge of release pull request #27 into `main` on 8 Nov 2026. Tested commit for every result below: that same commit, in a clean clone checked out at the tag (detached HEAD). The evidence files, the screenshots, the final documents and this report were committed to `main` after the tag in a documentation-only pull request; no application code changed after the tag.
 - Versions used for every run in this report: Node v24.19.0 (Node 22 or newer is required), PostgreSQL 18 (16 or newer), Python 3.14.6 (3.10 or newer, only for the tools), Playwright 1.48.2 with Chromium, Windows 11. Environment variables: `DATABASE_URL`, `PORT`, `SESSION_TTL_HOURS`, `SEED_PASSWORD`, `CLIENT_ORIGIN`, `NODE_ENV` (examples in `server/.env.example`; no real secrets).
 - Commands (the README has the full text; PowerShell, from the repository root): `npm ci`, `npm ci --prefix server`, `npm ci --prefix client`; copy `server/.env.example` and `server/.env.test.example` and fill the placeholders; from `server`: `npm run prisma:migrate`, `npm run prisma:seed`, and `npx prisma migrate deploy` with the test database URL; run with `npm --prefix server run dev` and `npm --prefix client run dev -- --port 5173 --strictPort`; test with `npm --prefix server run test`, `npm --prefix client run test` and `npm run test:e2e`; build with `npm --prefix server run build` and `npm --prefix client run build`; the results table with `python tools/test_results.py`.
 - Test accounts: seeded `@classpulse.test` addresses (`ann.lee`, `ben.kim` owners; `student1`, `student2`, `student3` respondents); the password is shared through the private course handoff, not written here.
 
 ## F.2 Program demonstrations
 
-*The screenshots and the API log were produced by `node tools/demo_screenshots.js`, which drives the real browser and API with the seeded accounts, on commit TODO (code identical to the release; only documents differ). The log `docs/sprints/sprint-1/evidence/screenshots/demo-api-log.txt` holds the API calls the script makes itself (method, path, status and response body; login bodies are not written) and, marked `browser`, the method, path and status of every `/api` request the browser pages make during the demos (login, create, publish, list, submit, logout). Request bodies, cookies and passwords are never written, and the only request left out is the polling of `/api/health` while the servers start.*
+*The screenshots and the API log were produced by `node tools/demo_screenshots.js`, which drives the real browser and API with the seeded accounts, in a clone checked out at the tag, on commit `d4bad74211729032697164f378638efb834a67b6` (the first line of the log records it). The script is the version of the documentation pull request that followed the tag; it differs from the one in the tag only in that the two list screenshots show the visible part of the page instead of the whole, ever-growing list. The log `docs/sprints/sprint-1/evidence/screenshots/demo-api-log.txt` holds the API calls the script makes itself (method, path, status and response body; login bodies are not written) and, marked `browser`, the method, path and status of every `/api` request the browser pages make during the demos (login, create, publish, list, submit, logout). Request bodies, cookies and passwords are never written, and the only request left out is the polling of `/api/health` while the servers start.*
 
 ### DEMO-1 Normal journey and persistence (F-03, F-04, F-05; AC-10, AC-13, AC-19, AC-21, AC-28, AC-30; NFR-05)
 
@@ -52,7 +52,32 @@
 
 ## F.3 Build and test results
 
-TODO commands, commit, and the readable output with passed / failed / skipped counts for the server tests, client tests and Playwright journey (from `docs/sprints/sprint-1/evidence/release-*.txt`).
+Run in a clean clone checked out at the tag (`git checkout v1.0.0-sprint1`, tree clean), with the development and test databases created and seeded as in the README (PowerShell, Node v24.19.0, PostgreSQL 18, Python 3.14.6). Commit tested: `d4bad74211729032697164f378638efb834a67b6`. The full raw output, with local paths replaced by `<repo>`, is in `docs/sprints/sprint-1/evidence/release-server.txt`, `release-client.txt` and `release-e2e.txt`; the summary lines of each are quoted here.
+
+| Command | Passed | Failed | Skipped | Exit | Output |
+|---|---|---|---|---|---|
+| `npm --prefix server run build && npm --prefix server run test` | 101 | 0 | 0 | 0 | `release-server.txt` |
+| `npm --prefix client run build && npm --prefix client run test` | 1 | 0 | 0 | 0 | `release-client.txt` |
+| `npm run test:e2e` | 8 | 0 | 0 | 0 | `release-e2e.txt` |
+| `python tools/test_results.py` | 110 executed tests in total | 0 | 0 | 0 | `docs/sprints/sprint-1/test-results.md` |
+
+```text
+Server — Command: npm --prefix server run build && npm --prefix server run test
+  Exit code: 0
+  Test Files  12 passed (12)
+  Tests  101 passed (101)
+
+Client — Command: npm --prefix client run build && npm --prefix client run test
+  Exit code: 0
+  Test Files  1 passed (1)
+  Tests  1 passed (1)
+
+Playwright — Command: npm run test:e2e
+  Exit code: 0
+  8 passed (27.8s)
+```
+
+The generator printed `Overall result: PASSED`: every runner exited 0, every planned test and every one of the 39 acceptance criteria has an executed test. It also exits 1 and says FAILED when the contrary holds; that behaviour is tested in `tools/test_test_results.py` and was shown with an unimportable test file in `docs/sprints/sprint-1/evidence/I-10-results-tool-fresh-clone.txt`.
 
 ## F.4 Acceptance criteria to tests
 
@@ -115,7 +140,32 @@ test("TEST-19 another owner gets 404 reading, publishing or closing my survey an
 
 ## F.6 Two Issue and PR chains
 
-TODO for two completed Issues (one per student: #7 for Punge089, #8 for book6349): Issue number, feature and contract IDs, branch name, author, reviewer, the substantive review comment, merge into `sprint-1-staging`, release PR into `main`. Include the final board screenshot and the release reference.
+Two completed Issues, one per student, followed from the Issue to the release.
+
+### Chain 1 — Issue #7, F-03 survey authoring (author Punge089, reviewer book6349)
+
+- **Issue #7** (I-07, F-03, AC-10…AC-19) → contract v1.0 `01117e4`, v1.1 `e05a509` (after the contract review by book6349) → branch `feature/7-survey-authoring` → red and green commits (F.7) → **pull request #18** into `sprint-1-staging`, opened by Punge089, reviewed by book6349 → merge commit `ae744c2` → release pull request #27 into `main` (merge `d4bad74`) → tag `v1.0.0-sprint1`.
+- **Substantive review** (book6349, approved after running the code): "Fresh clone at `316fa81`. Server tests → 63 passed, 0 failed, 0 skipped; client → 1 passed, 0 failed, 0 skipped; Playwright → 5 passed, 0 failed, 0 skipped. Both builds passed. I-07 `pr_check`: publishing the seeded CLOSED survey returned 409 `INVALID_TRANSITION`, and its database status remained CLOSED. I checked TEST-11 against the AC-11 invalid-input cases and verified the owner scoping on route reads and writes. […]" Inline on `server/src/routes/ownerSurveys.ts:82`: "This `ownerId` filter scopes `GET /api/owner/surveys` to the caller; checked against AC-18/TEST-20 and the list test, this matches."
+
+![Issue #7 on GitHub](../sprints/sprint-1/evidence/github/issue-7-survey-authoring.png)
+![Pull request #18 on GitHub](../sprints/sprint-1/evidence/github/pr-18-survey-authoring.png)
+
+### Chain 2 — Issue #8, F-04 response submission (author book6349, reviewer Punge089)
+
+- **Issue #8** (I-08, F-04, AC-20…AC-29) → contract v1.0 `5862052`, v1.1 `570b739` (after the contract review by Punge089) → branch `feature/8-response-submission` → red and green commits (F.7) → **pull request #21** into `sprint-1-staging`, opened by book6349, reviewed by Punge089 → merge commit `c1823f5` → release pull request #27 into `main` (merge `d4bad74`) → tag `v1.0.0-sprint1`.
+- **Substantive review** (Punge089, approved after running the code and breaking it on purpose): "Pulled 328e077 (up to date with staging 8c4323f) and ran: server 91 passed, 0 failed, 0 skipped; client 1 passed, 0 failed, 0 skipped; npm run test:e2e 6 passed, 0 failed, 0 skipped; both builds exit 0; […] pr_check: TEST-25 five times in a row, 5/5 passed. In the UI the CLOSED seed survey "Week 1 pulse" is not listed for student1, /surveys/1 shows "Survey not found" with no form or Submit, and a direct POST returns 409 SURVEY_NOT_OPEN. I also broke five rules on purpose (status before enrollment, response ownership filter, PUBLISHED filter, rating bound, P2002 mapping) and each time the matching tests failed (TEST-27, 30, 22, 28+29, 24+25), then restored. […]"
+
+![Issue #8 on GitHub](../sprints/sprint-1/evidence/github/issue-8-response-submission.png)
+![Pull request #21 on GitHub](../sprints/sprint-1/evidence/github/pr-21-response-submission.png)
+
+### Release and board
+
+- **Release pull request #27** (`sprint-1-staging` → `main`), opened by Punge089, reviewed and merged by book6349, merge commit `d4bad74`; the annotated tag `v1.0.0-sprint1` (tag object `7f2a63d`) was pushed by book6349 on that commit. The review found the secret-scan note wrong (7 matches, not 5) and the note was corrected before the merge.
+- **Project board** (public, https://github.com/users/Punge089/projects/5): all eleven Issues; #1 to #10 are Done and #11 is In progress at the time of writing. The screenshot below was captured early on 8 Nov (01:34, UTC+7), when #1 was still In progress; Issue #1 was closed by book6349 and set to Done later that day. A second capture failed because GitHub answered HTTP 504 for the board page.
+
+![Release pull request #27 on GitHub](../sprints/sprint-1/evidence/github/release-pr-27.png)
+![The tag v1.0.0-sprint1 on GitHub: tagged by book6349 on commit d4bad74](../sprints/sprint-1/evidence/github/tag-v1.0.0-sprint1.png)
+![The project board, captured 8 Nov 01:34: Issue #1 was still In progress](../sprints/sprint-1/evidence/github/board.png)
 
 ## F.7 History sequence
 
@@ -152,7 +202,7 @@ See `docs/ai-use.md`.
 
 ## F.10 Known limitations, failed and skipped tests
 
-- Failed or skipped tests in the release runs: TODO (write "none" only from the release output).
+- Failed or skipped tests in the release runs: none. The release run shows 0 failed and 0 skipped for the server tests (101), the client tests (1) and the Playwright tests (8) in `release-server.txt`, `release-client.txt` and `release-e2e.txt`, and the generator exits 0.
 - Only Sprint 1 is implemented: FR-10…FR-18, BR-01, BR-11…BR-14, NFR-06, NFR-08 and NFR-10 are planned for Sprint 2 and 3 (`docs/sprints/plan.md`); their rows in the traceability matrix say "not run yet".
 - NFR-05 (data survives a restart) and NFR-09 (no secrets in the repository) are manual checks in Sprint 1: NFR-05 is DEMO-1 above, NFR-09 is the secret scan on the release pull request. NFR-07 (loading, empty and error states) is covered by the automated tests of the screens plus a manual checklist.
 - There is no automated test for two simultaneous publish or close requests on one survey (the transition is a conditional update, but no test races it).

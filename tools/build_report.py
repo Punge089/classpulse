@@ -68,6 +68,7 @@ blockquote { border-left: 3px solid #C8431D; margin: 6px 0; padding: 2px 10px; c
 .missing { background: #ffe9a8; border: 1px dashed #B3261E; padding: 8px; }
 .marker { font-size: 1px; color: #ffffff; }
 .toc td, .nav td, .nav th { font-size: 9pt; }
+.toc td { padding-top: 1px; padding-bottom: 1px; }
 .nav th:nth-child(2), .nav td:nth-child(2) { width: 62px; white-space: nowrap; }
 .cover th { display: none; }
 .mermaid { text-align: center; margin: 8px 0 12px; page-break-inside: avoid; }
@@ -269,7 +270,9 @@ def measure(parts, pdf: Path):
     start = next((i for i, t in enumerate(texts) if "BODYSTART7F3A" in t), None)
     if start is None:
         sys.exit("Body marker not found in the PDF; layout broke.")
-    pages, cur = {}, start
+    # The first Part heading starts a new page (page-break-before), so the body begins on the page AFTER the marker.
+    # Searching from the marker's own page would match the table of contents when it fits on that page.
+    pages, cur = {}, min(start + 1, doc.page_count - 1)
     for letter, title, _ids, docs in parts:
         head = f"Part {letter} — {title}"
         head = re.sub(r"\s+", " ", head)
