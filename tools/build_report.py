@@ -35,8 +35,9 @@ PARTS = [
     ("D", "Three-sprint plan", ["docs/sprints/plan.md"], "Sprint 1–3 and feature allocation"),
     ("E", "Sprint 1 engineering contracts",
      [f"{S1}/SR-01-foundation.md", f"{S1}/F-01-authentication.md", f"{S1}/F-03-survey-authoring.md",
-      f"{S1}/F-04-response-submission.md", f"{S1}/F-05-aggregate-summary.md", f"{S1}/definition-of-done.md"],
-     "SR-01, F-01, F-03, F-04, F-05; AC-01…AC-54; TEST-01…TEST-54; Product DoD"),
+      f"{S1}/F-04-response-submission.md", f"{S1}/F-05-aggregate-summary.md", f"{S1}/I-10-journey.md",
+      f"{S1}/definition-of-done.md"],
+     "SR-01, F-01, F-03, F-04, F-05, I-10; AC-01…AC-54; TEST-01…TEST-58; TEST-40; Product DoD"),
     ("F", "Working Sprint 1 and verification",
      ["docs/deliverable-1/part-f.md", f"{S1}/test-results.md", "docs/contributions.md", "docs/ai-use.md"],
      "DEMO-1…3; build/test results; AC-to-test table; Issue/PR chains; contributions; AI use; limitations"),
@@ -60,6 +61,7 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 8.6pt; backgr
 pre { background: #f3efe8; padding: 6px 8px; font-size: 8pt; white-space: pre-wrap; overflow-wrap: anywhere; page-break-inside: avoid; }
 pre code { background: none; padding: 0; }
 img { max-width: 100%; }
+img[src*="screenshots"] { max-width: 68%; border: 1px solid #cfc8bb; margin: 4px 0; }
 blockquote { border-left: 3px solid #C8431D; margin: 6px 0; padding: 2px 10px; color: #5B6478; }
 .cover h1 { page-break-before: avoid; font-size: 24pt; }
 .todo { background: #ffe9a8; font-weight: 600; }
