@@ -1,6 +1,6 @@
 # Requirements traceability — ClassPulse
 
-**Version 1.3 · 7 Nov 2026 · Author: Punge089 · Reviewer: book6349** · see the version history at the end
+**Version 1.4 · 8 Nov 2026 · Author: Punge089 · Reviewer: book6349** · see the version history at the end
 
 One row per baseline requirement (18 FR + 14 BR + 10 NFR = 42). Sprint 1 AC and test IDs come from the
 Sprint 1 contracts (`docs/sprints/sprint-1/`). The last two columns of the Sprint 1 rows were filled from the output of `python tools/test_results.py` on the release tag `v1.0.0-sprint1` (commit `d4bad74`, Issue I-10 and I-11);
