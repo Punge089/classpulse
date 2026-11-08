@@ -4,7 +4,7 @@ Who did what, taken from the repository history (Issues, branches, pull requests
 
 | Issue | Work | Author | Reviewer | Pair? | Pull requests | Summary |
 |---|---|---|---|---|---|---|
-| I-01 | Repository, board, branches, local environment | A drives, B joins | pair | — | commits on `main` | Public repo, 11 Issues, labels and board, baseline commit `2fa7ae0`, both laptops set up. |
+| I-01 | Repository, board, branches, local environment | A drives, B joins | pair | - | commits on `main` | Public repo, 11 Issues, labels and board, baseline commit `2fa7ae0`, both laptops set up. |
 | I-02 | SRS (Part A) | Punge089 | book6349 | no | #12 | Requirements FR/BR/NFR, decisions D-01…08; v1.1 after B's review (D-04 split, NFR-01 log check). |
 | I-03 | System-Level SDS (Part C) | book6349 | Punge089 | no | #16 | Role matrix, data model, API conventions, architecture and ER diagrams; revised after review. |
 | I-04 | Feature inventory, traceability, three-sprint plan (Parts B and D) | Punge089 | book6349 | no | #13 | 42-row traceability matrix, feature inventory, sprint plan; NFR-03 mapping corrected after review. |

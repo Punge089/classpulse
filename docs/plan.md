@@ -1,12 +1,12 @@
-# ClassPulse — Deliverable 1 Implementation Plan
+# ClassPulse - Deliverable 1 Implementation Plan
 
 > **For agentic workers:** Each Issue below (I-01 … I-11) is run in its **own session**. Read
 > *Global Constraints*, *Shared Contracts* and **only your Issue**, then follow its steps in
-> order. Steps use checkbox (`- [ ]`) syntax. Stop at "open PR" — merging is the reviewer's job.
+> order. Steps use checkbox (`- [ ]`) syntax. Stop at "open PR" - merging is the reviewer's job.
 
-**Goal:** Submit CPE 334 Project Deliverable 1 (80 pts) for theme #10 — a complete product
+**Goal:** Submit CPE 334 Project Deliverable 1 (80 pts) for theme #10 - a complete product
 baseline (Parts A–D) plus a tested, teammate-reviewed, tagged Sprint 1 release of
-"ClassPulse" (Parts E–F) — by **8 Nov 2026 23:59**.
+"ClassPulse" (Parts E–F) - by **8 Nov 2026 23:59**.
 
 **Architecture:** Modular monolith. React SPA → Express JSON API (`/api/*`, all business rules
 and authorization enforced here) → PostgreSQL via Prisma. Cookie session with server-side
@@ -15,22 +15,22 @@ production (Lab 5) Express serves `client/dist`, so it stays same-origin.
 
 **Tech Stack:** Node 22, TypeScript 5.7, Express 4.21, Prisma 5.22, PostgreSQL 16, React 18.3,
 Vite 6, Bootstrap 5.3, react-router-dom 6.30, Vitest 2.1, Supertest 7, Testing Library,
-Playwright 1.48 — identical to the team's TokTickIT labs.
+Playwright 1.48 - identical to the team's TokTickIT labs.
 
 **Spec:** `docs/design.md` (approved design) + course PDFs `project_deliverable_1_v1.pdf`
 and `group_work_specs_v1.pdf` (theme 10, §5, §7, §8).
 
 ---
 
-## 0. Reality check — does this fit the time?
+## 0. Reality check - does this fit the time?
 
 Today is **Fri 6 Nov**; the deadline is **Sun 8 Nov 23:59** ≈ 2.5 days. Honest assessment:
 
 - **It fits only if** the docs start today, Sprint 1 stays exactly at the scope below, each
   student is available ~10–12 h on 7 and 8 Nov, and PR reviews come back within ~1 hour.
-- **Biggest risks:** (1) local PostgreSQL/test-DB setup on both laptops — do it in I-01, not
+- **Biggest risks:** (1) local PostgreSQL/test-DB setup on both laptops - do it in I-01, not
   later; (2) PDF assembly + screenshots take **4–6 h**, people usually budget 1 h;
-  (3) the auth Issue blocks every API test — it has a hard checkpoint.
+  (3) the auth Issue blocks every API test - it has a hard checkpoint.
 - **What does not fit and is deliberately out:** draft editing, text/multi-choice questions,
   anonymous mode, export, scheduled closing, polished UI, component tests for every screen,
   Docker/CI/GCP. They are allocated to Sprint 2/3/Lab 5 in the baseline docs, which is what the
@@ -53,8 +53,8 @@ Today is **Fri 6 Nov**; the deadline is **Sun 8 Nov 23:59** ≈ 2.5 days. Honest
 | Sat 7 Nov 18:00 | I-06 (auth) merged | Pair on it; lanes write pure-logic tests meanwhile |
 | Sun 8 Nov 12:00 | I-07, I-08, I-09 merged | Apply cut list items 1–3 |
 | Sun 8 Nov 16:00 | I-10 merged; release PR open | Release what is merged; disclose the rest |
-| Sun 8 Nov 18:00 | Tag `v1.0.0-sprint1` on `main`; final test run saved | — |
-| Sun 8 Nov 23:00 | PDF uploaded to LEB2 (59 min buffer) | — |
+| Sun 8 Nov 18:00 | Tag `v1.0.0-sprint1` on `main`; final test run saved | - |
+| Sun 8 Nov 23:00 | PDF uploaded to LEB2 (59 min buffer) | - |
 
 ---
 
@@ -70,7 +70,7 @@ Today is **Fri 6 Nov**; the deadline is **Sun 8 Nov 23:59** ≈ 2.5 days. Honest
 - Never disable, skip, `.only`, or weaken a required test. Failures/skips are reported, not hidden.
 - IDs are stable and never renumbered: `FR-xx`, `BR-xx`, `NFR-xx`, `F-xx`, `SR-xx`, `AC-xx`, `TEST-xx`, `DEMO-x`. The registry in §2 is the source of truth; additions get the next free number and a version-history line.
 - Authorization is enforced only on the backend. Hidden buttons/route guards are UX only.
-- Sprint 1 surveys are **identified**. UI must say "Identified survey — your name is stored with your answers". Never use the word "anonymous" for them.
+- Sprint 1 surveys are **identified**. UI must say "Identified survey - your name is stored with your answers". Never use the word "anonymous" for them.
 - No real secrets in Git or the PDF. Commit only `.env.example`; seed password comes from `SEED_PASSWORD`. Synthetic data only, emails end in `@classpulse.test`.
 - Ports: server `3000`, client `5173`. Tests use a separate DB configured in `server/.env.test` (TokTickIT pattern).
 - Session: cookie `cp_session`, `httpOnly`, `SameSite=Lax`, `Secure` when `NODE_ENV=production`, lifetime `SESSION_TTL_HOURS` (default `8`).
@@ -81,11 +81,11 @@ Today is **Fri 6 Nov**; the deadline is **Sun 8 Nov 23:59** ≈ 2.5 days. Honest
 
 Failure modes the spec implies but no AC names directly. Each has a test added to its owning Issue.
 
-1. **Cookie lost across reloads/ports** — login "works" but a page reload shows logged-out. Expected: identity survives reload. → TEST-09 in I-06.
-2. **Double-click on Submit** — second request returns 409 and the UI shows an error although the first succeeded. Expected: button disabled while sending; a 409 `ALREADY_RESPONDED` shows "You have already submitted this survey". → TEST-32 in I-08.
-3. **Survey closed while the form is open** — Expected: clear message "This survey is not open for responses", no stack trace, nothing stored. → TEST-26 (API) + TEST-32 (UI) in I-08.
-4. **Malformed input** — non-JSON body, `answers` not an array, `questionId` as string `"1"`, extra fields, non-numeric `:id` like `/api/owner/surveys/abc`. Expected: 400/404 with the error shape, never 500. → TEST-12 (I-07), TEST-28 (I-08), TEST-52 (I-05).
-5. **Rounding and empty buckets in the summary** — ratings `[4,4,5]` → average `4.33`; an option nobody chose appears with `count: 0`. → TEST-33 in I-09.
+1. **Cookie lost across reloads/ports** - login "works" but a page reload shows logged-out. Expected: identity survives reload. → TEST-09 in I-06.
+2. **Double-click on Submit** - second request returns 409 and the UI shows an error although the first succeeded. Expected: button disabled while sending; a 409 `ALREADY_RESPONDED` shows "You have already submitted this survey". → TEST-32 in I-08.
+3. **Survey closed while the form is open** - Expected: clear message "This survey is not open for responses", no stack trace, nothing stored. → TEST-26 (API) + TEST-32 (UI) in I-08.
+4. **Malformed input** - non-JSON body, `answers` not an array, `questionId` as string `"1"`, extra fields, non-numeric `:id` like `/api/owner/surveys/abc`. Expected: 400/404 with the error shape, never 500. → TEST-12 (I-07), TEST-28 (I-08), TEST-52 (I-05).
+5. **Rounding and empty buckets in the summary** - ratings `[4,4,5]` → average `4.33`; an option nobody chose appears with `count: 0`. → TEST-33 in I-09.
 
 ---
 
@@ -106,7 +106,7 @@ Failure modes the spec implies but no AC names directly. Each has a test added t
 ## 2. Shared Contracts (every session reads this)
 
 ### 2.1 Product context
-**ClassPulse** — course feedback surveys for a university department.
+**ClassPulse** - course feedback surveys for a university department.
 - **Survey Owner** (role `OWNER`): a lecturer who owns one or more courses; creates, publishes and closes surveys for own courses; sees aggregate results of own surveys only.
 - **Respondent** (role `RESPONDENT`): a student; sees published surveys of courses they are enrolled in; submits one response per survey; sees only their own response.
 - Accounts, courses and enrolments are seeded (no self-registration in the product).
@@ -174,7 +174,7 @@ Failure modes the spec implies but no AC names directly. Each has a test added t
 
 | ID | Feature / responsibility | Requirements | Depends on | Sprint |
 |---|---|---|---|---|
-| SR-01 | Persistence foundation: schema, migrations, seed, test DB | NFR-05, NFR-09 | — | 1 |
+| SR-01 | Persistence foundation: schema, migrations, seed, test DB | NFR-05, NFR-09 | - | 1 |
 | F-01 | Authentication, session and access control | FR-01, NFR-01, NFR-02, NFR-03, NFR-04 | SR-01 | 1 |
 | F-03 | Survey authoring and lifecycle | FR-02, FR-03, FR-04, FR-05, FR-09, BR-02, BR-03, BR-08 | F-01 | 1 |
 | F-04 | Response submission | FR-06, FR-07, BR-04, BR-05, BR-06, BR-07, BR-09, BR-10 | F-01, SR-01 (F-03 only for the UI journey) | 1 |
@@ -191,7 +191,7 @@ Failure modes the spec implies but no AC names directly. Each has a test added t
 
 (`F-02` is intentionally unused; record that in `docs/features.md` so the gap is explained.)
 
-### 2.4 Data model (Sprint 1) — `server/prisma/schema.prisma`
+### 2.4 Data model (Sprint 1) - `server/prisma/schema.prisma`
 
 | Model | Fields (type, constraint) | Notes |
 |---|---|---|
@@ -235,23 +235,23 @@ All paths under `/api`, JSON in/out. Check order on every protected route: **401
 
 | Method + path | Role | Request | Success | Feature |
 |---|---|---|---|---|
-| `GET /api/health` | public | — | 200 `{status:"ok"}` | SR-01 |
+| `GET /api/health` | public | - | 200 `{status:"ok"}` | SR-01 |
 | `POST /api/auth/login` | public | `{email, password}` | 200 `{user}` + `Set-Cookie: cp_session` | F-01 |
-| `POST /api/auth/logout` | any logged-in | — | 204, session row deleted, cookie cleared | F-01 |
-| `GET /api/auth/me` | any logged-in | — | 200 `{user}` | F-01 |
-| `GET /api/owner/courses` | OWNER | — | 200 `{courses:[{id,code,title}]}` own only | F-03 |
-| `GET /api/owner/surveys` | OWNER | — | 200 `{surveys:[{id,title,status,courseCode,responseCount}]}` own only | F-03 |
+| `POST /api/auth/logout` | any logged-in | - | 204, session row deleted, cookie cleared | F-01 |
+| `GET /api/auth/me` | any logged-in | - | 200 `{user}` | F-01 |
+| `GET /api/owner/courses` | OWNER | - | 200 `{courses:[{id,code,title}]}` own only | F-03 |
+| `GET /api/owner/surveys` | OWNER | - | 200 `{surveys:[{id,title,status,courseCode,responseCount}]}` own only | F-03 |
 | `POST /api/owner/surveys` | OWNER | `{courseId,title,description?,questions:[{prompt,type,required?,options?:string[]}]}` | 201 `{survey}` status DRAFT | F-03 |
-| `GET /api/owner/surveys/:id` | OWNER | — | 200 `{survey}` with questions/options | F-03 |
-| `POST /api/owner/surveys/:id/publish` | OWNER | — | 200 `{survey}` status PUBLISHED, `publishedAt` set | F-03 |
-| `POST /api/owner/surveys/:id/close` | OWNER | — | 200 `{survey}` status CLOSED, `closedAt` set | F-03 |
-| `GET /api/owner/surveys/:id/summary` | OWNER | — | 200 `{summary}` (shape in I-09) | F-05 |
-| `GET /api/surveys` | RESPONDENT | — | 200 `{surveys:[{id,title,courseCode,mode,status,hasResponded}]}` PUBLISHED + enrolled only | F-04 |
-| `GET /api/surveys/:id` | RESPONDENT | — | 200 `{survey}` with questions; 404 if DRAFT or not enrolled | F-04 |
+| `GET /api/owner/surveys/:id` | OWNER | - | 200 `{survey}` with questions/options | F-03 |
+| `POST /api/owner/surveys/:id/publish` | OWNER | - | 200 `{survey}` status PUBLISHED, `publishedAt` set | F-03 |
+| `POST /api/owner/surveys/:id/close` | OWNER | - | 200 `{survey}` status CLOSED, `closedAt` set | F-03 |
+| `GET /api/owner/surveys/:id/summary` | OWNER | - | 200 `{summary}` (shape in I-09) | F-05 |
+| `GET /api/surveys` | RESPONDENT | - | 200 `{surveys:[{id,title,courseCode,mode,status,hasResponded}]}` PUBLISHED + enrolled only | F-04 |
+| `GET /api/surveys/:id` | RESPONDENT | - | 200 `{survey}` with questions; 404 if DRAFT or not enrolled | F-04 |
 | `POST /api/surveys/:id/responses` | RESPONDENT | `{answers:[{questionId, ratingValue?} \| {questionId, optionId?}]}` | 201 `{response:{id,surveyId,submittedAt}}` | F-04 |
-| `GET /api/responses/:id` | RESPONDENT | — | 200 own response with answers; 404 if not own | F-04 |
+| `GET /api/responses/:id` | RESPONDENT | - | 200 own response with answers; 404 if not own | F-04 |
 
-`user` object everywhere: `{ id, email, fullName, role }` — never `passwordHash`.
+`user` object everywhere: `{ id, email, fullName, role }` - never `passwordHash`.
 
 ### 2.6 Shared code interfaces (names every Issue uses)
 
@@ -261,15 +261,15 @@ All paths under `/api`, JSON in/out. Check order on every protected route: **401
 | `getPrisma` | `server/src/prisma.ts` | `getPrisma(): PrismaClient` lazy singleton | I-05 |
 | `ApiError` | `server/src/lib/errors.ts` | `class ApiError extends Error { constructor(status: number, code: ErrorCode, message: string, details?: FieldError[]) }` | I-05 |
 | `errorHandler` | `server/src/lib/errors.ts` | Express error middleware → error shape; unknown errors → 500 `INTERNAL_ERROR` without stack | I-05 |
-| `parseId` | `server/src/lib/params.ts` | `parseId(raw: string): number` — positive int or throws `ApiError(404,'NOT_FOUND')` | I-05 |
+| `parseId` | `server/src/lib/params.ts` | `parseId(raw: string): number` - positive int or throws `ApiError(404,'NOT_FOUND')` | I-05 |
 | `resetDb` / `seedFixture` | `server/tests/helpers/fixture.ts` | `resetDb(): Promise<void>`; `seedFixture(): Promise<Fixture>` where `Fixture = { owner1, owner2, student1, student2, student3: User; cpe334, cpe231: Course }` | I-05 |
-| `makeSurvey` | `server/tests/helpers/fixture.ts` | `makeSurvey(opts: { course: Course; owner: User; status?: SurveyStatus; questions?: QuestionSpec[] }): Promise<SurveyWithQuestions>` — default 1 RATING + 1 SINGLE_CHOICE(`["Yes","No"]`), status PUBLISHED | I-05 |
+| `makeSurvey` | `server/tests/helpers/fixture.ts` | `makeSurvey(opts: { course: Course; owner: User; status?: SurveyStatus; questions?: QuestionSpec[] }): Promise<SurveyWithQuestions>` - default 1 RATING + 1 SINGLE_CHOICE(`["Yes","No"]`), status PUBLISHED | I-05 |
 | `hashPassword` / `verifyPassword` | `server/src/lib/password.ts` | `(plain: string) => Promise<string>`; `(plain: string, hash: string) => Promise<boolean>` (scrypt, random salt) | I-05 (seed needs it); tested in I-06 |
 | `AuthUser` | `server/src/types.ts` | `{ id: number; email: string; fullName: string; role: 'OWNER' \| 'RESPONDENT' }`; `req.user?: AuthUser` via declaration merging | I-06 |
 | `createSession` / `findSessionUser` / `deleteSession` | `server/src/lib/session.ts` | `(userId) => Promise<{ token: string; expiresAt: Date }>`; `(token) => Promise<AuthUser \| null>` (null if expired/inactive); `(token) => Promise<void>` | I-06 |
 | `requireAuth` / `requireRole` | `server/src/middleware/auth.ts` | `requireAuth: RequestHandler` (401 `UNAUTHENTICATED`); `requireRole(role: AuthUser['role']): RequestHandler` (403 `FORBIDDEN`) | I-06 |
 | `loginAs` | `server/tests/helpers/auth.ts` | `loginAs(app: Express, email: string): Promise<TestAgent>` (supertest agent holding the cookie) | I-06 |
-| `PROTECTED_ROUTES` | `server/tests/api/unauthenticated.test.ts` | `const PROTECTED_ROUTES: Array<[method, path]>` — each later Issue **appends** its routes | I-06 |
+| `PROTECTED_ROUTES` | `server/tests/api/unauthenticated.test.ts` | `const PROTECTED_ROUTES: Array<[method, path]>` - each later Issue **appends** its routes | I-06 |
 | `apiFetch` | `client/src/api.ts` | `apiFetch<T>(path: string, init?: RequestInit): Promise<T>`; throws `ApiClientError { status; code; message; details? }` | I-05 |
 | `AuthProvider` / `useAuth` / `RequireRole` | `client/src/auth/` | `useAuth(): { user: AuthUser \| null; loading: boolean; login(email,pw): Promise<void>; logout(): Promise<void> }`; `<RequireRole role="OWNER">` | I-06 |
 | `nextStatus` | `server/src/lib/surveyLifecycle.ts` | `nextStatus(current: SurveyStatus, action: 'publish' \| 'close'): SurveyStatus` throws `ApiError(409,'INVALID_TRANSITION')` | I-07 |
@@ -295,7 +295,7 @@ empty-state text on empty lists; `ApiClientError.message` in a Bootstrap alert; 
 `details` shown under the matching input; buttons disabled while a request is in flight.
 Every page uses the visual identity in §2.9 (no ad-hoc colours, no per-page styling).
 
-### 2.9 Visual identity — "Pulse"
+### 2.9 Visual identity - "Pulse"
 
 A calm paper-and-ink look with one coral accent and a heartbeat-line motif (the name = the pulse
 of the classroom). Bootstrap 5 stays as the layout base. Everything below is a CSS variable in
@@ -303,8 +303,8 @@ of the classroom). Bootstrap 5 stays as the layout base. Everything below is a C
 
 | Token | Value | Use | Contrast (measured) |
 |---|---|---|---|
-| `--cp-paper` | `#FAF7F2` | page background | — |
-| `--cp-card` | `#FFFFFF` | cards, forms | — |
+| `--cp-paper` | `#FAF7F2` | page background | - |
+| `--cp-card` | `#FFFFFF` | cards, forms | - |
 | `--cp-ink` | `#14213D` | body text, headings | 14.95 : 1 on paper |
 | `--cp-muted` | `#5B6478` | secondary text | 5.55 : 1 on paper |
 | `--cp-accent` | `#C8431D` | primary buttons, links, active rating dot | white on it 4.91 : 1; as text on paper 4.60 : 1 |
@@ -330,10 +330,10 @@ Do **not** use `#E4572E` (brighter coral): white text on it is only 3.68 : 1, wh
 - **Status badges:** DRAFT = muted outline, PUBLISHED = `--cp-ok` fill, CLOSED = ink outline.
 - **Layout:** one centred column, max width 760 px; at 375 px width no horizontal scroll (NFR-10 is checked
   properly in Sprint 3, but do not break it now).
-- **Copy tone:** short and friendly ("Thanks — your response is in."), but identified surveys always show
-  "Identified survey — your name is stored with your answers".
+- **Copy tone:** short and friendly ("Thanks - your response is in."), but identified surveys always show
+  "Identified survey - your name is stored with your answers".
 
-### 2.8 Contract template — `docs/sprints/sprint-1/<ID>-<slug>.md`
+### 2.8 Contract template - `docs/sprints/sprint-1/<ID>-<slug>.md`
 
 Every feature contract has these headings, in order (Part E is graded on them):
 1. Feature, owner, linked FR/BR/NFR · 2. Behaviour and workflow (numbered steps) ·
@@ -343,7 +343,7 @@ Every feature contract has these headings, in order (Part E is graded on them):
 9. Acceptance criteria (`AC-xx`, observable outcome) · 10. STS table: `Test ID | AC | Level
 (unit / API-DB / E2E) | Precondition & input | Action | Expected result | Planned file` ·
 11. Completion evidence checklist (links to red/green output, PR, commit) ·
-12. Version history (`v1.0 date author — initial contract`; later rows say what changed and why).
+12. Version history (`v1.0 date author - initial contract`; later rows say what changed and why).
 
 ---
 
@@ -351,7 +351,7 @@ Every feature contract has these headings, in order (Part E is graded on them):
 
 - Labels: `sprint-1`, `sprint-2`, `sprint-3`, `docs`, `feature`, `test`, `release`, `pair`, `owner:A`, `owner:B`.
 - Project board (Projects v2) columns: **Backlog → Ready → In progress → In review → Done**.
-- Milestone: `Sprint 1 — Deliverable 1 (8 Nov)`.
+- Milestone: `Sprint 1 - Deliverable 1 (8 Nov)`.
 - PR template `.github/pull_request_template.md`: Issue link (`Closes #n`), feature/contract IDs, AC covered, test command + result, "contract committed before code? (commit id)", "no secrets / no skipped tests" checkboxes, reviewer checklist.
 - Sprint 2/3 Issues are **not** created now (they come with D2); only F-06…F-14 rows in docs.
 
@@ -359,7 +359,7 @@ Every feature contract has these headings, in order (Part E is graded on them):
 
 **Created on 6 Nov 2026:** repo https://github.com/Punge089/classpulse (public), project board
 https://github.com/users/Punge089/projects/5 (Backlog → Ready → In progress → In review → Done),
-milestone "Sprint 1 — Deliverable 1 (8 Nov)", labels as above. Issue numbers match the plan IDs:
+milestone "Sprint 1 - Deliverable 1 (8 Nov)", labels as above. Issue numbers match the plan IDs:
 **I-01 = #1, I-02 = #2, … I-11 = #11**, so branch names are `feature/<n>-<slug>` with n = the I-number
 (e.g. `feature/8-response-submission`). B's Issues get assigned to `book6349` once the invitation is accepted.
 
@@ -441,7 +441,7 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 
 ---
 
-### I-02 [A] SRS — Part A
+### I-02 [A] SRS - Part A
 **Owner:** A · **Reviewer:** B · **Branch:** `feature/<n>-srs` · **Depends on:** I-01 · **Target:** Fri 6 Nov 23:00
 
 **Files:** Create `docs/srs.md`.
@@ -453,16 +453,16 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 
 ---
 
-### I-03 [B] System-Level SDS — Part C
+### I-03 [B] System-Level SDS - Part C
 **Owner:** B · **Reviewer:** A · **Branch:** `feature/<n>-system-sds` · **Depends on:** I-01 · **Target:** Sat 7 Nov 10:00
 
 **Files:** Create `docs/system-sds.md`, `docs/diagrams/architecture.md` (Mermaid), `docs/diagrams/er.md` (Mermaid `erDiagram`).
 
 - [ ] **Step 1:** §1 Architecture: stack table with reason (reuse of TokTickIT skills); component responsibilities (SPA = presentation + UX validation only; API = authentication, authorization, all BRs, transactions; DB = integrity constraints incl. unique response and rating CHECK); communication (JSON over HTTP, cookie session; Vite proxy in dev, same-origin in prod); Mermaid component diagram.
-- [ ] **Step 2:** §2 Data model: copy §2.4 table, add ER diagram, ownership links (Survey.ownerId, Response.respondentId), Sprint 2/3 planned additions (`closesAt`, `Section`, `ParticipationRecord`, `AnonymousResponse` with no user FK — just named, marked "planned"); migrations (`prisma migrate dev` / `deploy`), seed (`npm run prisma:seed`, deterministic, `SEED_PASSWORD`).
+- [ ] **Step 2:** §2 Data model: copy §2.4 table, add ER diagram, ownership links (Survey.ownerId, Response.respondentId), Sprint 2/3 planned additions (`closesAt`, `Section`, `ParticipationRecord`, `AnonymousResponse` with no user FK - just named, marked "planned"); migrations (`prisma migrate dev` / `deploy`), seed (`npm run prisma:seed`, deterministic, `SEED_PASSWORD`).
 - [ ] **Step 3:** §3 UI: screens table §2.7 + navigation diagram + shared states (loading / empty / error / validation / disabled-while-sending).
 - [ ] **Step 4:** §4 API conventions: §2.5 error table, check order, status-code policy (404 for others' records), JSON only, ids numeric, no stack traces.
-- [ ] **Step 5:** §5 Role/permission matrix — rows = operations, columns = Anonymous / Respondent / Owner, cells say *which records*:
+- [ ] **Step 5:** §5 Role/permission matrix - rows = operations, columns = Anonymous / Respondent / Owner, cells say *which records*:
 
   | Operation | Anonymous | Respondent | Owner |
   |---|---|---|---|
@@ -481,17 +481,17 @@ tests or results that do not exist yet. Reference IDs (`AC-22`, `BR-06`) so the 
 
 ---
 
-### I-04 [A] Feature inventory, traceability, three-sprint plan — Parts B + D
+### I-04 [A] Feature inventory, traceability, three-sprint plan - Parts B + D
 **Owner:** A · **Reviewer:** B · **Branch:** `feature/<n>-features-trace-plan` · **Depends on:** I-01 · **Target:** Sat 7 Nov 10:00
 
 **Files:** Create `docs/features.md`, `docs/traceability.md`, `docs/sprints/plan.md`.
 
 - [ ] **Step 1:** `features.md`: §2.3 table + 2–3 line description per feature + note on unused `F-02`.
 - [ ] **Step 2:** `traceability.md`: one row per FR/BR/NFR (all 42): `Requirement | Feature/responsibility | Sprint | AC | Planned test | Actual test file::name | Result @ commit`. Sprint 1 rows take AC/TEST IDs from Issues I-05…I-09; Sprint 2/3 rows say "AC to be defined in Sprint 2/3 contract" (allowed by the rubric). Add sections **Coverage gaps** (e.g. NFR-05 redeploy part → Lab 5; NFR-06 → S3) and **Approved changes** (empty table with columns `Change | Date | Reason | Approved by`).
-- [ ] **Step 3:** `sprints/plan.md`: per sprint — goal, feature IDs, dependencies, completion outcome, checkpoint date:
-  - Sprint 1 (→ 8 Nov, D1): SR-01, F-01, F-03, F-04, F-05 — "owner publishes identified survey, enrolled student answers once, owner sees aggregates; auth + backend permissions; tagged release".
+- [ ] **Step 3:** `sprints/plan.md`: per sprint - goal, feature IDs, dependencies, completion outcome, checkpoint date:
+  - Sprint 1 (→ 8 Nov, D1): SR-01, F-01, F-03, F-04, F-05 - "owner publishes identified survey, enrolled student answers once, owner sees aggregates; auth + backend permissions; tagged release".
   - Sprint 2 (→ 29 Nov, D2): F-06, F-07, F-08, F-09, F-10 (+ Lab 5 Docker/CI/GCP, Lab 6 UAT fixes).
-  - Sprint 3 (contracts + progress by 29 Nov; complete 13 Dec): F-11, F-12, F-13, F-14 — anonymous mode is Sprint 3 because it needs F-07 types and a privacy design.
+  - Sprint 3 (contracts + progress by 29 Nov; complete 13 Dec): F-11, F-12, F-13, F-14 - anonymous mode is Sprint 3 because it needs F-07 types and a privacy design.
   - Explain why Sprint 1 scope is this slice (= theme example; smallest slice with auth + transition + rule).
 - [ ] **Step 4:** Commit `docs: feature inventory, traceability v1.0, sprint plan`, PR, request B. **B reviews:** samples 3 rows of the matrix against SRS.
 
@@ -586,9 +586,9 @@ test.each(PROTECTED_ROUTES)("TEST-07 %s %s requires login", async (m, p) => {
 ```
   Also TEST-01 (cookie attributes), TEST-03, TEST-05 (update `expiresAt` to past via Prisma), TEST-06 unit (`password.test.ts`), TEST-08 + TEST-09 Playwright (`e2e/auth.spec.ts`: bad login alert; login → navbar text `Dr. Ann Lee · OWNER`; `page.reload()` still shows it; logout → `/login`).
 - [ ] **Step 3:** Run `cd server && npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/F-01-red.txt` → FAIL (routes missing). Commit `test(F-01): failing auth tests (red)`.
-- [ ] **Step 4:** Implement §2.6 symbols for I-06: `session.ts` (32-byte `randomBytes` base64url token, store SHA-256 hex, TTL from env), `requireAuth` (reads `cp_session`, attaches `req.user`), `requireRole`, `routes/auth.ts`, `loginAs` helper; client `AuthProvider` (calls `/api/auth/me` on load), `LoginPage`, `NavBar`, `RequireRole` (redirect to `/login` — UX only).
+- [ ] **Step 4:** Implement §2.6 symbols for I-06: `session.ts` (32-byte `randomBytes` base64url token, store SHA-256 hex, TTL from env), `requireAuth` (reads `cp_session`, attaches `req.user`), `requireRole`, `routes/auth.ts`, `loginAs` helper; client `AuthProvider` (calls `/api/auth/me` on load), `LoginPage`, `NavBar`, `RequireRole` (redirect to `/login` - UX only).
 - [ ] **Step 5:** Run server tests → PASS; `npm run test:e2e -- e2e/auth.spec.ts` → PASS; save green output to `evidence/F-01-green.txt`. Commit `feat(F-01): login, logout, me, role middleware (green)`.
-- [ ] **Step 6:** Update traceability rows FR-01, NFR-01…04 with actual test files. PR → staging; **B reviews** (B must be able to explain the cookie/session lifecycle — write it in the review in 2–3 sentences).
+- [ ] **Step 6:** Update traceability rows FR-01, NFR-01…04 with actual test files. PR → staging; **B reviews** (B must be able to explain the cookie/session lifecycle - write it in the review in 2–3 sentences).
 
 ---
 
@@ -614,7 +614,7 @@ AC-18 `GET /api/owner/surveys` returns only caller's surveys with correct `respo
 AC-19 UI: owner creates a 2-question survey, sees it as Draft, publishes, sees "Published" badge; validation messages appear under the fields for an empty title.
 
 - [ ] **Step 1:** Contract (STS TEST-10…TEST-21) → commit `docs(F-03): contract v1.0`.
-- [ ] **Step 2: Write failing tests** (unit first — they need no auth):
+- [ ] **Step 2: Write failing tests** (unit first - they need no auth):
 
 ```ts
 // server/tests/unit/surveyLifecycle.test.ts
@@ -658,9 +658,9 @@ AC-22 second submission → 409 `ALREADY_RESPONDED`, still exactly 1 response; t
 AC-23 submit to DRAFT or CLOSED survey → 409 `SURVEY_NOT_OPEN`, nothing stored ·
 AC-24 student3 (not enrolled in CPE334) → 403 `NOT_ELIGIBLE`, nothing stored ·
 AC-25 invalid answers → 400 with details: missing required question; rating 0, 6, 2.5, `"3"`; optionId of another question; unknown questionId; same questionId twice; `answers` not an array. Ratings 1 and 5 accepted ·
-AC-26 student2 `GET /api/responses/<student1's id>` → 404; `PUT`/`DELETE /api/responses/:id` do not exist (404) — BR-09 ·
+AC-26 student2 `GET /api/responses/<student1's id>` → 404; `PUT`/`DELETE /api/responses/:id` do not exist (404) - BR-09 ·
 AC-27 owner1 calling `POST /api/surveys/:id/responses` or `GET /api/responses/:id` → 403 ·
-AC-28 UI: banner "Identified survey — your name is stored with your answers" shown before answering; submit → confirmation page with time; list then shows "Submitted"; Submit disabled while sending; a 409 shows the server message, no form resubmission.
+AC-28 UI: banner "Identified survey - your name is stored with your answers" shown before answering; submit → confirmation page with time; list then shows "Submitted"; Submit disabled while sending; a 409 shows the server message, no form resubmission.
 
 - [ ] **Step 1:** Contract (STS TEST-22…TEST-32) → commit `docs(F-04): contract v1.0`.
 - [ ] **Step 2: Write failing tests**
@@ -699,7 +699,7 @@ test("TEST-30 a student cannot read another student's response", async () => {
 
 **Files:**
 - Create: `docs/sprints/sprint-1/F-05-aggregate-summary.md`, `server/src/lib/summary.ts`, `server/src/routes/ownerSummary.ts` (own router, so it does not depend on or conflict with I-07's `ownerSurveys.ts`), `server/tests/unit/summary.test.ts`, `server/tests/api/summary.test.ts`, `client/src/pages/owner/SurveySummaryPage.tsx` (bars and read-only `RatingDots` per §2.9)
-- Modify: `server/src/app.ts` (mount `ownerSummary` at `/api/owner/surveys` behind `requireAuth, requireRole("OWNER")`; one line — expect a trivial merge with I-07), `unauthenticated.test.ts` (append 1 route)
+- Modify: `server/src/app.ts` (mount `ownerSummary` at `/api/owner/surveys` behind `requireAuth, requireRole("OWNER")`; one line - expect a trivial merge with I-07), `unauthenticated.test.ts` (append 1 route)
 
 **Response shape:**
 ```json
@@ -719,7 +719,7 @@ AC-33 summary JSON contains no `respondentId`, `email`, `fullName` or per-respon
 AC-34 UI: summary page shows count and per-question results; "No responses yet" empty state.
 
 - [ ] **Step 1:** Contract (STS TEST-33…TEST-38) → commit `docs(F-05): contract v1.0`.
-- [ ] **Step 2: Write failing tests** — TEST-33/35 unit on `summarize` with literal inputs from AC-30/31; TEST-34 API (3 responses inserted via Prisma); TEST-36 (owner2 404, student1 403); TEST-37:
+- [ ] **Step 2: Write failing tests** - TEST-33/35 unit on `summarize` with literal inputs from AC-30/31; TEST-34 API (3 responses inserted via Prisma); TEST-36 (owner2 404, student1 403); TEST-37:
 
 ```ts
 test("TEST-37 summary leaks no respondent identity", async () => {
@@ -727,7 +727,7 @@ test("TEST-37 summary leaks no respondent identity", async () => {
   for (const k of ["respondentId", "email", "fullName", "student1"]) expect(text).not.toContain(k);
 });
 ```
-  TEST-38 is covered inside I-10's journey (E2E) — note that in the STS.
+  TEST-38 is covered inside I-10's journey (E2E) - note that in the STS.
 - [ ] **Step 3:** Run → FAIL; save `evidence/F-05-red.txt`; commit `test(F-05): failing summary tests (red)`.
 - [ ] **Step 4:** Implement `summarize` (pure) + handler (ownership 404 like I-07); summary page.
 - [ ] **Step 5:** PASS; save `evidence/F-05-green.txt`; commit `feat(F-05): aggregate summary (green)`.
@@ -742,7 +742,7 @@ test("TEST-37 summary leaks no respondent identity", async () => {
 
 - [ ] **Step 1: Write the journey test** `TEST-40 full Sprint 1 journey`: owner1 logs in → creates "Lecture feedback W10" (1 RATING, 1 SINGLE_CHOICE) → publishes → logs out; student1 logs in → sees banner → rates 4, chooses "Yes" → confirmation → logs out; owner1 opens summary → `responseCount` text "1", average "4.00". Covers AC-19, AC-28, AC-34 (= TEST-38).
 - [ ] **Step 2:** Run on `sprint-1-staging` → if it fails, open a fix Issue for the owning lane (do not patch other people's code silently).
-- [ ] **Step 3:** README final: dependencies, env-var table, DB create/migrate/seed, run, all test commands, seeded account emails (password = value of `SEED_PASSWORD` you set locally — never the real value in Git), troubleshooting.
+- [ ] **Step 3:** README final: dependencies, env-var table, DB create/migrate/seed, run, all test commands, seeded account emails (password = value of `SEED_PASSWORD` you set locally - never the real value in Git), troubleshooting.
 - [ ] **Step 4: Integration run** on the staging head commit, saving everything:
 ```bash
 cd server && npm run build && npx vitest run 2>&1 | tee ../docs/sprints/sprint-1/evidence/integration-server.txt
@@ -765,7 +765,7 @@ npx playwright test 2>&1 | tee docs/sprints/sprint-1/evidence/integration-e2e.tx
   - **DEMO-3** access: login/logout (AC-01, 04); student `curl -b cookie -X POST /api/owner/surveys` → 403 (AC-16); owner2 opens owner1's summary URL → 404 (AC-32); plus the TEST-07/18/30 output lines.
 - [ ] **Step 4: Process evidence:** screenshots of I-07 and I-08 Issue → branch → PR (author/reviewer, review comment) → merge into staging → release PR → tag (one chain per student); final board; `git log --graph --date=iso --format="%h %ad %an %s" main` excerpt showing for F-03 and F-04: contract commit → red commit → green commit with dates.
 - [ ] **Step 5: Write** `docs/contributions.md` (table: Issue, author, reviewer, pair?, summary) and `docs/ai-use.md` (each student lists tools + tasks assisted; "all AI output was reviewed and tests run by the owner").
-- [ ] **Step 6: Assemble the PDF** in `docs/deliverable-1/report.md` with these headings in this order: Cover (names, IDs, theme #10 + ClassPulse context, repo URL, tag + commit SHA) · Navigation table (Part, pages, IDs) · Table of contents · **Part A SRS** · **Part B Feature inventory and traceability** · **Part C System-Level SDS** · **Part D Three-sprint plan** · **Part E Sprint 1 engineering contracts** (SR-01, F-01, F-03, F-04, F-05, Product DoD) · **Part F Working Sprint 1 and verification** (F.1 setup summary, F.2 demonstrations, F.3 build/test results, F.4 AC→test results table, F.5 two test excerpts — TEST-25 (domain rule) and TEST-19 (ownership) — with their results and red→green versions, F.6 Issue/PR chains + board + release, F.7 history sequence, F.8 contributions, F.9 AI-use, F.10 known limitations & failed/skipped tests). **Tooling already prepared (PR for Issue #11):** `tools/build_report.py` assembles exactly these Parts from the repo docs, prints the PDF with Edge, finds each heading's real page with PyMuPDF so the navigation table and TOC carry correct page numbers, and stamps "page n / N" on every page. Fill `docs/deliverable-1/front-matter.md` (names, IDs, SHA) and the `TODO` markers in `docs/deliverable-1/part-f.md`, then run from **PowerShell** (not a sandboxed shell, which blocks Edge): `pip install -r tools/requirements.txt; python tools/build_report.py` for a draft with visible placeholders, and `python tools/build_report.py --final` for the submission (it refuses while any `TODO` or missing document remains). Open the PDF and check every page for readability before uploading.
+- [ ] **Step 6: Assemble the PDF** in `docs/deliverable-1/report.md` with these headings in this order: Cover (names, IDs, theme #10 + ClassPulse context, repo URL, tag + commit SHA) · Navigation table (Part, pages, IDs) · Table of contents · **Part A SRS** · **Part B Feature inventory and traceability** · **Part C System-Level SDS** · **Part D Three-sprint plan** · **Part E Sprint 1 engineering contracts** (SR-01, F-01, F-03, F-04, F-05, Product DoD) · **Part F Working Sprint 1 and verification** (F.1 setup summary, F.2 demonstrations, F.3 build/test results, F.4 AC→test results table, F.5 two test excerpts - TEST-25 (domain rule) and TEST-19 (ownership) - with their results and red→green versions, F.6 Issue/PR chains + board + release, F.7 history sequence, F.8 contributions, F.9 AI-use, F.10 known limitations & failed/skipped tests). **Tooling already prepared (PR for Issue #11):** `tools/build_report.py` assembles exactly these Parts from the repo docs, prints the PDF with Edge, finds each heading's real page with PyMuPDF so the navigation table and TOC carry correct page numbers, and stamps "page n / N" on every page. Fill `docs/deliverable-1/front-matter.md` (names, IDs, SHA) and the `TODO` markers in `docs/deliverable-1/part-f.md`, then run from **PowerShell** (not a sandboxed shell, which blocks Edge): `pip install -r tools/requirements.txt; python tools/build_report.py` for a draft with visible placeholders, and `python tools/build_report.py --final` for the submission (it refuses while any `TODO` or missing document remains). Open the PDF and check every page for readability before uploading.
 - [ ] **Step 7:** Final checklist (§5 of the D1 PDF) item by item; upload to LEB2 by 23:00; do not push to `main` after submission.
 
 ---
@@ -845,11 +845,11 @@ If a partner's AI lacks these skills, the prompt in §6.1 still carries every ru
 | Real login/logout/current user, 2 roles | I-06 | Yes |
 | Meaningful transition + business-rule validation | BR-03 (I-07), BR-04…07 (I-08) | Yes |
 | Tests: domain rules, persistence, access, selected UI journeys | unit + API/DB + Playwright in I-05…I-10 | Yes; component tests are first to cut |
-| Issues, feature branches, reviewed PRs, staging, release on main | §3, every Issue, I-11 | Yes — reviews are the bottleneck; answer within 1 h |
+| Issues, feature branches, reviewed PRs, staging, release on main | §3, every Issue, I-11 | Yes - reviews are the bottleneck; answer within 1 h |
 | Part A–D whole-product docs | I-02, I-03, I-04 | Yes, concise versions (≈ 3–6 pages each) |
 | Contracts before code + TDD red/green evidence | contract/red/green commits + `evidence/` | Yes, built into every Issue |
-| PDF with A–F, navigation table, TOC, evidence | I-11 | **Tightest part** — start the report skeleton Sat evening, fill as Issues close |
-| Docker/CI/GCP | Not required (Lab 5); designed in I-03 §7 | — |
+| PDF with A–F, navigation table, TOC, evidence | I-11 | **Tightest part** - start the report skeleton Sat evening, fill as Issues close |
+| Docker/CI/GCP | Not required (Lab 5); designed in I-03 §7 | - |
 | Honest disclosure | F.10, test-results.md | Yes |
 
 **Not covered / disclosed:** Sprint 2–3 features (allocated, not built); NFR-05 redeploy part

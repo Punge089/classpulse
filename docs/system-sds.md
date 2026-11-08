@@ -1,4 +1,4 @@
-# ClassPulse — System-Level Software Design Specification
+# ClassPulse - System-Level Software Design Specification
 
 **Version:** 1.1 · **Owner:** Student B (`book6349`) · **Issue:** #3 · **Date:** 6 Nov 2026
 **Scope:** Part C of Deliverable 1; Sprint 1 architecture and planned deployment boundary.
@@ -83,21 +83,21 @@ Every endpoint is under `/api` and uses JSON. Path IDs are positive decimal inte
 
 | Method and path | Access | Request | Success |
 |---|---|---|---|
-| `GET /api/health` | Public | — | `200 {"status":"ok"}` |
+| `GET /api/health` | Public | - | `200 {"status":"ok"}` |
 | `POST /api/auth/login` | Public | `{email, password}` | `200 {user}` and `cp_session` cookie |
-| `POST /api/auth/logout` | Authenticated | — | `204`; session row deleted and cookie cleared |
-| `GET /api/auth/me` | Authenticated | — | `200 {user}` for the current session |
-| `GET /api/owner/courses` | Owner | — | `200 {courses:[{id,code,title}]}` for owned courses |
-| `GET /api/owner/surveys` | Owner | — | `200 {surveys:[{id,title,status,courseCode,responseCount}]}` for owned surveys |
+| `POST /api/auth/logout` | Authenticated | - | `204`; session row deleted and cookie cleared |
+| `GET /api/auth/me` | Authenticated | - | `200 {user}` for the current session |
+| `GET /api/owner/courses` | Owner | - | `200 {courses:[{id,code,title}]}` for owned courses |
+| `GET /api/owner/surveys` | Owner | - | `200 {surveys:[{id,title,status,courseCode,responseCount}]}` for owned surveys |
 | `POST /api/owner/surveys` | Owner | `{courseId,title,description?,questions:[...]}` | `201 {survey}` in `DRAFT` |
-| `GET /api/owner/surveys/:id` | Owner | — | `200 {survey}` with questions and options |
-| `POST /api/owner/surveys/:id/publish` | Owner | — | `200 {survey}` in `PUBLISHED`, with `publishedAt` |
-| `POST /api/owner/surveys/:id/close` | Owner | — | `200 {survey}` in `CLOSED`, with `closedAt` |
-| `GET /api/owner/surveys/:id/summary` | Owner | — | `200 {summary}` with aggregate results |
-| `GET /api/surveys` | Respondent | — | `200 {surveys:[...]}` for published surveys in enrolled courses |
-| `GET /api/surveys/:id` | Respondent | — | `200 {survey}` with questions; `404` if not published or not enrolled |
+| `GET /api/owner/surveys/:id` | Owner | - | `200 {survey}` with questions and options |
+| `POST /api/owner/surveys/:id/publish` | Owner | - | `200 {survey}` in `PUBLISHED`, with `publishedAt` |
+| `POST /api/owner/surveys/:id/close` | Owner | - | `200 {survey}` in `CLOSED`, with `closedAt` |
+| `GET /api/owner/surveys/:id/summary` | Owner | - | `200 {summary}` with aggregate results |
+| `GET /api/surveys` | Respondent | - | `200 {surveys:[...]}` for published surveys in enrolled courses |
+| `GET /api/surveys/:id` | Respondent | - | `200 {survey}` with questions; `404` if not published or not enrolled |
 | `POST /api/surveys/:id/responses` | Respondent | `{answers:[...]}` | `201 {response:{id,surveyId,submittedAt}}` |
-| `GET /api/responses/:id` | Respondent | — | `200` own response with answers; `404` for another respondent's response |
+| `GET /api/responses/:id` | Respondent | - | `200` own response with answers; `404` for another respondent's response |
 
 Protected-route processing order is **401 unauthenticated → 403 wrong role → 404 missing or not owned → business-rule checks → 400 field validation → persistence**. For `POST /api/surveys/:id/responses`, first resolve the numeric survey ID and return 404 if the survey does not exist; then check enrollment (403 `NOT_ELIGIBLE`), survey status (409 `SURVEY_NOT_OPEN` for DRAFT or CLOSED), answer fields (400 `VALIDATION_ERROR`), and only then persist. The respondent detail route remains 404 for an unpublished survey or a respondent who is not enrolled, as specified in §2.5. Use consistent error JSON `{error:{code,message,details?}}`:
 

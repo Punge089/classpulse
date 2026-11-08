@@ -1,4 +1,4 @@
-# F-03 Survey authoring and lifecycle — engineering contract
+# F-03 Survey authoring and lifecycle - engineering contract
 
 **Issue #7 (I-07) · Owner: Punge089 (Student A) · Reviewer: book6349 (Student B) · Sprint 1**
 Written and committed **before** any F-03 test or code (see version history).
@@ -47,7 +47,7 @@ A hidden frontend button is not authorization; every cell is enforced on the ser
 
 | Screen | Content and behaviour |
 |---|---|
-| `/owner` | Heading, `PulseLine` divider, "New survey" button, list of own surveys: title, course code, status badge (DRAFT muted outline, PUBLISHED ok fill, CLOSED ink outline), response count. States: loading (animated `PulseLine`), empty ("No surveys yet — create your first one"), error (alert with the server message). |
+| `/owner` | Heading, `PulseLine` divider, "New survey" button, list of own surveys: title, course code, status badge (DRAFT muted outline, PUBLISHED ok fill, CLOSED ink outline), response count. States: loading (animated `PulseLine`), empty ("No surveys yet - create your first one"), error (alert with the server message). |
 | `/owner/surveys/new` | Course select (own courses only), title, description, repeatable question block (prompt, type, required checkbox, options list for single-choice with add/remove). Field errors from `details` appear under the matching input. Buttons are disabled while sending. On 201 the page opens the new survey's detail. |
 | `/owner/surveys/:id` | Title, course, status badge, question list with options, **Publish** or **Close** by status, link to the summary (F-05) once published. Shows the server error message on a rejected action. |
 
@@ -59,12 +59,12 @@ Errors always use `{ "error": { "code", "message", "details"? } }`.
 
 | Method and path | Request | Success | Errors |
 |---|---|---|---|
-| `GET /api/owner/courses` | — | 200 `{ "courses": [{ "id", "code", "title" }] }` own courses only | 401, 403 |
-| `GET /api/owner/surveys` | — | 200 `{ "surveys": [{ "id", "title", "status", "courseCode", "responseCount" }] }` own surveys only | 401, 403 |
+| `GET /api/owner/courses` | - | 200 `{ "courses": [{ "id", "code", "title" }] }` own courses only | 401, 403 |
+| `GET /api/owner/surveys` | - | 200 `{ "surveys": [{ "id", "title", "status", "courseCode", "responseCount" }] }` own surveys only | 401, 403 |
 | `POST /api/owner/surveys` | `{ "courseId", "title", "description"?, "questions": [{ "prompt", "type", "required"?, "options"?: string[] }] }` | 201 `{ "survey" }`, status `DRAFT` | 400 `VALIDATION_ERROR` (with `details`), 401, 403, 404 `NOT_FOUND` (course not owned) |
-| `GET /api/owner/surveys/:id` | — | 200 `{ "survey" }` with questions and options | 401, 403, 404 |
-| `POST /api/owner/surveys/:id/publish` | — | 200 `{ "survey" }`, `PUBLISHED`, `publishedAt` set | 401, 403, 404, 409 `INVALID_TRANSITION` |
-| `POST /api/owner/surveys/:id/close` | — | 200 `{ "survey" }`, `CLOSED`, `closedAt` set | 401, 403, 404, 409 `INVALID_TRANSITION` |
+| `GET /api/owner/surveys/:id` | - | 200 `{ "survey" }` with questions and options | 401, 403, 404 |
+| `POST /api/owner/surveys/:id/publish` | - | 200 `{ "survey" }`, `PUBLISHED`, `publishedAt` set | 401, 403, 404, 409 `INVALID_TRANSITION` |
+| `POST /api/owner/surveys/:id/close` | - | 200 `{ "survey" }`, `CLOSED`, `closedAt` set | 401, 403, 404, 409 `INVALID_TRANSITION` |
 
 `survey` object:
 

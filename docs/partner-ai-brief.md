@@ -1,4 +1,4 @@
-# START HERE — brief for the AI agent working for Student B (`book6349`)
+# START HERE - brief for the AI agent working for Student B (`book6349`)
 
 You are an AI coding agent working **for Student B**, the human who runs this session. The project is
 ClassPulse, a CPE 334 group project (deliverable due **Sun 8 Nov 2026 23:59**) built by two students:
@@ -45,9 +45,9 @@ Needs Node 22 or newer and PostgreSQL 16 or newer. Do not ask B for, or write do
 
 | Order | What | Why now | Target |
 |---|---|---|---|
-| 1 | **#5 foundation** (I-05) — the biggest blocker. Run it in one session. Read `docs/plan.md`: Global Constraints, §2 (all of it, including §2.9 visual identity), §4.1 and **I-05**. | Everything else waits for it | merged **Sat 7 Nov 12:00** |
+| 1 | **#5 foundation** (I-05) - the biggest blocker. Run it in one session. Read `docs/plan.md`: Global Constraints, §2 (all of it, including §2.9 visual identity), §4.1 and **I-05**. | Everything else waits for it | merged **Sat 7 Nov 12:00** |
 | 2 | **Reviews that unblock A** (can run in a second session): (a) C3 on #7 and #6 with the *Reviewer prompt* in `docs/plan.md` §6.1 and the `contract_check` rows for I-06/I-07 in `docs/comment-playbook.md` Part B; (b) review PRs #12, #13, #14 using the `pr_check` rows for I-02, I-04 and the notes in each PR body. | A is blocked on C3; the PRs are Part A/B/D of the grade | within ~1 h of starting |
-| 3 | **#3 System SDS** (I-03) — a document Issue, runs in parallel to #5 in a separate session. | Part C (15 points) | Sat 7 Nov 10:00 |
+| 3 | **#3 System SDS** (I-03) - a document Issue, runs in parallel to #5 in a separate session. | Part C (15 points) | Sat 7 Nov 10:00 |
 | 4 | After **#6 (login)** is merged: **#8** (response submission), then **#9** (aggregate summary). Their contracts and C2 can be written earlier, while #5 and #6 are still in progress. | Core Sprint 1 journey | merged **Sun 8 Nov 12:00** |
 | 5 | **#11 release and PDF** with A (pair): you review the release PR if A opens it. Run `tools/build_report.py` once on B's machine to check it works (from PowerShell, see plan I-11 step 6). | Submission | tag by Sun 18:00, upload by 23:00 |
 

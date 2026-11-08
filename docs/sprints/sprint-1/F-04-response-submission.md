@@ -1,4 +1,4 @@
-# F-04 — Response submission
+# F-04 - Response submission
 
 **Owner:** Student B (`book6349`) · **Reviewer:** Student A (`Punge089`) · **Issue:** #8
 **Version:** 1.2 · **Date:** 7 Nov 2026
@@ -11,7 +11,7 @@ Allow an authenticated respondent to find published surveys for enrolled courses
 ## 2. Behaviour and workflow
 
 1. The respondent opens `/surveys`; the API returns only PUBLISHED surveys for courses in which the respondent is enrolled, with `hasResponded` for each item.
-2. The respondent opens a survey and sees its questions and the notice: “Identified survey — your name is stored with your answers”. The detail endpoint returns 404 for a DRAFT or CLOSED survey or a respondent not enrolled in its course.
+2. The respondent opens a survey and sees its questions and the notice: “Identified survey - your name is stored with your answers”. The detail endpoint returns 404 for a DRAFT or CLOSED survey or a respondent not enrolled in its course.
 3. The respondent submits answers once. The server validates eligibility, survey status, and the full answer set, then stores one `Response` and its `Answer` rows in one database transaction.
 4. The client shows a confirmation with the submission time and a link to the saved response. The list then shows “Submitted”.
 5. A repeat submission receives the server's `ALREADY_RESPONDED` message; the form is not submitted again. The database unique constraint handles simultaneous submissions.
@@ -53,11 +53,11 @@ All endpoints use JSON and require an authenticated session cookie `cp_session` 
 
 | Method and path | Request | Success | Errors |
 |---|---|---|---|
-| `GET /api/surveys` | — | 200 `{surveys:[{id,title,courseCode,mode,status,hasResponded}]}` for PUBLISHED surveys in enrolled courses | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER |
-| `GET /api/surveys/:id` | — | 200 `{survey}` with questions and options | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN`; 404 `NOT_FOUND` for non-numeric/missing ID, DRAFT/CLOSED survey, or non-enrolled respondent |
+| `GET /api/surveys` | - | 200 `{surveys:[{id,title,courseCode,mode,status,hasResponded}]}` for PUBLISHED surveys in enrolled courses | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER |
+| `GET /api/surveys/:id` | - | 200 `{survey}` with questions and options | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN`; 404 `NOT_FOUND` for non-numeric/missing ID, DRAFT/CLOSED survey, or non-enrolled respondent |
 | `POST /api/surveys/:id/responses` | `{answers:[{questionId,ratingValue?} \| {questionId,optionId?}]}` | 201 `{response:{id,surveyId,submittedAt}}` | 400 `VALIDATION_ERROR` with `details[]`; 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` or `NOT_ELIGIBLE`; 404 `NOT_FOUND` for invalid/missing survey ID; 409 `SURVEY_NOT_OPEN` or `ALREADY_RESPONDED` |
-| `GET /api/responses/:id` | — | 200 `{response:{id,surveyId,submittedAt,answers:[{questionId,prompt,type,ratingValue?,optionId?,optionLabel?}]}}` for the current respondent's response. A rating answer includes `ratingValue`; a choice answer includes `optionId` and `optionLabel`. | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER; 404 `NOT_FOUND` for invalid/missing/other respondent's response |
-| `PUT /api/responses/:id`, `DELETE /api/responses/:id` | — | No route in Sprint 1 | 404 `NOT_FOUND` |
+| `GET /api/responses/:id` | - | 200 `{response:{id,surveyId,submittedAt,answers:[{questionId,prompt,type,ratingValue?,optionId?,optionLabel?}]}}` for the current respondent's response. A rating answer includes `ratingValue`; a choice answer includes `optionId` and `optionLabel`. | 401 `UNAUTHENTICATED`; 403 `FORBIDDEN` for OWNER; 404 `NOT_FOUND` for invalid/missing/other respondent's response |
+| `PUT /api/responses/:id`, `DELETE /api/responses/:id` | - | No route in Sprint 1 | 404 `NOT_FOUND` |
 
 All error bodies follow `{error:{code,message,details?}}`; do not expose stack traces. Use `parseId` for path IDs. Use `loginAs` in API tests and append the protected routes to `PROTECTED_ROUTES` in the same test file change.
 

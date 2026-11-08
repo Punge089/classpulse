@@ -1,4 +1,4 @@
-# ClassPulse — Deliverable 1 design (approved 6 Nov 2026)
+# ClassPulse - Deliverable 1 design (approved 6 Nov 2026)
 
 ## Intent
 CPE 334 Project Deliverable 1, theme #10 (Review, Feedback, and Survey System), team of two.
@@ -27,12 +27,12 @@ editing, export, Docker/CI/GCP (Lab 5).
 - Frontend-only access control; disabled or weakened tests; AI "all tests pass" claims as evidence.
 
 ## Approaches considered
-1. **Pair setup + auth, then two parallel feature lanes — CHOSEN.** Foundation and login done
+1. **Pair setup + auth, then two parallel feature lanes - CHOSEN.** Foundation and login done
    together (both must explain auth); then Student A owns the survey-owner lane, Student B the
    respondent lane. Sprint 1 schema is fixed in the SDS and migrated in the foundation Issue so
    lanes do not block each other. Fits 2.5 days; satisfies "both participate in everything".
-2. Journey split with auth inside one lane — rejected: the other student idles ~½ day.
-3. Pair everything — rejected: halves throughput; does not fit the deadline.
+2. Journey split with auth inside one lane - rejected: the other student idles ~½ day.
+3. Pair everything - rejected: halves throughput; does not fit the deadline.
 
 ## Decided how
 Same stack as the team's TokTickIT labs: Express 4 + TypeScript + Prisma 5 + PostgreSQL;

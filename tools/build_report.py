@@ -175,16 +175,16 @@ def render(parts, pages, front_md: str) -> str:
         return str(start) if start == end else f"{start}–{end}"
 
     nav_rows = "".join(
-        f"<tr><td><b>Part {l}</b> — {html.escape(t)}</td><td>{nav_pages(l)}</td><td>{html.escape(ids)}</td></tr>"
+        f"<tr><td><b>Part {l}</b> - {html.escape(t)}</td><td>{nav_pages(l)}</td><td>{html.escape(ids)}</td></tr>"
         for l, t, _f, ids in [(p[0], p[1], None, p[2]) for p in parts])
     toc_rows = []
     for letter, title, _ids, docs in parts:
-        toc_rows.append(f'<tr><td><b>Part {letter} — {html.escape(title)}</b></td><td class="pg">{pg(f"{letter}|")}</td></tr>')
+        toc_rows.append(f'<tr><td><b>Part {letter} - {html.escape(title)}</b></td><td class="pg">{pg(f"{letter}|")}</td></tr>')
         for i, (dt, _b) in enumerate(docs):
             toc_rows.append(f'<tr><td style="padding-left:18px">{html.escape(dt)}</td><td class="pg">{pg(f"{letter}|{i}")}</td></tr>')
     body = []
     for letter, title, _ids, docs in parts:
-        body.append(f"<h1>Part {letter} — {html.escape(title)}</h1>")
+        body.append(f"<h1>Part {letter} - {html.escape(title)}</h1>")
         for dt, b in docs:
             body.append(b)
     front = md(front_md)
@@ -193,7 +193,7 @@ def render(parts, pages, front_md: str) -> str:
                '<script>mermaid.initialize({startOnLoad:true,theme:"neutral",securityLevel:"strict"});</script>'
                if has_diagrams else "")
     return (
-        "<!doctype html><html><head><meta charset='utf-8'><title>ClassPulse — CPE 334 Deliverable 1</title>"
+        "<!doctype html><html><head><meta charset='utf-8'><title>ClassPulse - CPE 334 Deliverable 1</title>"
         f"<style>{CSS}</style>{mermaid}</head><body>"
         f"<div class='cover'>{front}</div>"
         "<h2>Navigation table</h2><table class='nav'><tr><th>Part</th><th>Pages</th><th>Relevant IDs</th></tr>"
@@ -274,7 +274,7 @@ def measure(parts, pdf: Path):
     # Searching from the marker's own page would match the table of contents when it fits on that page.
     pages, cur = {}, min(start + 1, doc.page_count - 1)
     for letter, title, _ids, docs in parts:
-        head = f"Part {letter} — {title}"
+        head = f"Part {letter} - {title}"
         head = re.sub(r"\s+", " ", head)
         idx = next((i for i in range(cur, doc.page_count) if head in texts[i]), cur)
         pages[f"{letter}|"] = idx + 1

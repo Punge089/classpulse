@@ -1,4 +1,4 @@
-# Product Definition of Done — ClassPulse
+# Product Definition of Done - ClassPulse
 
 **Version 1.0 · 2026-11-06 · Author: Punge089 · Reviewer: book6349**
 Applies to every feature, document Issue and release. An Issue is done only when **all** rows hold, with evidence.

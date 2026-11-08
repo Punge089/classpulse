@@ -1,4 +1,4 @@
-# ClassPulse — Issue/PR comment playbook
+# ClassPulse - Issue/PR comment playbook
 
 These are **starting points** for the comments on each Issue and PR, so the thread has the same
 parts every time (what was checked, what was found, what was decided). An AI drafts each message
@@ -26,7 +26,7 @@ The **reviewer's** AI posts C3, C7 and C9 from the reviewer's account.
 ## A. Message templates with variants
 
 **C1: Issue, owner, when work starts**
-- a) `Picking this up now. Branch is {{branch}} — I'll push the contract first ({{ac_range}}) so you can look before I write tests. Should be up around {{eta}}.`
+- a) `Picking this up now. Branch is {{branch}} - I'll push the contract first ({{ac_range}}) so you can look before I write tests. Should be up around {{eta}}.`
 - b) `Starting on this one. Contract → tests → code as usual, working on {{branch}}. Aiming for {{eta}}.`
 - c) `On it 👋 contract for {{ac_range}} coming first on {{branch}}, I'll ping you when it's up.`
 
@@ -35,24 +35,24 @@ The **reviewer's** AI posts C3, C7 and C9 from the reviewer's account.
 - b) `Contract pushed ({{contract_sha}}). Covers {{ac_range}}. @{{reviewer}} mind checking it? Mainly wondering about this: {{open_point}}`
 
 **C3: Issue, reviewer, before any test is written** (after actually running `contract_check`)
-- a) agree: `Read through it. I {{contract_check}} and {{contract_check_result}}. On your question — {{agree_reason}}. Go ahead with the tests 👍`
+- a) agree: `Read through it. I {{contract_check}} and {{contract_check_result}}. On your question - {{agree_reason}}. Go ahead with the tests 👍`
 - b) missing case: `Went over the contract. {{contract_check_result}}, but I think one case is missing: {{case}}. Maybe add it under {{ac_id}}? Rest looks fine to me.`
 - c) question: `Looks mostly good ({{contract_check_result}}). Quick question though: {{real_question}}`
 
 **C4: Issue, owner, reply to C3**
-- a) changed: `Good point, added it — {{sha}} (v1.1, noted in the version history). Starting the tests now.`
+- a) changed: `Good point, added it - {{sha}} (v1.1, noted in the version history). Starting the tests now.`
 - b) unchanged: `I'd keep it as is: {{reason}}. So no contract change, moving on to tests.`
 - c) answer only: `{{answer}}. Thanks, starting tests.`
 
 **C5: Issue, owner, after the red commit**
-- a) `Tests are in and failing like they should — {{failed}}/{{total}} red ({{red_sha}}, output saved in {{red_file}}). They fail because {{why_red}}. Writing the code now.`
+- a) `Tests are in and failing like they should - {{failed}}/{{total}} red ({{red_sha}}, output saved in {{red_file}}). They fail because {{why_red}}. Writing the code now.`
 - b) `Red commit: {{red_sha}}. {{failed}} of {{total}} failing, all for the expected reason ({{why_red}}). Implementation next.`
 
 **C6: PR body, owner** (first lines conversational, then the template checklist)
 ```
 {{one of:
   "This adds {{feature_short}}. Everything from the contract is in, nothing skipped."
-  "{{feature_short}} — ready for review. Followed the contract as it was after the v{{contract_version}} change."}}
+  "{{feature_short}} - ready for review. Followed the contract as it was after the v{{contract_version}} change."}}
 
 Closes #{{issue_no}} · {{feature_ids}} · AC {{ac_range}}
 Contract {{contract_sha}} → red {{red_sha}} → green {{green_sha}}
@@ -63,19 +63,19 @@ Contract {{contract_sha}} → red {{red_sha}} → green {{green_sha}}
 ```
 
 **C7: PR review, reviewer** (after `gh pr checkout`, running the tests, the `pr_check` and reading the diff)
-- a) approve: `Pulled it and ran {{cmd}} → {{passed}} passed, {{failed}} failed, {{skipped}} skipped. Also {{pr_check}}: {{pr_check_result}}. Left one note on {{file}}:{{line}}, not blocking. Approving — {{reason}}.`
+- a) approve: `Pulled it and ran {{cmd}} → {{passed}} passed, {{failed}} failed, {{skipped}} skipped. Also {{pr_check}}: {{pr_check_result}}. Left one note on {{file}}:{{line}}, not blocking. Approving - {{reason}}.`
 - b) request changes: `Suite is green on my machine ({{counts}}), but when I {{pr_check}} I got {{problem}}. Details on {{file}}:{{line}}. Can you fix that before we merge?`
 - c) question first: `Ran everything, {{counts}}. {{pr_check_result}}. One question on {{file}}:{{line}} before I approve: {{real_question}}`
 
 Inline comment (on the exact line, written from what was read):
 - `Why {{thing}} here instead of {{alternative}}? {{why_asking}}`
-- `This is the part that makes {{ac_id}} pass, right? Checked it against {{test_id}} — matches.`
+- `This is the part that makes {{ac_id}} pass, right? Checked it against {{test_id}} - matches.`
 - `Nit: {{small_issue}}. Fine to leave for Sprint 2.`
 
 **C8: PR, owner, one reply per C7 comment**
-- a) `Fixed in {{fix_sha}} — {{what_changed}}. Re-ran everything: {{counts}}.`
+- a) `Fixed in {{fix_sha}} - {{what_changed}}. Re-ran everything: {{counts}}.`
 - b) `I left it on purpose: {{reason}}. Happy to change it if you still think it's worth it.`
-- c) `Good question — {{answer}}.`
+- c) `Good question - {{answer}}.`
 
 **C9: PR review, reviewer, after C8**
 - a) `Checked {{fix_sha}}, {{result}}. lgtm, merging 🚀`
@@ -85,9 +85,9 @@ Inline comment (on the exact line, written from what was read):
 - a) `Merged in {{merge_sha}} (#{{pr_no}}). {{ac_range}} all green, traceability updated. Closing.`
 - b) `Done ✅ merged to sprint-1-staging ({{merge_sha}}). Closing this one.`
 
-### Tone example (values made up — shows the feel only, never post this)
+### Tone example (values made up - shows the feel only, never post this)
 > **A (C2):** @bee contract is up: 3f2a91c. 9 ACs (AC-20…28), tests planned as TEST-22…32. One thing I'm not fully sure about: I check NOT_ELIGIBLE before SURVEY_NOT_OPEN so a student outside the course never learns the status. Can you have a look before I start the tests?
-> **B (C3):** Read through it. I checked that AC-22 has the double-submit case and it does. On your question — agree, 403 first makes sense. Go ahead with the tests 👍
+> **B (C3):** Read through it. I checked that AC-22 has the double-submit case and it does. On your question - agree, 403 first makes sense. Go ahead with the tests 👍
 > **A (C5):** Red commit: 8c01d4e. 11 of 11 failing, all because the route doesn't exist yet. Implementation next.
 
 ---
@@ -100,7 +100,7 @@ Inline comment (on the exact line, written from what was read):
 
 | Issue | Owner → Reviewer | Branch slug | Contract / doc | AC / TEST range | `open_point` (C2) |
 |---|---|---|---|---|---|
-| I-01 | A+B (pair) | — (commit on `main`) | — | — | Only C1 + C10, e.g. "Repo, board and branches are set up, and both laptops connect to classpulse + classpulse_test." |
+| I-01 | A+B (pair) | - (commit on `main`) | - | - | Only C1 + C10, e.g. "Repo, board and branches are set up, and both laptops connect to classpulse + classpulse_test." |
 | I-02 | A → B | `srs` | `docs/srs.md` | FR-01…18, BR-01…14, NFR-01…10 | "BR-07: if an optional question is left blank I just store no Answer row instead of rejecting. Agree?" |
 | I-03 | B → A | `system-sds` | `docs/system-sds.md` | role matrix + §2.4/§2.5 | "Another owner's survey returns 404, not 403, so it doesn't reveal the survey exists. OK for the matrix?" |
 | I-04 | A → B | `features-trace-plan` | `docs/features.md`, `traceability.md`, `sprints/plan.md` | 42 rows | "NFR-05 shows up twice (Sprint 1 restart, Lab 5 redeploy). Clearer than one row, or confusing?" |
@@ -124,8 +124,8 @@ Inline comment (on the exact line, written from what was read):
 | I-07 | Every invalid input in AC-11 has a row in TEST-11 | `curl` publish on a CLOSED survey → 409 + DB status unchanged; read the ownership `where` clause |
 | I-08 | AC-22 includes the simultaneous case | Run TEST-25 5×; submit to the CLOSED seed survey in the UI |
 | I-09 | AC-30 example recomputed by hand | Recompute `[4,4,5]` → 4.33; search the summary JSON for `respondentId`/`email`/`fullName` |
-| I-10 | — | Fresh clone, README only, full suite; any skipped tests? |
-| I-11 | — | All Sprint 1 Issues closed; secret `git grep` empty; PR counts = `evidence/integration-*.txt`; the tag will go on the merge commit |
+| I-10 | - | Fresh clone, README only, full suite; any skipped tests? |
+| I-11 | - | All Sprint 1 Issues closed; secret `git grep` empty; PR counts = `evidence/integration-*.txt`; the tag will go on the merge commit |
 
 ---
 

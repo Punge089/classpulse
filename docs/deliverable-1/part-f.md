@@ -1,4 +1,4 @@
-# Part F — Working Sprint 1 and verification (evidence)
+# Part F - Working Sprint 1 and verification (evidence)
 
 *Evidence comes from the release tag `v1.0.0-sprint1` and from the repository history, never from an AI statement.*
 
@@ -62,17 +62,17 @@ Run in a clean clone checked out at the tag (`git checkout v1.0.0-sprint1`, tree
 | `python tools/test_results.py` | 110 executed tests in total | 0 | 0 | 0 | `docs/sprints/sprint-1/test-results.md` |
 
 ```text
-Server — Command: npm --prefix server run build && npm --prefix server run test
+Server - Command: npm --prefix server run build && npm --prefix server run test
   Exit code: 0
   Test Files  12 passed (12)
   Tests  101 passed (101)
 
-Client — Command: npm --prefix client run build && npm --prefix client run test
+Client - Command: npm --prefix client run build && npm --prefix client run test
   Exit code: 0
   Test Files  1 passed (1)
   Tests  1 passed (1)
 
-Playwright — Command: npm run test:e2e
+Playwright - Command: npm run test:e2e
   Exit code: 0
   8 passed (27.8s)
 ```
@@ -85,7 +85,7 @@ See the AC → test → result table in `docs/sprints/sprint-1/test-results.md` 
 
 ## F.5 Two test excerpts with TDD evidence
 
-### Domain rule — TEST-25, simultaneous submissions store exactly one response (F-04, BR-06)
+### Domain rule - TEST-25, simultaneous submissions store exactly one response (F-04, BR-06)
 
 From `server/tests/api/responses.test.ts`:
 
@@ -107,7 +107,7 @@ test("TEST-25 simultaneous submissions store exactly one response", async () => 
 - **Red:** commit `588981c` (contract v1.1 `570b739` came first); `docs/sprints/sprint-1/evidence/F-04-red.txt` line 18: `× F-04 response submission > TEST-25 simultaneous submissions store exactly one response 139ms`.
 - **Green:** commit `1448c15`; `docs/sprints/sprint-1/evidence/F-04-green.txt` line 16: `✓ ... TEST-25 simultaneous submissions store exactly one response 398ms`, then five focused repeats. At review, A also ran TEST-25 five times in a row (5 of 5 passed) and broke the code on purpose (the `P2002` mapping removed): TEST-24 and TEST-25 failed.
 
-### Ownership restriction — TEST-19, another owner cannot publish my survey (F-03, BR-08)
+### Ownership restriction - TEST-19, another owner cannot publish my survey (F-03, BR-08)
 
 From `server/tests/api/ownerSurveys.test.ts`:
 
@@ -142,7 +142,7 @@ test("TEST-19 another owner gets 404 reading, publishing or closing my survey an
 
 Two completed Issues, one per student, followed from the Issue to the release.
 
-### Chain 1 — Issue #7, F-03 survey authoring (author Punge089, reviewer book6349)
+### Chain 1 - Issue #7, F-03 survey authoring (author Punge089, reviewer book6349)
 
 - **Issue #7** (I-07, F-03, AC-10…AC-19) → contract v1.0 `01117e4`, v1.1 `e05a509` (after the contract review by book6349) → branch `feature/7-survey-authoring` → red and green commits (F.7) → **pull request #18** into `sprint-1-staging`, opened by Punge089, reviewed by book6349 → merge commit `ae744c2` → release pull request #27 into `main` (merge `d4bad74`) → tag `v1.0.0-sprint1`.
 - **Substantive review** (book6349, approved after running the code): "Fresh clone at `316fa81`. Server tests → 63 passed, 0 failed, 0 skipped; client → 1 passed, 0 failed, 0 skipped; Playwright → 5 passed, 0 failed, 0 skipped. Both builds passed. I-07 `pr_check`: publishing the seeded CLOSED survey returned 409 `INVALID_TRANSITION`, and its database status remained CLOSED. I checked TEST-11 against the AC-11 invalid-input cases and verified the owner scoping on route reads and writes. […]" Inline on `server/src/routes/ownerSurveys.ts:82`: "This `ownerId` filter scopes `GET /api/owner/surveys` to the caller; checked against AC-18/TEST-20 and the list test, this matches."
@@ -150,7 +150,7 @@ Two completed Issues, one per student, followed from the Issue to the release.
 ![Issue #7 on GitHub](../sprints/sprint-1/evidence/github/issue-7-survey-authoring.png)
 ![Pull request #18 on GitHub](../sprints/sprint-1/evidence/github/pr-18-survey-authoring.png)
 
-### Chain 2 — Issue #8, F-04 response submission (author book6349, reviewer Punge089)
+### Chain 2 - Issue #8, F-04 response submission (author book6349, reviewer Punge089)
 
 - **Issue #8** (I-08, F-04, AC-20…AC-29) → contract v1.0 `5862052`, v1.1 `570b739` (after the contract review by Punge089) → branch `feature/8-response-submission` → red and green commits (F.7) → **pull request #21** into `sprint-1-staging`, opened by book6349, reviewed by Punge089 → merge commit `c1823f5` → release pull request #27 into `main` (merge `d4bad74`) → tag `v1.0.0-sprint1`.
 - **Substantive review** (Punge089, approved after running the code and breaking it on purpose): "Pulled 328e077 (up to date with staging 8c4323f) and ran: server 91 passed, 0 failed, 0 skipped; client 1 passed, 0 failed, 0 skipped; npm run test:e2e 6 passed, 0 failed, 0 skipped; both builds exit 0; […] pr_check: TEST-25 five times in a row, 5/5 passed. In the UI the CLOSED seed survey "Week 1 pulse" is not listed for student1, /surveys/1 shows "Survey not found" with no form or Submit, and a direct POST returns 409 SURVEY_NOT_OPEN. I also broke five rules on purpose (status before enrollment, response ownership filter, PUBLISHED filter, rating bound, P2002 mapping) and each time the matching tests failed (TEST-27, 30, 22, 28+29, 24+25), then restored. […]"
@@ -174,7 +174,7 @@ Two completed Issues, one per student, followed from the Issue to the release.
 ```text
 F-03 (Issue #7, branch feature/7-survey-authoring)
 01117e4  2026-11-06T04:35:50+07:00  Punge089  docs(F-03): contract v1.0
-e05a509  2026-11-06T21:20:52+07:00  Punge089  docs(F-03): contract v1.1 after C3 — plan-aligned 404/400 order, explicit TEST-11 cases
+e05a509  2026-11-06T21:20:52+07:00  Punge089  docs(F-03): contract v1.1 after C3 - plan-aligned 404/400 order, explicit TEST-11 cases
 9d1dfa7  2026-11-06T21:37:25+07:00  Punge089  test(F-03): failing lifecycle and validation unit tests TEST-11, TEST-15 with stubs (red)
 9ad0126  2026-11-06T21:38:30+07:00  Punge089  feat(F-03): survey status transitions and create-survey validation (green, stage 1)
 255cde6  2026-11-06T23:02:12+07:00  Punge089  test(F-03): failing API tests TEST-10, 12-14, 16-20 and the owner routes in TEST-07 (red, stage 2)

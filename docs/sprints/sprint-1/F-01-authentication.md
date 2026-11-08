@@ -1,4 +1,4 @@
-# F-01 Authentication, session and access control — engineering contract
+# F-01 Authentication, session and access control - engineering contract
 
 **Issue #6 (I-06) · Pair work: Punge089 (Student A, drives the code) + book6349 (Student B, reviews the PR) · Sprint 1**
 Drafted by A so there is something concrete to react to. B edits it freely; every change is logged in section 12.
@@ -52,8 +52,8 @@ Depends on: SR-01 (schema, seed, `hashPassword`/`verifyPassword`, error handling
 | Method and path | Request | Success | Errors |
 |---|---|---|---|
 | `POST /api/auth/login` | `{ "email": string, "password": string }` | 200 `{ "user": { "id", "email", "fullName", "role" } }` + `Set-Cookie: cp_session=…` | 401 `INVALID_CREDENTIALS`; 400 `VALIDATION_ERROR` |
-| `GET /api/auth/me` | — | 200 `{ "user": {…} }` | 401 `UNAUTHENTICATED` |
-| `POST /api/auth/logout` | — | 204, session row deleted, cookie cleared | 401 `UNAUTHENTICATED` |
+| `GET /api/auth/me` | - | 200 `{ "user": {…} }` | 401 `UNAUTHENTICATED` |
+| `POST /api/auth/logout` | - | 204, session row deleted, cookie cleared | 401 `UNAUTHENTICATED` |
 
 Errors use `{ "error": { "code", "message", "details"? } }`.
 

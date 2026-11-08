@@ -1,4 +1,4 @@
-# Requirements traceability — ClassPulse
+# Requirements traceability - ClassPulse
 
 **Version 1.4 · 8 Nov 2026 · Author: Punge089 · Reviewer: book6349** · see the version history at the end
 

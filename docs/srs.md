@@ -1,4 +1,4 @@
-# Software Requirements Specification — ClassPulse
+# Software Requirements Specification - ClassPulse
 
 **Version 1.1 · 6 Nov 2026 · Author: Punge089 (Student A) · Reviewer: book6349 (Student B)** · see the version history at the end
 Course CPE 334, Project Deliverable 1, theme #10 (Review, Feedback, and Survey System).
@@ -25,7 +25,7 @@ the answers). Anonymous surveys are planned for Sprint 3 with a separate privacy
 |---|---|---|---|
 | Survey Owner (lecturer) | `OWNER` | Creates, publishes and closes surveys for courses they own; reads aggregate results of own surveys | Edit another owner's survey; read an individual respondent's answers (Sprint 1) |
 | Respondent (student) | `RESPONDENT` | Lists published surveys of enrolled courses; submits one response per survey; reads own response | Create or change surveys; read another student's response; answer twice |
-| System | — | Seeds demo data; creates and expires sessions; enforces every rule on the server | — |
+| System | - | Seeds demo data; creates and expires sessions; enforces every rule on the server | - |
 
 Out of scope as actors: department administrator, teaching assistant, external parties.
 
@@ -64,15 +64,15 @@ payment or any external API, real student data.
 
 **Observable behaviour of Sprint 1 requirements**
 
-- **FR-01** — Valid email + password → the app shows `Full name · ROLE` in the navbar; Logout returns to the login page and the old session no longer works.
-- **FR-02** — Owner submits the new-survey form for an own course → survey appears in the owner's list with status Draft and its questions in order.
-- **FR-03** — A rating question accepts only 1–5; a single-choice question shows 2–6 options and accepts exactly one of them.
-- **FR-04** — Owner presses Publish on a draft → status becomes Published and the survey appears for enrolled students.
-- **FR-05** — Owner presses Close on a published survey → status becomes Closed and students can no longer submit.
-- **FR-06** — A student sees only published surveys of courses they are enrolled in, with a Submitted badge on those already answered.
-- **FR-07** — Valid submission → confirmation page with the submission time and the student's own answers.
-- **FR-08** — Owner opens a survey's summary → response count, per-rating average and distribution, per-option counts (zero-count options shown).
-- **FR-09** — Owner's list shows only own surveys with status, course code and number of responses.
+- **FR-01** - Valid email + password → the app shows `Full name · ROLE` in the navbar; Logout returns to the login page and the old session no longer works.
+- **FR-02** - Owner submits the new-survey form for an own course → survey appears in the owner's list with status Draft and its questions in order.
+- **FR-03** - A rating question accepts only 1–5; a single-choice question shows 2–6 options and accepts exactly one of them.
+- **FR-04** - Owner presses Publish on a draft → status becomes Published and the survey appears for enrolled students.
+- **FR-05** - Owner presses Close on a published survey → status becomes Closed and students can no longer submit.
+- **FR-06** - A student sees only published surveys of courses they are enrolled in, with a Submitted badge on those already answered.
+- **FR-07** - Valid submission → confirmation page with the submission time and the student's own answers.
+- **FR-08** - Owner opens a survey's summary → response count, per-rating average and distribution, per-option counts (zero-count options shown).
+- **FR-09** - Owner's list shows only own surveys with status, course code and number of responses.
 
 ## 6. Business rules
 

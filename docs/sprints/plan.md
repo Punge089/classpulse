@@ -1,10 +1,10 @@
-# Three-sprint plan — ClassPulse
+# Three-sprint plan - ClassPulse
 
 **Version 1.0 · 6 Nov 2026 · Author: Punge089 · Reviewer: book6349**
 
 | Sprint | Window | Goal | Features | Depends on | Completion outcome | Checkpoint |
 |---|---|---|---|---|---|---|
-| 1 | until 8 Nov | Small working domain slice with authentication, permissions and persistence | SR-01, F-01, F-03, F-04, F-05 | — | An owner publishes an identified survey; an enrolled student answers once; the owner sees aggregates; a tagged release `v1.0.0-sprint1` on `main` | Deliverable 1, 8 Nov |
+| 1 | until 8 Nov | Small working domain slice with authentication, permissions and persistence | SR-01, F-01, F-03, F-04, F-05 | - | An owner publishes an identified survey; an enrolled student answers once; the owner sees aggregates; a tagged release `v1.0.0-sprint1` on `main` | Deliverable 1, 8 Nov |
 | 2 | 9–29 Nov | Completed core expansion under engineering contracts | F-06, F-07, F-08, F-09, F-10 (plus Lab 5 Docker/CI/GCP and Lab 6 UAT fixes) | Sprint 1 release | Owners edit drafts, use all four question types, schedule closing, limit eligibility by section and see the response rate; students see their own history; deployed on GCP | Deliverable 2, 29 Nov |
 | 3 | contracts and progress by 29 Nov; complete by 13 Dec | Remaining features, integration and product hardening | F-11, F-12, F-13, F-14 | Sprint 2 (F-07, F-10) | Anonymous mode with privacy design, CSV export, filters and text answers, performance and usability hardening; final release | Final delivery, 13 Dec |
 

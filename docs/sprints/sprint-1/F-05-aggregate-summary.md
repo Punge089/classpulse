@@ -1,4 +1,4 @@
-# F-05 — Aggregate survey summary
+# F-05 - Aggregate survey summary
 
 **Owner:** Student B (book6349) · **Reviewer:** Student A (Punge089) · **Issue:** #9
 **Version:** 1.2 · **Date:** 7 Nov 2026

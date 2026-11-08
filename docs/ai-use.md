@@ -1,4 +1,4 @@
-# AI-use declaration — ClassPulse (Deliverable 1)
+# AI-use declaration - ClassPulse (Deliverable 1)
 
 **Declaration of 8 Nov 2026 for the release `v1.0.0-sprint1`. Each student wrote and answers for their own part: Student A in this file's history before 8 Nov, Student B in pull request #23.**
 

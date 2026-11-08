@@ -1,4 +1,4 @@
-# I-10 — Full Sprint 1 journey (E2E)
+# I-10 - Full Sprint 1 journey (E2E)
 
 **Owner:** Student A (`Punge089`) · **Reviewer:** Student B (`book6349`) · **Issue:** #10
 **Version:** 1.0 · **Date:** 7 Nov 2026
