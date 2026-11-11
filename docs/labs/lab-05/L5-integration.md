@@ -19,11 +19,19 @@ Run the full server/client suites, both builds and the real test-and-docker job 
 
 | Check | Result |
 |---|---|
-| Complete server suite | Pending integrated-source execution |
-| Complete client suite | Pending integrated-source execution |
-| Server/client builds | Pending integrated-source execution |
-| Fresh-clone Docker checks / C-03 | Pending integrated-source execution |
-| Required test-and-docker Actions run / C-01 | Pending integration PR run |
+| Complete server suite | At 1c3c95f, npm --prefix server run test passed 105/105 in 14 files, 0 failed/skipped. |
+| Complete client suite | At 1c3c95f, npm --prefix client run test passed 1/1, 0 failed/skipped. |
+| Server/client builds | Both npm --prefix server run build and npm --prefix client run build passed at 1c3c95f. |
+| Fresh-clone Docker checks / C-03 | Fresh remote clone of 1c3c95f passed all four Docker checks, 0 failed/skipped. |
+| Required test-and-docker Actions run / C-01 | [Run 43087403001](https://github.com/Punge089/classpulse/actions/runs/43087403001) succeeded at 1c3c95f, including the complete tests, both builds and application Docker build. |
+
+### C-03 reproduction and observations
+
+On 12 November 2026, cloned the pushed integration branch into a new directory with git clone --single-branch --branch feature/41-lab5-integration https://github.com/Punge089/classpulse.git and verified HEAD was 1c3c95f64d8c0b4495d2d8a1e6bd3957a0108307. Ran node --test tools/lab5/test-docker.mjs from the fresh source with Docker Desktop available. No host node_modules or private environment file was copied into that clone.
+
+The harness supplies public disposable fixture values through the documented configuration interface. It builds the application image, checks its non-root UID and required runtime files, tests synthetic context exclusions, rejects missing required inputs, serves on runtime port 3100, verifies five seeded accounts, confirms a failed initializer prevents the app from running, and reads the same survey after app replacement. It cleans up only its disposable projects and volumes.
+
+The actual result was 4 tests passed, 0 failed, 0 skipped, with a 46.2-second total runtime. The named tests were L5-3-T1 through L5-3-T4. This establishes the local clean-clone C-03 check; deployed-service C-04/C-05 remain pending their separate live evidence.
 
 ## Merge and handoff
 
