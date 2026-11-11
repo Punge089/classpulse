@@ -155,9 +155,10 @@ test("L5-3-T4 serves the UI and retains a survey when the app is replaced", asyn
   const ready = await fetch("http://" + address + "/api/ready");
   assert.equal(ready.status, 200);
   assert.equal((await ready.json()).db, "connected");
-  const id = database("const c=await db.course.findFirstOrThrow(); " +
+  const id = Number(database("const c=await db.course.findFirstOrThrow(); " +
     "const s=await db.survey.create({data:{title:'Docker persistence fixture'," +
-    "courseId:c.id,ownerId:c.ownerId,status:'DRAFT',mode:'IDENTIFIED'}}); console.log(s.id)");
+    "courseId:c.id,ownerId:c.ownerId,status:'DRAFT',mode:'IDENTIFIED'}}); console.log(s.id)"));
+  assert.ok(Number.isSafeInteger(id), "The saved survey must have an integer ID");
   compose(["up", "-d", "--no-build", "--no-deps", "--force-recreate", "--wait",
     "--wait-timeout", "120", "app"]);
   assert.equal(database("console.log((await db.survey.findUniqueOrThrow({where:{id:" +
