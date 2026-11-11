@@ -1,6 +1,6 @@
 # L5-2 Cloud-ready app contract
 
-Issue [#36](https://github.com/Punge089/classpulse/issues/36). Student B owns the implementation; Student A reviews. Scope: R-02, R-03, R-04, NFR-05 and NFR-09; supports C-03 and C-04. Contract v1.0, before tests and implementation.
+Issue [#36](https://github.com/Punge089/classpulse/issues/36). Student B owns the implementation; Student A reviews. Scope: R-02, R-03, R-04, NFR-05 and NFR-09; supports C-03 and C-04. Contract v1.1, revised after review feedback and still before tests or implementation.
 
 ## 1. Goal and boundaries
 
@@ -25,7 +25,7 @@ Make the existing ClassPulse web process ready for the container and release wor
 | Route | Success | Dependency and boundary |
 |---|---|---|
 | `GET /api/health` | `200 {"status":"ok"}` | Process liveness only; must not query PostgreSQL. |
-| `GET /api/ready` | `200 {"status":"ready"}` | Return only after a real Prisma database query succeeds. |
+| `GET /api/ready` | `200 {"status":"ready","db":"connected"}` | Return only after a real Prisma database query succeeds. |
 | `GET /api/ready` when PostgreSQL is unavailable | `503 {"status":"unavailable"}` | Sanitize the body; do not return connection data, query details, or exception text. |
 
 The existing `/api` not-found handler continues to return the current JSON `NOT_FOUND` response for unknown API paths. `/api/ready` is registered before that handler.
@@ -49,7 +49,7 @@ The existing seed continues to create only synthetic `@classpulse.test` fixtures
 
 | ID | Observable result |
 |---|---|
-| L5-2-AC1 | `/api/ready` returns 200 only when a database probe succeeds, otherwise a sanitized 503; `/api/health` is database-independent and remains 200. |
+| L5-2-AC1 | `/api/ready` returns `200 {"status":"ready","db":"connected"}` only when a database probe succeeds, otherwise sanitized `503 {"status":"unavailable"}`; `/api/health` is database-independent and remains 200. |
 | L5-2-AC2 | With `NODE_ENV=production`, `/`, an existing asset, and a direct client route such as `/owner/surveys/1` are served from `client/dist`. |
 | L5-2-AC3 | Unknown `/api/*` requests retain the JSON 404 contract; missing static assets return 404 and never the SPA HTML. |
 | L5-2-AC4 | The seed requires `SEED_PASSWORD`, has no default credential, and is not run by web startup or restart. |
@@ -61,8 +61,8 @@ Do not write tests until Student A posts C3 on this contract commit. Then commit
 
 | Test ID | Acceptance | Action and expected result | Planned file |
 |---|---|---|---|
-| L5-2-T1 | AC1 | Probe a working test database and a failing database stub; readiness is 200/ready then 503/unavailable with no internal error text, while health remains 200 in both cases. | `server/tests/api/cloudReady.test.ts` |
-| L5-2-T2 | AC2, AC3 | Run the production app with a small client build fixture; check `/`, a real asset, a deep link, unknown `/api/*`, and a missing asset. Browser routes get the build, API paths retain JSON 404, and missing assets return 404. | `server/tests/api/cloudReady.test.ts` |
+| L5-2-T1 | AC1 | Probe a working test database and a failing database stub; expect `200 {"status":"ready","db":"connected"}` then sanitized `503 {"status":"unavailable"}`, while health remains 200 in both cases. | `server/tests/api/cloudReady.test.ts` |
+| L5-2-T2 | AC2, AC3 | Run the production app with a small client build fixture; request `/` and a direct client route with `Accept: text/html`, a real asset, the same client route with `Accept: application/json`, unknown `/api/*`, and a missing asset. HTML navigation gets the SPA; the JSON-accept client request and unknown API keep 404s; missing assets return 404. | `server/tests/api/cloudReady.test.ts` |
 | L5-2-T3 | AC4 | Exercise seed configuration without a password and inspect the web entry point; the seed fails before writes and the web startup does not invoke it. | `server/tests/unit/seedConfig.test.ts` |
 | L5-2-T4 | AC5 | Review both examples and Compose references; every listed variable has a placeholder, root uses `db`, server uses `localhost`, and no usable secret is present. | Contract/configuration review |
 
@@ -78,3 +78,4 @@ Do not write tests until Student A posts C3 on this contract commit. Then commit
 | Version | Date | Author | Change |
 |---|---|---|---|
 | 1.0 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Initial contract before tests and implementation. |
+| 1.1 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Match readiness success to the starter smoke check (db: connected) and require a non-navigation JSON-accept request to return 404 rather than the SPA. |
