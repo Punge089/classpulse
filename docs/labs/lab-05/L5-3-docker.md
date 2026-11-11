@@ -15,6 +15,21 @@ Issue [#30](https://github.com/Punge089/classpulse/issues/30). Student A owns pa
 - Keep local environment files, dependencies, repository history, course materials, reports and agent logs out of the build context. Test the context with a harmless synthetic marker. Never inspect or print an expanded Compose configuration containing real inputs.
 - A failed migration must prevent seeding and serving. Recreating an app container must reuse the same named PostgreSQL volume. C-05 on the public service is tracked separately under L5-8.
 
+## Local Compose settings
+
+| Variable | Purpose and source | Secret |
+|---|---|---|
+| POSTGRES_USER, POSTGRES_DB | Local database user and name, supplied by the operator from the root example. Required. | No |
+| POSTGRES_PASSWORD | Local database credential, supplied privately by the operator. Required. | Yes |
+| DATABASE_URL | Runtime connection using Compose host db and the same database settings. Required for initialization and app. | Yes |
+| SEED_PASSWORD | Supplied privately for the one-shot initialization service. Required. | Yes |
+| PORT | Internal HTTP port, default 3000. Cloud Run supplies its own runtime value. | No |
+| APP_PORT | Local host port, default 3000, bound to 127.0.0.1. Tests use 0 to allocate a free port. | No |
+| SESSION_TTL_HOURS | Session lifetime, default 8. | No |
+| CLASSPULSE_IMAGE | Local image name, default classpulse:local. Tests select an isolated name. | No |
+
+The Docker checks use public fixture credentials for temporary databases. They never load the developer's private environment. Run `node --test tools/lab5/test-docker.mjs` from the repository with Docker and Compose on PATH. On Windows, start Docker Desktop first. The image check can run before L5-2 lands. The remaining checks report the missing root environment example until that dependency is available.
+
 ## Acceptance and verification
 
 | Criterion | Test and observable result |
@@ -38,3 +53,4 @@ Run the planned checks from `tools/lab5/test-docker.mjs` against a disposable Co
 | Version | Date | Author | Change |
 |---|---|---|---|
 | 1.0 | 2026-11-11 | Punge089 with OpenAI Codex (GPT-6) | Initial container contract, before tests and implementation. |
+| 1.1 | 2026-11-11 | Punge089 with OpenAI Codex (GPT-6.1 Sol) | Document exact Compose variable names, public test fixtures and Windows entry point. Verify image construction independently while the L5-2 environment and endpoints are pending. Acceptance criteria are preserved. |

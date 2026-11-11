@@ -47,13 +47,14 @@ function compose(args, options) {
 }
 
 function prepare() {
-  for (const name of ["Dockerfile", ".dockerignore", "docker-compose.yml", ".env.example"]) {
+  for (const name of ["Dockerfile", ".dockerignore", "docker-compose.yml"]) {
     assert.ok(existsSync(join(root, name)), name + " must exist");
   }
   const tracked = spawnSync("git", ["ls-files", "-z"], { cwd: root, encoding: "utf8" });
   assert.equal(tracked.status, 0);
   const paths = new Set([...tracked.stdout.split("\0").filter(Boolean),
-    "Dockerfile", ".dockerignore", "docker-compose.yml", ".env.example"]);
+    "Dockerfile", ".dockerignore", "docker-compose.yml"]);
+  if (existsSync(join(root, ".env.example"))) paths.add(".env.example");
   for (const file of paths) {
     const destination = join(scratch, file);
     mkdirSync(dirname(destination), { recursive: true });
@@ -70,6 +71,7 @@ function build() {
 
 function start() {
   build();
+  assert.ok(existsSync(join(scratch, ".env.example")), "L5-2 root environment example must exist");
   if (started) return;
   compose(["up", "-d", "--no-build", "--wait", "--wait-timeout", "120"]);
   started = true;
@@ -119,7 +121,8 @@ test("L5-3-T1 builds a non-root image with the SPA, Prisma and seed tooling", ()
 test("L5-3-T2 rejects missing settings and serves a runtime-selected port", () => {
   build();
   const missing = { ...environment, DATABASE_URL: "", SEED_PASSWORD: "" };
-  assert.notEqual(command("docker", ["compose", "--env-file", "/dev/null", "config", "--quiet"],
+  writeFileSync(join(scratch, "empty.env"), "");
+  assert.notEqual(command("docker", ["compose", "--env-file", "empty.env", "config", "--quiet"],
     { env: missing }).status, 0);
   start();
   const address = compose(["port", "app", "3100"]);
