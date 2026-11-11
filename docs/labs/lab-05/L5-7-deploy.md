@@ -1,6 +1,6 @@
 # L5-7 production deployment and rollback contract
 
-Issue #38. Student B owns the deployment workflow; Student A reviews. Scope: R-03, R-05, R-07, R-08, R-09 and R-10; evidence C-06. Contract v1.0, before implementation.
+Issue #38. Student B owns the deployment workflow; Student A reviews. Scope: R-03, R-05, R-07, R-08, R-09 and R-10; evidence C-06. Contract v1.1, revised after C3 feedback; awaiting C3 before tests.
 
 ## 1. Goal, boundaries and dependencies
 
@@ -8,11 +8,15 @@ Deploy only accepted ClassPulse releases on main. A normal release runs the same
 
 This contract does not create GCP resources, configure billing or IAM, create GitHub environments or rulesets, or run mutating cloud commands. Those are human-only L5-1, L5-5 and L5-6 steps recorded in autopilot/gates.md. C-06 live evidence remains blocked until the human confirms the provisioned resources, Workload Identity Federation, and demo environment.
 
-Prerequisites before implementation:
+Prerequisites for offline implementation and testing:
 
-- L5-2 and L5-3 are merged so the production server has database readiness, serves the client, and the root Dockerfile builds the app.
-- L5-4 contract v1.2 is approved and ci-docker.yml exposes workflow_call. A normal deployment must reuse its test-and-docker job and wait for success.
-- The human has completed the L5-5 first deployment and L5-6 WIF/demo setup. The workflow may only update those existing resources.
+- Punge089 must post C3 on this contract before any red tests or implementation. After C3, offline contract assertions, release stubs and mocked smoke tests may proceed without waiting for upstream merges or human cloud setup.
+- Offline implementation follows the approved L5-4 contract v1.2 interface. The reusable workflow must be present in the integrated source before end-to-end release integration can pass.
+
+Prerequisites for integration and live execution:
+
+- L5-2 and L5-3 must be merged, and the L5-4 workflow must be available, before an integrated normal release can pass its required checks.
+- The human must complete the L5-5 first deployment and L5-6 WIF/demo setup before any live deployment. The workflow may only update those existing resources; C-06 live evidence remains blocked until this setup is confirmed.
 
 ## 2. Workflow triggers and release gate
 
@@ -116,7 +120,7 @@ The shell test uses only local fake commands. The Python test replaces the HTTP 
 
 ## 8. Verification plan
 
-After Punge089 posts C3 on this contract, write the offline tests first and capture their expected red results before implementing the workflow or scripts. Red evidence must come from missing in-scope release/smoke behavior; an absent human GCP project, GitHub environment or Dockerfile is a separate dependency, never a test failure. Then implement the contract, run the offline commands, inspect workflow permissions and full-SHA pins, and open the implementation PR to sprint-2-staging. Do not run a live release before human L5-5/L5-6 completion.
+After Punge089 posts C3 on this contract, write the offline tests first and capture their expected red results before implementing the workflow or scripts. Do not wait for upstream merges or human L5-5/L5-6 setup before that offline work. Red evidence must come from missing in-scope release/smoke behavior; an absent human GCP project, GitHub environment or Dockerfile is a separate dependency, never a test failure. Then implement the contract, run the offline commands, inspect workflow permissions and full-SHA pins, and open the implementation PR to sprint-2-staging. Do not run a live release before human L5-5/L5-6 completion.
 
 | Test ID | Acceptance | Action and expected result | Evidence |
 |---|---|---|---|
@@ -139,4 +143,5 @@ After Punge089 posts C3 on this contract, write the offline tests first and capt
 
 | Version | Date | Author | Change |
 |---|---|---|---|
+| 1.1 | 2026-11-12 | book6349 with OpenAI Codex (GPT-6) | Clarified that upstream merges and human L5-5/L5-6 setup gate integration and live execution, not offline tests and implementation after C3. |
 | 1.0 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Initial contract for main-only keyless releases, digest-pinned migration/deployment, safe rollback and read-only smoke checks. |
