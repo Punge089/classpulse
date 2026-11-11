@@ -1,6 +1,6 @@
 # L5-4 CI and Docker contract
 
-Issue [#37](https://github.com/Punge089/classpulse/issues/37). Student B owns the workflow; Student A reviews. Scope: R-01, R-02, R-05, R-06 and R-10; evidence C-01. Contract v1.0, before workflow implementation.
+Issue [#37](https://github.com/Punge089/classpulse/issues/37). Student B owns the workflow; Student A reviews. Scope: R-01, R-02, R-05, R-06 and R-10; evidence C-01. Contract v1.1, before workflow implementation.
 
 ## 1. Goal and boundaries
 
@@ -48,7 +48,7 @@ PostgreSQL and seed inputs in the workflow are synthetic, short-lived test value
 
 No local package, Prisma, or test-setup adjustment is currently required: the three lockfiles and `npm ci` commands exist, the server has `prisma:seed`, the initial migration is tracked, and `tests/setup.ts` accepts the workflow-provided test URL when no local `.env.test` exists. If implementation shows a required setup change, update this contract's version history before changing another file.
 
-At base commit `8e856581613b08ef1e3e95a4c41f127705d7a993`, the repository has no root `Dockerfile` or `.dockerignore`. A's L5-3 is the prerequisite for a passing image-build step and C-01 evidence. Keep the image build in the workflow; record it as blocked until L5-3 supplies the real application image. The final green C-01 run must include the merged L5-3 files.
+At base commit 8e856581613b08ef1e3e95a4c41f127705d7a993, the repository has no root Dockerfile or .dockerignore. A's L5-3 is a dependency for a successful image-build step and final green C-01 run. This does not block the contract-only red check in section 9: after C3, record the workflow assertion failure before implementation. Keep the Docker build mandatory and note it as blocked until L5-3 supplies the real application image. The final green C-01 run must include the merged L5-3 files.
 
 ## 8. Acceptance criteria
 
@@ -62,10 +62,11 @@ At base commit `8e856581613b08ef1e3e95a4c41f127705d7a993`, the repository has no
 
 ## 9. Verification plan
 
-After Punge089 posts C3 on this contract, first record the intentionally failing result for a test change or the missing L5-3 Docker prerequisite as red evidence. Then implement the workflow and Dependabot configuration, run a real PR check, and save only genuine green run output. Never represent a missing-Dockerfile setup failure as a test assertion or claim C-01 complete before the image build passes.
+After Punge089 posts C3 on v1.1, run the temporary contract assertion before any workflow implementation. It must check that .github/workflows/ci-docker.yml exists, its pull_request targets include sprint-2-staging and main, and it defines the exact job id test-and-docker. Run against the contract-only base and record the command, tested SHA, assertion counts, and failure output in the red section of docs/labs/lab-05/evidence/C-01.md before adding the workflow. This assertion verifies AC1 only and is separate from all Docker checks. A missing L5-3 Dockerfile is a dependency that blocks a passing image build, not a red test; keep that build mandatory, then implement the workflow and Dependabot configuration and save genuine green PR evidence. Never claim C-01 complete before the image build passes.
 
 | Test ID | Acceptance | Action and expected result | Evidence |
 |---|---|---|---|
+| L5-4-T0 | AC1 | Before implementation, a temporary Node assertion checks that .github/workflows/ci-docker.yml exists, configures pull_request targets sprint-2-staging and main, and defines test-and-docker. On the contract-only base, the file is absent, so this assertion must fail; it does not check Docker. | C-01.md red section |
 | L5-4-T1 | AC1 | Open a PR to each configured target; Actions shows `test-and-docker` for both. | GitHub run URLs |
 | L5-4-T2 | AC2 | Observe dependency install, Prisma, seed, test, build, and Docker-build steps; each completes successfully against `classpulse_test` and the application Dockerfile. | C-01 run summary |
 | L5-4-T3 | AC3 | Inspect the workflow and Dependabot config; action references are 40-hex SHAs and weekly updates are enabled. | Diff review |
@@ -74,7 +75,7 @@ After Punge089 posts C3 on this contract, first record the intentionally failing
 ## 10. Completion evidence
 
 - [ ] Punge089's C3 review references this contract commit.
-- [ ] Red prerequisite/setup evidence is honest and contains no credentials.
+- [ ] C-01.md records the pre-implementation AC1 assertion command, tested SHA, counts and expected failure; the missing L5-3 Dockerfile is listed separately as a dependency.
 - [ ] Green PR run includes the L5-3 Dockerfile and passes all tests, builds and the image build.
 - [ ] `docs/labs/lab-05/evidence/C-01.md` records run URL, tested SHA, commands and test counts.
 - [ ] B's PR is reviewed and merged into `sprint-2-staging`; branch protection remains a separate human-owned L5-6 step.
@@ -83,4 +84,5 @@ After Punge089 posts C3 on this contract, first record the intentionally failing
 
 | Version | Date | Author | Change |
 |---|---|---|---|
+| 1.1 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Addressed A review: added a contract-only AC1 red assertion before implementation and separated the absent L5-3 Dockerfile as a distinct dependency for green CI. |
 | 1.0 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Initial CI contract; records the Dockerfile dependency and test environment. |
