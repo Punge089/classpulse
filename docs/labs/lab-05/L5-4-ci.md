@@ -1,6 +1,6 @@
 # L5-4 CI and Docker contract
 
-Issue [#37](https://github.com/Punge089/classpulse/issues/37). Student B owns the workflow; Student A reviews. Scope: R-01, R-02, R-05, R-06 and R-10; evidence C-01. Contract v1.1, before workflow implementation.
+Issue [#37](https://github.com/Punge089/classpulse/issues/37). Student B owns the workflow; Student A reviews. Scope: R-01, R-02, R-05, R-06 and R-10; evidence C-01. Contract v1.2, before workflow implementation.
 
 ## 1. Goal and boundaries
 
@@ -10,6 +10,7 @@ Run the same locked dependency, Prisma, test, build and Docker checks for every 
 
 - Add `.github/workflows/ci-docker.yml` with a `pull_request` trigger filtered to `sprint-2-staging` and `main`.
 - Define one required job with the exact job id `test-and-docker`.
+- Expose this workflow with workflow_call so L5-7 can run the same checks before a release; keep the same job id and read-only CI permissions.
 - Use GitHub-hosted Ubuntu, Node 24, a bounded job timeout, and `permissions: contents: read`. The workflow has no cloud permissions, write token, upload step or deployment action.
 
 ## 3. PostgreSQL and Prisma
@@ -59,10 +60,11 @@ At base commit 8e856581613b08ef1e3e95a4c41f127705d7a993, the repository has no r
 | L5-4-AC3 | Every third-party Action is pinned to a full SHA; Dependabot checks Actions weekly. |
 | L5-4-AC4 | The workflow needs no cloud credential, contains no live secret, and emits no credential-bearing log or artifact. |
 | L5-4-AC5 | A green C-01 run link, SHA, command list, and test counts are recorded; the workflow remains active for later Lab 5 and release PRs. |
+| L5-4-AC6 | The same test-and-docker workflow is callable by L5-7 and must pass before a normal release deploys. |
 
 ## 9. Verification plan
 
-After Punge089 posts C3 on v1.1, run the temporary contract assertion before any workflow implementation. It must check that .github/workflows/ci-docker.yml exists, its pull_request targets include sprint-2-staging and main, and it defines the exact job id test-and-docker. Run against the contract-only base and record the command, tested SHA, assertion counts, and failure output in the red section of docs/labs/lab-05/evidence/C-01.md before adding the workflow. This assertion verifies AC1 only and is separate from all Docker checks. A missing L5-3 Dockerfile is a dependency that blocks a passing image build, not a red test; keep that build mandatory, then implement the workflow and Dependabot configuration and save genuine green PR evidence. Never claim C-01 complete before the image build passes.
+After Punge089 posts C3 on v1.2, run the temporary contract assertion before any workflow implementation. It must check that .github/workflows/ci-docker.yml exists, its pull_request targets include sprint-2-staging and main, and it defines the exact job id test-and-docker. Run against the contract-only base and record the command, tested SHA, assertion counts, and failure output in the red section of docs/labs/lab-05/evidence/C-01.md before adding the workflow. This assertion verifies AC1 only and is separate from all Docker checks. A missing L5-3 Dockerfile is a dependency that blocks a passing image build, not a red test; keep that build mandatory, then implement the workflow and Dependabot configuration and save genuine green PR evidence. Never claim C-01 complete before the image build passes.
 
 | Test ID | Acceptance | Action and expected result | Evidence |
 |---|---|---|---|
@@ -71,6 +73,7 @@ After Punge089 posts C3 on v1.1, run the temporary contract assertion before any
 | L5-4-T2 | AC2 | Observe dependency install, Prisma, seed, test, build, and Docker-build steps; each completes successfully against `classpulse_test` and the application Dockerfile. | C-01 run summary |
 | L5-4-T3 | AC3 | Inspect the workflow and Dependabot config; action references are 40-hex SHAs and weekly updates are enabled. | Diff review |
 | L5-4-T4 | AC4 | Inspect workflow permissions, configured values, logs and artifacts; no real credential is present or emitted and no cloud access is requested. | Safe log/config review |
+| L5-4-T5 | AC6 | A normal main release calls the reusable workflow and waits for test-and-docker success before deploy; a valid manual rollback skips CI as defined by L5-7. | C-06 workflow run |
 
 ## 10. Completion evidence
 
@@ -84,5 +87,6 @@ After Punge089 posts C3 on v1.1, run the temporary contract assertion before any
 
 | Version | Date | Author | Change |
 |---|---|---|---|
+| 1.2 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Added workflow_call so L5-7 invokes the same test-and-docker checks before release; PR triggers and least-privilege CI permissions remain required. |
 | 1.1 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Addressed A review: added a contract-only AC1 red assertion before implementation and separated the absent L5-3 Dockerfile as a distinct dependency for green CI. |
 | 1.0 | 2026-11-11 | book6349 with OpenAI Codex (GPT-6 Luna) | Initial CI contract; records the Dockerfile dependency and test environment. |
