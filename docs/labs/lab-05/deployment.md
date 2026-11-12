@@ -80,7 +80,7 @@ Humans review and run cloud provisioning/IAM commands, enter credentials private
 
 ## Release and commit identification
 
-Feature branches enter sprint-2-staging through teammate-reviewed PRs. A reviewed release PR takes staging into main. The intended main workflow runs the reusable test-and-docker checks, pushes the full-SHA image, resolves its digest, completes the migration job, updates the existing service to that same digest and runs read-only smoke checks. The reviewed L5-7 implementation and live evidence remain pending.
+Feature branches enter sprint-2-staging through teammate-reviewed PRs. A reviewed release PR takes staging into main. The main workflow runs the reusable test-and-docker checks, pushes the full-SHA image, resolves its digest, completes the migration job, updates the existing service to that same digest and runs read-only smoke checks. L5-7 implementation PR #45 was reviewed by A and merged at a82f933; its six offline release-stub cases and three mocked smoke tests passed at ff08cf6, and its PR CI passed. The C-01 evidence update followed in PR #46 at 9dae599. Live deployment evidence remains pending human setup and an accepted main release.
 
 Identify the running release by reading the service's traffic allocation and ready revision, then the revision's actual image digest. Resolve the matching Artifact Registry image tagged with the accepted main SHA and compare it with the workflow summary. Record SHA, digest, serving revision, traffic and run URL together. Keep the protected v1.0.0-sprint1 tag fixed.
 
