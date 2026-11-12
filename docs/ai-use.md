@@ -6,6 +6,8 @@ Student A (`Punge089`) switched to OpenAI Codex (GPT-6) and authorized it to wor
 
 Under this authorization Codex may write contracts, tests, implementation and comments. On B's changes it may check the contract or check out the PR, run the tests and Issue checks, read the diff, post a verdict and merge an approved PR with green CI. These actions can take place without A reading each message or deciding each verdict in advance. The GitHub review, check and merge records identify which actions occurred. B reviews A's PRs from B's account. B documents their own AI use. Human-only cloud, credential, GitHub settings and submission work stays with the students.
 
+On 12 November A explicitly authorized one exception for GitHub main-branch protection. Codex configured the `main-reviewed-ci` ruleset through A's signed-in browser; A personally completed GitHub's Confirm access authentication. Codex verified the active rules through the API and prepared the contract-approved C-02 failing-test demonstration. This settings action was AI-assisted, rather than performed entirely by a human. The remaining cloud, credential, environment and submission gates retain their earlier human-only boundary.
+
 ## Deliverable 1 (historical declaration)
 
 **Declaration of 8 Nov 2026 for the release `v1.0.0-sprint1`. Each student wrote and answers for their own part: Student A in this file's history before 8 Nov, Student B in pull request #23.**
