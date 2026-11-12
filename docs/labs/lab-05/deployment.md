@@ -91,10 +91,10 @@ For persistence, create a new synthetic survey through the live UI after initial
 | Check | Evidence/status |
 |---|---|
 | C-01 passing PR CI | [Integration run 43087862460](https://github.com/Punge089/classpulse/actions/runs/43087862460), head 27fa76f, successful tests/builds/image build |
-| C-02 failed required check blocks merge | Pending human main ruleset and reviewed demonstration |
+| C-02 failed required check blocks merge | [Accepted evidence](evidence/C-02.md), PR #49 merged at c8a12a5. PR #48 had 105 passing tests and one deliberate failure at bad1b85; after B approval the failed Required check still disabled merge. Closed unmerged with history retained. |
 | C-03 clean-clone container stack | [Integration validation at 27fa76f](https://github.com/Punge089/classpulse/blob/27fa76fbb84fa360e01a68a5bb11d16bee0b3bed/docs/labs/lab-05/L5-integration.md), tested source 1c3c95f, Docker 4/4 |
 | C-04 live domain workflow and access restriction | Pending public deployment and observed UI/API/database journey |
 | C-05 deployed persistence | Pending same-record before/restart/redeploy observations |
-| C-06 reviewed main release pipeline | Pending release workflow, human setup and live revision evidence |
+| C-06 reviewed main release pipeline | Workflow reviewed and merged through PR #45; offline release cases and mocked smoke tests passed. Human setup and live revision evidence remain pending. |
 
 The final PDF requires the confirmed section and complete observed evidence. Its name is lab5_sec<section>_EN-034_P0.pdf. Both members review it before the human submits to LEB2. Keep the service available until the instructor ends grading.
