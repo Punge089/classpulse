@@ -1,0 +1,156 @@
+name: ClassPulse deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: Existing image SHA for rollback; leave blank to deploy this main commit
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-demo
+  cancel-in-progress: false
+
+jobs:
+  test-and-docker:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      !(github.event_name == 'workflow_dispatch' && inputs.image_tag != '')
+    uses: ./.github/workflows/ci-docker.yml
+
+  deploy:
+    needs: [test-and-docker]
+    if: >-
+      always() &&
+      !cancelled() &&
+      github.ref == 'refs/heads/main' &&
+      (
+        needs['test-and-docker'].result == 'success' ||
+        (
+          needs['test-and-docker'].result == 'skipped' &&
+          github.event_name == 'workflow_dispatch' &&
+          inputs.image_tag != ''
+        )
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: demo
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Validate release configuration and image SHA
+        id: validate
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_IMAGE_TAG: ${{ inputs.image_tag }}
+          SOURCE_SHA: ${{ github.sha }}
+          PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+          REGION: ${{ vars.GCP_REGION }}
+          WIF_PROVIDER: ${{ vars.WIF_PROVIDER }}
+          WIF_SERVICE_ACCOUNT: ${{ vars.WIF_SERVICE_ACCOUNT }}
+        run: |
+          set -euo pipefail
+          invalid() {
+            echo "Release configuration or image SHA is invalid" >&2
+            exit 1
+          }
+          [[ -n "$PROJECT_ID" && -n "$REGION" && -n "$WIF_PROVIDER" && -n "$WIF_SERVICE_ACCOUNT" ]] || invalid
+          [[ "$PROJECT_ID" =~ ^[a-z][a-z0-9-]{4,28}[a-z0-9]$ ]] || invalid
+          [[ "$REGION" =~ ^[a-z]+(-[a-z0-9]+)*[0-9]+$ ]] || invalid
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" && -n "$INPUT_IMAGE_TAG" ]]; then
+            [[ "$INPUT_IMAGE_TAG" =~ ^[0-9a-f]{40}$ ]] || invalid
+            image_tag="$INPUT_IMAGE_TAG"
+            rollback=true
+            mode=rollback
+          else
+            [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]] || invalid
+            image_tag="$SOURCE_SHA"
+            rollback=false
+            mode=normal
+          fi
+
+          printf 'image_tag=%s\nmode=%s\nrollback=%s\n' "$image_tag" "$mode" "$rollback" >> "$GITHUB_OUTPUT"
+
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Authenticate to Google Cloud with Workload Identity Federation
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093
+        with:
+          workload_identity_provider: ${{ vars.WIF_PROVIDER }}
+          service_account: ${{ vars.WIF_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+
+      - name: Configure Artifact Registry Docker authentication
+        if: steps.validate.outputs.rollback == 'false'
+        env:
+          PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+          REGION: ${{ vars.GCP_REGION }}
+          IMAGE_TAG: ${{ steps.validate.outputs.image_tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
+          image="$REGION-docker.pkg.dev/$PROJECT_ID/classpulse/classpulse:$IMAGE_TAG"
+          docker build --tag "$image" .
+          docker push "$image"
+
+      - name: Resolve digest, migrate, and update Cloud Run
+        id: release
+        env:
+          PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+          REGION: ${{ vars.GCP_REGION }}
+          IMAGE_TAG: ${{ steps.validate.outputs.image_tag }}
+          ROLLBACK: ${{ steps.validate.outputs.rollback }}
+          SERVICE_NAME: classpulse
+          MIGRATE_JOB_NAME: classpulse-migrate
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash deploy/release.sh
+
+      - name: Run read-only smoke checks
+        id: smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 deploy/smoke_test.py "$SERVICE_URL"
+
+      - name: Write safe release summary
+        if: always()
+        env:
+          VALIDATED_IMAGE_TAG: ${{ steps.validate.outputs.image_tag }}
+          RELEASE_MODE: ${{ steps.validate.outputs.mode }}
+          VALIDATION_RESULT: ${{ steps.validate.outcome }}
+          SMOKE_RESULT: ${{ steps.smoke.outcome }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "## ClassPulse release"
+            echo "- Commit SHA: ${VALIDATED_IMAGE_TAG:-not validated}"
+            echo "- Image digest: ${DEPLOYED_IMAGE:-not resolved}"
+            echo "- Service URL: ${SERVICE_URL:-not available}"
+            echo "- Mode: ${RELEASE_MODE:-not validated}"
+            echo "- Validation step: $VALIDATION_RESULT"
+            echo "- Smoke-test result: ${SMOKE_RESULT:-not run}"
+          } >> "$GITHUB_STEP_SUMMARY"
