@@ -16,6 +16,8 @@ export IMAGE_TAG=1111111111111111111111111111111111111111
 export SERVICE_NAME=classpulse MIGRATE_JOB_NAME=classpulse-migrate
 export CALL_LOG="$TASK_TMP/calls" GITHUB_ENV="$TASK_TMP/env"
 export PATH="$TASK_TMP:$PATH"
+export DATABASE_URL=postgresql://synthetic:do-not-print@localhost/classpulse_test
+export RELEASE_SECRET_SENTINEL=do-not-print-this-value
 
 cat > "$TASK_TMP/gcloud" <<'STUB'
 #!/usr/bin/env bash
@@ -37,10 +39,15 @@ chmod +x "$TASK_TMP/gcloud"
 
 DIGEST="$REGION-docker.pkg.dev/$PROJECT_ID/classpulse/classpulse@sha256:$(printf '%064d' 0)"
 export ROLLBACK=false
-bash "$SCRIPT"
+normal_output="$(bash "$SCRIPT")"
+if [[ "$normal_output" == *"$DATABASE_URL"* || "$normal_output" == *"$RELEASE_SECRET_SENTINEL"* ]]; then
+  echo 'FAIL release printed a database value or secret' >&2
+  exit 1
+fi
 grep -q "run jobs update .*${DIGEST}" "$CALL_LOG"
 grep -q "run jobs execute .*--wait" "$CALL_LOG"
 grep -q "run services update .*${DIGEST}" "$CALL_LOG"
+grep -q 'run services update-traffic classpulse --to-latest' "$CALL_LOG"
 [[ "$(grep -n 'run jobs update ' "$CALL_LOG" | head -n1 | cut -d: -f1)" -lt "$(grep -n 'run jobs execute ' "$CALL_LOG" | head -n1 | cut -d: -f1)" ]]
 [[ "$(grep -n 'run jobs execute ' "$CALL_LOG" | head -n1 | cut -d: -f1)" -lt "$(grep -n 'run services update ' "$CALL_LOG" | head -n1 | cut -d: -f1)" ]]
 grep -q "DEPLOYED_IMAGE=$DIGEST" "$GITHUB_ENV"
@@ -49,9 +56,14 @@ echo 'PASS normal release resolves one digest, waits for migration, then updates
 
 : > "$CALL_LOG"
 export ROLLBACK=true
-bash "$SCRIPT"
+rollback_output="$(bash "$SCRIPT")"
+if [[ "$rollback_output" == *"$DATABASE_URL"* || "$rollback_output" == *"$RELEASE_SECRET_SENTINEL"* ]]; then
+  echo 'FAIL rollback printed a database value or secret' >&2
+  exit 1
+fi
 if grep -q 'run jobs' "$CALL_LOG"; then echo 'FAIL rollback touched migration job' >&2; exit 1; fi
 grep -q "run services update .*${DIGEST}" "$CALL_LOG"
+grep -q 'run services update-traffic classpulse --to-latest' "$CALL_LOG"
 echo 'PASS rollback updates by digest without migration'
 
 for failure in image digest migration; do
