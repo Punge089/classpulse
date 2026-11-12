@@ -1,0 +1,20 @@
+L5-3 integration rehearsal, 12 November 2026
+Application snapshot: 4eaba0efb3c4276700d988d1778d59ee20f24063 (B PR #39, approved, pending merge).
+Docker/Compose snapshot: dfe57c1033e7c464167500be6cba8f29d111f2f6.
+Harness: tools/lab5/test-docker.mjs from this evidence commit, including integer survey-ID parsing.
+Method: git archive the application snapshot into an isolated local folder, overlay the tracked Docker/Compose/harness files, initialize a temporary Git index for tracked-file enumeration, and run the harness against disposable Docker projects with public test fixtures.
+Command: node --test autopilot/integration-L53/tools/lab5/test-docker.mjs
+This rehearsal tests the combined snapshots. Final C-03 evidence from a fresh clone of the accepted integrated commit remains pending.
+
+✔ L5-3-T1 builds a non-root image with the SPA, Prisma and seed tooling (7987.0764ms)
+✔ L5-3-T2 rejects missing settings and serves a runtime-selected port (14241.1109ms)
+✔ L5-3-T3 initializes seeded accounts and blocks serving on initialization failure (5858.574ms)
+✔ L5-3-T4 serves the UI and retains a survey when the app is replaced (10979.3895ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45200.5381
