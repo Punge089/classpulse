@@ -1,0 +1,10 @@
+L5-2 green test evidence
+Implementation worktree based on red checkpoint: be2f12343b00ff48cbcd6c049fc7f9c3515d74d0
+Commands and results:
+1. npm --prefix server run test -- tests/api/cloudReady.test.ts tests/unit/seedConfig.test.ts
+   Exit 0; 2 test files passed; 4 tests passed; 0 failed; 0 skipped.
+2. npm --prefix server run test
+   Exit 0; 14 test files passed; 105 tests passed; 0 failed; 0 skipped.
+3. npm --prefix server run build
+   Exit 0; TypeScript build completed with tsc -p tsconfig.json.
+The test database readiness probe succeeded. The failure case returns only the sanitized unavailable response. Production static routing, API 404 behavior, and the example environment files passed the L5-2 contract tests. No real secrets or connection values are included in this evidence.

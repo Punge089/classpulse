@@ -1,0 +1,13 @@
+**
+!client/
+!client/**
+!server/
+!server/**
+**/node_modules
+**/dist
+**/coverage
+**/.env*
+**/.npmrc
+**/*.log
+server/tests
+client/src/**/*.test.*
