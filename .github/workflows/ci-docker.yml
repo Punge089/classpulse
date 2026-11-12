@@ -1,0 +1,94 @@
+name: CI and Docker
+
+on:
+  pull_request:
+    branches:
+      - sprint-2-staging
+      - main
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-docker:
+    name: test-and-docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: classpulse_test
+          POSTGRES_USER: classpulse
+          POSTGRES_PASSWORD: ci_only_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U classpulse -d classpulse_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            server/package-lock.json
+            client/package-lock.json
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install server dependencies
+        working-directory: server
+        run: npm ci
+
+      - name: Install client dependencies
+        working-directory: client
+        run: npm ci
+
+      - name: Generate Prisma client
+        working-directory: server
+        run: npx prisma generate
+
+      - name: Apply database migrations
+        working-directory: server
+        env:
+          DATABASE_URL: postgresql://classpulse:ci_only_password@localhost:5432/classpulse_test?schema=public
+        run: npx prisma migrate deploy
+
+      - name: Seed synthetic test accounts
+        working-directory: server
+        env:
+          DATABASE_URL: postgresql://classpulse:ci_only_password@localhost:5432/classpulse_test?schema=public
+          SEED_PASSWORD: ci_only_seed_password
+        run: npm run prisma:seed
+
+      - name: Test server
+        working-directory: server
+        env:
+          DATABASE_URL: postgresql://classpulse:ci_only_password@localhost:5432/classpulse_test?schema=public
+          SEED_PASSWORD: ci_only_seed_password
+        run: npm test
+
+      - name: Test client
+        working-directory: client
+        run: npm test
+
+      - name: Build server
+        working-directory: server
+        run: npm run build
+
+      - name: Build client
+        working-directory: client
+        run: npm run build
+
+      - name: Build Docker image locally
+        run: docker build --tag classpulse-ci:ci .
