@@ -4,7 +4,7 @@ Draft for Issue #33. Punge089 writes the guide; book6349 reviews the evidence an
 
 ## Current verified source
 
-Integration [PR #42](https://github.com/Punge089/classpulse/pull/42) combines the original rule, app, Docker and CI commits with their histories. At 1c3c95f, local server tests passed 105/105, client 1/1, both builds passed, and Docker checks from a fresh remote clone passed 4/4. Current integration head 27fa76f also passed [test-and-docker](https://github.com/Punge089/classpulse/actions/runs/43087862460). B's final review and staging merge remain pending.
+Integration [PR #42](https://github.com/Punge089/classpulse/pull/42) combines the original rule, app, Docker and CI commits with their histories. At 1c3c95f, local server tests passed 105/105, client 1/1, both builds passed, and Docker checks from a fresh remote clone passed 4/4. Integration head 27fa76f also passed [test-and-docker](https://github.com/Punge089/classpulse/actions/runs/43087862460). B reviewed and merged the integration into sprint-2-staging at 8b7d4b1. Its Git tree matches the tested 27fa76f head.
 
 These are integrated-source results. The public deployment, served main SHA, required-check blocking exercise and deployed persistence results remain pending their individual evidence.
 
