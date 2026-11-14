@@ -54,11 +54,21 @@ The intentionally failing PR is the required C-02 evidence. It remains a failing
 
 ## 6. Completion evidence
 
-- [ ] B's C3 on the contract commit before the demonstration test.
-- [ ] Effective main-rule readback and human environment/WIF setup status.
-- [ ] Green baseline and failing demonstration run with tested SHAs and actual counts.
-- [ ] B-reviewed C-02 evidence in docs/labs/lab-05/evidence/C-02.md, including the readable blocked-merge capture.
-- [ ] Demonstration PR closed unmerged, with history retained.
+- [x] B's C3 on contract commit `70272c3` before the demonstration test.
+- [x] Effective main-rule readback and environment/WIF setup verified; see the dated completion record below.
+- [x] Green baseline and failing demonstration run with tested SHAs and actual counts in C-02.
+- [x] B reviewed and merged C-02 evidence PR #49 at `c8a12a5`.
+- [x] Demonstration PR #48 closed unmerged, with history retained.
+
+### Verification record — 14 November 2026
+
+Read-only GitHub API checks confirmed active ruleset `27106455` targets only `refs/heads/main`, has no bypass actors, requires one approval, allows merge commits only, and strictly requires `test-and-docker`. The deliberate failing PR remains unmerged; its original failure is not converted into a green test.
+
+Environment `demo` (`27217919832`) has exactly one deployment branch policy, `main` of type `branch`, and the four expected variables: `GCP_PROJECT_ID`, `GCP_REGION`, `WIF_PROVIDER`, and `WIF_SERVICE_ACCOUNT`. Their nonsecret values agree with the reviewed deployment guide. No GitHub settings were changed by this readback. The earlier environment creation by A's Codex used the user's explicit exception to the human setup boundary, as disclosed in `docs/ai-use.md`.
+
+The provider is `projects/91139895529/locations/global/workloadIdentityPools/github-actions/providers/github-main`, with repository/owner numeric IDs, main ref, demo environment and the main deployment workflow restricted in its condition. Prior Console readback recorded an enabled provider and no user-managed key on the deployer account. B reported the scoped runtime/deployer IAM setup; no secret values were read. The accepted-main [run 43475436003](https://github.com/Punge089/classpulse/actions/runs/43475436003) at `a63719dd823dd77c86fbf187b4bc6663b4e07d8b` subsequently succeeded in WIF authentication, migration, service update and read-only smoke checks. B's C-06 evidence was reviewed and merged by A in PR #54 at `89e4899`.
+
+These observations resolve the earlier WIF/demo gates for this Issue. They do not establish C-05 persistence or authorize an agent to run the pending human restart. This completion record still requires B's review before Issue #31 is closed.
 
 ## 7. Version history
 
