@@ -1,12 +1,12 @@
 # ClassPulse Lab 5 deployment guide
 
-Draft for Issue #33. Punge089 writes the guide; book6349 reviews the evidence and owns SDS updates. Group EN-034_P0. Course section awaits confirmation. Lab 5 is due 15 November 2026 at 23:59 Asia/Bangkok.
+Guide and evidence index for Issue #33. Punge089 writes the guide and collects the live observations; book6349 reviews the evidence and owns SDS updates. Group EN-034_P0, section 31 confirmed by Student A. Lab 5 is due 15 November 2026 at 23:59 Asia/Bangkok.
 
 ## Current verified source
 
 Integration [PR #42](https://github.com/Punge089/classpulse/pull/42) combines the original rule, app, Docker and CI commits with their histories. At 1c3c95f, local server tests passed 105/105, client 1/1, both builds passed, and Docker checks from a fresh remote clone passed 4/4. Integration head 27fa76f also passed [test-and-docker](https://github.com/Punge089/classpulse/actions/runs/43087862460). B reviewed and merged the integration into sprint-2-staging at 8b7d4b1. Its Git tree matches the tested 27fa76f head.
 
-These are integrated-source results. The public deployment, served main SHA, required-check blocking exercise and deployed persistence results remain pending their individual evidence.
+The accepted first main release is [a63719dd823dd77c86fbf187b4bc6663b4e07d8b](https://github.com/Punge089/classpulse/commit/a63719dd823dd77c86fbf187b4bc6663b4e07d8b), merged by B through [PR #44](https://github.com/Punge089/classpulse/pull/44). Its [main push workflow 43475436003](https://github.com/Punge089/classpulse/actions/runs/43475436003) passed source CI, WIF authentication, image build/push, migration, service update and read-only smoke checks. The running image/revision was matched to that main SHA on 14 November. The later same-image restart and survey/response/summary reread are complete and B-reviewed in [PR #57](https://github.com/Punge089/classpulse/pull/57). C-05 remains incomplete: the separately reviewed next-main redeployment and compatible rollback/forward observations are pending.
 
 ## Stack and adaptation
 
@@ -16,12 +16,12 @@ The TokTickIT reference is adapted to ClassPulse routes, synthetic @classpulse.t
 
 ## Configuration
 
-Private values are supplied by humans through ignored local environment files or the planned Secret Manager bindings. Root .env.example and server/.env.example contain placeholders. The root connection uses host db for Compose; host development uses localhost. The client calls the same-origin API and currently reads no client environment setting.
+Private values are supplied by humans through ignored local environment files or Secret Manager. Root .env.example and server/.env.example contain placeholders. The root connection uses host db for Compose; host development uses localhost. Cloud Run uses the attached Cloud SQL socket. The client calls the same-origin API and currently reads no client environment setting.
 
 | Variable | Purpose/default | Secret | Source |
 |---|---|---|---|
-| DATABASE_URL | Prisma PostgreSQL connection. Required. | Yes | Human local configuration; planned runtime secret binding |
-| SEED_PASSWORD | Synthetic account seed password. Required only for initialization. | Yes | Human configuration or planned migration-job secret binding |
+| DATABASE_URL | Prisma PostgreSQL connection. Required. | Yes | Local human configuration; Cloud Run service/job reference classpulse-database-url version 2 |
+| SEED_PASSWORD | Synthetic account seed password. Required only for initialization. | Yes | Local human configuration; migration job references classpulse-seed-password version 1; not supplied to the app service |
 | POSTGRES_USER | Compose database user. Required. | No | Local root environment |
 | POSTGRES_DB | Compose database name. Required. | No | Local root environment |
 | POSTGRES_PASSWORD | Compose database credential. Required. | Yes | Human local configuration |
@@ -31,7 +31,7 @@ Private values are supplied by humans through ignored local environment files or
 | SESSION_TTL_HOURS | Session lifetime, default 8 hours | No | Runtime environment |
 | CLASSPULSE_IMAGE | Compose image name, default classpulse:local | No | Local root environment |
 
-The planned release workflow uses GCP_PROJECT_ID, GCP_REGION, WIF_PROVIDER and WIF_SERVICE_ACCOUNT as GitHub demo environment variables identifying resources. Their final implementation is tracked in B's Issue #38. WIF avoids a stored service-account JSON key.
+The reviewed release workflow uses GCP_PROJECT_ID, GCP_REGION, WIF_PROVIDER and WIF_SERVICE_ACCOUNT as nonsecret GitHub demo environment variables. API readback confirmed exactly four values: cpe-334-en-034, asia-southeast1, projects/91139895529/locations/global/workloadIdentityPools/github-actions/providers/github-main, and classpulse-deployer@cpe-334-en-034.iam.gserviceaccount.com respectively. The environment has one branch rule main and no tag rule. The WIF provider also restricts numeric repository/owner IDs, main, demo and the main deploy.yml workflow. The deployer account lists no keys; the accepted main workflow authenticated with WIF.
 
 ## Local build, test and run
 
@@ -69,22 +69,36 @@ To restart only the app, use docker compose --env-file .env restart app. The nam
 | GCP project | cpe-334-en-034, supplied by Student A |
 | Billing | True in the supplied Cloud Shell capture |
 | Budget and teammate access | Student A reports complete |
-| Region | asia-southeast1 proposed; actual resource locations await confirmation |
-| Artifact Registry repository/image | classpulse/classpulse proposed |
-| Cloud SQL instance/database | classpulse-pg/classpulse proposed |
-| Cloud Run service/migration job | classpulse/classpulse-migrate proposed |
-| Runtime/deployer identities | Proposed names are in the human setup plan; actual resources await confirmation |
-| Public service URL and served main SHA | Pending first deployment |
+| Region | asia-southeast1 verified for registry, SQL, service and job |
+| Artifact Registry repository/image | classpulse/classpulse; accepted main SHA tag verified against the serving digest below |
+| Cloud SQL instance/database | classpulse-pg/classpulse; PostgreSQL16, db-f1-micro, 10GB SSD, auto-storage increase off |
+| Cloud Run service/migration job | classpulse/classpulse-migrate; migration command runs Prisma migrate deploy then prisma:seed |
+| Runtime identity | classpulse-runner@cpe-334-en-034.iam.gserviceaccount.com on both service and job |
+| Deployer identity | classpulse-deployer@cpe-334-en-034.iam.gserviceaccount.com; Cloud Run Developer verified directly on each resource |
+| Public service URL | https://classpulse-zdwglar6eq-as.a.run.app/ |
+| Served main SHA | a63719dd823dd77c86fbf187b4bc6663b4e07d8b at the 14 November baseline |
 
-Humans review and run cloud provisioning/IAM commands, enter credentials privately, and configure the GitHub environment/ruleset. The local autopilot/gates.md contains the prepared commands and Done checks. Actual resource names and permissions must be verified before this table is marked deployed.
+Cloud mutations and credential handling remain human-controlled by default. A gave specific exceptions for the agent-assisted browser setup recorded in the [AI-use follow-up PR #52](https://github.com/Punge089/classpulse/pull/52) and the later agent-executed same-image restart disclosed in [PR #56](https://github.com/Punge089/classpulse/pull/56); do not describe these actions as manually performed by a student. A privately entered/submitted credentials. B reported performing the owner-only runtime grants and later database credential correction; A inspected metadata and live behavior without reading values. The local autopilot/gates.md retains the exact commands, actual operators and Done checks. The initial manual bootstrap preceded the accepted main release and is recorded separately rather than used as C-06 evidence. Service scaling was verified as minimum 0 / maximum 3 with 512 MiB memory.
 
 ## Release and commit identification
 
-Feature branches enter sprint-2-staging through teammate-reviewed PRs. A reviewed release PR takes staging into main. The main workflow runs the reusable test-and-docker checks, pushes the full-SHA image, resolves its digest, completes the migration job, updates the existing service to that same digest and runs read-only smoke checks. L5-7 implementation PR #45 was reviewed by A and merged at a82f933; its six offline release-stub cases and three mocked smoke tests passed at ff08cf6, and its PR CI passed. The C-01 evidence update followed in PR #46 at 9dae599. Live deployment evidence remains pending human setup and an accepted main release.
+Feature branches enter sprint-2-staging through teammate-reviewed PRs. A reviewed release PR takes staging into main. The main workflow runs the reusable test-and-docker checks, pushes the full-SHA image, resolves its digest, completes the migration job, updates the existing service to that same digest and runs read-only smoke checks. L5-7 implementation PR #45 was reviewed by A and merged at a82f933; its six offline release-stub cases and three mocked smoke tests passed at ff08cf6, and its PR CI passed. The C-01 evidence update followed in PR #46 at 9dae599. The first accepted main deployment is run 43475436003; B owns the reviewed C-06 evidence record in Issue #38.
 
 Identify the running release by reading the service's traffic allocation and ready revision, then the revision's actual image digest. Resolve the matching Artifact Registry image tagged with the accepted main SHA and compare it with the workflow summary. Record SHA, digest, serving revision, traffic and run URL together. Keep the protected v1.0.0-sprint1 tag fixed.
 
-For persistence, create a new synthetic survey through the live UI after initialization and retain its ID. Read the same ID after a verified fresh app revision and a reviewed main redeployment using the same database. Record before/after evidence. Compatible rollback and roll-forward use existing accepted image SHAs and leave the database intact. See the L5-6 and L5-8 contracts for the planned gate and persistence observations.
+The directly inspected 14 November baseline maps main a63719dd823dd77c86fbf187b4bc6663b4e07d8b to Artifact Registry digest sha256:8b5d63ae5e29b373601908b0f0be9817461de8db466d8bf27f0a3b15288a6c09 and serving revision classpulse-00002-54d at 100% traffic. The SQL attachment is cpe-334-en-034:asia-southeast1:classpulse-pg. Treat this as a dated observation, not a promise that the revision never changes.
+
+After the same-image restart, the recorded serving revision is classpulse-00003-5jd at 100% traffic with that unchanged digest and accepted main source. This direct restart did not create another main release or pipeline run. The next reviewed main deployment must receive its own SHA/run/revision/digest/traffic and database-attachment readback.
+
+## Observed domain workflow and persistence baseline
+
+On the accepted main release, A privately signed in to the synthetic owner/respondent accounts and Codex operated the browser. It observed missing-title rejection, created and published survey 2 through the live UI, submitted synthetic response 1, observed duplicate rejection, verified the original answers were unchanged, and observed a FORBIDDEN response with no owner data when the respondent opened the owner API. The owner summary then showed exactly 1 response, rating averages 4.00 / 5.00, and Cloud deployment: 1 with other choices: 0. The displayed Identified notice preceded answering. These are live observations, not an additional automated unit-test count. B reviewed the baseline/restart record and its six figures in PR #57; the remaining C-04 validation/access figures and final report indexing still need review.
+
+Stable record: [survey 2](https://classpulse-zdwglar6eq-as.a.run.app/owner/surveys/2), title CPE334 Lab 5 deployment feedback - EN-034_P0 - 2026-11-14, course CPE334, Published, three required questions. [Response 1](https://classpulse-zdwglar6eq-as.a.run.app/responses/1) contains ratings 4 and 5 and the choice Cloud deployment. These pages require the appropriate private sign-in. Keep the same IDs and database through C-05. Additional realistic classroom surveys 3 (Published requirements/user stories) and 4 (Draft mid-semester learning) are explicitly synthetic and do not replace this baseline.
+
+Survey 2 was created after initialization, so rerunning seed cannot recreate that baseline and create misleading evidence. The [guarded same-image restart script](https://github.com/Punge089/classpulse/issues/32#issuecomment-6862573365) was executed by A's Codex after A specifically requested that operation as an exception to the human-only boundary. Both baseline guards passed; classpulse-00002-54d became classpulse-00003-5jd with the same image digest and 100% traffic. A privately signed in again, and Codex reread survey 2, direct response 1 and the owner summary with unchanged values. B reviewed that completed restart evidence before merging PR #57. See the numbered figures and actual operator record in [C-05](evidence/C-05.md). Do not rerun the old script with its now-stale expected revision.
+
+The separately reviewed staging-to-main redeployment remains pending. After its successful release, verify the actual new SHA/run/revision/digest/traffic and the same database attachment, then compare the same saved values. Compatible rollback and roll-forward also remain pending; use existing accepted main image SHAs and preserve the database. The initial pre-main staging candidate is not an accepted rollback target. See Issue #32's approved 8c82dee contract. Direct rollback/forward operations retain their human gate; no full C-05 pass is claimed.
 
 ## Evidence index and remaining checks
 
@@ -93,8 +107,8 @@ For persistence, create a new synthetic survey through the live UI after initial
 | C-01 passing PR CI | [Integration run 43087862460](https://github.com/Punge089/classpulse/actions/runs/43087862460), head 27fa76f, successful tests/builds/image build |
 | C-02 failed required check blocks merge | [Accepted evidence](evidence/C-02.md), PR #49 merged at c8a12a5. PR #48 had 105 passing tests and one deliberate failure at bad1b85; after B approval the failed Required check still disabled merge. Closed unmerged with history retained. |
 | C-03 clean-clone container stack | [Integration validation at 27fa76f](https://github.com/Punge089/classpulse/blob/27fa76fbb84fa360e01a68a5bb11d16bee0b3bed/docs/labs/lab-05/L5-integration.md), tested source 1c3c95f, Docker 4/4 |
-| C-04 live domain workflow and access restriction | Pending public deployment and observed UI/API/database journey |
-| C-05 deployed persistence | Pending same-record before/restart/redeploy observations |
-| C-06 reviewed main release pipeline | Workflow reviewed and merged through PR #45; offline release cases and mocked smoke tests passed. Human setup and live revision evidence remain pending. |
+| C-04 live domain workflow and access restriction | Owner create/publish, respondent answer, duplicate rejection, backend role denial and owner aggregate observed on a63719d. B reviewed the baseline/restart subset in PR #57; remaining C-04 validation/access figures and final PDF indexing still need review. |
+| C-05 deployed persistence | [Restart evidence](evidence/C-05.md): agent-executed same-image restart and survey 2/response 1/summary reread complete, B-reviewed in PR #57. Separately reviewed next-main redeploy and compatible rollback/forward observations remain pending; #32 stays open. |
+| C-06 reviewed main release pipeline | [PR #44](https://github.com/Punge089/classpulse/pull/44) merged to a63719d; [main run 43475436003](https://github.com/Punge089/classpulse/actions/runs/43475436003) passed including WIF/migration/deploy/smoke. A reviewed and merged B's [C-06 evidence](evidence/C-06.md) through PR #54 at 89e4899. The next-main deployment and its evidence are pending. |
 
-The final PDF requires the confirmed section and complete observed evidence. Its name is lab5_sec<section>_EN-034_P0.pdf. Both members review it before the human submits to LEB2. Keep the service available until the instructor ends grading.
+The final PDF is lab5_sec31_EN-034_P0.pdf. Use Answer Parts 0-4 with direct links and numbered, readable figures. Complete C-05 and the remaining evidence reviews before claiming the lab complete. Both members review the report before the human submits to LEB2 by 15 November 2026 23:59 Bangkok and verifies the receipt. Keep the service available until the instructor ends grading. Never include passwords, tokens or connection strings in the report.
