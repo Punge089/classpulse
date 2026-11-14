@@ -1,4 +1,30 @@
-# AI-use declaration — ClassPulse (Deliverable 1)
+# AI-use declaration - ClassPulse
+
+## Lab 5 and Sprint 2 — Student A, 11 November 2026
+
+Student A (`Punge089`) switched to OpenAI Codex (GPT-6) and authorized it to work through A's account. Codex verified the account and Git identity, installed dependencies, generated the local Prisma client, ran the backend suite, created A's Lab 5 Issues and drafted the shared agent rules. A set the scope and retains responsibility. The local digest records what the agent actually did for A to read afterwards.
+
+Under this authorization Codex may write contracts, tests, implementation and comments. On B's changes it may check the contract or check out the PR, run the tests and Issue checks, read the diff, post a verdict and merge an approved PR with green CI. These actions can take place without A reading each message or deciding each verdict in advance. The GitHub review, check and merge records identify which actions occurred. B reviews A's PRs from B's account. B documents their own AI use. Human-only cloud, credential, GitHub settings and submission work stays with the students.
+
+On 12 November A explicitly authorized one exception for GitHub main-branch protection. Codex configured the `main-reviewed-ci` ruleset through A's signed-in browser; A personally completed GitHub's Confirm access authentication. Codex verified the active rules through the API and ran the contract-approved C-02 failing-test demonstration. B reviewed and approved that operational demonstration, then A's Codex captured the remaining failed required-check blocker and closed the demonstration PR unmerged. This settings and evidence work was AI-assisted. The remaining cloud, credential, environment and submission gates retain their earlier human-only boundary.
+
+## Lab 5 browser setup and live checks - Student A, 13-14 November 2026
+
+A subsequently gave specific browser-action authorizations for Artifact Registry setup, the runtime service account and its three intended permissions, and the GitHub `demo` environment. Codex enabled the required APIs, created the `classpulse` registry repository, prepared the PostgreSQL instance form, created the empty `classpulse` application database during the requested setup continuation, and created `classpulse-runner`. A entered the PostgreSQL administrator password and submitted instance creation personally. A also entered and submitted the application-user and Secret Manager values privately; Codex prepared their nonsecret names and settings. These cloud preparation actions were AI-assisted rather than all performed manually by A.
+
+The intended runtime IAM grants could not be applied from A's Editor account. Codex reported the missing permission and supplied the narrow commands; B reported applying and reading back the grants as project owner in [the release handoff](https://github.com/Punge089/classpulse/pull/44#issuecomment-6857109052). Codex did not broaden A's access or create a key. B's own declaration governs which of B's subsequent setup actions were human- or agent-operated; this section does not invent that distinction.
+
+With A's explicit approval, Codex created GitHub environment `demo`, restricted it to branch `main` with no tag rule, and entered the four nonsecret project/region/WIF identifiers. It verified those settings through GitHub API readbacks. A did not personally click every environment setting. Codex inspected provider conditions, resource-scoped deployer roles, runtime identities and key-list metadata without reading credential values. The initial manual Cloud Run bootstrap preceded the main release; it was recorded separately and was not presented as the main-triggered C-06 result.
+
+A temporary local helper assembled the database connection URL from a password that A entered in the browser. It encoded the password locally and copied the URL after A clicked; it did not send the password to the helper server or store it in a file. Codex did not read that input or the clipboard. A pasted and submitted the value privately, after which the helper was closed and its server stopped. Later database-password rotation and secret version 2 were reported by B; A's agent inspected references and metadata only.
+
+Codex reviewed release readiness and marked A-authored [PR #44](https://github.com/Punge089/classpulse/pull/44) ready after actual checks. It did not approve or merge that PR. B's account merged it, and the main workflow deployed the accepted merge. Codex verified [run 43475436003](https://github.com/Punge089/classpulse/actions/runs/43475436003), ran the public read-only smoke checks, and matched the accepted main tag to the serving image digest and revision. Repository actions and their review/merge authors remain visible in GitHub; they are not described as human decisions where the agent made them under standing authorization.
+
+For the live application checks, A privately signed in to the seeded synthetic accounts. Codex then operated the owner/respondent UI, created and published a synthetic survey, chose and submitted synthetic answers, verified duplicate rejection and backend role denial, and checked the owner aggregates. It also added clearly labelled classroom demo surveys at A's request. These are generated demonstration data, not feedback from real students. Codex collected the screenshots and local observation records; B's evidence review is recorded separately when it actually occurs. After A requested browser-only background work, Codex stopped native mouse/keyboard and foreground-tab control.
+
+These exceptions do not grant general authority for future cloud mutations, credentials, IAM, GitHub settings or submission actions. The C-05 restart and direct cloud operations remain human-reviewed and human-run under the existing contract. A remains responsible for understanding and checking the evidence, and both students must review the final report before a human submits it to LEB2.
+
+## Deliverable 1 (historical declaration)
 
 **Declaration of 8 Nov 2026 for the release `v1.0.0-sprint1`. Each student wrote and answers for their own part: Student A in this file's history before 8 Nov, Student B in pull request #23.**
 

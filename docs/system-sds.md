@@ -1,7 +1,7 @@
 # ClassPulse — System-Level Software Design Specification
 
-**Version:** 1.1 · **Owner:** Student B (`book6349`) · **Issue:** #3 · **Date:** 6 Nov 2026
-**Scope:** Part C of Deliverable 1; Sprint 1 architecture and planned deployment boundary.
+**Version:** 1.2 · **Owner:** Student B (`book6349`) · **Issues:** #3 and #33 · **Date:** 12 Nov 2026
+**Scope:** Part C of Deliverable 1, with a separate Lab 5 as-built deployment addendum. The Sprint 1 baseline remains unchanged; the addendum records the later system as integrated on `sprint-2-staging`.
 
 This SDS describes the whole ClassPulse system and marks later-sprint elements as planned. The shared source of truth is [`plan.md`](plan.md), especially §§2.4–2.9 and I-03. The approved product decisions are in [`design.md`](design.md). PR #15 has merged the SR-01 schema, migration, seed, API shell, client shell and test harness into `sprint-1-staging`; authentication and the feature routes are implemented by the subsequent Issues in the plan.
 
@@ -157,8 +157,41 @@ The current local workflow is documented in [`README.md`](../README.md): install
 
 Cloud deployment is planned for Lab 5, outside the Sprint 1 build: one Docker image containing the Express API and `client/dist` on Cloud Run, PostgreSQL on Cloud SQL, credentials in Secret Manager, and images in Artifact Registry. Apply committed migrations with `prisma migrate deploy` at release. Persist state in Cloud SQL; do not rely on a Cloud Run container's local disk. Use HTTPS and the Secure session-cookie setting in production.
 
+## 8. Lab 5 deployment architecture — implemented on staging, not live
+
+This addendum describes the Lab 5 implementation integrated on `sprint-2-staging` at `9dae5997636687fa1ee0390bc66785a72262922f`. It does not change the Sprint 1 baseline or its fixed `v1.0.0-sprint1` tag. The release PR [#44](https://github.com/Punge089/classpulse/pull/44) is still a draft to `main`; no public service or live deployment result is claimed here.
+
+### 8.1 Application and container lifecycle
+
+The production Express process serves the built React client from `/app/client/dist` on the same origin as `/api/*`. `/api/health` is a liveness check; `/api/ready` returns ready only after a database query succeeds and otherwise returns a sanitized 503. Client-route fallback is kept separate from API and missing-asset 404 handling. L5-2 adds no schema change, and the web process does not migrate or seed on startup or restart.
+
+The root Node 24 multi-stage image builds the client and API, includes the generated Prisma client, migrations, OpenSSL and the seed runtime dependencies, and runs as the non-root `node` user. Compose starts PostgreSQL 16 with the named `postgres_data` volume and a health check. Its one-shot `migrate` service waits for the database, runs the installed migration command followed by the seed, and receives `SEED_PASSWORD`; the app waits for successful initializer completion and uses the database-backed readiness check.
+
+### 8.2 CI and release paths
+
+The read-only `.github/workflows/ci-docker.yml` runs on pull requests to `sprint-2-staging` and `main`, and through `workflow_call`. Its required job id is `test-and-docker`. It provisions disposable PostgreSQL 16, installs locked dependencies in the root, server and client, generates Prisma, migrates and seeds with synthetic CI values, runs both test suites and builds, then builds the Docker image. Actions are pinned to full commit SHAs and Dependabot checks GitHub Actions weekly. CI has no cloud access.
+
+The release workflow is present on staging through B's reviewed PR #45, merged at `a82f933`. A normal push to `main` runs the reusable CI job, builds and pushes the full-SHA image, resolves its digest, runs migrations, updates Cloud Run by that digest and performs read-only smoke checks. Manual rollback accepts an existing 40-character image SHA and skips the build/migration path. The deploy job uses GitHub OIDC and the `demo` environment; no service-account JSON key is used. The workflow is not active on `main` until the release PR is merged after human setup.
+
+### 8.3 Configuration and secret boundaries
+
+Local examples use placeholders. Compose-only settings include `POSTGRES_USER`, `POSTGRES_DB`, `POSTGRES_PASSWORD`, `APP_PORT` and `CLASSPULSE_IMAGE`; app settings include `DATABASE_URL`, `PORT`, `SESSION_TTL_HOURS` and `NODE_ENV`. The seed reads `SEED_PASSWORD` only in the one-shot initializer. The client currently reads no `import.meta.env` setting.
+
+The release workflow reads `GCP_PROJECT_ID`, `GCP_REGION`, `WIF_PROVIDER` and `WIF_SERVICE_ACCOUNT` as non-secret `demo` environment identifiers. Human-provided credentials and secret values are not stored in this SDS or Git. Actual project access, resource names/regions, WIF bindings, Secret Manager configuration, the GitHub `demo` environment and main ruleset remain human gates listed in `autopilot/gates.md`.
+
+### 8.4 Evidence and current status
+
+- **C-01 green:** [Actions run 43087862460](https://github.com/Punge089/classpulse/actions/runs/43087862460) passed `test-and-docker` at integration head `27fa76f`, including the Docker image build. At code-tested snapshot `1c3c95f`, the server suite passed 105/105 tests across 14 files, the client passed 1/1, both builds passed, and the clean-clone Docker harness passed 4/4. The C-01 evidence update merged in PR #46 at `9dae599`.
+- **Current release-head CI:** main-target run [43183774877](https://github.com/Punge089/classpulse/actions/runs/43183774877) passed at `9dae599`. This is CI evidence, not a deployment.
+- **C-03 green:** clean-clone Docker checks 4/4 are recorded against the integrated application snapshot. C-02's failed-required-check demonstration and C-04 public deployment/access evidence remain pending.
+- **C-05 pending:** no deployed same-record restart/redeployment/rollback observation is recorded.
+- **C-06 offline green, live pending:** the release stubs and mocked HTTP checks passed, but no human-configured main release has deployed a live revision.
+
+The approved `main` release, cloud resources and all live C-02/C-04/C-05/C-06 evidence remain pending. The course section is still unconfirmed (the user said likely 31); do not finalize the PDF filename until confirmed. The final report/PDF, both-student review and human LEB2 submission remain separate Issue #33 deliverables.
+
 ## Version history
 
 | Version | Change | Reason |
 |---|---|---|
+| 1.2 | Added a Lab 5 as-built deployment architecture, CI/release flow, evidence status and human-gate boundaries while retaining the Sprint 1 baseline. | Issue #33; reflects merged staging head `9dae599`; no live deployment is claimed. |
 | 1.1 | Clarified response endpoint check order, inactive-session handling, and production cookie security; split the role matrix by operation and named the PulseLine loading state. | Addressed the review on PR #16 and aligned the SDS with plan §§2.5/2.9 and F-01 §3. |
