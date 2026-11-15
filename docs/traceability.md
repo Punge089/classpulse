@@ -1,6 +1,6 @@
 # Requirements traceability — ClassPulse
 
-**Version 1.4 · 8 Nov 2026 · Author: Punge089 · Reviewer: book6349** · see the version history at the end
+**Version 1.5 · 15 Nov 2026 · Author: Punge089 · Reviewer: book6349 (review requested for this extension)** · see the version history at the end
 
 One row per baseline requirement (18 FR + 14 BR + 10 NFR = 42). Sprint 1 AC and test IDs come from the
 Sprint 1 contracts (`docs/sprints/sprint-1/`). The last two columns of the Sprint 1 rows were filled from the output of `python tools/test_results.py` on the release tag `v1.0.0-sprint1` (commit `d4bad74`, Issue I-10 and I-11);
@@ -66,6 +66,14 @@ the full table is `docs/sprints/sprint-1/test-results.md`. Rows planned for Spri
 |---|---|---|---|
 | (none yet) | | | |
 
+## Lab 5 verification extension - NFR-05
+
+The 42 baseline requirement rows above retain the assessed Sprint 1 results and fixed tag. This extension records the later Lab 5 persistence outcome; it does not rename IDs or turn manual observations into automated tests.
+
+| Requirement / contract | Actual check and observed result | Peer acceptance |
+|---|---|---|
+| NFR-05 / [L5-8 AC1-AC4](labs/lab-05/L5-8-persistence.md) | [C-05 evidence](labs/lab-05/evidence/C-05.md): saved survey 2, response 1 and owner summary retained after same-image restart and reviewed main redeployment. Compatible backward/forward runs 43588464331 / 43589308055 retain the same SQL attachment, saved survey and owner aggregate; final classpulse-00006-6w6 has accepted image1fe3e3b/digest60f61c...07795 at100% traffic. Direct response1 was not separately reopened during those two manual phases; that limit is disclosed. Public read-only smoke4/4 per phase is a separate live check, not a new full unit-suite count. | B approved [PR57](https://github.com/Punge089/classpulse/pull/57) restart, [PR63](https://github.com/Punge089/classpulse/pull/63) redeployment and [PR66](https://github.com/Punge089/classpulse/pull/66) final cycle at aad4dd6 before merge31ea48e. [Issue32](https://github.com/Punge089/classpulse/issues/32) is closed after final acceptance. |
+
 ## Version history
 
 | Version | Date | Change and reason |
@@ -75,3 +83,4 @@ the full table is `docs/sprints/sprint-1/test-results.md`. Rows planned for Spri
 | 1.2 | 7 Nov 2026 | The NFR-03 gap named in v1.1 is closed: F-04 v1.2 (book6349, commit 42826b8) adds the owner-role `GET /api/surveys` request to TEST-22, which asserts 403 `FORBIDDEN` with no survey list in the body. I read the test in `server/tests/api/responses.test.ts` at that commit before removing the gap. NFR-03 now maps TEST-22 and AC-20, and the gap bullet is gone. |
 | 1.3 | 7 Nov 2026 | I-10: the result columns of the 23 Sprint 1 rows that have automated tests are filled (NFR-05 and NFR-09 say "manual" and point to their evidence) from `python tools/test_results.py` on commit `4eb2dce` (server 101, client 1, e2e 8 passed, 0 failed, 0 skipped, exit 0). TEST-40 (journey, `docs/sprints/sprint-1/I-10-journey.md`) is added to FR-07, FR-08 and NFR-07 next to the tests that already covered them. |
 | 1.4 | 8 Nov 2026 | I-11: the Sprint 1 results were produced again in a clean clone at the release tag `v1.0.0-sprint1` (commit `d4bad74`): server 101, client 1, e2e 8 passed, 0 failed, 0 skipped, generator exit 0, 39 of 39 acceptance criteria pass. The table is identical to the run on `4eb2dce` apart from the commit and the time, so the result cells now say `@ d4bad74`. |
+| 1.5 | 15 Nov 2026 | Issue33: add the verified Lab5 NFR-05 persistence extension with exact accepted evidence/review links and manual-readback limits. Preserve all42 baseline rows, Sprint1 result counts and protected tag; extension review requested from B. |
