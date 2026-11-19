@@ -9,7 +9,7 @@ Read [the coverage review](coverage.md) and [the contract/source crosswalk](cont
 | Finding in proposed v1.0 | v1.1 correction |
 |---|---|
 | UAT-12 was mentioned before UAT-05 in prose but omitted from the primary sequence and UAT-05 preconditions. | Put UAT-12 before UAT-05 in both places. |
-| The data rule could prohibit the deliberate duplicate POST required by UAT-04 / AC-22. | Make UAT-04 the sole intentional repeat POST within a run; prohibit reuse across runs and any extra accepted submission. |
+| The data rule could prohibit the deliberate duplicate response-submission probe required by UAT-04 / AC-22 or conflict with negative lifecycle probes. | Restrict only reuse of successful respondent/survey response-submission pairs; preserve the planned UAT-04 duplicate and other negative POST probes. |
 | UAT-02 relied on browser validation for missing required answers and used only a rating question. | Add a backend empty-answers probe and both required question types; keep invalid-rating probes valid for the choice question. |
 | UAT-07 did not check whether a bad login left a usable session. | Check /api/auth/me returns 401 after the failed login; this does not claim cookie-header inspection. |
 | UAT-08 described the null-average UI as a hyphen. | Match the source UI's em dash (—). |
