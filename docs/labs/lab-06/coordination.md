@@ -1,13 +1,13 @@
 # Lab 6 coordination register
 
-Status: preparation; independent partner/team agreement and B acknowledgement remain pending. This register distinguishes proposed assignments from actual agreement. No password, token or cookie belongs here.
+Status: preparation; B acknowledged receipt and started the handoff scope. Independent partner agreement, B availability and PR approval remain pending. This register distinguishes proposed assignments from actual agreement. No password, token or cookie belongs here.
 
 ## Verified preparation
 
 - Student A GitHub/Git identity verified as Punge089 on 19 November 2026.
-- A reports sharing the local planning ZIP and B automation prompt with B. Delivery contents, B receipt and B scheduler state have not been independently verified.
+- B [acknowledged receipt and reading of the kit/prompt](https://github.com/Punge089/classpulse/issues/68#issuecomment-7014497599) at 16:01:05 UTC on 19 November (23:01:05 Bangkok). This verifies the acknowledgement from book6349; it is not a fresh inspection of B's local scheduler. B reports that the available scheduler has a minimum hourly interval, does not support the requested 20-minute cadence, and no B automation was created or is active.
 - Issue [#68](https://github.com/Punge089/classpulse/issues/68) owns this five-document preparation scope and A-only AI-use disclosure. A's branch starts at staging 8c239225c75dc8f0f4db191797282ed9698850d4. B must review the authored PR; A cannot self-approve or self-merge.
-- B's proposed work is the ClassPulse handoff/coverage/contract-extracts review and B-owned response/summary work. B should create/accept their own scoped Issue and link it here; this assignment is not evidence of consent.
+- B created [Issue #70](https://github.com/Punge089/classpulse/issues/70) for handoff.md, coverage.md and contract-extracts.md, with A as reviewer. B reports static review of PR #69 at f052854 and requests this status correction before approval. No formal PR approval or runtime testing is claimed. Broader response/summary correction work remains conditional on actual findings and its own scope.
 
 ## Agreement fields
 
@@ -15,7 +15,8 @@ Status: preparation; independent partner/team agreement and B acknowledgement re
 |---|---|
 | A full name / student ID | Pending human confirmation; GitHub Punge089 |
 | B full name / student ID | Papangkorn Jitvoottikrai (spelling to confirm) / pending; GitHub book6349 |
-| B acknowledgement / own Issue / automation confirmation | Pending actual B response |
+| B acknowledgement / own Issue / automation confirmation | Receipt acknowledged in comment7014497599; B-owned Issue #70 created. B reports no active automation because its scheduler does not support 20-minute runs. |
+| B actual availability | Unconfirmed; B explicitly has not accepted the proposed 20 Nov slots. |
 | Partner C name / ID / team | Pending |
 | Partner D name / ID / team | Pending |
 | Partner product / repo / deployed URL / scope/version | Pending actual handoff |
@@ -44,4 +45,8 @@ GitHub comments coordinate repository work. External outreach, partner consent a
 
 ## Actual contribution status
 
-A's Codex drafted the shared plan and these repository preparation documents from the handout, B's supplied original draft and contracts. B supplied the original eight-case draft according to the user. No B acknowledgement/review, C/D execution, defect, acceptance, final PDF approval or Lab 6 submission is claimed. See [AI-use declaration](../../ai-use.md).
+A's Codex drafted the shared plan and these repository preparation documents from the handout, B's supplied original draft and contracts. B supplied the original eight-case draft according to the user, acknowledged the kit, created Issue #70 and reported a static exact-head review/status finding in comment7014497599. B's own scope records static preparation only. No formal B approval, C/D execution, defect, acceptance, final PDF approval or Lab 6 submission is claimed. See [AI-use declaration](../../ai-use.md).
+
+## Status history
+
+- 19 Nov, 23:07 Bangkok update: replace stale pending B receipt/Issue fields with actual book6349 acknowledgement and Issue #70. Keep availability, appointment agreement and formal approval pending. Record B-reported scheduler limit without inferring an active B automation.
