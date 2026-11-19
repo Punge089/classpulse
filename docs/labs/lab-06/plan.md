@@ -155,3 +155,5 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 | 1.0 | 19 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol; prior local kit assisted by GPT-6 | Publish A-owned preparation scope so B can review through GitHub; agreement and B review pending |
 
 | 1.1 | 19 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Correct B receipt/work/scheduler status from actual comment7014497599 and Issue #70; formal review and appointments still pending |
+
+| 1.2 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Record later B heartbeat activation report7016235809 while retaining earlier scheduler limitation as history; availability stays pending |
