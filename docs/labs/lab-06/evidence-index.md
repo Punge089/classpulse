@@ -21,3 +21,14 @@ IDs: CP-E001 for ClassPulse, PARTNER-E001 for partner product, CP-EX-E001 for th
 A caption includes evidence ID, action, expected/actual, date/time, actor/tester and relevant SHA/revision. Automated output includes file/test names, exact command and pass/fail/skip counts. Label manual versus automated checks. External URLs corroborate; they do not replace readable assessed evidence inside the PDF. No passwords, session cookies, request headers, tokens, connection strings, real personal app data or env dumps.
 
 See [blank records R03-R10](records-template.md), [plan and final-PDF checks](plan.md) and [versions](versions.md). File paths for future evidence must be explicitly included in an owning Issue's Files scope before adding them; Issue #68 does not grant unbounded evidence-directory ownership.
+
+## Reviewed preparation evidence (not UAT results)
+
+| ID | Actual reference | What it supports | Limits |
+|---|---|---|---|
+| PREP-01 | [A PR69 review discussion](https://github.com/Punge089/classpulse/pull/69) and merge3d652d8 | Actual B approval of692a71f and CI44574038895; coordination/record preparation | Final PDF must embed the actual readable review text/results, not merely this link; no UAT |
+| PREP-02 | [A exact-head approval of B PR71](https://github.com/Punge089/classpulse/pull/71#pullrequestreview-5980039341); mergeb14cf38 | Corrected handoff/order/attribution history,23/23offline checks and CI44576544456 | Document/helper checks, not actual server/UAT execution |
+| PREP-03 | [A initial change request](https://github.com/Punge089/classpulse/pull/71#pullrequestreview-5979419349) | Actual7fbac15 review:21passed/2failed/0skipped plus contradictory instructions | Retain original findings; final green result does not erase them |
+| PREP-04 | [A closeout](https://github.com/Punge089/classpulse/issues/68#issuecomment-7016788339) / [B closeout](https://github.com/Punge089/classpulse/issues/70#issuecomment-7017003769) | Reviewed preparation integrated;6integration checks,20relative links | Independent partner/version/access/execution/acceptance still pending |
+
+Preparation observations occurred during19NovUTC /20NovBangkok. Use exact GitHub timestamps/commit references and real actor declarations when embedding excerpts. These PREP IDs must not be counted among executed UAT cases or used as the defect-correction evidence demanded in PartD. The final [report source](report.md) and [contribution register](contributions.md) preserve those limits.
