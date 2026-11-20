@@ -33,7 +33,7 @@ Label the chain CP-EX-* so it is distinguished from natural release defects. Pro
 
 ## Stage 4: meaningful RED, correction, GREEN and regression
 
-After the independent report, add or explicitly reuse a meaningful automated regression reproducer under the unchanged contract. Run it against the defective SHA first and save actual failure/assertions/setup/command/commit/counts before implementation. If a relevant existing test already fails, retain that exact result as supporting evidence and record whether the reproducer is new or existing; do not pretend a pre-existing test is newly written. The final report must demonstrate the reported failure, not a syntax/setup failure.
+After the independent report, add a meaningful automated regression reproducer (or extend an existing regression with the specific reported scenario) under the unchanged contract. Run it against the defective SHA first and save actual failure/assertions/setup/command/commit/counts before implementation. If a relevant existing test already fails, retain that exact result as supporting evidence and still add/extend the reported-case reproducer; do not pretend the old test was newly written or weaken it. The final report must demonstrate the reported failure, not a syntax/setup failure.
 
 Commit the reproducing test/evidence before fixing. Fix the reported behavior in a new commit, run the same assertions GREEN and the relevant broader regression suite, retaining actual pass/fail/skip output. Never fabricate red history or weaken an assertion to pass. Follow the existing contract/C2/C3 protocol for any genuine contract change; do not revise an expected rule to excuse the deliberately introduced defect.
 
