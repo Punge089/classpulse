@@ -4,6 +4,10 @@ Status: A-authored preparation for Issue #68; teammate review and partner agreem
 
 Navigation: [coordination](coordination.md), [version register](versions.md), [evidence index](evidence-index.md), [blank record templates](records-template.md). Use the actual reviewed B handoff once available; twelve cases are currently proposed, not an agreed independent test inventory.
 
+## Instructor update effective for current planning
+
+The [20 November clarification](instructor-clarification.md) governs current work: each independent UAT Team must audit supplied-case coverage against important Sprint 1 requirements/ACs, propose additional cases and test thoroughly before concluding no genuine defects. Complete [R11 coverage review](coverage-review.md) before freezing the expanded inventory. If none are found after real execution, use the [standard staging-commit exercise](exercise-protocol.md), preserving blind discovery and full RED/GREEN/review/CI/corrected-deploy/retest. No generic wait for a bespoke TA exercise is required; escalate only actual technical/partner blockers. No exercise is started by this documentation change.
+
 ## 1. ผลลัพธ์ที่ต้องมี
 
 | เกณฑ์ | คะแนน | ผลงานที่ตรวจได้ | ผู้รับผิดชอบหลักที่เสนอ |
@@ -11,7 +15,7 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 | A Preparation | 20 | เคสครบ scope สำคัญ อย่างน้อย 4 ประเภท, instructions/accounts/data/version พร้อมใช้ | B เขียน/ตรวจ handoff; A ตรวจ contract/coverage |
 | B Independent execution | 25 | A และ B รันทุกรายการที่ตกลงของแอป C/D พร้อม actual/evidence | A normal/state; B boundary/access |
 | C Reporting and triage | 20 | outgoing reports + received findings ทั้งหมด มี classification/reason/severity/owner/disposition | A ดู ledger; B ตรวจเหตุผล |
-| D Resolution and retest | 35 | correction หรือ TA-approved exercise, RED/GREEN, review/CI/release/deploy, independent retest/decision | เจ้าของโมดูลแก้; อีกคน review; C/D retest |
+| D Resolution and retest | 35 | correction หรือ professor-standardized exercise, RED/GREEN, review/CI/release/deploy, independent retest/decision | เจ้าของโมดูลแก้; อีกคน review; C/D retest |
 
 คะแนนไม่ขึ้นกับจำนวน bug จึงไม่ตั้งเป้าว่าต้องหาให้ได้กี่ตัว เป้าคือครบ scope, รับผิดชอบทุก finding และมีคำตัดสินที่หลักฐานรองรับ
 
@@ -47,11 +51,11 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 
 | วัน/เวลาเป้าหมาย | งาน | เสร็จเมื่อ |
 |---|---|---|
-| 19 พ.ย. ภายใน 2 ชั่วโมงหลังเริ่มใช้แผน | ยืนยัน 4 คนและจอง initial/retest ทั้งสองแอป | R01 มีผู้ตอบรับจริง |
-| 19 พ.ย. ก่อนสิ้นวัน | review handoff, live metadata, private access, dry run | G1 พร้อม; ถ้าไม่พร้อมแจ้งคู่และเปิด blocker |
-| 20 พ.ย. 10:00–13:00 | C/D ทดสอบ ClassPulse | agreed cases ทุกเคสมี actual หรือ BLOCKED |
-| 20 พ.ย. 14:00–17:00 | A/B ทดสอบแอป C/D | ทุกเคสที่ตกลงถูกบันทึก; ทั้ง A/B มีงานจริง |
-| 20 พ.ย. 17:00–19:00 | แลก findings, reproduce, triage | ทุก finding มี disposition/owner; ขอ exercise ถ้าไม่พบ defect |
+| 20 พ.ย. วันนี้ทันที | ยืนยัน 4 คนและจอง coverage review/initial UAT/exercise-discovery-if-needed/retest ทั้งสองแอป | R01 มีผู้ตอบรับจริง |
+| 20 พ.ย. ก่อนเริ่ม independent session | ตรวจ addendum อาจารย์, handoff, live metadata, private access และ dry run | G1 พร้อม; ถ้าไม่พร้อมแจ้งคู่และเปิด blocker |
+| 20 พ.ย. เวลาที่นัดได้เร็วที่สุด (ช่วงเดิม 10:00–13:00 ยังไม่เคยยืนยัน) | C/D ตรวจ coverage/เสนอเคสเพิ่ม แล้วทดสอบ ClassPulse | agreed cases ทุกเคสมี actual หรือ BLOCKED |
+| 20 พ.ย. ช่วงที่ทั้งสองทีมตกลงใหม่ | A/B ตรวจ coverage/เสนอเคสเพิ่ม แล้วทดสอบแอป C/D | ทุกเคสที่ตกลงถูกบันทึก; ทั้ง A/B มีงานจริง |
+| 20 พ.ย. 17:00–19:00 | แลก findings, reproduce, triage | ทุก finding มี disposition/owner; สรุปผล thorough UAT; ถ้าไม่พบ defect เตรียม exercise ตามมาตรฐานอาจารย์ |
 | 21 พ.ย. 09:00–14:00 | RED → fix → GREEN/regression → review/CI | G3 ผ่าน; แจ้งก่อน deployment ทุกครั้ง |
 | 21 พ.ย. 14:00–16:00 | reviewed release, smoke, version handoff | R02 แถวใหม่ตรง revision ที่ serve จริง |
 | 21 พ.ย. 16:00–18:00 | retest ทั้งสองแอป | R06 + decision หรือ blocker/follow-up จริง |
@@ -78,7 +82,8 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 - [ ] credentials ส่งส่วนตัวและทดลองเข้าทุกบทบาทได้; enrollment matrix ตรง
 - [ ] case order, fresh run IDs, data-retention agreement และหลักฐานที่ต้องเก็บชัด
 - [ ] partial AC coverage ถูกระบุ ไม่อ้างว่า manual UAT แทน full automated suite
-- [ ] ทีมคู่ยืนยันรับเอกสารและตกลง case/subcase list; เวลา/ข้อมูลพอรันทุกรายการ
+- [ ] Independent UAT Team ทำ R11 ตรวจ important Sprint 1 AC coverage และเสนอ additional cases พร้อม disposition ก่อน freeze inventory
+- [ ] ทีมคู่ยืนยันรับเอกสารและตกลง expanded case/subcase list; เวลา/ข้อมูลพอรันทุกรายการ
 
 ### G2 — Initial execution complete
 
@@ -103,7 +108,7 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 - [ ] ไม่มี critical/major ที่ค้างหรือ required test ที่ BLOCKED หากจะยอมรับ
 - [ ] minor ค้างมี explicit acceptance จากทีม UAT พร้อม reason/limitation
 - [ ] R07 ระบุ exact release/scope/date/testers/evidence และคำตัดสินจริง
-- [ ] ถ้าไม่มี natural defect: healthy release acceptance และ TA-approved exercise แยกกัน
+- [ ] ถ้า thorough independent UAT ไม่พบ genuine defect: healthy decision + new staging exercise commit + blind discovery/report + full correction/deploy/retest ตาม protocol
 
 ### G5 — Submission ready
 
@@ -126,8 +131,8 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 ## 6. Escalation และ no-defect path
 
 - **ไม่มีทีมคู่/เข้าแอปไม่ได้:** แจ้ง TA ด้วยข้อมูลจริงและเวลาที่ติดต่อ เก็บหลักฐาน ขอ replacement tester/team; ระหว่างรอทำ handoff และรายงานต่อได้ ห้ามทดสอบกันเองแทน independent requirement
-- **ไม่พบ legitimate defect หลังทดสอบจริง:** บันทึก findings = none พร้อมผลและ acceptance แล้วขอ controlled defect exercise จาก TA ตาม §3.5 ระบุ isolated branch/version และขอคำชี้แจงเรื่อง release/test environment ที่แยกจากเว็บที่ยอมรับแล้ว
-- **exercise/tester ยังไม่จัดให้:** เก็บ timely notification + response/status และใส่ dependency ใน PDF ห้ามอ้าง RED/GREEN/retest ที่ยังไม่ทำ
+- **ไม่พบ genuine defect หลัง audit coverage และ thorough independent UAT จริง:** ใช้ standardized procedure ของอาจารย์: new staging commit นำ defect เดิมกลับมา (หรือปิด required-field validation หนึ่งกฎเมื่อไม่มี defect เดิมที่เหมาะสม) ให้ UAT Team ค้นหา/รายงานโดยไม่บอก exact defect ก่อน แล้วทำ RED/GREEN/regression/review/CI/corrected deploy/independent retest ตาม [protocol](exercise-protocol.md) ไม่ต้องรอ TA ออกโจทย์รายทีม
+- **exercise exposure/branch policy ติดจริง:** เก็บ expected failing checks ไม่ลด tests/CI หรือ bypass ruleset ให้มนุษย์/TA ชี้แจงเฉพาะทางเข้าทดสอบ staging instance ที่ไม่กระทบ healthy main และบันทึก blocker จริง
 - **เวลาแก้ไม่ทัน:** จัดลำดับ critical/major ก่อน; ทำ disposition ของทุกข้อ; ให้ทีม UAT ออก Not Accepted ตามจริงถ้าเงื่อนไขไม่ครบ
 - **ต้องเปลี่ยน deployment:** แจ้งทีมคู่ก่อน, เก็บ version เดิม, หยุดรอบที่ได้รับผลกระทบ, เปิด execution run ใหม่ ห้ามรวมผลคนละเวอร์ชันเป็นผลเดียวโดยไม่อธิบาย
 - **secret ติดภาพ:** หยุดส่งต่อ สร้างสำเนาปกปิดข้อมูลและตรวจซ้ำ; แจ้งเจ้าของ credential ให้จัดการส่วนตัว ห้ามลงค่า secret ใน incident log
@@ -143,7 +148,7 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 - A: complete ClassPulse UAT cases, applicable contract excerpts, safe account roles, setup/sequence/data retention and version.
 - B: A/B actual independent execution of the partner product, every agreed case, both participants, inputs/date/version/actual observations and readable normal/negative evidence.
 - C: outgoing reports and all received findings, reasons/classification/severity/owner/disposition, and explicit known-minor-limitations consent.
-- D: our corrected accepted-defect chain or TA-approved isolated exercise, real RED/GREEN/assertions/diff/regression outputs, substantive review/CI/release/deployment, independent retest and exact-release acceptance. Include our decision on the partner product as well.
+- D: our corrected accepted-defect chain or professor-standardized educational exercise, real RED/GREEN/assertions/diff/regression outputs, substantive review/CI/release/deployment, independent retest and exact-release acceptance. Include our decision on the partner product as well.
 - Distinguish manual/AI-assisted/developer tests; retain actual commands/test IDs/commit and pass-fail-skip counts. Embed assessed evidence and review text rather than only external links.
 - Include version lineage, actual contributions/pair roles, AI-use declaration, limitations and unresolved TA dependencies. No fixed page limit; use readable figures/internal references, no secrets.
 - B reviews the actual PDF with matching hash; changed evidence needs actual follow-up review. Human checks LEB2 filename requirements, uploads, opens the uploaded file and retains receipt. No submission is inferred from a local file.
@@ -157,3 +162,5 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 | 1.1 | 19 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Correct B receipt/work/scheduler status from actual comment7014497599 and Issue #70; formal review and appointments still pending |
 
 | 1.2 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Record later B heartbeat activation report7016235809 while retaining earlier scheduler limitation as history; availability stays pending |
+
+| 1.3 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Apply supplied professor clarification: independent coverage audit/additional cases and standardized blind staging exercise after genuine no-defect UAT |

@@ -1,6 +1,6 @@
 # ClassPulse — Lab 6 report source
 
-**DRAFT / NOT FOR SUBMISSION.** Prepared 20 November 2026 for Issue #72. This is an assembly framework with reviewed preparation references and pending execution fields. It is not a completed UAT report, final PDF, acceptance or submission. Complete all assessed material from actual records before rendering and peer review.
+**DRAFT / NOT FOR SUBMISSION.** Prepared 20 November 2026 for Issue #72. This is an assembly framework with reviewed preparation references and pending execution fields. It is not a completed UAT report, final PDF, acceptance or submission. Complete all assessed material from actual records before rendering and peer review. Current [professor clarification](instructor-clarification.md), [independent coverage audit](coverage-review.md) and [standard exercise protocol](exercise-protocol.md) govern these additions.
 
 ## Cover and navigation
 
@@ -37,7 +37,7 @@ Login/logout and current identity; owner creates/publishes/closes own identified
 
 ### Complete cases and contract material to embed
 
-Use the reviewed [handoff](handoff.md), [coverage table](coverage.md) and [applicable contract/source crosswalk](contract-extracts.md) as canonical sources. Final PDF assembly must include the complete agreed case texts and relevant authoritative contract excerpts directly, with internal page references. Links alone are insufficient. Keep IDs stable. Record actual accepted case/subcase list/version and any agreed additions; twelve cases are currently prepared, not independently agreed or executed.
+Use the reviewed [handoff](handoff.md), [coverage table](coverage.md) and [applicable contract/source crosswalk](contract-extracts.md) as canonical sources. Final PDF assembly must include the complete agreed case texts and relevant authoritative contract excerpts directly, with internal page references. Links alone are insufficient. Keep IDs stable. Embed the independent UAT Team’s R11 assessment of important requirement/AC coverage, proposed additional cases and actual dispositions. Then record the expanded agreed case/subcase inventory/version. Twelve supplied cases are a starting point; simply executing them does not satisfy the professor’s clarified expectation.
 
 Include safe account LABELS/roles/enrollment, private-delivery acknowledgement without values, unique run/data setup, declared sequence/dependencies, retention/cleanup agreement, tested version and instructions another team can execute without verbal guidance. Preserve explicit partial AC coverage; no listed AC ID implies full execution.
 
@@ -49,9 +49,9 @@ Populate the actual [coordination](coordination.md) and [version register](versi
 
 This section is the work A/B perform as independent UAT Team on the other team's product. Results of C/D testing ClassPulse belong in our incoming findings/retest chain, not as substitutes for PartB.
 
-### Partner handoff and agreed inventory
+### Partner handoff, independent coverage audit and expanded inventory
 
-PENDING: partner product/team, implemented Sprint1 scope/ACs, complete supplied cases including normal journey, boundary/business rule, role/ownership and state/history categories, version/URL, safe accounts/data instructions and actual agreement.
+PENDING: partner product/team, implemented Sprint1 scope/ACs, complete supplied cases and A/B independent coverage audit, proposed additional cases/reasons/dispositions, expanded agreed inventory, version/URL and safe accounts/data. Cover normal journey, boundary/business rule, role/ownership/state/history and unusual user actions; do not merely accept the Developer Team’s supplied list.
 
 ### All agreed execution results
 
@@ -85,9 +85,11 @@ Use R04/R05 for every finding: accepted defect, duplicate linked to original, no
 
 ## D — Resolution and independent retest (35)
 
-### Real correction or approved isolated exercise
+### Natural correction or standardized educational exercise
 
-PENDING: if legitimate defects are accepted, record each correction chain. If independent testing finds no legitimate defect, retain the healthy release's actual acceptance and request a TA-approved controlled exercise under section3.5 on an isolated branch/version/environment. Do not deliberately break live assessed main, substitute a planned enhancement, or reuse old Sprint1 RED/GREEN as new Lab6 correction evidence. If TA does not supply an exercise/tester despite timely notification, embed the actual notification/response and disclose the assessment dependency honestly.
+PENDING: if legitimate defects are accepted, record each natural correction chain. If coverage audit and thorough independent testing still find no genuine defect, use the supplied professor-standardized procedure: Developer Team creates a NEW Sprint staging commit reintroducing one previously corrected defect; if none is suitable, disable one existing required-field validation. UAT Team independently tests/reports that version without advance disclosure of the exact defect. Then reproduce RED, fix GREEN, run regression, obtain teammate review/pass CI, deploy the corrected release and obtain independent retest.
+
+The standardized announcement supersedes a blanket wait for an individually assigned TA exercise. Embed its supplied-source provenance and the complete CP-EX sequence, preserving healthy baseline and all history. Do not bypass existing tests/CI/protection to deploy faulty main. Stage exercise exposure separately per [protocol](exercise-protocol.md); ask TA/human operator only about a real unresolved policy/environment conflict. Record disclosure timing and any advance defect knowledge honestly. Original healthy UAT/acceptance and educational exercise remain distinct; no completed exercise is claimed.
 
 ### Meaningful automated RED / GREEN / regression
 
@@ -116,7 +118,7 @@ Embed actual R07 records for ClassPulse's received decision and our decision on 
 | Corrected deployed image/revision + smoke | PENDING correction | R02/R06 |
 | Independently accepted final release | PENDING decision | R07 |
 
-Use a separate CP-EX lineage for a TA exercise. Document preparation stagingb14cf38 is not an independently tested/deployed/accepted version. Historical Lab5 image/revision/smoke does not verify current serving traffic or Lab6 UAT.
+Use a separate CP-EX lineage for a standardized exercise. Document preparation stagingb14cf38 is not an independently tested/deployed/accepted version. Historical Lab5 image/revision/smoke does not verify current serving traffic or Lab6 UAT.
 
 ## Actual preparation evidence and contributions
 
@@ -144,3 +146,5 @@ A assembles; B reviews actual PDF bytes/hash and readable figures. Changed evide
 | Version | Date | Author / assistance | Status |
 |---|---|---|---|
 | 0.1 | 20 Nov2026 | Punge089 assisted by Codex GPT-6.1 Sol | Report scaffold only; B review and all independent results pending |
+
+| 0.2 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Add independent coverage audit/expanded cases and professor-standardized no-defect staging exercise; all results still pending |

@@ -25,3 +25,7 @@ B and external testers own their own AI-use declarations. Do not claim A configu
 ## Work still pending
 
 Both A/B actual testing of the partner app; C/D actual ClassPulse execution; real triage and any correction/exercise; independent retest/decisions; final report/PDF content and exact-file peer review; human LEB2 upload/receipt. When recording these, identify actual person, time, driver/observer roles, case/Issue/PR/evidence and AI assistance/limits. Contributions need not have equal commit counts.
+
+## Instructor clarification preparation
+
+Student A supplied the new announcement on 20 November and requested all affected plans be updated. A’s Codex GPT-6.1 Sol prepared independent coverage-review and standardized exercise protocols, current A-owned planning/report/template updates and partner-package instructions under Issue #74. B owns its follow-up handoff changes and review. No independent coverage assessment, additional case execution, no-defect conclusion or exercise insertion/discovery is attributed to any student from this drafting work.
