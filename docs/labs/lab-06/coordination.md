@@ -40,7 +40,7 @@ GitHub comments coordinate repository work. External outreach, partner consent a
 1. Current serving source/digest/revision/traffic needs fresh readback; historical Lab 5 metadata is not current-session verification.
 2. Synthetic credentials/private sign-in and account/enrollment availability require authorized access. Do not log credentials or live-reset data.
 3. Real two-way UAT and independent acceptance need an external two-student team; developer tests/owner dry-runs do not substitute.
-4. If no legitimate defect arises after real independent UAT, request a TA-approved isolated controlled exercise under handout section 3.5. Record approval and separate release environment before exercise changes; no deliberate live bug.
+4. Complete independent [coverage review](coverage-review.md) and thorough actual UAT. If no genuine defect arises, use the supplied professor-standardized [exercise procedure](exercise-protocol.md): new staging defect commit, blind independent discovery/report, full correction/review/CI/corrected deploy/retest. Do not wait for a bespoke TA exercise; escalate only actual branch/environment blockers. No exercise insertion before its entry gate.
 5. Humans retain responsibility for GCP/IAM/credentials/direct cloud mutations/rulesets/environments and LEB2 submission under AGENTS.md. Local gates contain exact human steps and Done checks.
 
 ## Actual contribution status
@@ -52,3 +52,7 @@ A's Codex drafted the shared plan and these repository preparation documents fro
 - 19 Nov, 23:07 Bangkok update: replace stale pending B receipt/Issue fields with actual book6349 acknowledgement and Issue #70. Keep availability, appointment agreement and formal approval pending. Record B-reported scheduler limit without inferring an active B automation.
 
 - 20 Nov, 00:07 Bangkok update: later B comment7016235809 supersedes the earlier no-timer state. B reports ACTIVE 20-minute cadence; preserve the earlier limitation as history. B availability and appointments remain unconfirmed.
+
+## Updated session agreement
+
+Before each team starts, independent testers complete R11 coverage audit, propose additional cases and agree the expanded inventory. Reserve an exercise discovery and corrected-deployed retest slot if thorough UAT finds no genuine defect. Share only exercise scope/version/session, not exact selected defect. See [instructor clarification](instructor-clarification.md); B handoff addenda update is requested in Issue #74. All actual appointments remain pending.
