@@ -157,14 +157,17 @@ export async function provisionUsers(db: PrismaClient, options: ApplyOptions) {
         return await db.$transaction(async (tx) => {
             await tx.$executeRawUnsafe("SET LOCAL lock_timeout = '3s'");
             await tx.$executeRawUnsafe("SET LOCAL statement_timeout = '8s'");
+            // Acquire conflicting writer locks before the first snapshot-taking query.
+            // Otherwise a SERIALIZABLE snapshot taken while waiting can miss an
+            // ordinary writer's normalized-email collision after that writer commits.
+            await tx.$executeRawUnsafe('LOCK TABLE "User","Course","Enrollment" IN SHARE ROW EXCLUSIVE MODE');
             const [target] = await tx.$queryRawUnsafe<{
                 database: string;
                 address: string;
             }[]>("SELECT current_database() AS database,host(inet_server_addr()) AS address");
             if (target.database !== (local ? "classpulse_fixture_test" : "classpulse") || (local && !isLocalTestServer(target.address)))
                 throw new Error("TARGET_MISMATCH");
-            // Fixed order, before guards. This also blocks other ordinary writes to these tables.
-            await tx.$executeRawUnsafe('LOCK TABLE "User","Course","Enrollment" IN SHARE ROW EXCLUSIVE MODE');
+            // Fixed order is shared with every guard/read below; writes remain blocked.
             await assertReviewedSchema(tx);
             const baseline = await readSnapshot(tx);
             const { courseId } = validateBaseline(baseline, options.approved);
