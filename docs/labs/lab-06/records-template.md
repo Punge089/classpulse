@@ -29,7 +29,7 @@ Never equate branch HEAD with the image currently serving requests. Add a new ro
 |---|---|---|---|---|---|---|---|---|---|---|
 | CP-V01 | ClassPulse | Initial UAT | v1.0.0-sprint1 / d4bad74211729032697164f378638efb834a67b6 | PENDING | PENDING | PENDING | PENDING | https://classpulse-zdwglar6eq-as.a.run.app/ | PENDING | PENDING |
 
-For each correction, add: original defective source → regression-test commit → fix commit → feature merge → release merge/main → deployed image/revision → independent retest run. Explain merge SHA differences. For a TA exercise, use `CP-EX-V01` etc. and explicitly identify the isolated environment.
+For each correction, add: original defective source → regression-test commit → fix commit → feature merge → release merge/main → deployed image/revision → independent retest run. Explain merge SHA differences. For a standardized exercise, use `CP-EX-V01` etc. and explicitly identify the isolated environment.
 
 ## R03 — Actual execution record
 
@@ -114,14 +114,14 @@ Severity guide for agreement, not a substitute for facts: critical = severe expo
 
 Allowed classification: accepted defect, duplicate, not-defect, enhancement. Reproduce/clarify before rejection. Link duplicates to the original. An accepted defect remains recorded even when corrected. Product-owner opinion alone does not constitute independent acceptance of a minor limitation.
 
-If actual received findings are none, replace the empty table with a dated statement identifying the completed run, case counts, testers and acceptance evidence; then initiate the section 3.5 TA exercise request. Until execution occurs, say “No results received yet”, not “No defects”.
+If actual received findings are none, replace the empty table with a dated statement identifying the completed run, case counts, testers and acceptance evidence; then follow the professor-standardized exercise after completing its independent coverage/thorough-testing entry gate; no generic exercise-assignment request is required. Until execution occurs, say “No results received yet”, not “No defects”.
 
 ## R06 — Correction and independent retest
 
 ```text
 Finding / Issue:
-Normal correction OR TA-approved isolated exercise:
-TA approval reference (exercise only):
+Natural-defect correction OR professor-standardized educational exercise:
+Professor clarification reference; any actual branch/environment clarification if needed:
 Original defective version / failed execution:
 Regression test file/name and assertion excerpt:
 RED commit / exact command / actual pass-fail-skip counts / output evidence:
@@ -203,3 +203,11 @@ Resolution evidence OR precise PDF disclosure:
 ```
 
 For submission record: final PDF filename/hash/pages; A/B actual review references; human uploader; LEB2 assignment; submission timestamp; private receipt reference; uploaded file content checked. Do not infer submission from the existence of a local PDF.
+
+## R11 — Independent coverage assessment and additional cases
+
+Use the complete [coverage-review form](coverage-review.md). Independent team maps important implemented Sprint 1 requirements/ACs to supplied cases, marks covered/partial/missing/unclear with reasons, proposes stable additional case IDs with executable steps/expected/protected-state evidence and records actual agreement. Both teams must do this for the other's app before freezing the initial inventory. Suggestions alone remain NOT RUN.
+
+## R12 — Standard exercise provenance and blind discovery
+
+Use the complete [exercise record](exercise-protocol.md). Document thorough no-defect entry evidence, new staging commit/expected existing test failures, independent-accessible instance, shared-information timing, actual independent discovery/finding, RED/GREEN/regression/review/CI/corrected deployment and independent retest. Keep the exact selected defect and diagnostic choice out of shared pre-discovery copies; disclose full educational provenance afterwards. Do not fabricate discovery or treat it as a natural bug.

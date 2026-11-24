@@ -20,10 +20,14 @@ Historical metadata provenance: [Lab 5 deployment evidence](../lab-05/deployment
 | CP-V01 | Initial independent UAT | Pending | Pending | Pending | Candidate URL above | Pending | Pending |
 | PARTNER-V01 | A/B test partner app | Pending | Pending | Pending | Pending partner handoff | Pending | Pending |
 
-Append corrected releases and retest versions when they exist. Each correction needs traceable original defective code -> RED test commit -> fix/GREEN commit -> feature merge -> reviewed main release -> deployed image/revision -> independent retest/decision. Explain merge SHA differences. Use CP-EX-* IDs for the TA-approved isolated exercise, never label it as a natural defect of the healthy release.
+Append corrected releases and retest versions when they exist. Each correction needs traceable original defective code -> RED test commit -> fix/GREEN commit -> feature merge -> reviewed main release -> deployed image/revision -> independent retest/decision. Explain merge SHA differences. Use CP-EX-* IDs for the professor-standardized educational exercise, never label it as a natural defect of the healthy release.
 
 ## Readback procedure
 
 Before handoff and after each correction deployment, read Cloud Run service traffic and serving revision image digest, match Artifact Registry immutable digest to the full source SHA tag and actual release run. Record timestamp/operator and all serving traffic; a latest-ready revision alone does not prove it receives requests. Public health/ready/SPA/auth smoke cannot identify the source image. No environment-secret values should be inspected or captured. Notify the UAT Team before deployment affects their session.
 
 Acceptance is release-specific. Keep initial failures/evidence and corrected observations as separate runs; do not overwrite earlier results. See [record templates R02/R06/R07](records-template.md) and [coordination](coordination.md).
+
+## Standardized exercise lineage
+
+Track healthy source/initial thorough independent run -> new Sprint staging exercise commit -> independently accessible staging test instance -> blind UAT finding -> reproducer RED -> correction GREEN/regression -> reviewed fixed integration/main release -> corrected deployed revision -> independent retest. CP-EX labels identify educational origin. Record failing existing checks honestly; they do not authorize a defective main deployment or disabling CI. See [exercise protocol](exercise-protocol.md) and [coverage audit](coverage-review.md).

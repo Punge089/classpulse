@@ -1,8 +1,23 @@
 # Lab 6 coordination and execution plan
 
-Status: A-authored preparation for Issue #68; teammate review and partner agreement pending. Prepared from the Lab 6 handout and local shared kit. The handoff, coverage and contract extracts remain B-owned and will be linked after B creates their scoped Issue/PR. This is documentation preparation, not an executed UAT report.
+Status: A-owned planning update for Issue #74, current as of 24 November 2026; B re-review and final mutual inventory agreement are pending. Earlier preparation began in Issue #68. B's handoff/coverage/contract extracts were integrated through PR #71; B's instructor-clarification follow-up is PR #76. This plan records known progress and remaining dependencies, not a final UAT decision.
 
 Navigation: [coordination](coordination.md), [version register](versions.md), [evidence index](evidence-index.md), [blank record templates](records-template.md). Use the actual reviewed B handoff once available; twelve cases are currently proposed, not an agreed independent test inventory.
+
+## Current checkpoint 24 November 2026
+
+- Student A reports a deadline extension. The extension has not been independently verified against an official course record, and the **exact revised deadline is PENDING confirmation**. The original 22 November 23:59 deadline and 21:00 internal upload target are historical; neither is a current deadline. Partner availability through 29 November is not a course deadline.
+- A verified CP-V01 source/image/revision/traffic on 24 November (latest saved metadata readback 02:16:41 Asia/Bangkok): source `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, revision `classpulse-00006-6w6`, 100%, digest `sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795`. Public developer preflight passed 8/8. These are time-specific developer observations, not C/D acceptance or a new readback at every later request.
+- Partner C is Ashira Sansoda / 67070503445; D is Thira Rungruangkaset / 67070503419, EN-037_P5, Workflow and Approval System. Their 24 November progress ZIP contains 95 accumulated execution/tool records and seven screenshots, with passing behavior observations for all twelve original ClassPulse cases. UAT-08/10/11 used disclosed API fixture setup; A's later disposition accepts that setup deviation only. Incomplete added branches, actual peer participation and final acceptance remain pending. Original records stay preserved for final PDF assembly.
+- A independently confirmed the Workflow Product Team's WF-BUG-001 at 19:09:37 Bangkok: the two credential-free boundary requests yielded 422 at 102400 bytes and 500 at 102401 bytes; regression totals 1 passed, 1 failed, 0 skipped. This is independent confirmation of their discovery, not ClassPulse's Part D or completed A/B Workflow UAT. Workflow's full source-to-serving mapping remains pending.
+- B requested date corrections on PR #75 exact `ec74e5a`. A reviewed B's three-file PR #76 at `fa3f1810fda69c5ab63a7f390998e05c19fb2767`, ran 32 offline document/helper checks and verified successful CI45396597109, then approved and merged it into staging at `b98369cc94526bba8745faa0e8720ab512ca9949`. B's formal app cases remain NOT RUN; A's main Workflow cases remain NOT RUN. No ClassPulse correction, educational defect insertion, independent retest, final PDF review or Lab 6 submission is established.
+- Student A deferred appointment/findings-channel discussion to **25 November**. That is a planning discussion, not a booked test or retest. C/D's already performed run keeps its actual 24 November times; do not retroactively describe it as a previously agreed appointment.
+
+The [report source](report.md) records this checkpoint and its limits. Older preparation registers retain their dated historical observations; replace final-report placeholders only from traceable actual records.
+
+## Instructor update effective for current planning
+
+The [20 November clarification](instructor-clarification.md) governs current work: each independent UAT Team must audit supplied-case coverage against important Sprint 1 requirements/ACs, propose additional cases and test thoroughly before concluding no genuine defects. Complete [R11 coverage review](coverage-review.md) before freezing the expanded inventory. If none are found after real execution, use the [standard staging-commit exercise](exercise-protocol.md), preserving blind discovery and full RED/GREEN/review/CI/corrected-deploy/retest. No generic wait for a bespoke TA exercise is required; escalate only actual technical/partner blockers. No exercise is started by this documentation change.
 
 ## 1. ผลลัพธ์ที่ต้องมี
 
@@ -11,7 +26,7 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 | A Preparation | 20 | เคสครบ scope สำคัญ อย่างน้อย 4 ประเภท, instructions/accounts/data/version พร้อมใช้ | B เขียน/ตรวจ handoff; A ตรวจ contract/coverage |
 | B Independent execution | 25 | A และ B รันทุกรายการที่ตกลงของแอป C/D พร้อม actual/evidence | A normal/state; B boundary/access |
 | C Reporting and triage | 20 | outgoing reports + received findings ทั้งหมด มี classification/reason/severity/owner/disposition | A ดู ledger; B ตรวจเหตุผล |
-| D Resolution and retest | 35 | correction หรือ TA-approved exercise, RED/GREEN, review/CI/release/deploy, independent retest/decision | เจ้าของโมดูลแก้; อีกคน review; C/D retest |
+| D Resolution and retest | 35 | correction หรือ professor-standardized exercise, RED/GREEN, review/CI/release/deploy, independent retest/decision | เจ้าของโมดูลแก้; อีกคน review; C/D retest |
 
 คะแนนไม่ขึ้นกับจำนวน bug จึงไม่ตั้งเป้าว่าต้องหาให้ได้กี่ตัว เป้าคือครบ scope, รับผิดชอบทุก finding และมีคำตัดสินที่หลักฐานรองรับ
 
@@ -26,8 +41,8 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 | ปรับ handoff และ dry run | B | A ตรวจทุก expected เทียบ AC | handoff version + ข้อแก้ไข + readiness decision |
 | ClassPulse → แอปทีมคู่: normal + state/history | A | B ตรวจผล/หลักฐาน | R03 รายเคส |
 | ClassPulse → แอปทีมคู่: boundary + role/access | B | A ตรวจผล/หลักฐาน | R03 รายเคส |
-| ทีมคู่ → ClassPulse: 07,01,04,05,10 | C (เสนอ) | D ตรวจ evidence | R03 จริง; A/B ให้ข้อมูลเมื่อถูกถาม |
-| ทีมคู่ → ClassPulse: 02,03,06,08,09,11,12 | D (เสนอ) | C ตรวจ evidence | R03 จริง; ทำตาม dependency |
+| ทีมคู่ → ClassPulse: 07,01,04,05,10 | D (ข้อเสนอใน R11 ของ C/D) | C ตรวจ evidence | บันทึก actual operator/AI assistance; ไม่ถือว่าข้อเสนอพิสูจน์ participation |
+| ทีมคู่ → ClassPulse: 02,03,06,08,09,11,12 | C (ข้อเสนอใน R11 ของ C/D) | D ตรวจ evidence | ใช้ actual records; คง dependency และข้อจำกัดการมีส่วนร่วมจริง |
 | triage findings ที่ส่งให้ ClassPulse | A รวบรวม; module owner reproduce | อีกคนตรวจ contract/severity | R04/R05 ทุก finding |
 | auth/owner/lifecycle correction | A | B | RED/GREEN, PR, CI |
 | response/summary correction | B | A | RED/GREEN, PR, CI |
@@ -41,24 +56,28 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 
 ทั้งสองคนของแต่ละทีมต้องลงมือทดสอบ ไม่ให้คนหนึ่งทำทั้งหมดแล้วใส่อีกชื่อเป็น tester ห้ามยืมตัวตนอีกคนโพสต์ review หรือ sign-off
 
-## 3. เวลาเป้าหมายและจุดตัดสินใจ
+## 3. Historical schedule and current next steps
 
-ทุกเวลาเป็น Asia/Bangkok และเป็น **proposed internal target** ไม่ใช่เวลาที่นัดสำเร็จแล้ว ให้กรอกเวลาจริงใน R01 หากช่วงใดผ่านไปแล้วให้เริ่มทันทีและปรับร่วมกับทีมคู่ โดยคงเส้นตายจริง
+All times are Asia/Bangkok. The old 20–22 November targets have elapsed. They were proposals, not booked appointments or evidence of completed work.
 
-| วัน/เวลาเป้าหมาย | งาน | เสร็จเมื่อ |
+| Historical target | Actual status known at 24 November |
+|---|---|
+| 20 November initial coverage/UAT and findings exchange | Documentation preparation/review occurred. The proposed initial sessions were not booked; no independent execution is evidenced for those old slots. C/D's received ClassPulse execution occurred on 24 November instead. |
+| 21 November RED/GREEN, corrected release and independent retest | No Lab 6 ClassPulse correction/exercise/retest chain is established for that date. Do not reuse earlier Lab 5 tests or deployment as these results. |
+| 22 November buffer, final PDF review and 21:00 upload target | No Lab 6 exact-file review or upload receipt is established. These targets elapsed; A reports an extension, but the official revised deadline remains unverified/PENDING. |
+
+Current work follows dependencies until real times are agreed; no replacement deadline is invented:
+
+| Next step | Owner / dependency | Done check |
 |---|---|---|
-| 19 พ.ย. ภายใน 2 ชั่วโมงหลังเริ่มใช้แผน | ยืนยัน 4 คนและจอง initial/retest ทั้งสองแอป | R01 มีผู้ตอบรับจริง |
-| 19 พ.ย. ก่อนสิ้นวัน | review handoff, live metadata, private access, dry run | G1 พร้อม; ถ้าไม่พร้อมแจ้งคู่และเปิด blocker |
-| 20 พ.ย. 10:00–13:00 | C/D ทดสอบ ClassPulse | agreed cases ทุกเคสมี actual หรือ BLOCKED |
-| 20 พ.ย. 14:00–17:00 | A/B ทดสอบแอป C/D | ทุกเคสที่ตกลงถูกบันทึก; ทั้ง A/B มีงานจริง |
-| 20 พ.ย. 17:00–19:00 | แลก findings, reproduce, triage | ทุก finding มี disposition/owner; ขอ exercise ถ้าไม่พบ defect |
-| 21 พ.ย. 09:00–14:00 | RED → fix → GREEN/regression → review/CI | G3 ผ่าน; แจ้งก่อน deployment ทุกครั้ง |
-| 21 พ.ย. 14:00–16:00 | reviewed release, smoke, version handoff | R02 แถวใหม่ตรง revision ที่ serve จริง |
-| 21 พ.ย. 16:00–18:00 | retest ทั้งสองแอป | R06 + decision หรือ blocker/follow-up จริง |
-| 22 พ.ย. 09:00–12:00 | buffer สำหรับปัญหา/retest/exercise | ไม่มี required BLOCKED สำหรับการยอมรับ |
-| 22 พ.ย. 12:00–17:00 | รวม PDF + ตรวจหลักฐาน/อ่านทุกหน้า | G5 ผ่าน |
-| 22 พ.ย. 17:00–20:00 | B ตรวจ exact PDF; A แก้และให้ตรวจส่วนเปลี่ยน | hash/review ตรงไฟล์สุดท้าย |
-| 22 พ.ย. 21:00 | human upload + เปิดไฟล์ที่ส่งตรวจ | มี receipt; deadline จริง 23:59 |
+| Confirm the revised course deadline and filename rules | Human checks the actual course announcement/LEB2 | Actual revised date/time and provenance recorded; partner availability is not substituted |
+| Resolve A PR75 review and review B PR76 | Each non-author reviews the current head and CI | Reasoned current-head decision; no self-approval or self-merge |
+| Discuss initial/retest slots and private findings channel on 25 November | A/B availability plus C/D acknowledgement; no slot booked yet | R01 records actual agreement and actual prior-run times separately |
+| Complete final expanded inventory and account/fixture disposition | A/B and C/D; CD-07 third respondent, CD-01 inactive setup, CD-08 missing-ID method remain explicit | Agreed case/subcase list; preserved data; actual private access; no setup-only PASS |
+| Verify Workflow serving source/revision/digest/traffic and execute A/B cases | C/D supplies fresh version record; A handles 01->04 and05; B handles02/03/06 | Actual R03 results and evidence with both participants/AI assistance |
+| Complete ClassPulse residual checks and assess no-defect entry gate | Independent C/D execution plus actual C/D participation/review | Full required coverage/dispositions; no comprehensive no-defect conclusion from incomplete branches |
+| Perform correction or conditional standardized exercise if applicable | Correct module owner, teammate review, mandatory CI and human cloud gates | RED/GREEN/regression, reviewed corrected release, version-specific independent retest |
+| Assemble self-contained PDF and submit | A assembles, B reviews exact bytes, human uploads by the confirmed revised deadline | G5 plus actual file hash/review/upload receipt |
 
 ช่วงแก้ไขอาจต้องหลายรอบ ถ้า major/critical ยังไม่หาย ให้รายงาน Not Accepted พร้อมข้อค้างและหลักฐาน ไม่เปลี่ยนความหมายของ expected result เพื่อให้ผ่าน
 
@@ -78,7 +97,8 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 - [ ] credentials ส่งส่วนตัวและทดลองเข้าทุกบทบาทได้; enrollment matrix ตรง
 - [ ] case order, fresh run IDs, data-retention agreement และหลักฐานที่ต้องเก็บชัด
 - [ ] partial AC coverage ถูกระบุ ไม่อ้างว่า manual UAT แทน full automated suite
-- [ ] ทีมคู่ยืนยันรับเอกสารและตกลง case/subcase list; เวลา/ข้อมูลพอรันทุกรายการ
+- [ ] Independent UAT Team ทำ R11 ตรวจ important Sprint 1 AC coverage และเสนอ additional cases พร้อม disposition ก่อน freeze inventory
+- [ ] ทีมคู่ยืนยันรับเอกสารและตกลง expanded case/subcase list; เวลา/ข้อมูลพอรันทุกรายการ
 
 ### G2 — Initial execution complete
 
@@ -103,7 +123,7 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 - [ ] ไม่มี critical/major ที่ค้างหรือ required test ที่ BLOCKED หากจะยอมรับ
 - [ ] minor ค้างมี explicit acceptance จากทีม UAT พร้อม reason/limitation
 - [ ] R07 ระบุ exact release/scope/date/testers/evidence และคำตัดสินจริง
-- [ ] ถ้าไม่มี natural defect: healthy release acceptance และ TA-approved exercise แยกกัน
+- [ ] ถ้า thorough independent UAT ไม่พบ genuine defect: healthy decision + new staging exercise commit + blind discovery/report + full correction/deploy/retest ตาม protocol
 
 ### G5 — Submission ready
 
@@ -126,24 +146,24 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 ## 6. Escalation และ no-defect path
 
 - **ไม่มีทีมคู่/เข้าแอปไม่ได้:** แจ้ง TA ด้วยข้อมูลจริงและเวลาที่ติดต่อ เก็บหลักฐาน ขอ replacement tester/team; ระหว่างรอทำ handoff และรายงานต่อได้ ห้ามทดสอบกันเองแทน independent requirement
-- **ไม่พบ legitimate defect หลังทดสอบจริง:** บันทึก findings = none พร้อมผลและ acceptance แล้วขอ controlled defect exercise จาก TA ตาม §3.5 ระบุ isolated branch/version และขอคำชี้แจงเรื่อง release/test environment ที่แยกจากเว็บที่ยอมรับแล้ว
-- **exercise/tester ยังไม่จัดให้:** เก็บ timely notification + response/status และใส่ dependency ใน PDF ห้ามอ้าง RED/GREEN/retest ที่ยังไม่ทำ
+- **ไม่พบ genuine defect หลัง audit coverage และ thorough independent UAT จริง:** ใช้ standardized procedure ของอาจารย์: new staging commit นำ defect เดิมกลับมา (หรือปิด required-field validation หนึ่งกฎเมื่อไม่มี defect เดิมที่เหมาะสม) ให้ UAT Team ค้นหา/รายงานโดยไม่บอก exact defect ก่อน แล้วทำ RED/GREEN/regression/review/CI/corrected deploy/independent retest ตาม [protocol](exercise-protocol.md) ไม่ต้องรอ TA ออกโจทย์รายทีม
+- **exercise exposure/branch policy ติดจริง:** เก็บ expected failing checks ไม่ลด tests/CI หรือ bypass ruleset ให้มนุษย์/TA ชี้แจงเฉพาะทางเข้าทดสอบ staging instance ที่ไม่กระทบ healthy main และบันทึก blocker จริง
 - **เวลาแก้ไม่ทัน:** จัดลำดับ critical/major ก่อน; ทำ disposition ของทุกข้อ; ให้ทีม UAT ออก Not Accepted ตามจริงถ้าเงื่อนไขไม่ครบ
 - **ต้องเปลี่ยน deployment:** แจ้งทีมคู่ก่อน, เก็บ version เดิม, หยุดรอบที่ได้รับผลกระทบ, เปิด execution run ใหม่ ห้ามรวมผลคนละเวอร์ชันเป็นผลเดียวโดยไม่อธิบาย
 - **secret ติดภาพ:** หยุดส่งต่อ สร้างสำเนาปกปิดข้อมูลและตรวจซ้ำ; แจ้งเจ้าของ credential ให้จัดการส่วนตัว ห้ามลงค่า secret ใน incident log
 
 ## 7. What this kit does not claim
 
-ขณะจัดทำยังไม่มี partner agreement, UAT result, defect, retest หรือ acceptance ของ Lab 6 ชุดนี้ การตรวจเว็บภายในและผล Lab 5 เป็นข้อมูลประกอบแยกเท่านั้น ไม่มีการติดต่อทีมอื่นหรือ TA หรือเปลี่ยน production จากการจัดทำแผนนี้
+Historical preparation note, 19–20 November: at that checkpoint no partner agreement, UAT result, defect, retest or acceptance had been established. Later 24 November observations are recorded in the current checkpoint above. Lab 5 observations remain separate supporting evidence, and a planning change never establishes production mutation or independent acceptance.
 
 ## Final PDF checks
 
-- One self-contained PDF per team by 22 November 2026 23:59 Asia/Bangkok; upload target 21:00.
+- One self-contained PDF per team by the **confirmed revised deadline (PENDING)**. A reports an extension; official verification and the new exact date/time remain pending. The original 22 November 23:59 deadline and 21:00 internal target are historical, not a current submission schedule.
 - Front matter: actual names/student IDs, team/product/repo/URL, Sprint 1 scope, baseline and exact tested final version, independent tester names and decision. Include contents/Part A-D page ranges/evidence IDs.
 - A: complete ClassPulse UAT cases, applicable contract excerpts, safe account roles, setup/sequence/data retention and version.
 - B: A/B actual independent execution of the partner product, every agreed case, both participants, inputs/date/version/actual observations and readable normal/negative evidence.
 - C: outgoing reports and all received findings, reasons/classification/severity/owner/disposition, and explicit known-minor-limitations consent.
-- D: our corrected accepted-defect chain or TA-approved isolated exercise, real RED/GREEN/assertions/diff/regression outputs, substantive review/CI/release/deployment, independent retest and exact-release acceptance. Include our decision on the partner product as well.
+- D: our corrected accepted-defect chain or professor-standardized educational exercise, real RED/GREEN/assertions/diff/regression outputs, substantive review/CI/release/deployment, independent retest and exact-release acceptance. Include our decision on the partner product as well.
 - Distinguish manual/AI-assisted/developer tests; retain actual commands/test IDs/commit and pass-fail-skip counts. Embed assessed evidence and review text rather than only external links.
 - Include version lineage, actual contributions/pair roles, AI-use declaration, limitations and unresolved TA dependencies. No fixed page limit; use readable figures/internal references, no secrets.
 - B reviews the actual PDF with matching hash; changed evidence needs actual follow-up review. Human checks LEB2 filename requirements, uploads, opens the uploaded file and retains receipt. No submission is inferred from a local file.
@@ -157,3 +177,7 @@ Navigation: [coordination](coordination.md), [version register](versions.md), [e
 | 1.1 | 19 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Correct B receipt/work/scheduler status from actual comment7014497599 and Issue #70; formal review and appointments still pending |
 
 | 1.2 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Record later B heartbeat activation report7016235809 while retaining earlier scheduler limitation as history; availability stays pending |
+
+| 1.3 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Apply supplied professor clarification: independent coverage audit/additional cases and standardized blind staging exercise after genuine no-defect UAT |
+
+| 1.4 | 24 Nov 2026 | Punge089 assisted by Codex GPT-6 | Address B's exact-head review: archive elapsed 20–22 November targets, distinguish A-reported extension from unverified official revised deadline, record known 24 November progress and dependency-based next steps; no booked times or acceptance invented |
