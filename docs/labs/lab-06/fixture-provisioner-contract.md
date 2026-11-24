@@ -72,3 +72,25 @@ DB tests must use a dedicated disposable allowlisted database `classpulse_fixtur
 | Version | Date | Author/assistance | Status |
 |---|---|---|---|
 | 1.0 | 24 Nov 2026 | book6349 / Codex GPT-6.1 Sol | Proposed for A C3; no implementation or live operation |
+
+## Implementation checkpoint (24 November, pending executable review)
+
+The contract-only C3 remains anchored at 11e0a219. Implementation is proposed separately and is not approved for live use.
+The CLI is server/tools/provision-uat6.ts: default inspect uses a real READ ONLY transaction; apply requires a baseline file, a TTY, an exact human target confirmation and two hidden password prompts. It never implicitly loads .env or accepts passwords as CLI arguments.
+
+Transaction order: hash outside locks; SERIALIZABLE; lock_timeout3s; statement_timeout8s; verify database/server target; LOCK TABLE User,Course,Enrollment IN SHARE ROW EXCLUSIVE MODE in that fixed order; reread/validate baseline and normalized collisions; create2Users and1Enrollment; verify unchanged existing baseline; commit. Prisma maxWait5s/transaction timeout15s. No automatic retry. Local test failure injection is refused in production mode and has no CLI flag.
+
+DB tests create a separate classpulse_fixture_test database only through a verified localhost classpulse_test connection and place each scenario in a unique new schema. Local non-CI server address must be loopback. The known GitHub Actions postgres service has a private Docker address; only CI=true/GITHUB_ACTIONS=true/GITHUB_REPOSITORY=Punge089/classpulse plus a private address is accepted for that service. Remote hosts and host-query overrides are refused. No cloud connection is used in tests. Isolated schemas are retained, not cleaned by destructive reset.
+
+RED provenance:17baseline/local-target assertions fail against a compileable fail-closed contract scaffold atff7a958; the guards then pass at31412f6. Eight database assertions fail against pending snapshot/apply behavior at0e70713 before transaction implementation. An initial address-format setup error yielded8unexecuted tests and is recorded separately; it is not presented as a meaningful RED. The later read-only transaction and CLI safety assertions are supplemental checks added after implementation, not claimed as earlier RED.
+
+The isolated DB preservation checks compare existing users (including credential fields internally), courses/enrollments and an unrelated Sentinel table. They do not claim that a production DB was snapshotted or that every production table was read. Full existing server regression is separate.
+
+Human run steps AFTER A approves the exact executable head and CI:
+1. Human confirms cloud project/instance/database and privately configures an authorized DATABASE_URL in the process environment. Do not send its value to Codex or put it in a file/argument/log.
+2. In server/, invoke the already-installed tsx tool with tools/provision-uat6.ts inspect; save only the sanitized JSON baseline privately and review against merged procedure78. Stop on any mismatch/collision.
+3. Invoke tools/provision-uat6.ts apply with the path to that approved baseline JSON. Review the code first. The human personally types target confirmation and both passwords into hidden prompts. This command is not executed by the agent.
+4. Human repeats read-only verification and delivers credentials privately to C/D. C/D independently records CD01/CD07. Neither fixture creation nor an executable merge is UAT acceptance.
+
+Final schema guard checkpoint: physical column names/types/nullability of User,Course,Enrollment must match the reviewed CP-V01 shape before inserts. Additional schema-column assertion is RED at283e58e(1failed/9passed), then GREEN10DB checks. The test Enrollment foreign keys were corrected to required/non-null to match the actual Prisma schema. This is a column-level guard, not proof of all possible schema/trigger drift; human version/schema review remains required.
+Final local suite after the schema guard:138passed/0failed/0skipped(105existing+33new); server build and strict CLI typecheck exited0. No live operation ran.
