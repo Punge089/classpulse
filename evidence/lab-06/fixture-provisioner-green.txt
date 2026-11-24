@@ -1,11 +1,63 @@
+Local executable verification,24November2026, Codex GPT-6.1 Sol under book6349.
+Command: npm test from server/ ->137passed,0failed,0skipped (16files).
+Server npm run build and explicit CLI tsc --noEmit strict/CommonJS/ES2022 checks exited0.
+32new checks comprise23unit/CLI and9real-DB tests. The first25 have prior RED assertions; read-only/CLI supplemental checks were added later. Existing105server tests also pass.
+Only localhost classpulse_test/classpulse_fixture_test were used; no production connection or live CLI apply ran.
+Raw Vitest output follows; trailing whitespace is retained in the evidence log.
+
+> classpulse-server@0.1.0 test
+> vitest run
+
 The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
 
  RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/work80-provisioner/server
 
- ✓ tests/tools/uat6Provisioner.test.ts (17 tests) 14ms
+ ✓ tests/api/responses.test.ts (10 tests) 4598ms
+   ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 786ms
+   ✓ F-04 respondent survey access > TEST-39 detail is visible only to an enrolled respondent for a published survey 687ms
+   ✓ F-04 response submission > TEST-23 a valid response stores one answer per question and returns the saved answer shape 352ms
+   ✓ F-04 response submission > TEST-24 a sequential duplicate submission returns ALREADY_RESPONDED and stores one response 518ms
+   ✓ F-04 response submission > TEST-25 simultaneous submissions store exactly one response 622ms
+   ✓ F-04 response submission > TEST-26 closed and draft surveys reject before answer validation; unknown survey is 404 343ms
+   ✓ F-04 response submission > TEST-29 rating boundaries accept 1 and 5 and reject 0, 6, decimals and strings 352ms
+   ✓ F-04 response submission > TEST-30 respondents cannot read another student's response or edit/delete a response 345ms
+   ✓ F-04 response submission > TEST-31 an owner cannot submit or read a respondent response 318ms
+ ✓ tests/api/ownerSurveys.test.ts (10 tests) 2944ms
+   ✓ F-03 create a survey > TEST-10 an owner creates a DRAFT survey with ordered questions and options 417ms
+   ✓ F-03 access control > TEST-19 another owner gets 404 reading, publishing or closing my survey and nothing changes 345ms
+ ✓ tests/tools/uat6Provisioner.db.test.ts (9 tests) 3080ms
+   ✓ real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows 522ms
+   ✓ real PostgreSQL additive transaction > refuses a case-variant collision without changing the existing hash 308ms
+   ✓ real PostgreSQL additive transaction > rejects changed student3 enrollment inside the guarded transaction 344ms
+   ✓ real PostgreSQL additive transaction > allows at most one of two concurrent applies 462ms
+ ✓ tests/api/auth.test.ts (8 tests) 2499ms
+   ✓ F-01 login, session and current user > TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie 453ms
+   ✓ F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable 496ms
+   ✓ F-01 login, session and current user > TEST-57 the server never writes a password or a session token to its console 349ms
+ ✓ tests/api/summary.test.ts (3 tests) 1146ms
+   ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 517ms
+   ✓ F-05 owner survey summary > TEST-36 empty summary, ownership, role and invalid-id checks 379ms
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 16ms
+ ✓ tests/api/cloudReady.test.ts (3 tests) 196ms
+ ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 4080ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 2238ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 498ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 619ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 715ms
+ ✓ tests/db/constraints.test.ts (3 tests) 2034ms
+   ✓ TEST-50 rejects a second response for the same survey and respondent 394ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 1371ms
+ ✓ tests/unit/summary.test.ts (6 tests) 6ms
+ ✓ tests/unit/responseValidation.test.ts (13 tests) 7ms
+ ✓ tests/api/health.test.ts (1 test) 284ms
+ ✓ tests/api/unauthenticated.test.ts (13 tests) 114ms
+ ✓ tests/unit/password.test.ts (1 test) 526ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 519ms
+ ✓ tests/unit/seedConfig.test.ts (1 test) 9ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 5ms
 
- Test Files  1 passed (1)
-      Tests  17 passed (17)
-   Start at  22:41:21
-   Duration  754ms (transform 93ms, setup 59ms, collect 71ms, tests 14ms, environment 0ms, prepare 232ms)
+ Test Files  16 passed (16)
+      Tests  137 passed (137)
+   Start at  22:48:04
+   Duration  34.86s (transform 514ms, setup 266ms, collect 5.01s, tests 21.54s, environment 5ms, prepare 3.04s)
 
