@@ -1,0 +1,266 @@
+Browser tab: 80291813, Title: "classpulse-pg – Cloud SQL – CPE 334 EN-034 – Google Cloud console", URL: "https://console.cloud.google.com/sql/instances/classpulse-pg/studio?project=cpe-334-en-034".
+0 AXWebArea classpulse-pg – Cloud SQL – CPE 334 EN-034 – Google Cloud console, URL: console.cloud.google.com/sql/instances/classpulse-pg/studio?project=cpe-334-en-034
+	1 container
+		2 container ocb-root-page
+			3 container ocb-center-panel
+				4 container ocb-central-page
+					5 container
+						6 container
+							7 container Skip links
+								8 link Description: Skip to main content, Value: console.cloud.google.com/sql/instances/classpulse-pg/studio?project=cpe-334-en-034
+								9 button Keyboard shortcuts
+								10 link Description: Accessibility Help external, opens new window, Value: cloud.google.com/docs/accessibility?hl=en_US
+								11 link Description: Accessibility Feedback external, opens new window, Value: support.google.com/accessibility/contact/feedback?hl=en_US
+							12 pop up button (collapsed) Description: Navigation menu (.), Secondary Actions: Expand
+							13 link Description: Google Cloud Platform Home, Value: console.cloud.google.com/?project=cpe-334-en-034
+							14 button You're currently working in CPE 334 EN-034. Hit enter to switch projects, folders, or organizations
+							15 container Google Cloud Platform
+								16 combo box (collapsed) Secondary Actions: Expand
+									17 search text field (settable) Description: Enter query to search for resources, docs, products, and more, ID: mat-input-OneCloudBarMicroUi__a8422087-16e9-490a-bba2-b9138af7986a0
+								18 button (disabled) Description: Search, ID: search-query-button
+									19 text Search
+							20 button Description: Open or close Gemini Cloud Assist chat (Alt G), ID: pcc-duet-chat-container
+							21 button Activate Cloud Shell (G then S)
+							22 pop up button 3 unread notifications. Open notifications
+								23 text 3
+							24 pop up button Description: Settings and utilities, ID: pcc-utilities-menu-trigger
+							25 pop up button (collapsed) Description: Account: Smork (punge089@gmail.com), Secondary Actions: Expand
+						26 container
+							27 container Cloud SQL
+								28 button (collapsed) Description: Toggle Cloud SQL navigation menu, ID: nav-minimize-toggle-button, Secondary Actions: Expand
+								29 container
+									30 heading Primary instance, Value: 3
+										31 text Primary instance
+									32 content list Overview, 1 of 12 Conversations, 2 of 12 Cloud SQL Studio, 3 of 12 Configurations, 4 of 12 System insights, 5 of 12 Query insights, 6 of 12 Connections, 7 of 12 Users, 8 of 12 Databases, 9 of 12 Backups, 10 of 12 Replicas, 11 of 12 Operations, 12 of 12
+										33 container
+											34 link Description: Overview, 1 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/overview?project=cpe-334-en-034, ID: cfctest-section-nav-item-overview
+										35 container
+											36 link Description: Conversations, 2 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/agents?project=cpe-334-en-034, ID: cfctest-section-nav-item-agents
+										37 container
+											38 link Description: Cloud SQL Studio, 3 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/studio?project=cpe-334-en-034, ID: cfctest-section-nav-item-studio
+										39 container
+											40 link Description: Configurations, 4 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/configurations?project=cpe-334-en-034, ID: cfctest-section-nav-item-configurations
+										41 container
+											42 link Description: System insights, 5 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/system-insights?project=cpe-334-en-034, ID: cfctest-section-nav-item-system-insights
+										43 container
+											44 link Description: Query insights, 6 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/insights?project=cpe-334-en-034, ID: cfctest-section-nav-item-insights
+										45 container
+											46 link Description: Connections, 7 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/connections?project=cpe-334-en-034, ID: cfctest-section-nav-item-connections
+										47 container
+											48 link Description: Users, 8 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/users?project=cpe-334-en-034, ID: cfctest-section-nav-item-users
+										49 container
+											50 link Description: Databases, 9 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/databases?project=cpe-334-en-034, ID: cfctest-section-nav-item-databases
+										51 container
+											52 link Description: Backups, 10 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/backups?project=cpe-334-en-034, ID: cfctest-section-nav-item-backups
+										53 container
+											54 link Description: Replicas, 11 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/replicas?project=cpe-334-en-034, ID: cfctest-section-nav-item-replicas
+										55 container
+											56 link Description: Operations, 12 of 12, Value: console.cloud.google.com/sql/instances/classpulse-pg/operations?project=cpe-334-en-034, ID: cfctest-section-nav-item-operations
+								57 button Explore Cloud SQL Release Notes
+							58 container
+								59 container
+									60 container
+										61 container Breadcrumb
+											62 content list
+												63 link Description: All instances, Value: console.cloud.google.com/sql/instances?project=cpe-334-en-034
+												64 link Description: classpulse-pg, Value: console.cloud.google.com/sql/instances/classpulse-pg/overview?project=cpe-334-en-034
+									65 container Explorer
+										66 container
+											67 heading Explorer, Value: 1
+												68 text Explorer
+											69 toolbar Explorer
+												70 pop up button (collapsed) Description: Current user, Secondary Actions: Expand
+												71 button Refresh database objects
+												72 button (expanded) Description: Toggle panel “Explorer”, Secondary Actions: Collapse
+										73 container
+											74 text Search
+											75 text field (settable) Search
+										76 container
+											77 outline
+												78 container
+													79 row (selectable, expanded) Toggle node Icon for database level in the tree navigation classpulse View actions, Secondary Actions: Collapse
+														80 button (expanded) Description: Toggle node, Secondary Actions: Collapse
+														81 button Icon for database level in the tree navigation
+														82 text classpulse
+														83 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													84 row (selectable, expanded) Toggle node Icon for schema level in the tree navigation Schema 2 View actions, Secondary Actions: Collapse
+														85 button (expanded) Description: Toggle node, Secondary Actions: Collapse
+														86 button Icon for schema level in the tree navigation
+														87 text Schema
+														88 text  2
+														89 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													90 row (selectable, expanded) Toggle node public (Default) View actions, Secondary Actions: Collapse
+														91 button (expanded) Description: Toggle node, Secondary Actions: Collapse
+														92 text public (Default)
+														93 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													94 row (selectable, collapsed) Toggle node Icon for table level in the tree navigation Tables 10 View actions, Secondary Actions: Expand
+														247 button (collapsed) Description: Toggle node, Secondary Actions: Expand
+														95 button Icon for table level in the tree navigation
+														96 text Tables
+														97 text  10
+														98 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													99 row (selectable) Icon for view level in the tree navigation Views 0 View actions
+														100 button Icon for view level in the tree navigation
+														101 text Views
+														102 text  0
+														103 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													104 row (selectable) Icon for function level in the tree navigation Functions 0 View actions
+														105 button Icon for function level in the tree navigation
+														106 text Functions
+														107 text  0
+														108 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													109 row (selectable) Icon for procedure level in the tree navigation Procedures 0 View actions
+														110 button Icon for procedure level in the tree navigation
+														111 text Procedures
+														112 text  0
+														113 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													114 row (selectable, collapsed) Toggle node Icon for sequence level in the tree navigation Sequences 9 View actions, Secondary Actions: Expand
+														248 button (collapsed) Description: Toggle node, Secondary Actions: Expand
+														115 button Icon for sequence level in the tree navigation
+														116 text Sequences
+														117 text  9
+														118 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													119 row (selectable, collapsed) Toggle node Icon for type level in the tree navigation Types 4 View actions, Secondary Actions: Expand
+														120 button (collapsed) Description: Toggle node, Secondary Actions: Expand
+														121 button Icon for type level in the tree navigation
+														122 text Types
+														123 text  4
+														124 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													125 row (selectable) Icon for extension level in the tree navigation Extensions 0 View actions
+														126 button Icon for extension level in the tree navigation
+														127 text Extensions
+														128 text  0
+														129 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													130 row (selectable, collapsed) Toggle node pg_toast View actions, Secondary Actions: Expand
+														131 button (collapsed) Description: Toggle node, Secondary Actions: Expand
+														132 text pg_toast
+														133 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+													134 row (selectable, collapsed) Toggle node information_schema, Secondary Actions: Expand
+														135 button (collapsed) Description: Toggle node, Secondary Actions: Expand
+														136 text information_schema
+													137 row (selectable, collapsed) Toggle node pg_catalog, Secondary Actions: Expand
+														138 button (collapsed) Description: Toggle node, Secondary Actions: Expand
+														139 text pg_catalog
+										140 container
+											141 outline
+												142 row (selectable) Icon for query level in the tree navigation Queries 0 preview View actions
+													143 button Icon for query level in the tree navigation
+													144 text Queries
+													145 text  0
+													146 container preview
+													147 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+										148 container
+											149 outline
+												150 row (selectable) Icon for contexts in the tree navigation Context sets 0 preview View actions
+													151 button Icon for contexts in the tree navigation
+													152 text Context sets
+													153 text  0
+													154 container preview
+													155 pop up button (collapsed) Description: View actions, Secondary Actions: Expand
+										156 slider Description: Explorer, Value: 320
+									157 container
+										158 container
+											159 tab group
+												160 container
+													161 tab (selectable, settable, boolean) Description: Home, Value: 0
+													162 tab (selected, settable, boolean) Description: Untitled query, Value: 1
+Untitled query
+											163 button New tab
+											164 pop up button (collapsed) Description: Gemini menu, Secondary Actions: Expand
+												165 text Gemini settings
+											166 container Untitled query
+												167 container
+													168 container
+														169 container
+															170 heading 1
+															171 toolbar
+																249 button Run
+																	264 text Run
+																174 container
+																	175 button Save
+																	176 pop up button (collapsed) Description: More save options, Secondary Actions: Expand
+																177 button Format query
+																178 button clear query
+																179 text Valid
+														180 container  sql editor
+															181 container
+																182 editor (settable) Description: Editor content;Press Alt+F1 for Accessibility Options., Value:  'student3@classpulse.test', 'uat6.extra@classpulse.test',
+ 'uat6.inactive@classpulse.test')
+ORDER BY lower(btrim(u.email)), c.code, e.id;
+
+ROLLBACK;
+													183 container
+														184 container
+															185 heading 1
+															186 toolbar
+																187 tab group
+																	188 tab (selected, settable, boolean) Results, Value: 1
+Results
+																250 text Execution time: 25.7 ms
+																251 pop up button (collapsed) Export, Secondary Actions: Expand
+																	265 text Export
+																192 button Expand the bottom panel to fullscreen
+																193 button Minimize the bottom panel
+														194 container Results
+															266 text All results
+															252 container
+																253 combo box (collapsed) Description: Select a query or statement, Value: Result 2, Secondary Actions: Expand
+																	267 container
+																		268 text Result 2
+															195 container
+																254 table Query results table , Navigate table with arrow keys. Enter key to interact with cell. Tab to navigate inside cell. Escape to exit cell.
+																	255 row course_id code owner_id owner_email owner_role owner_active
+																		256 cell course_id
+																			269 text course_id
+																		257 cell code
+																			270 text code
+																		258 cell owner_id
+																			271 text owner_id
+																		286 cell owner_email
+																			287 text owner_email
+																		288 cell owner_role
+																			289 text owner_role
+																		290 cell owner_active
+																			291 text owner_active
+																	292 container
+																		293 row (selectable) 2 CPE231 2 ben.kim@classpulse.test OWNER true
+																			294 cell
+																				295 text 2
+																			296 cell
+																				297 text CPE231
+																			298 cell
+																				299 text 2
+																			300 cell
+																				301 text ben.kim@classpulse.test
+																			302 cell
+																				303 text OWNER
+																			304 cell
+																				305 text true
+																		306 row (selectable) 1 CPE334 1 ann.lee@classpulse.test OWNER true
+																			307 cell
+																				308 text 1
+																			309 cell
+																				310 text CPE334
+																			311 cell
+																				312 text 1
+																			313 cell
+																				314 text ann.lee@classpulse.test
+																			315 cell
+																				316 text OWNER
+																			317 cell
+																				318 text true
+																263 container Rows per page: 1 – 2 of 2
+																	275 container
+																		276 text Rows per page:
+																		277 combo box (collapsed) Description: Rows per page, Value: 20, Secondary Actions: Expand
+																			278 container
+																				279 text 20
+																	280 container
+																		281 text 1  –  2  of 2
+																		282 button (disabled) Already on the first page.
+																		283 button (disabled) Already on the first page.
+																		284 button (disabled) Already on the last page.
+																		285 button (disabled) Already on the last page.
+													246 slider Description: Panel resizer, Value: 0
+
+The focused UI element is 253 combo box (collapsed) Description: Select a query or statement, Value: Result 2, Secondary Actions: Expand
