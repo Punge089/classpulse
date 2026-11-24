@@ -1,0 +1,4 @@
+# Preserve the original bytes covered by SHA256SUMS, including received CRLF files.
+* -text whitespace=cr-at-eol
+# Accessibility snapshots and captured stdout retain original trailing spaces.
+*.txt whitespace=-blank-at-eol,cr-at-eol

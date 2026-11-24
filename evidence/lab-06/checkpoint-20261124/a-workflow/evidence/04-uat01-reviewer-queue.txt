@@ -1,0 +1,30 @@
+Browser tab: 2, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews".
+1 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/reviews
+	2 container Review queue
+		3 text Workflow and Approval System
+		14 heading Review queue, Value: 1, ID: page-title
+			15 text Review queue
+		16 content list
+			17 container
+				18 link Description: UAT-01-A-210340 Desk supplies, Value: scd928edd-4d7hbszvwq-as.a.run.app/reviews/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67
+				19 text 125.50 THB  ·  SUBMITTED
+			20 container
+				21 link Description: Lab 5 – Submission recapture, Value: scd928edd-4d7hbszvwq-as.a.run.app/reviews/c01db56d-8067-4151-842c-edd93c4e2eec
+				22 text 125.50 THB  ·  SUBMITTED
+			23 container
+				24 link Description: Lab 5 – Evidence capture, Value: scd928edd-4d7hbszvwq-as.a.run.app/reviews/6b080e50-6c34-4d6b-a19f-b62cf481296c
+				25 text 125.50 THB  ·  APPROVED
+			26 container
+				27 link Description: Lab 5 browser test, Value: scd928edd-4d7hbszvwq-as.a.run.app/reviews/573661f0-88ce-44bd-ab4f-c20a5afbf572
+				28 text 125.50 THB  ·  APPROVED
+			29 container
+				30 link Description: [DEMO CHECK] APPROVE 2026-11-20 15:19:44 +07, Value: scd928edd-4d7hbszvwq-as.a.run.app/reviews/8abc3e60-8691-4f6d-8f73-6f091f5ce58c
+				31 text 125.50 THB  ·  APPROVED
+		32 container
+			33 text Signed in as  Reviewer .
+		34 button Sign out
+		11 container
+			12 text Release 
+			13 text 82a4806b5291
+
+The focused UI element is 14 heading Review queue, Value: 1, ID: page-title

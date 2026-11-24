@@ -1,159 +1,107 @@
 # ClassPulse — Lab 6 report source
 
-**DRAFT / NOT FOR SUBMISSION.** Prepared 20 November 2026 for Issue #72. This is an assembly framework with reviewed preparation references and pending execution fields. It is not a completed UAT report, final PDF, acceptance or submission. Complete all assessed material from actual records before rendering and peer review. Current [professor clarification](instructor-clarification.md), [independent coverage audit](coverage-review.md) and [standard exercise protocol](exercise-protocol.md) govern these additions.
+**DRAFT / NOT FOR SUBMISSION.** Updated on 24 November 2026 under Issue #79. This source records actual observations and pending assessed work. It is not a final PDF, acceptance or submission. Use the [current checkpoint](checkpoint-20261124.md), [coverage review](coverage-review.md), [instructor clarification](instructor-clarification.md) and [exercise protocol](exercise-protocol.md).
 
-Current checkpoint: 24 November 2026, Issue #74 review correction. Earlier pending fields described the 20 November preparation snapshot. The known progress below supersedes those fields without converting reported partner observations into final acceptance. A reports a deadline extension; official confirmation and the exact revised deadline remain PENDING. The elapsed 20–22 November plan is historical in [plan.md](plan.md), with current dependency-based next steps and no invented appointments.
+The proposed 20–22 November targets are historical. A reports an extension; the official revised deadline remains **PENDING**. Partner availability through 29 November is not the course deadline.
 
 ## Cover and navigation
 
-| Required field | Actual value / pending action |
+| Field | Actual value / remaining confirmation |
 |---|---|
-| A full name / student ID | Prior finalized team record: Bannasorn Thongkorn / 67070503420; GitHub Punge089; verify final cover details before submission |
-| B full name / student ID | Prior finalized record and B's report: Papangkorn Jitvoottikrai / 67070503421; GitHub book6349; B requests direct confirmation before inventory freeze |
-| Section / group | Confirm course values; prior Lab 5 used section31 / EN-034_P0 |
-| Project | ClassPulse: identified course-feedback surveys |
-| Repository | https://github.com/Punge089/classpulse |
-| Sprint 1 baseline | v1.0.0-sprint1 / d4bad74211729032697164f378638efb834a67b6 |
-| ClassPulse deployed source / digest / serving revision / traffic / URL / observation time | CP-V01: source 1fe3e3b82dfb0537be30223c9b598b3479b4affe; digest sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795; classpulse-00006-6w6 / 100%; https://classpulse-zdwglar6eq-as.a.run.app/ ; last saved A Console readback 24 Nov 02:16:41 Bangkok; reverify after deployment/traffic changes |
-| Independent partner product / repo / scope / URL / version | Workflow and Approval System / https://github.com/osizk/WorkflowAndApprovalSystem / Sprint 1 contract v0.6 / https://scd928edd-4d7hbszvwq-as.a.run.app/login / proposed lab5 source 82a4806b5291b57ad7e76a28fb7d40e1e947b9a6; full serving-version confirmation still pending |
-| Independent C/D names, student IDs and team | C: Ashira Sansoda / 67070503445; D: Thira Rungruangkaset / 67070503419; EN-037_P5, supplied by the partner |
-| Final ClassPulse decision / date / testers / exact release | PENDING; no independent decision received |
-| Our final decision for the partner product | PENDING actual A/B execution |
-| Submission deadline | Exact revised deadline PENDING official confirmation. Extension reported by A, not independently verified. Original 22 Nov 2026 23:59 Bangkok and 21:00 internal target are historical, not current deadlines. |
+| Student A | Prior report: Bannasorn Thongkorn / 67070503420, GitHub Punge089 verified. Confirm final cover details. |
+| Student B | Prior record and B's report: Papangkorn Jitvoottikrai / 67070503421, GitHub book6349. Direct identity and availability confirmation pending. |
+| Section / group | Prior Lab 5 used section 31 / EN-034_P0; confirm current course values. |
+| Project / repository | ClassPulse: identified course-feedback surveys. https://github.com/Punge089/classpulse |
+| Sprint 1 baseline | Protected tag `v1.0.0-sprint1`, peeled commit `d4bad74211729032697164f378638efb834a67b6`, unchanged. |
+| ClassPulse tested release | CP-V01, source `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, digest `sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795`, revision `classpulse-00006-6w6`, 100% traffic. https://classpulse-zdwglar6eq-as.a.run.app/ ; A's saved Console readback was 24 November at 02:16:41 Bangkok. This is time-specific evidence, not a new readback now. |
+| Partner | Workflow and Approval System, Sprint 1 contract v0.6. https://github.com/osizk/WorkflowAndApprovalSystem ; https://scd928edd-4d7hbszvwq-as.a.run.app/login |
+| Partner tested release | Source `82a4806b5291b57ad7e76a28fb7d40e1e947b9a6`, marker `82a4806b5291`, revision `scd928edd-00007-477`, 100% traffic, digest `sha256:6554d7f8cccdf1b4ded95f3f7d1a2560a786b0ecf7613cab62d59d942613a4fb`. C/D supplied the readback at 20:51:51–58 Bangkok on 24 November; A observed the matching marker. |
+| Independent partner | C: Ashira Sansoda / 67070503445. D: Thira Rungruangkaset / 67070503419. EN-037_P5. Actual operators and contributions are distinguished below. |
+| Final decisions / submission | Both decisions, official revised deadline, filename rules, final file review and human upload receipt remain pending. |
 
-The final PDF needs actual page numbers, not these placeholders. There is no fixed page limit or required separate video in the supplied handout. Inspect filename requirements in LEB2 before upload.
+The final PDF requires a contents page, Part A–D page ranges and readable embedded evidence with internal references. Links alone do not satisfy assessed material. The supplied handout has no fixed page limit or required separate video; verify filename rules in LEB2.
 
-| Part | Marks | Final PDF page range | Evidence IDs |
-|---|---:|---|---|
-| A — UAT preparation and handoff | 20 | PENDING layout | PENDING |
-| B — Independent execution of partner app | 25 | PENDING layout | PENDING |
-| C — Defect reporting and triage | 20 | PENDING layout | PENDING |
-| D — Resolution and independent retest | 35 | PENDING layout | PENDING |
-| Contributions, AI use, limitations, submission | Included | PENDING layout | PENDING |
+| Part | Marks | Current evidence / final PDF pages |
+|---|---:|---|
+| A — Preparation and handoff | 20 | Handoff, contracts and R11 dispositions; page range pending. |
+| B — Independent partner execution | 25 | A's observed cases retained; B and additional execution incomplete. |
+| C — Reporting and triage | 20 | Incoming ClassPulse observations and Workflow finding retained. |
+| D — Resolution and independent retest | 35 | ClassPulse correction or conditional exercise chain incomplete. |
+| Contributions, AI use, limitations and submission | Included | Actual registers retained; final review and upload pending. |
 
 ## A — UAT preparation and handoff (20)
 
-### Assessed Sprint 1 scope
+Sprint 1 covers authentication and identity; owners creating, publishing and closing their own identified surveys; enrolled respondents listing eligible surveys, submitting once and retrieving saved confirmation; owner aggregate results; and backend role, ownership, enrollment, lifecycle and input rules. Later-sprint editing, new question types, anonymous mode, exports and a response-history list are outside this acceptance. A direct saved-response read is in Sprint 1. Identified surveys must be labelled identified.
 
-Login/logout and current identity; owner creates/publishes/closes own identified surveys for own courses; enrolled respondent sees eligible published surveys, submits once, reads saved confirmation; owner sees aggregate counts/rating distribution/choice counts; backend role/ownership/enrollment/lifecycle/input rules. Sprint2/3 editing, new question types, anonymous mode, exports and other later-sprint features are outside this acceptance. A saved direct response read is in Sprint1; a full response-history-list feature is not claimed.
+Embed the complete reviewed [handoff](handoff.md), [coverage table](coverage.md), applicable [contract/source crosswalk](contract-extracts.md), and independent R11 assessment/additional cases/dispositions. Current ClassPulse technical scope is original UAT-01–12 plus CD-01–08 with residual branches pending. Technical agreement does not establish execution or final participant acknowledgement.
 
-### Complete cases and contract material to embed
-
-Use the reviewed [handoff](handoff.md), [coverage table](coverage.md) and [applicable contract/source crosswalk](contract-extracts.md) as canonical sources. Final PDF assembly must include the complete agreed case texts and relevant authoritative contract excerpts directly, with internal page references. Links alone are insufficient. Keep IDs stable. Embed the independent UAT Team’s R11 assessment of important requirement/AC coverage, proposed additional cases and actual dispositions. Then record the expanded agreed case/subcase inventory/version. Twelve supplied cases are a starting point; simply executing them does not satisfy the professor’s clarified expectation.
-
-Include safe account LABELS/roles/enrollment, private-delivery acknowledgement without values, unique run/data setup, declared sequence/dependencies, retention/cleanup agreement, tested version and instructions another team can execute without verbal guidance. Preserve explicit partial AC coverage; no listed AC ID implies full execution.
-
-### Agreement and live version
-
-Populate the actual [coordination](coordination.md) and [version register](versions.md) from R01/R02 in [records](records-template.md). C/D identities and A's time-specific CP-V01 mapping are now supplied above; C/D reports all five ClassPulse synthetic accounts accessible. Their actual initial run occurred on 24 November around17:31–18:03 Bangkok. Exact future initial/retest slots, private findings-channel agreement, B availability and final inventory remain pending; A deferred scheduling discussion to25November. Older heartbeat reports are historical scheduler reports, not current availability or consent.
+Include stable IDs, expected outcomes, synthetic roles and inputs, sequence, retention, version and actual setup deviations. Never include passwords, connection strings or cookies. C/D reports all five supplied roles accessible. Their actual received run was around 17:31–18:03 Bangkok on 24 November, with CD-08 later at 20:45:30. These are actual times, not retrospectively booked appointments. Future slots/channel discussion was deferred to 25 November; no exact appointment is confirmed.
 
 ## B — Independent execution of partner app (25)
 
-This section is the work A/B perform as independent UAT Team on the other team's product. Results of C/D testing ClassPulse belong in our incoming findings/retest chain, not as substitutes for PartB.
+A/B reviewed Workflow contract v0.6 independently. C/D's A2 technically accepts original UAT-01–06 and [PARTNER-ADD-01–06 A2](../../../evidence/lab-06/checkpoint-20261124/workflow-additional-cases-a2.md). Retain Unicode boundaries, exploratory stored-trimming treatment, concurrency proof limits, and actual restart versus verified new-instance distinctions. Special setup remains necessary for durability, session, assignment and event-failure checks. Agreement is not a PASS.
 
-### Partner handoff, independent coverage audit and expanded inventory
+| Case | Actual operator / time / version | Actual observation | Disposition |
+|---|---|---|---|
+| UAT-01 | Codex under A/Punge089, 24 Nov 21:03:40–21:05:38 Bangkok, original `82a4806`. | Created 125.50 request; assigned reviewer approved with blank reason; requester retrieved APPROVED and exactly SUBMITTED → APPROVED. Evidence 02–07. | Expected behavior observed; browser qualification pending. |
+| UAT-04 | Same operator/version, 21:06:19–21:07:20. | Reused request `e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67`. New login and reviewer reload retained 125.50, status and two original events; Approve/Reject control counts both zero. Evidence 08–10. | Private-window substitution awaits disposition. Optional restart NOT RUN. |
+| UAT-05 | Same operator/version, 21:07:42–21:09:45. | Separate request `b1f4b385-04b4-4e7a-905f-7f9091e65db2`, 300.00. Blank reason denied; reload retained SUBMITTED/one event. Valid reason saved REJECTED; requester retrieved exact reason and two events. Evidence 11–17. | Expected behavior observed; browser qualification pending. UI validation only; no HTTP status inferred. |
+| UAT-02/03/06 | B's actual session and evidence pending. | NOT RUN according to the latest supplied B handover. A's agent is not B's participation. | NOT RUN. |
+| Additional cases | A2 technical agreement retained; actual allocation/results pending. | A's additional 01/06 and other unexecuted subcases remain NOT RUN. Special setups remain explicit. | NOT RUN / setup dependent. |
 
-Received Workflow's six original UAT-01–06 cases and pinned contract/SRS. A prepared a coverage audit and six PARTNER-ADD proposals; B reports static review and requests purpose/reason Unicode boundaries, careful trimmed-reason expectations and explicit restart versus new-instance scope. Preserve revisions and ask C/D for actual dispositions. Mutual inventory freeze and full serving-version mapping remain pending. UAT-01 precedes UAT-04 on the same request; A's main01/04/05 and B's02/03/06 cases remain NOT RUN.
+[A's detailed narrative](../../../evidence/lab-06/checkpoint-20261124/a-workflow/RESULTS.md) and [raw observations](../../../evidence/lab-06/checkpoint-20261124/a-workflow/observations.json) retain inputs, expected/actual behavior and per-step UTC times. There are three observed case paths, 15 observations, 26 evidence files and two retained request IDs, not 15 test cases.
 
-### All agreed execution results
+The temporary in-app browser did not expose its exact engine/version or a verified private-window flag. Explicit logout, closing a tab, opening a replacement tab and new login verified signed-out denial and new-login persistence, not literal private-window creation. C/D must accept the substitution or require a repeat. Whole-case/final acceptance remains pending. Final logout was observed; no existing record, cloud/admin state or process restart was changed. A stale closed-tab helper was rebound before UAT-04 credential entry; this was a tooling issue, not an application defect.
 
-PENDING: every agreed case/subcase, actual tester name/date/time/timezone, exact version/inputs/actions, observed values/status/messages, PASS/FAIL/BLOCKED with reason and evidence IDs. Both A and B must participate; list actual driver/observer roles. Until run, status is NOT RUN. Do not copy expected text into actual observations.
-
-| Partner case / requirement | Actual tester / time | Tested version / inputs | Actual observation | Result | Evidence / finding |
-|---|---|---|---|---|---|
-| Await actual agreed case inventory | PENDING | PENDING | NOT RUN | NOT RUN | PENDING |
-
-Separate actual exploratory confirmation: on24November19:09:37Bangkok A's Codex independently ran the Workflow Product Team's WF-BUG-001 reproducer.102400-byte JSON returned422 and102401-byte JSON returned500 versus the engineering expectation413;2tests,1passed,1failed,0skipped. Visible marker82a4806b5291 matched the proposed source tag; full cloud version mapping remains pending. Attribute original discovery/test design to the Workflow team and confirmation to A. This single finding does not complete A/B's main Workflow UAT; embed the reviewed original report, actual output and exact provenance in the final PDF.
-
-Record case and subcase counts separately, account for all agreed IDs, and keep original and retest totals separate. No numeric pass total is prefilled.
-
-### Readable selected evidence
-
-PENDING: normal journey and negative/access evidence. Every rejected operation needs the rejection plus authorized unchanged-state/no-disclosure check. Embed readable screenshots/observations with action/expected/actual/time/version/tester captions. Clarifications/help from the Product Team must be recorded. Use R03/R08; no credential fields, session headers or cookies.
+Embed readable [approval](../../../evidence/lab-06/checkpoint-20261124/a-workflow/evidence/06-uat01-approved.jpg), [denial](../../../evidence/lab-06/checkpoint-20261124/a-workflow/evidence/13-uat05-empty-reason-denial.jpg) and [requester readback](../../../evidence/lab-06/checkpoint-20261124/a-workflow/evidence/17-uat05-requester-readback.jpg) figures with action, expected/actual result, time, version and operator captions. Rejected actions need unchanged-state/no-disclosure readback. Keep initial and retest totals separate.
 
 ## C — Defect reporting and triage (20)
 
-### Outgoing reports about partner product
+Workflow discovered and initially test-designed WF-BUG-001. A's Codex independently confirmed it at 19:09:37 Bangkok on 24 November: 102400-byte JSON returned 422; 102401 bytes returned 500 instead of 413. Totals: 2 tests, 1 passed, 1 failed, 0 skipped. [Independent confirmation](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-confirmation/INDEPENDENT-CONFIRMATION.md) retains output and limits. C/D accepted Minor severity; no outage, data loss or credential disclosure was demonstrated. Expected 413 is the parser's client-error classification, not an explicit status in the original Sprint 1 contract.
 
-WF-BUG-001 is received and independently confirmed as above; proposed Minor severity still needs the Workflow team's actual triage. Expected413 comes from the parser's documented client-error classification; the pinned Workflow contract does not explicitly name a payload-size limit/413 code. Keep that distinction, qualification of version mapping, original Product Team discovery, and actual1pass/1fail output. No fix/GREEN/retest is claimed. For each real failure embed IssueID, owner/team, reporter, tested version/case/AC, synthetic preconditions/data, numbered repro, expected/actual, severity explained by user impact, evidence and actual notification/acknowledgement. Distinguish defects from enhancements; do not invent a count.
+C/D's [correction status](../../../evidence/lab-06/checkpoint-20261124/received-cd-a2/Workflow/CORRECTION-STATUS.md) records RED `0e489731` (build succeeded, 1 passed/1 intended failure), GREEN `84a62c7` (2 safety tests and 7 focused checks passed), and full CI `45407729755` (17 passed/0 failed/0 skipped; Docker build passed). A inspected PR #63's diff and verified exact-head remote CI success; A did not rerun the repository suite or supply their teammate's approval. PR #63 remained Draft/unmerged at inspection. Corrected deployment and independent retest are PENDING. Original live `82a4806` is not corrected branch `84a62c7`. This finding does not fulfil ClassPulse Part D.
 
-### Incoming findings about ClassPulse
+The [received ClassPulse continuation](../../../evidence/lab-06/checkpoint-20261124/received-cd-r1/CONTINUATION-REPORT.md) reports passing behaviors across original UAT-01–12, with API-created setup for 08/10/11. A accepted only that setup deviation after execution. [Received A2](../../../evidence/lab-06/checkpoint-20261124/received-cd-a2/EN037-TECHNICAL-RESPONSE-A2.md) agrees CD-06 anonymous 401/authenticated respondent PUT/DELETE 404 and completes CD-08 authenticated guarded/original missing-ID 404. This is external lookup-before-validation evidence, not database inspection. Prior non-enrolled Draft 403 and enrolled Closed 409 remain separately recorded.
 
-Received C/D progress package Lab6_Progress_For_ClassPulse_20261124.zip (SHA256 b35afab341b8a13b19a80e56156d3b272567e801f9c60cd61756b6a6b61daa46):95 accumulated execution/tool records and seven inspected screenshots. The continuation reports passing behaviors across all twelve original ClassPulse cases, with API fixture setup for08/10/11 disclosed and accepted by A after execution for setup only. Available additional observations establish no genuine ClassPulse defect yet; CD-01 inactive/controlled-session, CD-07 third respondent and CD-08 missing-ID residual coverage remain pending actual completion/disposition. Do not infer comprehensive no-defect UAT or acceptance. Preserve the original reports/logs, all deviations and operator/input corrections for readable final embedding; a95-record log is not95 test cases.
+No genuine ClassPulse defect is established in completed observations. CD-01 inactive/controlled-session branches, CD-07 third respondent, actual peer contribution and final acceptance remain pending. This is not a comprehensive no-defect conclusion. The 95 accumulated records are not 95 cases. Received reports retain their original historical statuses; continuation, A2 and checkpoint establish the current read order.
 
-| Finding / reporter / tested version | Contract / evidence | Classification and reason | Severity / user impact | Owner / fix status / disposition | Duplicate link / minor-limit consent |
-|---|---|---|---|---|---|
-| C/D R1 progress, CP-V01 | Original12 and available added observations; retained reports/logs/screenshots | No accepted ClassPulse defect established in completed observations; residual branches open | No severity assigned without a real finding | Fixture/inventory/actual contribution review pending; no correction claimed | No independent minor-limit consent or final decision yet |
-
-Use R04/R05 for every finding: accepted defect, duplicate linked to original, not-defect or enhancement, with contract/evidence-based reason. Never relabel a failing requirement as enhancement. Critical/major findings block acceptance until corrected and independently retested; minor findings must be fixed or explicitly accepted by the independent team as documented limitations.
+For every actual finding, embed R04/R05 reproduction, expected/actual result, contract basis, evidence, impact-based severity, classification, owner and disposition. Link duplicates and record independent consent to minor limitations. Never invent a count or relabel a failed requirement as an enhancement. Unresolved critical/major findings block acceptance.
 
 ## D — Resolution and independent retest (35)
 
-### Natural correction or standardized educational exercise
+**ClassPulse Part D is NOT COMPLETE.** The [readiness checklist](part-d-readiness.md) names owners, actions and required evidence. Accepted genuine defects follow the normal correction chain. Only after coverage review and thorough independent testing still find no genuine defect does the professor's standardized procedure apply: a new Sprint staging commit reintroduces one previously corrected defect, or disables an existing required-field validation if no suitable earlier defect exists. C/D then independently discovers/reports it without advance exact-defect disclosure.
 
-PENDING: if legitimate defects are accepted, record each natural correction chain. If coverage audit and thorough independent testing still find no genuine defect, use the supplied professor-standardized procedure: Developer Team creates a NEW Sprint staging commit reintroducing one previously corrected defect; if none is suitable, disable one existing required-field validation. UAT Team independently tests/reports that version without advance disclosure of the exact defect. Then reproduce RED, fix GREEN, run regression, obtain teammate review/pass CI, deploy the corrected release and obtain independent retest.
+No exercise defect is selected/inserted and no completed ClassPulse RED/GREEN, correction deployment or independent retest is claimed. Preserve healthy baseline, tests, mandatory CI, protected tag and history. Do not expose defective main or assume defective staging passes CI. Use isolated exposure under the protocol and escalate only an actual policy/environment conflict.
 
-The standardized announcement supersedes a blanket wait for an individually assigned TA exercise. Embed its supplied-source provenance and the complete CP-EX sequence, preserving healthy baseline and all history. Do not bypass existing tests/CI/protection to deploy faulty main. Stage exercise exposure separately per [protocol](exercise-protocol.md); ask TA/human operator only about a real unresolved policy/environment conflict. Record disclosure timing and any advance defect knowledge honestly. Original healthy UAT/acceptance and educational exercise remain distinct; no completed exercise is claimed.
+Meaningful RED requires working build/fixtures and the intended failing assertion committed before implementation. GREEN must pass the same assertions, with relevant existing regression, exact commands/counts/output and fix diff. Syntax/setup failures and focused/weakened tests do not substitute. A non-author checks actual head, diff, tests and current CI before a history-preserving merge. A reviewed release goes to main; humans run cloud mutations; C/D independently retests the original reproduction and affected cases on the verified corrected deployment.
 
-### Meaningful automated RED / GREEN / regression
+Each team issues its own exact-release R07 decision with actual scope, participants, time, results, limits and conditions: Accepted; Accepted with explicit minor limitations; or Not Accepted. Developer GREEN, CI or historical Lab 5 deployment does not replace independent deployed retest. Required BLOCKED/NOT RUN cases or unresolved major/critical findings prevent Accepted. Both final decisions remain pending.
 
-For every accepted defect corrected in this lab, embed the regression file/test/assertion excerpt, exact command/setup, defective and test commits, real failing output/counts before implementation, relevant fix diff/commit, the same assertions passing, and appropriate existing regression output/counts. Syntax errors/broken fixtures/always-green tests do not establish reproduction. Preserve all failures/skips and never disable/focus/weaken tests. This report currently contains no such completed chain.
+## Version lineage and repository evidence
 
-### Review, integration and corrected deployment
+The [version register](versions.md) and [evidence index](evidence-index.md) retain exact identifiers and provenance. The protected baseline is unchanged. CP-V01 and original Workflow mappings are time-specific. Corrected ClassPulse/Workflow deployments and independently accepted final releases remain pending.
 
-PENDING defect chain: link owning Issue -> feature branch from staging -> substantive teammate review of exact head -> passing current-head CI/integration -> reviewed release to main -> actual deployment/source/digest/revision/traffic -> post-deploy smoke. Include readable review text/results and output snippets within the PDF, not only icons/URLs. Do not self-approve/self-merge. Explain legitimate fix-versus-merge SHA differences. Notify independent testers before deployment affects their run.
+Documentation integration is separate from Part D. Historical PR #69/#71 merged in `3d652d8`/`b14cf38`. B approved A #75 at `05134a3` and merged `3425a5e` after CI `45404297275`. A reviewed B #76 at `fa3f181` and merged `b98369c` after 32 offline checks/CI `45396597109`. A reviewed B #78 at `49289a5` and merged `cdcf460` after 16 static checks/CI `45408546110` and B marking that unchanged head Ready. These changes provision no fixtures and deploy no app. Closing planning Issue #74 does not complete Lab 6. A's Issue #79 evidence PR requires B's actual current-head review; A cannot self-approve/merge.
 
-### Independent retest and both decisions
+## Contributions, AI use and limitations
 
-PENDING: C/D independently rerun each corrected ClassPulse release-blocker and affected cases using the original repro/fresh data; A/B independently retest the partner's corrections. Record actual identity/time/version/observations/evidence per R06.
+Use [actual contributions](contributions.md) and [AI-use declarations](../../ai-use.md). A's Workflow operations were performed by Codex GPT-6 under A, not B. C/D attributes ClassPulse operations to Codex under Thira; Ashira's actual contribution/review still needs evidence. Do not invent personal clicks or retrospective participation from a proposed allocation. Equal commit counts and full prompt transcripts are not required.
 
-Embed actual R07 records for ClassPulse's received decision and our decision on the partner product: Accepted; Accepted with explicitly documented minor limitations; or Not Accepted. Each needs exact release/scope, actual testers/date, all agreed case counts and reasons/conditions. Required BLOCKED/not-run cases or unresolved critical/major findings prevent Accepted. Only independent testers may provide their own confirmation. No sign-off is currently received.
+Retain the initial PR #76 checker result of 29 passed/2 failed before 32 passed: those failures were checker assumptions about line endings/apostrophes, not product RED/GREEN. Historical missing-model-trailer disclosures for B commit `7fbac15` and merge `3d652d8` remain in contributions; do not rewrite history or guess models. B's later Ready update declares Codex GPT-6.1 Sol; A's current work declares GPT-6.
 
-## Version lineage
+Remaining dependencies: B identity/availability and own UAT; C/D browser disposition, residual coverage and actual peer contribution; human fixture setup; corrected Workflow deployment/retest; ClassPulse Part D; both decisions; official deadline/filename; final PDF review and human upload receipt. Automations remain paused. No future appointment or channel agreement is invented.
 
-| Stage | Actual value | Supporting record |
-|---|---|---|
-| Protected Sprint1 baseline | d4bad74211729032697164f378638efb834a67b6 | v1.0.0-sprint1 |
-| Initial independent UAT source/revision/digest | PENDING | R02 |
-| Defective source / actual failure | PENDING if applicable | R03/R04 |
-| RED test commit / command / counts | PENDING if applicable | R06 |
-| Fix / GREEN / regression | PENDING if applicable | R06 |
-| Reviewed feature and main release merge | PENDING correction | R06 |
-| Corrected deployed image/revision + smoke | PENDING correction | R02/R06 |
-| Independently accepted final release | PENDING decision | R07 |
+## Final assembly and human submission
 
-Use a separate CP-EX lineage for a standardized exercise. Document preparation stagingb14cf38 is not an independently tested/deployed/accepted version. Historical Lab5 image/revision/smoke does not verify current serving traffic or Lab6 UAT.
+Before final rendering, embed complete agreed cases/contracts, independent coverage/dispositions, readable observations/figures, findings, RED/GREEN assertions/diff/regression, actual review text/CI/release/deployment/retest, both decisions, contributions, AI use and limitations. Add real contents/page/evidence references. Keep one legible self-contained PDF without secrets.
 
-## Actual preparation evidence and contributions
-
-The preparation PRs are actual repository process evidence only. B approved A PR69 at692a71f and merged3d652d8 after CI44574038895; A approved B PR71 at648aaf5 and mergedb14cf38 after CI44576544456. See [evidence index](evidence-index.md) and [actual contribution records](contributions.md). Embed relevant readable review excerpts in the final report where useful, but do not present these documentation PRs as a completed defect-correction chain.
-
-On24November A reviewed B PR76 exactfa3f1810fda69c5ab63a7f390998e05c19fb2767 with32 offline document/helper checks (0failed,0skipped), verified CI45396597109 and approved/mergedb98369cc94526bba8745faa0e8720ab512ca9949 into staging. The first local checker reported29passed/2failed from CRLF/apostrophe assumptions; those checker issues were corrected, original output retained, and the full twelve-case section comparison added. This is documentation review evidence, not app UAT or a fix's RED/GREEN chain. B's date-correction re-review of A PR75 remains pending at its next head.
-
-A's model-assisted source preparation and offline checks are disclosed in [docs/ai-use.md](../../ai-use.md). B reports static review/AI assistance and actual review of A PR75 at ec74e5a, then B PR76. C/D's declaration attributes the technical ClassPulse observations to Codex under Thira's instructions; it does not establish Ashira's actual contribution. Record actual review/remaining testing from both team members without inventing personal clicks or agent ownership. Final PDF review and human submission remain pending. Equal commit counts and full prompt transcripts are not required.
-
-## Limitations and unresolved dependencies
-
-- Partner identities/product and received C/D observations are recorded; exact future two-way sessions and final case/fixture agreement remain pending.
-- B personal availability/direct identity confirmation remains unconfirmed; historical scheduler reports are not session appointments. Scheduling discussion was deferred to25November, not booked as a test slot.
-- A's CP-V01 mapping is time-specific and C/D reports five-account access. Workflow full serving mapping, third CPE334 respondent, inactive account and controlled session support remain pending; no new credentials/provisioning are claimed.
-- Main A/B Workflow UAT, final C/D contribution/acceptance, ClassPulse correction/exercise, independent retest and final PDF/submission are incomplete. A's WF-BUG-001 confirmation and C/D's progress must not be hidden or misrepresented as a completed full cycle.
-- The extension is user-reported and not officially verified here; the exact revised deadline remains PENDING. Do not use29November partner availability as the deadline.
-- Original B AI-assisted commit7fbac15 omitted its trailer; B disclosed the omission and original model is unverified. Merge3d652d8 has no assisting-model trailer in metadata; A asked B to clarify actual operator/AI assistance, which remains unverified at this report checkpoint. Preserve history rather than guessing attribution.
-- Filename rules, final exact-file peer review, LEB2 upload and receipt remain pending.
-
-## Final assembly and submission gate
-
-Before submission: replace all execution-dependent placeholders from real records; embed complete agreed cases/AC excerpts, actual findings/dispositions, test excerpts/output/diff, review/CI/release/deployment evidence and independent acceptance. Keep one readable self-contained PDF with real TOC/page/evidence references, contributions/AI-use/limits, no secrets, and no unsupported approval or on-time-submission claim. Unresolved dependencies must be clearly disclosed rather than hidden.
-
-A assembles; B reviews actual PDF bytes/hash and readable figures. Changed evidence needs actual re-review. A/B inspect the final file and human uploads it to the real LEB2 assignment before the deadline, opens the uploaded file and retains receipt privately. Record filename/hash/pagecount/reviewer/upload timestamp/confirmation. Until then this remains DRAFT / NOT FOR SUBMISSION.
+A assembles; B reviews actual PDF bytes/hash and figures. Changed assessed evidence needs follow-up review. A human checks the real assignment/deadline/filename, uploads to LEB2, opens the uploaded file and retains the receipt. Record filename, hash, page count, reviewer, upload time and confirmation only when real. Until then: DRAFT / NOT FOR SUBMISSION.
 
 ## Source history
 
-| Version | Date | Author / assistance | Status |
+| Version | Date | Author / assistance | Reason |
 |---|---|---|---|
-| 0.1 | 20 Nov2026 | Punge089 assisted by Codex GPT-6.1 Sol | Report scaffold only; B review and all independent results pending |
-
-| 0.2 | 20 Nov 2026 | Punge089 assisted by Codex GPT-6.1 Sol | Add independent coverage audit/expanded cases and professor-standardized no-defect staging exercise; all results still pending |
-
-| 0.3 | 24 Nov 2026 | Punge089 assisted by Codex GPT-6 | Address B's date review: original deadline/targets historical, extension user-reported and revised deadline pending; record known partner/CP-V01/progress/WF confirmation without claiming full UAT or acceptance |
+| 0.1 | 20 Nov 2026 | Punge089 / Codex GPT-6.1 Sol | Initial scaffold without execution claims. |
+| 0.2 | 20 Nov 2026 | Punge089 / Codex GPT-6.1 Sol | Independent audit and conditional professor exercise. |
+| 0.3 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Correct elapsed targets, reported extension and received progress. |
+| 0.4 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Issue #79 actual A results, A2/CD-08/mapping, reviewed merges and readiness gates; preserve qualifications. |

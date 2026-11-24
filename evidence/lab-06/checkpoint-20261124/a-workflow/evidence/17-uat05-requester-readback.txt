@@ -1,0 +1,32 @@
+Browser tab: 3, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/b1f4b385-04b4-4e7a-905f-7f9091e65db2".
+1 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/requests/b1f4b385-04b4-4e7a-905f-7f9091e65db2
+	2 container Request detail
+		3 text Workflow and Approval System
+		4 heading Request detail, Value: 1, ID: page-title
+			5 text Request detail
+		6 link Description: Back to my requests, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests
+		14 heading UAT-05-A-210340 Reject reason, Value: 2
+			15 text UAT-05-A-210340 Reject reason
+		16 container
+			17 text Status: REJECTED
+		18 container
+			19 text Amount: 300.00 THB
+		20 container
+			21 text Purpose: Synthetic request to verify rejection reason
+		22 heading History, Value: 3
+			23 text History
+		24 content list
+			25 container
+				26 AXListMarker 1. 
+				27 text SUBMITTED  ·  11/24/2026, 9:07:42 PM
+			28 container
+				29 AXListMarker 2. 
+				30 text REJECTED  ·  11/24/2026, 9:08:41 PM  · Budget unavailable for this purchase
+		8 container
+			9 text Signed in as  Requester .
+		10 button Sign out
+		11 container
+			12 text Release 
+			13 text 82a4806b5291
+
+The focused UI element is 4 heading Request detail, Value: 1, ID: page-title

@@ -1,0 +1,311 @@
+{
+  "issue": 79,
+  "operator": "Codex GPT-6 under Student A/Punge089",
+  "copies": [
+    {
+      "path": "a-workflow/case-observations.json",
+      "sha256": "353d11df1a962d8abe205f287166ea4f1b76e1a9a4a6c6c8b0c20764769a6784",
+      "bytes": 1977
+    },
+    {
+      "path": "a-workflow/evidence/00-release-and-start.txt",
+      "sha256": "445d9b24e94ce4d293fc89181115279d5e4b0b6229f317a120db0641023a23e8",
+      "bytes": 649
+    },
+    {
+      "path": "a-workflow/evidence/01-requester-home.txt",
+      "sha256": "5638ae19f645dbaf963e1c9b5c19885e5bc7be8fead110d8bdb7e743215977c5",
+      "bytes": 1446
+    },
+    {
+      "path": "a-workflow/evidence/02-uat01-inputs.jpg",
+      "sha256": "dffada2a895a27f1c6cdead3a1abc628d3cb76b2af1ef7d1b4436cfb1cb2e94c",
+      "bytes": 36564
+    },
+    {
+      "path": "a-workflow/evidence/02-uat01-inputs.txt",
+      "sha256": "ff316604a424c3b0f8b298563d8c202ef701de3c09b47f250d6b0580005ebb33",
+      "bytes": 1041
+    },
+    {
+      "path": "a-workflow/evidence/03-uat01-submitted.jpg",
+      "sha256": "3b8a427b83c3a859c4fe1b7240fb024bd668feab90317a32cd24c5bf26af4de4",
+      "bytes": 39345
+    },
+    {
+      "path": "a-workflow/evidence/03-uat01-submitted.txt",
+      "sha256": "6e1edf8b6c3ce58597fb5ed233730bf77b1c3bce80b183941c3735724c41de9e",
+      "bytes": 1131
+    },
+    {
+      "path": "a-workflow/evidence/04-uat01-reviewer-queue.txt",
+      "sha256": "a26f474962e9fe72da3e822702eeec8cf1f2b5e1207131dd80cec8ba006c4a6f",
+      "bytes": 1546
+    },
+    {
+      "path": "a-workflow/evidence/05-uat01-before-approve.txt",
+      "sha256": "a47a1cd1046ea39b89dd1089ee783912dafc66dd0338bd9b389c34dace4ba756",
+      "bytes": 1315
+    },
+    {
+      "path": "a-workflow/evidence/06-uat01-approved.jpg",
+      "sha256": "f7586160bdc6c27aa293c3ac8017af461254f08812f04b1f722bce7117b28939",
+      "bytes": 37395
+    },
+    {
+      "path": "a-workflow/evidence/06-uat01-approved.txt",
+      "sha256": "f47b910e86d66026003e0fcde9fc1c1f9691dd3ddd9f53a11fe92cc22cabfba5",
+      "bytes": 1317
+    },
+    {
+      "path": "a-workflow/evidence/07-uat01-requester-readback.txt",
+      "sha256": "c84ac330fcfcaeddf14d3265d93422b27fefbd13c1e126d06217a06376676763",
+      "bytes": 1219
+    },
+    {
+      "path": "a-workflow/evidence/08-uat04-signed-out-denial.txt",
+      "sha256": "a37f86a73663bf4c71f2ab384579adbb1715b5d4da48c13794430627bcb068c8",
+      "bytes": 649
+    },
+    {
+      "path": "a-workflow/evidence/09-uat04-requester-persistence.txt",
+      "sha256": "83b7b4bfb70ff470a04bd657edb5428b44dbf718463b0f3574cb579be80f3761",
+      "bytes": 1219
+    },
+    {
+      "path": "a-workflow/evidence/10-uat04-final-control-counts.json",
+      "sha256": "ad7554ed9fc16ed41190c9249d14639b83256b886d3b0bc322f1ce0eece72fa0",
+      "bytes": 72
+    },
+    {
+      "path": "a-workflow/evidence/10-uat04-reviewer-reload.jpg",
+      "sha256": "4eb038507e65c918f474a446f9a01adf8aa3b6710a2cd0c66c78113d5b6425fc",
+      "bytes": 36403
+    },
+    {
+      "path": "a-workflow/evidence/10-uat04-reviewer-reload.txt",
+      "sha256": "0223a46682a1cf9ad81f3068ebc128177a8f1e415cff9ee22c814ed53f412e28",
+      "bytes": 1216
+    },
+    {
+      "path": "a-workflow/evidence/11-uat05-inputs.txt",
+      "sha256": "db4143c781eb0e37b28d567a3f3a1ba38d6f50fc9a3cfa197e9d871f76c89b0a",
+      "bytes": 1053
+    },
+    {
+      "path": "a-workflow/evidence/12-uat05-submitted.txt",
+      "sha256": "5213845dabda375bf1b3d44a3c4dfc51208939eee6281c53608b0d4546132ce1",
+      "bytes": 1143
+    },
+    {
+      "path": "a-workflow/evidence/13-uat05-empty-reason-denial.jpg",
+      "sha256": "13af5367127c4be40ae863fbc15e9105c27653db9f7cca064ec29f7a348e86b4",
+      "bytes": 32467
+    },
+    {
+      "path": "a-workflow/evidence/13-uat05-empty-reason-denial.txt",
+      "sha256": "a077267e2f39675e1dfc2ea26b61900bbcc02757e1e565bb8a54eb6dddfcec53",
+      "bytes": 1336
+    },
+    {
+      "path": "a-workflow/evidence/14-uat05-denial-readback.txt",
+      "sha256": "ea81f36500c8749f62da45ded4e21b12f2621087f37760f8a511e6532ee60df2",
+      "bytes": 1327
+    },
+    {
+      "path": "a-workflow/evidence/15-uat05-rejected.jpg",
+      "sha256": "534594310119e55cab50d66841024f945ccdeb1ae8ee98c1e461045d66577c44",
+      "bytes": 38172
+    },
+    {
+      "path": "a-workflow/evidence/15-uat05-rejected.txt",
+      "sha256": "91fea2520ac118186444b6c118a0d5da142e1cdd3c7160f2fd1164c628e86d0c",
+      "bytes": 1370
+    },
+    {
+      "path": "a-workflow/evidence/16-uat05-requester-list.txt",
+      "sha256": "1e5e631e4af23ea289c281ec008e4bdfb3c10afb6c3a282731ae2ba26be5edaa",
+      "bytes": 1838
+    },
+    {
+      "path": "a-workflow/evidence/17-uat05-requester-readback.jpg",
+      "sha256": "b22eb2815e14124274f6a080874b7d69358eefe17133ce1611c300de71a521ee",
+      "bytes": 43613
+    },
+    {
+      "path": "a-workflow/evidence/17-uat05-requester-readback.txt",
+      "sha256": "bd5f15bfb94721d0930d11d30221162504b76ba71314097d3340c2a98e92ecb7",
+      "bytes": 1272
+    },
+    {
+      "path": "a-workflow/observations.json",
+      "sha256": "383e26af9e766bceee0180645b97c66a6931716af05960efdb44055ae8207753",
+      "bytes": 7154
+    },
+    {
+      "path": "a-workflow/run-metadata.json",
+      "sha256": "cf3e8db4315169842768eefd1db7b5fa3cb208fe79a1f1e12a471f8432862f89",
+      "bytes": 903
+    },
+    {
+      "path": "a-workflow/RESULTS.md",
+      "sha256": "9ecaed7858dc4ad5783dead19744da0178c733fa890b3e9acec3dcea7cf29991",
+      "bytes": 4462
+    },
+    {
+      "path": "received-cd-r1/CONTINUATION-REPORT.md",
+      "sha256": "652da8de1562fa0ecfe14a8d95615317c7e2ff333b314c2aec564d7050d3c041",
+      "bytes": 6510
+    },
+    {
+      "path": "received-cd-r1/REPORT.md",
+      "sha256": "ce332aa9d1cf0cabe44f6a4e64e818d0c0ef81e54221f03e6b3ea96b33190438",
+      "bytes": 8574
+    },
+    {
+      "path": "received-cd-r1/LAB-6-AI-USE-AND-CONTRIBUTIONS.md",
+      "sha256": "4cfe75aecab079b4cfa3c9d8d4298fba0e40be18d7df9ff7641ae998229d0fa0",
+      "bytes": 1526
+    },
+    {
+      "path": "received-cd-r1/screenshots/01-confirmation.png",
+      "sha256": "22b7395e06e6e009aa238819603219421b2c1a108703f7ba71936c98c1cf3d51",
+      "bytes": 70341
+    },
+    {
+      "path": "received-cd-r1/screenshots/01-form.png",
+      "sha256": "4ceaa601101b9ea74e8b46d7a74c749a9d404dc3f23c1b2028426896871476c5",
+      "bytes": 79529
+    },
+    {
+      "path": "received-cd-r1/screenshots/01-summary.png",
+      "sha256": "092ff212cd0479f8340a72cbad2ceac42bd473d90796b0acdd467d461954ce0e",
+      "bytes": 71418
+    },
+    {
+      "path": "received-cd-r1/screenshots/02-empty-title-rejected.png",
+      "sha256": "72852456afeffff6675527fdd1b0eb0a5ae964b8b0d659beb67bad3bf9aa6ef3",
+      "bytes": 131062
+    },
+    {
+      "path": "received-cd-r1/screenshots/08-empty-summary.png",
+      "sha256": "26b97d6cae1041e2d9307a370944156f52d7d46f17317940a51f2872c1d89d4a",
+      "bytes": 71252
+    },
+    {
+      "path": "received-cd-r1/screenshots/11-two-respondent-summary.png",
+      "sha256": "622947b2cc1b83956cadbd7340eb53a1d6593396098990e29b57d8363c775fcf",
+      "bytes": 82357
+    },
+    {
+      "path": "received-cd-r1/screenshots/CD05-stale-denial.png",
+      "sha256": "6c5241919da66e5a5d0e0b99ed9c352c6833d38b8f216075ec1b7e1da899b8cd",
+      "bytes": 90531
+    },
+    {
+      "path": "received-cd-a2/EN037-TECHNICAL-RESPONSE-A2.md",
+      "sha256": "ffd1372e79a746d1fe96ebd80725cb9f64624d704eb9419a5e8cfb3d301a53b3",
+      "bytes": 6673
+    },
+    {
+      "path": "received-cd-a2/LAB-6-AI-USE-AND-CONTRIBUTIONS.md",
+      "sha256": "4cfe75aecab079b4cfa3c9d8d4298fba0e40be18d7df9ff7641ae998229d0fa0",
+      "bytes": 1526
+    },
+    {
+      "path": "received-cd-a2/Workflow/current-serving-version.json",
+      "sha256": "c0bd250cc80e1fc6892034464334b67ac23b508b98d0157c13c88d3232227689",
+      "bytes": 1258
+    },
+    {
+      "path": "received-cd-a2/Workflow/CORRECTION-STATUS.md",
+      "sha256": "b325a12cda118b7f09492f1b526e24b046f0cf0a4365858c4af51eb5f1024c19",
+      "bytes": 2456
+    },
+    {
+      "path": "received-cd-a2/ClassPulse/CD08-missing-ID-result.json",
+      "sha256": "463cbfbebd6a5235e78c865b5a70fa7359b0ac6b930d0941ea5b68dfad9e0fd3",
+      "bytes": 509
+    },
+    {
+      "path": "received-cd-a2/incoming-manifest.json",
+      "sha256": "3e0e7e93eadfa603cfaf6c48c94589936fad2f1bf30c48adeed8045b31ee6739",
+      "bytes": 2848
+    },
+    {
+      "path": "workflow-additional-cases-a2.md",
+      "sha256": "bb510fc6524a08e8bfafbdb305ef82c35622cfea129bd9c22678a0a32141d56d",
+      "bytes": 16318
+    },
+    {
+      "path": "a-wf-bug-confirmation/INDEPENDENT-CONFIRMATION.md",
+      "sha256": "ea548e591075be5abb13fc03608e7bc6df7607c4709080ba47ddba4e678933bf",
+      "bytes": 3247
+    },
+    {
+      "path": "a-wf-bug-confirmation/actual-output.txt",
+      "sha256": "ebec3d33c151faea828b4eb42bfe7e122d4ea3e141a86599af3cf23614a28ccf",
+      "bytes": 1582
+    },
+    {
+      "path": "a-wf-bug-confirmation/exit-code.txt",
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "bytes": 3
+    },
+    {
+      "path": "a-wf-bug-confirmation/marker-time.json",
+      "sha256": "115a716b8b328ced004c2af2cb9b5114c84c6a26c5f28f2c034e8b02e620df76",
+      "bytes": 146
+    },
+    {
+      "path": "a-wf-bug-confirmation/result.json",
+      "sha256": "eff5298ac876995ded1066151d0dc88de2cea114ffa259a442420776ccf07b7e",
+      "bytes": 1190
+    },
+    {
+      "path": "a-wf-bug-confirmation/signed-out-follow-up.json",
+      "sha256": "56937ede26509686593a0e1f5b07d59465cc99da74432c08eab6185d4f6f177a",
+      "bytes": 281
+    },
+    {
+      "path": "repository/pr78-static-checks.json",
+      "sha256": "0df70986cccf0c4125b6c4615912ae143c1b7c870a630e53aaeb5fd6aaccf953",
+      "bytes": 1958
+    },
+    {
+      "path": "repository/pr78-A-review.txt",
+      "sha256": "a276ad2987c9fa34a1eb6c34133b3c38ecfb21f1d1c0af4708a1846f6ee40ef9",
+      "bytes": 1624
+    },
+    {
+      "path": "repository/pr78-reviews.json",
+      "sha256": "441b84306c6bc313f6507a045a43d110cc9763efb187853e52fc1cf9532823a9",
+      "bytes": 3243
+    },
+    {
+      "path": "repository/pr75-reviews.json",
+      "sha256": "dc855b6014c40e4a98938885102ed07db55432f48b8ca45ad8fc2cbd48bd6e14",
+      "bytes": 4736
+    },
+    {
+      "path": "repository/workflow-pr63.json",
+      "sha256": "78d1bb6ea65379d9125156f36383c3c3638d85fd70af922df3254e6e53c113ec",
+      "bytes": 264
+    },
+    {
+      "path": "repository/workflow-pr63-ci.json",
+      "sha256": "79a6bcaf05de9f114c6b10cd6f7ca377f688c55cecf4e81faa837d15853e6ab9",
+      "bytes": 278
+    },
+    {
+      "path": "cp-v01/reconfirmation.txt",
+      "sha256": "0af5e96790a4f245579d305962cb50e2ca6e527a26b3e258be3fb55b40c6255b",
+      "bytes": 20722
+    },
+    {
+      "path": "cp-v01/reconfirmation-time.json",
+      "sha256": "073e03d533d1b1e003d7dd5ab2625bd5c608ebea590187b1b858c54fc5990da1",
+      "bytes": 298
+    }
+  ]
+}

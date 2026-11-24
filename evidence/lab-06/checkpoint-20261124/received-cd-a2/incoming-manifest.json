@@ -1,0 +1,81 @@
+{
+  "originalZip": "Lab6_Response_A2_and_Workflow_Fix_20261124.zip",
+  "originalZipSha256": "ba2cf2498c5804a552ed94b7faf009f2463539a16dd8f8211c2c0064d6ff9a69",
+  "entries": [
+    {
+      "path": "EN037-TECHNICAL-RESPONSE-A2.md",
+      "bytes": 6673,
+      "sha256": "ffd1372e79a746d1fe96ebd80725cb9f64624d704eb9419a5e8cfb3d301a53b3"
+    },
+    {
+      "path": "REPLY-FOR-CLASSPULSE.txt",
+      "bytes": 1730,
+      "sha256": "59144fb5e7fc3464f47baf0962eb39cdf30ca92ad7bde532eb229a7ddb057cf2"
+    },
+    {
+      "path": "Workflow/CORRECTION-STATUS.md",
+      "bytes": 2456,
+      "sha256": "b325a12cda118b7f09492f1b526e24b046f0cf0a4365858c4af51eb5f1024c19"
+    },
+    {
+      "path": "Workflow/current-serving-version.json",
+      "bytes": 1258,
+      "sha256": "c0bd250cc80e1fc6892034464334b67ac23b508b98d0157c13c88d3232227689"
+    },
+    {
+      "path": "Workflow/repository-red-output.txt",
+      "bytes": 1691,
+      "sha256": "06b5ee01f817238bdcfc86990a8fc32988175af5f318e62a9b1a9101679c7fa6"
+    },
+    {
+      "path": "Workflow/repository-green-output.txt",
+      "bytes": 872,
+      "sha256": "9d14a4a078bdaab529c05791a2329b0f67ff31b2c55ff01195cfbb6f2ee61f95"
+    },
+    {
+      "path": "Workflow/focused-regression-output.txt",
+      "bytes": 701,
+      "sha256": "d288a00e4b836d760e1380bf87672d2a749a7d567435daa14d9f3b167d1fa8c9"
+    },
+    {
+      "path": "Workflow/full-ci-output.txt",
+      "bytes": 127890,
+      "sha256": "4d846c2a3be97c37c68f27ed48686fd092464af790b935a4d14cf44074980e65"
+    },
+    {
+      "path": "ClassPulse/CD08-missing-ID-result.json",
+      "bytes": 509,
+      "sha256": "463cbfbebd6a5235e78c865b5a70fa7359b0ac6b930d0941ea5b68dfad9e0fd3"
+    },
+    {
+      "path": "LAB-6-AI-USE-AND-CONTRIBUTIONS.md",
+      "bytes": 1526,
+      "sha256": "4cfe75aecab079b4cfa3c9d8d4298fba0e40be18d7df9ff7641ae998229d0fa0"
+    },
+    {
+      "path": "Received-independent-confirmation/INDEPENDENT-CONFIRMATION.md",
+      "bytes": 3247,
+      "sha256": "ea548e591075be5abb13fc03608e7bc6df7607c4709080ba47ddba4e678933bf"
+    },
+    {
+      "path": "Received-independent-confirmation/actual-output.txt",
+      "bytes": 1582,
+      "sha256": "ebec3d33c151faea828b4eb42bfe7e122d4ea3e141a86599af3cf23614a28ccf"
+    },
+    {
+      "path": "Received-independent-confirmation/marker-time.json",
+      "bytes": 146,
+      "sha256": "115a716b8b328ced004c2af2cb9b5114c84c6a26c5f28f2c034e8b02e620df76"
+    },
+    {
+      "path": "Received-independent-confirmation/result.json",
+      "bytes": 1190,
+      "sha256": "eff5298ac876995ded1066151d0dc88de2cea114ffa259a442420776ccf07b7e"
+    },
+    {
+      "path": "Received-WORKFLOW-CASES-A2.txt",
+      "bytes": 16316,
+      "sha256": "1a114d92ece70c42052365c062b2ca0cf4fc950271f20bb5ad039905c88cd0d5"
+    }
+  ]
+}

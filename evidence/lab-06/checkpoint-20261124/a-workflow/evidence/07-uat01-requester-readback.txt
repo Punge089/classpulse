@@ -1,0 +1,32 @@
+Browser tab: 2, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67".
+1 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/requests/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67
+	2 container Request detail
+		3 text Workflow and Approval System
+		4 heading Request detail, Value: 1, ID: page-title
+			5 text Request detail
+		6 link Description: Back to my requests, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests
+		14 heading UAT-01-A-210340 Desk supplies, Value: 2
+			15 text UAT-01-A-210340 Desk supplies
+		16 container
+			17 text Status: APPROVED
+		18 container
+			19 text Amount: 125.50 THB
+		20 container
+			21 text Purpose: Purchase stationery for the team
+		22 heading History, Value: 3
+			23 text History
+		24 content list
+			25 container
+				26 AXListMarker 1. 
+				27 text SUBMITTED  ·  11/24/2026, 9:04:18 PM
+			28 container
+				29 AXListMarker 2. 
+				30 text APPROVED  ·  11/24/2026, 9:05:02 PM
+		8 container
+			9 text Signed in as  Requester .
+		10 button Sign out
+		11 container
+			12 text Release 
+			13 text 82a4806b5291
+
+The focused UI element is 4 heading Request detail, Value: 1, ID: page-title

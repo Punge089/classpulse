@@ -1,0 +1,324 @@
+Browser tab: 80291586, Title: "Revision H…lasspulse – Cloud Run – CPE 334 EN-034 – Google Cloud console", URL: "https://console.cloud.google.com/run/detail/asia-southeast1/classpulse/revisions?project=cpe-334-en-034".
+0 AXWebArea Revision H…lasspulse – Cloud Run – CPE 334 EN-034 – Google Cloud console, URL: console.cloud.google.com/run/detail/asia-southeast1/classpulse/revisions?project=cpe-334-en-034
+	1 container
+		2 container ocb-root-page
+			3 container ocb-center-panel
+				4 container ocb-central-page
+					5 container
+						6 container
+							7 container Skip links
+								8 link Description: Skip to main content, Value: console.cloud.google.com/
+								9 button Keyboard shortcuts
+								10 link Description: Accessibility Help external, opens new window, Value: cloud.google.com/docs/accessibility?hl=en_US
+								11 link Description: Accessibility Feedback external, opens new window, Value: support.google.com/accessibility/contact/feedback?hl=en_US
+							14 pop up button (collapsed) Description: Navigation menu (.), Secondary Actions: Expand
+							13 link Description: Google Cloud Platform Home, Value: console.cloud.google.com/?project=cpe-334-en-034
+							15 button You're currently working in CPE 334 EN-034. Hit enter to switch projects, folders, or organizations
+							16 container Google Cloud Platform
+								17 combo box (collapsed) Secondary Actions: Expand
+									18 search text field (settable) Description: Enter query to search for resources, docs, products, and more, ID: mat-input-OneCloudBarMicroUi__1ed8dad7-8a9d-412d-9203-5c7f126f66630
+								19 button (disabled) Description: Search, ID: search-query-button
+									20 text Search
+							21 button Description: Open or close Gemini Cloud Assist chat (Alt G), ID: pcc-duet-chat-container
+							22 button Activate Cloud Shell (G then S)
+							23 pop up button 3 unread notifications. Open notifications
+								24 text 3
+							25 pop up button Description: Settings and utilities, ID: pcc-utilities-menu-trigger
+							26 pop up button (collapsed) Description: Account: Smork (punge089@gmail.com), Secondary Actions: Expand
+						27 container
+							28 container Cloud Run
+								29 heading Cloud Run, Value: 2
+									30 link Description: Cloud Run, Value: console.cloud.google.com/run?project=cpe-334-en-034
+								31 button (expanded) Description: Toggle Cloud Run navigation menu, ID: nav-minimize-toggle-button, Secondary Actions: Collapse
+								32 content list Overview, 1 of 5 More options Services, 2 of 5 More options Jobs, 3 of 5 More options Worker pools, 4 of 5 More options Domain mappings, 5 of 5 More options
+									33 container
+										34 link Description: Overview, 1 of 5, Value: console.cloud.google.com/run/overview?project=cpe-334-en-034, ID: cfctest-section-nav-item-CLOUD_RUN_OVERVIEW_SECTION
+										35 pop up button (collapsed) Description: More options, ID: nav-pin-menu-button-CLOUD_RUN_OVERVIEW_SECTION, Secondary Actions: Expand
+									36 container
+										37 link Description: Services, 2 of 5, Value: console.cloud.google.com/run/services?project=cpe-334-en-034, ID: cfctest-section-nav-item-CLOUD_RUN_SERVICES_SECTION
+										38 pop up button (collapsed) Description: More options, ID: nav-pin-menu-button-CLOUD_RUN_SERVICES_SECTION, Secondary Actions: Expand
+									39 container
+										40 link Description: Jobs, 3 of 5, Value: console.cloud.google.com/run/jobs?project=cpe-334-en-034, ID: cfctest-section-nav-item-CLOUD_RUN_JOBS_SECTION
+										41 pop up button (collapsed) Description: More options, ID: nav-pin-menu-button-CLOUD_RUN_JOBS_SECTION, Secondary Actions: Expand
+									42 container
+										43 link Description: Worker pools, 4 of 5, Value: console.cloud.google.com/run/worker-pools?project=cpe-334-en-034, ID: cfctest-section-nav-item-CLOUD_RUN_WORKER_POOLS_SECTION
+										44 pop up button (collapsed) Description: More options, ID: nav-pin-menu-button-CLOUD_RUN_WORKER_POOLS_SECTION, Secondary Actions: Expand
+									45 container
+										46 link Description: Domain mappings, 5 of 5, Value: console.cloud.google.com/run/domains?project=cpe-334-en-034, ID: cfctest-section-nav-item-CLOUD_RUN_DOMAIN_MAPPINGS_SECTION
+										47 pop up button (collapsed) Description: More options, ID: nav-pin-menu-button-CLOUD_RUN_DOMAIN_MAPPINGS_SECTION, Secondary Actions: Expand
+								48 button Explore Cloud Run Release Notes
+							49 container
+								50 container
+									51 container s8s-service-details-action-bar
+										52 heading Service details, Value: 1
+											53 text Service details
+										54 toolbar Service details
+											55 button Description: Open testing subtask, ID: toolbar-element-buWKDs1C
+												56 text Test
+											57 button Description: Refresh, ID: toolbar-element-BCHbprtb
+												58 text Refresh
+											59 button Description: Delete service, ID: toolbar-element-J8BsvUjr
+												60 text Delete
+											61 button (disabled) Description: SSH, ID: toolbar-element-he2xrFdJ
+												62 text SSH
+												63 container preview
+											64 text No changes made
+											65 button Redeploy, ID: toolbar-element-D23UcLEO
+									66 image Service is healthy and serving traffic.
+									67 text classpulse URL:
+									68 link Description: https://classpulse-91139895529.asia-southeast1.run.app external, opens new window, Value: classpulse-91139895529.asia-southeast1.run.app/
+									69 button Copy to clipboard: https://classpulse-91139895529.asia-southeast1.run.app
+									70 text Region: asia-southeast1
+									71 tab group Top tab navigation bar
+										72 container
+											73 tab (selectable, settable, boolean) Observability, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id0, Value: 0
+Observability
+											74 tab (selected, settable, boolean) Revision History, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id1, Value: 1
+Revision History
+											75 tab (selectable, settable, boolean) Containers, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id2, Value: 0
+Containers
+											76 tab (selectable, settable, boolean) Networking, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id3, Value: 0
+Networking
+											77 tab (selectable, settable, boolean) Security, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id4, Value: 0
+Security
+											78 tab (selectable, settable, boolean) Scaling, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id5, Value: 0
+Scaling
+											79 tab (selectable, settable, boolean) Triggers, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id6, Value: 0
+Triggers
+											80 tab (selectable, settable, boolean) Source, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id7, Value: 0
+Source
+											81 tab (selectable, settable, boolean) YAML, ID: mat-tab-link-pantheon-host-app-id__pantheon-host-binary-id8, Value: 0
+YAML
+									82 container Description: Revision History, ID: mat-tab-nav-panel-pantheon-host-app-id__pantheon-host-binary-id0
+										83 container
+											84 container
+												85 heading Revisions, Value: 2, ID: cfc-table-caption-0
+													86 text Revisions
+												87 button Manage traffic
+													88 text Manage traffic
+												89 text Filter
+												90 container Filter
+													91 combo box (collapsed) Filter, ID: chip-list-input-goog_1586029980, Secondary Actions: Expand
+														92 text Filter revisions
+												93 button Help with filtering.
+												94 button Column display options...
+												95 Revisions
+													96 table Revisions , Navigate table with arrow keys. Enter key to interact with cell. Tab to navigate inside cell. Escape to exit cell.
+														97 row Row selection Status Name Traffic Deployed Revision tags Actions
+															98 cell Row selection
+															99 cell Status
+																100 image Revision status column header
+															101 cell Name
+																102 container
+																	103 text Name
+																	104 button Sort by Name
+															105 cell Traffic
+																106 container
+																	107 text Traffic
+																	108 button Sort by Traffic
+															109 cell Deployed
+																110 container
+																	111 text Deployed
+																	112 button Sort by Deployed
+															113 cell Revision tags
+																114 text Revision tags 
+																115 button Tooltip for a revision tags column header
+															116 cell Actions
+																117 text Actions
+														118 container
+															119 row (selected) ID: cfc-table-caption-0-row-0, classpulse-00006-6w6 classpulse-00006-6w6 100% (to latest) 10 days ago 2026-11-14 (18:17:50+0700) Add revision tags Open a menu for performing revision action
+																120 cell
+																	121 radio button (settable, integer) Description: classpulse-00006-6w6, Value: 1, ID: mat-radio-pantheon-host-app-id__pantheon-host-binary-id0-input
+																122 cell
+																123 cell
+																	124 text classpulse-00006-6w6
+																125 cell
+																	126 text 100% (to latest)
+																127 cell
+																	128 container 10 days ago 2026-11-14 (18:17:50+0700)
+																		129 text 10 days ago
+																130 cell
+																	131 button Add revision tags, ID: cfc-labelledby-message-goog_1586029984
+																132 cell
+																	133 pop up button (collapsed) Description: Open a menu for performing revision action, ID: revisions-actions-menu-classpulse-00006-6w6, Secondary Actions: Expand
+															134 row (selectable) ID: cfc-table-caption-0-row-1, classpulse-00005-qxg classpulse-00005-qxg 0% 10 days ago 2026-11-14 (18:07:15+0700) Add revision tags Open a menu for performing revision action
+																135 cell
+																	136 radio button (settable, integer) Description: classpulse-00005-qxg, Value: 0, ID: mat-radio-pantheon-host-app-id__pantheon-host-binary-id1-input
+																137 cell
+																138 cell
+																	139 text classpulse-00005-qxg
+																140 cell
+																	141 text 0%
+																142 cell
+																	143 container 10 days ago 2026-11-14 (18:07:15+0700)
+																		144 text 10 days ago
+																145 cell
+																	146 button Add revision tags, ID: cfc-labelledby-message-goog_1586029985
+																147 cell
+																	148 pop up button (collapsed) Description: Open a menu for performing revision action, ID: revisions-actions-menu-classpulse-00005-qxg, Secondary Actions: Expand
+															149 row (selectable) ID: cfc-table-caption-0-row-2, classpulse-00004-lzd classpulse-00004-lzd 0% 10 days ago 2026-11-14 (17:36:13+0700) Add revision tags Open a menu for performing revision action
+																150 cell
+																	151 radio button (settable, integer) Description: classpulse-00004-lzd, Value: 0, ID: mat-radio-pantheon-host-app-id__pantheon-host-binary-id2-input
+																152 cell
+																153 cell
+																	154 text classpulse-00004-lzd
+																155 cell
+																	156 text 0%
+																157 cell
+																	158 container 10 days ago 2026-11-14 (17:36:13+0700)
+																		159 text 10 days ago
+																160 cell
+																	161 button Add revision tags, ID: cfc-labelledby-message-goog_1586029986
+																162 cell
+																	163 pop up button (collapsed) Description: Open a menu for performing revision action, ID: revisions-actions-menu-classpulse-00004-lzd, Secondary Actions: Expand
+															164 row (selectable) ID: cfc-table-caption-0-row-3, classpulse-00003-5jd classpulse-00003-5jd 0% 10 days ago 2026-11-14 (14:24:50+0700) Add revision tags Open a menu for performing revision action
+																165 cell
+																	166 radio button (settable, integer) Description: classpulse-00003-5jd, Value: 0, ID: mat-radio-pantheon-host-app-id__pantheon-host-binary-id3-input
+																167 cell
+																168 cell
+																	169 text classpulse-00003-5jd
+																170 cell
+																	171 text 0%
+																172 cell
+																	173 container 10 days ago 2026-11-14 (14:24:50+0700)
+																		174 text 10 days ago
+																175 cell
+																	176 button Add revision tags, ID: cfc-labelledby-message-goog_1586029987
+																177 cell
+																	178 pop up button (collapsed) Description: Open a menu for performing revision action, ID: revisions-actions-menu-classpulse-00003-5jd, Secondary Actions: Expand
+															179 row (selectable) ID: cfc-table-caption-0-row-4, classpulse-00002-54d classpulse-00002-54d 0% 10 days ago 2026-11-14 (00:46:13+0700) Add revision tags Open a menu for performing revision action
+																180 cell
+																	181 radio button (settable, integer) Description: classpulse-00002-54d, Value: 0, ID: mat-radio-pantheon-host-app-id__pantheon-host-binary-id4-input
+																182 cell
+																183 cell
+																	184 text classpulse-00002-54d
+																185 cell
+																	186 text 0%
+																187 cell
+																	188 container 10 days ago 2026-11-14 (00:46:13+0700)
+																		189 text 10 days ago
+																190 cell
+																	191 button Add revision tags, ID: cfc-labelledby-message-goog_1586029988
+																192 cell
+																	193 pop up button (collapsed) Description: Open a menu for performing revision action, ID: revisions-actions-menu-classpulse-00002-54d, Secondary Actions: Expand
+															194 row (selectable) ID: cfc-table-caption-0-row-5, classpulse-00001-gv7 classpulse-00001-gv7 0% 11 days ago 2026-11-13 (23:53:37+0700) Add revision tags Open a menu for performing revision action
+																195 cell
+																	196 radio button (settable, integer) Description: classpulse-00001-gv7, Value: 0, ID: mat-radio-pantheon-host-app-id__pantheon-host-binary-id5-input
+																197 cell
+																198 cell
+																	199 text classpulse-00001-gv7
+																200 cell
+																	201 text 0%
+																202 cell
+																	203 container 11 days ago 2026-11-13 (23:53:37+0700)
+																		204 text 11 days ago
+																205 cell
+																	206 button Add revision tags, ID: cfc-labelledby-message-goog_1586029989
+																207 cell
+																	208 pop up button (collapsed) Description: Open a menu for performing revision action, ID: revisions-actions-menu-classpulse-00001-gv7, Secondary Actions: Expand
+											209 container Description: Right side panel, ID: cfc-side-panel-goog_1586029972
+												210 heading  classpulse-00006-6w6, Value: 2
+													211 text  classpulse-00006-6w6
+												212 text Deployed by classpulse-deployer@cpe-334-en-034.iam.gserviceaccount.com  using gcloud
+												213 tab group
+													214 tab (selected, settable, boolean) Containers, ID: mat-tab-group-pantheon-host-app-id__pantheon-host-binary-id0-label-0, Value: 1
+Containers
+													215 tab (selectable, settable, boolean) Networking, ID: mat-tab-group-pantheon-host-app-id__pantheon-host-binary-id0-label-1, Value: 0
+Networking
+													216 tab (selectable, settable, boolean) Security, ID: mat-tab-group-pantheon-host-app-id__pantheon-host-binary-id0-label-2, Value: 0
+Security
+													217 tab (selectable, settable, boolean) YAML, ID: mat-tab-group-pantheon-host-app-id__pantheon-host-binary-id0-label-3, Value: 0
+YAML
+												218 container Description: Containers, ID: mat-tab-group-pantheon-host-app-id__pantheon-host-binary-id0-content-0
+													219 container
+														220 heading General, Value: 2
+															221 text General
+														222 definition list
+															223 container Billing
+																224 text Billing
+															225 text Request-based
+															226 container Startup CPU boost
+																227 text Startup CPU boost
+															228 text Enabled
+															229 container Concurrency
+																230 text Concurrency
+															231 text 80
+															232 container Request timeout
+																233 text Request timeout
+															234 text 300 seconds
+															235 container Execution environment
+																236 text Execution environment
+															237 text Default
+														238 definition list
+															239 container Image
+																240 text Image
+															241 container
+																242 link Description: asia-southeast1-docker.pkg.dev/cpe-334-en-034/classpulse/classpulse@sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795 external, opens new window, Value: asia-southeast1-docker.pkg.dev/cpe-334-en-034/classpulse/classpulse@sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795
+																243 button Copy to clipboard: asia-southeast1-docker.pkg.dev/cpe-334-en-034/classpulse/classpulse@sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795
+															244 container Port
+																245 text Port
+															246 text 3000
+															247 container Build
+																248 text Build
+															249 container p6ntest-cloud-build-no-logs-available
+																250 text (no build information available) 
+																251 button Help with enabling Container analysis API
+															252 container Source
+																253 text Source
+															254 container p6ntest-source-unavailable
+																255 text (no source information available) 
+																256 button Help with enabling Container Analysis API
+															257 container Command and args
+																258 text Command and args
+															259 text (container entrypoint)
+															260 container CPU limit
+																261 text CPU limit
+															262 text 1
+															263 container Memory limit
+																264 text Memory limit
+															265 text 512MiB
+															266 container Sandbox launcher preview
+																267 text Sandbox launcher
+																268 container preview
+															269 text Disabled
+														270 container p6ntest-env-vars-unfold
+															271 heading Environment variables (3), Value: 3
+																272 button (expanded) Environment variables (3), Secondary Actions: Collapse
+																	273 text Environment variables (3)
+															274 container cfc-unfold-hidden-content-0
+																275 table ID: cfc-labelledby-message-goog_1586029982, Table containing container environment variables. , Navigate table with arrow keys. Enter key to interact with cell. Tab to navigate inside cell. Escape to exit cell.
+																	276 row Name Value
+																		277 cell Name
+																			278 text Name
+																		279 cell Value
+																			280 text Value
+																	281 container
+																		282 row SESSION_TTL_HOURS 8, ID: cfc-table-caption-2-row-0
+																			283 cell
+																				284 text SESSION_TTL_HOURS
+																			285 cell
+																				286 text 8
+																		287 row DATABASE_URL Secret: classpulse-database-url:2, ID: cfc-table-caption-2-row-1
+																			288 cell
+																				289 text DATABASE_URL
+																			290 cell
+																				291 text Secret: 
+																				292 container
+																					293 link Description: classpulse-database-url, Value: console.cloud.google.com/security/secret-manager/secret/classpulse-database-url/versions?project=cpe-334-en-034
+																					294 text :2
+																		295 row LAB5_RESTART 20261114T072448Z, ID: cfc-table-caption-2-row-2
+																			296 cell
+																				297 text LAB5_RESTART
+																			298 cell
+																				299 text 20261114T072448Z
+														300 heading Volumes (0), Value: 3
+															301 button (collapsed) Volumes (0), Secondary Actions: Expand
+																302 text Volumes (0)
+														303 heading Health checks (1), Value: 3
+															304 button (collapsed) Health checks (1), Secondary Actions: Expand
+																305 text Health checks (1)
+														306 heading Cloud SQL Connections (1), Value: 4
+															307 button (collapsed) Cloud SQL Connections (1), Secondary Actions: Expand
+																308 text Cloud SQL Connections (1)
+
+The focused UI element is 0 AXWebArea Revision H…lasspulse – Cloud Run – CPE 334 EN-034 – Google Cloud console, URL: console.cloud.google.com/run/detail/asia-southeast1/classpulse/revisions?project=cpe-334-en-034

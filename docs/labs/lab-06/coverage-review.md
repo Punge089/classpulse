@@ -13,7 +13,7 @@ Use this before freezing the initial case list for **each product**. The indepen
 
 ## ClassPulse suggestions for C/D to evaluate independently
 
-These are candidate additions, **not executed/agreed cases or hints for an introduced defect**. C/D choose and refine cases from their own assessment. Existing IDs UAT-01–12 stay stable; proposed additions use UAT-CD-01 etc. A/B use PARTNER-ADD-01 etc. for the other app.
+Historical proposal examples from20November: these were candidate additions, not executed/agreed cases at that date or hints for an introduced defect. Current24November technical agreement/results are recorded below. C/D choose and refine cases from their own assessment. Existing IDs UAT-01–12 stay stable; proposed additions use UAT-CD-01 etc. A/B use PARTNER-ADD-01 etc. for the other app.
 
 | Area / AC | Gap or unusual action to consider | Concrete expectation from contract |
 |---|---|---|
@@ -51,3 +51,11 @@ Residual limitations / escalation if needed:
 ```
 
 The final PDF embeds this independent assessment, case additions/dispositions and actual results. A suggestion alone is not an executed PASS or a defect. Neither team should sign the other team's assessment or decision on their behalf.
+
+## Actual 24 November technical dispositions and residual coverage
+
+See [current checkpoint](checkpoint-20261124.md) and [received C/D A2](../../../evidence/lab-06/checkpoint-20261124/received-cd-a2/EN037-TECHNICAL-RESPONSE-A2.md). ClassPulse original12+CD01–08 technical scope is recorded. Original12 have reported passing behaviors, with08/10/11 API setup disclosed/accepted after the run for setup only. CD06 anonymous401/authenticatedPUT/DELETE404 is agreed. CD08 authenticated guarded/original2147483647 probes both404, plus prior403/409precedence observations, complete that agreed external branch; no directDB inspection is claimed.
+
+CD01 inactive/controlled-session and CD07 third respondent remain pending; no important unexecuted requirement becomesPASS. Thorough no-genuine-defect conclusion and educational-exercise entry remain NOT READY. Preserve actual peer participation and fixture limits.
+
+Workflow original01–06 and PARTNER-ADD01–06A2 are technically accepted by C/D. The [full additional cases](../../../evidence/lab-06/checkpoint-20261124/workflow-additional-cases-a2.md) preserve Unicode bounds, exploratorytrimstorage, concurrency-proof limits and restart/newinstance distinctions. A observed01/04/05expected behavior with browser-setup disposition pending; B02/03/06/additional and Aadditional01/06remain NOT RUN. Actual technical agreement does not establish execution, participant acknowledgements or a final frozen acceptance inventory.

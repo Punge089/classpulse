@@ -1,0 +1,28 @@
+Browser tab: 2, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/requests".
+0 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/requests
+	1 container My requests
+		2 text Workflow and Approval System
+		15 heading My requests, Value: 1, ID: page-title
+			16 text My requests
+		17 link Description: Create request, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/new
+		18 content list
+			19 container
+				20 link Description: Lab 5 – Submission recapture, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/c01db56d-8067-4151-842c-edd93c4e2eec
+				21 text 125.50 THB  ·  SUBMITTED
+			22 container
+				23 link Description: Lab 5 – Evidence capture, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/6b080e50-6c34-4d6b-a19f-b62cf481296c
+				24 text 125.50 THB  ·  APPROVED
+			25 container
+				26 link Description: Lab 5 browser test, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/573661f0-88ce-44bd-ab4f-c20a5afbf572
+				27 text 125.50 THB  ·  APPROVED
+			28 container
+				29 link Description: [DEMO CHECK] APPROVE 2026-11-20 15:19:44 +07, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/8abc3e60-8691-4f6d-8f73-6f091f5ce58c
+				30 text 125.50 THB  ·  APPROVED
+		31 container
+			32 text Signed in as  Requester .
+		33 button Sign out
+		12 container
+			13 text Release 
+			14 text 82a4806b5291
+
+The focused UI element is 15 heading My requests, Value: 1, ID: page-title
