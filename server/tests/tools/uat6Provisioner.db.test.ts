@@ -144,6 +144,50 @@ describe("real PostgreSQL additive transaction", () => {
             await db.$disconnect();
         }
     });
+    it("rejects a normalized email collision committed while apply waits for its first table lock", async () => {
+        const { db, url } = await setup();
+        const approved = await readSnapshot(db);
+        const writerUrl = new URL(url);
+        writerUrl.searchParams.set("application_name", "uat6-race-writer");
+        const applyUrl = new URL(url);
+        applyUrl.searchParams.set("application_name", "uat6-race-provisioner");
+        const writer = new PrismaClient({ datasources: { db: { url: writerUrl.toString() } }, log: [] });
+        const applying = new PrismaClient({ datasources: { db: { url: applyUrl.toString() } }, log: [] });
+        let writerReady!: () => void;
+        let releaseWriter!: () => void;
+        const ready = new Promise<void>(resolve => { writerReady = resolve; });
+        const release = new Promise<void>(resolve => { releaseWriter = resolve; });
+        const writerTransaction = writer.$transaction(async tx => {
+            await tx.user.create({ data: { email: " UAT6.EXTRA@classpulse.test ", fullName: "Concurrent writer", role: "RESPONDENT", passwordHash: "preserve" } });
+            writerReady();
+            await release;
+        });
+        try {
+            await ready;
+            const applyPromise = provisionUsers(applying, options(approved, applyUrl.toString()));
+            let waiting = false;
+            for (let attempt = 0; attempt < 100; attempt++) {
+                const rows = await db.$queryRawUnsafe<{ pid: number }[]>("SELECT pid FROM pg_stat_activity WHERE application_name = 'uat6-race-provisioner' AND wait_event_type = 'Lock' AND query LIKE 'LOCK TABLE%'");
+                if (rows.length > 0) {
+                    waiting = true;
+                    break;
+                }
+                await new Promise(resolve => setTimeout(resolve, 20));
+            }
+            expect(waiting).toBe(true);
+            releaseWriter();
+            await writerTransaction;
+            await expect(applyPromise).rejects.toThrow("EMAIL_COLLISION");
+            expect(await db.user.count()).toBe(6);
+            expect(await db.enrollment.count()).toBe(3);
+            expect(await db.user.count({ where: { email: { startsWith: "uat6." } } })).toBe(0);
+        }
+        finally {
+            releaseWriter();
+            await writerTransaction.catch(() => undefined);
+            await Promise.all([writer.$disconnect(), applying.$disconnect(), db.$disconnect()]);
+        }
+    }, 15000);
     it("refuses missing human confirmation before writes", async () => {
         const { db, url } = await setup();
         try {
