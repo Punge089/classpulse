@@ -1,0 +1,132 @@
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/work80-provisioner/server
+
+ ❯ tests/tools/uat6Provisioner.test.ts (17 tests | 17 failed) 38ms
+   × UAT6 baseline safety contract > accepts the exact intended existing fixture without changing it 10ms
+     → NOT_IMPLEMENTED
+   × UAT6 baseline safety contract > refuses normalized collision uat6.extra@classpulse.test 8ms
+     → expected [Function] to throw error including 'EMAIL_COLLISION' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses normalized collision  UAT6.INACTIVE@classpulse.test  1ms
+     → expected [Function] to throw error including 'EMAIL_COLLISION' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation inactive-owner 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation wrong-owner-role 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation wrong-student-role 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation missing-student 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation student3-enrolled 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation student1-extra 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation wrong-course-owner 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > refuses baseline deviation changed-id 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × UAT6 baseline safety contract > does not accept an equally incorrect human baseline as proof 1ms
+     → expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+   × local DB test target guard > accepts only dedicated localhost test database 1ms
+     → NOT_IMPLEMENTED
+   × local DB test target guard > refuses non-isolated target 1ms
+     → expected [Function] to throw error including 'TEST_TARGET_REJECTED' but got 'NOT_IMPLEMENTED'
+   × local DB test target guard > refuses non-isolated target 1ms
+     → expected [Function] to throw error including 'TEST_TARGET_REJECTED' but got 'NOT_IMPLEMENTED'
+   × local DB test target guard > refuses non-isolated target 3ms
+     → expected [Function] to throw error including 'TEST_TARGET_REJECTED' but got 'NOT_IMPLEMENTED'
+   × local DB test target guard > refuses non-isolated target 1ms
+     → expected [Function] to throw error including 'TEST_TARGET_REJECTED' but got 'NOT_IMPLEMENTED'
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 17 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > accepts the exact intended existing fixture without changing it
+Error: NOT_IMPLEMENTED
+ ❯ Module.validateBaseline src/lib/uat6Provisioner.ts:8:95
+      6|  collisions:{email:string}[];
+      7| };
+      8| export function validateBaseline(_actual:Snapshot,_approved:Snapshot):…
+       |                                                                                               ^
+      9| export function assertLocalTestTarget(_url:string):void{throw new Erro…
+     10| 
+ ❯ tests/tools/uat6Provisioner.test.ts:14:134
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/17]⎯
+
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses normalized collision uat6.extra@classpulse.test
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses normalized collision  UAT6.INACTIVE@classpulse.test 
+AssertionError: expected [Function] to throw error including 'EMAIL_COLLISION' but got 'NOT_IMPLEMENTED'
+
+Expected: "EMAIL_COLLISION"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/tools/uat6Provisioner.test.ts:16:133
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/17]⎯
+
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation inactive-owner
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation wrong-owner-role
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation wrong-student-role
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation missing-student
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation student3-enrolled
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation student1-extra
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation wrong-course-owner
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > refuses baseline deviation changed-id
+AssertionError: expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+
+Expected: "BASELINE_MISMATCH"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/tools/uat6Provisioner.test.ts:18:578
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/17]⎯
+
+ FAIL  tests/tools/uat6Provisioner.test.ts > UAT6 baseline safety contract > does not accept an equally incorrect human baseline as proof
+AssertionError: expected [Function] to throw error including 'BASELINE_MISMATCH' but got 'NOT_IMPLEMENTED'
+
+Expected: "BASELINE_MISMATCH"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/tools/uat6Provisioner.test.ts:19:173
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/17]⎯
+
+ FAIL  tests/tools/uat6Provisioner.test.ts > local DB test target guard > accepts only dedicated localhost test database
+Error: NOT_IMPLEMENTED
+ ❯ Module.assertLocalTestTarget src/lib/uat6Provisioner.ts:9:63
+      7| };
+      8| export function validateBaseline(_actual:Snapshot,_approved:Snapshot):…
+      9| export function assertLocalTestTarget(_url:string):void{throw new Erro…
+       |                                                               ^
+     10| 
+ ❯ tests/tools/uat6Provisioner.test.ts:22:65
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/17]⎯
+
+ FAIL  tests/tools/uat6Provisioner.test.ts > local DB test target guard > refuses non-isolated target
+ FAIL  tests/tools/uat6Provisioner.test.ts > local DB test target guard > refuses non-isolated target
+ FAIL  tests/tools/uat6Provisioner.test.ts > local DB test target guard > refuses non-isolated target
+ FAIL  tests/tools/uat6Provisioner.test.ts > local DB test target guard > refuses non-isolated target
+AssertionError: expected [Function] to throw error including 'TEST_TARGET_REJECTED' but got 'NOT_IMPLEMENTED'
+
+Expected: "TEST_TARGET_REJECTED"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/tools/uat6Provisioner.test.ts:24:78
+     22|  it("accepts only dedicated localhost test database",()=>expect(assert…
+     23|  for(const url of ["postgresql://test:test@localhost/classpulse","post…
+     24|  it("refuses non-isolated target",()=>expect(()=>assertLocalTestTarget…
+       |                                                                              ^
+     25| });
+     26| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/17]⎯
+
+ Test Files  1 failed (1)
+      Tests  17 failed (17)
+   Start at  22:40:25
+   Duration  1.41s (transform 83ms, setup 55ms, collect 81ms, tests 38ms, environment 0ms, prepare 842ms)
+
