@@ -1,6 +1,6 @@
-# ClassPulse Sprint 1 UAT handoff - proposed v1.1
+# ClassPulse Sprint 1 UAT handoff - proposed v1.4
 
-**Status:** Student B's static review revision, proposed v1.1. It is not yet an agreed or executed UAT plan. No partner execution, result, defect, or acceptance is claimed. Product Team A/B and independent UAT Team C/D must freeze the actual version/accounts/case list before execution.
+**Status:** Student B's static review revision, proposed v1.4. It is not yet an agreed or executed UAT plan. No partner execution, result, defect, or acceptance is claimed. Product Team A/B and independent UAT Team C/D must freeze the actual version/accounts/case list before execution.
 
 Read [the coverage review](coverage.md) and [the contract/source crosswalk](contract-extracts.md). Account labels "Owner A/B" below refer to synthetic application users, not the human team members. The shared kit's 03-RECORDS.md has blank templates; A's records-template.md is in PR #69 and becomes available after that PR merges. Human tester C/D assignments remain proposals.
 
@@ -285,11 +285,29 @@ Known limits to agree before freezing the independent case list:
 
 UAT is not an exhaustive duplication of developer tests. Residual items remain in the Sprint 1 contract. Both teams must agree any added subcases before execution; do not silently drop a listed requirement or claim complete AC coverage because an ID appears in a table.
 
+## Current instructor clarification: independent coverage and no-defect exercise
+
+Student A supplied the full announcement titled “Lab 6: Clarification for Teams with No UAT Defects” on 20 November 2026. Apply its instructions as current Lab 6 planning guidance. The original post's author, date and access were not independently verified. See [Issue #74](https://github.com/Punge089/classpulse/issues/74) and the clarification materials proposed in [PR #75](https://github.com/Punge089/classpulse/pull/75).
+
+### Coverage before execution
+
+Each independent UAT Team must assess the developer-supplied cases against important implemented Sprint 1 requirements and acceptance criteria before freezing the case inventory. Map exact expected outcomes, record covered/partial/missing/unclear areas, propose concrete additions where important gaps remain, and record the Product Team's actual disposition. This developer-prepared handoff and its coverage map are inputs; they are not the other team's independent audit or an execution result. Keep all cases and additions proposed until the teams agree them. A proposed case is not a PASS, FAIL or finding.
+
+### Standardized procedure if thorough UAT finds no genuine defect
+
+Only after the independent coverage audit and thorough execution of the agreed inventory may the teams conclude that no genuine defect was found. If that is the actual result, the Developer Team creates a new commit on Sprint staging that reintroduces one previously corrected defect. If no suitable earlier defect exists, the supplied instructor clarification permits disabling one existing required-field validation rule as the fallback. The UAT Team receives the exercise version without advance disclosure of the exact behavior, tests independently, and reports any finding through the ordinary process.
+
+After a reported exercise finding, preserve the complete educational correction chain: a meaningful failing automated test (RED), correction (GREEN), regression checks, teammate review, required CI, corrected deployment and independent retest. Identify the inserted defect as an educational exercise; do not describe it as a naturally occurring defect.
+
+The clarification does not authorize weakening or bypassing required tests, CI, branch protections, or human cloud gates. Do not assume the deliberately faulty staging commit can pass mandatory CI, and do not replace the healthy assessed main release with it. Keep the healthy baseline and its evidence identifiable. Ask the instructor/partner only about an actual staging or isolated-exposure conflict; never bypass a control. Humans perform and authorize cloud operations.
+
+**Status:** The independent audit, UAT, no-defect conclusion and any exercise remain pending. No defect has been selected or introduced by this document update.
+
 ## Results, reporting and acceptance
 
 Use the shared kit's blank R03-R07 forms (03-RECORDS.md); A's equivalent records-template.md is in PR #69 and is available after that PR merges. Default execution status is NOT RUN. Critical/major defects or required BLOCKED tests prevent acceptance. Minor limitations need explicit UAT Team acceptance. Only the independent team records the final decision for the exact tested release.
 
-If no legitimate defect arises, follow the TA-controlled isolated exercise path in the master plan; do not manufacture a live defect or invent a finding.
+If thorough independent UAT finds no genuine defect, use the current instructor procedure below only after the coverage audit and full agreed test inventory are complete. Do not wait for a bespoke TA exercise assignment, and do not report an introduced educational exercise as a naturally discovered defect.
 
 ## Version history
 
@@ -300,3 +318,4 @@ If no legitimate defect arises, follow the TA-controlled isolated exercise path 
 | Proposed 1.1, 19 Nov 2026 | Student B / book6349, AI-assisted draft | Fix case order/data-pair rule, add missing-answer backend probe and failed-login session check, correct empty-average display, restrict API helper, repair control characters, document seed limit and AC gaps | A review and partner agreement pending; not executed |
 | Proposed 1.2, 19 Nov 2026 | Student B / book6349, AI-assisted follow-up (GPT-6 Luna) | Clarify that only successful respondent/survey response-pair reuse is restricted; permit planned negative POST probes; make S1 close ordering unambiguous; remove trailing blank line | A re-review pending; not executed |
 | Proposed 1.3, 20 Nov 2026 | Student B / book6349, AI-assisted follow-up (GPT-6) | Record that original AI-assisted commit 7fbac15 omitted its Co-Authored-By trailer; original assisting model is unverified in the available commit metadata | A re-review pending; not executed |
+| Proposed 1.4, 24 Nov 2026 | Student B / book6349, AI-assisted follow-up (Codex GPT-6) | Apply the supplied independent-coverage and standardized no-defect guidance; replace the superseded generic TA-exercise fallback; preserve pending execution status | A review and partner agreement pending; not executed |
