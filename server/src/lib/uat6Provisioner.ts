@@ -106,6 +106,23 @@ export type ApplyOptions = {
     ];
     testFailure?: "first-user" | "second-user" | "enrollment";
 };
+async function assertReviewedSchema(db: Db): Promise<void> {
+    const actual = await db.$queryRawUnsafe<{
+        table_name: string;
+        column_name: string;
+        udt_name: string;
+        is_nullable: string;
+    }[]>("SELECT table_name,column_name,udt_name,is_nullable FROM information_schema.columns WHERE table_schema=current_schema() AND table_name IN ('User','Course','Enrollment') ORDER BY table_name,column_name");
+    const definition: Record<string, Record<string, string>> = {
+        User: { id: "int4", email: "text", fullName: "text", role: "Role", isActive: "bool", passwordHash: "text", createdAt: "timestamp" },
+        Course: { id: "int4", code: "text", title: "text", ownerId: "int4" },
+        Enrollment: { id: "int4", userId: "int4", courseId: "int4" }
+    };
+    const expected = Object.entries(definition).flatMap(([table, columns]) => Object.entries(columns).map(([column, type]) => table + "." + column + ":" + type + ":NO")).sort();
+    const observed = actual.map(row => row.table_name + "." + row.column_name + ":" + row.udt_name + ":" + row.is_nullable).sort();
+    if (JSON.stringify(observed) !== JSON.stringify(expected))
+        throw new Error("SCHEMA_MISMATCH");
+}
 export async function inspectUsers(db: PrismaClient): Promise<{
     database: string;
     baseline: Snapshot;
@@ -132,8 +149,10 @@ export async function provisionUsers(db: PrismaClient, options: ApplyOptions) {
         throw new Error("HUMAN_GATE_REQUIRED");
     // Expensive hashing and all human input happen before acquiring database locks.
     const hashes = await Promise.all(options.passwords.map(p => hashPassword(p)));
-    const fail = (stage: string) => { if (local && options.testFailure === stage)
-        throw new Error("APPLY_FAILED"); };
+    const fail = (stage: string) => {
+        if (local && options.testFailure === stage)
+            throw new Error("APPLY_FAILED");
+    };
     try {
         return await db.$transaction(async (tx) => {
             await tx.$executeRawUnsafe("SET LOCAL lock_timeout = '3s'");
@@ -146,6 +165,7 @@ export async function provisionUsers(db: PrismaClient, options: ApplyOptions) {
                 throw new Error("TARGET_MISMATCH");
             // Fixed order, before guards. This also blocks other ordinary writes to these tables.
             await tx.$executeRawUnsafe('LOCK TABLE "User","Course","Enrollment" IN SHARE ROW EXCLUSIVE MODE');
+            await assertReviewedSchema(tx);
             const baseline = await readSnapshot(tx);
             const { courseId } = validateBaseline(baseline, options.approved);
             const extra = await tx.user.create({ data: { email: TARGET_EMAILS[0], fullName: "UAT6 Extra Respondent", role: "RESPONDENT", isActive: true, passwordHash: hashes[0] }, select: { id: true, email: true, role: true, isActive: true } });
@@ -162,7 +182,7 @@ export async function provisionUsers(db: PrismaClient, options: ApplyOptions) {
     }
     catch (error) {
         const message = error instanceof Error ? error.message : "";
-        if (["EMAIL_COLLISION", "BASELINE_MISMATCH", "TARGET_MISMATCH"].includes(message))
+        if (["EMAIL_COLLISION", "BASELINE_MISMATCH", "TARGET_MISMATCH", "SCHEMA_MISMATCH"].includes(message))
             throw new Error(message);
         throw new Error("APPLY_FAILED");
     }

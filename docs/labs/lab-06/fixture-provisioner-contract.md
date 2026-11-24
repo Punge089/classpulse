@@ -91,3 +91,6 @@ Human run steps AFTER A approves the exact executable head and CI:
 2. In server/, invoke the already-installed tsx tool with tools/provision-uat6.ts inspect; save only the sanitized JSON baseline privately and review against merged procedure78. Stop on any mismatch/collision.
 3. Invoke tools/provision-uat6.ts apply with the path to that approved baseline JSON. Review the code first. The human personally types target confirmation and both passwords into hidden prompts. This command is not executed by the agent.
 4. Human repeats read-only verification and delivers credentials privately to C/D. C/D independently records CD01/CD07. Neither fixture creation nor an executable merge is UAT acceptance.
+
+Final schema guard checkpoint: physical column names/types/nullability of User,Course,Enrollment must match the reviewed CP-V01 shape before inserts. Additional schema-column assertion is RED at283e58e(1failed/9passed), then GREEN10DB checks. The test Enrollment foreign keys were corrected to required/non-null to match the actual Prisma schema. This is a column-level guard, not proof of all possible schema/trigger drift; human version/schema review remains required.
+Final local suite after the schema guard:138passed/0failed/0skipped(105existing+33new); server build and strict CLI typecheck exited0. No live operation ran.

@@ -44,7 +44,7 @@ async function setup() {
     await db.$executeRawUnsafe('CREATE TYPE "Role" AS ENUM (\'OWNER\',\'RESPONDENT\')');
     await db.$executeRawUnsafe('CREATE TABLE "User" (id SERIAL PRIMARY KEY,email TEXT UNIQUE NOT NULL,"fullName" TEXT NOT NULL,role "Role" NOT NULL,"isActive" BOOLEAN NOT NULL DEFAULT TRUE,"passwordHash" TEXT NOT NULL,"createdAt" TIMESTAMP NOT NULL DEFAULT now())');
     await db.$executeRawUnsafe('CREATE TABLE "Course" (id SERIAL PRIMARY KEY,code TEXT UNIQUE NOT NULL,title TEXT NOT NULL,"ownerId" INTEGER NOT NULL REFERENCES "User"(id))');
-    await db.$executeRawUnsafe('CREATE TABLE "Enrollment" (id SERIAL PRIMARY KEY,"userId" INTEGER REFERENCES "User"(id),"courseId" INTEGER REFERENCES "Course"(id),UNIQUE("courseId","userId"))');
+    await db.$executeRawUnsafe('CREATE TABLE "Enrollment" (id SERIAL PRIMARY KEY,"userId" INTEGER NOT NULL REFERENCES "User"(id),"courseId" INTEGER NOT NULL REFERENCES "Course"(id),UNIQUE("courseId","userId"))');
     for (const [email, role] of [["ann.lee@classpulse.test", "OWNER"], ["ben.kim@classpulse.test", "OWNER"], ["student1@classpulse.test", "RESPONDENT"], ["student2@classpulse.test", "RESPONDENT"], ["student3@classpulse.test", "RESPONDENT"]])
         await db.user.create({ data: { email, role: role as "OWNER" | "RESPONDENT", fullName: "Synthetic fixture", passwordHash: "preserve-internal-test-only" } });
     await db.course.create({ data: { code: "CPE334", title: "Synthetic334", ownerId: 1 } });
@@ -186,14 +186,16 @@ it("inspect runs a real read-only transaction and preserves rows", async () => {
         await db.$disconnect();
     }
 });
-
-it("refuses an unexpected schema column before inserting fixtures",async()=>{
- const {db,url}=await setup();
- try{
- const approved=await readSnapshot(db);
- await db.$executeRawUnsafe('ALTER TABLE "User" ADD COLUMN "unreviewedField" TEXT');
- await expect(provisionUsers(db,options(approved,url))).rejects.toThrow("SCHEMA_MISMATCH");
- expect(await db.user.count()).toBe(5);expect(await db.enrollment.count()).toBe(3);
- }finally{await db.$disconnect();}
+it("refuses an unexpected schema column before inserting fixtures", async () => {
+    const { db, url } = await setup();
+    try {
+        const approved = await readSnapshot(db);
+        await db.$executeRawUnsafe('ALTER TABLE "User" ADD COLUMN "unreviewedField" TEXT');
+        await expect(provisionUsers(db, options(approved, url))).rejects.toThrow("SCHEMA_MISMATCH");
+        expect(await db.user.count()).toBe(5);
+        expect(await db.enrollment.count()).toBe(3);
+    }
+    finally {
+        await db.$disconnect();
+    }
 });
-
