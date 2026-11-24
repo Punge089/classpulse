@@ -61,3 +61,22 @@ The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troub
    Start at  22:48:04
    Duration  34.86s (transform 514ms, setup 266ms, collect 5.01s, tests 21.54s, environment 5ms, prepare 3.04s)
 
+
+CLI follow-up: require explicit DATABASE_URL before dynamic Prisma load so SDK dotenv behavior cannot select an unintended connection. Focused23unit/CLI assertions passed; strict CLI typecheck exited0. Full137test regression above precedes this import-order-only change; current-head CI reruns the full suite.
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/work80-provisioner/server
+
+ ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 3520ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 1316ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 930ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 770ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 463ms
+
+ Test Files  1 passed (1)
+      Tests  23 passed (23)
+   Start at  22:51:43
+   Duration  4.90s (transform 159ms, setup 88ms, collect 111ms, tests 3.52s, environment 0ms, prepare 489ms)
+
+

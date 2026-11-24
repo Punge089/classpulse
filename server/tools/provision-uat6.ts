@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import type { PrismaClient } from "@prisma/client";
 import { readFile } from "node:fs/promises";
 import { createInterface } from "node:readline/promises";
 import { inspectUsers, provisionUsers, type Snapshot } from "../src/lib/uat6Provisioner";
@@ -46,6 +46,7 @@ async function main() {
     const parsed = new URL(url);
     if (!["postgres:", "postgresql:"].includes(parsed.protocol) || parsed.pathname !== "/classpulse")
         throw new Error("TARGET_MISMATCH");
+    const { PrismaClient } = await import("@prisma/client");
     if (mode === "inspect") {
         const db = new PrismaClient({ datasources: { db: { url } }, log: [] });
         try {
