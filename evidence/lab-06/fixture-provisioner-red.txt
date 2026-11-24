@@ -130,3 +130,116 @@ Received: "NOT_IMPLEMENTED"
    Start at  22:40:25
    Duration  1.41s (transform 83ms, setup 55ms, collect 81ms, tests 38ms, environment 0ms, prepare 842ms)
 
+
+DB test preparation note: initial server guard used inet text including a mask, so suite setup failed TEST_SERVER_NOT_LOCAL and Vitest reported 8 skipped. Corrected formatting to host(inet_server_addr()), keeping loopback requirement. The following actual run reaches all eight NOT_IMPLEMENTED failures; no test was disabled or weakened.
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/work80-provisioner/server
+
+ ❯ tests/tools/uat6Provisioner.db.test.ts (8 tests | 8 failed) 3859ms
+   × real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows 360ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after first-user 242ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after second-user 324ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after enrollment 226ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > refuses a case-variant collision without changing the existing hash 233ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > rejects changed student3 enrollment inside the guarded transaction 263ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > allows at most one of two concurrent applies 244ms
+     → NOT_IMPLEMENTED
+   × real PostgreSQL additive transaction > refuses missing human confirmation before writes 223ms
+     → NOT_IMPLEMENTED
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows
+Error: NOT_IMPLEMENTED
+ ❯ Module.readSnapshot src/lib/uat6Provisioner.ts:49:78
+     47| 
+     48| import type {PrismaClient} from "@prisma/client";
+     49| export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>…
+       |                                                                              ^
+     50| export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetCo…
+     51| export async function provisionUsers(_db:PrismaClient,_options:ApplyOp…
+ ❯ tests/tools/uat6Provisioner.db.test.ts:49:89
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after first-user
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after second-user
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after enrollment
+Error: NOT_IMPLEMENTED
+ ❯ Module.readSnapshot src/lib/uat6Provisioner.ts:49:78
+     47| 
+     48| import type {PrismaClient} from "@prisma/client";
+     49| export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>…
+       |                                                                              ^
+     50| export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetCo…
+     51| export async function provisionUsers(_db:PrismaClient,_options:ApplyOp…
+ ❯ tests/tools/uat6Provisioner.db.test.ts:58:89
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > refuses a case-variant collision without changing the existing hash
+Error: NOT_IMPLEMENTED
+ ❯ Module.readSnapshot src/lib/uat6Provisioner.ts:49:78
+     47| 
+     48| import type {PrismaClient} from "@prisma/client";
+     49| export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>…
+       |                                                                              ^
+     50| export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetCo…
+     51| export async function provisionUsers(_db:PrismaClient,_options:ApplyOp…
+ ❯ tests/tools/uat6Provisioner.db.test.ts:64:56
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > rejects changed student3 enrollment inside the guarded transaction
+Error: NOT_IMPLEMENTED
+ ❯ Module.readSnapshot src/lib/uat6Provisioner.ts:49:78
+     47| 
+     48| import type {PrismaClient} from "@prisma/client";
+     49| export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>…
+       |                                                                              ^
+     50| export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetCo…
+     51| export async function provisionUsers(_db:PrismaClient,_options:ApplyOp…
+ ❯ tests/tools/uat6Provisioner.db.test.ts:69:56
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > allows at most one of two concurrent applies
+Error: NOT_IMPLEMENTED
+ ❯ Module.readSnapshot src/lib/uat6Provisioner.ts:49:78
+     47| 
+     48| import type {PrismaClient} from "@prisma/client";
+     49| export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>…
+       |                                                                              ^
+     50| export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetCo…
+     51| export async function provisionUsers(_db:PrismaClient,_options:ApplyOp…
+ ❯ tests/tools/uat6Provisioner.db.test.ts:74:56
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > refuses missing human confirmation before writes
+Error: NOT_IMPLEMENTED
+ ❯ Module.readSnapshot src/lib/uat6Provisioner.ts:49:78
+     47| 
+     48| import type {PrismaClient} from "@prisma/client";
+     49| export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>…
+       |                                                                              ^
+     50| export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetCo…
+     51| export async function provisionUsers(_db:PrismaClient,_options:ApplyOp…
+ ❯ tests/tools/uat6Provisioner.db.test.ts:80:56
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ Test Files  1 failed (1)
+      Tests  8 failed (8)
+   Start at  22:43:37
+   Duration  4.62s (transform 108ms, setup 54ms, collect 143ms, tests 3.86s, environment 0ms, prepare 219ms)
+
+

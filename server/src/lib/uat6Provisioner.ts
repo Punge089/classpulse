@@ -44,3 +44,9 @@ export function assertLocalTestTarget(raw:string):void{
  if(!["postgres:","postgresql:"].includes(u.protocol)||!["localhost","127.0.0.1","[::1]"].includes(u.hostname)||u.pathname!=="/classpulse_fixture_test")throw new Error();
  }catch{throw new Error("TEST_TARGET_REJECTED");}
 }
+
+import type {PrismaClient} from "@prisma/client";
+export async function readSnapshot(_db:PrismaClient):Promise<Snapshot>{throw new Error("NOT_IMPLEMENTED");}
+export type ApplyOptions={approved:Snapshot;confirmed:boolean;targetConfirmation:string;testUrl?:string;passwords:[string,string];testFailure?:"first-user"|"second-user"|"enrollment"};
+export async function provisionUsers(_db:PrismaClient,_options:ApplyOptions):Promise<unknown>{throw new Error("NOT_IMPLEMENTED");}
+
