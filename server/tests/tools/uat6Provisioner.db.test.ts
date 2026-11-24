@@ -186,3 +186,14 @@ it("inspect runs a real read-only transaction and preserves rows", async () => {
         await db.$disconnect();
     }
 });
+
+it("refuses an unexpected schema column before inserting fixtures",async()=>{
+ const {db,url}=await setup();
+ try{
+ const approved=await readSnapshot(db);
+ await db.$executeRawUnsafe('ALTER TABLE "User" ADD COLUMN "unreviewedField" TEXT');
+ await expect(provisionUsers(db,options(approved,url))).rejects.toThrow("SCHEMA_MISMATCH");
+ expect(await db.user.count()).toBe(5);expect(await db.enrollment.count()).toBe(3);
+ }finally{await db.$disconnect();}
+});
+

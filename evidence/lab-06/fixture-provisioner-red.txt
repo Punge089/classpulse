@@ -243,3 +243,68 @@ Error: NOT_IMPLEMENTED
    Duration  4.62s (transform 108ms, setup 54ms, collect 143ms, tests 3.86s, environment 0ms, prepare 219ms)
 
 
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/work80-provisioner/server
+
+ ❯ tests/tools/uat6Provisioner.db.test.ts (10 tests | 1 failed) 5175ms
+   ✓ real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows 809ms
+   ✓ real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after first-user 503ms
+   ✓ real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after second-user 568ms
+   ✓ real PostgreSQL additive transaction > rolls back actual inserts when failure occurs after enrollment 462ms
+   ✓ real PostgreSQL additive transaction > refuses a case-variant collision without changing the existing hash 437ms
+   ✓ real PostgreSQL additive transaction > rejects changed student3 enrollment inside the guarded transaction 418ms
+   ✓ real PostgreSQL additive transaction > allows at most one of two concurrent applies 564ms
+   ✓ real PostgreSQL additive transaction > refuses missing human confirmation before writes 338ms
+   ✓ inspect runs a real read-only transaction and preserves rows 372ms
+   × refuses an unexpected schema column before inserting fixtures 446ms
+     → promise resolved "{ …(3) }" instead of rejecting
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > refuses an unexpected schema column before inserting fixtures
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- [Error: rejected promise]
++ Object {
++   "enrollment": Object {
++     "courseId": 1,
++     "id": 4,
++     "userId": 6,
++   },
++   "existingBaselineUnchanged": true,
++   "users": Array [
++     Object {
++       "email": "uat6.extra@classpulse.test",
++       "id": 6,
++       "isActive": true,
++       "role": "RESPONDENT",
++     },
++     Object {
++       "email": "uat6.inactive@classpulse.test",
++       "id": 7,
++       "isActive": false,
++       "role": "RESPONDENT",
++     },
++   ],
++ }
+
+ ❯ tests/tools/uat6Provisioner.db.test.ts:195:55
+    193|  const approved=await readSnapshot(db);
+    194|  await db.$executeRawUnsafe('ALTER TABLE "User" ADD COLUMN "unreviewed…
+    195|  await expect(provisionUsers(db,options(approved,url))).rejects.toThro…
+       |                                                       ^
+    196|  expect(await db.user.count()).toBe(5);expect(await db.enrollment.coun…
+    197|  }finally{await db.$disconnect();}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 9 passed (10)
+   Start at  22:53:19
+   Duration  6.09s (transform 154ms, setup 70ms, collect 202ms, tests 5.17s, environment 0ms, prepare 264ms)
+
+
