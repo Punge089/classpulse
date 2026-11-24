@@ -1,4 +1,4 @@
-# Sprint 1 contract extracts and source crosswalk — B review v1.1
+# Sprint 1 contract extracts and source crosswalk — B review v1.2
 
 **Status:** Static review material. These notes explain the Sprint 1 expectations used to review the cases; they do not change the contracts or record execution results.
 
@@ -102,8 +102,15 @@ The repository seed requires the environment variable SEED_PASSWORD, but this do
 
 For a new execution round, choose a new run ID and fresh timestamped survey titles. Recreate the needed surveys through the app, retain previous synthetic records, and use new respondent/survey pairs for any retest that needs a successful submission. Do not run seed/reset/delete operations on live data. UAT-04 is the only planned same-run duplicate POST and exists solely to verify rejection after one successful submission. If a fixture/account is absent, block the affected cases and ask the authorized human operator; do not create live enrollments or accounts.
 
+## Lab 6 process clarification; Sprint 1 contract unchanged
+
+The instructor clarification supplied on 20 November 2026 changes the Lab 6 UAT process, not the pinned Sprint 1 contract text or its expected outcomes. It requires an independent coverage audit and, only after thorough actual UAT finds no genuine defect, the standardized educational exercise described in [Issue #74](https://github.com/Punge089/classpulse/issues/74) and [PR #75](https://github.com/Punge089/classpulse/pull/75). The announcement's original publication author/date were not independently verified.
+
+This crosswalk remains a static reference to the existing contract and reviewed source. It does not authorize editing contract ACs, changing expected results, weakening automated tests or bypassing CI/branch controls. No no-defect conclusion or exercise is recorded here. Any permitted exercise must use a new Sprint staging commit, preserve blinded independent discovery, and be followed by the normal RED/GREEN, regression, teammate review, required CI, corrected deployment and independent retest. The healthy baseline and human cloud gates remain intact.
+
 ## Version history
 
 | Version | Editor | Change | State |
 |---|---|---|---|
 | Proposed 1.1, 19 Nov 2026 | Student B / book6349, AI-assisted draft | Pin contract/source bases, crosswalk AC expectations and code behavior, verify seed roles, describe safe fresh-run method and residual coverage | A review pending; static only |
+| Proposed 1.2, 24 Nov 2026 | Student B / book6349, AI-assisted follow-up (Codex GPT-6) | Record that instructor clarification supplements Lab 6 process but does not change the pinned Sprint 1 contracts; preserve static-only status | A review pending; no execution result claimed |
