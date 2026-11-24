@@ -1,6 +1,6 @@
-# Sprint 1 UAT case-to-contract coverage — B review v1.1
+# Sprint 1 UAT case-to-contract coverage — B review v1.2
 
-**Status:** Static review completed against the pinned Sprint 1 contracts and the source at sprint-2-staging commit 8c239225c75dc8f0f4db191797282ed9698850d4. All proposed cases remain NOT RUN. No runtime test, partner execution, PASS, defect, or acceptance is claimed.
+**Status:** Static review completed against the pinned Sprint 1 contracts and the source at sprint-2-staging commit 8c239225c75dc8f0f4db191797282ed9698850d4. All proposed cases remain NOT RUN. No runtime test, partner execution, PASS, defect, or acceptance is claimed. This is the developer team's proposed coverage map, not the independent UAT Team's required audit.
 
 ## Review basis
 
@@ -8,6 +8,14 @@
 - Contract text: four Sprint 1 files at 1fe3e3b82dfb0537be30223c9b598b3479b4affe; comparison confirmed those files are unchanged from the protected tag.
 - Source inspected at 8c239225c75dc8f0f4db191797282ed9698850d4, including authentication, owner/respondent routes, validation, lifecycle, summary calculation, seed fixture, and relevant UI pages.
 - This is a source/document review only. The application was not run; no browser UAT or database mutation was performed.
+
+## Independent coverage audit required before freezing cases
+
+The 20 November instructor clarification requires each independent UAT Team to make its own coverage assessment for the product it tests. This B-authored matrix helps the Product Team see proposed coverage and residual gaps; it does not substitute for C/D's independent audit of ClassPulse, and it does not assess the partner app on C/D's behalf.
+
+Before freezing an inventory, the independent team should map important implemented requirements and AC branches to supplied case IDs and exact expected outcomes; mark coverage covered, partial, missing or unclear with reasons; propose concrete additional cases for important gaps; and record the Product Team's actual response and the agreed inventory version. Preserve residual gaps rather than waiving them to fit time. Follow the supplied [clarification and audit procedure](https://github.com/Punge089/classpulse/pull/75) once that PR is reviewed and integrated.
+
+A coverage suggestion remains proposed until agreed. A no-genuine-defect conclusion requires the audit plus thorough actual execution of the agreed cases. Nothing in this static matrix establishes execution, a defect count, or acceptance.
 
 ## Case map
 
@@ -52,3 +60,9 @@ The source contracts and developer tests remain authoritative. Partial coverage 
 ## Run-result rule
 
 Create one record per materially different request/subcase. A case is PASS only when all required steps and state readbacks pass; any failed subcase makes it FAIL. If no step failed but a required step cannot run, mark it BLOCKED. Until a human tester executes it, it is NOT RUN. Independent UAT Team C/D alone records the acceptance decision.
+
+## Version history
+
+| Version | Editor | Change | State |
+|---|---|---|---|
+| Proposed 1.2, 24 Nov 2026 | Student B / book6349, AI-assisted follow-up (Codex GPT-6) | Distinguish the developer-authored case map from the mandatory independent UAT coverage audit; preserve static-only and NOT RUN status | A review pending; no UAT result claimed |
