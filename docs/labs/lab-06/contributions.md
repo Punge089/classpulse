@@ -24,7 +24,7 @@ B and external testers own their own AI-use declarations. Do not claim A configu
 
 ## Work still pending
 
-A's observed01/04/05 and received C/D ClassPulse observations are now recorded below, rather than pending as a whole. B's actual02/03/06/additional work, residual ClassPulse branches, browser setup disposition, actual peer contributions, ClassPulse correction/exercise, independent retest/decisions, finalPDF/exact-file review and humanLEB2upload/receipt remain pending. When recording these, identify actual person, time, driver/observer roles, case/Issue/PR/evidence and AI assistance/limits. Contributions need not have equal commit counts.
+A's observed01/04/05 and received C/D ClassPulse observations are now recorded below, rather than pending as a whole. B's incomplete additional work and setup/version disposition, residual ClassPulse branches, browser setup disposition, actual peer contributions, ClassPulse correction/exercise, independent retest/decisions, finalPDF/exact-file review and humanLEB2upload/receipt remain pending. When recording these, identify actual person, time, driver/observer roles, case/Issue/PR/evidence and AI assistance/limits. Contributions need not have equal commit counts.
 
 ## Instructor clarification preparation
 
@@ -39,3 +39,5 @@ A reviewed/merged B76/fa3f181→b98369c after32 offline checks and current CI. B
 Issue79 consolidates evidence/report sources and PartD readiness without changing B-owned canonical documents, app code, credentials or live data. The authored evidence PR requires B's current-head review and CI; A cannot self-approve/merge. See the [checkpoint](checkpoint-20261124.md) and [AI-use declaration](../../ai-use.md). No additional human work or external message is invented.
 
 Later C/D A3 under Thira's delegated technical review accepts the browser variation for A's three recorded paths; no new student clicks or whole-product decision are inferred. A's Codex GPT-6 also reviewed contract-only B81/11e0a21 against Issue80 and pinned sources,16 offline checks/currentCI45416589669, then posted C3. This permits B's subsequent tests/implementation, not executable/live apply. Further B/C/D actual participation remains separate.
+
+B v2 attributes48 UI observations21:27:28–21:34:37 Bangkok to Codex GPT-6.1 Sol under book6349. It separately reports a human DevTools probe at21:57:46.326, with operator stringbook6349 in the screenshot. A inspected/transcribed evidence; no personal identity/availability is inferred from that string. A did not operate B's cases. The original marker is visible in the UI run but not the later screenshot; actual source/setup limits remain pending. B's package still describes C3 as pending historically, while A's actual C3 is already posted. No provisioner code/tests/live fixture were supplied.

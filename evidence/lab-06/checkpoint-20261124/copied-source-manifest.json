@@ -346,6 +346,61 @@
       "path": "repository/workflow-pr63-after-a3.json",
       "sha256": "783b4afa928385b02e9c6a519c7bc029b59f1b515c123fc4a1141583eadd6e96",
       "bytes": 296
+    },
+    {
+      "path": "b-workflow/HANDOVER-TO-A.txt",
+      "sha256": "b65c2bc65daecb6820ccbd51020baf27ab8e2f2e0d9936d06253ed77f58d4480",
+      "bytes": 3604
+    },
+    {
+      "path": "b-workflow/incoming-manifest.json",
+      "sha256": "8407defd0faed3dbf99ad4547edd47d1143a43c5f39e0ad578b39bc6bfdf8b24",
+      "bytes": 1341
+    },
+    {
+      "path": "b-workflow/NEXT_UAT06_CONSOLE.txt",
+      "sha256": "dc5308be516854497b230515f6409012a451499fef7423cfdbe56d9dbd2b8e87",
+      "bytes": 2233
+    },
+    {
+      "path": "b-workflow/observation-index.csv",
+      "sha256": "a2f3d436e1fe2c70ce646867b3887264036ad8e9677c09906b5ac5ac2cd586bc",
+      "bytes": 4731
+    },
+    {
+      "path": "b-workflow/observations.json",
+      "sha256": "ffab91b629e85ffc4c8b1c4ea0d56f8b2e3ec3d9e1849d2415699db721c0d04c",
+      "bytes": 124200
+    },
+    {
+      "path": "b-workflow/RESULTS.txt",
+      "sha256": "fc9ee478bece9c36ec1d544174878d1a2b7434e33c6ef99c95db3d788ae9c25c",
+      "bytes": 5554
+    },
+    {
+      "path": "b-workflow/SHA256SUMS.txt",
+      "sha256": "c22e55d12b66a4ba20a9bf96dae05ca910e570ef510497fe45f70eb59dd64c06",
+      "bytes": 692
+    },
+    {
+      "path": "b-workflow/uat02-boundary-list.jpg",
+      "sha256": "1d810f38bd994587eb5c89fe55df03c60ccae1974fcd7d6b84fe35fa7b5dd007",
+      "bytes": 32879
+    },
+    {
+      "path": "b-workflow/UAT06-console.png",
+      "sha256": "0b8e847da12daf9b2fccb07023b40e56ce9594e3326f60003e1282b1cf530c4c",
+      "bytes": 110638
+    },
+    {
+      "path": "b-workflow/UAT06-human-result.txt",
+      "sha256": "be84da1be9052d729467c0643dd1e011ae396e9db2f6cb0feb0df60533299530",
+      "bytes": 1683
+    },
+    {
+      "path": "repository/workflow-release64-status.json",
+      "sha256": "a7161491393971b19ea9dbff28d22611ca4750b25c9ca990af6bbbfcde15731a",
+      "bytes": 1376
     }
   ]
 }

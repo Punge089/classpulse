@@ -1,0 +1,47 @@
+[
+  {
+    "path": "HANDOVER-TO-A.txt",
+    "bytes": 3604,
+    "sha256": "b65c2bc65daecb6820ccbd51020baf27ab8e2f2e0d9936d06253ed77f58d4480"
+  },
+  {
+    "path": "NEXT_UAT06_CONSOLE.txt",
+    "bytes": 2233,
+    "sha256": "dc5308be516854497b230515f6409012a451499fef7423cfdbe56d9dbd2b8e87"
+  },
+  {
+    "path": "observation-index.csv",
+    "bytes": 4731,
+    "sha256": "a2f3d436e1fe2c70ce646867b3887264036ad8e9677c09906b5ac5ac2cd586bc"
+  },
+  {
+    "path": "observations.json",
+    "bytes": 124200,
+    "sha256": "ffab91b629e85ffc4c8b1c4ea0d56f8b2e3ec3d9e1849d2415699db721c0d04c"
+  },
+  {
+    "path": "RESULTS.txt",
+    "bytes": 5554,
+    "sha256": "fc9ee478bece9c36ec1d544174878d1a2b7434e33c6ef99c95db3d788ae9c25c"
+  },
+  {
+    "path": "SHA256SUMS.txt",
+    "bytes": 692,
+    "sha256": "c22e55d12b66a4ba20a9bf96dae05ca910e570ef510497fe45f70eb59dd64c06"
+  },
+  {
+    "path": "uat02-boundary-list.jpg",
+    "bytes": 32879,
+    "sha256": "1d810f38bd994587eb5c89fe55df03c60ccae1974fcd7d6b84fe35fa7b5dd007"
+  },
+  {
+    "path": "UAT06-console.png",
+    "bytes": 110638,
+    "sha256": "0b8e847da12daf9b2fccb07023b40e56ce9594e3326f60003e1282b1cf530c4c"
+  },
+  {
+    "path": "UAT06-human-result.txt",
+    "bytes": 1683,
+    "sha256": "be84da1be9052d729467c0643dd1e011ae396e9db2f6cb0feb0df60533299530"
+  }
+]

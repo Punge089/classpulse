@@ -46,7 +46,9 @@ A/B reviewed Workflow contract v0.6 independently. C/D's A2 technically accepts 
 | UAT-01 | Codex under A/Punge089, 24 Nov 21:03:40–21:05:38 Bangkok, original `82a4806`. | Created 125.50 request; assigned reviewer approved with blank reason; requester retrieved APPROVED and exactly SUBMITTED → APPROVED. Evidence 02–07. | PASS; setup variation accepted by C/D in A3. |
 | UAT-04 | Same operator/version, 21:06:19–21:07:20. | Reused request `e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67`. New login and reviewer reload retained 125.50, status and two original events; Approve/Reject control counts both zero. Evidence 08–10. | PASS for recorded persistence/controls; setup variation accepted. Optional restart NOT RUN. |
 | UAT-05 | Same operator/version, 21:07:42–21:09:45. | Separate request `b1f4b385-04b4-4e7a-905f-7f9091e65db2`, 300.00. Blank reason denied; reload retained SUBMITTED/one event. Valid reason saved REJECTED; requester retrieved exact reason and two events. Evidence 11–17. | PASS; setup variation accepted by C/D in A3. UI validation only; no HTTP status inferred. |
-| UAT-02/03/06 | B's actual session and evidence pending. | NOT RUN according to the latest supplied B handover. A's agent is not B's participation. | NOT RUN. |
+| UAT-02 | Codex GPT-6.1 Sol under book6349,24Nov21:27:28–21:34:37 Bangkok,original82a4806 marker. | UI denies invalid amounts and saves0.01/1000000.00 with retained IDs. | Expected numeric behavior observed; comma-format/browser disposition pending. |
+| UAT-03 | Same B UI run/release. | Other requester/reviewer cannot list/read B record; requester1 readback unchanged89.00/SUBMITTED/one event. | Expected UI isolation observed; browser disposition pending. |
+| UAT-06 | B-reported human DevTools run,21:57:46.326 Bangkok. |403/FORBIDDEN, before/after200 retain125.50/SUBMITTED/one event, unchanged:true. Original BLOCKED checkpoint superseded for this probe. | Scoped expected denial observed; fresh marker/expanded identity absent, version/setup qualification pending. |
 | Additional cases | A2 technical agreement retained; actual allocation/results pending. | A's additional 01/06 and other unexecuted subcases remain NOT RUN. Special setups remain explicit. | NOT RUN / setup dependent. |
 
 [A's detailed narrative](../../../evidence/lab-06/checkpoint-20261124/a-workflow/RESULTS.md) and [raw observations](../../../evidence/lab-06/checkpoint-20261124/a-workflow/observations.json) retain inputs, expected/actual behavior and per-step UTC times. There are three observed case paths, 15 observations, 26 evidence files and two retained request IDs, not 15 test cases.
@@ -89,7 +91,7 @@ Use [actual contributions](contributions.md) and [AI-use declarations](../../ai-
 
 Retain the initial PR #76 checker result of 29 passed/2 failed before 32 passed: those failures were checker assumptions about line endings/apostrophes, not product RED/GREEN. Historical missing-model-trailer disclosures for B commit `7fbac15` and merge `3d652d8` remain in contributions; do not rewrite history or guess models. B's later Ready update declares Codex GPT-6.1 Sol; A's current work declares GPT-6.
 
-Remaining dependencies: B identity/availability and own UAT; C/D residual coverage and actual peer contribution; human fixture setup; corrected Workflow deployment/retest; ClassPulse Part D; both decisions; official deadline/filename; final PDF review and human upload receipt. Automations remain paused. No future appointment or channel agreement is invented.
+Remaining dependencies: B identity/availability, remaining additional UAT and setup/version dispositions; C/D residual coverage and actual peer contribution; human fixture setup; corrected Workflow deployment/retest; ClassPulse Part D; both decisions; official deadline/filename; final PDF review and human upload receipt. Automations remain paused. No future appointment or channel agreement is invented.
 
 ## Final assembly and human submission
 
@@ -109,3 +111,9 @@ A assembles; B reviews actual PDF bytes/hash and figures. Changed assessed evide
 See the later A3 section in the [checkpoint](checkpoint-20261124.md) and the unchanged [received disposition](../../../evidence/lab-06/checkpoint-20261124/received-cd-a3/EN037-A3-SETUP-DISPOSITION.md). The initial run metadata remains preserved alongside the later case adjudication; it is not overwritten.
 
 | 0.5 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Record received A3 setup acceptance, three scoped PASS results, Workflow review-ready status and A C3 for B contract81; no new live execution or whole-product acceptance. |
+
+See the latest B v2 section in the [checkpoint](checkpoint-20261124.md). [B's retained report](../../../evidence/lab-06/checkpoint-20261124/b-workflow/RESULTS.txt) and [human06 addendum](../../../evidence/lab-06/checkpoint-20261124/b-workflow/UAT06-human-result.txt) supply actual evidence;48 observations are not48 cases. UAT06 execution is21:57:46, not its21:34:21 creation timestamp. Same-tab setup, comma display and missing fresh marker/expanded identity remain explicit. Supplemental UI checks do not establish backend statuses or complete additional cases. No final acceptance is claimed.
+
+Workflow release64 now has actual osizk approval and current-head CI success on eee7c7e; corrected deployment and independent live retest still await actual evidence. Initial release-event deploy/test jobs were skipped on the PR event, not executed deployment. A's clearance reply is prepared for the student to forward and has not been sent by Codex. No additional live Workflow run is performed during consolidation.
+
+| 0.6 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Retain B v2's qualified original/UI/additional observations and later human06, correct stale NOT RUN/C3 states, record actual release64 review/CI and unsent deployment coordination. |
