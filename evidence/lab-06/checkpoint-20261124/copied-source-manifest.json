@@ -306,6 +306,46 @@
       "path": "cp-v01/reconfirmation-time.json",
       "sha256": "073e03d533d1b1e003d7dd5ab2625bd5c608ebea590187b1b858c54fc5990da1",
       "bytes": 298
+    },
+    {
+      "path": "received-cd-a3/EN037-A3-SETUP-DISPOSITION.md",
+      "sha256": "c3dc8edc265acf0f466f4f859a537c6b5a9a414e3c64165dafc8179b4a838f0b",
+      "bytes": 4655
+    },
+    {
+      "path": "received-cd-a3/incoming-manifest.json",
+      "sha256": "cadbd3217f7e6841fc8278b3e12c5f69f946eb41fee7c65de23a5616b55e9ebc",
+      "bytes": 929
+    },
+    {
+      "path": "received-cd-a3/REPLY-FOR-CLASSPULSE.txt",
+      "sha256": "4579dd1c9f24bbcadab04111474cfccceca7d346b86811a14731d08f15912051",
+      "bytes": 1554
+    },
+    {
+      "path": "received-cd-a3/SHA256SUMS.txt",
+      "sha256": "fea2f633f45bf46d9794669f516186f9261ba0780d07fb85aea2d6de8d3da8da",
+      "bytes": 469
+    },
+    {
+      "path": "received-cd-a3/START-HERE.txt",
+      "sha256": "b34273a27421ee2fa5685a3c15fa73e41c68e9e462403b2f1879c8791224d600",
+      "bytes": 572
+    },
+    {
+      "path": "received-cd-a3/Workflow/CORRECTION-STATUS.md",
+      "sha256": "d282e3c0a0113902aa5557a2b84ce1976ad0dbeba5e3c091d456e125a791eae1",
+      "bytes": 2582
+    },
+    {
+      "path": "received-cd-a3/Workflow/ORIGINAL-RELEASE-MAPPING.json",
+      "sha256": "c0bd250cc80e1fc6892034464334b67ac23b508b98d0157c13c88d3232227689",
+      "bytes": 1258
+    },
+    {
+      "path": "repository/workflow-pr63-after-a3.json",
+      "sha256": "783b4afa928385b02e9c6a519c7bc029b59f1b515c123fc4a1141583eadd6e96",
+      "bytes": 296
     }
   ]
 }

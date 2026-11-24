@@ -10,3 +10,5 @@ Consolidated by Student A/Punge089 with Codex GPT-6 for Issue79. These are retai
 - `cp-v01/`: actual earlier24November02:16:41 Bangkok ClassPulse metadata reconfirmation. This is time-specific, not a new readback at this checkpoint.
 
 `SHA256SUMS.txt` covers all payload files except itself. `copied-source-manifest.json` records unchanged copied bytes, allowing a reviewer to distinguish received material from A's narrative. Received documents retain their original text and historical pending states. The checkpoint/report supplies the read order and current disposition. Final PDF must embed readable assessed content, not rely on GitHub links alone.
+
+Later received-cd-a3/ supersedes pending browser disposition: three recorded A paths PASS with accepted setup variation, not whole-product acceptance. Read a-workflow/a3-later-disposition.json after original metadata. Six incoming files are retained unchanged, including their original checksum list; their reattached release mapping is historical original-release evidence. Workflow PR63 became Ready/unmerged, not deployed.

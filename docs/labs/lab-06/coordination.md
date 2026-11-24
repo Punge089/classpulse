@@ -13,10 +13,10 @@ Current checkpoint:24November2026, Issue79. See [actual evidence/status](checkpo
 | Workflow release | C/D source-to-serving readback24Nov20:51:51–58Bangkok:82a4806,scd928edd-00007-477,100%,matching digest. A's run marker matched. Correction84a62c7 is not deployed. |
 | Current technical inventory | ClassPulse original01–12+CD01–08 with residual branches; Workflow original01–06+PARTNER-ADD01–06A2 accepted technically by C/D. Final actual participant/fixture acknowledgement remains pending. |
 | Actual ClassPulse run | C/D supplied24Nov17:31–18:03Bangkok observations; API fixtures08/10/11 and post-run setup only disposition retained. CD08additional at20:45:30. Not a retroactively booked appointment. |
-| Actual Workflow run | A's Codex21:03:40–21:09:45 observed01/04/05; C/D browser-setup disposition pending. B02/03/06NOT RUN by latest B handover. |
+| Actual Workflow run | A's Codex21:03:40–21:09:45 observed01/04/05; C/D A3 accepted the setup variation; three recorded paths PASS. B02/03/06NOT RUN by latest B handover. |
 | Data retention | Keep original/continuation records plus A01/04 ID e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67 and A05 ID b1f4b385-04b4-4e7a-905f-7f9091e65db2. No live reset or existing enrollment changes. |
 | Future slots / channel | A deferred discussion to25November; no exact session or agreed channel is recorded. A/student coordinates external notifications to Thira/Ashira; Codex has sent no external chat. Notify before new live execution/deployment affects tests. |
-| B readiness / next scope | PR78 documentation reviewed and mergedcdcf460 after B markedReady. Executable provisioner is a separate B scope requiring A contract/review and human target/credential/run gates; no accounts created. |
+| B readiness / next scope | PR78 documentation reviewed and mergedcdcf460 after B markedReady. B contract Issue80/PR81 received A C3 at11e0a21 after16 offline checks/currentCI; tests/implementation and actual executable review remain B/A next work. Human target/credential/run gates remain; no accounts created. |
 | Remaining ClassPulse setup | New inactive and extra CPE334 respondent not provisioned; live target-email absence/student3 enrollment NOT VERIFIED. See fixture-provisioning.md and part-d-readiness.md. |
 | Final PDF / submission | A assembles after actual evidence; B reviews exact file/hash; human verifies course deadline/filename, uploads and retains receipt. Not done. |
 
@@ -35,3 +35,5 @@ The original22November deadline/internal21:00 target is historical. A reports an
 ## Remaining boundaries
 
 Human-only cloud/account/credentials/ruleset/submission gates remain in AGENTS.md. No executable fixture writer has been reviewed here. Keep student3 CPE231-only. Full PartD/exercise entry remains gated on actual thorough independent coverage; no exact exercise choice is shared or inserted. Each team signs its own release-specific final decision, and C/D's incomplete contribution/acceptance must not be invented.
+
+C/D A3 accepts the documented logout/replacement-tab setup for the three observed paths without private-window repeat. This does not cover restart, cookie replay or expiry and does not sign whole-product acceptance. Workflow PR63 is now Ready, with actual peer review/deployment still pending. See the latest checkpoint addendum.

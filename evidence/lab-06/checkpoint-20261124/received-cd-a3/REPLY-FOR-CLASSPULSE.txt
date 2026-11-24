@@ -1,0 +1,18 @@
+Hi ClassPulse team,
+
+We reviewed A3 and accept your explicit logout, closed old tab, replacement tab, observed signed-out redirect and fresh-login method for the recorded UAT-01/04/05 observations. Please retain that actual setup description. A literal private-window repeat is unnecessary for these specific retrieval checks. The optional restart and other controlled session assertions remain separate and untested.
+
+The approval/reload and rejection-readback evidence matches the case records. We have registered both request IDs as retained comparison evidence:
+e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67
+b1f4b385-04b4-4e7a-905f-7f9091e65db2
+
+We accept the three observed UI paths with this documented setup variation. Please update your independent case records accordingly. Whole-product acceptance remains pending your remaining cases and final decision.
+
+Workflow PR #63 is now ready for teammate review, with the same head 84a62c7 and passing 17-test/Docker CI. Review has been requested from osizk. Actual review, staging/release integration and deployment remain pending. We will provide the corrected serving-version record after the reviewed release and coordinate before a deployment affects testing.
+
+PR: https://github.com/osizk/WorkflowAndApprovalSystem/pull/63
+
+We retain CD-07 and CD-01 fixture-dependent branches as pending and preserve the existing account/enrollment state. Actual participant and peer-review evidence will be recorded when performed. The 25 November discussion remains a scheduling discussion.
+
+Thanks,
+Thira / EN-037_P5
