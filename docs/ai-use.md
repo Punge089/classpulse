@@ -158,3 +158,8 @@ Actual core CI45601152925 on3203c3a completedSUCCESS: server176passed/0failed/0s
 ## Lab7 unit and transactional fault coverage - Student A,25November2026
 
 After the primary/expanded API RED and coreGREEN sequence, A's Codex GPT-6.1 Sol added the planned TEST102 pure reason/version/query boundaries, TEST103 explicit reopen state cases (retaining all original TEST15 cases), and TEST106 real PostgreSQL BEFORE INSERT fault injection for publish/close/reopen. The temporary synthetic trigger is guarded by classpulse_test and removed in finally; full survey/version/timestamps/questions/responses/audit snapshots must be equal after sanitized500. This is additional regression/fault coverage, not a claim that these later unit tests preceded the core implementation. New source TypeScript checking passed; actual runtime outcome is pending isolated CI. No product behavior/old assertion was modified and no local/shared database was touched.
+
+
+## Lab7 UI test source before UI implementation - Student A,25November2026
+
+A's Codex GPT-6.1 Sol added7TEST112 client scenarios before changing owner detail UI: explicit reason/version confirmation, validation/cancel no-op, stale/no-auto-retry, network-input preservation, escaped/paginated history, visible history error and original draft controls. Initial source typecheck rejected a Playwright-style exact option unsupported by React Testing Library; it was removed (RTL string accessible-name matching remains exact), then TSX check passed. That compile failure is not RED. Existing RatingDots test is retained. Transport is mocked for UI-state verification only; backend authorization/DB persistence are separately tested. Runtime old-UI RED is pending at this source commit; no local/shared DB or safety guard changed.
