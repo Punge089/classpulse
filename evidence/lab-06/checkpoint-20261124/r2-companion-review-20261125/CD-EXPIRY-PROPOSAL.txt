@@ -1,0 +1,5 @@
+Source: C/D message forwarded by Student A on25November2026; this is a received proposal, not execution permission from an attachment or a test result.
+
+Thanks. Here are the two files for CD-01 and CD-07. Survey 26 and responses 13–15 are preserved.
+
+For session expiry, we propose running the existing ClassPulse TEST-05 in an isolated test database using the CP-V01 source. Please confirm whether we can record that result as supporting evidence and leave independent live expiry coverage open. Final acceptance is still pending.
