@@ -13,3 +13,7 @@ Consolidated by A/Punge089 with Codex GPT-6 for Issue79. Read the [current check
 - cp-v01/: earlier time-specific ClassPulsecloudmetadata, notnewreadbacknow.
 
 SHA256SUMS.txt covers everypayload exceptitself. copied-source-manifest.json lists unchanged copiedbytes; A authorednarratives are separatelycovered bytheledger. No secretvalues orusercredentialscreenshot is included. FinalPDF must embed readable assessedcontent, not merely linkstoGitHub. No wholeproductacceptance/ClassPulsePartDcompletion is claimed.
+
+## Later actual setup and review —25November2026
+
+Read fixture-ready-20261125/START-HERE.md for the completed human fixture setup and A's actual READ ONLY postchecks/release readback. Public package files are copied unchanged; bootstrap/delivery summaries are authored and separately hashed. No credential value/vault/message is present. C/D results are still pending. repository-followup-20261125/ preserves corrected provisioner reviewer RED/GREEN/race outputs, WF closure and PR82/84 review/merges. Earlier pending captures remain history, not current status.

@@ -1,5 +1,19 @@
 # Lab 6 coordination register
 
+## Current status — 25 November 2026
+
+The human completed the reviewed fixture apply. A independently checked the selected original baseline and the two new identities in READ ONLY transactions: extra **user16**, active RESPONDENT, CPE334/course1 through enrollment4; inactive **user17**, inactive RESPONDENT, no enrollments. Original student3 remains user4 in CPE231 only; student2 is user5. Selected original users/courses/enrollments are unchanged. See [actual setup and postchecks](../../../evidence/lab-06/checkpoint-20261124/fixture-ready-20261125/START-HERE.md). No seed/reset, application deployment or existing-row update was performed.
+
+A freshly reconfirmed CP-V01 at **25 November 00:36:54 Bangkok**: source `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, revision `classpulse-00006-6w6`, 100% traffic; the immutable source tag resolves to the serving digest. This is a time-specific readback, not a future deployment freeze. [Release evidence](../../../evidence/lab-06/checkpoint-20261124/fixture-ready-20261125/serving-reconfirmation.json).
+
+A reports sending the fixture ZIP and private access to C/D. Their receipt and independent **CD-01/CD-07 results remain PENDING**; creation and private credential verification are not UAT PASS. Controlled expiry/old-session and other unfinished agreed branches remain separate. No comprehensive no-genuine-defect conclusion or ClassPulse PartD entry is supported yet.
+
+The provisioner race is corrected and independently reviewed: B RED `dc651049` (A rerun:10 database passes/1 intended failure), GREEN `d51ef87` (A:139 server passes/build/typecheck and a separate real-writer collision rejection), CI45438536383, A merge PR83 `f4533ea`. This tool correction is not a Sprint1 ClassPulse UAT defect. B merged A PR82 at `b73a269`; A checked 16 offline document assertions and merged B PR84 at `c99748c` after exact-head CI45564970810 succeeded. Historical model labels remain preserved; B's current declaration is GPT-6.1 Sol without inferring earlier runtime identity. [Review records](../../../evidence/lab-06/checkpoint-20261124/repository-followup-20261125/review84-checks.json).
+
+C/D verified the actual Workflow retest and closed WF-BUG-001 fixed/independently verified. A separately checked [Workflow Issue62 is closed/completed](../../../evidence/lab-06/checkpoint-20261124/repository-followup-20261125/workflow-issue62-after-retest.json). Both whole-product decisions, remaining coverage, **ClassPulse PartD**, final PDF review and human submission remain incomplete. B's Workflow ADD02 API, incomplete ADD03 APPROVE501 and ADD04/05, plus A's remaining ADD01/06, still need actual execution/setup/version/start coordination. Automations remain paused.
+
+This status supersedes older pending fixture/provisioner/PR82/PR84/Workflow-closure statements below. Original dated captures and their limitations are retained unchanged.
+
 ## Latest verified state —24November2026, after WF-FIX-001 retest
 
 - Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
