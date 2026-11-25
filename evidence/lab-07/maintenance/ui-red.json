@@ -1,0 +1,11 @@
+{
+  "source": "ff5e2999c2d60fe2fc7a619087b6b37b79e017c5",
+  "command": "npm --prefix client test",
+  "passed": 2,
+  "failed": 6,
+  "skipped": 0,
+  "total": 8,
+  "classification": "Meaningful missing reopen/history UI controls/states; existing RatingDots and draft Publish checks pass. Initial unsupported exact-option TS error was corrected before this run and is not RED.",
+  "logSha256": "90da8781505d7651f8831007d5e0c8a45bf6725e5c8dd20a2a797d78f21a9eba",
+  "formatting": "Terminal controls/trailing spaces removed; final empty lines trimmed after first staged diff check flagged blank EOF. Actual failures preserved."
+}
