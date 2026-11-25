@@ -1,0 +1,23 @@
+{
+  "head": "d51ef87cb5c9015401de2ed0c229d30b2254b87a",
+  "target": {
+    "database": "classpulse_test",
+    "address": "::1"
+  },
+  "tests": {
+    "exit": 0,
+    "summary": [
+      " Test Files  16 passed (16)",
+      "      Tests  139 passed (139)"
+    ]
+  },
+  "build": {
+    "exit": 0,
+    "summary": []
+  },
+  "cli": {
+    "exit": 0,
+    "summary": []
+  },
+  "scope": "Independent A review in existing local allowlisted test databases only; no cloud connection or live fixture write"
+}

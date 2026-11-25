@@ -1,0 +1,31 @@
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/review83/server
+
+ ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 2707ms
+   ✓ real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows 310ms
+   ✓ real PostgreSQL additive transaction > rejects a normalized email collision committed while apply waits for its first table lock 434ms
+ ✓ tests/api/responses.test.ts (10 tests) 1719ms
+ ✓ tests/api/ownerSurveys.test.ts (10 tests) 1491ms
+ ✓ tests/api/auth.test.ts (8 tests) 1333ms
+ ✓ tests/api/summary.test.ts (3 tests) 670ms
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 6ms
+ ✓ tests/api/cloudReady.test.ts (3 tests) 108ms
+ ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 1250ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 663ms
+ ✓ tests/db/constraints.test.ts (3 tests) 976ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 564ms
+ ✓ tests/unit/summary.test.ts (6 tests) 3ms
+ ✓ tests/unit/responseValidation.test.ts (13 tests) 4ms
+ ✓ tests/api/health.test.ts (1 test) 59ms
+ ✓ tests/api/unauthenticated.test.ts (13 tests) 42ms
+ ✓ tests/unit/password.test.ts (1 test) 416ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 404ms
+ ✓ tests/unit/seedConfig.test.ts (1 test) 4ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 2ms
+
+ Test Files  16 passed (16)
+      Tests  139 passed (139)
+   Start at  23:40:20
+   Duration  14.60s (transform 195ms, setup 66ms, collect 1.27s, tests 10.79s, environment 2ms, prepare 750ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m

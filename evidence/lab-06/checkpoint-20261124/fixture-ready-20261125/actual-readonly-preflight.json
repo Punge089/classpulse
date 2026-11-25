@@ -1,0 +1,78 @@
+{
+  "database": "classpulse",
+  "baseline": {
+    "users": [
+      {
+        "id": 1,
+        "email": "ann.lee@classpulse.test",
+        "role": "OWNER",
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "email": "ben.kim@classpulse.test",
+        "role": "OWNER",
+        "isActive": true
+      },
+      {
+        "id": 3,
+        "email": "student1@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      },
+      {
+        "id": 4,
+        "email": "student3@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      },
+      {
+        "id": 5,
+        "email": "student2@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      }
+    ],
+    "courses": [
+      {
+        "id": 1,
+        "code": "CPE334",
+        "ownerId": 1
+      },
+      {
+        "id": 2,
+        "code": "CPE231",
+        "ownerId": 2
+      }
+    ],
+    "enrollments": [
+      {
+        "id": 1,
+        "userId": 3,
+        "courseId": 1
+      },
+      {
+        "id": 2,
+        "userId": 5,
+        "courseId": 1
+      },
+      {
+        "id": 3,
+        "userId": 4,
+        "courseId": 2
+      }
+    ],
+    "collisions": []
+  },
+  "observedAtUtc": "2026-11-24T17:25:53.696Z",
+  "operator": "Codex under Student A/Punge089",
+  "source": "Reviewed CLI inspect in Cloud Shell; actual sanitized receipt displayed in terminal",
+  "toolSource": "d51ef87cb5c9015401de2ed0c229d30b2254b87a",
+  "toolMerge": "f4533eac6ba035885a67eb6010cfba570b8f3f3e",
+  "proxy": "127.0.0.1:15432 -> cpe-334-en-034:asia-southeast1:classpulse-pg",
+  "mode": "READ ONLY per exact reviewed inspect implementation",
+  "credentialValueSaved": false,
+  "liveWrites": false,
+  "fixturesCreated": false,
+  "humanApprovedApplyBaseline": false
+}

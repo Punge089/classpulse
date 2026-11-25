@@ -1,0 +1,84 @@
+{
+  "assessmentKind": "Receipt and scoped narrative review, not re-execution or final product acceptance",
+  "reportedChecks": [
+    {
+      "case": "CD-01 inactive-account branch",
+      "resultAsReported": "PASS",
+      "inputs": "User17 and its provider-verified stored credential",
+      "expectedAndReported": "401 INVALID_CREDENTIALS, generic Invalid email or password; identity401 UNAUTHENTICATED before/after",
+      "wholeCD01Complete": false,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "servingRevision": "classpulse-00006-6w6",
+      "versionProvenanceFile": "source-provenance.json",
+      "versionBasis": "Reported CP-V01 / earlier supplied mapping, not a fresh cloud readback during this run"
+    },
+    {
+      "case": "CD-07 exact aggregate AC-30/33",
+      "resultAsReported": "PASS",
+      "surveyId": 26,
+      "respondentUserIds": [
+        3,
+        5,
+        16
+      ],
+      "responseIds": [
+        13,
+        14,
+        15
+      ],
+      "ratings": [
+        4,
+        4,
+        5
+      ],
+      "count": 3,
+      "average": 4.33,
+      "ratingBuckets": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 2,
+        "5": 1
+      },
+      "choiceCounts": [
+        {
+          "label": "Online",
+          "count": 3
+        },
+        {
+          "label": "In person",
+          "count": 0
+        }
+      ],
+      "privacyAsReported": "Summary has no respondent identities/individual responses",
+      "uiAndJsonAsReported": true,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "servingRevision": "classpulse-00006-6w6",
+      "versionProvenanceFile": "source-provenance.json",
+      "versionBasis": "Reported CP-V01 / earlier supplied mapping, not a fresh cloud readback during this run"
+    }
+  ],
+  "reportedCheckCount": 2,
+  "reportedPassCount": 2,
+  "reportedFailCount": 0,
+  "supportingObservation": "Four active sessions logout204 then identity401; no old-cookie replay/controlled-expiry proof inferred",
+  "retainedRecords": {
+    "survey": 26,
+    "responses": [
+      13,
+      14,
+      15
+    ]
+  },
+  "student3Used": false,
+  "firstLocatorAttempt": "Stopped before input changes; associated labels/normal Submit then succeeded; not a product defect",
+  "rawEvidenceCompleteness": "Pending fixture-case-results.json and CD07-summary.png; no JSON/screenshot inspection or asset-hash verification by A claimed",
+  "versionAttribution": "Reported CP-V01 source/revision with supplied earlier mapping; fresh main git state alone is not proof of live-serving history",
+  "controlledSessionExpiry": "PENDING",
+  "wholeProductAcceptance": false,
+  "comprehensiveNoDefectConclusion": false,
+  "classPulsePartDComplete": false,
+  "educationalExerciseEntry": "NOT READY",
+  "actualAshiraContributionEstablishedByThisReport": false,
+  "runId": "UAT6-20261125-CodexD-R2"
+}
