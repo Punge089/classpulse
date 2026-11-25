@@ -4,6 +4,10 @@ Issue #90, version 1.0, 25 November 2026. Owner/driver: Bannasorn Thongkorn (Pun
 
 ## 1. Feature and linked requirements
 
+Execution checkpoint,25November2026: the initial header describes the historical contract-only state. B posted genuine C3 [7159681538](https://github.com/Punge089/classpulse/issues/90#issuecomment-7159681538) at10:25:44UTC, approving AC120..128/TEST120..131 and the explicit publish/edit concurrency/rollback design. No F06 test or product source has been written. PR92/Issue87 integration is still pending, so the Issue's serialized shared-file/test gate remains in force. A inspected current87 implementation45f48cd: owner lifecycle takes an owner-scoped row lock and then conditionally updates status/version plus audit in one transaction, compatible with the already-designed F06 serial outcomes. Re-check the actual accepted staging head again before RED; this readback is not F06 runtime verification.
+
+File-inventory clarification: the closed ErrorCode union in `server/src/lib/errors.ts` also needs the already-contracted `DRAFT_HAS_RESPONSES` discriminant once implementation gates open. Issue90 Files now includes that exact addition before edits; STALE_SURVEY is inherited from87. This changes neither errors/status precedence nor AC/STS, and no error middleware is altered. B's C3 remains the behavior review; no new requirement is introduced.
+
 F-06 completes FR-10 (owner edits/deletes draft questions), BR-01 (question edits only in DRAFT), BR-02 validation, BR-08 ownership, NFR-02/03 access, NFR-05 persistence and NFR-07 field/async states. F-03 create/publish/close and F-04 answers remain intact. This is planned Sprint 2 work, not the separate Lab 7 behavior change.
 
 ## 2. Workflow
@@ -86,3 +90,5 @@ Implementation, tests, C3, GREEN and release are all pending. No runtime test co
 ## 12. Version history
 
 v1.0,25 November2026,A/Codex GPT-6: initial draft-edit contract and test design before new tests/code; serialize shared file implementation with Lab 7 and B work.
+
+v1.1 execution inventory,25November2026,A/Codex GPT-6.1 Sol: record actual B C3 and inspected87 row-lock compatibility, preserve the integration-before-tests gate, and name the already-required error-union discriminant file before implementation. No behavior/AC/STS change and no F06 tests/code written.
