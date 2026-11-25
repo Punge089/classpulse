@@ -1,12 +1,12 @@
-# Sprint 2, Lab 7 and Deliverable 2 execution plan
+# Sprint 2 and Deliverable 2 execution plan
 
-Version 1.0, 25 November 2026. Coordination Issue #86. Author/driver: Bannasorn Thongkorn (67070503420, Punge089, A), assisted by Codex GPT-6. Proposed reviewer and partner: Papangkorn Jitvoottikrai (67070503421, book6349, B). B acceptance/review is pending; this is not a record of B having worked.
+Version 1.1, 25 November 2026. Deliverable 2 planning Issue #86. Author/driver: Bannasorn Thongkorn (67070503420, Punge089, A), assisted by Codex GPT-6. Proposed reviewer and partner: Papangkorn Jitvoottikrai (67070503421, book6349, B). B acceptance/review is pending; this is not a record of B having worked.
 
 ## Scope and sources
 
-Both PDFs are due 29 November 2026 at 23:59 Asia/Bangkok. Lab 7 is 100 points; Deliverable 2 (D2) is 70 points. The [source update](../../labs/lab-07/assignment-changes.md) removes individual instructor/TA approval, but retains meaningful team-selected change, contract review, RED before implementation, regression, reviewed delivery and evidence. A's reported TA clarification also requires a distinct Lab 7 Issue, branch and PR. One implementation may serve both submissions; each PDF must contain its own complete assessed material.
+Deliverable 2 is a separate 70-point submission due29 November2026 at23:59 Asia/Bangkok. This plan and PR #91 cover D2 only. Lab7 has its own planning Issue #94, feature Issue #87/PR #92, metrics Issue #89, A-D checklist and separately submitted PDF. No combined report will be built. D2 may include the same accepted maintenance code, but must embed its own evidence of continuity/change status.
 
-D2 requires all five planned Sprint 2 features F-06..F-10, complete contracts for F-11..F-14, and at least one meaningful implemented/tested Sprint 3 workflow/rule. Reopening is a maintenance extension of F-03, not a substitute for any planned Sprint 2 feature. No requirement is silently deferred. Group Work Specifications v1, theme 10, page 9 agrees with the existing survey scope; its source hash is retained in the source manifest.
+D2 requires all five planned Sprint 2 features F-06..F-10, complete contracts for F-11..F-14, and at least one meaningful implemented/tested Sprint 3 workflow/rule. Reopening is a maintenance extension of F-03, not a substitute for any planned Sprint 2 feature. No requirement is silently deferred. Group Work Specifications v1, theme 10, page 9 agrees with the existing survey scope; its source hash is retained with the separate Lab7 source inventory in Issue #94.
 
 The user explicitly chose one coordinating chat per student for Lab 7 + Sprint 2. This supersedes old Sprint 1 advice to use one session per Issue. File/Issue/branch ownership still applies: switch explicitly between Issue contexts and worktrees, not through the shared Lab 6 checkout. B reads the historical partner brief first, then follows current AGENTS.md and this plan for current branch/work sequencing. B's own session determines B's authorization; A's standing authority is not transferred.
 
@@ -24,14 +24,12 @@ The user explicitly chose one coordinating chat per student for Lab 7 + Sprint 2
 
 The Lab 6 chat owns its actual case records and acceptance decision. Preparation does not assert an accepted Lab 6 baseline. Before completing Lab 7 version evidence, reconcile the eventual accepted Lab 6 release with the actual pre-change implementation and explicitly list intervening work. If later UAT finds a conflicting rule/defect, revise the contract and review it before dependent implementation.
 
-## Ownership and order
+## D2 ownership and order
 
 | Work | Owner / reviewer | Issue | First action / dependencies | Proposed target |
 |---|---|---|---|---|
-| Coordination and source/rubric map | A / B | #86 | Document-only PR; B checks allocation and missing work | 25 Nov |
-| Lab 7 F-03 reopen + audit | A / B | #87 | Contract, team C3, meaningful RED, code/GREEN; dedicated PR | 25-27 Nov |
+| D2 planning and evidence map | A / B | #86 / PR #91 | Document-only PR; B checks D2 allocation and missing work | 25 Nov |
 | F-09 my responses | B / A | #88 | B accepts assignment, writes contract/C2 now; independent response-list slice | 25-26 Nov |
-| Lab 7 metrics/readiness | B / A | #89 | Define metrics now, collect real candidate data later; A reviews B work | 25-29 Nov |
 | F-06 draft editing | A / B | #90 | Contract now; owner-route implementation after #87 | 26 Nov |
 | F-07 TEXT/MULTI_CHOICE | B / A | To scope | Separate Issue/Files/contract before work; after #88 and owner files from #90 | 26-27 Nov |
 | F-08 scheduled closing | A / B | To scope | Contract must reconcile deadline with #87 reopen; owner/response-file slot after F-07 | 27 Nov |
@@ -42,7 +40,7 @@ The Lab 6 chat owns its actual case records and acceptance decision. Preparation
 | F-14 hardening contract | A / B | To scope | Existing NFR-06/07/10 metrics, screen/state inventory, no fabricated PASS | contract 27 Nov |
 | Current SRS/features/traceability | A / B | To scope | Integrate actual accepted per-feature changes, complete all baseline rows | 28 Nov |
 | Current System SDS | B / A | To scope | Final schema/API/permissions from actual integrated work; after #87 spec edits | 28 Nov |
-| Integration, release and both PDFs | A drives / B reviews | To scope | Full suite, release review, CI, human cloud steps, deployed checks, both PDFs | 28-29 Nov |
+| D2 integration, release and PDF | A drives / B reviews | To scope | Full suite, release review, CI, human cloud steps, deployed checks, D2 PDF | 28-29 Nov |
 
 Dates are proposed milestones, not promises or completed evidence. If throughput misses a target, record the actual gap and revise the plan with the team; do not relabel unfinished Sprint 2 features as Sprint 3. One feature Issue/branch at a time per write set; parallel contract drafting in disjoint files is allowed. Do not implement any unscoped row.
 
@@ -62,14 +60,16 @@ Use docs/comment-playbook.md with actual Issue checks. C1 -> contract commit/C2 
 
 Reserve separate AC/TEST ranges (unused in inspected numeric registry): Lab 7 100-119; F-06 120-139; F-07 140-159; F-09 160-179; F-08 180-199; F-10 200-219; F-11 220-239; F-12 240-259; F-13 260-279; F-14 280-299. If more IDs are needed, extend through a reviewed allocation; never reuse or renumber prior IDs. Lab 7 proposes FR-19 and BR-15; all original FR/BR remain identifiable.
 
-Full rubric and report requirements are in the [D2/Lab 7 evidence plan](../../deliverable-2/evidence-plan.md). A doc PR passing CI is not feature completion. A green local run is not peer review, deployment, independent UAT or acceptance.
+D2 rubric and report requirements are in the [D2 evidence plan](../../deliverable-2/evidence-plan.md). Lab7 requirements are maintained separately in Issue #94. A doc PR passing CI is not feature completion. A green local run is not peer review, deployment, independent UAT or acceptance.
 
 ## Finish plan through 13 December
 
-By 29 Nov: all Sprint 2 accepted; F-11..14 contracts; tested meaningful F-13 slice in candidate; independent PDF content checks; peer review exact candidate and PDF hashes; human uploads both PDFs and verifies receipts. Current status of all new features is PLANNED/CONTRACT PREPARATION, not implemented.
+By 29 Nov: all Sprint 2 accepted; F-11..14 contracts; tested meaningful F-13 slice in candidate; D2 PDF content checks; peer review exact candidate and D2 PDF hash; human uploads D2 and verifies its receipt. Lab7 is submitted separately through its own checklist. Current status of all new features is PLANNED/CONTRACT PREPARATION, not implemented.
 
 30 Nov: inspect actual outstanding AC list and assign each gap/test/defect with named owner; preserve submitted candidate. During 1-11 Dec exams: bounded completion slots agreed by A/B, not assumed availability. Proposed F-11/F-12 completion by 6 Dec (B), remaining F-13/F-14 by 8 Dec (A), affected UAT retests/integration by 11 Dec, final video and release review on 12 Dec, human final submission by 13 Dec. Each later Issue must list exact unmet AC and evidence, not only feature titles.
 
 ## Version history
 
 v1.0, 25 Nov 2026, A: initial plan from supplied assignments and later announcement; B assignment and contract decisions pending review. No code or test implementation.
+
+v1.1,25 Nov2026,A: user requested visibly separate planning/submission tracks. Remove Lab7 planning/source/evidence content from PR91 into separate Issue94/branch/PR. Preserve cross-feature integration dependencies and all prior Git history.

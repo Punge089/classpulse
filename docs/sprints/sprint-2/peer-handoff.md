@@ -1,6 +1,6 @@
-# Handoff for Lab 7 + Sprint 2
+# Sprint 2 / D2 handoff
 
-Prepared by A, 25 November 2026, Issue #86. These are messages for the humans to send; no cross-chat or private message delivery is claimed.
+Prepared by A, 25 November 2026, Issue #86, revision1.1: D2 planning only. Lab7 has separate planning #94 and a separate PDF. These are messages for the humans to send; no cross-chat or private message delivery is claimed.
 
 ## To the existing Lab 6 chat
 
@@ -10,7 +10,7 @@ Continue Lab 6 in its existing worktrees. A's other chat has started Sprint 2 + 
 
 Work as Student B (`book6349`) in one coordinating chat for Lab 7 + Sprint 2, as requested by the team. Verify `gh api user --jq .login` and Git author identity before acting. Read `docs/partner-ai-brief.md` first, then current `AGENTS.md`, `docs/comment-playbook.md` and Issue #86. The brief's Sprint 1 branch/date/Issue queue is historical; use latest `sprint-2-staging` and `feature/<issue>-<slug>` today. Follow permissions B grants in B's own session; A cannot grant them for B.
 
-First review the coordination PR for #86 and accept or propose changes to allocation. Review A's #87 Lab 7 contract and #90 F-06 contract at their exact pushed commits; post genuine C3 findings/decision only after reading old/new requirements, AC and STS. The newer announcement removes individual instructor/TA approval, but team selection and peer contract review remain. Then start your #88 F-09 contract, post C2 and wait for A C3 before tests. Start #89 metric definitions/readiness preparation in a separate documentation branch when useful. Do not claim unrun candidate tests or final acceptance.
+First review D2 planning PR #91 for #86 and accept or propose changes to allocation. Review Lab7 planning separately under #94. Review A's #87 Lab 7 contract and #90 F-06 contract at their exact pushed commits; post genuine C3 findings/decision only after reading old/new requirements, AC and STS. The newer announcement removes individual instructor/TA approval, but team selection and peer contract review remain. Then start your #88 F-09 contract, post C2 and wait for A C3 before tests. Issue #89 belongs to the separate Lab7 track; it is not D2 report content. Do not claim unrun candidate tests or final acceptance.
 
 Proposed later B work is F-07, F-10, F-11/F-12 contracts and current System SDS, each with a separate scoped Issue and A review. These are proposals until B accepts. A will review B's actual contracts/PRs; do not use A's credentials or manufacture A/B conversation. Keep GitHub as the shared handoff record; no timer/automation is enabled by this plan.
 
@@ -24,4 +24,4 @@ Proposed later B work is F-07, F-10, F-11/F-12 contracts and current System SDS,
 
 ## Expected first returns
 
-From Lab 6: actual scope overlap and accepted-version handoff when ready. From B: allocation decision plus C3 on A contracts, and the pushed #88 contract SHA for A review. Neither is assumed to have happened.
+From Lab 6: actual scope overlap and accepted-version handoff when ready. From B: D2 allocation decision, C3 on #90, and the pushed #88 contract SHA for A review. Review of Lab7 #87/#94 is a separate work item in the same coordinating chat. Neither review is assumed to have happened.
