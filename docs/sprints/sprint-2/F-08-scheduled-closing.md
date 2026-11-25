@@ -1,12 +1,12 @@
 # F-08 Scheduled closing - engineering contract
 
-Issue #96, version 1.0, 25 November 2026. Owner/driver: Bannasorn Thongkorn (Punge089, A), assisted by Codex GPT-6.1 Sol. Reviewer: Papangkorn Jitvoottikrai (book6349, B), C3 pending. Branch `feature/96-scheduled-closing`, initial base `c99748c`. Design only; no feature tests/schema/code yet.
+Issue #96, version 1.1 execution inventory, 25 November 2026. Owner/driver: Bannasorn Thongkorn (Punge089, A), assisted by Codex GPT-6.1 Sol. Reviewer: Papangkorn Jitvoottikrai (book6349, B). Actual initial-contract C3: [7159683176](https://github.com/Punge089/classpulse/issues/96#issuecomment-7159683176), 25 November 2026 10:25:48 UTC. Branch `feature/96-scheduled-closing`, initial base `c99748c`. Design only; no F-08 feature tests/schema/code yet. The separately reviewed Lab7 integration addendum remains pending.
 
 ## 1. Feature and requirements
 
 FR-12: owner sets an optional closing time and responses stop after it. BR-11: closing time, when set, must be future at publishing; reject responses after it. Exact boundary here is **at or after** closing time. Preserve BR-03 manual lifecycle, BR-04 open-only, BR-05 eligibility, BR-06 uniqueness, BR-07 validation, BR-08 ownership, BR-09 immutable responses and BR-10 identified labeling. NFR-02/03 access, NFR-05 persistence, NFR-07 UX and NFR-09 safe configuration apply. D2/Sprint2 feature, separate from Lab7 maintenance assessment.
 
-Proposal needing B review: a stored optional deadline controls availability without a background job. Keep `status` as the manually controlled lifecycle and expose `acceptingResponses` and `closureReason` separately. At deadline a PUBLISHED survey is effectively closed to responses even if stored status remains PUBLISHED; label it "Closed - deadline reached" in UI. Do not claim an automatic persisted CLOSED transition or a scheduled cloud job. B must confirm this satisfies the intended FR-12 before tests; if a persisted automatic transition is required, version/review the design instead of silently changing behavior.
+B accepted this design in the C3 linked above: a stored optional deadline controls availability without a background job. Keep `status` as the manually controlled lifecycle and expose `acceptingResponses` and `closureReason` separately. At deadline a PUBLISHED survey is effectively closed to responses even if stored status remains PUBLISHED; label it "Closed - deadline reached" in UI. Do not claim an automatic persisted CLOSED transition or a scheduled cloud job. If a persisted automatic transition is later required, version/review the design instead of silently changing behavior.
 
 ## 2. Workflow
 
@@ -71,7 +71,7 @@ Preserved regressions: original publish/close matrix, auth/session, role/ownersh
 
 ## 10. Software Test Specification
 
-All designs await B C3 before test source is written.
+The original designs below received B C3 at the linked comment. That review permits independent scoped test work; it does not waive serialized implementation, verified runtime or the separately scoped/reviewed Lab7 integration revision. No F-08 test source has been written at this checkpoint.
 
 | Test | AC | Level | Preconditions/input and action | Expected result | Planned file |
 |---|---|---|---|---|---|
@@ -95,15 +95,32 @@ Primary RED uses only existing app/fixtures and existing Survey.updatedAt: do no
 
 ## 11. Definition of Done and evidence
 
-- [ ] B reviews exact contract/AC/STS and confirms derived availability semantics, clock/lock protocol and closed-only schedule edits in C3.
+- [x] B reviewed the original contract AC-180..189/TEST-180..194 and accepted derived availability, clock/lock and preservation semantics in C3 7159683176. This is contract approval, not tested implementation or Lab7 integration approval.
 - [ ] Any required Lab7 integration addendum is separately versioned/reviewed before interacting tests/code; actual old-code SHA pinned.
 - [ ] Meaningful RED committed before implementation; same test GREEN; all AC have actual linked test/manual results and accepted version. No disabled/focused/weakened tests.
 - [ ] Verified separate local instance with database name classpulse_test, existing safety guard; distinct/serialized ports. No credential/log copying or reset of Lab6 data.
 - [ ] Run `npm --prefix server test`, `npm --prefix client test`, both build scripts and `npx playwright test` at exact integrated head/config; record commands/pass-fail-skip and every failure. Manual migration/deployed checks labeled manual.
 - [ ] B substantive review of current proposed commit and passing mandatory CI; merge commit to staging, reviewed main release and actual deployed cutoff/preserved checks. Human runs cloud/migration commands and submits separate D2 PDF.
 
-No application tests have run for this contract. All code/test/peer approval/release/results remain PENDING. Local document checks are not application verification.
+No F-08 application tests have run for this contract. Code, tests, integration-contract review, implementation PR review, release and feature results remain PENDING. Local document checks and baseline documentation-branch CI are not F-08 application verification.
+
+### Execution impact checkpoint - 25 November 2026
+
+Read-only source reference: Lab7 PR92 head `d1b41c3d4fc86361110d5f65357cdef1d89f8aeb`, still awaiting B implementation review. This is an observed proposed implementation, not an accepted Lab6 baseline or permission to implement F-08 out of order. The following source inventory narrows the already-contracted design; it does not revise #87's contract or write its code.
+
+| Existing source observation | Required F-08 integration and retained oracle |
+|---|---|
+| `ownerSurveys.ts` locks the owned `Survey` row with `FOR UPDATE`, checks reopen body/version and lifecycle validity, samples server time, then atomically writes state/version/event. | Preserve that ownership/error order and one transaction. For publish/reopen only, insert the already-contracted deadline check after the existing transition/integrity/version checks and before any update/event. A rejected deadline leaves all survey/event/answer data unchanged (AC-183, TEST-184); close still works after effective expiry. The actual #87 contract addendum must be separately scoped and reviewed before this change. |
+| `surveyLifecycle.ts` implements the pure stored-state/action matrix and has no clock/data access. | Retain its existing matrix cases. Availability/deadline logic belongs to `surveySchedule.ts` and transactional callers; do not replace stored status or silently create an expiry event (TEST-185/194). |
+| `responses.ts` currently reads availability/eligibility/questions before a transaction that creates the response. | An outer read cannot prove F-08 admission. Move the authoritative current survey/enrollment/question reads and validation into the transaction after locking that same survey row; then sample time and create the complete response under the existing error order. Preserve the B-owned history GET section. Prove the crossing-deadline wait with a lock barrier, not a timing guess (TEST-186/188/189). |
+| The closed `ErrorCode` union currently lacks `CLOSING_TIME_PASSED`. | Issue96's Files list now includes `server/src/lib/errors.ts` for that already-specified discriminant only. Do not change middleware or disclose internal DB errors (AC-182/183, TEST-183/184). |
+| `statusVersion` guards lifecycle intent, while F-06 and scheduling use `expectedUpdatedAt`. | Schedule edits increment neither lifecycle version nor event count. Ensure strictly newer `updatedAt` for scheduling and lifecycle writes so an old schedule form cannot become valid across a same-millisecond close/reopen cycle. Preserve explicit no-auto-retry recovery (TEST-181/189/192). The shared lifecycle timestamp impact belongs in the pending integration addendum. |
+| PR92 has no `closesAt` field and preserves historical response/summary access. | Add only the nullable deadline migration after the agreed integration slot. Existing rows receive null and retain IDs/values/timestamps; expiration does not hide saved responses/summary (TEST-187/191). The final integrated schema and F-07/F-10 interactions must be read again before implementation. |
+
+Execution boundaries: independent contract preparation is allowed now. F-08 product/shared-file implementation remains after the recorded #87 -> #90 -> agreed extended-type slot, and interacting tests/code require the reviewed #87 addendum. Do not infer that importing newer staging documentation satisfies that prerequisite. Disposable CI PostgreSQL16 is a verified isolated test lane for earlier work; any future F-08 CI/browser execution needs a scoped workflow configuration if the current workflow does not execute the required tests. Local instances/ports and human-only production migration steps remain separate gates. No credentials or live connection strings are included here.
 
 ## 12. Version history
 
 v1.0,25 November2026,A/Codex GPT-6.1 Sol: initial scheduled-closing contract before tests/code, FR12/BR11 boundary and locked admission design, explicit separate Lab7 integration-review prerequisite; B C3 pending.
+
+v1.1 execution inventory,25 November2026,A/Codex GPT-6.1 Sol: record actual B C3 and read-only impact against proposed87 head d1b41c3; name the already-required error-union file before editing it, identify the current response admission/row-lock gap and shared timestamp impact, and preserve all AC/STS plus the separately scoped/reviewed87 integration prerequisite. No application tests, schema or implementation changed; no later feature assignment or integration approval inferred.

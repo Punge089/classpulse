@@ -144,3 +144,7 @@ On 25 November 2026, after A's two inline review comments on B's PR #100, B used
 ## Lab 7 Issue #89 current metrics refresh - Student B, 25 November 2026
 
 Student B/book6349 used Codex GPT-6 and the connected GitHub account to read Issue #89, PR #92's exact head and GitHub Actions run 45613368930, then updated the B-owned metrics, readiness and source snapshot. This refresh corrects the interpretation word counts and identifies B as the required reviewer of A-authored PR #92. CI test/build results are attributed to the remote workflow; B did not run application tests, UAT, migration checks, deployment or release operations. The update is documentation-only and keeps Lab 7 separate from Deliverable 2.
+
+## F-08 execution inventory after actual C3 - Student A, 25 November 2026
+
+A's Codex GPT-6.1 Sol recorded B's actual C3 7159683176 in F-08 contract v1.1, read the proposed Lab7 implementation d1b41c3 without editing it, and identified the authoritative submission-read/row-lock and shared timestamp integration points. The already-contracted CLOSING_TIME_PASSED discriminant file was added to Issue96's Files list before implementation. A imported reviewed staging documentation, preserving all incoming Lab6/B sources and both complete AI declarations. No F-08 tests, application/schema/workflow, database, cloud or deployment operation was performed. The separate #87 contract addendum/review and serialized integration remain prerequisites; B's initial C3 is not fabricated approval of that future change.
