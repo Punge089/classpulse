@@ -45,3 +45,17 @@ The accepted Lab 6 baseline and independent UAT disposition remain PENDING. Migr
 PR #92 is open/unmerged at exact head `d1b41c3d4fc86361110d5f65357cdef1d89f8aeb`, targeting `sprint-2-staging` at `eeae87524a340b3463866f199cec7e1bb59b1ef9`. GitHub Actions run 45627723318 checked merge commit `43bcdd04900bf995c511d62f3b1b40e81ab4643e` and reports the test-and-docker check successful: server 219/0/0, client 10/0/0, browser 10/0/0; both builds and Docker passed. This is current-base integration evidence. B's exact-head C7 review remains pending; no PR approval or merge by B is claimed.
 
 TEST-111's separate historical-data check passed in disposable CI run 45609911425 on synthetic PostgreSQL 16 data: nine pre-change tables had seeded old values; four survey variants were preserved, statusVersion was initialized to zero, and no audit events were fabricated. This automated test does not verify migration of the final accepted Lab 6 database or deployed production data. The accepted Lab 6 baseline and independent UAT disposition remain pending; release/deployment, production migration verification, serving revision, traffic, and changed/preserved-user checks remain pending. Overall readiness remains NOT READY. Lab 7 remains separate from D2, and no Lab 6 files or live data were changed.
+
+## Current-state refresh - 25 November 2026, 22:25:33 Asia/Bangkok
+
+| Gate | Current evidence and status |
+|---|---|
+| Candidate and named tests | PR #92 is open at head `87971f59da5bc63634bd8ce963667f6a5a8efcb9`. Actions run 45638095728 succeeded on synthetic merge `9b74772155143c0526edf213083dfe011d5629ac` against `sprint-2-staging` base `841ad5ca6d62e4f04d8a943d89a4a91e919feeb5`: server 219, client 10 and browser 10 passed; 0 failed and 0 skipped; both builds and Docker passed. |
+| Current staging integration | Staging is now `9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35`, which includes merged documentation PR #112. The run above predates that merge, so a fresh PR #92 integration check on the latest staging base is pending. |
+| B review | Exact-head C7 on PR #92 is pending; no B verdict or merge is recorded here. The current `autopilot/approvals.txt` has no `approve C7 PR 92` entry. |
+| Accepted baseline and UAT | PENDING. No final accepted Lab 6 baseline mapping or independent no-defect/UAT disposition is claimed. |
+| Migration and release | Disposable TEST-111 synthetic migration evidence remains distinct from accepted-baseline or deployed production migration verification. Main release, deployed revision, traffic, and changed/preserved user checks remain PENDING. |
+| Readiness | **NOT READY.** Passing exact-head CI does not satisfy the missing current-staging integration, B review, accepted-baseline/UAT, migration, release, or deployment evidence. |
+
+This is a remote check on the stated commit; B did not run local application tests, UAT, a live migration, release, or deployment during this refresh. Lab 7 remains separate from D2; no Lab 6 files or live data were changed.
+
