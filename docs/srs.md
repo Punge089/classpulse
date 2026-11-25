@@ -150,5 +150,4 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
 |---|---|---|
 | 1.0 | 6 Nov 2026 | Initial SRS. |
 | 1.1 | 6 Nov 2026 | After the review of PR #12 by book6349: D-04 no longer attributes both BR-06 and BR-09 to one database constraint (BR-06 is the unique constraint, BR-09 is the API exposing no write route); NFR-01's verification now includes TEST-57, which checks that no plaintext password or session token reaches the server's logs. |
-
 | 1.2 proposed | 25 Nov 2026 | Issue #87, A: revise BR-03/D-08 and add FR-19/BR-15 before tests/code for controlled reopening. B agreement/C3 pending; old terminal behavior retained in tag/history. Detailed AC-100..111/TEST-100..114 in [Lab 7 contract](labs/lab-07/maintenance-contract.md). |
