@@ -1,0 +1,268 @@
+{
+  "reportVersion": "0.1-source-draft",
+  "observedAtUTC": "2026-11-25T12:50:53.113529+00:00",
+  "observedAtBangkok": "2026-11-25T19:50:53.113529+07:00",
+  "candidate": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+  "candidateRun": 45613368930,
+  "status": "NOT READY / source-only draft",
+  "records": [
+    {
+      "file": "inputs/contract-before-code.md",
+      "sha256": "91533a27261a93d491bfa33817c46c623757f7aae194de254ee0045ab189d28a",
+      "commit": "8017c9183302e4e0c5ff04cd997704255420b8fb",
+      "path": "docs/labs/lab-07/maintenance-contract.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/srs-before.md",
+      "sha256": "5e74471cd4e29f6d1b16160995f42b785300c078439f81ccee3637c568ff03f0",
+      "commit": "c99748c0f5d7044aa6cbf8e7124fa9300e0006ff",
+      "path": "docs/srs.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/srs-revised.md",
+      "sha256": "4d818fbfdad6dc029296b860f4d3dd1ce0b9109c79247a94fd41e32d8a157129",
+      "commit": "8017c9183302e4e0c5ff04cd997704255420b8fb",
+      "path": "docs/srs.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/primary-tests.ts",
+      "sha256": "607c1615597497112c49f35e9d3818f815c934c16989615f7418284c31a5f556",
+      "commit": "3f8918ceefd5eb55cdebd970710fd0789bd38c98",
+      "path": "server/tests/api/surveyReopen.test.ts",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/candidate-api-tests.ts",
+      "sha256": "a3bdd3038a65078f84b762b3a446fe7bc4edc493b55c128619e50def68019e21",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "server/tests/api/surveyReopen.test.ts",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/candidate-owner-routes.ts",
+      "sha256": "880bc6b5e6491e689babd698549b1e060e3cc2db59318a9569d1e10cf832c4fc",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "server/src/routes/ownerSurveys.ts",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/migration.sql",
+      "sha256": "d2c776fa5aedfe90b04f50b2a58d4df64e01c9d2f80c8f1f479e9f74e2140a37",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "server/prisma/migrations/20261125110000_survey_lifecycle_audit/migration.sql",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/primary-red-log.txt",
+      "sha256": "fbb8681b6288ed137deb5dedb76ee3cf38f21a6cb1ca16cf6c03f2010ece6ad9",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/red-ci-server.txt",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/primary-red-run.json",
+      "sha256": "08aa630ddc5ad007f3d52d6a3aa133752e107e8856accc868e7637daad55adf9",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/red-ci-run.json",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/red-followup-runs.json",
+      "sha256": "6c6ba66b89d885aee5056388821802b42d5e160e7aa9972370ee24c6236d1438",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/red-followup-runs.json",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/migration-results.txt",
+      "sha256": "0f0bd86f9559df934363322c44443b5c0108f9d6043d9458449791294a926f72",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/migration-results.txt",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/ui-red.json",
+      "sha256": "73c828222c5734d43c97d03be70fd8ccee5cae9a3478f24bcc8d3aca43ea1620",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/ui-red.json",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/core-green-run.json",
+      "sha256": "278ac93846e6b65727c595e8157119e1719a8814fa5d65addebecfdcd0960cf5",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/core-green-run.json",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/browser-green-ci-run.json",
+      "sha256": "ee8e578e29749870ca99056d02146e8322b17e0d6b33801a0715337a3fbaba7a",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/browser-green-ci-run.json",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/b-metrics.md",
+      "sha256": "c6d2272fdaf01e4aec32ea86e6587499491d538f278f3061b1721b0f7972c629",
+      "commit": "e8832b664429e9895df75222984a5240f1cbcf05",
+      "path": "docs/labs/lab-07/metrics.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/b-readiness.md",
+      "sha256": "105f4d9a5fec9a07bc4202eea7e10d5e4ca2755e864e545c00280f26f967baf0",
+      "commit": "e8832b664429e9895df75222984a5240f1cbcf05",
+      "path": "docs/labs/lab-07/readiness.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/b-retrospective.md",
+      "sha256": "b5dae07785ab14a51fc69d5e9ea6779ccd5cf2e8497f6993583236357ec5ce86",
+      "commit": "e8832b664429e9895df75222984a5240f1cbcf05",
+      "path": "docs/labs/lab-07/retrospective.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/b-source-snapshot.md",
+      "sha256": "f107f089255cd3d4294aaf4f020dce780fdc01b8bb586d84577c0f24e7fd631c",
+      "commit": "e8832b664429e9895df75222984a5240f1cbcf05",
+      "path": "evidence/lab-07/metrics/2026-11-25-snapshot.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/playwright-config.ts",
+      "sha256": "c0d8ff46629988015818b2b8f28e8c2e9fc1683305b1a0be5f16afabf80cb949",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "playwright.config.ts",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/vite-config.ts",
+      "sha256": "1de8807dd41a110dd3d21aa2eacb6d8e871bbfef0cf6e17c788b7db5233b0e03",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "client/vite.config.ts",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "inputs/assignment-changes.md",
+      "sha256": "d1eb4c0dc8d40a902737b6cf235558eadb3575281155da68e2a62e7e97af7a81",
+      "commit": "292a6986fe4b3fe31a65d1053c238446fe789e6d",
+      "path": "docs/labs/lab-07/assignment-changes.md",
+      "derivation": "exact Git blob"
+    },
+    {
+      "file": "screenshots/reopened-owner-history.png",
+      "sha256": "96068b67bc5d830d6dff46e151950e7f3a1aef3adf2b2ea58113b513f417abd5",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/browser-screenshots/reopened-owner-history.png",
+      "derivation": "exact Git blob; screenshot from CI45610750485 on24eed7a"
+    },
+    {
+      "file": "screenshots/stale-tab-explicit-reload.png",
+      "sha256": "fdee332cabf75219a90c45085935a75d4df288f6e3cf32359e9feac3a3816c0a",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/browser-screenshots/stale-tab-explicit-reload.png",
+      "derivation": "exact Git blob; screenshot from CI45610750485 on24eed7a"
+    },
+    {
+      "file": "screenshots/eligible-student-confirmation.png",
+      "sha256": "f11574e6578b203aa80eeb5064ef2a8bae134e40ead381dc18f78ee5064641f2",
+      "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "path": "evidence/lab-07/maintenance/browser-screenshots/eligible-student-confirmation.png",
+      "derivation": "exact Git blob; screenshot from CI45610750485 on24eed7a"
+    },
+    {
+      "file": "inputs/spec-revision.diff",
+      "sha256": "bf12d3105e0afdc247f2e7e8c4b9c597cb9e58aafd4d69590230ea661bfc192a",
+      "from": "c99748c",
+      "to": "8017c9183302e4e0c5ff04cd997704255420b8fb",
+      "paths": [
+        "docs/srs.md",
+        "docs/features.md",
+        "docs/system-sds.md",
+        "docs/sprints/sprint-1/F-03-survey-authoring.md",
+        "docs/traceability.md"
+      ],
+      "derivation": "actual git diff",
+      "originalSha256": "a224f77b8222f684dab30c00578afb615f1396f11cf2f397749aa29926dea679",
+      "normalization": "LF, line-end whitespace and extra EOF blank lines only; content/assertions not changed"
+    },
+    {
+      "file": "inputs/lifecycle-implementation.diff",
+      "sha256": "5d4d56a055f13128589e03f1d78041ff69236818ccbf1819bd2d0f096add2a11",
+      "from": "c99748c",
+      "to": "3203c3a",
+      "paths": [
+        "server/src/lib/surveyLifecycle.ts"
+      ],
+      "derivation": "actual git diff",
+      "originalSha256": "7857adb04ee86fb472f891ace9e383b91322f5658569e5eacd7717493be2d450",
+      "normalization": "LF, line-end whitespace and extra EOF blank lines only; content/assertions not changed"
+    },
+    {
+      "file": "inputs/b-c3.json",
+      "sha256": "ab50ad3b4af59e83b6ac3997d737ec7ec13698c32f7abc836c4483d2a696acc1",
+      "endpoint": "issues/comments/7159676041",
+      "author": "book6349"
+    },
+    {
+      "file": "inputs/implementation-review.json",
+      "sha256": "6a7307d59e7d4de9edebd359e38a08baaa03401f32194c0d017853a1fa53f757",
+      "endpoints": [
+        "pulls/92",
+        "pulls/92/reviews"
+      ]
+    },
+    {
+      "file": "inputs/candidate-ci.json",
+      "sha256": "6ef954f7bfe5f6ca72262bee3b4c86f9a9d0f1904f0dccf5bf108e854acf4622",
+      "run": 45613368930,
+      "head": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8"
+    },
+    {
+      "file": "inputs/candidate-server-log.txt",
+      "sha256": "5df124e8311d775f9ba1c3d32b33f443c51c2a3a2f302e043ad445d23689a172",
+      "run": 45613368930,
+      "step": "Test server",
+      "derivation": "complete step output, ANSI/trailing space normalized; environment values omitted"
+    },
+    {
+      "file": "inputs/candidate-client-log.txt",
+      "sha256": "800a21af83de12c9213eb9fc026a8cf48085de5acf0815c456d777ff7dc3d655",
+      "run": 45613368930,
+      "step": "Test client",
+      "derivation": "complete step output, ANSI/trailing space normalized; environment values omitted"
+    },
+    {
+      "file": "inputs/candidate-browser-log.txt",
+      "sha256": "faa991660c04f5b997f0c9e778666233fb44adbd24a68ac62e9d345f5fc08af7",
+      "run": 45613368930,
+      "step": "Test complete browser suite",
+      "derivation": "complete step output, ANSI/trailing space normalized; environment values omitted"
+    },
+    {
+      "file": "inputs/branch-ci-window.json",
+      "sha256": "44bba9a6cd98b31b1e9f2a51a460397ece592c7980d0e8a883e84fc15e18b015",
+      "pagination": "100/page until short page",
+      "scope": "only the named branch/workflow/window"
+    },
+    {
+      "file": "inputs/timeline.json",
+      "sha256": "1ca70985af75f7c64406455c75131540a9b7d4d6f2d1029ffe5ea090caa8fb1b",
+      "derivation": "actual Git commit metadata, not inferred approval times"
+    },
+    {
+      "file": "inputs/same-test-proof.json",
+      "sha256": "da2dc65ab40f6e8c15e8ccdbfadae0416aae713fea87ae70d4212d92cb29887d",
+      "derivation": "exact original describe block is present in current test file"
+    },
+    {
+      "file": "inputs/assignment-provenance.json",
+      "sha256": "78f0c2b7b433efe87f6f6554466061d2325a8b79a911a3f3d5ca73fe51fe201d",
+      "derivation": "Lab7 entries selected from original supplied-source manifest"
+    }
+  ]
+}

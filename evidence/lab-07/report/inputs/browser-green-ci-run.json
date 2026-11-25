@@ -1,0 +1,130 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-11-25T12:07:23Z",
+  "headSha": "24eed7a1561c76d43f1b3275636e97b9478dab1f",
+  "status": "completed",
+  "updatedAt": "2026-11-25T12:09:39Z",
+  "url": "https://github.com/Punge089/classpulse/actions/runs/45610750485",
+  "runId": 45610750485,
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install root dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install server dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install client dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Generate Prisma client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Apply database migrations",
+      "conclusion": "success"
+    },
+    {
+      "name": "Seed synthetic test accounts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install Chromium for preserved and maintenance browser tests",
+      "conclusion": "success"
+    },
+    {
+      "name": "Reseed synthetic CI accounts for browser tests",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test complete browser suite",
+      "conclusion": "success"
+    },
+    {
+      "name": "Retain browser evidence",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build Docker image locally",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "sha256": {
+    "browser-green-ci-server.txt": "921343261dd4edf16a9806371a659533a8969aed59ead3b1aab9ee56d8023260",
+    "browser-green-ci-client.txt": "73fbed9d1020065b8ea77901496e59613aafaceeaaecaf39b049e91970a1075d",
+    "browser-green-ci-browser.txt": "ba6c14eec6d75c28b4570dfacc45b3e80f3a2043cb3480f69946bf39d6636beb",
+    "browser-screenshots/eligible-student-confirmation.png": "f11574e6578b203aa80eeb5064ef2a8bae134e40ead381dc18f78ee5064641f2",
+    "browser-screenshots/reopened-owner-history.png": "96068b67bc5d830d6dff46e151950e7f3a1aef3adf2b2ea58113b513f417abd5",
+    "browser-screenshots/stale-tab-explicit-reload.png": "fdee332cabf75219a90c45085935a75d4df288f6e3cf32359e9feac3a3816c0a"
+  },
+  "counts": {
+    "server": {
+      "passed": 215,
+      "failed": 0,
+      "skipped": 0
+    },
+    "client": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "artifactTestMergeSha": "d68793462dab87cfa402cf0495df472f9c52e5ec",
+  "operator": "A/Punge089 assisted by Codex GPT-6.1 Sol, automated Chromium on isolated GitHub Actions runner"
+}
