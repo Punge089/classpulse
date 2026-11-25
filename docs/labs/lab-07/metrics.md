@@ -45,3 +45,17 @@ Interpretation at the current refresh (69 words): The maintained branch now has 
 The previous readbacks remain dated history. At this readback PR #92 is A-authored and open at head 45f48cd; B is the required reviewer. The run above is remote GitHub Actions evidence, not a test run by B. It supports the current PR-head test result but does not establish a fresh run on the two newer staging commits, reviewed release, UAT disposition, migration preservation, main release, or deployment.
 
 Interpretation at the current refresh (67 words): At this readback, PR #92's exact-head workflow check passed: 219 server, 10 client and 10 browser tests, plus both builds and Docker. The successful run used merge commit cb6b9f1 with then-current base a49cbe7; sprint-2-staging has since advanced to 5e7a164, two commits beyond that base, so a fresh integrated check remains pending. B's exact-head review, accepted baseline/UAT, migration evidence, release and deployment remain open. Readiness stays NOT READY.
+
+## Current-state refresh - 25 November 2026, 21:10:44 Asia/Bangkok
+
+| ID | Current measurement | Value and evidence |
+|---|---|---|
+| M1 | Sprint 1 parent Issue closure, Issues #1-#11 ÷ 11 | 11/11 (100%); source rows remain in METRIC-SNAPSHOT-2026-11-25. |
+| M2 | Sprint 1 staging integration, merged PRs #12-#26 ÷ 15 | 15/15 (100%); all selected PRs target `sprint-1-staging`; source rows remain in METRIC-SNAPSHOT-2026-11-25. |
+| M3 | Named suites on current Lab 7 PR #92 candidate | GitHub Actions run 45627723318 passed on exact PR head `d1b41c3d4fc86361110d5f65357cdef1d89f8aeb`. It checked synthetic merge `43bcdd04900bf995c511d62f3b1b40e81ab4643e` against current staging base `eeae87524a340b3463866f199cec7e1bb59b1ef9`: server 219/0/0, client 10/0/0, browser 10/0/0; both builds and Docker passed. |
+| M4 | ClassPulse independent UAT defect disposition | PENDING. No final accepted-baseline/no-defect disposition is claimed. |
+| M5 | Exact candidate-head CI and B review | Current-base CI passed on PR #92 head `d1b41c3`; PR #92 remains open/unmerged and B's exact-head C7 review is PENDING. |
+
+Historical TEST-111 evidence is separate from this candidate CI: CI run 45609911425 passed a disposable PostgreSQL 16 migration-preservation test against synthetic pre-change data in nine tables and four survey variants; old values were preserved, all four additive status versions were zero, and no audit rows were fabricated. This demonstrates the scoped SQL/data-preservation check in disposable CI. Accepted Lab 6 baseline mapping, production/deployed migration verification, release and UAT remain PENDING.
+
+Interpretation at the current refresh (77 words): The latest PR #92 candidate passed current-base CI: 219 server, 10 client and 10 browser tests, plus both builds and Docker. The separate TEST-111 disposable PostgreSQL check preserves synthetic old-table values and starts the additive audit table empty; it is not a production migration or accepted-Lab-6 verification. B's exact-head C7 review, accepted baseline and UAT, reviewed release, deployed migration and user checks remain pending. Readiness stays NOT READY.
