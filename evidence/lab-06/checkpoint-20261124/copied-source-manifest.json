@@ -373,6 +373,33 @@
       "bytes": 630
     },
     {
+      "path": "r2-companion-review-20261125/CD-EXPIRY-PROPOSAL.txt",
+      "sha256": "8934b6d522a3da23f04ebfaa487ff572676c1acfcc0eb64bf43027eaca61bdcf",
+      "bytes": 539,
+      "source": "User-forwarded C/D proposal transcription"
+    },
+    {
+      "path": "r2-companion-review-20261125/CPV01-auth.test.ts",
+      "sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036",
+      "bytes": 8289,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "sourcePath": "server/tests/api/auth.test.ts"
+    },
+    {
+      "path": "r2-companion-review-20261125/CPV01-test-fixture.ts",
+      "sha256": "e00e36d9b84fec3b29285fb305ff491c8672f266c08b2624b2a2f0700ff2fd9a",
+      "bytes": 2646,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "sourcePath": "server/tests/helpers/fixture.ts"
+    },
+    {
+      "path": "r2-companion-review-20261125/CPV01-test-setup.ts",
+      "sha256": "b419f2d5b2be3334b72c63412269ff46329cf5d516f0f491ee111e8dd0fc1d32",
+      "bytes": 427,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "sourcePath": "server/tests/setup.ts"
+    },
+    {
       "path": "received-cd-a2/ClassPulse/CD08-missing-ID-result.json",
       "sha256": "463cbfbebd6a5235e78c865b5a70fa7359b0ac6b930d0941ea5b68dfad9e0fd3",
       "bytes": 509
@@ -558,9 +585,22 @@
       "bytes": 90531
     },
     {
+      "path": "received-cd-r2-20261125/CD07-summary.png",
+      "sha256": "e98c4888b94eef12b2c813ac5dccd5a91b23b9e6663a4450b74a5fad9f2f3067",
+      "bytes": 76911,
+      "sourceAttachmentName": "codex-clipboard-7f132584-1ca7-4e3c-ab7d-48dbc1c3b1f5.png",
+      "storedNameReason": "User supplied this clipboard PNG as the requested CD07 screenshot; stored under the narrative reference after visual/JSON comparison. No original-file byte-equivalence claim beyond supplied bytes."
+    },
+    {
       "path": "received-cd-r2-20261125/FIXTURE-CASE-REPORT.md",
       "sha256": "73719f6c2e782d736858306af184d8081390190b6f97e0a71f489768b10650ae",
       "bytes": 2950
+    },
+    {
+      "path": "received-cd-r2-20261125/fixture-case-results.json",
+      "sha256": "2d059aa538206e7820cedb9357f3c40174eccc01b1820abaae3437d6c297a8f6",
+      "bytes": 18426,
+      "sourceAttachmentName": "fixture-case-results.json"
     },
     {
       "path": "repository-followup-20261125/CD-CLOSURE-USER-TRANSCRIPTION.txt",

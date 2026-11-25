@@ -1,0 +1,408 @@
+{
+  "runId": "UAT6-20261125-CodexD-R2",
+  "operator": "Codex under Thira Rungruangkaset (tester D, EN-037_P5)",
+  "release": {
+    "id": "CP-V01",
+    "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+    "revision": "classpulse-00006-6w6",
+    "trafficPercent": 100,
+    "partnerReconfirmedAtUtc": "2026-11-24T17:36:54Z",
+    "basis": "Partner Cloud Run/Artifact Registry readback in fixture ZIP. Tester verified reachability and the live behavior and recorded the public asset path. Full cloud mapping was not independently queried during this run."
+  },
+  "origin": "https://classpulse-zdwglar6eq-as.a.run.app",
+  "coordination": "Fixture access was verified in the ClassPulse DM. Delivery of the separate test-start notice was unverified.",
+  "scope": "CD-01 inactive account branch and CD-07 exact aggregate.",
+  "toolObservation": "The initial answer selector expected a wrapping label. It stopped before choosing or submitting. The follow-up used the inputs' associated labels, verified both selections and submitted via the visible UI.",
+  "inactive": {
+    "fixtureId": 17,
+    "credentialProvenance": "The partner verified the stored credential privately. The supplied value was used once without recording it.",
+    "startedAt": "2026-11-25T10:49:22.731Z",
+    "completedAt": "2026-11-25T10:49:23.649Z",
+    "before": {
+      "status": 401,
+      "code": "UNAUTHENTICATED",
+      "message": "Please sign in to continue"
+    },
+    "login": {
+      "status": 401,
+      "code": "INVALID_CREDENTIALS",
+      "message": "Invalid email or password"
+    },
+    "after": {
+      "status": 401,
+      "code": "UNAUTHENTICATED",
+      "message": "Please sign in to continue"
+    },
+    "uiPath": "/login"
+  },
+  "baseline": {
+    "at": "2026-11-25T10:51:10.819Z",
+    "observations": [
+      {
+        "path": "/api/owner/surveys/26",
+        "status": 200,
+        "body": {
+          "survey": {
+            "id": 26,
+            "courseId": 1,
+            "courseCode": "CPE334",
+            "title": "UAT6-20261125-CodexD-R2-CD07",
+            "description": "Dedicated synthetic Lab 6 CD-07 aggregate fixture",
+            "mode": "IDENTIFIED",
+            "status": "PUBLISHED",
+            "publishedAt": "2026-11-25T10:51:04.316Z",
+            "closedAt": null,
+            "createdAt": "2026-11-25T10:51:00.926Z",
+            "questions": [
+              {
+                "id": 62,
+                "position": 1,
+                "prompt": "Rate this class (CD-07)",
+                "type": "RATING",
+                "required": true,
+                "options": []
+              },
+              {
+                "id": 63,
+                "position": 2,
+                "prompt": "Best format? (CD-07)",
+                "type": "SINGLE_CHOICE",
+                "required": true,
+                "options": [
+                  {
+                    "id": 40,
+                    "position": 1,
+                    "label": "Online"
+                  },
+                  {
+                    "id": 41,
+                    "position": 2,
+                    "label": "In person"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "path": "/api/owner/surveys/26/summary",
+        "status": 200,
+        "body": {
+          "summary": {
+            "surveyId": 26,
+            "status": "PUBLISHED",
+            "responseCount": 0,
+            "questions": [
+              {
+                "questionId": 62,
+                "prompt": "Rate this class (CD-07)",
+                "type": "RATING",
+                "rating": {
+                  "average": null,
+                  "distribution": {
+                    "1": 0,
+                    "2": 0,
+                    "3": 0,
+                    "4": 0,
+                    "5": 0
+                  }
+                }
+              },
+              {
+                "questionId": 63,
+                "prompt": "Best format? (CD-07)",
+                "type": "SINGLE_CHOICE",
+                "choice": {
+                  "options": [
+                    {
+                      "optionId": 40,
+                      "label": "Online",
+                      "count": 0
+                    },
+                    {
+                      "optionId": 41,
+                      "label": "In person",
+                      "count": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "summaryReadback": {
+    "at": "2026-11-25T10:52:10.730Z",
+    "path": "/api/owner/surveys/26/summary",
+    "status": 200,
+    "body": {
+      "summary": {
+        "surveyId": 26,
+        "status": "PUBLISHED",
+        "responseCount": 3,
+        "questions": [
+          {
+            "questionId": 62,
+            "prompt": "Rate this class (CD-07)",
+            "type": "RATING",
+            "rating": {
+              "average": 4.33,
+              "distribution": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 2,
+                "5": 1
+              }
+            }
+          },
+          {
+            "questionId": 63,
+            "prompt": "Best format? (CD-07)",
+            "type": "SINGLE_CHOICE",
+            "choice": {
+              "options": [
+                {
+                  "optionId": 40,
+                  "label": "Online",
+                  "count": 3
+                },
+                {
+                  "optionId": 41,
+                  "label": "In person",
+                  "count": 0
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "summaryUI": {
+    "at": "2026-11-25T10:52:32.958Z",
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36",
+    "path": "/owner/surveys/26/summary",
+    "status": 200,
+    "body": {
+      "summary": {
+        "surveyId": 26,
+        "status": "PUBLISHED",
+        "responseCount": 3,
+        "questions": [
+          {
+            "questionId": 62,
+            "prompt": "Rate this class (CD-07)",
+            "type": "RATING",
+            "rating": {
+              "average": 4.33,
+              "distribution": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 2,
+                "5": 1
+              }
+            }
+          },
+          {
+            "questionId": 63,
+            "prompt": "Best format? (CD-07)",
+            "type": "SINGLE_CHOICE",
+            "choice": {
+              "options": [
+                {
+                  "optionId": 40,
+                  "label": "Online",
+                  "count": 3
+                },
+                {
+                  "optionId": 41,
+                  "label": "In person",
+                  "count": 0
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "summaryText": "Survey summary\n\nResponses: 3\n\nRate this class (CD-07)\n\nAverage: 4.33\n\nRating 1\n0\nRating 2\n0\nRating 3\n0\nRating 4\n2\nRating 5\n1\nBest format? (CD-07)\nOnline\n3\nIn person\n0",
+    "knownRespondentNamesVisible": false,
+    "assetPaths": [
+      "/assets/index-Bi1ZvEdG.js"
+    ]
+  },
+  "summarySnapshot": "## Latest page snapshot\nuid=18_0 RootWebArea \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/owner/surveys/26/summary\"\n  uid=18_1 banner\n    uid=18_2 link \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/owner\"\n      uid=18_3 StaticText \"ClassPulse\"\n    uid=18_4 StaticText \"Dr. Ann Lee\"\n    uid=18_5 StaticText \" · \"\n    uid=18_6 StaticText \"OWNER\"\n    uid=18_7 button \"Logout\"\n  uid=18_8 main\n    uid=18_9 region \"Survey summary\"\n      uid=18_10 heading \"Survey summary\" level=\"1\"\n      uid=18_11 StaticText \"Responses:\"\n      uid=18_12 StaticText \" \"\n      uid=18_13 StaticText \"3\"\n      uid=18_14 heading \"Rate this class (CD-07)\" level=\"2\"\n      uid=18_15 StaticText \"Average: \"\n      uid=18_16 StaticText \"4.33\"\n      uid=18_17 radio \"Rating 1 of 5\" disableable disabled\n      uid=18_18 radio \"Rating 2 of 5\" disableable disabled\n      uid=18_19 radio \"Rating 3 of 5\" disableable disabled\n      uid=18_20 radio \"Rating 4 of 5\" disableable disabled\n      uid=18_21 radio \"Rating 5 of 5\" disableable disabled\n      uid=18_22 StaticText \"Rating \"\n      uid=18_23 StaticText \"1\"\n      uid=18_24 StaticText \"0\"\n      uid=18_25 StaticText \"Rating \"\n      uid=18_26 StaticText \"2\"\n      uid=18_27 StaticText \"0\"\n      uid=18_28 StaticText \"Rating \"\n      uid=18_29 StaticText \"3\"\n      uid=18_30 StaticText \"0\"\n      uid=18_31 StaticText \"Rating \"\n      uid=18_32 StaticText \"4\"\n      uid=18_33 StaticText \"2\"\n      uid=18_34 StaticText \"Rating \"\n      uid=18_35 StaticText \"5\"\n      uid=18_36 StaticText \"1\"\n      uid=18_37 heading \"Best format? (CD-07)\" level=\"2\"\n      uid=18_38 StaticText \"Online\"\n      uid=18_39 StaticText \"3\"\n      uid=18_40 image \"Online: 3 responses\"\n      uid=18_41 StaticText \"In person\"\n      uid=18_42 StaticText \"0\"\n      uid=18_43 image \"In person: 0 responses\"\n",
+  "sessions": [
+    {
+      "role": "OWNER",
+      "id": 1,
+      "status": 200,
+      "at": "2026-11-25T10:50:25.170Z",
+      "path": "/owner",
+      "logout": {
+        "at": "2026-11-25T10:52:43.163Z",
+        "logoutStatus": 204,
+        "signedOutStatus": 401
+      }
+    },
+    {
+      "role": "RESPONDENT",
+      "id": 3,
+      "status": 200,
+      "at": "2026-11-25T10:50:24.152Z",
+      "path": "/surveys",
+      "logout": {
+        "at": "2026-11-25T10:52:43.440Z",
+        "logoutStatus": 204,
+        "signedOutStatus": 401
+      },
+      "input": {
+        "at": "2026-11-25T10:51:54.782Z",
+        "rating": 4,
+        "choice": "Online",
+        "selected": [
+          true,
+          true
+        ]
+      },
+      "confirmation": "Successfully clicked on the element\nPage navigated to https://classpulse-zdwglar6eq-as.a.run.app/responses/13.\n## Latest page snapshot\nuid=11_0 RootWebArea \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/responses/13\"\n  uid=11_1 banner\n    uid=11_2 link \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/surveys\"\n      uid=11_3 StaticText \"ClassPulse\"\n    uid=11_4 StaticText \"Student 1\"\n    uid=11_5 StaticText \" · \"\n    uid=11_6 StaticText \"RESPONDENT\"\n    uid=11_7 button \"Logout\"\n  uid=11_8 main\n    uid=13_0 heading \"Response submitted\" level=\"1\"\n    uid=13_1 StaticText \"Thanks — your response is in.\"\n    uid=13_2 StaticText \"Submitted on \"\n    uid=13_3 StaticText \"11/25/2026, 5:52:00 PM\"\n    uid=13_4 heading \"Your answers\" level=\"2\"\n    uid=13_5 StaticText \"Rate this class (CD-07)\"\n    uid=13_6 radio \"Rating 1 of 5\" disableable disabled\n    uid=13_7 radio \"Rating 2 of 5\" disableable disabled\n    uid=13_8 radio \"Rating 3 of 5\" disableable disabled\n    uid=13_9 radio \"Rating 4 of 5\" checked disableable disabled\n    uid=13_10 radio \"Rating 5 of 5\" disableable disabled\n    uid=13_11 StaticText \"Best format? (CD-07)\"\n    uid=13_12 StaticText \"Online\"\n    uid=13_13 link \"Back to surveys\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/surveys\"\n      uid=13_14 StaticText \"Back to surveys\"\n",
+      "responseReadback": {
+        "at": "2026-11-25T10:52:10.305Z",
+        "path": "/api/responses/13",
+        "status": 200,
+        "body": {
+          "response": {
+            "id": 13,
+            "surveyId": 26,
+            "submittedAt": "2026-11-25T10:52:00.407Z",
+            "answers": [
+              {
+                "questionId": 62,
+                "prompt": "Rate this class (CD-07)",
+                "type": "RATING",
+                "ratingValue": 4
+              },
+              {
+                "questionId": 63,
+                "prompt": "Best format? (CD-07)",
+                "type": "SINGLE_CHOICE",
+                "optionId": 40,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "role": "RESPONDENT",
+      "id": 5,
+      "status": 200,
+      "at": "2026-11-25T10:50:23.265Z",
+      "path": "/surveys",
+      "logout": {
+        "at": "2026-11-25T10:52:42.950Z",
+        "logoutStatus": 204,
+        "signedOutStatus": 401
+      },
+      "input": {
+        "at": "2026-11-25T10:51:55.032Z",
+        "rating": 4,
+        "choice": "Online",
+        "selected": [
+          true,
+          true
+        ]
+      },
+      "confirmation": "Successfully clicked on the element\nPage navigated to https://classpulse-zdwglar6eq-as.a.run.app/responses/14.\n## Latest page snapshot\nuid=14_0 RootWebArea \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/responses/14\"\n  uid=14_1 banner\n    uid=14_2 link \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/surveys\"\n      uid=14_3 StaticText \"ClassPulse\"\n    uid=14_4 StaticText \"Student 2\"\n    uid=14_5 StaticText \" · \"\n    uid=14_6 StaticText \"RESPONDENT\"\n    uid=14_7 button \"Logout\"\n  uid=14_8 main\n    uid=15_0 heading \"Response submitted\" level=\"1\"\n    uid=15_1 StaticText \"Thanks — your response is in.\"\n    uid=15_2 StaticText \"Submitted on \"\n    uid=15_3 StaticText \"11/25/2026, 5:52:00 PM\"\n    uid=15_4 heading \"Your answers\" level=\"2\"\n    uid=15_5 StaticText \"Rate this class (CD-07)\"\n    uid=15_6 radio \"Rating 1 of 5\" disableable disabled\n    uid=15_7 radio \"Rating 2 of 5\" disableable disabled\n    uid=15_8 radio \"Rating 3 of 5\" disableable disabled\n    uid=15_9 radio \"Rating 4 of 5\" checked disableable disabled\n    uid=15_10 radio \"Rating 5 of 5\" disableable disabled\n    uid=15_11 StaticText \"Best format? (CD-07)\"\n    uid=15_12 StaticText \"Online\"\n    uid=15_13 link \"Back to surveys\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/surveys\"\n      uid=15_14 StaticText \"Back to surveys\"\n",
+      "responseReadback": {
+        "at": "2026-11-25T10:52:10.495Z",
+        "path": "/api/responses/14",
+        "status": 200,
+        "body": {
+          "response": {
+            "id": 14,
+            "surveyId": 26,
+            "submittedAt": "2026-11-25T10:52:00.944Z",
+            "answers": [
+              {
+                "questionId": 62,
+                "prompt": "Rate this class (CD-07)",
+                "type": "RATING",
+                "ratingValue": 4
+              },
+              {
+                "questionId": 63,
+                "prompt": "Best format? (CD-07)",
+                "type": "SINGLE_CHOICE",
+                "optionId": 40,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "role": "RESPONDENT",
+      "id": 16,
+      "status": 200,
+      "at": "2026-11-25T10:50:22.206Z",
+      "path": "/surveys",
+      "logout": {
+        "at": "2026-11-25T10:52:42.689Z",
+        "logoutStatus": 204,
+        "signedOutStatus": 401
+      },
+      "input": {
+        "at": "2026-11-25T10:51:54.908Z",
+        "rating": 5,
+        "choice": "Online",
+        "selected": [
+          true,
+          true
+        ]
+      },
+      "confirmation": "Successfully clicked on the element\nPage navigated to https://classpulse-zdwglar6eq-as.a.run.app/responses/15.\n## Latest page snapshot\nuid=16_0 RootWebArea \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/responses/15\"\n  uid=16_1 banner\n    uid=16_2 link \"ClassPulse\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/surveys\"\n      uid=16_3 StaticText \"ClassPulse\"\n    uid=16_4 StaticText \"UAT6 Extra Respondent\"\n    uid=16_5 StaticText \" · \"\n    uid=16_6 StaticText \"RESPONDENT\"\n    uid=16_7 button \"Logout\"\n  uid=16_8 main\n    uid=17_0 heading \"Response submitted\" level=\"1\"\n    uid=17_1 StaticText \"Thanks — your response is in.\"\n    uid=17_2 StaticText \"Submitted on \"\n    uid=17_3 StaticText \"11/25/2026, 5:52:01 PM\"\n    uid=17_4 heading \"Your answers\" level=\"2\"\n    uid=17_5 StaticText \"Rate this class (CD-07)\"\n    uid=17_6 radio \"Rating 1 of 5\" disableable disabled\n    uid=17_7 radio \"Rating 2 of 5\" disableable disabled\n    uid=17_8 radio \"Rating 3 of 5\" disableable disabled\n    uid=17_9 radio \"Rating 4 of 5\" disableable disabled\n    uid=17_10 radio \"Rating 5 of 5\" checked disableable disabled\n    uid=17_11 StaticText \"Best format? (CD-07)\"\n    uid=17_12 StaticText \"Online\"\n    uid=17_13 link \"Back to surveys\" url=\"https://classpulse-zdwglar6eq-as.a.run.app/surveys\"\n      uid=17_14 StaticText \"Back to surveys\"\n",
+      "responseReadback": {
+        "at": "2026-11-25T10:52:10.913Z",
+        "path": "/api/responses/15",
+        "status": 200,
+        "body": {
+          "response": {
+            "id": 15,
+            "surveyId": 26,
+            "submittedAt": "2026-11-25T10:52:01.318Z",
+            "answers": [
+              {
+                "questionId": 62,
+                "prompt": "Rate this class (CD-07)",
+                "type": "RATING",
+                "ratingValue": 5
+              },
+              {
+                "questionId": 63,
+                "prompt": "Best format? (CD-07)",
+                "type": "SINGLE_CHOICE",
+                "optionId": 40,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "outcomes": {
+    "CD-01 inactive": "PASS",
+    "CD-07": "PASS",
+    "CD-01 controlled session/expiry": "Separate scope, not run here"
+  },
+  "existingData": "Only new survey 26 and its three response records 13–15 were created. No previous survey, response, account or enrollment was edited. The student3 account was not used.",
+  "shareNote": "Shared copy. Removed the deployment image digest and internal coordination wording. All observed outputs, release source/revision identifiers, timestamps and case outcomes are retained."
+}
