@@ -143,6 +143,8 @@ RED staging strategy: first add executable API assertions TEST-100 and valid upp
 
 ## 11. Completion / DoD
 
+Execution inventory clarification,25November2026: Issue87 also owns `.github/workflows/ci-docker.yml` only to execute the already-reviewed TEST113 and all preserved Playwright tests in the existing disposable GitHub Actions PostgreSQL16 job. Reseed the synthetic CI accounts after the API suite, install Chromium, use the existing Playwright configuration with CI server reuse disabled, and retain browser output/screenshots/traces as an artifact. The runner and its ports/database are independent of all local Lab6 worktrees. This does not authorize deployment, cloud provisioning, production migrations or local connection setup. The approved behavior, AC and STS do not change; this is execution support for the existing browser obligation. A strict E2E-source check and test discovery are preparation, not runtime proof. Deployed manual counterparts remain separately pending.
+
 - [ ] B C3 checks new requirement fit, impact, every AC/STS mapping, access/error order, atomicity/migration and scheduled-close handoff; actual comment linked.
 - [ ] RED assertion failure on old code saved with test commit before implementation. GREEN reruns the same assertions unchanged; added regression is retained.
 - [ ] In isolated verified test environment: `npm --prefix server test`, `npm --prefix client test`, both build scripts, `npx playwright test`; record full commands/configuration, SHA and pass/fail/skip counts. Existing hardcoded ports/DB safety guards must be respected, not bypassed; coordinate isolation before any DB/browser run.
@@ -160,3 +162,4 @@ Initial v1.0 had no runtime checks; actual RED/GREEN/fault/UI execution is now r
 | 1.0 | 2026-11-25 | A / Codex GPT-6 | Initial nontrivial maintenance proposal, old/new spec and test design before tests/code; apply supplied no-TA-approval announcement, request B team review. |
 | 1.1 execution status | 2026-11-25 | A / Codex GPT-6.1 Sol | Record actual B C3 and primary/expanded RED before core implementation; clarify required error-union file inventory without changing approved behavior. Remaining runtime/UI/migration/release evidence pending. |
 | 1.2 execution status | 2026-11-25 | A / Codex GPT-6.1 Sol | Record actual rollback/unit GREEN214 and same-test UI RED/GREEN8 at7c4818c; preserve original STS, pending historical-data/browser/release/peer gates, and unchanged approved behavior. |
+| 1.3 execution inventory | 2026-11-25 | A / Codex GPT-6.1 Sol | Add existing CI workflow to Issue Files before edits, enabling already-designed TEST113 and preserved E2E tests on a disposable runner; no behavior/AC/STS change or new deployment authority. |
