@@ -1,0 +1,14 @@
+# ClassPulse CD-01 inactive login and CD-07 summary results
+
+Run `UAT6-20261125-CodexD-R2`, 25 November 2026, 17:49:22–17:52:43 Asia/Bangkok. Tester D Thira Rungruangkaset delegated execution to Codex. The browser reported Chrome/158 on Windows. Separate browser contexts were used for the inactive account, owner and three respondents. Codex verified receipt of the ClassPulse fixture handoff in the Discord DM. Delivery of the separate test-start notice was unverified, and Thira directed continuation without a Discord reply.
+
+Release basis CP-V01. Source `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, revision `classpulse-00006-6w6`, digest `sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795`, 100% traffic. Those are the partner's Cloud Run and Artifact Registry readback values at 00:36:54 Bangkok. This run recorded the live origin and the served asset path `/assets/index-Bi1ZvEdG.js`. A new cloud mapping was outside this run.
+
+| Case | Input and expected behavior | Actual and result |
+|---|---|---|
+| CD-01 inactive branch | One sign-in attempt with user 17's stored credential, verified by the fixture provider. Expect 401 `INVALID_CREDENTIALS` with the generic message and no usable session. | **PASS.** Login returned 401 `INVALID_CREDENTIALS`, “Invalid email or password.” Identity returned 401 `UNAUTHENTICATED` before and after. |
+| CD-07 exact aggregate (AC-30/33) | Three eligible CPE334 respondents submit ratings 4, 4 and 5, each choosing Online. Expect count 3, average 4.33, buckets 4 → 2 and 5 → 1, other buckets zero, and Online 3 then In person 0. The summary should expose aggregate values only. | **PASS.** All three submissions were confirmed and read back. Owner UI and JSON showed the expected count, average, all buckets and choice order. The summary exposed aggregate values without respondent identities or individual responses. |
+
+The owner created and published dedicated identified survey **26** through the UI. The published baseline had zero responses. User IDs **3**, **5** and **16** submitted via the browser UI. Their individual readbacks confirmed ratings 4, 4 and 5 and Online for response IDs **13**, **14** and **15**, respectively. Survey 26 and those responses are retained. All four active test sessions returned 204 on logout and 401 on the subsequent identity check. The run used only the newly created survey and dedicated responses for writes. Student3 was unused. The first attempt to locate the response controls stopped before changing inputs. Using the controls' associated labels selected the intended answers and the normal submit button saved each response.
+
+No defect was observed in these two checks. Controlled session expiry and the whole-product acceptance decision remain open. This record establishes one delegated operator's observations. See [sanitized execution evidence](fixture-case-results.json) and [owner summary screenshot](CD07-summary.png).

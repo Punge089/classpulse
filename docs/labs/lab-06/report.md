@@ -1,5 +1,19 @@
 # ClassPulse — Lab 6 report source
 
+## Current status — 25 November 2026, after received C/D R2
+
+**C/D reports two scoped PASS results** in run `UAT6-20261125-CodexD-R2`, **17:49:22–17:52:43 Bangkok**: CD-01 inactive login (401 INVALID_CREDENTIALS; identity401 before/after), and CD-07 exact aggregate on retained **survey26/responses13,14,15**. Respondents3/5/16 supplied ratings4/4/5; count3/average4.33, rating buckets0/0/0/2/1, Online3/In person0, with no identities/individual responses in the summary as reported. Four active-session logout204/identity401 checks are supporting observations, not controlled expiry/replay proof. [Original independent report](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/FIXTURE-CASE-REPORT.md).
+
+The referenced raw `fixture-case-results.json` and `CD07-summary.png` have **not yet been received/inspected by A**. Preserve reported PASS separately from supporting-evidence completeness. **Controlled session expiry and final acceptance remain PENDING.** No comprehensive no-genuine-defect conclusion or ClassPulse PartD exercise entry is inferred. [Receipt assessment](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/a-receipt-assessment.json).
+
+The exact reported release is CP-V01 source `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, revision `classpulse-00006-6w6`, digest `sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795`,100% traffic. This uses A's **00:36:54 Bangkok** mapping; C/D recorded origin and `/assets/index-Bi1ZvEdG.js`, without a fresh cloud readback during17:49–17:52. Source/revision freshness is qualified, not fabricated. The operator is Codex under Thira, model unspecified; browser/contexts are C/D-reported. Start-notice delivery was unverified and Thira directed continuation without reply; no retrospective A notice/approval or Ashira participation is inferred. [Provenance](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/source-provenance.json).
+
+The human fixture setup and A READ ONLY postchecks remain separately preserved: extra16 active/CPE334 through enrollment4; inactive17 without enrollment; selected old users/courses/enrollments unchanged, student3id4 CPE231-only. C/D now reports receipt of the private handoff. No reset, new account operation, deployment or live test was performed by this report review. [Setup](../../../evidence/lab-06/checkpoint-20261124/fixture-ready-20261125/START-HERE.md).
+
+B's provisioner correction/139-test review and PR82/84 merges are complete. The tool correction is not a Sprint1 ClassPulse UAT defect. Workflow WF-BUG-001 is fixed/independently verified and closed, not our ClassPulse PartD. B's additional Workflow branches and A's remaining ADD01/06/setup coverage still need actual execution/coordination. PR85's new head requires B's exact-head review/current CI. Both final product decisions, **ClassPulse PartD**, final PDF review and human submission remain incomplete. Automations remain paused.
+
+This status supersedes older pending CD01-inactive/CD07-result/receipt statements below. Original captures remain unchanged; no missing evidence, broad case completion or acceptance is invented.
+
 ## Latest verified state —24November2026, after WF-FIX-001 retest
 
 - Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
@@ -129,3 +143,7 @@ Workflow release64 now has actual osizk approval and current-head CI success on 
 | 0.6 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Retain B v2's qualified original/UI/additional observations and later human06, correct stale NOT RUN/C3 states, record actual release64 review/CI and unsent deployment coordination. |
 
 | 0.7 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Record C/D B dispositions, WF-FIX-001 deployment and actual independent retest, read-only fixture baseline, contract81 merge and PR83 concurrency review blocker; preserve original failures and unfinished ClassPulse PartD. |
+
+| 0.8 | 25 Nov 2026 | Punge089 / Codex GPT-6 | Record actual human fixtures, READ ONLY postchecks/current release, private handoff provenance, corrected provisioner review and Workflow closure; keep independent coverage and ClassPulse PartD incomplete. |
+
+| 0.9 | 25 Nov 2026 | Punge089 / Codex GPT-6 | Receive C/D R2 scoped PASS report for inactive login and survey26 summary; retain missing raw evidence, supplied version basis, communication/operator limitations and incomplete expiry/acceptance/PartD. |
