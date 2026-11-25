@@ -1,0 +1,28 @@
+{
+  "source": "User-supplied C/D attachment",
+  "filename": "FIXTURE-CASE-REPORT.md",
+  "sha256": "73719f6c2e782d736858306af184d8081390190b6f97e0a71f489768b10650ae",
+  "operatorAsReported": "Codex under D/Thira Rungruangkaset; assisting model not specified",
+  "browserAsReported": "Chrome/158 on Windows; separate contexts for inactive/owner/three respondents",
+  "runId": "UAT6-20261125-CodexD-R2",
+  "startBangkok": "2026-11-25 17:49:22 UTC+7",
+  "endBangkok": "2026-11-25 17:52:43 UTC+7",
+  "startUtc": "2026-11-25T10:49:22Z",
+  "endUtc": "2026-11-25T10:52:43Z",
+  "privateHandoffReceipt": "C/D report states Codex observed receipt in Discord DM; A did not inspect that DM",
+  "startNotice": "Delivery unverified; report says Thira directed continuation without Discord reply; no retrospective A approval inferred",
+  "liveOriginAsReported": "https://classpulse-zdwglar6eq-as.a.run.app",
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "revision": "classpulse-00006-6w6",
+  "digest": "sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795",
+  "trafficPercent": 100,
+  "mappingBasis": "A partner readback25Nov00:36:54Bangkok, not a fresh cloud readback during this run",
+  "liveAssetPathAsReported": "/assets/index-Bi1ZvEdG.js",
+  "reportReviewedByA": true,
+  "referencedCompanionsNotReceived": [
+    "fixture-case-results.json",
+    "CD07-summary.png"
+  ],
+  "companionFilesInspectedByA": false,
+  "newAAppOrCloudOperation": false
+}

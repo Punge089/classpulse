@@ -558,6 +558,11 @@
       "bytes": 90531
     },
     {
+      "path": "received-cd-r2-20261125/FIXTURE-CASE-REPORT.md",
+      "sha256": "73719f6c2e782d736858306af184d8081390190b6f97e0a71f489768b10650ae",
+      "bytes": 2950
+    },
+    {
       "path": "repository-followup-20261125/CD-CLOSURE-USER-TRANSCRIPTION.txt",
       "sha256": "02150f92938e6580a135e790137a17e4fecc51047e17b0507ba64375b6bfc372",
       "bytes": 343
