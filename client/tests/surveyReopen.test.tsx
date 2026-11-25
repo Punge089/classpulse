@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, expect, test, vi, type Mock } from "vitest";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
@@ -28,6 +28,37 @@ beforeEach(() => {
     ? { events: [], nextCursor: null } : { survey: closed });
 });
 afterEach(cleanup);
+
+test("TEST-112 server validation keeps reason and shows its field error without retrying", async () => {
+  fetchMock.mockImplementation(async path => {
+    if (path.endsWith("/reopen")) throw new ApiClientError(400, "VALIDATION_ERROR", "Check the highlighted fields", [
+      { field: "reason", message: "Synthetic server reason rejection" }
+    ]);
+    return path.includes("/lifecycle") ? { events: [], nextCursor: null } : { survey: closed };
+  });
+  const user = userEvent.setup(); page();
+  await user.click(await screen.findByRole("button", { name: "Reopen" }));
+  await user.type(screen.getByLabelText("Reason for reopening"), reason);
+  await user.click(screen.getByRole("button", { name: "Confirm reopen" }));
+  expect(await screen.findByText("Synthetic server reason rejection")).toBeTruthy();
+  expect((screen.getByLabelText("Reason for reopening") as HTMLTextAreaElement).value).toBe(reason);
+  expect(screen.getByLabelText("Reason for reopening").getAttribute("aria-invalid")).toBe("true");
+  expect(fetchMock.mock.calls.filter(([path]) => path.endsWith("/reopen"))).toHaveLength(1);
+  expect(screen.queryByRole("button", { name: "Close" })).toBeNull();
+});
+
+test("TEST-112 loading history cannot be mistaken for a legacy empty history", async () => {
+  let resolveHistory!: (value: unknown) => void;
+  const pending = new Promise(resolve => { resolveHistory = resolve; });
+  fetchMock.mockImplementation(async path => path.includes("/lifecycle") ? pending : { survey: closed });
+  page();
+  await screen.findByRole("button", { name: "Reopen" });
+  expect(screen.getByText("Loading lifecycle history…")).toBeTruthy();
+  expect(screen.queryByText("No lifecycle events recorded for this version")).toBeNull();
+  await act(async () => resolveHistory({ events: [], nextCursor: null }));
+  expect(await screen.findByText("No lifecycle events recorded for this version")).toBeTruthy();
+  expect(screen.queryByText("Loading lifecycle history…")).toBeNull();
+});
 
 test("TEST-112 confirms reopen with reason/current version then refreshes durable history", async () => {
   let reopened = false;

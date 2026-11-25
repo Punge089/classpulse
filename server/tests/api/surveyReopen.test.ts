@@ -107,6 +107,36 @@ describe("Lab 7 boundaries, access, concurrency and preserved behavior", () => {
     expect(await prisma.survey.findUniqueOrThrow({ where: { id: original.id } })).toEqual(before);
   });
 
+  test.each([
+    { action: "publish", status: "DRAFT", result: "PUBLISHED" },
+    { action: "close", status: "PUBLISHED", result: "CLOSED" }
+  ] as const)("TEST-114 concurrent bodyless $action writes one transition and one event", async ({ action, status, result }) => {
+    const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status });
+    const [first, second] = await Promise.all([ownerLogin(), ownerLogin()]);
+    const replies = await Promise.all([first, second].map(owner => owner.post(`/api/owner/surveys/${original.id}/${action}`)));
+    expect(replies.map(reply => reply.status).sort()).toEqual([200, 409]);
+    expect(replies.find(reply => reply.status === 409)!.body.error.code).toBe("INVALID_TRANSITION");
+    expect(await prisma.survey.findUniqueOrThrow({ where: { id: original.id } })).toMatchObject({ status: result, statusVersion: 1 });
+    const events = await prisma.surveyLifecycleEvent.findMany({ where: { surveyId: original.id } });
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({ action: action === "publish" ? "PUBLISH" : "CLOSE", version: 1 });
+  });
+
+  test.each([
+    { action: "publish", status: "DRAFT" },
+    { action: "close", status: "PUBLISHED" }
+  ] as const)("TEST-114 $action at the stored integer ceiling rejects without overflow or audit", async ({ action, status }) => {
+    const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status });
+    await prisma.survey.update({ where: { id: original.id }, data: { statusVersion: 2147483647 } });
+    const before = await prisma.survey.findUniqueOrThrow({ where: { id: original.id } });
+    const owner = await ownerLogin();
+    const reply = await owner.post(`/api/owner/surveys/${original.id}/${action}`);
+    expect(reply.status).toBe(409);
+    expect(reply.body.error.code).toBe("STALE_SURVEY");
+    expect(await prisma.survey.findUniqueOrThrow({ where: { id: original.id } })).toEqual(before);
+    expect(await prisma.surveyLifecycleEvent.count({ where: { surveyId: original.id } })).toBe(0);
+  });
+
   test("TEST-107 both endpoints enforce session, role and foreign ownership before validation", async () => {
     const original = await closedSurvey();
     const student = await loginAs(app, fixture.student1.email);
