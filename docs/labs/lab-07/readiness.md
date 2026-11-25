@@ -25,10 +25,17 @@ The initial readiness table above is the dated 18:06:58 snapshot. Its claim that
 
 | Gate | Current evidence and status |
 |---|---|
-| Lab 7 implementation candidate | PR #92 current head `10455948c40d65e476280936cde9abb278aa4bcc`; latest code implementation commit `7c4818cd6b6b7a11d0ce6fd668bc11a54872a302`. PR remains draft and A's exact-head review is pending. |
+| Lab 7 implementation candidate | PR #92 current head `10455948c40d65e476280936cde9abb278aa4bcc`; latest code implementation commit `7c4818cd6b6b7a11d0ce6fd668bc11a54872a302`. PR remains draft and B's exact-head review is pending. |
 | Candidate tests and build | CI 45604842565 on the implementation commit: server `npm test` 214 passed/0 failed/0 skipped; client `npm test` 8/0/0; both builds and Docker succeeded. Current PR-head `test-and-docker` Check Run 45605366295 completed successfully at 18:34:10 Bangkok. The latest head commit retains evidence and does not change the implementation source. |
 | Historical RED | Run 45597034491 remains an intentional preimplementation RED: 139 existing checks passed, 2 new reopening assertions failed, 0 test skips. Five later workflow steps were skipped after server failure; these are pipeline steps, not skipped tests. |
 | Accepted baseline and UAT | Still PENDING. Lab 6's final acceptance and independent defect disposition remain unresolved; no zero-defect finding is claimed. |
 | Migration preservation, main release and deployment | PENDING. CI green does not prove old-data migration preservation, reviewed integration, serving version, traffic, or end-user checks. |
 
-For PR #92, the combined commit-status endpoint currently returns no status entries. The separate Check Runs endpoint returns the successful `test-and-docker` result above. Overall readiness remains **NOT READY** until A's exact-head review, accepted-baseline/UAT disposition, migration evidence, reviewed release/deployment and changed/preserved user checks are complete. Lab 7 remains separate from the D2 PDF; this update does not alter or execute Lab 6.
+For PR #92, the combined commit-status endpoint currently returns no status entries. The separate Check Runs endpoint returns the successful `test-and-docker` result above. Overall readiness remains **NOT READY** until B's exact-head review, accepted-baseline/UAT disposition, migration evidence, reviewed release/deployment and changed/preserved user checks are complete. Lab 7 remains separate from the D2 PDF; this update does not alter or execute Lab 6.
+## Current-state refresh - 25 November 2026, 20:30:15 Asia/Bangkok
+
+PR #92 is A-authored, open and unmerged at head 45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8. B's exact-head C7 review is pending. GitHub Actions run 45613368930 reports a successful test-and-docker check (check-run 139202364446); the job log shows 219 server tests, 10 client tests and 10 browser tests passed, with both builds and Docker successful.
+
+The run checked merge commit cb6b9f1368e793fed288d2ebac484fc1b5e2b3ca, whose base was a49cbe7. Current sprint-2-staging is 5e7a164, two commits ahead of the PR's recorded base. Therefore the PR still needs a current-base integration check and B review; the exact-head check above does not establish that newer integration. The PR is mergeable according to GitHub, but no merge, release, deployment, migration-preservation test or new UAT is claimed here.
+
+The accepted Lab 6 baseline and independent UAT disposition remain PENDING. Migration preservation, main release, deployment, and changed/preserved user checks remain PENDING. Overall readiness remains NOT READY. This Lab 7 refresh is separate from D2 and does not change Lab 6.
