@@ -22,3 +22,9 @@ Server failure prevents later Test client, Build server, Build client and Build 
 The evidence commit precedes implementation. Next add remaining meaningful boundary/access/transaction tests in test-first increments, implement approved contract, rerun unchanged original two assertions and full regression. B must review final proposed head/current CI. Migration/local instance/deployed checks and Lab6 accepted baseline remain pending. No GREEN, feature completion, independent UAT, acceptance or deployment is claimed. Assistance:Codex GPT-6.1 Sol under A.
 
 Artifact-format check: the initial evidence staging check reported timestamp-only trailing whitespace; a follow-up commit trims only line-end spaces and refreshes the retained-log SHA256. Original CI/test outcomes are unchanged, the initial evidence commit is preserved, and no implementation occurred between these evidence commits.
+
+## Subsequent pre-implementation CI runs
+
+Evidence-only heads ran45597483396(c7d7e15) and45597550300(d137db0):139passed/2failed/0skipped each. Expanded test-onlya9cdbce ran45600224063:144passed/32failed/0skipped,total176 (139existing plus37new API cases). All32failures concern absent reopen/history behavior or concurrency outputs on old404 routes;5new access/missing-id checks pass. Complete sanitized step output, raw head/counts and downstream skips are retained in [follow-up register](red-followup-runs.json). Runs are not added together as unique test counts.
+
+The first follow-up capture attempt failed to parse gh caret-escaped ANSI count formatting and aborted before commit. The parser was corrected to remove both actual and escaped ANSI; extraction reran successfully and primary log readability/hash was refreshed. Runtime assertions/counts are unchanged.
