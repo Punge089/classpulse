@@ -1,0 +1,41 @@
+
+> classpulse-server@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/uat6-cpv01-baseline/server
+
+ ✓ tests/api/responses.test.ts (10 tests) 3190ms
+   ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 456ms
+   ✓ F-04 respondent survey access > TEST-39 detail is visible only to an enrolled respondent for a published survey 335ms
+   ✓ F-04 response submission > TEST-29 rating boundaries accept 1 and 5 and reject 0, 6, decimals and strings 343ms
+   ✓ F-04 response submission > TEST-30 respondents cannot read another student's response or edit/delete a response 350ms
+   ✓ F-04 response submission > TEST-31 an owner cannot submit or read a respondent response 351ms
+ ✓ tests/api/ownerSurveys.test.ts (10 tests) 2675ms
+   ✓ F-03 create a survey > TEST-10 an owner creates a DRAFT survey with ordered questions and options 377ms
+ ✓ tests/api/auth.test.ts (8 tests) 2028ms
+   ✓ F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable 342ms
+   ✓ F-01 login, session and current user > TEST-57 the server never writes a password or a session token to its console 308ms
+ ✓ tests/api/summary.test.ts (3 tests) 984ms
+   ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 396ms
+   ✓ F-05 owner survey summary > TEST-36 empty summary, ownership, role and invalid-id checks 352ms
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 9ms
+ ✓ tests/api/cloudReady.test.ts (3 tests) 138ms
+ ✓ tests/db/constraints.test.ts (3 tests) 1384ms
+   ✓ TEST-50 rejects a second response for the same survey and respondent 303ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 895ms
+ ✓ tests/unit/summary.test.ts (6 tests) 5ms
+ ✓ tests/unit/responseValidation.test.ts (13 tests) 5ms
+ ✓ tests/api/health.test.ts (1 test) 119ms
+ ✓ tests/api/unauthenticated.test.ts (13 tests) 86ms
+ ✓ tests/unit/password.test.ts (1 test) 432ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 416ms
+ ✓ tests/unit/seedConfig.test.ts (1 test) 4ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 4ms
+
+ Test Files  14 passed (14)
+      Tests  105 passed (105)
+   Start at  23:27:29
+   Duration  18.43s (transform 390ms, setup 135ms, collect 2.99s, tests 11.06s, environment 3ms, prepare 1.55s)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m

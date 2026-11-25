@@ -1,0 +1,74 @@
+{
+  "pr": {
+    "author": {
+      "id": "U_kgDOCNGNHQ",
+      "is_bot": false,
+      "login": "HolyThiccDaddy",
+      "name": "ThiraRung"
+    },
+    "headRefOid": "b60329a4579b8d84fc8b640a2e558965c3d28eb3",
+    "mergeCommit": {
+      "oid": "f964d714522ae9fb91baeef32998cbd19219fa90"
+    },
+    "mergedAt": "2026-11-25T16:05:15Z",
+    "state": "MERGED",
+    "url": "https://github.com/osizk/WorkflowAndApprovalSystem/pull/75"
+  },
+  "cReview": {
+    "id": 6060843684,
+    "node_id": "PRR_kwDOVlZRP88AAAABaUEipA",
+    "user": {
+      "login": "osizk",
+      "id": 186729137,
+      "node_id": "U_kgDOCyFCsQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/186729137?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/osizk",
+      "html_url": "https://github.com/osizk",
+      "followers_url": "https://api.github.com/users/osizk/followers",
+      "following_url": "https://api.github.com/users/osizk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/osizk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/osizk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/osizk/subscriptions",
+      "organizations_url": "https://api.github.com/users/osizk/orgs",
+      "repos_url": "https://api.github.com/users/osizk/repos",
+      "events_url": "https://api.github.com/users/osizk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/osizk/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "Reviewed head b60329a4579b8d84fc8b640a2e558965c3d28eb3 as tester C. The updated R3 report and results.json address my previous review request by documenting the policy constraint that blocked live previous-session replay. test-and-docker and deployment-checks both passed on this head. This review used the recorded evidence and CI results. No UAT cases were rerun.\n\nI accept the scoped R3 results and the documented coverage limit for baseline discussion with ClassPulse A/B. Live previous-session replay remains BLOCKED, with local TEST\u201104 as supporting evidence. Natural eight-hour live expiry remains OPEN, with local TEST\u201105 as supporting evidence.\n\nBoth pairs still need to agree on the baseline, coverage limits, staging release, and test window before blind staging begins. Part D and final acceptance remain pending.",
+    "state": "APPROVED",
+    "html_url": "https://github.com/osizk/WorkflowAndApprovalSystem/pull/75#pullrequestreview-6060843684",
+    "pull_request_url": "https://api.github.com/repos/osizk/WorkflowAndApprovalSystem/pulls/75",
+    "author_association": "OWNER",
+    "is_copilot_code_review": false,
+    "copilot_code_review_effort": null,
+    "_links": {
+      "html": {
+        "href": "https://github.com/osizk/WorkflowAndApprovalSystem/pull/75#pullrequestreview-6060843684"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/osizk/WorkflowAndApprovalSystem/pulls/75"
+      }
+    },
+    "submitted_at": "2026-11-25T15:56:43Z",
+    "commit_id": "b60329a4579b8d84fc8b640a2e558965c3d28eb3"
+  },
+  "payloads": [
+    {
+      "file": "REPORT.md",
+      "sha256": "d23312436b1d5155da85f005a134db75474db7ea5c0cc30411e843205c022448",
+      "bytes": 4259,
+      "gitBlob": "0a8e6c1c356bc63dc08d50124239091d1a59a261"
+    },
+    {
+      "file": "results.json",
+      "sha256": "de57e39b87cee574c354a650beb1e17509ad4a57528089b38c798dd7623c8e3d",
+      "bytes": 8629,
+      "gitBlob": "dcc95de3b7bf8ec5ccb5b6c6eaf3212a1095f493"
+    }
+  ],
+  "reportPendingCField": "Original received bytes predate C approval and retain pending wording; this actual review supersedes that historical field without changing payloads."
+}

@@ -1,5 +1,9 @@
 # Lab 6 version and release register
 
+## Current Part D preparation — 25 November 2026
+
+[PartD entry/staging contract](part-d-staging-contract.md), Issue115: D clarified the live-replay policy constraint in the updated R3 record; C approved exactb60329a and partnerPR75 mergedf964d71. The limit remains BLOCKED with local TEST04 support; natural live expiry OPEN. A proposes accepting explicit limits for educational entry and awaits B's actual entry/C3 and a resolved isolated test-exposure route. D is ready when a real build exists; no advance appointment needed. A reran existing healthy CP-V01 source1fe3e3b locally:105server/1client tests passed, both builds passed; local revisionN/A, initial tooling failure disclosed, cluster stopped. These are preparation, not PartD RED/GREEN or independent retest. No exercise selected/injected, stagingURL/revision or release go-ahead; final acceptance remains pending. Older pending-C/missing-blocker states below are superseded by the updated receipt.
+
 ## Current status — 25 November 2026, exact-command supporting result received
 
 **TEST-05: supporting PASS; independent live expiry: OPEN; final acceptance and ClassPulse Part D: PENDING.** C/D operator Codex GPT-6.2 Sol under Thira/D ran `npm test -- tests/api/auth.test.ts` at CP-V01 `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, 20:30:14-20:30:18 Bangkok: **8 passed, 0 failed, 0 skipped, exit 0**. This was a fresh localhost `classpulse_test` database; serving revision **N/A**. A reviewed the supplied artifacts and pinned source, without rerunning the app. [Evidence and limits](../../../evidence/lab-06/checkpoint-20261124/received-test05-exact-20261125/a-review.json); [report/output/proof](../../../evidence/lab-06/checkpoint-20261124/received-test05-exact-20261125/README.md).

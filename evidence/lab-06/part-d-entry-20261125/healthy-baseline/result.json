@@ -1,0 +1,149 @@
+{
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "servingRevision": "N/A (isolated local healthy-baseline validation)",
+  "operator": "Codex GPT-6 under A/Punge089",
+  "runKind": "Existing healthy source tests/builds; no new feature test or exercise injection",
+  "startedAtUtc": "2026-11-25T16:27:20.687Z",
+  "node": "v24.19.0",
+  "steps": [
+    {
+      "name": "initdb",
+      "startedAtUtc": "2026-11-25T16:27:20.833Z",
+      "finishedAtUtc": "2026-11-25T16:27:24.540Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "initdb.txt",
+      "summary": []
+    },
+    {
+      "name": "postgres-start",
+      "startedAtUtc": "2026-11-25T16:27:24.543Z",
+      "finishedAtUtc": "2026-11-25T16:27:25.110Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "postgres-start.txt",
+      "summary": []
+    },
+    {
+      "name": "createdb",
+      "startedAtUtc": "2026-11-25T16:27:25.111Z",
+      "finishedAtUtc": "2026-11-25T16:27:25.621Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "createdb.txt",
+      "summary": []
+    },
+    {
+      "name": "target-preflight",
+      "startedAtUtc": "2026-11-25T16:27:25.623Z",
+      "finishedAtUtc": "2026-11-25T16:27:25.739Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "target-preflight.txt",
+      "summary": []
+    },
+    {
+      "name": "prisma-generate",
+      "startedAtUtc": "2026-11-25T16:27:25.742Z",
+      "finishedAtUtc": "2026-11-25T16:27:27.022Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "prisma-generate.txt",
+      "summary": []
+    },
+    {
+      "name": "migrations",
+      "startedAtUtc": "2026-11-25T16:27:27.024Z",
+      "finishedAtUtc": "2026-11-25T16:27:28.552Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "migrations.txt",
+      "summary": [
+        "All migrations have been successfully applied."
+      ]
+    },
+    {
+      "name": "server-tests",
+      "startedAtUtc": "2026-11-25T16:27:28.553Z",
+      "finishedAtUtc": "2026-11-25T16:27:48.227Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "server-tests.txt",
+      "summary": [
+        " ✓ tests/api/summary.test.ts (3 tests) 984ms",
+        " ✓ tests/unit/surveyValidation.test.ts (27 tests) 9ms",
+        " ✓ tests/api/cloudReady.test.ts (3 tests) 138ms",
+        " ✓ tests/db/constraints.test.ts (3 tests) 1384ms",
+        " ✓ tests/unit/summary.test.ts (6 tests) 5ms",
+        " ✓ tests/unit/responseValidation.test.ts (13 tests) 5ms",
+        " ✓ tests/api/unauthenticated.test.ts (13 tests) 86ms",
+        " ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 4ms",
+        " Test Files  14 passed (14)",
+        "      Tests  105 passed (105)"
+      ]
+    },
+    {
+      "name": "client-tests",
+      "startedAtUtc": "2026-11-25T16:27:48.228Z",
+      "finishedAtUtc": "2026-11-25T16:27:51.965Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "client-tests.txt",
+      "summary": [
+        " Test Files  1 passed (1)",
+        "      Tests  1 passed (1)"
+      ]
+    },
+    {
+      "name": "server-build",
+      "startedAtUtc": "2026-11-25T16:27:51.966Z",
+      "finishedAtUtc": "2026-11-25T16:27:54.163Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "server-build.txt",
+      "summary": []
+    },
+    {
+      "name": "client-build",
+      "startedAtUtc": "2026-11-25T16:27:54.165Z",
+      "finishedAtUtc": "2026-11-25T16:27:58.631Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "client-build.txt",
+      "summary": [
+        "✓ built in 1.12s"
+      ]
+    },
+    {
+      "name": "postgres-stop",
+      "startedAtUtc": "2026-11-25T16:27:58.742Z",
+      "finishedAtUtc": "2026-11-25T16:27:59.446Z",
+      "exitCode": 0,
+      "signal": null,
+      "output": "postgres-stop.txt",
+      "summary": []
+    }
+  ],
+  "docker": "NOT RUN — read-only docker info probe found the DockerDesktop Linux engine pipe unavailable",
+  "checkoutBefore": {
+    "head": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+    "clean": true
+  },
+  "port": 49384,
+  "databaseName": "classpulse_test",
+  "host": "127.0.0.1",
+  "targetVerified": {
+    "database": "classpulse_test",
+    "address": "127.0.0.1",
+    "ownedFreshDataDirectory": true,
+    "publicTablesBeforeMigration": 0,
+    "otherSessionsBeforeTests": 0
+  },
+  "checkoutAfter": {
+    "head": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+    "clean": true
+  },
+  "completedChecks": true,
+  "clusterStopped": true,
+  "finishedAtUtc": "2026-11-25T16:27:59.447Z"
+}

@@ -1,0 +1,15 @@
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/uat6-cpv01-baseline/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 332ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 331ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  23:27:49
+   Duration  2.64s (transform 60ms, setup 18ms, collect 465ms, tests 332ms, environment 1.03s, prepare 189ms)
+

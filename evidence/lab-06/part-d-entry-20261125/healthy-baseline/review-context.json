@@ -1,0 +1,42 @@
+{
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "servingRevision": "N/A (local healthy-source validation)",
+  "operator": "Codex GPT-6 under A/Punge089",
+  "postgres": "18.4",
+  "node": "v24.19.0",
+  "npm": "11.17.0",
+  "server": {
+    "command": "npm test",
+    "files": 14,
+    "passed": 105,
+    "failed": 0,
+    "skipped": 0
+  },
+  "client": {
+    "command": "npm test",
+    "files": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "builds": {
+    "server": "npm run build exit0",
+    "client": "npm run build exit0"
+  },
+  "privateTarget": "Fresh owned loopback classpulse_test cluster, zero tables/other sessions before migration; random synthetic seed value stayed in process environment and was redacted from outputs",
+  "cleanSourceBeforeAfter": true,
+  "cleanup": "Successful final retry cluster stop; first attempt manually stopped/verified before fresh retry",
+  "initialFailure": "Background postgres startup retained captured process handles; recovery stopped that owned server and the first createdb failed. No app tests ran in that first attempt. See unchanged initial-setup-failure record. Corrected runner uses ignored startup stdio and a newly created cluster. Not product RED.",
+  "dependencyInstalls": {
+    "server": "npm ci --no-audit --no-fund exit0,165packages",
+    "client": "npm ci --no-audit --no-fund exit0,182packages",
+    "warnings": "Deprecated packages and npm allow-scripts notices retained as setup limitations. No npm approval/allowScripts edits; official Prisma generate invoked explicitly and succeeded."
+  },
+  "notRun": [
+    "Docker build: engine pipe unavailable",
+    "Browser E2E: not executed in this local preparation",
+    "Any exercise test/new regression/defect injection",
+    "Any C/D independent rerun or cloud/production operation"
+  ],
+  "interpretation": "Existing healthy baseline only. Includes local TEST04/05/06 support, not live replay/expiry/password-storage verification and not PartD correction GREEN/regression."
+}

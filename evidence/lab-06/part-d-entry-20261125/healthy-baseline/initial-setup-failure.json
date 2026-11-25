@@ -1,0 +1,69 @@
+{
+  "initialResult": {
+    "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+    "servingRevision": "N/A (isolated local healthy-baseline validation)",
+    "operator": "Codex GPT-6 under A/Punge089",
+    "runKind": "Existing healthy source tests/builds; no new feature test or exercise injection",
+    "startedAtUtc": "2026-11-25T16:23:52.610Z",
+    "node": "v24.19.0",
+    "steps": [
+      {
+        "name": "initdb",
+        "startedAtUtc": "2026-11-25T16:23:52.800Z",
+        "finishedAtUtc": "2026-11-25T16:23:58.337Z",
+        "exitCode": 0,
+        "signal": null,
+        "output": "initdb.txt",
+        "summary": []
+      },
+      {
+        "name": "postgres-start",
+        "startedAtUtc": "2026-11-25T16:23:58.339Z",
+        "finishedAtUtc": "2026-11-25T16:26:55.723Z",
+        "exitCode": 0,
+        "signal": null,
+        "output": "postgres-start.txt",
+        "summary": []
+      },
+      {
+        "name": "createdb",
+        "startedAtUtc": "2026-11-25T16:26:55.724Z",
+        "finishedAtUtc": "2026-11-25T16:27:00.694Z",
+        "exitCode": 1,
+        "signal": null,
+        "output": "createdb.txt",
+        "summary": [
+          "createdb: error: connection to server at \"127.0.0.1\", port 59810 failed: Connection refused (0x0000274D/10061)"
+        ]
+      },
+      {
+        "name": "postgres-stop",
+        "startedAtUtc": "2026-11-25T16:27:00.695Z",
+        "finishedAtUtc": "2026-11-25T16:27:00.742Z",
+        "exitCode": 1,
+        "signal": null,
+        "output": "postgres-stop.txt",
+        "summary": []
+      }
+    ],
+    "docker": "NOT RUN \u2014 read-only docker info probe found the DockerDesktop Linux engine pipe unavailable",
+    "checkoutBefore": {
+      "head": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "clean": true
+    },
+    "port": 59810,
+    "databaseName": "classpulse_test",
+    "host": "127.0.0.1",
+    "completedChecks": false,
+    "failure": "BASELINE_STEP_FAILED_createdb",
+    "clusterStopped": false,
+    "finishedAtUtc": "2026-11-25T16:27:00.743Z"
+  },
+  "classification": "Local runner startup pipe wait, followed by manual stop and createdb connection refused; no app tests executed, not product RED",
+  "manualRecovery": {
+    "ownedDataDirectoryVerified": true,
+    "pgCtlFastStopExit": 0,
+    "pidFileAbsentAfterManualStop": true
+  },
+  "retry": "Use ignored stdio for background PostgreSQL startup so child does not retain capture pipes; new fresh owned cluster, no existing target reused"
+}

@@ -1,0 +1,1 @@
+{"database" : "classpulse_test", "address" : "127.0.0.1", "dataDirectory" : "C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/uat6-local-baseline-20261125-2026-11-25T16-27-20-685Z/pgdata", "tables" : 0, "otherSessions" : 0}

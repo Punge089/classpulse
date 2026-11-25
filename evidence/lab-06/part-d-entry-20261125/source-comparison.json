@@ -1,0 +1,13 @@
+{
+  "healthySource": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "planningBase": "9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35",
+  "paths": [
+    "server/src",
+    "client/src",
+    "server/prisma"
+  ],
+  "differentPaths": [
+    "server/src/lib/uat6Provisioner.ts"
+  ],
+  "limit": "Static compared paths only; do not infer equality for a future base or a deployed release. At this base the extra provisioner helper is distinct from the assessed API behavior; no exercise choice is recorded."
+}

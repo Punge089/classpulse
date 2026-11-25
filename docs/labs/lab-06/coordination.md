@@ -1,5 +1,9 @@
 # Lab 6 coordination register
 
+## Current Part D preparation — 25 November 2026
+
+[PartD entry/staging contract](part-d-staging-contract.md), Issue115: D clarified the live-replay policy constraint in the updated R3 record; C approved exactb60329a and partnerPR75 mergedf964d71. The limit remains BLOCKED with local TEST04 support; natural live expiry OPEN. A proposes accepting explicit limits for educational entry and awaits B's actual entry/C3 and a resolved isolated test-exposure route. D is ready when a real build exists; no advance appointment needed. A reran existing healthy CP-V01 source1fe3e3b locally:105server/1client tests passed, both builds passed; local revisionN/A, initial tooling failure disclosed, cluster stopped. These are preparation, not PartD RED/GREEN or independent retest. No exercise selected/injected, stagingURL/revision or release go-ahead; final acceptance remains pending. Older pending-C/missing-blocker states below are superseded by the updated receipt.
+
 ## Current R3 result disposition — 25 November 2026
 
 [R3 baseline review](r3-baseline-review.md): C/D Codex GPT-6 under Thira/D reports three scoped live branch groups PASS (CD06 anonymous PUT/DELETE, respondent reload, cookie attributes/clearing) on CP-V01 source1fe3e3b/revisionclasspulse-00006-6w6,21:39-21:44Bangkok. Survey27/response16 is retained and unchanged; survey26/responses13-15 preserved. Live old-session replay remains BLOCKED without a specific technical blocker; earlier local TEST04 is supporting PASS only. Natural live expiry remains OPEN. C actual review, B result/limit review and explicit replay-limit disposition precede the baseline gate; final acceptance/PartD remain PENDING, no exercise defect selected. Received source/revision/full hashes/operator/version/notice limits are in the linked review; no A live rerun or release change occurred. Earlier plan-only states below are historical.
