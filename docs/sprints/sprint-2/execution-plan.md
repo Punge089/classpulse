@@ -1,6 +1,23 @@
 # Sprint 2 and Deliverable 2 execution plan
 
-Version 1.2, 25 November 2026. Deliverable 2 planning Issue #86. Author/driver: Bannasorn Thongkorn (67070503420, Punge089, A), assisted by Codex GPT-6. Proposed reviewer and partner: Papangkorn Jitvoottikrai (67070503421, book6349, B). B acceptance/review is pending; this is not a record of B having worked.
+Version 1.3, 25 November 2026. Deliverable 2 planning Issue #86. Author/driver: Bannasorn Thongkorn (67070503420, Punge089, A), initially assisted by Codex GPT-6 and current checkpoint by Codex GPT-6.1 Sol. Reviewer/partner: Papangkorn Jitvoottikrai (67070503421, book6349, B). B's actual scoped contract/metric participation is recorded below; formal review of this planning PR and proposed later allocations remains pending.
+
+## Current execution checkpoint - 25 November 2026
+
+The initial snapshot/proposed milestones below remain historical, not a claim that later observations were known earlier. Current staging `5e7a164` includes the reviewed Lab6 documentation PR103 and B's interim metrics PR100; final Lab6 accepted-version/independent disposition remains pending. No new main release or deployed candidate is inferred.
+
+| Work | Actual current evidence | Next gate / participant |
+|---|---|---|
+| Separate maintenance dependency #87 / PR92 | B C3 on8017c91 preceded retained primary/expanded RED and implementation. Current feature45f48cd/CI45613368930 passes219server/10client/10browser,0failed/0skipped,builds/Docker | B exact-head implementation review/merge; not a completed Sprint2 backlog feature |
+| F-06 #90 / draft PR93 | B C3 comment7159681538; current checkpoint e0d5900 has9AC/12STS and6document checks. Documentation CI45613893620 passes baseline139server/1client, not F-06 runtime | #87 integration before test/product Files; #88 integration before client main route registration; A then saves genuine old-code RED |
+| F-09 #88 | B authored20AC/20STS contract f4a5db8 and C2 comment7163448974. A read exact source/current detail and posted clarification request7163876159; own history after unenrollment agreed | B commits precise cursor/query and mandatory unenrollment/client-state test designs; A rechecks before C3 test permission. No F-09 tests/implementation observed |
+| F-08 #96 / draft PR97 | B C3 comment7159683176 approves a874218's independent cutoff design | Shared-file slot after F-07; #87 reopen/deadline interaction still needs its separately reviewed revision before dependent implementation |
+| F-14 #98 / draft PR99 | B C3 comment7159684729 approves4ca7cd1's workload/p95/state inventory | Actual measurement/tool/screen execution not yet run; no performance/mobile result or feature completion claimed |
+| D2 planning and final integration | PR91 remains D2-only; all F-06..F-10, all F-11..F-14 contracts and a meaningful tested F-13 workflow remain required | B planning review; unscoped features/global baseline/release/D2 PDF still need their own Issues/Files before work |
+
+Only actual comments/commits establish participation. B's work on #88 and #89 does not approve all proposed later allocations, A's own feature PR or any final release. B's #89/PR100 interim NOT READY record belongs to the separate Lab7 assessment. A's Lab7 report #101/draftPR104 and working PDF also belong to that separate track; they neither submit nor replace D2's own assessed content.
+
+Actual isolated runtime lane: existing GitHub Actions PostgreSQL 16 `classpulse_test` service, Node 24 and its disposable app ports have run the maintenance API/client/full-browser checks without using a local Lab6 server/database. Local 3107/5177/5547 remain prepared only and must be independently verified before any local DB/browser run. There is no human local-instance prerequisite for the already-isolated CI route, and no guard/reuse/credential bypass is allowed. Documentation-branch baseline checks are distinct from each feature's own RED/GREEN.
 
 ## Scope and sources
 
@@ -29,15 +46,15 @@ The Lab 6 chat owns its actual case records and acceptance decision. Preparation
 | Work | Owner / reviewer | Issue | First action / dependencies | Proposed target |
 |---|---|---|---|---|
 | D2 planning and evidence map | A / B | #86 / PR #91 | Document-only PR; B checks D2 allocation and missing work | 25 Nov |
-| F-09 my responses | B / A | #88 | B accepts assignment, writes contract/C2 now; independent response-list slice | 25-26 Nov |
+| F-09 my responses | B / A | #88 | Contract/C2 f4a5db8 exists; A requests revision before C3/test permission; independent response-list slice | 25-26 Nov |
 | F-06 draft editing | A / B | #90 | Contract now; owner-route implementation after #87 | 26 Nov |
 | F-07 TEXT/MULTI_CHOICE | B / A | To scope | Separate Issue/Files/contract before work; after #88 and owner files from #90 | 26-27 Nov |
-| F-08 scheduled closing | A / B | #96 / draft PR #97 | Contract a874218 posted; B C3 pending. Deadline/reopen integration requires reviewed revision; owner/response-file slot after F-07 | 27 Nov |
+| F-08 scheduled closing | A / B | #96 / draft PR #97 | B C3 on a874218 exists. Deadline/reopen integration requires reviewed revision; owner/response-file slot after F-07 | 27 Nov |
 | F-10 sections + response rate | B / A | To scope | Define section enrollment semantics; after F-07 and F-08 shared-file integration | 27-28 Nov |
 | F-11 anonymous mode contract | B / A | To scope | Privacy design, identity/answer separation, threshold >=5; implementation completion by final | contract 27 Nov |
 | F-12 export contract | B / A | To scope | Identified vs anonymous export rules, formula-injection handling, ownership | contract 27 Nov |
 | F-13 analysis contract + working slice | A / B | To scope | Selected D2 Sprint 3 progress: owner-only text answers and section filtering, after F-07/F-10 | 28 Nov |
-| F-14 hardening contract | A / B | #98 / draft PR #99 | Complete contract4ca7cd1 posted; B C3 pending. Measurements, screen/state execution and actual findings remain NOT RUN | contract 27 Nov |
+| F-14 hardening contract | A / B | #98 / draft PR #99 | B C3 on4ca7cd1 exists. Measurements, screen/state execution and actual findings remain NOT RUN | contract 27 Nov |
 | Current SRS/features/traceability | A / B | To scope | Integrate actual accepted per-feature changes, complete all baseline rows | 28 Nov |
 | Current System SDS | B / A | To scope | Final schema/API/permissions from actual integrated work; after #87 spec edits | 28 Nov |
 | D2 integration, release and PDF | A drives / B reviews | To scope | Full suite, release review, CI, human cloud steps, deployed checks, D2 PDF | 28-29 Nov |
@@ -75,3 +92,5 @@ v1.0, 25 Nov 2026, A: initial plan from supplied assignments and later announcem
 v1.1,25 Nov2026,A: user requested visibly separate planning/submission tracks. Remove Lab7 planning/source/evidence content from PR91 into separate Issue94/branch/PR. Preserve cross-feature integration dependencies and all prior Git history.
 
 v1.2,25Nov2026,A/Codex GPT-6.1 Sol: replace F-08/F-14 unscoped placeholders with actual Issues96/98 and contract-review PRs97/99; preserve pending B agreement and unexecuted implementation/results.
+
+v1.3,25Nov2026,A/Codex GPT-6.1 Sol: record actual scoped B C3/C2 participation, exact maintenance candidate versus baseline documentation CI, F-09 review clarifications and remaining serialized gates. Import current reviewed staging documentation without changing Lab6/B evidence; clarify CI isolation as an available lane. Retain all D2 obligations and separate Lab7 report ownership; no feature/release completion inferred.

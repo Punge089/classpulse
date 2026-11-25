@@ -1,5 +1,13 @@
 # Sprint 2 / D2 handoff
 
+## Current checkpoint - 25 November 2026
+
+The original preparation messages below are dated history. Actual B C3 now exists on #87/#90/#96/#98, and B authored the #88 contract/C2 at f4a5db8. A's #88 review7163876159 agrees retained own history after unenrollment, while precise cursor/query and mandatory policy/UI-state designs still need a committed revision before C3 test permission. Do not treat the earlier draft's optional unenrollment precondition as sufficient evidence.
+
+For B's current review queue: PR92 implementation head45f48cd has complete isolated CI45613368930 (219server/10client/10browser,0failed/0skipped,builds/Docker) and is ready for genuine exact-head review. If the OneDrive Git path is unusable as B's disclosure reports, use B's own verified isolated checkout; never switch/reset the Lab6 checkout. Client tests need no DB. API/browser tests can use a verified separate instance or the existing disposable CI workflow; record B's actual commands/observations and rerun/inspect the exact commit rather than inventing local results. A cannot review/approve as B.
+
+F-06 tests/product edits remain after #87 integration; its client main route also waits #88. F-08 reopen/deadline interaction still needs separately reviewed integration. The Lab7 source/working PDF #101/PR104 is a separate draft, not D2 report content or a request to bypass final release/PDF review. D2 planning PR91 and Lab7 planning PR95 still require separate B reviews. No cross-chat/private-message delivery, B automation status or final acceptance is inferred by this checkpoint.
+
 Prepared by A, 25 November 2026, Issue #86, revision1.1: D2 planning only. Lab7 has separate planning #94 and a separate PDF. These are messages for the humans to send; no cross-chat or private message delivery is claimed.
 
 ## To the existing Lab 6 chat
