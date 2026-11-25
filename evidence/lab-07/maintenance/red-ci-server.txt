@@ -11,14 +11,14 @@ Existing CI isolated postgres16; environment values omitted from retained step o
 2026-11-25T10:40:04.8708149Z   DATABASE_URL: [omitted]
 2026-11-25T10:40:04.8709025Z   SEED_PASSWORD: [omitted]
 2026-11-25T10:40:04.8709593Z ##[endgroup]
-2026-11-25T10:40:04.9703360Z 
+2026-11-25T10:40:04.9703360Z
 2026-11-25T10:40:04.9704299Z > classpulse-server@0.1.0 test
 2026-11-25T10:40:04.9705161Z > vitest run
-2026-11-25T10:40:04.9705451Z 
+2026-11-25T10:40:04.9705451Z
 2026-11-25T10:40:05.2309257Z ^[[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.^[[39m
-2026-11-25T10:40:05.2581305Z 
+2026-11-25T10:40:05.2581305Z
 2026-11-25T10:40:05.2583443Z ^[[1m^[[7m^[[36m RUN ^[[39m^[[27m^[[22m ^[[36mv2.1.9 ^[[39m^[[90m/home/runner/work/classpulse/classpulse/server^[[39m
-2026-11-25T10:40:05.2584447Z 
+2026-11-25T10:40:05.2584447Z
 2026-11-25T10:40:07.1744420Z  ^[[32m✓^[[39m tests/tools/uat6Provisioner.db.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[33m 1633^[[2mms^[[22m^[[39m
 2026-11-25T10:40:09.8588641Z  ^[[32m✓^[[39m tests/api/responses.test.ts ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[33m 2287^[[2mms^[[22m^[[39m
 2026-11-25T10:40:09.8590690Z    ^[[33m^[[2m✓^[[22m^[[39m F-04 respondent survey access^[[2m > ^[[22mTEST-22 student1 lists only published surveys in enrolled courses with hasResponded ^[[33m329^[[2mms^[[22m^[[39m
@@ -45,19 +45,19 @@ Existing CI isolated postgres16; environment values omitted from retained step o
 2026-11-25T10:40:20.7066741Z    ^[[33m^[[2m✓^[[22m^[[39m TEST-06 passwords are stored only as salted scrypt hashes that verify ^[[33m382^[[2mms^[[22m^[[39m
 2026-11-25T10:40:20.9133098Z  ^[[32m✓^[[39m tests/unit/seedConfig.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
 2026-11-25T10:40:21.0888541Z  ^[[32m✓^[[39m tests/unit/surveyLifecycle.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 4^[[2mms^[[22m^[[39m
-2026-11-25T10:40:21.0983680Z 
+2026-11-25T10:40:21.0983680Z
 2026-11-25T10:40:21.0990552Z ^[[31m⎯⎯⎯⎯⎯⎯⎯^[[1m^[[7m Failed Tests 2 ^[[27m^[[22m⎯⎯⎯⎯⎯⎯⎯^[[39m
-2026-11-25T10:40:21.0991235Z 
+2026-11-25T10:40:21.0991235Z
 2026-11-25T10:40:21.0992719Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/surveyReopen.test.ts^[[2m > ^[[22mLab 7 controlled reopening (AC-100, AC-102)^[[2m > ^[[22m'TEST-100' accepts a 10-character reason on a CLOSED survey
 2026-11-25T10:40:21.0995152Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/surveyReopen.test.ts^[[2m > ^[[22mLab 7 controlled reopening (AC-100, AC-102)^[[2m > ^[[22m'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey
 2026-11-25T10:40:21.1010415Z ^[[31m^[[1mAssertionError^[[22m: expected 404 to be 200 // Object.is equality^[[39m
-2026-11-25T10:40:21.1011414Z 
+2026-11-25T10:40:21.1011414Z
 2026-11-25T10:40:21.1012030Z ^[[32m- Expected^[[39m
 2026-11-25T10:40:21.1012933Z ^[[31m+ Received^[[39m
-2026-11-25T10:40:21.1013394Z 
+2026-11-25T10:40:21.1013394Z
 2026-11-25T10:40:21.1013837Z ^[[32m- 200^[[39m
 2026-11-25T10:40:21.1014486Z ^[[31m+ 404^[[39m
-2026-11-25T10:40:21.1014930Z 
+2026-11-25T10:40:21.1014930Z
 2026-11-25T10:40:21.1015724Z ^[[36m ^[[2m❯^[[22m tests/api/surveyReopen.test.ts:^[[2m43:26^[[22m^[[39m
 2026-11-25T10:40:21.1200992Z     ^[[90m 41| ^[[39m    ^[[90m// Assert behavior before touching any future DTO/model fields so ^[[39m…
 2026-11-25T10:40:21.1202729Z     ^[[90m 42| ^[[39m    ^[[90m// failures cannot masquerade as the missing-behavior failure.^[[39m
@@ -65,15 +65,15 @@ Existing CI isolated postgres16; environment values omitted from retained step o
 2026-11-25T10:40:21.1205423Z     ^[[90m   | ^[[39m                         ^[[31m^^[[39m
 2026-11-25T10:40:21.1206889Z     ^[[90m 44| ^[[39m    ^[[34mexpect^[[39m(reply^[[33m.^[[39mbody^[[33m.^[[39msurvey)^[[33m.^[[39m^[[34mtoMatchObject^[[39m({
 2026-11-25T10:40:21.1208115Z     ^[[90m 45| ^[[39m      id^[[33m:^[[39m original^[[33m.^[[39mid^[[33m,^[[39m
-2026-11-25T10:40:21.1208766Z 
+2026-11-25T10:40:21.1208766Z
 2026-11-25T10:40:21.1209334Z ^[[31m^[[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯^[[22m^[[39m
-2026-11-25T10:40:21.1209876Z 
+2026-11-25T10:40:21.1209876Z
 2026-11-25T10:40:21.1219472Z ^[[2m Test Files ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m16 passed^[[39m^[[22m^[[90m (17)^[[39m
 2026-11-25T10:40:21.1228163Z ^[[2m      Tests ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m139 passed^[[39m^[[22m^[[90m (141)^[[39m
 2026-11-25T10:40:21.1229429Z ^[[2m   Start at ^[[22m 10:40:05
 2026-11-25T10:40:21.1231121Z ^[[2m   Duration ^[[22m 15.84s^[[2m (transform 247ms, setup 85ms, collect 1.28s, tests 11.77s, environment 3ms, prepare 785ms)^[[22m
-2026-11-25T10:40:21.1232074Z 
-2026-11-25T10:40:21.1232331Z 
+2026-11-25T10:40:21.1232074Z
+2026-11-25T10:40:21.1232331Z
 2026-11-25T10:40:21.1263641Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
 
 - Expected
@@ -85,7 +85,7 @@ Existing CI isolated postgres16; environment values omitted from retained step o
  ❯ tests/api/surveyReopen.test.ts:43:26
 
 
-2026-11-25T10:40:21.1271600Z 
+2026-11-25T10:40:21.1271600Z
 2026-11-25T10:40:21.1274091Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
 
 - Expected

@@ -107,7 +107,7 @@
     "2026-11-25T10:40:21.1274091Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality",
     " \u276f tests/api/surveyReopen.test.ts:43:26"
   ],
-  "logSha256": "a278a203abc1d23bd82c22e9e205edf9ba2f1d08ab7998646314d43f9a0c219f",
+  "logSha256": "e8039d2d7bf00c39ec480989cd78c94a8a391e9b7716ec6f71124691d118ff3c",
   "note": "Only Test server step retained; environment values redacted. Later workflow steps skipped because server tests failed; no tests disabled.",
   "testCounts": {
     "passed": 139,
@@ -115,5 +115,5 @@
     "skipped": 0,
     "total": 141
   },
-  "readability": "ANSI controls removed; environment values omitted; all Test server step lines otherwise retained"
+  "readability": "ANSI controls removed; environment values omitted; all Test server step lines otherwise retained; trailing whitespace trimmed in follow-up after initial diff-check failure"
 }
