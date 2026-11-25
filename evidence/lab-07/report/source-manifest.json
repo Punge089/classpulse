@@ -1,10 +1,9 @@
 {
-  "reportVersion": "0.1-source-draft",
   "observedAtUTC": "2026-11-25T12:50:53.113529+00:00",
   "observedAtBangkok": "2026-11-25T19:50:53.113529+07:00",
   "candidate": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
   "candidateRun": 45613368930,
-  "status": "NOT READY / source-only draft",
+  "status": "NOT READY / pinned source snapshot",
   "records": [
     {
       "file": "inputs/contract-before-code.md",
@@ -264,5 +263,6 @@
       "sha256": "78f0c2b7b433efe87f6f6554466061d2325a8b79a911a3f3d5ca73fe51fe201d",
       "derivation": "Lab7 entries selected from original supplied-source manifest"
     }
-  ]
+  ],
+  "sourceSnapshotVersion": "1"
 }

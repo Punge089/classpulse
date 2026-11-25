@@ -1,4 +1,4 @@
-# Lab 7 report evidence index - source draft
+# Lab 7 report evidence index - working draft
 
 Issue #101. Parts A25/B50/C15/D10 only. NOT READY; no final PDF/submission.
 

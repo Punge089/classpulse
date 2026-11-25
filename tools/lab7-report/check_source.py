@@ -23,7 +23,7 @@ manifest = json.loads((EV / "source-manifest.json").read_text(encoding="utf-8"))
 for item in manifest["records"]:
     check(hashlib.sha256((EV / item["file"]).read_bytes()).hexdigest() == item["sha256"], "input SHA256: " + item["file"])
 report = REPORT.read_text(encoding="utf-8")
-check("SOURCE DRAFT - NOT READY FOR SUBMISSION" in report, "unambiguous source-draft state")
+check("WORKING DRAFT - NOT READY FOR SUBMISSION" in report, "unambiguous working-draft state")
 check(all(f"# Part {part} -" in report for part in "ABCD"), "all four separate assessed parts")
 check(set(map(int, re.findall(r"^\| AC-(\d+) \|", report, re.M))) == set(range(100, 112)), "all12 stable acceptance IDs")
 check(set(map(int, re.findall(r"^\| TEST-(\d+) \|", report, re.M))) == set(range(100, 115)), "all15 complete reviewed STS designs")

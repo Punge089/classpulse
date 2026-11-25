@@ -142,7 +142,7 @@ def capture() -> None:
     saved_json("same-test-proof.json", {"oldCommit": PRIMARY, "candidate": HEAD, "originalDescribeBlockUnchanged": True, "blockSha256": hashlib.sha256(block.encode()).hexdigest()}, {"derivation": "exact original describe block is present in current test file"})
     provenance = json.loads(blob("292a698", "evidence/lab-07/sources/manifest.json"))
     saved_json("assignment-provenance.json", {"sourceCommit": "292a698", "announcementPublisher": provenance["announcementPublisher"], "announcementPublicationDate": provenance["announcementPublicationDate"], "sources": [x for x in provenance["sources"] if x["name"] in ["Lab_7_Sprint_1_Maintenance.pdf", "highlighted-original-approval.png"]]}, {"derivation": "Lab 7 entries selected from original supplied-source manifest"})
-    manifest = {"reportVersion": "0.1-source-draft", "observedAtUTC": observed, "observedAtBangkok": datetime.fromisoformat(observed).astimezone(BG).isoformat(), "candidate": HEAD, "candidateRun": RUN, "status": "NOT READY / source-only draft", "records": records}
+    manifest = {"sourceSnapshotVersion": "1", "observedAtUTC": observed, "observedAtBangkok": datetime.fromisoformat(observed).astimezone(BG).isoformat(), "candidate": HEAD, "candidateRun": RUN, "status": "NOT READY / pinned source snapshot", "records": records}
     (EVIDENCE / "source-manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 
 
@@ -189,7 +189,7 @@ def assemble() -> None:
     assert len(interpretation.split()) <= 100
     report = f'''# ClassPulse - Lab 7 maintenance report
 
-**Version 0.1 - SOURCE DRAFT - NOT READY FOR SUBMISSION**
+**Version 0.2 - WORKING DRAFT - NOT READY FOR SUBMISSION**
 
 Prepared from pinned evidence at {manifest["observedAtBangkok"]}. The accepted Lab 6 baseline, final implementation peer review/release/deployment and final PDF review are unresolved. This is the separate Lab 7 assessment; Deliverable 2 is submitted separately.
 
@@ -425,7 +425,7 @@ Actual word count: {len(interpretation.split())}, maximum 100. No issue/PR/test-
 | Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; candidate production configuration/credential review PENDING | A/B inspect exact release; human manages credentials/IAM |
 | Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | B checks report/source; final README/release setup verification remains open |
 | Review/integration/deployment/smoke | PR #92 peer:{review_state}; staging:{staging_state}; main/deployed changed/preserved checks PENDING | B review; named release driver coordinates Lab 6 freeze; human cloud steps |
-| PDF and LEB2 | Source-only draft; final pagination/render/page review/hash and upload receipt PENDING | A assembles/renders; B reviews exact PDF; human submits separately |
+| PDF and LEB2 | Working draft; final PDF pagination/page review/hash and upload receipt PENDING | A assembles/renders; B reviews exact final PDF; human submits separately |
 
 ## D2 - Debt, observed failures and limitations (L7-D02)
 
@@ -456,10 +456,12 @@ Final gaps: accepted Lab 6 baseline/decision, B exact-current-head implementatio
 ## Reproducibility and provenance
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` intentionally refreshes pinned Git/GitHub sources; it does not test/deploy the application. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
+
+Revision history: v0.1 assembled the pinned source on25November2026. v0.2 adds a working PDF layout with navigable Part page ranges; the evidence snapshot is unchanged and final release/acceptance/PDF approval gates remain open. Draft layout inspection does not constitute B's final PDF review.
 '''
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "report.md").write_text(report, encoding="utf-8", newline="\n")
-    index = """# Lab 7 report evidence index - source draft
+    index = """# Lab 7 report evidence index - working draft
 
 Issue #101. Parts A25/B50/C15/D10 only. NOT READY; no final PDF/submission.
 
@@ -485,7 +487,7 @@ Issue #101. Parts A25/B50/C15/D10 only. NOT READY; no final PDF/submission.
 All paths above are under evidence/lab-07/report/inputs unless marked screenshots. The manifest records full hashes, source commits/paths or API/run provenance. These sources are preparation; final pagination, peer acceptance, release/deployed evidence and PDF review remain open.
 """
     (DOCS / "report-evidence-index.md").write_text(index, encoding="utf-8", newline="\n")
-    print(json.dumps({"report": "docs/labs/lab-07/report.md", "inputHashesVerified": len(manifest["records"]), "interpretationWords": len(interpretation.split()), "ciRunsInScope": len(window["runs"]), "status": "source draft / NOT READY"}))
+    print(json.dumps({"report": "docs/labs/lab-07/report.md", "inputHashesVerified": len(manifest["records"]), "interpretationWords": len(interpretation.split()), "ciRunsInScope": len(window["runs"]), "status": "working draft / NOT READY"}))
 
 
 if __name__ == "__main__":

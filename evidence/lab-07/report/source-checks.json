@@ -2,7 +2,7 @@
   "passed": 61,
   "failed": 0,
   "skipped": 0,
-  "reportSha256": "9abf6063fba6bb0712a8daa3e98235ebdf6301f66da190252645545fef009b56",
+  "reportSha256": "7eb3d41a9852825ae216436fd808a1060026c552c520c17e5f73c47cfa087b46",
   "reportHashEncoding": "UTF8/LF canonical source, not a final PDF hash",
   "checks": [
     "input SHA256: inputs/contract-before-code.md",
@@ -41,7 +41,7 @@
     "input SHA256: inputs/timeline.json",
     "input SHA256: inputs/same-test-proof.json",
     "input SHA256: inputs/assignment-provenance.json",
-    "unambiguous source-draft state",
+    "unambiguous working-draft state",
     "all four separate assessed parts",
     "all12 stable acceptance IDs",
     "all15 complete reviewed STS designs",

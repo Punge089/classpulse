@@ -1,6 +1,6 @@
 # ClassPulse - Lab 7 maintenance report
 
-**Version 0.1 - SOURCE DRAFT - NOT READY FOR SUBMISSION**
+**Version 0.2 - WORKING DRAFT - NOT READY FOR SUBMISSION**
 
 Prepared from pinned evidence at 2026-11-25T19:50:53.113529+07:00. The accepted Lab 6 baseline, final implementation peer review/release/deployment and final PDF review are unresolved. This is the separate Lab 7 assessment; Deliverable 2 is submitted separately.
 
@@ -798,7 +798,7 @@ Actual word count: 57, maximum 100. No issue/PR/test-count target is invented to
 | Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; candidate production configuration/credential review PENDING | A/B inspect exact release; human manages credentials/IAM |
 | Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | B checks report/source; final README/release setup verification remains open |
 | Review/integration/deployment/smoke | PR #92 peer:PENDING; staging:PENDING - PR #92 unmerged at snapshot; main/deployed changed/preserved checks PENDING | B review; named release driver coordinates Lab 6 freeze; human cloud steps |
-| PDF and LEB2 | Source-only draft; final pagination/render/page review/hash and upload receipt PENDING | A assembles/renders; B reviews exact PDF; human submits separately |
+| PDF and LEB2 | Working draft; final PDF pagination/page review/hash and upload receipt PENDING | A assembles/renders; B reviews exact final PDF; human submits separately |
 
 ## D2 - Debt, observed failures and limitations (L7-D02)
 
@@ -829,3 +829,5 @@ Final gaps: accepted Lab 6 baseline/decision, B exact-current-head implementatio
 ## Reproducibility and provenance
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` intentionally refreshes pinned Git/GitHub sources; it does not test/deploy the application. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
+
+Revision history: v0.1 assembled the pinned source on25November2026. v0.2 adds a working PDF layout with navigable Part page ranges; the evidence snapshot is unchanged and final release/acceptance/PDF approval gates remain open. Draft layout inspection does not constitute B's final PDF review.

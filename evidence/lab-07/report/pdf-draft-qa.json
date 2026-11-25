@@ -1,0 +1,348 @@
+{
+  "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
+  "sha256": "80c977a1e9a5bcda9c0d5d24032d85d5df74308210ef09830bf1a5d7ca2abdbb",
+  "sourceSha256UTF8LF": "7eb3d41a9852825ae216436fd808a1060026c552c520c17e5f73c47cfa087b46",
+  "pages": 29,
+  "partStartPages": {
+    "A": 3,
+    "B": 14,
+    "C": 25,
+    "D": 28
+  },
+  "navigationDestinations": [
+    3,
+    14,
+    14,
+    25,
+    28
+  ],
+  "images": [
+    {
+      "page": 21,
+      "source": "reopened-owner-history.png",
+      "originalPixelsPreserved": true
+    },
+    {
+      "page": 22,
+      "source": "stale-tab-explicit-reload.png",
+      "originalPixelsPreserved": true
+    },
+    {
+      "page": 23,
+      "source": "eligible-student-confirmation.png",
+      "originalPixelsPreserved": true
+    }
+  ],
+  "pageChecks": [
+    {
+      "page": 1,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 126,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 2,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 258,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 3,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 511,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 4,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 724,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 5,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 742,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 6,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 596,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 7,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 544,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 8,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 569,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 9,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 263,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 10,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 279,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 11,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 332,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 12,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 389,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 13,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 126,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 14,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 314,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 15,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 233,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 16,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 467,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 17,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 303,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 18,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 351,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 19,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 523,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 20,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 341,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 21,
+      "width": 1190.551,
+      "height": 841.8898,
+      "words": 50,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 22,
+      "width": 1190.551,
+      "height": 841.8898,
+      "words": 59,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 23,
+      "width": 1190.551,
+      "height": 841.8898,
+      "words": 53,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 24,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 141,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 25,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 339,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 26,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 92,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 27,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 247,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 28,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 423,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    },
+    {
+      "page": 29,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 440,
+      "outOfBoundsWords": 0,
+      "draftFooter": true
+    }
+  ],
+  "structuralResult": "PASS: all pages bounded/nonblank/draft-labelled; all Part links/page ranges correct; original screenshot pixels preserved",
+  "visualQA": {
+    "result": "PASS agent visual inspection",
+    "operator": "A/Punge089 assisted by Codex GPT-6.1 Sol",
+    "observedAtUTC": "2026-11-25T13:21:42.047088+00:00",
+    "pagesInspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "method": "All29 latest Poppler PNG pages inspected through8 contact sheets; pages2,11,22,27 additionally inspected at full resolution",
+    "observations": "Readable text/code/tables, repeated table headers, intact original screenshots, correct Part ranges/bookmarks, visible draft footer, no unwanted blank page/clipping/overlap/missing glyph observed",
+    "initialLayoutCorrections": [
+      "Removed2 blank portrait pages between consecutive figure sheets",
+      "Kept STS introduction with its first table row",
+      "Widened test-count/AC columns and kept numeric AC IDs intact"
+    ],
+    "validatorCorrection": "A wrapped PartB link creates2 annotation rectangles to the same destination; verify4 unique correct targets, not one rectangle per Part"
+  },
+  "releaseState": "NOT READY; no B final PDF approval or submission",
+  "pdfByteRebuild": "Two consecutive renders produced identical SHA256; invariant PDF metadata is intentional, not an execution timestamp",
+  "renderedPagePngSha256": {
+    "checked-page-01.png": "9fd2712127d7520bf0b7e46b7e4d7d7022882ddda5a3699d2a07763ca9a99842",
+    "checked-page-02.png": "7de65946758f0ab7fb50284b54e91f8afdcef508862cac650a2bdc07c44e3254",
+    "checked-page-03.png": "dff299546a921a82544764e054be893d0fb7c1d32edf7245a4196188a5b9a498",
+    "checked-page-04.png": "47a132f96472c40497a2b8b6900fa3e469b5e470acd2a0d3a8f5202c07af72a3",
+    "checked-page-05.png": "d16f071c6d401d8a7693d5668e1bf70ee570d7d10e36dabf3f6d2bbdbf7b6526",
+    "checked-page-06.png": "fb77b20986540dee99518f2914b278d1ed3df0890eccc1604c0684d77c3db252",
+    "checked-page-07.png": "bda79e6efbaa738f8e0290b2dd3bf7dc07694ebfb4dd2c8125d8d446a8977716",
+    "checked-page-08.png": "c9c97a3e0846b54f12156b412fc32cbb3213f9eb1c18f32bcda999fda5289992",
+    "checked-page-09.png": "116209a193d10a038bc5496cd064477f7741dc6b9701a21c3751c009337a79f7",
+    "checked-page-10.png": "3517441dd38f37448d1a120ed7e533ae1209de3118bf46e7c87c2a9966598661",
+    "checked-page-11.png": "8fd02f83bb22146195660073f50929768c6fc5773e3a96491beb4624cdea1cd7",
+    "checked-page-12.png": "43ba98b40473262003cd23eaf4fe6e292e8341155d7a5d8d420239e7d6b1ec75",
+    "checked-page-13.png": "eccd527b68fb4848259c04bc53fd8beefbe1b464e9e866da38c5346035700671",
+    "checked-page-14.png": "e14de54b426bfa7c282958152f71e72acf64d7ea8fdb1393e92c47e2cd9ad879",
+    "checked-page-15.png": "293344f46b7f6cb1debe7f5a249a23423cb475b3a3e05ba033f33da71c8abcf1",
+    "checked-page-16.png": "cd94c8c440d7c64be7fceefc85b734c51f14e124bee984f24ee17648e0d658c5",
+    "checked-page-17.png": "eb5729088f1cb1c122d6e8ced306ef72d74b7f4b7db94cedad630e015d09ce0f",
+    "checked-page-18.png": "c019e10c16b63f8c4f98db6df3d52ad9a356c46e81e76c812586453c26c79e22",
+    "checked-page-19.png": "54081f843a18f10ccd3e0ae04e0ee240491d7b74d00da386610240cec088993d",
+    "checked-page-20.png": "c9c2e15e3ffaab6c9ade10589c4cb6c90830977e5837ba966119766aaea2a83d",
+    "checked-page-21.png": "8572953b47721b2448bdd53e44217b0c4aed6d9e72c8c56fd364a94b5f5f1fbe",
+    "checked-page-22.png": "b4f2d2283e9600aebf0c1fafe33ce72183792b1da5ff71aa229a0f58eb7cb6f7",
+    "checked-page-23.png": "d8ed2e9e22267895ec6483af9c223f47280b1c3535f2f5995ad39f54d66dd15c",
+    "checked-page-24.png": "30ba5eee4586a1d1cafe0947e9d21592bedd76f98bb59441b466a6399a5aef19",
+    "checked-page-25.png": "5330c797f7370258db2db8cc9b7a44b212c5091c11b7a9133f565034d75fe6de",
+    "checked-page-26.png": "b85a7a3d85669bef0c3eca79054e986da76f71d6a50fdd8483d2b15ef3ab83da",
+    "checked-page-27.png": "fabb704b96c2a6f8c0a26d6e51b9202b4218c819c8dfa7f7de5e8b669a967ee9",
+    "checked-page-28.png": "bf9dcc6a9f21698e032dae4e911d81b5ab967853dad2d9431448b2053bbe09b1",
+    "checked-page-29.png": "e672943e1afed34dce43d914ad46b59b208e90948bccdae8b71b277e69a5c4ab"
+  }
+}
