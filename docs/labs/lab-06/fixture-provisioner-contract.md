@@ -94,3 +94,24 @@ Human run steps AFTER A approves the exact executable head and CI:
 
 Final schema guard checkpoint: physical column names/types/nullability of User,Course,Enrollment must match the reviewed CP-V01 shape before inserts. Additional schema-column assertion is RED at283e58e(1failed/9passed), then GREEN10DB checks. The test Enrollment foreign keys were corrected to required/non-null to match the actual Prisma schema. This is a column-level guard, not proof of all possible schema/trigger drift; human version/schema review remains required.
 Final local suite after the schema guard:138passed/0failed/0skipped(105existing+33new); server build and strict CLI typecheck exited0. No live operation ran.
+
+
+## Superseding checkpoint — 25 November 2026 (Student B)
+
+This append-only checkpoint supersedes the earlier pending and transaction-order statements above; historical evidence and commits are preserved.
+
+PR #83 was reviewed and merged by A at `f4533eac6ba035885a67eb6010cfba570b8f3f3e`. The corrected transaction order is: private input and password hashing outside the transaction; SERIALIZABLE; bounded SET LOCAL timeouts; fixed-order SHARE ROW EXCLUSIVE locks on User/Course/Enrollment **before the first snapshot-taking SELECT**; target/schema/baseline/normalized-collision checks; exactly two users and one enrollment; existing-baseline check; commit. Locking after a target SELECT, as described in the earlier checkpoint, was unsafe and is superseded.
+
+The ordinary-writer race regression was committed RED at `dc651049c795bd1f1315150667f011909c33af6d`: 10 database tests passed and the new collision test failed because apply incorrectly resolved. Fix/GREEN `d51ef87cb5c9015401de2ed0c229d30b2254b87a` passes the same test. Focused database tests: 11/11; full server: 139/139 across 16 files, no failures/skips; server build and strict CLI typecheck passed. Exact-head CI [45438536383](https://github.com/Punge089/classpulse/actions/runs/45438536383) succeeded. A independently repeated 139 tests/build/typecheck and a separate ordinary-writer race, observing EMAIL_COLLISION and only the competitor row (6 users/3 enrollments).
+
+### Model attribution clarification
+
+Earlier contract, implementation checkpoints and handovers identify Codex GPT-6.1 Sol. The two race-follow-up commits above and their PR description contain the broader trailer/name Codex GPT-6. Those are the historical recorded labels; the available transcript does not establish a more precise model identifier for that earlier execution, so this clarification does not assert that both names are interchangeable or rewrite either commit. The model explicitly identified for this clarification and the PR #82 merge is **gpt-6.1-sol (Codex GPT-6.1 Sol)**. The merge trailer uses that actual current identifier. Future records should use the runtime-provided model name rather than infer it from the generic Codex identity.
+
+### Current coordination and reported live setup
+
+B merged the previously approved PR #82, unchanged head `9a7bd6de48846aab209b5fbec11818bc36e20a23`, with a merge commit at `b73a2690e620b03b17d1446939fbeda234868d51` after verifying CI45435365559 remained successful.
+
+Correction to B's prior blanket agreement-pending handover: the [C/D A2 technical disposition table](../../../evidence/lab-06/checkpoint-20261124/received-cd-a2/EN037-TECHNICAL-RESPONSE-A2.md) accepts PARTNER-ADD-01–06 A2, including 02g and Unicode reason branches. ADD-06 durability and controlled expiry/replay/assignment/event-failure setups retain their explicit separate dependencies. Technical acceptance does not mean those branches were executed. B's unexecuted API branches and incomplete APPROVE-501 result remain open. An actual start notice and confirmation of the current serving version are still required before further live testing. Original requests remain retained.
+
+[A's latest Issue80 report](https://github.com/Punge089/classpulse/issues/80#issuecomment-7139603541) states the human completed the reviewed apply and A independently postchecked read-only: extra user16 active RESPONDENT with enrollment4 in CPE334/course1; inactive user17 inactive RESPONDENT without enrollment. The original five users/two courses/three enrollments matched preflight, including student3 id4 remaining CPE231-only. These are **A-reported human-run/post-check results**, not a live operation or independent database verification by B. Credentials remain private. C/D's independent CD01/CD07 execution, controlled-session branches, final acceptance and ClassPulse Part D remain pending. A also reports WF-BUG-001 closed/completed. B ran no new live test, cloud command or apply while preparing this checkpoint.
