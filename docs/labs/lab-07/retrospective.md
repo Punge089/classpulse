@@ -12,3 +12,8 @@ No code, database, cloud deployment, UAT execution, or Deliverable 2 document wa
 ## Diff-check provenance correction - 25 November 2026, 18:48 Asia/Bangkok
 
 The earlier “no local diff check” statement is a dated historical note, not the final check record. On the detached isolated worktree `C:\\Users\\Jitvoottikrai\\Documents\\Codex\\2026-11-25\\new-chat\\work\\classpulse-issue89-check`, I ran `git diff --check c99748c0f5d7044aa6cbf8e7124fa9300e0006ff 04dab39dad4a622edccf1c8368865612086f7cf4`. It exited 0 at HEAD `04dab39dad4a622edccf1c8368865612086f7cf4`; the command was run after that commit and before PR #100 was opened at 18:14:32 Bangkok, but its exact minute was not captured. I reran the same command in this session and again got exit 0 at that same local HEAD. This local worktree has not advanced to the latest GitHub branch head, so these results do not claim a diff check on the current PR head. A independently reported their own check on 04dab39; that is A's evidence, not B's. The latest branch commit is documentation disclosure only, and PR #100's latest CI run 45607613095 succeeded. Application tests and UAT were not run by B.
+
+
+## Exact PR-head diff check - 25 November 2026, 19:01:56 Asia/Bangkok
+
+After fetching `feature/89-lab7-metrics-readiness` into the isolated review worktree, I verified that `FETCH_HEAD` was `45ff5dfc6ea3e342bdeb96856822b56e0fd91a6a`, matching PR #100 at that time. I ran `git diff --check c99748c0f5d7044aa6cbf8e7124fa9300e0006ff 45ff5dfc6ea3e342bdeb96856822b56e0fd91a6a`; it exited 0. The prior check at `04dab39` and A's independent check remain separately attributed. No application tests or UAT were run by B for this documentation review.
