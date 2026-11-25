@@ -1,0 +1,58 @@
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/review83/server
+
+ ❯ tests/tools/uat6Provisioner.db.test.ts (11 tests | 1 failed) 2832ms
+   ✓ real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows 311ms
+   ✓ real PostgreSQL additive transaction > allows at most one of two concurrent applies 327ms
+   × real PostgreSQL additive transaction > rejects a normalized email collision committed while apply waits for its first table lock 374ms
+     → promise resolved "{ …(3) }" instead of rejecting
+   ✓ refuses an unexpected schema column before inserting fixtures 416ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 passed (11)
+   Start at  23:41:14
+   Duration  3.12s (transform 52ms, setup 20ms, collect 64ms, tests 2.83s, environment 0ms, prepare 65ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tools/uat6Provisioner.db.test.ts > real PostgreSQL additive transaction > rejects a normalized email collision committed while apply waits for its first table lock
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- [Error: rejected promise]
++ Object {
++   "enrollment": Object {
++     "courseId": 1,
++     "id": 4,
++     "userId": 7,
++   },
++   "existingBaselineUnchanged": true,
++   "users": Array [
++     Object {
++       "email": "uat6.extra@classpulse.test",
++       "id": 7,
++       "isActive": true,
++       "role": "RESPONDENT",
++     },
++     Object {
++       "email": "uat6.inactive@classpulse.test",
++       "id": 8,
++       "isActive": false,
++       "role": "RESPONDENT",
++     },
++   ],
++ }
+
+ ❯ tests/tools/uat6Provisioner.db.test.ts:180:38
+    178|             releaseWriter();
+    179|             await writerTransaction;
+    180|             await expect(applyPromise).rejects.toThrow("EMAIL_COLLISIO…
+       |                                      ^
+    181|             expect(await db.user.count()).toBe(6);
+    182|             expect(await db.enrollment.count()).toBe(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

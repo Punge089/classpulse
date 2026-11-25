@@ -1,0 +1,1 @@
+Initial checker run stopped before result creation because the Windows default cp1252 decoder could not read UTF-8 historical output. The checker now explicitly reads UTF-8. No document, raw evidence or assertion was changed to hide a product failure.

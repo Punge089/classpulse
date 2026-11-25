@@ -1,0 +1,14 @@
+{
+  "head": "d51ef87cb5c9015401de2ed0c229d30b2254b87a",
+  "localTestDatabase": "classpulse_fixture_test",
+  "schema": "review83_race_3f2b34a0db12431aab868d7ab9dece61",
+  "outcome": {
+    "status": "rejected",
+    "code": "EMAIL_COLLISION"
+  },
+  "normalizedExtraCount": 1,
+  "userCount": 6,
+  "enrollmentCount": 3,
+  "expected": "Abort before inserts after concurrent normalized collision becomes committed; one existing variant only",
+  "productionConnectionUsed": false
+}
