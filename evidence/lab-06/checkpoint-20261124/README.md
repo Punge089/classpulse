@@ -21,3 +21,5 @@ Read fixture-ready-20261125/START-HERE.md for the completed human fixture setup 
 Received C/D R2 under received-cd-r2-20261125/: unchanged narrative reports two scoped PASS paths. Its raw JSON/screenshot companions are missing, controlled expiry/acceptance pending, and release mapping is supplied earlier evidence. Read the provenance/assessment before promoting any scope or version claim.
 
 Later companion review: the R2 JSON and supplied PNG now reside beside the original narrative, resolving its links without changing its bytes. r2-companion-review-20261125 records exact incoming/source hashes, visual/JSON review and the accepted but unexecuted TEST05 supporting method. Earlier missing-file assessments are historical. No local check is relabeled as deployed expiry UAT.
+
+Later actual supporting result: [received-test05-exact-20261125](received-test05-exact-20261125/README.md) preserves C/D exact-command output, clean source/local DB proof, provenance and A review. TEST05 is local supporting PASS (8/0/0 auth-file total), not independent live expiry or acceptance. Prior unexecuted-method records remain historical.

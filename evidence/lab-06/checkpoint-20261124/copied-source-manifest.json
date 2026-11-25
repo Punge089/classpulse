@@ -811,6 +811,26 @@
       "path": "workflow-additional-cases-a2.md",
       "sha256": "bb510fc6524a08e8bfafbdb305ef82c35622cfea129bd9c22678a0a32141d56d",
       "bytes": 16318
+    },
+    {
+      "path": "received-test05-exact-20261125/REPORT.md",
+      "sha256": "9a6cf76c2f883c7fc1f9a75293274fb790c15e3ab2f1fe7eef00cf28f3cf1d51",
+      "bytes": 2344
+    },
+    {
+      "path": "received-test05-exact-20261125/auth-test-output.txt",
+      "sha256": "392e1097f69643acd1a4f574a571ca7506725cbc454cee15da2616728d7ad4fc",
+      "bytes": 615
+    },
+    {
+      "path": "received-test05-exact-20261125/migration-output.txt",
+      "sha256": "26d3033cc870fa2d136b26bdef980ad3128b69dd795e18b7a2c37eb3b4a68e00",
+      "bytes": 407
+    },
+    {
+      "path": "received-test05-exact-20261125/run-proof.json",
+      "sha256": "4f5be9a5400b0210b5ba9080d84ed5a60ee6160e7a9c105078d55a8579615d18",
+      "bytes": 1296
     }
   ]
 }
