@@ -6,7 +6,7 @@ Issue #87. Version 1.0, 25 November 2026. Author/driver: Bannasorn Thongkorn (Pu
 
 The initial header/contract-only statements describe the original pre-implementation checkpoint and are preserved as history. B posted actual C3 [7159676041](https://github.com/Punge089/classpulse/issues/87#issuecomment-7159676041) at10:25:30UTC. Primary test-only3f8918c failed2new assertions with139existing passes; expanded test-onlya9cdbce yielded144passes/32failures/0skips(total176) on old code. [Retained RED evidence](../../../evidence/lab-07/maintenance/red-evidence.md) and79459c8 precede the core implementation commit.
 
-Current work implements the backend lifecycle/version/audit migration, input/query validation, owner routes and isolated fixture cleanup. Local Prisma generation/server build/test-source TypeScript checks passed. Runtime GREEN, audit-insert fault tests, migration preservation run, UI/browser implementation, peer final review and main/deployed checks remain PENDING. This checkpoint changes execution status/file inventory only; approved behavior/AC/STS are unchanged. The ErrorCode union file is added to Issue Files solely for the already-contracted STALE_SURVEY discriminant.
+Current work implements the backend lifecycle/version/audit migration, input/query validation, owner routes and isolated fixture cleanup. Local Prisma generation/server build/test-source TypeScript checks passed. Core3203c3a passed176server/1client tests; c4e67ca passed214server checks including real audit-insert rollback; UI7c4818c passed214server/8client tests, both builds and Docker in actual CI45604842565. Same UI assertions moved from RED2passed/6failed to GREEN8passed. Old-data migration preservation, actual browser/E2E, final peer review and main/deployed checks remain PENDING. This checkpoint changes execution status/file inventory only; approved behavior/AC/STS are unchanged. The ErrorCode union file is added to Issue Files solely for the already-contracted STALE_SURVEY discriminant.
 
 ## 1. Change request and requirements
 
@@ -119,7 +119,7 @@ F-06 still only edits DRAFT; a reopened PUBLISHED survey never becomes editable.
 
 ## 10. Software Test Specification
 
-These are test designs, not implemented tests. All automated additions wait for B C3.
+The STS below is the original pre-implementation test design. B C3 is now recorded; actual implementation/results and remaining gaps are recorded in the execution checkpoint and evidence files.
 
 | Test ID | AC | Level | Preconditions/input and action | Expected result | Planned file |
 |---|---|---|---|---|---|
@@ -151,12 +151,12 @@ RED staging strategy: first add executable API assertions TEST-100 and valid upp
 - [ ] Reviewed main release + human-run cloud changes; actual serving version mapped and changed/preserved deployed checks retained. Coordinate with Lab 6 first.
 - [ ] Both PDFs embed relevant full chain, not links alone; Lab 7 metrics/readiness from #89; D2 retains all other feature obligations.
 
-No runtime checks have run for this contract. All execution/approval/release checkboxes remain open. Contract review does not declare feature completion.
+Initial v1.0 had no runtime checks; actual RED/GREEN/fault/UI execution is now recorded in the checkpoint above. Final peer/release/deployment and remaining migration/E2E evidence stay open. Contract review does not declare feature completion.
 
 ## 12. Version history
 
 | Version | Date | Author | Change and reason |
 |---|---|---|---|
 | 1.0 | 2026-11-25 | A / Codex GPT-6 | Initial nontrivial maintenance proposal, old/new spec and test design before tests/code; apply supplied no-TA-approval announcement, request B team review. |
-
 | 1.1 execution status | 2026-11-25 | A / Codex GPT-6.1 Sol | Record actual B C3 and primary/expanded RED before core implementation; clarify required error-union file inventory without changing approved behavior. Remaining runtime/UI/migration/release evidence pending. |
+| 1.2 execution status | 2026-11-25 | A / Codex GPT-6.1 Sol | Record actual rollback/unit GREEN214 and same-test UI RED/GREEN8 at7c4818c; preserve original STS, pending historical-data/browser/release/peer gates, and unchanged approved behavior. |
