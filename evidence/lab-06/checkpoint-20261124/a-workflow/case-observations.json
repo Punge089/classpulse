@@ -1,0 +1,47 @@
+{
+  "runId": "UAT6-20261124-A-210340",
+  "completedAtUtc": "2026-11-24T14:09:45.912Z",
+  "actualOperator": "Codex under Student A/Punge089",
+  "source": "82a4806b5291b57ad7e76a28fb7d40e1e947b9a6",
+  "marker": "82a4806b5291",
+  "cases": [
+    {
+      "id": "UAT-01",
+      "behavior": "PASS observed UI steps",
+      "requestId": "e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+      "amount": "125.50",
+      "status": "APPROVED",
+      "history": [
+        "SUBMITTED",
+        "APPROVED"
+      ]
+    },
+    {
+      "id": "UAT-04",
+      "behavior": "PASS observed signed-out/new-login persistence and final-state controls",
+      "requestId": "e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+      "setupDisposition": "PENDING Product Team agreement: explicit logout/closed temporary IAB tab/replacement tab instead of independently verified fresh private window",
+      "optionalRestart": "NOT RUN"
+    },
+    {
+      "id": "UAT-05",
+      "behavior": "PASS observed blank-reason denial/unchanged-state reload/valid rejection/owner readback",
+      "requestId": "b1f4b385-04b4-4e7a-905f-7f9091e65db2",
+      "amount": "300.00",
+      "status": "REJECTED",
+      "history": [
+        "SUBMITTED",
+        "REJECTED"
+      ]
+    }
+  ],
+  "runSetup": "Temporary IAB browser isolated from normal user browser; explicit Incognito/private-window flag and exact engine version not exposed by tool. Record this run-level setup qualification and ask Product Team disposition; do not claim literal new private-window creation.",
+  "wholeCaseFinalDisposition": "PENDING peer/fixture-setup acceptance; observed behavior is distinguished from a final mutual UAT decision",
+  "additionalA01A06": "NOT RUN",
+  "B02B03B06": "Not performed by A; B owns actual results",
+  "accepted": false,
+  "newApplicationFinding": false,
+  "cloudMutations": false,
+  "recordsRetained": true,
+  "toolIssue": "Closed-tab evidence helper needed rebinding before UAT04 credential entry; no duplicate request or app defect."
+}

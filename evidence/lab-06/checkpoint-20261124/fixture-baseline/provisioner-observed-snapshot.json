@@ -1,0 +1,70 @@
+{
+  "database": "classpulse",
+  "baseline": {
+    "users": [
+      {
+        "id": 1,
+        "email": "ann.lee@classpulse.test",
+        "role": "OWNER",
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "email": "ben.kim@classpulse.test",
+        "role": "OWNER",
+        "isActive": true
+      },
+      {
+        "id": 3,
+        "email": "student1@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      },
+      {
+        "id": 4,
+        "email": "student3@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      },
+      {
+        "id": 5,
+        "email": "student2@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      }
+    ],
+    "courses": [
+      {
+        "id": 1,
+        "code": "CPE334",
+        "ownerId": 1
+      },
+      {
+        "id": 2,
+        "code": "CPE231",
+        "ownerId": 2
+      }
+    ],
+    "enrollments": [
+      {
+        "id": 1,
+        "userId": 3,
+        "courseId": 1
+      },
+      {
+        "id": 2,
+        "userId": 5,
+        "courseId": 1
+      },
+      {
+        "id": 3,
+        "userId": 4,
+        "courseId": 2
+      }
+    ],
+    "collisions": []
+  },
+  "observedAtUtc": "2026-11-24T15:53:02.943Z",
+  "humanApprovedApply": false,
+  "scope": "Agent-observed read-only snapshot. Human target/baseline approval and a corrected, reviewed provisioner are still required before live apply."
+}

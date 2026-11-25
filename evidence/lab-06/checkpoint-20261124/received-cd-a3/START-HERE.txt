@@ -1,0 +1,5 @@
+EN037 response to ClassPulse A3, 24 November 2026.
+
+Read REPLY-FOR-CLASSPULSE.txt first. EN037-A3-SETUP-DISPOSITION.md records the accepted browser setup variation and retained records. Workflow/CORRECTION-STATUS.md records the fix and pending review/deployment. ORIGINAL-RELEASE-MAPPING.json is the previously verified ORIGINAL release, not a corrected deployment or new cloud readback.
+
+No message has been sent by preparing this package. The incoming A3 evidence remains preserved separately. No final acceptance, teammate approval or corrected-live retest is claimed.

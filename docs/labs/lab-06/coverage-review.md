@@ -1,5 +1,15 @@
 # Independent UAT coverage review
 
+## Latest verified state —24November2026, after WF-FIX-001 retest
+
+- Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
+- [C/D's latest B-v2 dispositions](../../../evidence/lab-06/checkpoint-20261124/received-cd-corrected/EN037-B-V2-DISPOSITION.md) accept the recorded same-tab/logout02/03 paths, numeric1000000.00 display and scoped06denial; no repeat solely for those capture limits. Earlier original82a4806 snapshots remain historical. B06 still lacks a fresh marker/expanded identity in its screenshot; predeployment C/D readback corroborates release continuity without inventing that capture. The six original Workflow paths have scoped PASS evidence; required unexecuted additional branches and whole-product acceptance remain pending.
+- ClassPulse [actual read-only baseline](../../../evidence/lab-06/checkpoint-20261124/fixture-baseline/README.md) completed22:53:02Bangkok:target emails absent, student2id5/student3id4, student3CPE231-only. No accounts created. This is an agent-observed point-in-time snapshot, not human-approved live apply.
+- B contract81 merged6dc55d8 after exact-head approval/CI. B implemented PR83; A ran138server tests/build/typecheck at294efc4 but independently reproduced a normalized-email concurrency race and [requested changes](../../../evidence/lab-06/checkpoint-20261124/repository/PR83-REVIEW.md). No live fixture apply until B's regression/fix and new A review, then human target/baseline approval and execution.
+- C/D still needs the new inactive/third-respondent fixtures for CD01/CD07, controlled-session coverage disposition and actual peer contribution evidence. ClassPulse PartD is incomplete. The Workflow fix and provisioner review do not substitute. A sends the scoped retest return; B fixes83 and reviews82 at its current head. Final acceptance/PDF/human submission remain pending. Automations remain paused.
+
+Earlier dated paragraphs below retain the sequence of evidence received. Where they say corrected deployment/retest, B setup disposition, live email absence, or provisioner implementation is pending, this latest section supersedes them. Raw incoming/execution files are unchanged.
+
 Use this before freezing the initial case list for **each product**. The independent UAT Team owns the assessment, using the actual Sprint 1 requirements/ACs and Developer Team handoff. ClassPulse's existing [coverage table](coverage.md) is an input; C/D must form their own judgment rather than copying its conclusions. A/B do the equivalent audit on the partner app. Follow the [instructor clarification](instructor-clarification.md).
 
 ## Procedure
@@ -13,7 +23,7 @@ Use this before freezing the initial case list for **each product**. The indepen
 
 ## ClassPulse suggestions for C/D to evaluate independently
 
-These are candidate additions, **not executed/agreed cases or hints for an introduced defect**. C/D choose and refine cases from their own assessment. Existing IDs UAT-01–12 stay stable; proposed additions use UAT-CD-01 etc. A/B use PARTNER-ADD-01 etc. for the other app.
+Historical proposal examples from20November: these were candidate additions, not executed/agreed cases at that date or hints for an introduced defect. Current24November technical agreement/results are recorded below. C/D choose and refine cases from their own assessment. Existing IDs UAT-01–12 stay stable; proposed additions use UAT-CD-01 etc. A/B use PARTNER-ADD-01 etc. for the other app.
 
 | Area / AC | Gap or unusual action to consider | Concrete expectation from contract |
 |---|---|---|
@@ -51,3 +61,15 @@ Residual limitations / escalation if needed:
 ```
 
 The final PDF embeds this independent assessment, case additions/dispositions and actual results. A suggestion alone is not an executed PASS or a defect. Neither team should sign the other team's assessment or decision on their behalf.
+
+## Actual 24 November technical dispositions and residual coverage
+
+See [current checkpoint](checkpoint-20261124.md) and [received C/D A2](../../../evidence/lab-06/checkpoint-20261124/received-cd-a2/EN037-TECHNICAL-RESPONSE-A2.md). ClassPulse original12+CD01–08 technical scope is recorded. Original12 have reported passing behaviors, with08/10/11 API setup disclosed/accepted after the run for setup only. CD06 anonymous401/authenticatedPUT/DELETE404 is agreed. CD08 authenticated guarded/original2147483647 probes both404, plus prior403/409precedence observations, complete that agreed external branch; no directDB inspection is claimed.
+
+CD01 inactive/controlled-session and CD07 third respondent remain pending; no important unexecuted requirement becomesPASS. Thorough no-genuine-defect conclusion and educational-exercise entry remain NOT READY. Preserve actual peer participation and fixture limits.
+
+Workflow original01–06 and PARTNER-ADD01–06A2 are technically accepted by C/D. The [full additional cases](../../../evidence/lab-06/checkpoint-20261124/workflow-additional-cases-a2.md) preserve Unicode bounds, exploratorytrimstorage, concurrency-proof limits and restart/newinstance distinctions. A observed01/04/05expected behavior with the setup variation later accepted in C/D A3; B02/03 have qualified UI observations and a later human06 probe; B incomplete additional cases and Aadditional01/06 remain NOT RUN. Actual technical agreement does not establish execution, participant acknowledgements or a final frozen acceptance inventory.
+
+Later A3 disposition makes the three recorded A paths PASS within their tested scope. It does not execute additional cases, optional restart or controlled session assertions and does not establish whole-product acceptance.
+
+The current checkpoint retains B v2's supplemental UI boundary/reason evidence, exact incomplete API/capture branches, and missing fresh marker/expanded identity qualification for later human06. B's same-tab/logout setup and amount-format example require C/D disposition. Do not silently promote these to a full additional-case PASS or use C/D release64 to skip remaining coverage.

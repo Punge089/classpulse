@@ -1,0 +1,74 @@
+{
+  "head": "49289a5364b8ac366e07d60a4056b39bfabc2488",
+  "base": "3425a5e28a401061b75a4bc825ebe9e9d5a9243f",
+  "passed": 16,
+  "failed": 0,
+  "skipped": 0,
+  "scope": "Static documentation/SQL inspection only; no database connection, fixture provisioning, app test or cloud operation",
+  "checks": [
+    {
+      "name": "Checked out exact B head",
+      "passed": true
+    },
+    {
+      "name": "Only Issue77 document changed",
+      "passed": true
+    },
+    {
+      "name": "Both proposed synthetic identities and role/activity matrix stated",
+      "passed": true
+    },
+    {
+      "name": "Current email/enrollment state explicitly unverified",
+      "passed": true
+    },
+    {
+      "name": "Read-only transaction timeout and rollback",
+      "passed": true
+    },
+    {
+      "name": "SQL has no mutation or secret-column retrieval",
+      "passed": true
+    },
+    {
+      "name": "SQL checks course owner and all requested existing/new fixture labels",
+      "passed": true
+    },
+    {
+      "name": "Human project/instance confirmation separate from database name",
+      "passed": true
+    },
+    {
+      "name": "Mutator separately scoped and reviewed and fail-closed",
+      "passed": true
+    },
+    {
+      "name": "Only two new users and one existing-course enrollment allowed",
+      "passed": true
+    },
+    {
+      "name": "Student3 and existing records must remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Correct password helper specification without secret values",
+      "passed": true
+    },
+    {
+      "name": "Fixture setup not independent PASS/acceptance",
+      "passed": true
+    },
+    {
+      "name": "Git whitespace check",
+      "passed": true
+    },
+    {
+      "name": "Assisting model trailer preserved",
+      "passed": true
+    },
+    {
+      "name": "No obvious secret-value patterns",
+      "passed": true
+    }
+  ]
+}

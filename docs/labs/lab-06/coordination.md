@@ -1,58 +1,51 @@
 # Lab 6 coordination register
 
-Status: preparation; B acknowledged receipt and started the handoff scope. Independent partner agreement, B availability and PR approval remain pending. This register distinguishes proposed assignments from actual agreement. No password, token or cookie belongs here.
+## Latest verified state —24November2026, after WF-FIX-001 retest
 
-## Verified preparation
+- Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
+- [C/D's latest B-v2 dispositions](../../../evidence/lab-06/checkpoint-20261124/received-cd-corrected/EN037-B-V2-DISPOSITION.md) accept the recorded same-tab/logout02/03 paths, numeric1000000.00 display and scoped06denial; no repeat solely for those capture limits. Earlier original82a4806 snapshots remain historical. B06 still lacks a fresh marker/expanded identity in its screenshot; predeployment C/D readback corroborates release continuity without inventing that capture. The six original Workflow paths have scoped PASS evidence; required unexecuted additional branches and whole-product acceptance remain pending.
+- ClassPulse [actual read-only baseline](../../../evidence/lab-06/checkpoint-20261124/fixture-baseline/README.md) completed22:53:02Bangkok:target emails absent, student2id5/student3id4, student3CPE231-only. No accounts created. This is an agent-observed point-in-time snapshot, not human-approved live apply.
+- B contract81 merged6dc55d8 after exact-head approval/CI. B implemented PR83; A ran138server tests/build/typecheck at294efc4 but independently reproduced a normalized-email concurrency race and [requested changes](../../../evidence/lab-06/checkpoint-20261124/repository/PR83-REVIEW.md). No live fixture apply until B's regression/fix and new A review, then human target/baseline approval and execution.
+- C/D still needs the new inactive/third-respondent fixtures for CD01/CD07, controlled-session coverage disposition and actual peer contribution evidence. ClassPulse PartD is incomplete. The Workflow fix and provisioner review do not substitute. A sends the scoped retest return; B fixes83 and reviews82 at its current head. Final acceptance/PDF/human submission remain pending. Automations remain paused.
 
-- Student A GitHub/Git identity verified as Punge089 on 19 November 2026.
-- B [acknowledged receipt and reading of the kit/prompt](https://github.com/Punge089/classpulse/issues/68#issuecomment-7014497599) at 16:01:05 UTC on 19 November (23:01:05 Bangkok). This verifies the acknowledgement from book6349; it is not a fresh inspection of B's local scheduler. At that earlier checkpoint B reported a scheduler limitation and no active timer. B later [reported activation of a Codex heartbeat](https://github.com/Punge089/classpulse/pull/69#issuecomment-7016235809) at 17:07:08 UTC on 19 November (20 November 00:07:08 Bangkok): ACTIVE every 20 minutes through 22 November 23:59 Bangkok. This is B's report from their own session; A has not inspected B's local configuration.
-- Issue [#68](https://github.com/Punge089/classpulse/issues/68) owns this five-document preparation scope and A-only AI-use disclosure. A's branch starts at staging 8c239225c75dc8f0f4db191797282ed9698850d4. B must review the authored PR; A cannot self-approve or self-merge.
-- B created [Issue #70](https://github.com/Punge089/classpulse/issues/70) for handoff.md, coverage.md and contract-extracts.md, with A as reviewer. B reports static review of PR #69 at f052854 and requests this status correction before approval. No formal PR approval or runtime testing is claimed. Broader response/summary correction work remains conditional on actual findings and its own scope.
+Earlier dated paragraphs below retain the sequence of evidence received. Where they say corrected deployment/retest, B setup disposition, live email absence, or provisioner implementation is pending, this latest section supersedes them. Raw incoming/execution files are unchanged.
 
-## Agreement fields
+Current checkpoint:24November2026, Issue79. See [actual evidence/status](checkpoint-20261124.md). This register distinguishes an actual run from a booked appointment, technical scope agreement from final participant acknowledgement, and draft messages from messages actually sent. No password/token/cookie belongs here.
 
 | Field | Actual value / next action |
 |---|---|
-| A full name / student ID | Pending human confirmation; GitHub Punge089 |
-| B full name / student ID | Papangkorn Jitvoottikrai (spelling to confirm) / pending; GitHub book6349 |
-| B acknowledgement / own Issue / automation confirmation | Receipt acknowledged in comment7014497599; B-owned Issue #70 and PR #71. Later comment7016235809 reports B heartbeat ACTIVE every 20 minutes until 22 Nov 23:59 Bangkok; A has not inspected that scheduler. |
-| B actual availability | Unconfirmed; B explicitly has not accepted the proposed 20 Nov slots. |
-| Partner C name / ID / team | Pending |
-| Partner D name / ID / team | Pending |
-| Partner product / repo / deployed URL / scope/version | Pending actual handoff |
-| Initial session for ClassPulse | Proposed 20 Nov 10:00-13:00 Bangkok; not booked |
-| Initial session for partner app | Proposed 20 Nov 14:00-17:00 Bangkok; not booked |
-| Correction and retest sessions for both apps | Proposed 21 Nov; exact agreement pending |
-| Contact / defect notification channel | Pending agreement; use actual channels, retain acknowledgements |
-| Private credential delivery acknowledgement | Pending; record channel/date/receipt only, never secret values |
-| Agreed case/subcase list + handoff version | Pending; 12 ClassPulse cases proposed in shared local kit |
-| Data setup/retention and fresh-run IDs | Pending mutual confirmation; no live reseed/reset |
-| Final PDF review / human submission | Pending; internal upload target 22 Nov 21:00, deadline 23:59 |
+| A | GitHub/Git identity verified Punge089; prior report Bannasorn Thongkorn67070503420, final cover verification pending. Codex-operated repository/UI work labelled. |
+| B | GitHubbook6349; prior record/report Papangkorn Jitvoottikrai67070503421, direct human identity and availability confirmation pending. A does not act as B. |
+| C | Ashira Sansoda67070503445, EN-037_P5; identity supplied by partner. Actual contribution/review still needs its own evidence. |
+| D | Thira Rungruangkaset67070503419, EN-037_P5; supplied declaration attributes ClassPulse technical tool operations to Codex under Thira. |
+| Partner | Workflow and Approval System; https://github.com/osizk/WorkflowAndApprovalSystem ; https://scd928edd-4d7hbszvwq-as.a.run.app/login ; Sprint1 contractv0.6. |
+| ClassPulse release | CP-V01 source1fe3e3b; A's latest saved cloud readback24Nov02:16:41Bangkok. C/D reports five synthetic roles accessible. Time-specific, not a new readback now. |
+| Workflow release | WF-FIX-001 sourcead2cbef67dec,revision00008-9zd,100%; C/D mapping22:37:46Bangkok. A independent corrected-live retest23:03:13–15 passed2original+5supplemental checks; markers before/after matched. |
+| Current technical inventory | ClassPulse original01–12+CD01–08 with residual branches; Workflow original01–06+PARTNER-ADD01–06A2 accepted technically by C/D. Final actual participant/fixture acknowledgement remains pending. |
+| Actual ClassPulse run | C/D supplied24Nov17:31–18:03Bangkok observations; API fixtures08/10/11 and post-run setup only disposition retained. CD08additional at20:45:30. Not a retroactively booked appointment. |
+| Actual Workflow run | A's Codex21:03:40–21:09:45 observed01/04/05; C/D A3 accepted the setup variation; three recorded paths PASS. B v2 supplies qualified02/03 UI observations and human06 at21:57:46; C/D now accepts the scoped02/03/06 paths with capture limits; additional incomplete branches remain pending. |
+| Data retention | Keep original/continuation records plus A01/04 ID e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67 and A05 ID b1f4b385-04b4-4e7a-905f-7f9091e65db2. No live reset or existing enrollment changes. |
+| Future slots / channel | A deferred discussion to25November; no exact session or agreed channel is recorded. A/student coordinates external notifications to Thira/Ashira; Codex has sent no external chat. Notify before new live execution/deployment affects tests. |
+| B readiness / next scope | PR78 documentation reviewed and mergedcdcf460 after B markedReady. B contract Issue80/PR81 received A C3 at11e0a21 after16 offline checks/currentCI; contract81 now merged6dc55d8. A reviewed executable83/294efc4:138tests passed but separate real concurrent-writer case failed; changes requested before live apply. Human target/credential/run gates remain; no accounts created. |
+| Remaining ClassPulse setup | New inactive and extra CPE334 respondent not provisioned; A read-only baseline22:53:02 verified normalized target-email absence and student3id4 CPE231-only; no writes. Human-approved apply baseline remains pending. See fixture-provisioning.md and part-d-readiness.md. |
+| Final PDF / submission | A assembles after actual evidence; B reviews exact file/hash; human verifies course deadline/filename, uploads and retains receipt. Not done. |
 
-## Working together through GitHub
+## Repository coordination and external messages
 
-A prepares coordination/evidence records and reviews B's handoff. B reviews A's PR and prepares their own handoff scope. Each person/agent acts through their own verified account. Use next-participant labels and project status; link exact commit/review/CI/evidence. No old approval transfers to a changed head automatically. A and B must both actually participate in the partner app testing; C and D must independently execute ClassPulse cases and issue their own version-specific decision.
+A/B act through their own verified accounts. A's standing authority covers A-owned Issue/PR comments and non-author exact-head review/merge after current CI. B retains its own authority and work. No approval transfers to a changed head. The [evidence checkpoint](checkpoint-20261124.md) records actual PR75/76/78 review/merge provenance.
 
-GitHub comments coordinate repository work. External outreach, partner consent and TA responses must be real events; prepared messages are not sent messages. If no partner or access is unavailable, promptly ask TA for help and retain actual notification. Finish independent preparation while waiting. The [plan](plan.md) and [record templates](records-template.md) provide the remaining workflow.
+Student A forwards the existing A3 ZIP and matching recipient text once. Prepared copy-ready messages are not sent messages. Do not infer channel agreement, notification, B availability or consent from a template. Before further live tests, coordinate the actual start/version/data-retention/deployment freeze. No new live execution occurred during Issue79 consolidation.
 
-## Boundaries and open dependencies
+## Dated preparation/automation history
 
-1. Current serving source/digest/revision/traffic needs fresh readback; historical Lab 5 metadata is not current-session verification.
-2. Synthetic credentials/private sign-in and account/enrollment availability require authorized access. Do not log credentials or live-reset data.
-3. Real two-way UAT and independent acceptance need an external two-student team; developer tests/owner dry-runs do not substitute.
-4. Complete independent [coverage review](coverage-review.md) and thorough actual UAT. If no genuine defect arises, use the supplied professor-standardized [exercise procedure](exercise-protocol.md): new staging defect commit, blind independent discovery/report, full correction/review/CI/corrected deploy/retest. Do not wait for a bespoke TA exercise; escalate only actual branch/environment blockers. No exercise insertion before its entry gate.
-5. Humans retain responsibility for GCP/IAM/credentials/direct cloud mutations/rulesets/environments and LEB2 submission under AGENTS.md. Local gates contain exact human steps and Done checks.
+Issue68/69 and B70/71 record19–20November preparation. B acknowledged kit receipt in comment7014497599, initially reported scheduler limitations, then reported active20minute heartbeat in PR69comment7016235809 through22November23:59Bangkok. Those are B's historical reports, not A inspection of B's machine or current availability. A's earlier local kit/proposed20–22November sessions did not establish booked appointments. PR69→3d652d8 and PR71→b14cf38 are preparation integration, not runtime UAT. **Automations remain paused** at this checkpoint.
 
-## Actual contribution status
+The original22November deadline/internal21:00 target is historical. A reports an extension; official revised deadline remains PENDING. C/D availability24–29November is not the deadline. Do not revive elapsed targets as current dates.
 
-A's Codex drafted the shared plan and these repository preparation documents from the handout, B's supplied original draft and contracts. B supplied the original eight-case draft according to the user, acknowledged the kit, created Issue #70 and reported a static exact-head review/status finding in comment7014497599. B's own scope records static preparation only. No formal B approval, C/D execution, defect, acceptance, final PDF approval or Lab 6 submission is claimed. See [AI-use declaration](../../ai-use.md).
+## Remaining boundaries
 
-## Status history
+Human-only cloud/account/credentials/ruleset/submission gates remain in AGENTS.md. No executable fixture writer has been reviewed here. Keep student3 CPE231-only. Full PartD/exercise entry remains gated on actual thorough independent coverage; no exact exercise choice is shared or inserted. Each team signs its own release-specific final decision, and C/D's incomplete contribution/acceptance must not be invented.
 
-- 19 Nov, 23:07 Bangkok update: replace stale pending B receipt/Issue fields with actual book6349 acknowledgement and Issue #70. Keep availability, appointment agreement and formal approval pending. Record B-reported scheduler limit without inferring an active B automation.
+C/D A3 accepts the documented logout/replacement-tab setup for the three observed paths without private-window repeat. This does not cover restart, cookie replay or expiry and does not sign whole-product acceptance. Workflow PR63 is now Ready, with actual peer review/deployment still pending. See the latest checkpoint addendum.
 
-- 20 Nov, 00:07 Bangkok update: later B comment7016235809 supersedes the earlier no-timer state. B reports ACTIVE 20-minute cadence; preserve the earlier limitation as history. B availability and appointments remain unconfirmed.
-
-## Updated session agreement
-
-Before each team starts, independent testers complete R11 coverage audit, propose additional cases and agree the expanded inventory. Reserve an exercise discovery and corrected-deployed retest slot if thorough UAT finds no genuine defect. Share only exercise scope/version/session, not exact selected defect. See [instructor clarification](instructor-clarification.md); B handoff addenda update is requested in Issue #74. All actual appointments remain pending.
+Latest external action prepared: student may forward SEND-TO-CD-DEPLOY-AND-B-RESULTS.txt with the original B v2 ZIP, not a new starter pack. A has no active Workflow run; B's reported runs ended. Codex has not sent clearance externally. Hold new Workflow runs around C/D's reviewed release64 deployment until verified corrected mapping. B's posted start notice/relay gap remains honestly recorded. Actual user availability and final decisions remain pending.

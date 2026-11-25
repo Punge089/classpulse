@@ -1,0 +1,36 @@
+UAT06 — pending normal browser Console probe
+
+NOT RUN. Use only the agreed Workflow release and an authorized requester1 session.
+Before starting, notify the agreed channel and verify visible marker82a4806b5291 against the current source-to-serving record. If marker/version changes, stop and obtain new mapping.
+Use a supported browser's Developer Tools Console. Review the script before running. It sends one bounded decision attempt for B's retained record and two reads; no credentials are included. Save the sanitized JSON output and an unchanged-detail screenshot. Do not copy cookies, headers, passwords or connection strings.
+
+(async () => {
+  const id = '9b734a22-085a-4f7f-a33f-3fe475c96012';
+  const read = async (path, options) => {
+    const r = await fetch(path, options);
+    return {status:r.status, body:await r.json()};
+  };
+  const identity = await read('/api/session');
+  if (identity.status !== 200) throw new Error('STOP: not signed in');
+  // Confirm REQUESTER in this returned safe role metadata before proceeding.
+  console.log({step:'identity-check',identity});
+  const role = identity.body.role ?? identity.body.user?.role;
+  if (role !== 'REQUESTER') throw new Error('STOP: not a requester');
+  const before = await read('/api/requests/' + id);
+  if (before.status !== 200) throw new Error('STOP: baseline request unavailable');
+  const r = before.body.request ?? before.body;
+  if (r.status !== 'SUBMITTED') throw new Error('STOP: baseline status differs');
+  const attempt = await read('/api/requests/' + id + '/decision', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({decision:'APPROVE'})
+  });
+  const after = await read('/api/requests/' + id);
+  console.log(JSON.stringify({
+    caseId:'UAT-06',operator:'FILL ACTUAL OPERATOR',
+    at:new Date().toISOString(),id,expected:'403 FORBIDDEN; unchanged record',
+    attempt,before,after,
+    unchanged:JSON.stringify(before)===JSON.stringify(after)
+  }));
+})();
+
+Do not prefill PASS. Record actual HTTP status/code, saved state/history comparison, timestamp, browser, role, current release and actual operator. Unexpected success must be preserved and reported; do not try to undo it or repeat the decision.

@@ -1,13 +1,23 @@
 # Lab 6 actual contributions and disclosure register
 
-Prepared for Issue #72 on20November2026. Planned assignments in plan.md are not evidence of completed participation. All AI-operated actions are labelled; no student/partner UAT work is inferred from author names or automation activation.
+## Latest verified state —24November2026, after WF-FIX-001 retest
+
+- Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
+- [C/D's latest B-v2 dispositions](../../../evidence/lab-06/checkpoint-20261124/received-cd-corrected/EN037-B-V2-DISPOSITION.md) accept the recorded same-tab/logout02/03 paths, numeric1000000.00 display and scoped06denial; no repeat solely for those capture limits. Earlier original82a4806 snapshots remain historical. B06 still lacks a fresh marker/expanded identity in its screenshot; predeployment C/D readback corroborates release continuity without inventing that capture. The six original Workflow paths have scoped PASS evidence; required unexecuted additional branches and whole-product acceptance remain pending.
+- ClassPulse [actual read-only baseline](../../../evidence/lab-06/checkpoint-20261124/fixture-baseline/README.md) completed22:53:02Bangkok:target emails absent, student2id5/student3id4, student3CPE231-only. No accounts created. This is an agent-observed point-in-time snapshot, not human-approved live apply.
+- B contract81 merged6dc55d8 after exact-head approval/CI. B implemented PR83; A ran138server tests/build/typecheck at294efc4 but independently reproduced a normalized-email concurrency race and [requested changes](../../../evidence/lab-06/checkpoint-20261124/repository/PR83-REVIEW.md). No live fixture apply until B's regression/fix and new A review, then human target/baseline approval and execution.
+- C/D still needs the new inactive/third-respondent fixtures for CD01/CD07, controlled-session coverage disposition and actual peer contribution evidence. ClassPulse PartD is incomplete. The Workflow fix and provisioner review do not substitute. A sends the scoped retest return; B fixes83 and reviews82 at its current head. Final acceptance/PDF/human submission remain pending. Automations remain paused.
+
+Earlier dated paragraphs below retain the sequence of evidence received. Where they say corrected deployment/retest, B setup disposition, live email absence, or provisioner implementation is pending, this latest section supersedes them. Raw incoming/execution files are unchanged.
+
+Initial register prepared for Issue72 on20November2026; current actual checkpoint consolidated under Issue79 on24November2026. Planned assignments in plan.md are not evidence of completed participation. All AI-operated actions are labelled; no student/partner UAT work is inferred from author names or automation activation.
 
 | Participant | Actual preparation work | Traceable evidence | Review / decision actually performed |
 |---|---|---|---|
 | A / Punge089 (full name/ID pending) | Requested shared kit and autonomous A-side work; A's Codex drafted coordination/version/evidence/record documents and report scaffold, ran local artifact checks, posted repository progress | Issue68, PR69 head692a71f; this Issue72 report scope | A's Codex reviewed B PR71 exact heads, requested specific changes and approved648aaf5 after final offline checks/currentCI, then mergedb14cf38 |
 | B / book6349 (full name spelling and ID to confirm) | Supplied initial eight-case draft according to user, acknowledged kit, created Issue70 and revised handoff/coverage/contract crosswalk; reported own active heartbeat and static review | B comment7014497599; Issue70/PR71 final648aaf5; handoff history | B posted status findings on A PR69, approved exact692a71f, merged3d652d8, then recorded its own Issue70 closure in comment7017003769 |
-| C | PENDING actual identity and work | No independent execution record yet | No decision received |
-| D | PENDING actual identity and work | No independent execution record yet | No decision received |
+| C / Ashira Sansoda67070503445 | Identity supplied by EN-037_P5; actual personal contribution/review not yet established | Received C/D declarations/checkpoint | Do not infer actual clicks/review from proposed allocation; final acceptance pending |
+| D / Thira Rungruangkaset67070503419 | Supplied declaration attributes ClassPulse technical operations to Codex under Thira; original12+availableadditional andCD08 evidence received | Received R1/A2declarations and checkpoint | Technical A2dispositions recorded; actual peer review/acceptance remains pending |
 
 ## Check provenance
 
@@ -20,12 +30,24 @@ Prepared for Issue #72 on20November2026. Planned assignments in plan.md are not 
 
 Earlier A local planning used model label GPT-6; A repository drafting/review/merge/report scaffolding uses Codex GPT-6.1 Sol. A user granted standing authority; individual repository actions are AI-operated unless explicitly identified as human actions. B's declared follow-up models are in its commit trailers/history; original7fbac15 model is unverified and its omitted trailer is disclosed. B merge3d652d8 has no model trailer in Git metadata; A requested clarification of actual operator/AI assistance in Issue68comment7016788339 and has no answer yet. Do not infer it was human-only or assign a model by guess. A mergeb14cf38 includes Codex GPT-6.1 Sol trailer and preserved all history.
 
-B and external testers own their own AI-use declarations. Do not claim A configured B's scheduler or inspected its machine; the current B ACTIVE status is attributed to B's real GitHub report. See [AI-use declaration](../../ai-use.md).
+B and external testers own their own AI-use declarations. Do not claim A configured B's scheduler or inspected its machine; the historical B ACTIVE status is attributed to B's dated GitHub report; current automations remain paused. See [AI-use declaration](../../ai-use.md).
 
 ## Work still pending
 
-Both A/B actual testing of the partner app; C/D actual ClassPulse execution; real triage and any correction/exercise; independent retest/decisions; final report/PDF content and exact-file peer review; human LEB2 upload/receipt. When recording these, identify actual person, time, driver/observer roles, case/Issue/PR/evidence and AI assistance/limits. Contributions need not have equal commit counts.
+A's observed01/04/05 and received C/D ClassPulse observations are now recorded below, rather than pending as a whole. B's incomplete additional work and setup/version disposition, residual ClassPulse branches, browser setup disposition, actual peer contributions, ClassPulse correction/exercise, independent retest/decisions, finalPDF/exact-file review and humanLEB2upload/receipt remain pending. When recording these, identify actual person, time, driver/observer roles, case/Issue/PR/evidence and AI assistance/limits. Contributions need not have equal commit counts.
 
 ## Instructor clarification preparation
 
 Student A supplied the new announcement on 20 November and requested all affected plans be updated. A’s Codex GPT-6.1 Sol prepared independent coverage-review and standardized exercise protocols, current A-owned planning/report/template updates and partner-package instructions under Issue #74. B owns its follow-up handoff changes and review. No independent coverage assessment, additional case execution, no-defect conclusion or exercise insertion/discovery is attributed to any student from this drafting work.
+
+## 24 November actual follow-up
+
+A/Punge089's Codex GPT-6 independently confirmed WF-BUG-001 at19:09:37 Bangkok (2 tests,1 passed,1 failed,0 skipped), then operated Workflow01/04/05 at21:03:40–21:09:45 (15 observations,26 evidence files; private-window setup disposition pending). A did not perform B's cases, click manually as both students, or retest a corrected deployed Workflow release. Original bug discovery belongs to Workflow; received ClassPulse execution belongs to Codex under Thira, not A.
+
+A reviewed/merged B76/fa3f181→b98369c after32 offline checks and current CI. B reviewed A75/05134a3 and merged3425a5e after CI45404297275; A closed planning Issue74, not full Lab6. A reviewed B78/49289a5 (16 static checks/current CI45408546110), then mergedcdcf460 after B marked the unchanged head Ready. B's Ready notification declares Codex GPT-6.1 Sol. A's current review/merge assistance is Codex GPT-6, included in its merge trailer.
+
+Issue79 consolidates evidence/report sources and PartD readiness without changing B-owned canonical documents, app code, credentials or live data. The authored evidence PR requires B's current-head review and CI; A cannot self-approve/merge. See the [checkpoint](checkpoint-20261124.md) and [AI-use declaration](../../ai-use.md). No additional human work or external message is invented.
+
+Later C/D A3 under Thira's delegated technical review accepts the browser variation for A's three recorded paths; no new student clicks or whole-product decision are inferred. A's Codex GPT-6 also reviewed contract-only B81/11e0a21 against Issue80 and pinned sources,16 offline checks/currentCI45416589669, then posted C3. This permits B's subsequent tests/implementation, not executable/live apply. Further B/C/D actual participation remains separate.
+
+B v2 attributes48 UI observations21:27:28–21:34:37 Bangkok to Codex GPT-6.1 Sol under book6349. It separately reports a human DevTools probe at21:57:46.326, with operator stringbook6349 in the screenshot. A inspected/transcribed evidence; no personal identity/availability is inferred from that string. A did not operate B's cases. The original marker is visible in the UI run but not the later screenshot; actual source/setup limits remain pending. B's package still describes C3 as pending historically, while A's actual C3 is already posted. No provisioner code/tests/live fixture were supplied.

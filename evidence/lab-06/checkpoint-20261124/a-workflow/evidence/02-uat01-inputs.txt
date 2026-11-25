@@ -1,0 +1,23 @@
+Browser tab: 2, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/new".
+1 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/requests/new
+	2 container New request
+		3 text Workflow and Approval System
+		4 heading New request, Value: 1, ID: page-title
+			5 text New request
+		6 link Description: Back to my requests, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests
+		7 container
+			8 text Title
+			9 text field (settable) Title, Value: UAT-01-A-210340 Desk supplies, ID: request-title
+			10 text Purpose
+			11 text entry area (settable) Purpose, Value: Purchase stationery for the team, ID: request-purpose
+			12 text Amount (THB)
+			13 text field (settable) Amount (THB), Value: 125.50, ID: request-amount
+			14 button Submit request
+		15 container
+			16 text Signed in as  Requester .
+		17 button Sign out
+		18 container
+			19 text Release 
+			20 text 82a4806b5291
+
+The focused UI element is 13 text field (settable) Amount (THB), Value: 125.50, ID: request-amount

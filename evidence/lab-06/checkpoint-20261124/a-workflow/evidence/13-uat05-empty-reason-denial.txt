@@ -1,0 +1,36 @@
+Browser tab: 3, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/b1f4b385-04b4-4e7a-905f-7f9091e65db2".
+1 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/reviews/b1f4b385-04b4-4e7a-905f-7f9091e65db2
+	2 container Review request
+		3 text Workflow and Approval System
+		4 heading Review request, Value: 1, ID: page-title
+			5 text Review request
+		6 link Description: Back to review queue, Value: scd928edd-4d7hbszvwq-as.a.run.app/reviews
+		14 heading UAT-05-A-210340 Reject reason, Value: 2
+			15 text UAT-05-A-210340 Reject reason
+		16 container
+			17 text Status: SUBMITTED
+		18 container
+			19 text Amount: 300.00 THB
+		20 container
+			21 text Purpose: Synthetic request to verify rejection reason
+		22 heading History, Value: 3
+			23 text History
+		24 content list
+			25 container
+				26 AXListMarker 1. 
+				27 text SUBMITTED  ·  11/24/2026, 9:07:42 PM
+		28 container
+			29 text Reason
+			30 text entry area (settable) Reason, ID: decision-reason
+			31 text Required to reject. Optional to approve.
+			34 text A rejection reason is required.
+			32 button Approve
+			33 button Reject
+		8 container
+			9 text Signed in as  Reviewer .
+		10 button Sign out
+		11 container
+			12 text Release 
+			13 text 82a4806b5291
+
+The focused UI element is 33 button Reject

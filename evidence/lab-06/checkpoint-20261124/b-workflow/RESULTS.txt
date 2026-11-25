@@ -1,0 +1,55 @@
+CURRENT UPDATE: UAT06 now has a human-run403/FORBIDDEN and unchanged:true observation. See UAT06-human-result.txt and UAT06-console.png; that addendum supersedes the original BLOCKED checkpoint below for this one probe.
+
+B Workflow UAT results — 24 November 2026
+
+Run: UAT6-B-2026-11-24T14-27-28-126Z
+Actual operator: Codex GPT-6.1 Sol under Student B/book6349.
+Observation window: 21:27:28–21:34:37 Asia/Bangkok.
+Raw observations.json contains 48 records, NOT 48 test cases.
+
+Release: source82a4806b5291b57ad7e76a28fb7d40e1e947b9a6; marker82a4806b5291; revision scd928edd-00007-477; traffic100%; digest sha256:6554d7f8cccdf1b4ded95f3f7d1a2560a786b0ecf7613cab62d59d942613a4fb.
+Cloud mapping is C/D's A3 evidence, not a new B cloud readback. Matching visible marker was observed through final logout. This is the original release, not WF-BUG-001's corrected deployment.
+
+SETUP LIMITS
+Temporary in-app browser; exact engine and literal private-window flag not exposed. The same tab/session was used, with explicit logout between account changes. A fresh private window at each case start was not established. Record the same setup qualification and obtain C/D disposition before whole-case acceptance.
+Start notice was posted to A in Issue77 comment7134381903, requesting relay to C/D; delivery in the agreed private channel is not independently verified.
+No human name/student-ID/availability confirmation was supplied in this run. Historical B identity remains subject to direct confirmation.
+
+ORIGINAL CASES
+UAT02: expected UI amount behavior observed.
+- 0.00 and0.001: amount error; form retained; no title saved in My requests.
+- 0.01: saved5ba5da73-7d7e-4bd1-9984-8b9e13ddc553, SUBMITTED, one event; reopened.
+- 1000000.00: saved0063548a-0d21-4685-ba19-6dea12c3e88c, SUBMITTED, one event.
+- 1000000.01: error and no over-limit title saved.
+Formatting discrepancy: UI displays1000000.00, while the supplied case example shows1,000,000.00. The numeric value is correct; ask Product Team for disposition rather than silently changing the expected text.
+
+UAT03: expected UI isolation/readback observed.
+- Dedicated89.00 requestd27f11e6-a057-4a1f-b190-980688127c63.
+- Requester2 list excludes it; direct/requests/<id> shows Request not found. with no details/history.
+- Reviewer2 queue excludes it; direct/reviews/<id> shows Request not found. with no details/history/decision controls.
+- Requester1 readback retains same89.00/SUBMITTED/one original event.
+
+UAT06: BLOCKED before decision POST.
+- Fresh125.50/SUBMITTED/one-event record9b734a22-085a-4f7f-a33f-3fe475c96012 is retained.
+- This IAB did not expose DevTools with Control+Shift+J; no WebMCP tools were available. Its page evaluation interface is read-only.
+- No requester decision POST was sent. Expected403/FORBIDDEN was NOT OBSERVED. Final UI record remained unchanged. See NEXT_UAT06_CONSOLE.txt for the authorized probe to run later in a supported normal browser console.
+
+ADDITIONAL INVENTORY
+B accepts responsibility for PARTNER-ADD-02–05 A2; A retains ADD01/06.
+ADD02: 17 UI input attempts cover ASCII title2/3/120/121, purpose9/10/2000/2001, padded title/blank title/blank purpose, Unicode title120/121 and Unicode purpose9/10/2000/2001. Expected rejection/save behavior observed. Accepted values persisted; later helper attempts recorded before/after list inventories. HTTP422 was not measured; API-only02e/02f ownership/status-key checks remain NOT RUN. This is supplemental UI evidence, not full execution of the agreed API case.
+ADD03: spaces and501-codepoint rejection reasons displayed validation and retained SUBMITTED/one event after reload. ASCII500 and Unicode500 succeeded on separate records, with exact reasons and two events visible to both reviewer and requester. Unicode501 was rejected and retained state.
+IMPORTANT CAPTURE LIMIT: APPROVE with501 characters was clicked, but the immediate capture still showed Saving decision before reload. Only unchanged SUBMITTED readback was captured; do not call that approval-validation response PASS or infer422. Re-run this subcase with complete response evidence.
+ASCII recordbaae8824-e56d-4131-9317-ad0da1cbcc23; Unicode record07e6bfa4-4f52-40aa-8144-46d593d72920; invalid-reason record5a3752c4-a619-4d0c-b69f-f2c199ac5cf9.
+ADD04: terminal-repeat/competing decision API probes NOT RUN.
+ADD05: backend role/assignment/PUT probes NOT RUN. UAT03's UI isolation evidence does not substitute for these.
+Controlled expiry, old-cookie replay, actual restart/new instance, forced transaction-failure or assignment fixtures were not run.
+
+RETENTION AND ATTRIBUTION
+All new B synthetic requests remain retained. Only the two B ADD03 boundary records were rejected. A's e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67 and b1f4b385-04b4-4e7a-905f-7f9091e65db2 were not mutated. No app deletion, cloud/DB administrative operation or new ClassPulse fixture account was performed. Final logout observed.
+No result is signed for A or C/D. No final acceptance, full no-defect conclusion, corrected Workflow retest or ClassPulse PartD completion is claimed.
+
+REPOSITORY
+PR78 merged by A atcdcf460a1f928b15a197889b4bda21425902e1d3.
+Provisioner Issue80: https://github.com/Punge089/classpulse/issues/80
+Contract-only draft PR81: https://github.com/Punge089/classpulse/pull/81
+Head11e0a2193365ba0de917d9b781428495f2d798da; A C3 pending. All provisioner tests/code/live actions NOT RUN. CI run45416589669 subsequently completed SUCCESS on exact head11e0a2193365ba0de917d9b781428495f2d798da; this does not constitute A C3 or a provisioner test result.
