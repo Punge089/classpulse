@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 8635)
-Total output lines: 155
-
 # AI-use declaration - ClassPulse
 
 ## Lab 5 and Sprint 2 — Student A, 11 November 2026
@@ -69,7 +66,39 @@ The final cycle evidence is scoped to Issue #65, with six original figures and a
 | Area | What the AI did | What the student did |
 |---|---|---|
 | Planning (`docs/plan.md`, `docs/design.md`) | Read the course specifications, proposed the product, the Issue split, the registry of requirements, data model and API; drafted the plan | A delegated the choice of context to the AI ("choose what best"), picked the work split, asked for the changes in the plan, and approved the plan |
-| Documents (SRS, features, traceability, sprint plan, SDS, contracts) | Drafted the text from the plan registry; generated tables from plan data | The author of each Issue read it, edited it, and the other student reviewed it in a PR. Student B confirms: AI drafted the SDS and B-owned contracts; B read and edited each doc…1635 tokens truncated…nswer is assumed and no history is rewritten. A's approval/merge of B PR71 at648aaf5/b14cf38 was AI-operated by Codex GPT-6.1 Sol with exact-head checks and current CI, and the merge includes its model trailer. Report-source PR review/merge must be performed by B on the actual proposed head.
+| Documents (SRS, features, traceability, sprint plan, SDS, contracts) | Drafted the text from the plan registry; generated tables from plan data | The author of each Issue read it, edited it, and the other student reviewed it in a PR. Student B confirms: AI drafted the SDS and B-owned contracts; B read and edited each document before use, then submitted it for partner review. |
+| Code and tests | Wrote tests and implementation from the committed contract, ran them, saved the red and green output | The author read the test assertions and the output before opening the PR |
+| Issue and PR comments | Drafted comments from the templates in `docs/comment-playbook.md`, filled only with real data (commits, test counts, checks that were run) | The student whose account posted it read and checked every claim, edited it, and posted it from their own account. Student B confirms for comments posted from B's account: drafts were checked against the templates, repository state, and actual evidence before posting; Student B showed draft comments and review verdicts to Student A before posting, while Student B made and owned each final decision. |
+| Reviews | Ran the review checks on the checked-out PR and drafted the review | The reviewing student read the diff and tests, and decided approve or request changes. Student B confirms for reviews posted from B's account: read the diff, ran the required checks, and verified claims before deciding the verdict; Student B showed some draft verdicts to Student A before submission; Student B retained responsibility for the final decision. |
+| Report (PDF) | `tools/build_report.py` assembles the documents into the PDF | Students filled names, IDs, evidence and screenshots |
+
+## Responsibility
+
+All AI output was inspected before it was accepted; tests were run by the student who owns the Issue and the counts were checked. Each student can explain the requirements, tests and design decisions they own. At the time of Punge089's review of `c22da58`, Student B (`book6349`) had authored 41 commits; none had a `Co-Authored-By` trailer, although Codex helped write them. Student B's commits from now on include the required trailer. Student A's commits carry a `Co-Authored-By` trailer (Claude Opus 5.5 or Claude Sonnet 5.5) with seven exceptions: the baseline commit `2fa7ae0`, which was AI-assisted, and the six merge commits that GitHub created for pull requests #15, #16, #17, #21, #22 and #23 when Student A's account merged them.
+
+## Known limits of this declaration
+
+Student A: Claude Code drafted most of the text and code and ran the tests; A directed the work, approved every review verdict and every merge before it was posted (pull request #17 was merged by its own author, see `docs/contributions.md`), and relied on the tests, the other student's reviews and the mutation checks to find mistakes.
+
+Student B: AI-generated drafts and code can contain mistakes, so B checked owned code, test assertions, and evidence. Local machine/setup facts are only declared complete after both students verify them; Student B's checks on their laptop (database connections, and pushing then deleting a test branch) are recorded in the comments of Issue #1, which is now closed.
+
+## Lab 6 preparation - Student A, 19 November 2026
+
+Punge089 asked Codex to prepare the shared Lab 6 execution kit and to run ongoing A-side preparation/review through an app heartbeat every 20 minutes until the Lab 6 deadline. Earlier local planning used Codex with model label GPT-6; the repository preparation for Issue #68 uses Codex GPT-6.1 Sol. Codex reviewed the supplied handout, teammate's eight-case draft and Sprint 1 contracts, prepared proposed cases/assignments/records locally, and drafted the five A-owned coordination/evidence documents in this Issue. The original supplied draft and private course materials remain outside Git.
+
+A granted standing authority for A-owned repository comments/branches/PRs and reasoned review of B's actual work, subject to identity verification, exact-head review/CI and no self-approval/self-merge. User direction to resume the automation is actual; individual actions are AI-operated unless separately identified as human-operated. Issue #68 records the Files scope and reviewer request. No B approval, B automation activation, partner agreement, student execution, independent UAT, defect, retest, acceptance or Lab 6 submission is inferred from the plan or the automation. B's supplied draft is an input, not consent to all proposed assignments.
+
+This change is documentation-only. Checks of document links/scope/placeholders support its preparation and do not replace application regression tests or independent user testing. Current serving metadata, authorized synthetic access, external testers, final exact-file review and human LEB2 upload remain real dependencies. Human-only cloud/credential/ruleset/submission boundaries in AGENTS.md continue to apply. The resulting PR must receive B's actual review before merge; no approval or merge is claimed here.
+
+On the 19 November 23:07 Bangkok scheduled check, Codex read book6349's actual acknowledgement/comment7014497599 and B-owned Issue #70. B reports reviewing f052854 statically and finding stale B-status fields, without runtime testing or formal approval. Codex updates those A-owned coordination statements from that real feedback. B also reports no active B automation because its available scheduler does not support a 20-minute interval; A has not inspected or changed B's scheduler. Availability and proposed test sessions remain unconfirmed.
+
+B later reported in PR #69 comment7016235809 (19 Nov 17:07:08 UTC / 20 Nov 00:07:08 Bangkok) that their Codex heartbeat is ACTIVE at 20-minute intervals through 22 November 23:59 Bangkok. That later report supersedes the earlier scheduler limitation for the current status; the preceding paragraph records what B reported at the earlier checkpoint. A has not inspected B's scheduler. B's personal availability and partner/session agreements remain unconfirmed.
+
+## Lab 6 report-source scaffolding - Student A,20November2026
+
+Under Issue #72, A's Codex GPT-6.1 Sol prepares report.md and contributions.md and adds a clearly marked preparation-only evidence ledger, using reviewed stagingb14cf38 as input. It records actual cross-review/merge and validation history while leaving partner identities, live version, independent execution, findings, correction/retest, decisions, final PDF review and submission pending. The report is explicitly a draft, not completed assessed work.
+
+The original B commit7fbac15 omitted its model trailer and B's history note leaves that original model unverified. Merge3d652d8 by book6349 also lacks a model trailer in metadata; A requested clarification of actual operator/model in comment7016788339. No answer is assumed and no history is rewritten. A's approval/merge of B PR71 at648aaf5/b14cf38 was AI-operated by Codex GPT-6.1 Sol with exact-head checks and current CI, and the merge includes its model trailer. Report-source PR review/merge must be performed by B on the actual proposed head.
 
 ## Lab 6 supplied professor clarification — Student A, 20 November 2026
 
@@ -123,4 +152,3 @@ Student B/book6349 used the connected GitHub account to verify A's review of mer
 ## Lab 7 Issue #89 current PR #92 and staging readback - Student B, 25 November 2026
 
 Student B/book6349 verified PR #92 head `87971f59da5bc63634bd8ce963667f6a5a8efcb9`, its successful Actions run 45638095728 and tested merge `9b74772155143c0526edf213083dfe011d5629ac` against base `841ad5ca6d62e4f04d8a943d89a4a91e919feeb5`. B inspected job logs showing 219 server, 10 client and 10 browser tests passed, 0 failed/skipped, both builds and Docker passed. B distinguished this from current staging `9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35`, which later advanced when PR #112 merged. B updated only Issue #89 metrics, readiness, source snapshot and this append-only disclosure. No local application tests, UAT, live migration, release or deployment were performed. Lab 7 remains separate from D2.
-
