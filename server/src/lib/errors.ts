@@ -8,6 +8,7 @@ export type ErrorCode =
   | "NOT_ELIGIBLE"
   | "NOT_FOUND"
   | "INVALID_TRANSITION"
+  | "STALE_SURVEY"
   | "SURVEY_NOT_OPEN"
   | "ALREADY_RESPONDED"
   | "INTERNAL_ERROR";

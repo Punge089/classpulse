@@ -2,6 +2,12 @@
 
 Issue #87. Version 1.0, 25 November 2026. Author/driver: Bannasorn Thongkorn (Punge089, A), assisted by Codex GPT-6. Reviewer: Papangkorn Jitvoottikrai (book6349, B), review and agreement PENDING. Branch `feature/87-lab7-survey-reopening`. Contract only: no new tests, schema or application implementation yet.
 
+## Current execution checkpoint -25November2026
+
+The initial header/contract-only statements describe the original pre-implementation checkpoint and are preserved as history. B posted actual C3 [7159676041](https://github.com/Punge089/classpulse/issues/87#issuecomment-7159676041) at10:25:30UTC. Primary test-only3f8918c failed2new assertions with139existing passes; expanded test-onlya9cdbce yielded144passes/32failures/0skips(total176) on old code. [Retained RED evidence](../../../evidence/lab-07/maintenance/red-evidence.md) and79459c8 precede the core implementation commit.
+
+Current work implements the backend lifecycle/version/audit migration, input/query validation, owner routes and isolated fixture cleanup. Local Prisma generation/server build/test-source TypeScript checks passed. Runtime GREEN, audit-insert fault tests, migration preservation run, UI/browser implementation, peer final review and main/deployed checks remain PENDING. This checkpoint changes execution status/file inventory only; approved behavior/AC/STS are unchanged. The ErrorCode union file is added to Issue Files solely for the already-contracted STALE_SURVEY discriminant.
+
 ## 1. Change request and requirements
 
 Old implemented BR-03: only `DRAFT -> PUBLISHED` through publish and `PUBLISHED -> CLOSED` through close. CLOSED is terminal. F-03 v1.2, `surveyLifecycle.ts`, owner routes and detail UI implement this correctly. This proposal is not a UAT bugfix and does not claim an actual stakeholder incident.
@@ -152,3 +158,5 @@ No runtime checks have run for this contract. All execution/approval/release che
 | Version | Date | Author | Change and reason |
 |---|---|---|---|
 | 1.0 | 2026-11-25 | A / Codex GPT-6 | Initial nontrivial maintenance proposal, old/new spec and test design before tests/code; apply supplied no-TA-approval announcement, request B team review. |
+
+| 1.1 execution status | 2026-11-25 | A / Codex GPT-6.1 Sol | Record actual B C3 and primary/expanded RED before core implementation; clarify required error-union file inventory without changing approved behavior. Remaining runtime/UI/migration/release evidence pending. |
