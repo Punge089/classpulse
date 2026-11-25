@@ -1,6 +1,6 @@
 # Sprint 2 and Deliverable 2 execution plan
 
-Version 1.1, 25 November 2026. Deliverable 2 planning Issue #86. Author/driver: Bannasorn Thongkorn (67070503420, Punge089, A), assisted by Codex GPT-6. Proposed reviewer and partner: Papangkorn Jitvoottikrai (67070503421, book6349, B). B acceptance/review is pending; this is not a record of B having worked.
+Version 1.2, 25 November 2026. Deliverable 2 planning Issue #86. Author/driver: Bannasorn Thongkorn (67070503420, Punge089, A), assisted by Codex GPT-6. Proposed reviewer and partner: Papangkorn Jitvoottikrai (67070503421, book6349, B). B acceptance/review is pending; this is not a record of B having worked.
 
 ## Scope and sources
 
@@ -32,12 +32,12 @@ The Lab 6 chat owns its actual case records and acceptance decision. Preparation
 | F-09 my responses | B / A | #88 | B accepts assignment, writes contract/C2 now; independent response-list slice | 25-26 Nov |
 | F-06 draft editing | A / B | #90 | Contract now; owner-route implementation after #87 | 26 Nov |
 | F-07 TEXT/MULTI_CHOICE | B / A | To scope | Separate Issue/Files/contract before work; after #88 and owner files from #90 | 26-27 Nov |
-| F-08 scheduled closing | A / B | To scope | Contract must reconcile deadline with #87 reopen; owner/response-file slot after F-07 | 27 Nov |
+| F-08 scheduled closing | A / B | #96 / draft PR #97 | Contract a874218 posted; B C3 pending. Deadline/reopen integration requires reviewed revision; owner/response-file slot after F-07 | 27 Nov |
 | F-10 sections + response rate | B / A | To scope | Define section enrollment semantics; after F-07 and F-08 shared-file integration | 27-28 Nov |
 | F-11 anonymous mode contract | B / A | To scope | Privacy design, identity/answer separation, threshold >=5; implementation completion by final | contract 27 Nov |
 | F-12 export contract | B / A | To scope | Identified vs anonymous export rules, formula-injection handling, ownership | contract 27 Nov |
 | F-13 analysis contract + working slice | A / B | To scope | Selected D2 Sprint 3 progress: owner-only text answers and section filtering, after F-07/F-10 | 28 Nov |
-| F-14 hardening contract | A / B | To scope | Existing NFR-06/07/10 metrics, screen/state inventory, no fabricated PASS | contract 27 Nov |
+| F-14 hardening contract | A / B | #98 / draft PR #99 | Complete contract4ca7cd1 posted; B C3 pending. Measurements, screen/state execution and actual findings remain NOT RUN | contract 27 Nov |
 | Current SRS/features/traceability | A / B | To scope | Integrate actual accepted per-feature changes, complete all baseline rows | 28 Nov |
 | Current System SDS | B / A | To scope | Final schema/API/permissions from actual integrated work; after #87 spec edits | 28 Nov |
 | D2 integration, release and PDF | A drives / B reviews | To scope | Full suite, release review, CI, human cloud steps, deployed checks, D2 PDF | 28-29 Nov |
@@ -73,3 +73,5 @@ By 29 Nov: all Sprint 2 accepted; F-11..14 contracts; tested meaningful F-13 sli
 v1.0, 25 Nov 2026, A: initial plan from supplied assignments and later announcement; B assignment and contract decisions pending review. No code or test implementation.
 
 v1.1,25 Nov2026,A: user requested visibly separate planning/submission tracks. Remove Lab7 planning/source/evidence content from PR91 into separate Issue94/branch/PR. Preserve cross-feature integration dependencies and all prior Git history.
+
+v1.2,25Nov2026,A/Codex GPT-6.1 Sol: replace F-08/F-14 unscoped placeholders with actual Issues96/98 and contract-review PRs97/99; preserve pending B agreement and unexecuted implementation/results.
