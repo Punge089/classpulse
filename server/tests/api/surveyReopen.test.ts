@@ -207,6 +207,39 @@ describe("Lab 7 boundaries, access, concurrency and preserved behavior", () => {
     const history = await owner.get(`/api/owner/surveys/${original.id}/lifecycle`);
     expect(history.body.events[0].previousClosedAt).toBeNull();
   });
+
+  test.each([
+    { action: "publish", status: "DRAFT" },
+    { action: "close", status: "PUBLISHED" },
+    { action: "reopen", status: "CLOSED" }
+  ] as const)("TEST-106 failing audit insert rolls back $action completely", async ({ action, status }) => {
+    const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status });
+    const owner = await ownerLogin();
+    const [target] = await prisma.$queryRaw<{ name: string }[]>`SELECT current_database() AS name`;
+    expect(target.name).toBe("classpulse_test");
+    const snapshot = () => prisma.survey.findUniqueOrThrow({
+      where: { id: original.id },
+      include: {
+        questions: { orderBy: { position: "asc" }, include: { options: true } },
+        responses: { include: { answers: true } },
+        lifecycleEvents: { orderBy: { id: "asc" } }
+      }
+    });
+    const before = await snapshot();
+    await prisma.$executeRawUnsafe(`CREATE FUNCTION "lab7_fail_audit_test"() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic audit failure'; END; $$`);
+    try {
+      await prisma.$executeRawUnsafe(`CREATE TRIGGER "lab7_fail_audit_test" BEFORE INSERT ON "SurveyLifecycleEvent" FOR EACH ROW EXECUTE FUNCTION "lab7_fail_audit_test"()`);
+      const reply = action === "reopen"
+        ? await owner.post(`/api/owner/surveys/${original.id}/${action}`).send(validReopen)
+        : await owner.post(`/api/owner/surveys/${original.id}/${action}`);
+      expect(reply.status).toBe(500);
+      expect(reply.body).toEqual({ error: { code: "INTERNAL_ERROR", message: "An unexpected error occurred" } });
+      expect(await snapshot()).toEqual(before);
+    } finally {
+      await prisma.$executeRawUnsafe(`DROP TRIGGER IF EXISTS "lab7_fail_audit_test" ON "SurveyLifecycleEvent"`);
+      await prisma.$executeRawUnsafe(`DROP FUNCTION IF EXISTS "lab7_fail_audit_test"()`);
+    }
+  });
 });
 
 afterAll(async () => {
