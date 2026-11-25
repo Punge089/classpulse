@@ -135,8 +135,8 @@ def capture() -> None:
         sha, timestamp = command("git", "show", "-s", "--format=%H%n%cI", ref).decode().strip().splitlines()
         timeline.append({"commit": sha, "committedAt": timestamp, "bangkok": datetime.fromisoformat(timestamp).astimezone(BG).isoformat(), "role": role})
     saved_json("timeline.json", timeline, {"derivation": "actual Git commit metadata, not inferred approval times"})
-    old = (INPUTS / "primary-tests.ts").read_text()
-    new = (INPUTS / "candidate-api-tests.ts").read_text()
+    old = (INPUTS / "primary-tests.ts").read_text(encoding="utf-8")
+    new = (INPUTS / "candidate-api-tests.ts").read_text(encoding="utf-8")
     block = old[old.index('describe("Lab 7 controlled reopening'):].strip()
     assert block in new
     saved_json("same-test-proof.json", {"oldCommit": PRIMARY, "candidate": HEAD, "originalDescribeBlockUnchanged": True, "blockSha256": hashlib.sha256(block.encode()).hexdigest()}, {"derivation": "exact original describe block is present in current test file"})
