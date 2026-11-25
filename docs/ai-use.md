@@ -132,3 +132,8 @@ On24November2026 A's Codex GPT-6 independently retested deployed Workflow WF-FIX
 ## Lab 7 contract preparation - Student A, 25 November 2026
 
 Under Issue #87, A's Codex GPT-6 drafted controlled owner reopening with reason, optimistic lifecycle version and atomic durable audit; revised the relevant SRS/shared registry/feature/System SDS/F-03/traceability contract sections before new tests or application/schema changes. The source announcement removes individual TA approval, not B team review/C3. B has not yet agreed, reviewed, approved or merged this proposal. The Lab 6 accepted baseline and actual future RED/GREEN/release/deployed checks remain pending. No runtime test result or cloud operation is claimed.
+
+
+## Lab 7 first test source after peer C3 - Student A,25November2026
+
+After B/book6349 posted C3 comment7159676041 at10:25:30UTC on25November2026, A's Codex GPT-6.1 Sol added the first TEST100 and TEST101 upper-bound API assertions against the existing old schema/app. The test source imports only existing modules and asserts reopen HTTP200 before reading future DTO fields; it checks preserved questions/timestamps and one durable event after success. At this source commit, meaningful RED has not yet run or been claimed. Existing CI provides a fresh isolated PostgreSQL16 service for execution, without reusing Lab6/local5432 or changing workflow/guards. Local database/credentials remain unset and no implementation/schema change is included.
