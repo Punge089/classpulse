@@ -1,0 +1,60 @@
+{
+  "proposalAcceptedByProductTeamA": true,
+  "acceptanceScope": "May record an actually executed result as supporting automated evidence only",
+  "proposalSource": "CD-EXPIRY-PROPOSAL.txt",
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "test": "TEST-05 a session whose expiresAt has passed is rejected",
+  "sourceSnapshots": {
+    "server/tests/api/auth.test.ts": {
+      "snapshot": "CPV01-auth.test.ts",
+      "sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036",
+      "gitBlob": "35e05d3e672dbce27d671f923f0cad8f25be40a8"
+    },
+    "server/tests/setup.ts": {
+      "snapshot": "CPV01-test-setup.ts",
+      "sha256": "b419f2d5b2be3334b72c63412269ff46329cf5d516f0f491ee111e8dd0fc1d32",
+      "gitBlob": "08020d930d20014b40924978d841f6b465de420e"
+    },
+    "server/tests/helpers/fixture.ts": {
+      "snapshot": "CPV01-test-fixture.ts",
+      "sha256": "e00e36d9b84fec3b29285fb305ff491c8672f266c08b2624b2a2f0700ff2fd9a",
+      "gitBlob": "ff8d9ce327513e5bdd394c93eef04302f7c8065e"
+    }
+  },
+  "behavior": "Create fixture login; assert /me200; update isolated fixture session expiresAt to now minus60000ms; assert /me401 UNAUTHENTICATED",
+  "command": "npm test -- tests/api/auth.test.ts",
+  "expectedExistingFileTestCount": 8,
+  "testNames": [
+    "TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie",
+    "TEST-02 wrong password, unknown email and an inactive user are indistinguishable",
+    "TEST-03 /me returns the current user with a cookie and 401 without one",
+    "TEST-04 logout deletes the session and the replayed cookie is rejected",
+    "TEST-05 a session whose expiresAt has passed is rejected",
+    "TEST-55 a malformed login body is a 400 with no cookie and no session",
+    "TEST-56 the session cookie is Secure in production (login and logout) and not in test",
+    "TEST-57 the server never writes a password or a session token to its console"
+  ],
+  "requiredDatabaseName": "classpulse_test",
+  "additionalRequiredIsolation": "Dedicated local test instance/container or otherwise verified isolated target; never production/cloud or shared concurrent database. The source guards check name, not host.",
+  "fixtureSideEffects": "beforeEach resetDb deletes test business records and reseeds; TEST05 updates isolated Session.expiresAt. Do not run against live fixtures or modify guards.",
+  "supportingExecutionResult": "NOT RUN / NOT RECEIVED",
+  "supportingTestExecutedByA": false,
+  "actualCdsOutputReceived": false,
+  "servingRevision": "N/A \u2014 local supporting test",
+  "independentDeployedExpiry": "OPEN",
+  "doesNotProve": [
+    "Waiting out the deployed8-hour TTL",
+    "Actual production clock/configuration/cookie behavior",
+    "Independent deployed expiry UAT",
+    "Whole-product acceptance",
+    "ClassPulsePartD correction/retest completion"
+  ],
+  "requiredReturnEvidence": [
+    "exact checkout/clean source",
+    "actual operator/model/time",
+    "runtime and safe local database identity without URL",
+    "command/exit code/full sanitized output",
+    "actual TEST05 and whole-file pass/fail/skip counts"
+  ],
+  "sourceOrLiveConfigChangeAuthorized": false
+}

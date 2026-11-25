@@ -1,0 +1,104 @@
+{
+  "receipt": {
+    "atUtc": "2026-11-24T17:32:56.435Z",
+    "database": "classpulse",
+    "users": [
+      [
+        1,
+        "ann.lee",
+        "OWNER",
+        true
+      ],
+      [
+        2,
+        "ben.kim",
+        "OWNER",
+        true
+      ],
+      [
+        3,
+        "student1",
+        "RESPONDENT",
+        true
+      ],
+      [
+        4,
+        "student3",
+        "RESPONDENT",
+        true
+      ],
+      [
+        5,
+        "student2",
+        "RESPONDENT",
+        true
+      ]
+    ],
+    "courses": [
+      [
+        1,
+        "CPE334",
+        1
+      ],
+      [
+        2,
+        "CPE231",
+        2
+      ]
+    ],
+    "enrollments": [
+      [
+        1,
+        3,
+        1
+      ],
+      [
+        2,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        2
+      ]
+    ],
+    "collisions": [
+      {
+        "email": "uat6.extra@classpulse.test"
+      },
+      {
+        "email": "uat6.inactive@classpulse.test"
+      }
+    ]
+  },
+  "originalBaselineUnchangedVerified": true,
+  "mode": {
+    "atUtc": "2026-11-24T17:33:38.785Z",
+    "database": "classpulse",
+    "readonly": "on"
+  },
+  "users": [
+    {
+      "id": 16,
+      "email": "uat6.extra@classpulse.test",
+      "role": "RESPONDENT",
+      "isActive": true
+    },
+    {
+      "id": 17,
+      "email": "uat6.inactive@classpulse.test",
+      "role": "RESPONDENT",
+      "isActive": false
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 4,
+      "userId": 16,
+      "courseId": 1
+    }
+  ],
+  "noExistingRowsResetOrReenrolled": true,
+  "source": "Actual reviewed CLI inspect plus separate explicit READ ONLY account/enrollment query; not a completed UAT case"
+}

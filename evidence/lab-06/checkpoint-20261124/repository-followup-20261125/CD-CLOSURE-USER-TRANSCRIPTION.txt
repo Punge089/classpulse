@@ -1,0 +1,3 @@
+Source: forwarded by Student A in this chat,24November2026. Not an external message sent by Codex.
+
+Thanks—we verified your retest evidence and closed WF-BUG-001 as fixed and independently verified. Whole-product acceptance and remaining coverage stay pending. We’ll complete CD-01/CD-07 once the fixtures and private access are ready.

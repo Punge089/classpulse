@@ -1,5 +1,17 @@
 # ClassPulse — Lab 6 report source
 
+## Current status — 25 November 2026, after companion review
+
+**CD-01 inactive login and CD-07 exact aggregate are PASS within the recorded scope**, now supported by C/D's received [JSON](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/fixture-case-results.json) and [summary image](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/CD07-summary.png), which A reviewed against the preserved report. Inactive user17: before/login/after401 with INVALID_CREDENTIALS at login. Survey26: baseline0; respondents3/5/16 -> responses13/14/15, ratings4/4/5; count3/average4.33, distribution0/0/0/2/1, Online3/In person0; aggregate values agree across API/UI/image without respondent identities. Four active logout204/identity401 observations do not prove controlled expiry/replay. Preserve survey26/responses13–15. [Artifact assessment](../../../evidence/lab-06/checkpoint-20261124/r2-companion-review-20261125/companion-review.json).
+
+**A confirms existing TEST-05 as supporting automated verification only.** C/D may run exact CP-V01 source `1fe3e3b82dfb0537be30223c9b598b3479b4affe` against an isolated local `classpulse_test` target and return actual output. The test backdates fixture expiresAt, then asserts /me401; it does not wait out the live8-hour TTL. Supporting execution/result remains **NOT RUN / NOT RECEIVED** here. **Independent live expiry remains OPEN; final acceptance remains PENDING.** See [method, isolation and return evidence](session-expiry-support.md). No production TTL, code, schema, shared file, deployment or live data change is part of this approval.
+
+C/D run `UAT6-20261125-CodexD-R2` was25Nov17:49:22–17:52:43Bangkok; operator Codex under Thira, model unspecified. Exact reported CP-V01 source is `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, revision `classpulse-00006-6w6`; the earlier narrative supplies digest `sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795`/100% from A's00:36:54mapping. The JSON retains source/revision but states digest/internal wording was removed. No fresh cloud mapping in that run is claimed. Its live origin/asset and unverified-notice/operator limitations remain; no Ashira participation or retrospective start approval is inferred.
+
+Human setup/A READ ONLY postchecks, B's corrected provisioner review/139tests and PR82/84/85 merges are separate completed records; closed Issues79/80 cover their scoped documentation/tool work, not Lab6 completion. WF-BUG-001 is fixed/independently verified/closed for Workflow, not ClassPulsePartD. Remaining coverage, **ClassPulse PartD**, both product decisions and final PDF/submission remain incomplete. No exercise defect is selected. This block stays within new Issue102's Lab6-owned files; Lab7/Sprint2/shared changes require prior coordination. Automations remain paused.
+
+This status supersedes historical missing-companion/report-only statements below. Original received bytes and prior receipt states remain unchanged. No proposed supporting test is presented as executed or as independent live UAT.
+
 ## Latest verified state —24November2026, after WF-FIX-001 retest
 
 - Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
@@ -129,3 +141,19 @@ Workflow release64 now has actual osizk approval and current-head CI success on 
 | 0.6 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Retain B v2's qualified original/UI/additional observations and later human06, correct stale NOT RUN/C3 states, record actual release64 review/CI and unsent deployment coordination. |
 
 | 0.7 | 24 Nov 2026 | Punge089 / Codex GPT-6 | Record C/D B dispositions, WF-FIX-001 deployment and actual independent retest, read-only fixture baseline, contract81 merge and PR83 concurrency review blocker; preserve original failures and unfinished ClassPulse PartD. |
+
+| 0.8 | 25 Nov 2026 | Punge089 / Codex GPT-6 | Record actual human fixtures, READ ONLY postchecks/current release, private handoff provenance, corrected provisioner review and Workflow closure; keep independent coverage and ClassPulse PartD incomplete. |
+
+| 0.9 | 25 Nov 2026 | Punge089 / Codex GPT-6 | Receive C/D R2 scoped PASS report for inactive login and survey26 summary; retain missing raw evidence, supplied version basis, communication/operator limitations and incomplete expiry/acceptance/PartD. |
+
+## Received R2 summary figure and supporting-method decision
+
+A reviewed the actual received JSON and supplied image; the two scoped result paths are now evidence-supported PASS. This review is not a new A live execution. The image's owner header is permitted identity context; the aggregate content exposes no respondent identities. C/D records the run on CP-V01 source1fe3e3b/revisionclasspulse-00006-6w6 with the stated earlier mapping limitation.
+
+![CD-07: count3, average4.33, rating buckets0/0/0/2/1, Online3/In person0; supplied C/D screenshot](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/CD07-summary.png)
+
+Figure: C/D-supplied owner summary, matching JSON UI observation25Nov17:52:32.958Bangkok. Screenshot pixels do not independently prove the timestamp/revision; those come from the received run metadata. The original clipboard attachment is retained byte-for-byte under the narrative's expected filename, with its received-source hash/name recorded.
+
+Existing TEST05 may supply local automated support at exact CP-V01; no actual supporting output is received yet. Independent live expiry and final acceptance remain open. See [expiry method](session-expiry-support.md).
+
+| 1.0 | 25 Nov 2026 | Punge089 / Codex GPT-6 | Verify actual R2 JSON/image and resolve missing links; record two scoped PASS paths and accept existing TEST05 only as a pending local supporting method, with independent live expiry/acceptance unchanged. |

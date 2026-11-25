@@ -1,0 +1,36 @@
+{
+  "readyForPartnerExecutionAfterPrivateAccessReceipt": true,
+  "product": "ClassPulse",
+  "caseInventory": "Original UAT01-12 + agreed CD01-08; this setup unlocks inactive-account CD01 branch and third-respondent CD07 only",
+  "extra": {
+    "id": 16,
+    "email": "uat6.extra@classpulse.test",
+    "role": "RESPONDENT",
+    "isActive": true,
+    "courseId": 1,
+    "courseCode": "CPE334",
+    "enrollmentId": 4
+  },
+  "inactive": {
+    "id": 17,
+    "email": "uat6.inactive@classpulse.test",
+    "role": "RESPONDENT",
+    "isActive": false,
+    "enrollments": []
+  },
+  "retainedStudent3": {
+    "id": 4,
+    "courseId": 2,
+    "courseCode": "CPE231"
+  },
+  "toolReviewedHead": "d51ef87cb5c9015401de2ed0c229d30b2254b87a",
+  "toolMerge": "f4533eac6ba035885a67eb6010cfba570b8f3f3e",
+  "toolReview": "https://github.com/Punge089/classpulse/pull/83#pullrequestreview-6043466907",
+  "setupExecution": "Human personally ran apply and entered exact target/new credentials at Cloud Shell; A performed readonly preflight/postcheck",
+  "completedBeforeUtc": "2026-11-24T17:32:56.435Z",
+  "postcheckUtc": "2026-11-24T17:33:38.785Z",
+  "privateAccessDeliveryConfirmed": false,
+  "wholeProductAcceptance": false,
+  "classPulsePartDComplete": false,
+  "remaining": "C/D independent CD01/CD07 actual results; controlled-session/expiry scope; other unfinished coverage; actual contribution/acceptance/report/submission. No app deployment or record reset."
+}
