@@ -1,0 +1,39 @@
+{
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "reviewer": "Codex GPT-6 under A/Punge089",
+  "kind": "Static source review; no product test executed by A",
+  "files": [
+    {
+      "path": "server/src/app.ts",
+      "gitBlob": "936b8e7a134b558465c5c6e8cf633bb802325660",
+      "sha256": "a490fac508fd27d5fa1b20b2f81474553c85990ce65547d422700aee28fb174e"
+    },
+    {
+      "path": "server/src/routes/auth.ts",
+      "gitBlob": "bdc6bf76b8f8c9a6f5a9f63edd77027e1e9a9beb",
+      "sha256": "196f288e5dc5a79cef7f1c97fc2d3f47a871a8d8db23f7f535b4791c88460d8c"
+    },
+    {
+      "path": "server/src/lib/session.ts",
+      "gitBlob": "30dc988b20a8f0151253c778510397adead74516",
+      "sha256": "ccce3661aac24bd7fd6b6483278e78c818361b946d2afd8c90b4fc0d5b520a7e"
+    },
+    {
+      "path": "server/tests/api/auth.test.ts",
+      "gitBlob": "35e05d3e672dbce27d671f923f0cad8f25be40a8",
+      "sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036"
+    },
+    {
+      "path": "server/tests/unit/password.test.ts",
+      "gitBlob": "3f265a3f211e6ad5a0c31f4de1bc0a9e1a6eb949",
+      "sha256": "891fb0112dac70a81964418d2d8f21efe31b878fc14dca91b725336139d21ec3"
+    }
+  ],
+  "findings": [
+    "/api/responses mounts requireAuth before respondent role/router: anonymous PUT/DELETE401 is consistent with agreed A2; authenticated unsupported methods404. Static reasoning is not execution.",
+    "TEST04 saved-cookie replay and row deletion are included in C/D full auth8/8 support; not independent live replay.",
+    "session cookie source uses HttpOnly, SameSite=Lax, Secure in production, path /. Live flags still need observation.",
+    "Session source stores SHA256 token digest and expiresAt; TEST06 verifies salted scrypt password helper and fixture hash in a separate unit file. TEST06 is not part of received auth8/8.",
+    "TEST57 auth-file console checks are narrow local support; no independent all-production-log or storage audit claimed."
+  ]
+}
