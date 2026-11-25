@@ -14,7 +14,7 @@ The historical window is 5-8 November 2026 Asia/Bangkok for Sprint 1 completion 
 
 M1 and M2 reconcile offline from the compact Issue and PR ID/date lists in the evidence file. M3 is a test-first failure against the old implementation, not evidence that a delivered candidate is ready. Refresh current-state rows and candidate CI before the final PDF; retain this dated snapshot rather than replacing it.
 
-Interpretation at the initial 18:06 snapshot (57 words): The Sprint 1 parent scope and its selected staging PRs are complete, but this does not establish Lab 7 readiness. The new behavior has an honest RED result, while a candidate green run, independent UAT disposition and release evidence are still pending. A should finish the scoped change and deployment chain; B will refresh these metrics against the exact candidate before submission.
+Interpretation at the initial 18:06 snapshot (62 words): The Sprint 1 parent scope and its selected staging PRs are complete, but this does not establish Lab 7 readiness. The new behavior has an honest RED result, while a candidate green run, independent UAT disposition and release evidence are still pending. A should finish the scoped change and deployment chain; B will refresh these metrics against the exact candidate before submission.
 
 
 ## Current-state refresh - 25 November 2026, 18:41:29 Asia/Bangkok
@@ -31,4 +31,17 @@ Interpretation at the initial 18:06 snapshot (57 words): The Sprint 1 parent sco
 
 The 18:06:58 snapshot's PR query returned test-only head `a9cdbce`, but it omitted already-committed implementation `3203c3a` (18:05:22 Bangkok). At that snapshot, CI run 45601152925 was still in progress; its `test-and-docker` Check Run later completed successfully at 18:07:14 Bangkok. This follow-up corrects the missing implementation/check-run context without rewriting the earlier snapshot as green. The original old-code RED remains separately recorded: 139 existing checks passed, 2 new reopen assertions failed, 0 tests skipped.
 
-Interpretation at the current refresh (59 words): The maintained branch now has a successful current-head check and 214 passing server tests plus 8 passing client tests, while the first snapshot remains a valid record of the earlier RED and pending state. Submission is still NOT READY: independent UAT disposition, A's exact-head review, migration preservation, main release and deployed user checks remain open. A owns those release steps; B will refresh the evidence against each accepted head.
+Interpretation at the current refresh (69 words): The maintained branch now has a successful current-head check and 214 passing server tests plus 8 passing client tests, while the first snapshot remains a valid record of the earlier RED and pending state. Submission is still NOT READY: independent UAT disposition, B's exact-head review, migration preservation, main release and deployed user checks remain open. A owns those release steps; B will refresh the evidence against each accepted head.
+## Current-state refresh - 25 November 2026, 20:30:15 Asia/Bangkok
+
+| ID | Current measurement | Value and evidence |
+|---|---|---|
+| M1 | Sprint 1 parent Issue closure, Issues #1-#11 ÷ 11 | 11/11 (100%); the source rows remain in METRIC-SNAPSHOT-2026-11-25. |
+| M2 | Sprint 1 staging integration, merged PRs #12-#26 ÷ 15 | 15/15 (100%); all selected PRs target sprint-1-staging; the source rows remain in METRIC-SNAPSHOT-2026-11-25. |
+| M3 | Named test suites on the current Lab 7 PR candidate | GitHub Actions run 45613368930 passed on PR #92 head 45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8. Its test-and-docker job log reports server 219 passed/0 failed/0 skipped, client 10/0/0, and browser 10/0/0; server/client builds and Docker completed successfully. The runner used merge commit cb6b9f1368e793fed288d2ebac484fc1b5e2b3ca with base a49cbe7. The check-run ID is 139202364446. |
+| M4 | ClassPulse independent UAT defect disposition | PENDING. The Lab 6 checkpoint still does not support a final no-defect conclusion; no zero-defect value is claimed. |
+| M5 | Candidate-head required CI and integration freshness | The PR #92 head check succeeded, but PR #92 remains open/unmerged and its recorded base a49cbe7 is two commits behind current sprint-2-staging head 5e7a164. The successful run used the earlier base, so a refreshed integration check against current staging remains PENDING. B's exact-head C7 review is also PENDING. |
+
+The previous readbacks remain dated history. At this readback PR #92 is A-authored and open at head 45f48cd; B is the required reviewer. The run above is remote GitHub Actions evidence, not a test run by B. It supports the current PR-head test result but does not establish a fresh run on the two newer staging commits, reviewed release, UAT disposition, migration preservation, main release, or deployment.
+
+Interpretation at the current refresh (67 words): At this readback, PR #92's exact-head workflow check passed: 219 server, 10 client and 10 browser tests, plus both builds and Docker. The successful run used merge commit cb6b9f1 with then-current base a49cbe7; sprint-2-staging has since advanced to 5e7a164, two commits beyond that base, so a fresh integrated check remains pending. B's exact-head review, accepted baseline/UAT, migration evidence, release and deployment remain open. Readiness stays NOT READY.
