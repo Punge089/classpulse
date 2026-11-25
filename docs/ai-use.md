@@ -137,3 +137,7 @@ Student B/book6349 used Codex GPT-6 and the connected GitHub repository API to r
 
 
 On 25 November 2026, after A's two inline review comments on B's PR #100, B used Codex GPT-6 and GitHub API reads to compare the timestamped Issue #89 snapshot with PR #92 commits and GitHub Check Runs, then updated the metrics, readiness, snapshot and retrospective records. B did not rerun ClassPulse application tests; the current results cited are the actual GitHub Actions run metadata and retained output from A's branch. The existing isolated-worktree `git diff --check` result is documented with its commit/path provenance.
+
+## Deliverable 2 F-09 contract preparation - Student B, 25 November 2026
+
+Student B (book6349) used Codex GPT-6 to draft the F-09 response-history contract for Issue #88 on `feature/88-d2-my-responses`, based on the current Issue, D2 plan, shared requirements, and read-only GitHub inspection of the existing response route and authentication/role middleware. The contract is a proposal awaiting A's C3; the enrollment-history policy question remains open for review. No tests, implementation, database, deployment, or application behavior changes were performed in this step. The connected GitHub profile is book6349. The local OneDrive checkout was readable for documents but Git denied access to the repository path, so no local Git diff or status check was available.
