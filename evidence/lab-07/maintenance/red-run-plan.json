@@ -9,6 +9,8 @@
   "command": "npm test (working-directory server) in existing CI and Docker/Test server step",
   "execution": "existing isolated GitHub Actions postgres16 service, not local5432",
   "expectedPrimaryFailure": "assert HTTP200, actual old endpoint404",
-  "actualResult": "PENDING",
-  "implementationChanged": false
+  "actualResult": "Meaningful RED: two new assertions200 fail against old endpoint404; full Test server output and actual counts in red-ci-server.txt",
+  "implementationChanged": false,
+  "testSourceCommit": "3f8918ceefd5eb55cdebd970710fd0789bd38c98",
+  "runId": 45597034491
 }
