@@ -1,0 +1,7 @@
+# R3 independent baseline evidence receipt
+
+Issue111. [R3 report](REPORT.md) and [results](results.json) are preserved unchanged at supplied partner PR75 head2f8581d70570e50ba5c375c14d40c11d9899c2d5; PR75 was OPEN and C review pending at receipt. [Immutable provenance/link mapping](received-provenance.json) records exact blob/SHA256 identities and original relative-link context. [A review](a-review.json) describes scoped PASS, blocked replay and evidence granularity without claiming an A rerun.
+
+[Earlier verbose auth output](earlier-verbose-auth-output.txt) is local supporting evidence referenced by R3, not part of R3 live execution. It names TEST04 PASS at20:20:18; date/zone/source attribution depends on partner context. The separate already-received [exact-command clean-source proof](../checkpoint-20261124/received-test05-exact-20261125/run-proof.json) supports inclusion of TEST04 in the full20:30auth8/8. These two runs are not combined or recast as live replay. TEST06 remains excluded.
+
+The report's older relative auth link uses its upstream directory; provenance maps it to the immutable source URL. The local report-to-results link resolves directly. All payloads including .gitattributes are covered by SHA256SUMS.txt except the ledger itself. No private cookie, password, full header or credential value is included. [Current gate disposition](../../../docs/labs/lab-06/r3-baseline-review.md).
