@@ -1,7 +1,12 @@
 import { afterAll, beforeEach, describe, expect, test } from "vitest";
+import { PrismaClient } from "@prisma/client";
+import { randomUUID } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import request from "supertest";
 import { createApp } from "../../src/app";
 import { getPrisma } from "../../src/prisma";
+import { isLocalTestServer } from "../../src/lib/uat6Provisioner";
 import { loginAs } from "../helpers/auth";
 import { makeSurvey, resetDb, seedFixture, type Fixture } from "../helpers/fixture";
 
@@ -207,6 +212,91 @@ describe("Lab 7 boundaries, access, concurrency and preserved behavior", () => {
     const history = await owner.get(`/api/owner/surveys/${original.id}/lifecycle`);
     expect(history.body.events[0].previousClosedAt).toBeNull();
   });
+
+  test("TEST-111 additive migration preserves every old table and starts audit empty", async () => {
+    const source = new URL(process.env.DATABASE_URL!);
+    expect(source.pathname).toBe("/classpulse_test");
+    expect(["localhost", "127.0.0.1", "[::1]"]).toContain(source.hostname);
+    expect(source.searchParams.has("host")).toBe(false);
+    const [target] = await prisma.$queryRaw<{ name: string; address: string }[]>`
+      SELECT current_database() AS name, host(inet_server_addr()) AS address`;
+    expect(target.name).toBe("classpulse_test");
+    expect(isLocalTestServer(target.address)).toBe(true);
+
+    // Only this unpredictable, test-owned schema is created/dropped. Never migrate
+    // public or read a connection string from another worktree.
+    const schema = "lab7_migration_" + randomUUID().replace(/-/g, "");
+    expect(schema).toMatch(/^lab7_migration_[a-f0-9]{32}$/);
+    source.searchParams.set("schema", schema);
+    const copy = new PrismaClient({ datasources: { db: { url: source.toString() } }, log: [] });
+    let created = false;
+    try {
+      await prisma.$executeRawUnsafe(`CREATE SCHEMA "${schema}"`);
+      created = true;
+      const [scope] = await copy.$queryRaw<{ name: string }[]>`SELECT current_schema() AS name`;
+      expect(scope.name).toBe(schema);
+
+      // These two checked-in migrations contain plain DDL, without procedural
+      // blocks or semicolons inside strings. This is not a general SQL parser.
+      const applyDdl = async (name: string) => {
+        const sql = await readFile(resolve(process.cwd(), "prisma/migrations", name, "migration.sql"), "utf8");
+        for (const statement of sql.replace(/^\s*--.*$/gm, "").split(";").map(x => x.trim()).filter(Boolean)) {
+          await copy.$executeRawUnsafe(statement);
+        }
+      };
+      await applyDdl("20261106133049_sprint1_init");
+      const columns = await copy.$queryRaw<{ column_name: string }[]>`
+        SELECT column_name FROM information_schema.columns WHERE table_schema = ${schema} AND table_name = 'Survey'`;
+      expect(columns.map(x => x.column_name)).not.toContain("statusVersion");
+      await copy.$executeRawUnsafe(`INSERT INTO "User" (id,email,"fullName",role,"passwordHash","createdAt") VALUES
+        (101,'migration.owner@classpulse.test','Synthetic owner','OWNER','synthetic-not-a-login-hash','2026-11-01 09:00:00'),
+        (102,'migration.respondent@classpulse.test','Synthetic respondent','RESPONDENT','synthetic-not-a-login-hash','2026-11-01 09:00:00')`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Session" (id,"tokenHash","userId","createdAt","expiresAt") VALUES
+        (101,'synthetic-not-a-session-token',102,'2026-11-01 09:00:00','2026-11-01 17:00:00')`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Course" (id,code,title,"ownerId") VALUES (101,'MIGRATION101','Synthetic migration course',101)`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Enrollment" (id,"courseId","userId") VALUES (101,101,102)`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Survey"
+        (id,"courseId","ownerId",title,description,status,"publishedAt","closedAt","createdAt","updatedAt") VALUES
+        (101,101,101,'Old draft',NULL,'DRAFT',NULL,NULL,'2026-11-01 09:00:00','2026-11-01 09:00:00'),
+        (102,101,101,'Old published','Keep description','PUBLISHED','2026-11-01 10:00:00',NULL,'2026-11-01 09:00:00','2026-11-01 10:00:00'),
+        (103,101,101,'Old closed','Keep answers','CLOSED','2026-11-01 10:00:00','2026-11-02 10:00:00','2026-11-01 09:00:00','2026-11-02 10:00:00'),
+        (104,101,101,'Legacy null closure',NULL,'CLOSED','2026-11-01 10:00:00',NULL,'2026-11-01 09:00:00','2026-11-02 10:00:00')`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Question" (id,"surveyId",position,prompt,type,required) VALUES
+        (101,103,0,'Old rating','RATING',true),(102,103,1,'Old choice','SINGLE_CHOICE',true)`);
+      await copy.$executeRawUnsafe(`INSERT INTO "QuestionOption" (id,"questionId",position,label) VALUES
+        (101,102,0,'Yes'),(102,102,1,'No')`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Response" (id,"surveyId","respondentId","submittedAt") VALUES
+        (101,103,102,'2026-11-01 12:00:00')`);
+      await copy.$executeRawUnsafe(`INSERT INTO "Answer" (id,"responseId","questionId",rating_value,"optionId") VALUES
+        (101,101,101,4,NULL),(102,101,102,NULL,101)`);
+
+      const tables = ["User", "Session", "Course", "Enrollment", "Survey", "Question", "QuestionOption", "Response", "Answer"] as const;
+      const snapshot = async () => {
+        const result: Record<string, unknown> = {};
+        for (const table of tables) {
+          // Identifiers come only from the static allowlist above. Ignore only
+          // the one explicitly additive field when comparing old row values.
+          result[table] = await copy.$queryRawUnsafe(`SELECT to_jsonb(t) - 'statusVersion' AS row FROM "${table}" t ORDER BY id`);
+        }
+        return result;
+      };
+      const before = await snapshot();
+      expect((before.Answer as unknown[]).length).toBe(2);
+      await applyDdl("20261125110000_survey_lifecycle_audit");
+      expect(await snapshot()).toEqual(before);
+      expect(await copy.survey.findMany({ select: { id: true, statusVersion: true }, orderBy: { id: "asc" } })).toEqual(
+        [101, 102, 103, 104].map(id => ({ id, statusVersion: 0 }))
+      );
+      expect(await copy.surveyLifecycleEvent.count()).toBe(0);
+      const [scopeAfter] = await copy.$queryRaw<{ name: string }[]>`SELECT current_schema() AS name`;
+      expect(scopeAfter.name).toBe(schema);
+    } finally {
+      await copy.$disconnect();
+      if (created && /^lab7_migration_[a-f0-9]{32}$/.test(schema)) {
+        await prisma.$executeRawUnsafe(`DROP SCHEMA "${schema}" CASCADE`);
+      }
+    }
+  }, 20000);
 
   test.each([
     { action: "publish", status: "DRAFT" },
