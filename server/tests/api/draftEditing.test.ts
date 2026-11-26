@@ -323,6 +323,28 @@ test("TEST-122 malformed replacement bodies return field errors without writes",
   expect(after).toEqual(original);
 });
 
+test("TEST-122 validation points to the invalid question field", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const cases = [
+    { question: { prompt: " ", type: "RATING" }, field: "questions[0].prompt" },
+    { question: { prompt: "Q", type: "WRONG" }, field: "questions[0].type" },
+    { question: { prompt: "Q", type: "RATING", required: "yes" }, field: "questions[0].required" },
+    { question: { prompt: "Q", type: "SINGLE_CHOICE", options: ["Same", "same"] }, field: "questions[0].options" }
+  ];
+  for (const { question, field } of cases) {
+    const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+      expectedUpdatedAt: original.updatedAt.toISOString(), questions: [question]
+    });
+    expect(result.status).toBe(400);
+    expect(result.body.error.details.map((detail: { field: string }) => detail.field)).toContain(field);
+  }
+  const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(after).toEqual(original);
+});
+
 test("TEST-124 missing and malformed survey identifiers return 404", async () => {
   const owner = await loginAs(app, fixture.owner1.email);
   const body = { expectedUpdatedAt: "2026-11-26T00:00:00.000Z", questions: [{ prompt: "Valid", type: "RATING" }] };
