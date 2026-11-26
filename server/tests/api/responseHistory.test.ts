@@ -106,7 +106,7 @@ describe("Sprint 2 F-09 response history API", () => {
       const accepted = await student.get(`/api/responses/mine?limit=${limit}`);
       expect(accepted.status).toBe(200); expect(accepted.body.responses).toHaveLength(count);
     }
-    const invalid = ["0", "51", "-1", "1.5", "abc", "01", "+1", "1e1", "%20", "limit=1&limit=2", "limit%5B%5D=1", "other=1", "cursor=%"];
+    const invalid = ["limit=0", "limit=51", "limit=-1", "limit=1.5", "limit=abc", "limit=01", "limit=+1", "limit=1e1", "limit=%20", "limit=1&limit=2", "limit%5B%5D=1", "other=1", "cursor=%"];
     for (const query of invalid) {
       const result = await student.get(`/api/responses/mine?${query}`);
       expect(result.status).toBe(400);
