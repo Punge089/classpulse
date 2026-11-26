@@ -1,0 +1,25 @@
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 315ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 314ms
+stderr | tests/responseHistory.test.tsx > TEST-179 loading is announced before data and an empty history stays empty
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+stderr | tests/surveyReopen.test.tsx > TEST-112 server validation keeps reason and shows its field error without retrying
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ tests/responseHistory.test.tsx (6 tests) 564ms
+ ✓ tests/surveyReopen.test.tsx (9 tests) 1153ms
+   ✓ TEST-112 server validation keeps reason and shows its field error without retrying 421ms
+
+ Test Files  3 passed (3)
+      Tests  16 passed (16)
+   Start at  14:47:21
+   Duration  6.26s (transform 338ms, setup 62ms, collect 3.27s, tests 2.03s, environment 7.56s, prepare 1.86s)
