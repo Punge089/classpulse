@@ -1,0 +1,8 @@
+{
+  "id": 7190900011,
+  "body": "@Punge089 @book6349 Separate C workstream review of D's CP-FIX-001 retest, performed by Codex through `osizk`. I verified 9/9 evidence payload hashes (archive SHA-256 `1f4c502d1cab678ce3eb662e93fcd7120d698930a59c72d90c0b3619fb659e3a`), checked the error screenshot against the status/field detail and unchanged list IDs, and checked the positive-control and local-retention readbacks. No cases were rerun as C.\n\nThe evidence supports **PASS for CP-EX-F01 and the agreed affected branches** on deployed source `bee0d122bf23410e3d2db69649ad5e44959b6cd8`, revision `classpulse-00007-6t9` per A's mapping. Empty/three spaces/121 returned 400 with inline Title feedback and no new record, and valid/120 created only Cloud Drafts 28/29 with persisted values. The read-only local check separately retained exercise drafts 3/6/9. D delivered the raw evidence privately. Please record A/B's scoped disposition. Final acceptance and the remaining live coverage limits remain separate.",
+  "created_at": "2026-11-26T11:34:25Z",
+  "html_url": "https://github.com/Punge089/classpulse/issues/120#issuecomment-7190900011",
+  "reviewer": "osizk",
+  "scope": "C evidence review; no C rerun"
+}

@@ -1,0 +1,25 @@
+{
+  "sourceArchive": "ClassPulse_CP-FIX-001_D_Retest_Evidence_20261126.zip",
+  "sourceArchiveSha256": "1f4c502d1cab678ce3eb662e93fcd7120d698930a59c72d90c0b3619fb659e3a",
+  "originalCrc": "PASS",
+  "originalPayloadHashesVerified": 9,
+  "originalPayloadHashes": {
+    "CP-RT-01-before.png": "c344fe8525959ad1e02ca73be847ae624f2ed9cc45b6e63bdeafc0fe384e456b",
+    "CP-RT-01-error.png": "6d1a0310cdbad0a7c2bd9c532f4e948ee6b09d3b8ce65cb2e11b4504b5f5f87a",
+    "CP-RT-02-error.png": "3f1a0e6bfaae8800002d11710aeaf757b1083d46a2c117699141524226192f5c",
+    "CP-RT-03-draft.png": "ebf283a094d890be5f027f37c014fdf809502d6504cdfc99b8cf1a4045ffe4e1",
+    "CP-RT-04a-draft.png": "cd5482d861daa374acbd406abd8ab99f7e0c709d8ca2c313803d797ffc4cb9ac",
+    "CP-RT-04b-error.png": "e99c348c42cc6a8c09f75a367b0e24f0bd5be461758bb17f60b6c1d5436fa031",
+    "D-RETEST-REPORT.md": "6be8c1218b08f65aafa30d06d3b2d3784f9a56f08494640264e2cf00e9f78aac",
+    "local-retention.json": "4e37d5cde6cf5bfd5642d3a83c8c98af759b4d36fb2f8d7fc9acd206e545944e",
+    "retest-results.json": "93c519d0ee565c763facd76a256d2575480afb0404cd88c6f6dec9ef77424d0b"
+  },
+  "originalArchiveRetained": "Ignored private local evidence; not published",
+  "unchangedPublishedPayloads": 8,
+  "publicNarrative": "received-d/D-RETEST-REPORT.redacted.md",
+  "redaction": "one private Discord DM URL, narrative only",
+  "originalReportHash": "6be8c1218b08f65aafa30d06d3b2d3784f9a56f08494640264e2cf00e9f78aac",
+  "publicReportHash": "fd532af6264da94cfe43cca7e07bdc75e997ff0315f4f54c81d4701cbf290e27",
+  "publicManifest": "SHA256SUMS.json",
+  "doNotCompareRedactedNarrativeWithOriginalHash": true
+}

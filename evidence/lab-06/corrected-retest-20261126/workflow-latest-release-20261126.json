@@ -1,0 +1,54 @@
+{
+  "recordKind": "User-relayed C/D serving readback plus A read-only GitHub source comparison; no A live app run",
+  "product": "Workflow and Approval System",
+  "source": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "revision": "scd928edd-00009-fsg",
+  "trafficPercent": 100,
+  "digest": "sha256:06e187cc4d1a9dc809925d4b68873014092a1c0cd6e83e440ec9a9e9bb60193d",
+  "publicMarker": "41a8fefa7a5d",
+  "cdMappingBangkok": "2026-11-26T19:04:21+07:00",
+  "cdPublicCheckBangkok": "2026-11-26T19:04:52+07:00",
+  "cdPublicObservations": [
+    "public marker",
+    "health",
+    "DB readiness"
+  ],
+  "cdAuthenticationScope": "Signed out; existing private access not verified by this readback",
+  "aCloudReadback": false,
+  "aAppExecution": false,
+  "previousRetestedSource": "ad2cbef67decf9953219694898327dea0bb66034",
+  "sourceCompareUrl": "https://github.com/osizk/WorkflowAndApprovalSystem/compare/ad2cbef67decf9953219694898327dea0bb66034...41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "sourceRelation": "ahead",
+  "commitsAhead": 15,
+  "changedRuntimeOrDeploymentFiles": [
+    {
+      "filename": ".github/workflows/ci-docker.yml",
+      "status": "modified"
+    },
+    {
+      "filename": "client/requests.tsx",
+      "status": "modified"
+    },
+    {
+      "filename": "prisma/migrations/20261126050000_withdrawn_status/migration.sql",
+      "status": "added"
+    },
+    {
+      "filename": "prisma/migrations/20261126050100_withdrawal_constraints/migration.sql",
+      "status": "added"
+    },
+    {
+      "filename": "prisma/schema.prisma",
+      "status": "modified"
+    },
+    {
+      "filename": "src/requests.ts",
+      "status": "modified"
+    }
+  ],
+  "sourceReviewFinding": "This release includes Lab 7 requester withdrawal, request/UI behavior changes and two schema migrations. Absence of credential/provisioning changes does not establish unchanged Sprint 1 behavior.",
+  "lab6ApplicabilityAgreement": "PENDING C/D confirmation of the relevant contract/cases and release freeze for the remaining run",
+  "wfBug001": "Remains closed on its historical fixed version; no automatic rerun or new-version acceptance inferred.",
+  "newRunStartNotice": "NOT SENT by A/Codex; no new live UAT performed",
+  "preserve": "All existing synthetic requests"
+}
