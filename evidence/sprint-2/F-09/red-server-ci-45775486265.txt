@@ -3,7 +3,7 @@ F-09 RED run captured from GitHub Actions
 PR: #119 (draft), base sprint-2-staging at e6043a9843eaeebaa63464aa19e5e8d1e503996a
 Test source commit: f5f9a06dfd46b35a9c12ce600ffe464912a5ba34
 Workflow run: 45775486265; job: 139758015921 (test-and-docker)
-Actions tested synthetic merge commit: 8a768293d7f4f6a7f617b55ab3b946d4c8b6ff83
+Actions tested synthetic merge commit: 8a7682904f2c321db0575dd7211668e43037949f
 Command: server / `npm test`
 Exit: 1
 
