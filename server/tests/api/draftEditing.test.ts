@@ -1,5 +1,6 @@
 import { beforeEach, expect, test } from "vitest";
 import { createApp } from "../../src/app";
+import request from "supertest";
 import { getPrisma } from "../../src/prisma";
 import { loginAs } from "../helpers/auth";
 import { makeSurvey, resetDb, seedFixture, type Fixture } from "../helpers/fixture";
@@ -170,6 +171,30 @@ test("TEST-128 refuses an inconsistent draft with responses without deleting dat
   } });
   expect(after).toEqual(original);
   expect(await prisma.response.findUniqueOrThrow({ where: { id: saved.id }, include: { answers: true } })).toEqual(before);
+});
+
+test.each([1, 20])("TEST-121 accepts %i valid ordered questions", async count => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const questions = Array.from({ length: count }, (_, index) => ({ prompt: `Question ${index + 1}`, type: "RATING" }));
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({ expectedUpdatedAt: original.updatedAt.toISOString(), questions });
+  expect(result.status).toBe(200);
+  const stored = await prisma.question.findMany({ where: { surveyId: original.id }, orderBy: { position: "asc" } });
+  expect(stored.map(q => [q.prompt, q.position])).toEqual(questions.map((q, index) => [q.prompt, index + 1]));
+});
+
+test("TEST-124 unauthenticated and respondent writes cannot change an owned draft", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const body = { expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt: "Valid", type: "RATING" }] };
+  const anonymous = await request(app).put(`/api/owner/surveys/${original.id}/questions`).send(body);
+  const respondent = await loginAs(app, fixture.student1.email);
+  const forbidden = await respondent.put(`/api/owner/surveys/${original.id}/questions`).send(body);
+  expect(anonymous.status).toBe(401);
+  expect(forbidden.status).toBe(403);
+  const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(after).toEqual(original);
 });
 
 test.each([
