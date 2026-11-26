@@ -207,6 +207,32 @@ test("TEST-121 preserves valid prompt and choice length endpoints", async () => 
   expect(result.body.survey.questions[1].options.map((option: { label: string }) => option.label)).toEqual(questions[1].options);
 });
 
+test("TEST-121 add, remove and switch question types across saves", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const first = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(), questions: [
+      { prompt: "Switched", type: "SINGLE_CHOICE", options: ["Yes", "No"] },
+      { prompt: "Added", type: "RATING" }
+    ]
+  });
+  expect(first.status).toBe(200);
+  const second = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: first.body.survey.updatedAt,
+    questions: [{ prompt: "Switched back", type: "RATING", required: false }]
+  });
+  expect(second.status).toBe(200);
+  const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(after.questions.map(q => [q.prompt, q.type, q.required, q.position, q.options])).toEqual([
+    ["Switched back", "RATING", false, 1, []]
+  ]);
+  expect([after.id, after.courseId, after.ownerId, after.title, after.status]).toEqual(
+    [original.id, original.courseId, original.ownerId, original.title, original.status]
+  );
+});
+
 test("TEST-123 published response and answer survive rejected replacement", async () => {
   const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "PUBLISHED" });
   const response = await prisma.response.create({ data: { surveyId: original.id, respondentId: fixture.student1.id } });
