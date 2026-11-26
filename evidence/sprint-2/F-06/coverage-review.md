@@ -15,3 +15,11 @@ This is a review checkpoint, not final acceptance. The test-only API RED precede
 | AC-128, TEST-131 | Current branch CI runs server/client/browser regressions and builds. | Exact final head, peer review, staging merge and coordinated release remain. |
 
 CI run 45830420400 on feature head 9065e0e against staging a3a0424 reported 267 server, 21 client, and 12 browser tests passed; zero failed or skipped, and server/client builds and Docker passed. The earlier browser failure in run 45805628115 is retained in Issue #90. `git diff --check` against staging currently reports a final blank line in the preserved raw local UI test output; no application file warning was observed.
+
+## Later checks, 26 November
+
+- Subsequent tests exercise add/remove and switching both types across two saves, valid prompt/option length endpoints, malformed body shapes, and preservation of a published response and its answer. They were written after implementation.
+- Client tests subsequently cover announced loading and preservation/retry after a network failure. Field-detail assertions are still not exhaustive; the ordering race is sampled rather than exhaustively scheduled.
+- CI 45850372922 on feature head e3344c8 against staging a3a0424 reported 271 server, 23 client and 12 browser tests passed, zero failed or skipped; both builds and Docker passed.
+- CI 45834540385 attempt 1 on a0c1444 had 11 browser passes and one existing TEST-32 failure waiting for the Email field; the Docker step was skipped. Attempt 2 on the same head passed 267 server, 21 client and 12 browser; the timeout's root cause remains unknown.
+- Independent B review, current-head CI after any further change, final staging integration and the coordinated release remain pending. The local raw-output whitespace warning above remains visible.
