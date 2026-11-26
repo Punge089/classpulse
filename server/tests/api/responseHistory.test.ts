@@ -78,7 +78,9 @@ describe("Sprint 2 F-09 response history API", () => {
     for (let i = 0; i < 4; i++) created.push(await saved(f.student1, "PUBLISHED", `Tie-${i}`, time));
     const student = await loginAs(app, "student1@classpulse.test");
     const first = await student.get("/api/responses/mine?limit=2");
+    expect(first.status).toBe(200);
     const second = await student.get(`/api/responses/mine?limit=2&cursor=${encodeURIComponent(first.body.nextCursor)}`);
+    expect(second.status).toBe(200);
     const got = [...first.body.responses, ...second.body.responses].map((item: { id: number }) => item.id);
     expect(got).toEqual(created.map(item => item.response.id).reverse());
     expect(new Set(got).size).toBe(4);
@@ -88,9 +90,11 @@ describe("Sprint 2 F-09 response history API", () => {
     for (let i = 0; i < 21; i++) await saved(f.student1, "PUBLISHED", `Default-${i}`, new Date(Date.now() + i));
     const student = await loginAs(app, "student1@classpulse.test");
     const first = await student.get("/api/responses/mine");
+    expect(first.status).toBe(200);
     expect(first.body.responses).toHaveLength(20);
     expect(first.body.nextCursor).toEqual(expect.any(String));
     const last = await student.get(`/api/responses/mine?limit=20&cursor=${encodeURIComponent(first.body.nextCursor)}`);
+    expect(last.status).toBe(200);
     expect(last.body.responses).toHaveLength(1);
     expect(last.body.nextCursor).toBeNull();
   });
@@ -138,7 +142,9 @@ describe("Sprint 2 F-09 response history API", () => {
     const student = await loginAs(app, "student1@classpulse.test");
     const first = await student.get("/api/responses/mine?limit=2");
     await saved(f.student1, "PUBLISHED", "Arrived later", new Date(Date.now() + 60_000));
+    expect(first.status).toBe(200);
     const pageTwo = await student.get(`/api/responses/mine?limit=2&cursor=${encodeURIComponent(first.body.nextCursor)}`);
+    expect(pageTwo.status).toBe(200);
     const ids = [...first.body.responses, ...pageTwo.body.responses].map((row: { id: number }) => row.id);
     expect(new Set(ids).size).toBe(ids.length);
     expect(JSON.stringify(pageTwo.body)).not.toContain("Arrived later");
@@ -213,7 +219,10 @@ describe("Sprint 2 F-09 response history API", () => {
   test("TEST-177 closed survey preserves the saved detail and list entry", async () => {
     const prior = await saved(f.student1, "CLOSED");
     const student = await loginAs(app, "student1@classpulse.test");
-    expect((await student.get("/api/responses/mine")).body.responses[0].id).toBe(prior.response.id);
-    expect((await student.get(`/api/responses/${prior.response.id}`)).status).toBe(200);
+    const list = await student.get("/api/responses/mine");
+    expect(list.status).toBe(200);
+    expect(list.body.responses[0].id).toBe(prior.response.id);
+    const detail = await student.get(`/api/responses/${prior.response.id}`);
+    expect(detail.status).toBe(200);
   });
 });
