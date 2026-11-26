@@ -1,0 +1,23 @@
+﻿2026-11-25T11:30:08.4189103Z ##[group]Run npm test
+2026-11-25T11:30:08.4189396Z npm test
+2026-11-25T11:30:08.4223536Z shell: /usr/bin/bash -e {0}
+2026-11-25T11:30:08.4223820Z ##[endgroup]
+2026-11-25T11:30:08.5278598Z
+2026-11-25T11:30:08.5279490Z > classpulse-client@0.1.0 test
+2026-11-25T11:30:08.5280729Z > vitest run
+2026-11-25T11:30:08.5281101Z
+2026-11-25T11:30:08.8182907Z
+2026-11-25T11:30:08.8185703Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/client
+2026-11-25T11:30:08.8186858Z
+2026-11-25T11:30:09.8960815Z stderr | tests/surveyReopen.test.tsx > TEST-112 confirms reopen with reason/current version then refreshes durable history
+2026-11-25T11:30:09.8964147Z ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+2026-11-25T11:30:09.8966909Z ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+2026-11-25T11:30:09.8967878Z
+2026-11-25T11:30:09.9390127Z  ✓ tests/RatingDots.test.tsx (1 test) 219ms
+2026-11-25T11:30:10.4050921Z  ✓ tests/surveyReopen.test.tsx (7 tests) 611ms
+2026-11-25T11:30:10.4268493Z
+2026-11-25T11:30:10.4277655Z  Test Files  2 passed (2)
+2026-11-25T11:30:10.4279187Z       Tests  8 passed (8)
+2026-11-25T11:30:10.4280528Z    Start at  11:30:08
+2026-11-25T11:30:10.4282279Z    Duration  1.61s (transform 190ms, setup 20ms, collect 531ms, tests 830ms, environment 774ms, prepare 144ms)
+2026-11-25T11:30:10.4283193Z
