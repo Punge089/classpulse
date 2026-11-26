@@ -74,3 +74,11 @@ B v2 UI observes original82a4806 marker21:27:28–21:34:37 Bangkok; later human0
 ## CP-V01 fixture data addendum — 25 November
 
 The human setup added user16/user17 and enrollment4; it is not a corrected application release. The same source/revision/digest/100%traffic was freshly confirmed at00:36:54Bangkok. [Immutable source-tag readback](../../../evidence/lab-06/checkpoint-20261124/fixture-ready-20261125/serving-reconfirmation.json). New fixture results must name this actual version and time; no future deployment freeze is assumed.
+
+## 26 November 2026: corrected deployment and independent retest
+
+[Closure](cp-ex-f01-closure.md) and [acceptance readiness](final-acceptance-readiness.md) supersede older pending-exercise/retest states. Main source `bee0d122bf23410e3d2db69649ad5e44959b6cd8` has the reviewed `0b8df1c8cb067a8e8249887925bb1f4b96948184` tree. Release PR #121 received A approval 6072306247; main deployment 45801951833 succeeded.
+
+A's 26 November 17:34:24 Cloud readback verified `classpulse-00007-6t9` / 100%. At 17:37:19, Registry mapped full source tag `bee0d122...` to OCI index `sha256:ff599f3bdf57eb83d2840709b83fbdc5b1e56ae5994e4866e10e5dfa8d25a89f` and its explicit linux/amd64 member `sha256:e00257d3b1c9cfdaabbe9b3f1d238c1d26fb342665f80122dcddc4550bc4388d`, matching Cloud Run. Old CP-V01 revision 00006 received 0% at that readback; its data remains retained.
+
+D's independent run `CP-FIX-001-D-20261126` used this source and A-mapped revision at 18:30:40–49 Bangkok: 5 Cloud subcases PASS, plus a separate local retention PASS at 18:26:54. C review 7190900011 supports the scoped result without rerun. New Cloud drafts 28/29 are distinct from original local drafts 3/6/9. CP-EX-F01 is fixed and independently verified; final acceptance and the remaining required-coverage/Workflow decisions are pending. This documentation performs no new deployment, tag movement or D Cloud readback.

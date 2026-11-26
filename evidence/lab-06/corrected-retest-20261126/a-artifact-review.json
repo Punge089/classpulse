@@ -1,0 +1,40 @@
+{
+  "archiveSha256": "1f4c502d1cab678ce3eb662e93fcd7120d698930a59c72d90c0b3619fb659e3a",
+  "payloadHashesVerified": 9,
+  "crc": "PASS",
+  "cloudSubcaseChecks": [
+    "CP-RT-01",
+    "CP-RT-02",
+    "CP-RT-03",
+    "CP-RT-04a",
+    "CP-RT-04b"
+  ],
+  "cloudSubcasesPassed": 5,
+  "localRetentionPassed": 1,
+  "sourceCommit": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "servingRevision": "classpulse-00007-6t9",
+  "mappingAttribution": "A17:34:24/17:37:19 Cloud/Registry mapping; D public continuity, not D direct Cloud readback",
+  "operator": "Codex GPT-6 under Thira/D",
+  "cloudStartUtc": "2026-11-26T11:30:40.777Z",
+  "cloudEndUtc": "2026-11-26T11:30:49.443Z",
+  "localRetentionUtc": "2026-11-26T11:26:54.444676+00:00",
+  "newCloudDrafts": [
+    28,
+    29
+  ],
+  "retainedDLocalDrafts": [
+    3,
+    6,
+    9
+  ],
+  "CReview": "VERIFIED osizk comment7190900011, no C rerun",
+  "AApplicationRerun": false,
+  "notes": [
+    "Raw report includes a private Discord DM link; retain original privately and redact only the published derivative with separate hashes.",
+    "Raw aria-invalid is null; inline title feedback/aria-describedby observed, no broader accessibility claim.",
+    "Final product acceptance and remaining coverage are separate from scoped defect closure."
+  ],
+  "screenshotsVisuallyInspected": 6,
+  "localRetentionTemporalScope": "Point-in-time18:26:54 before Cloud retest; no after-18:30 local DB readback claimed",
+  "negativeNoWriteScope": "Unchanged authorized owner-list IDs/no new draft; not a complete production-DB snapshot"
+}

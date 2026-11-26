@@ -1,0 +1,43 @@
+{
+  "release": "CP-FIX-001",
+  "verifiedSourceCommit": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "reviewedFeatureCommit": "0b8df1c8cb067a8e8249887925bb1f4b96948184",
+  "releasePr": 121,
+  "releaseReview": 6072306247,
+  "deployRun": 45801951833,
+  "deployRunConclusion": "SUCCESS",
+  "sourceTreeEqualsReviewedFeature": true,
+  "appUrl": "https://classpulse-zdwglar6eq-as.a.run.app/",
+  "consoleListedUrl": "https://classpulse-91139895529.asia-southeast1.run.app/",
+  "project": "cpe-334-en-034",
+  "region": "asia-southeast1",
+  "service": "classpulse",
+  "servingRevision": "classpulse-00007-6t9",
+  "trafficPercent": 100,
+  "imageIndexDigest": "sha256:ff599f3bdf57eb83d2840709b83fbdc5b1e56ae5994e4866e10e5dfa8d25a89f",
+  "servingRuntimeManifestDigest": "sha256:e00257d3b1c9cfdaabbe9b3f1d238c1d26fb342665f80122dcddc4550bc4388d",
+  "platform": {
+    "os": "linux",
+    "architecture": "amd64"
+  },
+  "cloudObservedAtUtc": "2026-11-26T10:34:24.572Z",
+  "cloudObservedAtBangkok": "2026-11-26T17:34:24.572+07:00",
+  "registryObservedAtUtc": "2026-11-26T10:37:19.125Z",
+  "registryObservedAtBangkok": "2026-11-26T17:37:19.125+07:00",
+  "registryManifestMembershipVerified": true,
+  "registrySourceTagVerified": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "sessionTtlHours": 8,
+  "previousRevision": "classpulse-00006-6w6",
+  "previousTrafficPercent": 0,
+  "verifier": "Codex GPT-6 under A/Punge089",
+  "humanReleaseReceipt": "human-release-receipt.json",
+  "privateDeploymentNotice": "Human reported sent; not Codex observed/sent",
+  "DIndependentCorrectedRetest": "NOT RUN",
+  "finalAcceptance": "PENDING",
+  "businessDataMutationByVerification": false,
+  "notes": [
+    "Do not conflate the index ff599 with linux/amd64 manifest e002; registry Manifest JSON confirms membership.",
+    "D local drafts3/6/9 are not cloud records.",
+    "Source metadata is unavailable in Cloud Run container view; lineage is verified through main workflow checkout/tag/export and explicit Registry tag/index/member readback."
+  ]
+}
