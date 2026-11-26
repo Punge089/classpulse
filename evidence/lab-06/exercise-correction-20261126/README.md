@@ -11,3 +11,13 @@ This is the instructor-standardized educational fallback: the developer delibera
 Keep raw observation history: initial Submitted-badge FAIL checked an inner container; later whole-card/API verification supports PASS without a code change. The initial empty-title PASS also had an invalid question and does not negate the later valid-question201 reproduction. Counts are observations, not independent full test-case totals. C review remains separate/pending.
 
 Follow the [correction contract](../../../docs/labs/lab-06/exercise-correction-contract.md). Actual reported-case RED/GREEN/full regression, B review/current CI, corrected release/deployment, independent retest and final acceptance are pending at this contract commit. No resets/cleanup of D data or cloud operations are authorized by these records.
+
+## Actual correction results
+
+[Correction summary](correction-summary.json), [reported-case RED](red/README.md), [GREEN/full regression](green/README.md), [browser feedback regression](ui/README.md), [exact one-line runtime diff](corrected-runtime-diff.patch). Final tested fix3d6f087:4/4 focused,143/143 server,1/1 client,2/2 existing owner browser cases, both builds pass;0failed/0skipped in GREEN.
+
+The initial RED-output copy failed due Windows text decoding; dependent commands incorrectly committed a first fix before RED evidence entered Git. [Initial runs/deviation](initial-red/README.md) remain in history; the explicit append-only repeat29c1d51 ran fresh RED, committed evidence aed4be8 while still faulty, then final fix3d6f087 and clean GREEN. No backdating/amending/reordering.
+
+[Historical educational provenance](disclosed-exercise-provenance/README.md) is now disclosed after discovery. B current-head review/green CI, corrected staged/main release/deployment, independent retest, C review and final acceptance remain pending. All owned local clusters/processes stopped; D drafts3/6/9 and CPV01 data untouched.
+
+Byte preservation: original evidence remains -text. A plain diff --check flagged CR-at-EOL in appended Windows text; this directory explicitly recognizes cr-at-eol rather than rewriting original received/run bytes. No product assertion or failure was altered.

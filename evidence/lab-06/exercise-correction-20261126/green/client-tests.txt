@@ -1,0 +1,14 @@
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/work117/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 301ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  15:23:28
+   Duration  2.12s (transform 39ms, setup 12ms, collect 357ms, tests 301ms, environment 774ms, prepare 208ms)
+

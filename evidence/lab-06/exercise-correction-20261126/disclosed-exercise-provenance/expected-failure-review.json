@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "baselineSource": "9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35",
+  "baselineServerPassed": 139,
+  "faultyServerPassed": 134,
+  "faultyServerFailed": 5,
+  "skipped": 0,
+  "existingFailureTitles": [
+    "FAIL  tests/api/ownerSurveys.test.ts > F-03 create a survey > TEST-12 invalid bodies are 400 VALIDATION_ERROR with details and store nothing",
+    "FAIL  tests/api/ownerSurveys.test.ts > F-03 create a survey > TEST-13 course ownership (404) is checked before field validation (400)",
+    "FAIL  tests/unit/surveyValidation.test.ts > TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 1 title empty is rejected and names the field",
+    "FAIL  tests/unit/surveyValidation.test.ts > TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 2 title spaces only is rejected and names the field",
+    "FAIL  tests/unit/surveyValidation.test.ts > TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > several bad fields are all listed, one entry per field"
+  ],
+  "rawRunDirectory": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\uat6-exercise117-validation-20261126-2026-11-25T17-26-38-824Z",
+  "newReportedCaseTestsWritten": false,
+  "faultyCountsAreNotAClaimOfMeaningfulNewReportedCaseRed": true
+}
