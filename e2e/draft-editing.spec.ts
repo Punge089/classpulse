@@ -24,8 +24,8 @@ test("TEST-130 edited questions persist, publish and accept a response", async (
   await page.getByRole("button", { name: "Save questions" }).click();
   await expect(page).toHaveURL(new RegExp(`/owner/surveys/${surveyId}$`));
   await page.reload();
-  await expect(page.getByText("Moved question", { exact: true })).toBeVisible();
-  await expect(page.getByText("Edited question", { exact: true })).toBeVisible();
+  await expect(page.getByText("1. Moved question", { exact: true })).toBeVisible();
+  await expect(page.getByText("2. Edited question", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Publish" }).click();
   await expect(page.getByText("Published", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Logout" }).click();
