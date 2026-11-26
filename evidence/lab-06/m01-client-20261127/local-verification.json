@@ -1,0 +1,24 @@
+{
+  "evidenceRecordedAtBangkok": "2026-11-27T00:42:55.015799+07:00",
+  "issue": 127,
+  "operator": "Codex GPT-6 under A/Punge089",
+  "base": "a3a0424f6574696363ea5268131725ae2f390ba2",
+  "command": "python -B -m unittest discover -s tools/uat -p test_m01_live_check.py -v",
+  "python": "3.14.6",
+  "passed": 25,
+  "failed": 0,
+  "skipped": 0,
+  "exitCode": 0,
+  "lastObservedDurationSeconds": 0.049,
+  "scope": "Offline utility tests with fake transport; no app, live authentication, cloud or database executed",
+  "testedFileSha256": {
+    "tools/uat/m01_live_check.py": "6156db43b1aa20b48ab50908ff1581848740e2bd70440a0e7d82a8a5328840bc",
+    "tools/uat/test_m01_live_check.py": "441be534ebd5f0862ca85abf68997406966fc4de724187ff69fdb874c015fb02",
+    "docs/labs/lab-06/m01-live-client.md": "19461959ec9a14af0d2daca3fdd06e645dde65c6274bee9b8f829af96d2dd124"
+  },
+  "existingContract": "F-01 AC04 and PR123 M01 method; operational evidence utility, no new product requirement/feature",
+  "independentLiveM01": "NOT RUN by this validation",
+  "reviewGate": "B exact executable review/current CI pending; no self approval",
+  "workflowPythonSuiteIncluded": false,
+  "ciScope": "Existing mandatory PR workflow checks app/build/Docker; B separately runs documented Python utility suite"
+}
