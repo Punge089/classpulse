@@ -24,7 +24,12 @@ test("TEST-32 a respondent submits an identified survey once and sees confirmati
   expect(Number.isInteger(surveyId)).toBe(true);
   await page.getByRole("button", { name: "Publish" }).click();
   await expect(page.getByText("Published", { exact: true })).toBeVisible({ timeout: 5_000 });
+  const logoutResponse = page.waitForResponse(response =>
+    response.url().endsWith("/api/auth/logout") && response.request().method() === "POST"
+  );
   await page.getByRole("button", { name: "Logout" }).click();
+  expect((await logoutResponse).status()).toBe(204);
+  await expect(page).toHaveURL(/\/login$/);
 
   await signIn(page, "student1@classpulse.test", seedPassword());
   await expect(page).toHaveURL(/\/surveys$/, { timeout: 5_000 });
