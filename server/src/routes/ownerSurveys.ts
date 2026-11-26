@@ -6,6 +6,7 @@ import { parseId } from "../lib/params";
 import { nextStatus, type SurveyAction } from "../lib/surveyLifecycle";
 import { parseCourseId, validateSurveyInput } from "../lib/surveyValidation";
 import { getPrisma } from "../prisma";
+import { parseLifecycleQuery, parseReopenInput } from "../lib/surveyReopenValidation";
 
 const surveyInclude = {
   course: { select: { code: true } },
@@ -23,6 +24,7 @@ function toSurveyDto(survey: SurveyRow) {
     description: survey.description,
     mode: survey.mode,
     status: survey.status,
+    statusVersion: survey.statusVersion,
     publishedAt: survey.publishedAt,
     closedAt: survey.closedAt,
     createdAt: survey.createdAt,
@@ -40,27 +42,52 @@ function toSurveyDto(survey: SurveyRow) {
 const notFound = () => new ApiError(404, "NOT_FOUND", "Survey not found");
 
 /**
- * Publish or close. The status change is a conditional update (id, owner and the status we just read), so two
- * simultaneous requests cannot both succeed.
+ * Lock the owned survey, conditionally transition and record its audit event in one transaction.
+ * The explicit reopen version also protects against a close/reopen/close ABA cycle.
  */
 function transition(action: SurveyAction) {
   return asyncRoute(async (req, res) => {
     const prisma = getPrisma();
     const ownerId = req.user!.id;
     const id = parseId(req.params.id);
-    const survey = await prisma.survey.findFirst({ where: { id, ownerId }, select: { status: true } });
-    if (!survey) throw notFound();
-
-    const to = nextStatus(survey.status, action);
-    const now = new Date();
-    const changed = await prisma.survey.updateMany({
-      where: { id, ownerId, status: survey.status },
-      data: action === "publish" ? { status: to, publishedAt: now } : { status: to, closedAt: now }
+    const updated = await prisma.$transaction(async tx => {
+      const owned = await tx.$queryRaw<{ id: number }[]>`
+        SELECT "id" FROM "Survey" WHERE "id" = ${id} AND "ownerId" = ${ownerId} FOR UPDATE`;
+      if (owned.length !== 1) throw notFound();
+      const survey = await tx.survey.findFirstOrThrow({ where: { id, ownerId } });
+      const input = action === "reopen" ? parseReopenInput(req.body) : null;
+      const stale = () => new ApiError(409, "STALE_SURVEY", "The survey changed; reload and explicitly try again");
+      if (input && input.expectedVersion !== survey.statusVersion) throw stale();
+      const to = nextStatus(survey.status, action);
+      if (action === "reopen" && survey.publishedAt === null) {
+        throw new ApiError(409, "INVALID_TRANSITION", "This survey has no original publication time");
+      }
+      if (survey.statusVersion >= 2147483647) throw stale();
+      const now = new Date();
+      const changed = await tx.survey.updateMany({
+        where: { id, ownerId, status: survey.status, statusVersion: survey.statusVersion },
+        data: {
+          status: to,
+          statusVersion: { increment: 1 },
+          ...(action === "publish" ? { publishedAt: now } : action === "close" ? { closedAt: now } : { closedAt: null })
+        }
+      });
+      if (changed.count !== 1) throw stale();
+      await tx.surveyLifecycleEvent.create({
+        data: {
+          surveyId: id,
+          actorId: ownerId,
+          action: action === "publish" ? "PUBLISH" : action === "close" ? "CLOSE" : "REOPEN",
+          fromStatus: survey.status,
+          toStatus: to,
+          version: survey.statusVersion + 1,
+          occurredAt: now,
+          reason: input?.reason ?? null,
+          previousClosedAt: action === "reopen" ? survey.closedAt : null
+        }
+      });
+      return tx.survey.findFirstOrThrow({ where: { id, ownerId }, include: surveyInclude });
     });
-    if (changed.count !== 1) {
-      throw new ApiError(409, "INVALID_TRANSITION", "The survey changed while you were working; reload and try again");
-    }
-    const updated = await prisma.survey.findFirstOrThrow({ where: { id, ownerId }, include: surveyInclude });
     res.json({ survey: toSurveyDto(updated) });
   });
 }
@@ -142,3 +169,20 @@ ownerSurveysRouter.get("/surveys/:id", asyncRoute(async (req, res) => {
 
 ownerSurveysRouter.post("/surveys/:id/publish", transition("publish"));
 ownerSurveysRouter.post("/surveys/:id/close", transition("close"));
+ownerSurveysRouter.post("/surveys/:id/reopen", transition("reopen"));
+
+ownerSurveysRouter.get("/surveys/:id/lifecycle", asyncRoute(async (req, res) => {
+  const id = parseId(req.params.id);
+  const prisma = getPrisma();
+  const survey = await prisma.survey.findFirst({ where: { id, ownerId: req.user!.id }, select: { id: true } });
+  if (!survey) throw notFound();
+  const { limit, before } = parseLifecycleQuery(req.query);
+  const rows = await prisma.surveyLifecycleEvent.findMany({
+    where: { surveyId: id, ...(before === undefined ? {} : { id: { lt: before } }) },
+    orderBy: { id: "desc" },
+    take: limit + 1,
+    select: { id: true, version: true, action: true, fromStatus: true, toStatus: true, reason: true, occurredAt: true, previousClosedAt: true }
+  });
+  const events = rows.slice(0, limit);
+  res.json({ events, nextCursor: rows.length > limit ? events[events.length - 1].id : null });
+}));

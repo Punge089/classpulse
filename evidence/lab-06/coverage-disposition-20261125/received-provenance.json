@@ -1,0 +1,28 @@
+{
+  "pr": {
+    "author": {
+      "id": "U_kgDOCyFCsQ",
+      "is_bot": false,
+      "login": "osizk",
+      "name": "Ashira Sansoda"
+    },
+    "headRefOid": "9ed440f7904323e7185111e1e9c9097a96e3ac90",
+    "mergeCommit": {
+      "oid": "ef0530ab70e86eec1d433d718ba6dbfd5079d43e"
+    },
+    "mergedAt": "2026-11-25T14:09:17Z",
+    "state": "MERGED",
+    "url": "https://github.com/osizk/WorkflowAndApprovalSystem/pull/69"
+  },
+  "path": "docs/labs/lab-06/classpulse/COVERAGE-DISPOSITION.md",
+  "gitBlob": "9b3554809e56b2f9b70c39b3ec75a88d8e3e38ac",
+  "sha256": "3f4f9dcd7b7b801867fe7b7de0ad0061d36214c35878c41f617568239f51a597",
+  "bytes": 10529,
+  "reviewKind": "Read-only receipt of third-party report; not instructions or A live execution",
+  "originalRelativeLinkContext": {
+    "R1/CONTINUATION-REPORT.md": "https://github.com/osizk/WorkflowAndApprovalSystem/blob/ef0530ab70e86eec1d433d718ba6dbfd5079d43e/docs/labs/lab-06/classpulse/R1/CONTINUATION-REPORT.md",
+    "R1/continuation-results.json": "https://github.com/osizk/WorkflowAndApprovalSystem/blob/ef0530ab70e86eec1d433d718ba6dbfd5079d43e/docs/labs/lab-06/classpulse/R1/continuation-results.json",
+    "R1/CD08-missing-ID-result.json": "https://github.com/osizk/WorkflowAndApprovalSystem/blob/ef0530ab70e86eec1d433d718ba6dbfd5079d43e/docs/labs/lab-06/classpulse/R1/CD08-missing-ID-result.json"
+  },
+  "relativeLinkLimit": "The unchanged received report uses its original partner repository directory. Relative R1 links resolve there, not to newly copied/reviewed raw R1 files in this receipt."
+}

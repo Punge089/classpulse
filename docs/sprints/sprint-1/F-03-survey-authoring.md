@@ -169,3 +169,14 @@ All six owner routes are also appended to `PROTECTED_ROUTES` in `server/tests/ap
 | v1.0 | 2026-11-06 | Punge089 | Initial contract, written before tests and code. |
 | v1.1 | 2026-11-06 | Punge089 | After C3 review by book6349: (1) the check order for create now follows plan §2.5 (course ownership 404 before field validation 400; a malformed `courseId` is 400), with a test case for a foreign course plus an invalid title; (2) TEST-11 lists its 18 cases explicitly, including the duplicate pair `"Yes"` and `" yes "`. |
 | v1.2 | 2026-11-07 | Punge089 | After the review of PR #18: two tests carried the ID TEST-20 (the survey list and the course list). The survey list keeps TEST-20; the course-list check becomes TEST-58, and AC-18 now names the course list so the test has a criterion. The two E2E scenarios of TEST-21 are named TEST-21a and TEST-21b. No behaviour change. |
+
+
+## Lab 7 maintenance addendum - proposed v2.0, Issue #87
+
+The v1.0-v1.2 sections above describe the original Sprint 1 contract and remain preserved. For the proposed Lab 7 version, §§2/3/5/6/7/8/9/10 are extended by the [complete maintenance contract](../../labs/lab-07/maintenance-contract.md), committed before tests/code. B C3 pending.
+
+Old: CLOSED is terminal. New: only the owner can explicitly POST reopen with a trimmed10..300 UTF-16-unit reason/current lifecycle version; CLOSED->PUBLISHED preserves original publishedAt/answers, records the previous closedAt, clears current closedAt, increments statusVersion and atomically appends an event. Existing publish-on-CLOSED remains409, so AC-14 and original TEST-15/16 remain valid. No draft edit, question mutation or repeated respondent submission is enabled.
+
+Additional endpoints: POST /api/owner/surveys/:id/reopen and GET /api/owner/surveys/:id/lifecycle; both use401/403/404 auth/role/ownership rules. Detail DTO adds statusVersion. New400 invalid reason/version/query and409 stale/invalid-state rules are explicit in maintenance §§4/6. UI shows CLOSED reason confirmation and durable paginated history. Additive statusVersion/event migration replaces the original no-schema-change statement only for this maintenance extension; no old rows or events are invented/deleted.
+
+New acceptance AC-100..111 and test designs TEST-100..114 cover boundaries, concurrency/ABA, audit rollback, history privacy, unchanged responses/summary, migration, UI and deployment. Complete inputs/preconditions/expected results/files are embedded in maintenance §10. The original six transition tests remain; new reopen cases are additive. Version2.0 proposed,25Nov2026,A: changed collection requirement, awaiting team review; no implementation is claimed.

@@ -1,0 +1,87 @@
+{
+  "kind": "A review of received independent-team artifacts; no A re-execution",
+  "reviewer": "Codex GPT-6 under Student A/Punge089",
+  "runId": "UAT6-20261125-CodexD-R2",
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "servingRevision": "classpulse-00006-6w6",
+  "versionBasis": "Partner Cloud Run/Artifact Registry readback in fixture ZIP. Tester verified reachability and the live behavior and recorded the public asset path. Full cloud mapping was not independently queried during this run.",
+  "newCloudMappingInRun": false,
+  "sourceJsonSha256": "2d059aa538206e7820cedb9357f3c40174eccc01b1820abaae3437d6c297a8f6",
+  "imageSha256": "e98c4888b94eef12b2c813ac5dccd5a91b23b9e6663a4450b74a5fad9f2f3067",
+  "sourceImageAttachmentName": "codex-clipboard-7f132584-1ca7-4e3c-ab7d-48dbc1c3b1f5.png",
+  "storedImageName": "CD07-summary.png",
+  "imageDimensions": [
+    1920,
+    897
+  ],
+  "imageVisuallyInspected": true,
+  "caseDispositions": [
+    {
+      "case": "CD-01 inactive-account branch",
+      "result": "PASS within recorded scope",
+      "fixtureId": 17,
+      "startUtc": "2026-11-25T10:49:22.731Z",
+      "endUtc": "2026-11-25T10:49:23.649Z",
+      "beforeStatus": 401,
+      "loginStatus": 401,
+      "loginCode": "INVALID_CREDENTIALS",
+      "afterStatus": 401,
+      "wholeCD01Complete": false
+    },
+    {
+      "case": "CD-07 exact aggregate",
+      "result": "PASS within recorded scope",
+      "surveyId": 26,
+      "baselineResponseCount": 0,
+      "respondentIds": [
+        3,
+        5,
+        16
+      ],
+      "responseIds": [
+        13,
+        14,
+        15
+      ],
+      "ratings": [
+        4,
+        4,
+        5
+      ],
+      "responseCount": 3,
+      "average": 4.33,
+      "ratingDistribution": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 2,
+        "5": 1
+      },
+      "choiceCounts": [
+        {
+          "optionId": 40,
+          "label": "Online",
+          "count": 3
+        },
+        {
+          "optionId": 41,
+          "label": "In person",
+          "count": 0
+        }
+      ],
+      "aggregateJsonAndUiAgree": true,
+      "summaryUiTimeUtc": "2026-11-25T10:52:32.958Z",
+      "imageAgreesWithNumericValues": true,
+      "summaryPrivacy": "Aggregate payload has no respondent identity/individual responses. Screenshot header identifies owner Ann Lee, which is distinct from respondent disclosure."
+    }
+  ],
+  "allFourActiveLogout204ThenIdentity401": true,
+  "operatorAttribution": "Codex under Thira Rungruangkaset (tester D, EN-037_P5)",
+  "model": "Not specified by C/D",
+  "startNoticeQualification": "Fixture access was verified in the ClassPulse DM. Delivery of the separate test-start notice was unverified.",
+  "sanitization": "Shared copy. Removed the deployment image digest and internal coordination wording. All observed outputs, release source/revision identifiers, timestamps and case outcomes are retained.",
+  "artifactEncodingNote": "Some received accessibility strings contain replacement characters; original bytes are preserved. The screenshot/numeric assertions do not establish a product encoding defect.",
+  "controlledLiveExpiry": "OPEN / NOT VERIFIED BY THESE FILES",
+  "finalAcceptance": false,
+  "classPulsePartDComplete": false
+}

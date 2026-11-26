@@ -1,0 +1,43 @@
+{
+  "pr": {
+    "author": {
+      "id": "U_kgDOCyFCsQ",
+      "is_bot": false,
+      "login": "osizk",
+      "name": "Ashira Sansoda"
+    },
+    "baseRefName": "lab6",
+    "headRefOid": "4ffdc291ddc52f33b0a6d5a8b0c9c9ba7e715448",
+    "mergeCommit": {
+      "oid": "04e4906e200bf3567154854aad7e202beab6e15d"
+    },
+    "mergedAt": "2026-11-25T13:39:11Z",
+    "number": 68,
+    "state": "MERGED",
+    "title": "[Lab 6] Record exact-command ClassPulse expiry rerun",
+    "url": "https://github.com/osizk/WorkflowAndApprovalSystem/pull/68"
+  },
+  "artifactComparisons": [
+    {
+      "path": "docs/labs/lab-06/classpulse/CP-V01-TEST-05/exact-command/REPORT.md",
+      "matchesSuppliedBytes": true,
+      "sha256": "9a6cf76c2f883c7fc1f9a75293274fb790c15e3ab2f1fe7eef00cf28f3cf1d51"
+    },
+    {
+      "path": "docs/labs/lab-06/classpulse/CP-V01-TEST-05/exact-command/auth-test-output.txt",
+      "matchesSuppliedBytes": true,
+      "sha256": "392e1097f69643acd1a4f574a571ca7506725cbc454cee15da2616728d7ad4fc"
+    },
+    {
+      "path": "docs/labs/lab-06/classpulse/CP-V01-TEST-05/exact-command/migration-output.txt",
+      "matchesSuppliedBytes": true,
+      "sha256": "26d3033cc870fa2d136b26bdef980ad3128b69dd795e18b7a2c37eb3b4a68e00"
+    },
+    {
+      "path": "docs/labs/lab-06/classpulse/CP-V01-TEST-05/exact-command/run-proof.json",
+      "matchesSuppliedBytes": true,
+      "sha256": "4f5be9a5400b0210b5ba9080d84ed5a60ee6160e7a9c105078d55a8579615d18"
+    }
+  ],
+  "scope": "Read-only public repository provenance check; no approval, merge or execution by A."
+}

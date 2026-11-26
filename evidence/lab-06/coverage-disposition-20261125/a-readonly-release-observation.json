@@ -1,0 +1,22 @@
+{
+  "operator": "Codex GPT-6 under A/Punge089",
+  "kind": "Read-only CloudConsole visible UI observation",
+  "observedAtUtc": "2026-11-25T14:15:48.142Z",
+  "observedAtBangkok": "2026-11-25T21:15:48.142+07:00",
+  "project": "cpe-334-en-034",
+  "service": "classpulse",
+  "region": "asia-southeast1",
+  "consoleUrl": "https://console.cloud.google.com/run/detail/asia-southeast1/classpulse/revisions?project=cpe-334-en-034",
+  "revision": "classpulse-00006-6w6",
+  "trafficPercent": 100,
+  "trafficLabel": "100% (to latest)",
+  "image": "asia-southeast1-docker.pkg.dev/cpe-334-en-034/classpulse/classpulse@sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795",
+  "sessionTtlHoursSetting": 8,
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "sourceMappingBasis": "Earlier verified CP-V01 source/image mapping, carried forward because the freshly observed immutable digest is identical. Registry tag/build source was not newly inspected in this UI block.",
+  "scopeLimits": [
+    "Visible UI transcription, not raw gcloud export or independent live expiry",
+    "No rollout, traffic, environment, IAM, credential, database or cloud provisioning change",
+    "One DOM snapshot timed out; accessibility observation then succeeded; no product failure inferred"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-11-25T12:12:11Z",
+  "headSha": "d96059bb83b5f59f7bf2bb3c56614d188c8619fc",
+  "status": "completed",
+  "updatedAt": "2026-11-25T12:14:37Z",
+  "url": "https://github.com/Punge089/classpulse/actions/runs/45611503013",
+  "runId": 45611503013,
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install root dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install server dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install client dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Generate Prisma client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Apply database migrations",
+      "conclusion": "success"
+    },
+    {
+      "name": "Seed synthetic test accounts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install Chromium for preserved and maintenance browser tests",
+      "conclusion": "success"
+    },
+    {
+      "name": "Reseed synthetic CI accounts for browser tests",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test complete browser suite",
+      "conclusion": "success"
+    },
+    {
+      "name": "Retain browser evidence",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build Docker image locally",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "sha256": {
+    "review-candidate-ci-server.txt": "25c96952bad5d70ffa31a08e791e9027dc176e3a199d7bacbb2bf7b7f5cbe8ea",
+    "review-candidate-ci-client.txt": "2bdddc4f957fe2112ac2fc8d56f5e064075b9234029376a988e4c23a53a7123d",
+    "review-candidate-ci-browser.txt": "e61f7c46876d4c2261dae2a0f7076f29276367b695412b7153aeebc20ba72c49"
+  },
+  "counts": {
+    "server": {
+      "passed": 219,
+      "failed": 0,
+      "skipped": 0
+    },
+    "client": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "annotation": "Pinned upload-artifact v4 targets Node20; runner warns and forces Node24. Artifact upload succeeded. Not a failed/skipped test.",
+  "sourceHashes": {
+    "server/tests/api/surveyReopen.test.ts": "a3bdd3038a65078f84b762b3a446fe7bc4edc493b55c128619e50def68019e21",
+    "client/tests/surveyReopen.test.tsx": "cc5ab903263235add7987df1a79d286acbf15f1e721ea72954cc1a179350bda0",
+    "e2e/survey-reopen.spec.ts": "e2fad9b6812c93431cfb7076cb82d377ee70feb08b764eb976f6b846986c6839"
+  }
+}
