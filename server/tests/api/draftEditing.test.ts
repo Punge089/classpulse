@@ -96,3 +96,43 @@ test("TEST-125 stale token cannot overwrite newer questions", async () => {
   } });
   expect(after).toEqual(before);
 });
+
+test.each([
+  { name: "empty", questions: [] },
+  { name: "too many", questions: Array.from({ length: 21 }, () => ({ prompt: "Q", type: "RATING" })) },
+  { name: "blank prompt", questions: [{ prompt: " ", type: "RATING" }] },
+  { name: "long prompt", questions: [{ prompt: "x".repeat(301), type: "RATING" }] },
+  { name: "duplicate choices", questions: [{ prompt: "Q", type: "SINGLE_CHOICE", options: ["Yes", " yes "] }] },
+  { name: "rating choices", questions: [{ prompt: "Q", type: "RATING", options: ["No"] }] },
+  { name: "supplied identifier", questions: [{ id: 1, prompt: "Q", type: "RATING" }] }
+])("TEST-122 rejects $name and leaves existing rows intact", async ({ questions }) => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(), questions
+  });
+  expect(result.status).toBe(400);
+  expect(result.body.error.code).toBe("VALIDATION_ERROR");
+  expect(result.body.error.details.length).toBeGreaterThan(0);
+  const stored = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(stored).toEqual(original);
+});
+
+test("TEST-125 concurrent same-token edits produce one winner", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner1 = await loginAs(app, fixture.owner1.email);
+  const owner2 = await loginAs(app, fixture.owner1.email);
+  const edit = (prompt: string) => ({ expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt, type: "RATING" }] });
+  const [a, b] = await Promise.all([
+    owner1.put(`/api/owner/surveys/${original.id}/questions`).send(edit("First")),
+    owner2.put(`/api/owner/surveys/${original.id}/questions`).send(edit("Second"))
+  ]);
+  expect([a.status, b.status].sort()).toEqual([200, 409]);
+  expect((a.status === 409 ? a : b).body.error.code).toBe("STALE_SURVEY");
+  const stored = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: { questions: true } });
+  expect(stored.questions).toHaveLength(1);
+  expect(stored.questions[0].prompt).toBe(a.status === 200 ? "First" : "Second");
+  expect(stored.statusVersion).toBe(original.statusVersion);
+});
