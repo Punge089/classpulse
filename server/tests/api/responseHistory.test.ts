@@ -19,9 +19,9 @@ function answers(survey: SurveyWithQuestions) {
 }
 async function saved(student = f.student1, status: "PUBLISHED" | "CLOSED" = "PUBLISHED", title = "History survey", submittedAt = new Date()) {
   const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, status });
-  const named = await prisma.survey.update({ where: { id: survey.id }, data: { title } });
+  await prisma.survey.update({ where: { id: survey.id }, data: { title } });
   const response = await prisma.response.create({ data: { surveyId: survey.id, respondentId: student.id, submittedAt } });
-  return { survey: named, response };
+  return { survey: { ...survey, title }, response };
 }
 const cursor = (submittedAt: Date, id: number) => Buffer.from(JSON.stringify({ submittedAt: submittedAt.toISOString(), id })).toString("base64url");
 const fields = (res: { body: { error: { details?: Array<{ field: string }> } } }) => (res.body.error.details ?? []).map(item => item.field);
