@@ -58,7 +58,7 @@ export function validateSurveyInput(body: unknown): SurveyValidation {
   if (!validCourseId(courseId)) fail("courseId", "Choose one of your courses");
 
   const title = typeof input.title === "string" ? input.title.trim() : "";
-  if (title.length < 1 || title.length > MAX_TITLE) fail("title", `Title must be 1 to ${MAX_TITLE} characters`);
+  if (title.length > MAX_TITLE) fail("title", `Title must be 1 to ${MAX_TITLE} characters`);
 
   let description: string | null = null;
   if (input.description !== undefined && input.description !== null) {
