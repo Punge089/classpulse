@@ -97,6 +97,34 @@ test("TEST-125 stale token cannot overwrite newer questions", async () => {
   expect(after).toEqual(before);
 });
 
+test("TEST-127 failed replacement rolls back questions, options and update token", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  await prisma.$executeRawUnsafe(`CREATE OR REPLACE FUNCTION f06_reject_question() RETURNS trigger AS $$
+    BEGIN IF NEW.prompt = 'F06 forced rollback' THEN RAISE EXCEPTION 'F06 test fault'; END IF; RETURN NEW; END;
+    $$ LANGUAGE plpgsql`);
+  try {
+    await prisma.$executeRawUnsafe(`CREATE TRIGGER f06_reject_question_trigger BEFORE INSERT ON "Question"
+      FOR EACH ROW EXECUTE FUNCTION f06_reject_question()`);
+    const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+      expectedUpdatedAt: original.updatedAt.toISOString(),
+      questions: [
+        { prompt: "First replacement", type: "SINGLE_CHOICE", options: ["Yes", "No"] },
+        { prompt: "F06 forced rollback", type: "RATING" }
+      ]
+    });
+    expect(result.status).toBe(500);
+    expect(result.body).toEqual({ error: { code: "INTERNAL_ERROR", message: "An unexpected error occurred" } });
+    const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+      questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+    } });
+    expect(after).toEqual(original);
+  } finally {
+    await prisma.$executeRawUnsafe('DROP TRIGGER IF EXISTS f06_reject_question_trigger ON "Question"');
+    await prisma.$executeRawUnsafe("DROP FUNCTION IF EXISTS f06_reject_question()");
+  }
+});
+
 test.each([
   { name: "empty", questions: [] },
   { name: "too many", questions: Array.from({ length: 21 }, () => ({ prompt: "Q", type: "RATING" })) },
