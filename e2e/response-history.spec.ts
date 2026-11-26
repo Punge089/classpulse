@@ -19,6 +19,7 @@ test("TEST-179 respondent can read and revisit a saved response after survey clo
   await expect(page.getByText("Published", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Logout" }).click();
   await signIn(page, "student1@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/surveys$/);
   await page.goto(`/surveys/${surveyId}`);
   await expect(page.getByText("Identified survey — your name is stored with your answers", { exact: true })).toBeVisible();
   await page.getByLabel("Rating 4 of 5").locator("xpath=..").click();
