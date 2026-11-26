@@ -92,3 +92,31 @@ test("TEST-129 cancel discards unsaved edits without a write request", async () 
   expect(await screen.findByText("Returned to detail")).toBeTruthy();
   expect(vi.mocked(apiFetch)).toHaveBeenCalledTimes(1);
 });
+
+test("TEST-129 announces loading before showing the draft", async () => {
+  let resolve!: (value: unknown) => void;
+  const pending = new Promise<unknown>(done => { resolve = done; });
+  vi.mocked(apiFetch).mockReset().mockReturnValueOnce(pending);
+  editor();
+  expect(screen.getByRole("status").textContent).toContain("Loading survey");
+  expect(screen.queryByLabelText("Question 1 text")).toBeNull();
+  resolve({ survey: draft });
+  expect(await screen.findByLabelText("Question 1 text")).toBeTruthy();
+});
+
+test("TEST-129 network failure preserves edits and permits an explicit retry", async () => {
+  const user = userEvent.setup();
+  vi.mocked(apiFetch).mockReset().mockResolvedValueOnce({ survey: draft })
+    .mockRejectedValueOnce(new Error("offline")).mockResolvedValueOnce({ survey: draft });
+  editor();
+  const prompt = await screen.findByLabelText("Question 1 text") as HTMLInputElement;
+  await user.clear(prompt);
+  await user.type(prompt, "Keep this edit");
+  await user.click(screen.getByRole("button", { name: "Save questions" }));
+  expect((await screen.findByRole("alert")).textContent).toContain("Could not save");
+  expect(prompt.value).toBe("Keep this edit");
+  expect(vi.mocked(apiFetch)).toHaveBeenCalledTimes(2);
+  await user.click(screen.getByRole("button", { name: "Save questions" }));
+  expect(await screen.findByText("Returned to detail")).toBeTruthy();
+  expect(vi.mocked(apiFetch)).toHaveBeenCalledTimes(3);
+});
