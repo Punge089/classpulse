@@ -194,6 +194,37 @@ test.each([2, 6])("TEST-121 accepts %i distinct choices", async count => {
   expect(result.body.survey.questions[0].options.map((option: { label: string }) => option.label)).toEqual(options);
 });
 
+test("TEST-121 preserves valid prompt and choice length endpoints", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const questions = [
+    { prompt: "X", type: "RATING" },
+    { prompt: "Q".repeat(300), type: "SINGLE_CHOICE", options: ["Y", "Z".repeat(100)] }
+  ];
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({ expectedUpdatedAt: original.updatedAt.toISOString(), questions });
+  expect(result.status).toBe(200);
+  expect(result.body.survey.questions.map((q: { prompt: string }) => q.prompt)).toEqual(questions.map(q => q.prompt));
+  expect(result.body.survey.questions[1].options.map((option: { label: string }) => option.label)).toEqual(questions[1].options);
+});
+
+test("TEST-123 published response and answer survive rejected replacement", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "PUBLISHED" });
+  const response = await prisma.response.create({ data: { surveyId: original.id, respondentId: fixture.student1.id } });
+  await prisma.answer.create({ data: { responseId: response.id, questionId: original.questions[0].id, ratingValue: 4 } });
+  const before = await prisma.response.findUniqueOrThrow({ where: { id: response.id }, include: { answers: true } });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const rejected = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt: "Replacement", type: "RATING" }]
+  });
+  expect(rejected.status).toBe(409);
+  expect(rejected.body.error.code).toBe("INVALID_TRANSITION");
+  expect(await prisma.response.findUniqueOrThrow({ where: { id: response.id }, include: { answers: true } })).toEqual(before);
+  const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(after).toEqual(original);
+});
+
 test("TEST-123 closed and reopened surveys reject editing and retain questions", async () => {
   const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "CLOSED" });
   const owner = await loginAs(app, fixture.owner1.email);
