@@ -1,0 +1,27 @@
+{
+  "instructorMethod": "Required-field-validation fallback",
+  "auditScope": "All runtime source commits ancestral to healthy CP-V01; relevant validator/summary/response/lifecycle history also inspected",
+  "history": [
+    "4eaba0efb3c4276700d988d1778d59ee20f24063 feat(L5-2): serve client and report readiness",
+    "2aae66d0f98c09af2c32454cd603d20a23faf2d9 feat(F-05): wire owner summary page",
+    "10cb8d7abcb022ea87a6c91889e7a69261b018f9 feat(F-04): implement respondent survey flow",
+    "4942742742ffada7be9f7de48cc92ac89f375587 feat(F-05): implement summary API and page",
+    "1448c15da70f7930442fbf318f77c410dfb2bdf0 feat(F-04): implement response API and validation",
+    "24f79366db5bd04539af0310650fcf2eaff4054d feat(F-03): owner pages - survey list, new survey form and survey detail with publish and close (green, UI)",
+    "8337e09fc51de83065033d6a4ebb3cce6b6567e6 feat(F-03): owner survey routes - create, list, read, publish, close (green, stage 2 API)",
+    "b64b0792b4384246feb54b17671effcd8e087499 fix(F-01): Secure cookie flag follows NODE_ENV=production only, matching SDS v1.1 and the contract",
+    "9ad0126820227ab5fe75d46c689e9562726f7ad8 feat(F-03): survey status transitions and create-survey validation (green, stage 1)",
+    "9d1dfa7018e0a37933f7fe396668d337c723db92 test(F-03): failing lifecycle and validation unit tests TEST-11, TEST-15 with stubs (red)",
+    "f30ed0f69d35cfab733389260c3bd85d21a58a8f feat(F-01): login, logout, current user, role middleware and login UI (green)",
+    "94e548f10b746d8980c2625f59e859e542f581f5 feat(SR-01): skeleton, schema, seed, harness, Pulse theme (green)",
+    "6ce709f0c59e149bf59ad3527224c4d7ba0fe1a7 test(SR-01): failing foundation tests (red)"
+  ],
+  "reason": "Only explicit prior runtime fix found in this ancestry changes the Secure cookie behavior. Reintroducing that would weaken a security protection and is unsuitable under the approved protocol. Other candidate validation/summary changes are initial feature implementations/stub TDD, not verifiable corrected defects. No manufactured prior-fix provenance.",
+  "healthyBase": "9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35",
+  "selectedFile": "server/src/lib/surveyValidation.ts",
+  "selectedRule": "Disable only the lower-bound nonempty normalized title validation, retaining maximum length, question/option/course/role/state/privacy rules. Empty/whitespace/missing title normalizes empty and is erroneously accepted.",
+  "expectedExistingFailures": "Unchanged TEST11 empty title, spaces-only title and aggregate-field detail tests; additional genuine failures will be assessed rather than hidden.",
+  "privateUntilIndependentFinding": true,
+  "noReportedCaseRegressionWrittenYet": true,
+  "operator": "Codex GPT-6 under A/Punge089"
+}

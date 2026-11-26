@@ -1,0 +1,1 @@
+{"database" : "classpulse_test", "address" : "127.0.0.1", "dataDirectory" : "C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/uat6-correction117-red-20261126-2026-11-26T08-22-05-849Z/pgdata", "tables" : 0, "otherSessions" : 0}
