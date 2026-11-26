@@ -1,0 +1,45 @@
+{
+  "case": "UAT-02 / CD-02, AC-11 and AC-19",
+  "input": {
+    "title": "",
+    "course": "CPE334 — Software Engineering",
+    "question": {
+      "prompt": "Rate this class (CP-EX-001 blank title confirmation)",
+      "type": "RATING",
+      "required": true
+    }
+  },
+  "expected": {
+    "status": 400,
+    "code": "VALIDATION_ERROR",
+    "inlineTitleError": true,
+    "newDrafts": 0
+  },
+  "actual": {
+    "status": 201,
+    "createdSurveyId": 9,
+    "createdResponseTitle": "",
+    "storedTitle": "",
+    "storedStatus": "DRAFT",
+    "listTitle": "",
+    "detailStatus": 200,
+    "listDelta": [
+      9
+    ],
+    "priorBlankDrafts": [
+      {
+        "id": 6,
+        "status": "DRAFT"
+      },
+      {
+        "id": 3,
+        "status": "DRAFT"
+      }
+    ],
+    "viewPath": "/owner/surveys/9"
+  },
+  "confirmedAt": "2026-11-26T07:58:20.533Z",
+  "artifact": "CP-EX-001",
+  "source": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "confirmed": true
+}

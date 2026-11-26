@@ -1,0 +1,22 @@
+
+
+
+Running 2 tests using 1 worker
+
+
+
+
+
+[1A[2K[1/2] owner-survey.spec.ts:9:5 › TEST-21a an owner creates a two-question survey, sees it as Draft, publishes it and sees Published
+[1A[2K[2/2] owner-survey.spec.ts:47:5 › TEST-21b an empty title shows a message under the title field and creates nothing
+[1A[2K  Slow test file: owner-survey.spec.ts (17.1s)
+  Consider splitting slow test files to speed up parallel execution
+  2 passed (26.5s)
+[1A[2K[2m[WebServer] [22m(node:29692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[1A[2K[2m[WebServer] [22m(node:3224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[1A[2K(node:38040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1A[2K(node:38040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
