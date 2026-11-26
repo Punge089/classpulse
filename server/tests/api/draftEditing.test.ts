@@ -183,6 +183,33 @@ test.each([1, 20])("TEST-121 accepts %i valid ordered questions", async count =>
   expect(stored.map(q => [q.prompt, q.position])).toEqual(questions.map((q, index) => [q.prompt, index + 1]));
 });
 
+test.each([2, 6])("TEST-121 accepts %i distinct choices", async count => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const options = Array.from({ length: count }, (_, i) => `Choice ${i + 1}`);
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt: "Pick", type: "SINGLE_CHOICE", options }]
+  });
+  expect(result.status).toBe(200);
+  expect(result.body.survey.questions[0].options.map((option: { label: string }) => option.label)).toEqual(options);
+});
+
+test("TEST-123 closed and reopened surveys reject editing and retain questions", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "CLOSED" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const body = { expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt: "Replacement", type: "RATING" }] };
+  const closed = await owner.put(`/api/owner/surveys/${original.id}/questions`).send(body);
+  expect(closed.status).toBe(409);
+  expect(closed.body.error.code).toBe("INVALID_TRANSITION");
+  const reopened = await owner.post(`/api/owner/surveys/${original.id}/reopen`).send({ reason: "Permit more responses", expectedVersion: original.statusVersion });
+  expect(reopened.status).toBe(200);
+  const later = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({ ...body, expectedUpdatedAt: reopened.body.survey.updatedAt });
+  expect(later.status).toBe(409);
+  expect(later.body.error.code).toBe("INVALID_TRANSITION");
+  const questions = await prisma.question.findMany({ where: { surveyId: original.id }, orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } });
+  expect(questions).toEqual(original.questions);
+});
+
 test("TEST-124 unauthenticated and respondent writes cannot change an owned draft", async () => {
   const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
   const body = { expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt: "Valid", type: "RATING" }] };
@@ -203,6 +230,10 @@ test.each([
   { name: "blank prompt", questions: [{ prompt: " ", type: "RATING" }] },
   { name: "long prompt", questions: [{ prompt: "x".repeat(301), type: "RATING" }] },
   { name: "duplicate choices", questions: [{ prompt: "Q", type: "SINGLE_CHOICE", options: ["Yes", " yes "] }] },
+  { name: "one choice", questions: [{ prompt: "Q", type: "SINGLE_CHOICE", options: ["One"] }] },
+  { name: "seven choices", questions: [{ prompt: "Q", type: "SINGLE_CHOICE", options: ["1", "2", "3", "4", "5", "6", "7"] }] },
+  { name: "blank choice", questions: [{ prompt: "Q", type: "SINGLE_CHOICE", options: [" ", "Yes"] }] },
+  { name: "long choice", questions: [{ prompt: "Q", type: "SINGLE_CHOICE", options: ["x".repeat(101), "Yes"] }] },
   { name: "rating choices", questions: [{ prompt: "Q", type: "RATING", options: ["No"] }] },
   { name: "supplied identifier", questions: [{ id: 1, prompt: "Q", type: "RATING" }] }
 ])("TEST-122 rejects $name and leaves existing rows intact", async ({ questions }) => {
