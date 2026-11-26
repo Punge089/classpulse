@@ -1,0 +1,18 @@
+F-09 RED run captured from GitHub Actions
+=======================================
+PR: #119 (draft), base sprint-2-staging at e6043a9843eaeebaa63464aa19e5e8d1e503996a
+Test source commit: f5f9a06dfd46b35a9c12ce600ffe464912a5ba34
+Workflow run: 45775486265; job: 139758015921 (test-and-docker)
+Actions tested synthetic merge commit: 8a768293d7f4f6a7f617b55ab3b946d4c8b6ff83
+Command: server / `npm test`
+Exit: 1
+
+Actual Vitest result lines (ANSI color removed):
+  tests/api/responseHistory.test.ts (16 tests | 12 failed)
+  Test Files: 1 failed | 18 passed (19)
+  Tests: 12 failed | 223 passed (235)
+  Duration: 30.67s (transform 268ms, setup 92ms, collect 1.53s, tests 25.62s, environment 3ms, prepare 992ms)
+
+The 12 new failures are the intended RED against the absent GET /api/responses/mine route: TEST-160/161/162/163/164/165/166/168/171/172/177 received 404 instead of the contracted 200, and TEST-170 received 404 instead of 400. The new unauthenticated/owner precedence checks and existing detail ownership/order checks passed. The remaining 18 existing server test files passed. No tests were skipped in the server Vitest command. CI skipped its later client test, builds, browser tests, and Docker build because the server test step failed; these are not reported as test skips or passes.
+
+The CI job used its own PostgreSQL 16 service and disposable `classpulse_test`; no shared local database was used or reset. The output here is a short excerpt from the Actions log, preserving the exact command, IDs and reported counts while removing terminal ANSI styling. Full job logs: https://github.com/Punge089/classpulse/actions/runs/45775486265
