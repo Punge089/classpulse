@@ -1,0 +1,45 @@
+{
+  "operator": "Codex GPT-6 under A/Punge089",
+  "kind": "Developer authenticated smoke, not independent UAT/retest",
+  "sourceCommit": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "startedAtUtc": "2026-11-26T10:37:53.8310803Z",
+  "appBase": "https://classpulse-zdwglar6eq-as.a.run.app",
+  "credentialsDisclosed": false,
+  "businessRecordWrites": false,
+  "appSessionCreatedForSmoke": true,
+  "checks": [
+    {
+      "name": "existing synthetic respondent login",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "authenticated identity",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "authorized respondent listing",
+      "status": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "normal logout",
+      "status": 204,
+      "expected": 204,
+      "passed": true
+    },
+    {
+      "name": "signed out after normal logout",
+      "status": 401,
+      "expected": 401,
+      "passed": true
+    }
+  ],
+  "result": "PASS",
+  "expectedRoleObserved": true,
+  "finishedAtUtc": "2026-11-26T10:37:54.9281961Z"
+}

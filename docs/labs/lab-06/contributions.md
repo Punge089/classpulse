@@ -1,3 +1,20 @@
+# Lab 6 actual contributions — current checkpoint, 26 November 2026
+
+Issue #122. These actual roles supersede earlier pending-receipt statements without rewriting history or model labels. [Closure](cp-ex-f01-closure.md) and [artifact provenance](../../../evidence/lab-06/corrected-retest-20261126/README.md) provide the evidence. Final acceptance is separate.
+
+| Participant | Actual contribution |
+|---|---|
+| A / Punge089 | Codex GPT-6 implemented the exercise/correction, preserved RED/GREEN and the initial ordering deviation/repeat, ran exact-source regression, reviewed B-authored release PR #121, and read Cloud/Registry mapping. The human personally initiated the approved main merge/deployment. A reviewed D's 9 hashes, JSON and 6 screenshots, and C's actual comment; no A retest rerun. This receipt PR still needs B review. |
+| B / book6349 | Review 6070920924 at `0b8df1c` included actual 4 focused / 143 server / 1 client tests and builds; B merged PR #118 into Sprint 2 staging. B recorded the limited release-route disposition, guarded original-S1 fast-forward and authored draft release PR #121. These handovers name Codex GPT-6 Sol; older model disclosures remain historical. No new B independent retest is inferred. |
+| D / Thira Rungruangkaset, 67070503419 | Independent local finding on `4199888`; corrected Cloud retest on `bee0d122`, 26 November 18:30:40–49 Bangkok, operated by Codex (GPT-6) under D. Five Cloud subcases passed; separate 18:26:54 local read preserved drafts 3/6/9. D used A's Cloud mapping. |
+| C / Ashira Sansoda, 67070503445, osizk | Actual original-finding review 7186481546 and corrected-retest review 7190900011. Reviewed hashes, screenshots and readbacks; no C rerun. The comment identifies Codex assistance without specifying the exact model; D's model is not attributed to C. |
+
+At 26 November 19:05:26 Bangkok, D separately records Not Accepted on current CP-FIX-001 evidence, with live CD-01 blocked by the operator safety constraint. The user relayed the decision; no separate decision attachment was supplied. C's final-decision review remains pending. A's subsequent 8-file auth/source comparison and Workflow release-diff review were read-only inspections, not new independent UAT. Method M01 is a proposal, not a completed verification.
+
+---
+
+## Historical contribution snapshots
+
 # Lab 6 actual contributions and disclosure register
 
 ## Current R3 result disposition — 25 November 2026
