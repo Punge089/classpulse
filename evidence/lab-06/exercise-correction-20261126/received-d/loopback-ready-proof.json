@@ -1,0 +1,12 @@
+{
+  "recordedAtBangkok": "2026-11-26T14:54:28.4572294+07:00",
+  "listeners": [
+    "TCP    127.0.0.1:3000         0.0.0.0:0              LISTENING       3896",
+    "TCP    127.0.0.1:5173         0.0.0.0:0              LISTENING       21796",
+    "TCP    127.0.0.1:49505        0.0.0.0:0              LISTENING       20024"
+  ],
+  "approvedFilesVerified": 35,
+  "localBackendBind": "Loopback-only launcher; shipped files unchanged",
+  "uatStartNotice": "Not yet sent / verified",
+  "independentUat": "Not run"
+}
