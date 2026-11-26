@@ -1,0 +1,37 @@
+
+> classpulse-server@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/work117/server
+
+ ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 2992ms
+   ✓ real PostgreSQL additive transaction > adds exactly two users and one enrollment and preserves all existing rows 309ms
+ ✓ tests/api/responses.test.ts (10 tests) 2293ms
+   ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 327ms
+ ✓ tests/api/ownerSurveys.test.ts (10 tests) 1991ms
+ ✓ tests/api/auth.test.ts (8 tests) 1692ms
+ ✓ tests/api/summary.test.ts (3 tests) 882ms
+   ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 418ms
+ ✓ tests/unit/surveyValidation.test.ts (27 tests) 8ms
+ ✓ tests/api/cloudReady.test.ts (3 tests) 110ms
+ ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 1174ms
+   ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 320ms
+ ✓ tests/db/constraints.test.ts (3 tests) 1061ms
+   ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 688ms
+ ✓ tests/api/uat6TitleRegression.test.ts (4 tests) 841ms
+ ✓ tests/unit/summary.test.ts (6 tests) 4ms
+ ✓ tests/unit/responseValidation.test.ts (13 tests) 4ms
+ ✓ tests/api/health.test.ts (1 test) 108ms
+ ✓ tests/api/unauthenticated.test.ts (13 tests) 60ms
+ ✓ tests/unit/password.test.ts (1 test) 357ms
+   ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 340ms
+ ✓ tests/unit/seedConfig.test.ts (1 test) 3ms
+ ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 3ms
+
+ Test Files  17 passed (17)
+      Tests  143 passed (143)
+   Start at  15:21:06
+   Duration  20.91s (transform 331ms, setup 135ms, collect 2.70s, tests 13.58s, environment 2ms, prepare 1.69s)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m

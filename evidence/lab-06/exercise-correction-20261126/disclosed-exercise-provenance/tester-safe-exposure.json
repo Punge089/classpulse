@@ -1,0 +1,20 @@
+{
+  "release": "CP-EX-001",
+  "sourceCommit": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "verifiedRef": "sprint-1-staging",
+  "previousRef": "4cbaa1ac8e6983a8c48a6b6ff88db52c6a01f39d",
+  "operation": "normal fast-forward; no force",
+  "refReadbackAtUtc": "2026-11-26T07:34:41.870346+00:00",
+  "handoffRecheckAtBangkok": "2026-11-26T14:39:27.131691+07:00",
+  "runtimeZip": "ClassPulse_CP-EX-001_Runtime_20261126.zip",
+  "runtimeZipSha256": "9cafee1d2d7180933bd3a4dad1e1d0dadea093fb1b85fdc4b28e30427888f9fd",
+  "reviewerAccount": "book6349",
+  "reviewCommentId": 7185418731,
+  "reviewDecision": "Controlled local exposure only",
+  "cloudServingRevision": "N/A - D-owned local runtime",
+  "cloudTrafficAllocation": "N/A - D-owned local runtime",
+  "privateMessageSentByCodex": false,
+  "independentUatRun": "NOT RUN / NOT RECEIVED",
+  "finalAcceptance": "PENDING",
+  "partD": "PENDING"
+}

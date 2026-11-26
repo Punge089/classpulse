@@ -1,0 +1,38 @@
+{
+  "sourceZipSha256": "60d9ad4b72a4a3279db3e4b3f637905edf57bc0070797ef6b40ca5ead80eaf82",
+  "crc": "PASS",
+  "payloadHashesVerified": 12,
+  "finding": "CP-EX-F01",
+  "sourceCommit": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "dReportedStartBangkok": "2026-11-26 14:55:12",
+  "dReportedConfirmationBangkok": "2026-11-26 14:58:20",
+  "operator": "Codex GPT-6 under Thira/D",
+  "cloudRevision": "N/A local",
+  "cloudTraffic": "N/A local",
+  "retainedBlankDrafts": [
+    3,
+    6,
+    9
+  ],
+  "rawObservationCounts": {
+    "browser-results.json": {
+      "PASS": 13,
+      "FAIL": 1,
+      "OBSERVED": 1
+    },
+    "verification-results.json": {
+      "PASS": 15
+    },
+    "lifecycle-results.json": {
+      "REVIEW": 1,
+      "PASS": 7,
+      "OBSERVED": 1
+    }
+  },
+  "notes": [
+    "Earlier Submitted badge FAIL is retained; later whole-card verification PASS supports probe-selection explanation, not an app correction.",
+    "Initial empty-title PASS had another missing question; later valid-question reproduction returns201.",
+    "Loopback preflight at14:54:28 says notice not yet sent; later report attributes start relay to Thira before14:55:12, not A-observed private message.",
+    "No A rerun of D runtime; C separate review pending."
+  ]
+}
