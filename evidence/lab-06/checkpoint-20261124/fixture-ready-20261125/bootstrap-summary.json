@@ -1,0 +1,12 @@
+{
+  "architecture": "x86_64",
+  "nodeVersion": "v26.13.0",
+  "reviewedMerge": "f4533eac6ba035885a67eb6010cfba570b8f3f3e",
+  "npmCiCompleted": true,
+  "prismaClientGenerated": "5.22.0",
+  "toolImportVerified": true,
+  "installationNotes": [
+    "npm12 blocked five dependency lifecycle scripts; no allowScripts policy changed; explicit Prisma generate and tool import succeeded",
+    "npm ci reported11 vulnerabilities:5moderate,4high,2critical; no audit fix or dependency change performed"
+  ]
+}

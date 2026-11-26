@@ -1,0 +1,19 @@
+UAT06 human-run result — 24 November 2026
+
+Evidence: supplied Chrome DevTools screenshot UAT06-console.png.
+Operator recorded in console: book6349; the user ran the prepared probe.
+Request ID: 9b734a22-085a-4f7f-a33f-3fe475c96012
+Observed execution timestamp (console "at"): 2026-11-24T14:57:46.326Z / 21:57:46.326 Asia/Bangkok.
+
+Scoped expected outcome observed:
+- POST decision=APPROVE returned403, error codeFORBIDDEN, messageNot allowed.
+- Before GET200 and after GET200 show125.50 THB, SUBMITTED and the same single original SUBMITTED event.
+- The recorded comparison is unchanged:true.
+
+The red403 line is the expected authorization denial.
+The screenshot is the retained evidence; this addendum is a transcription/assessment, not an original exported API log.
+The supplied script checks signed-in REQUESTER before the POST; account requester1 was the instructed login. The expanded identity object itself is not visible in this screenshot.
+The screenshot does not show the footer marker or independently establish a fresh source-to-serving mapping at execution time. C/D's earlier mapping is the recorded release provenance; final version/setup disposition remains pending.
+No full-suite/final acceptance, backend additional-case completion or corrected Workflow retest follows from this result.
+
+Timestamp correction:21:34:21.367 is the request's createdAt/history time, NOT this Console execution time. An existing local UAT06-B-Result-20261124.txt used that earlier time; preserve it as an earlier inaccurate addendum. This new addendum supersedes it for the execution timestamp. The new evidence ZIP omits that inaccurate addendum and preserves the original screenshot.

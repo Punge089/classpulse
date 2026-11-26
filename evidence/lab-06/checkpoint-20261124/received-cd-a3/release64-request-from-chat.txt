@@ -1,0 +1,12 @@
+Source: C/D message supplied by Student A in this Codex chat on24November2026; transcription, not an independently inspected external chat.
+
+Hi ClassPulse team,
+
+The WF-BUG-001 fix is ready in PR #64, and CI passed. Merging it will deploy the correction.
+
+Are you currently testing Workflow? Please confirm whether we can deploy now or suggest a suitable window.
+
+After deployment, we’ll send the verified commit, marker, revision, digest, traffic and verification time for your independent retest. Existing test records will be preserved.
+
+Thanks,
+Thira and Ashira

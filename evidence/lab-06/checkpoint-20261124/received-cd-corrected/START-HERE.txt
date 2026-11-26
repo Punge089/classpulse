@@ -1,0 +1,5 @@
+Current EN037 response after reviewed Workflow deployment, 24 November 2026.
+Read REPLY-FOR-CLASSPULSE.txt, then Workflow/CORRECTED-RELEASE-WF-FIX-001.md and EN037-B-V2-DISPOSITION.md.
+WF-FIX-001 is the corrected release. ORIGINAL-release-mapping.json and pre-release64-serving-snapshot.json preserve original-release provenance. Developer checks are separate from the pending ClassPulse independent retest.
+The retest script contains the bounded byte-boundary probes for independent execution; it has not been run by ClassPulse as part of this package. Record actual operator, time and full release identifiers with the result.
+This package supersedes older outgoing preparation-time Workflow status. It does not alter incoming partner evidence or claim final acceptance. No external chat message has been sent by preparing it.

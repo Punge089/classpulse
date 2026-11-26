@@ -1,0 +1,41 @@
+{
+  "observedAtUtc": "2026-11-24T15:22:30.121626+00:00",
+  "pr": 64,
+  "url": "https://github.com/osizk/WorkflowAndApprovalSystem/pull/64",
+  "head": "eee7c7e93ee8d6e458d95bdd358762df9c2c6164",
+  "base": "main",
+  "state": "open",
+  "draft": false,
+  "merged": false,
+  "reviews": [
+    {
+      "actor": "osizk",
+      "state": "APPROVED",
+      "commit": "eee7c7e93ee8d6e458d95bdd358762df9c2c6164"
+    }
+  ],
+  "checks": [
+    {
+      "name": "deploy",
+      "conclusion": "skipped",
+      "url": "https://github.com/osizk/WorkflowAndApprovalSystem/actions/runs/45418757100/job/138532304909"
+    },
+    {
+      "name": "test",
+      "conclusion": "skipped",
+      "url": "https://github.com/osizk/WorkflowAndApprovalSystem/actions/runs/45418757100/job/138532138355"
+    },
+    {
+      "name": "test-and-docker",
+      "conclusion": "success",
+      "url": "https://github.com/osizk/WorkflowAndApprovalSystem/actions/runs/45418756758/job/138532136166"
+    },
+    {
+      "name": "deployment-checks",
+      "conclusion": "success",
+      "url": "https://github.com/osizk/WorkflowAndApprovalSystem/actions/runs/45418757100/job/138532134894"
+    }
+  ],
+  "correctedServingVersion": "PENDING; PR success is not deployment",
+  "deploymentCoordination": "C/D requested clearance in user-supplied chat; A reply prepared, not sent by Codex"
+}

@@ -1,0 +1,20 @@
+{
+  "head": "294efc43abcde630ff8d96f77bbe4d1cfa071082",
+  "localTestDatabase": "classpulse_fixture_test",
+  "schema": "review83_race_302ef6419bee47548776834e193c620f",
+  "outcome": {
+    "status": "fulfilled",
+    "addedUsers": 2
+  },
+  "normalizedExtraCount": 2,
+  "userCount": 8,
+  "enrollmentCount": 4,
+  "expected": "Abort before inserts after concurrent normalized collision becomes committed; one existing variant only",
+  "productionConnectionUsed": false
+}
+A committed normalized collision must not pass the guarded apply
++ actual - expected
+
++ 'fulfilled'
+- 'rejected'
+

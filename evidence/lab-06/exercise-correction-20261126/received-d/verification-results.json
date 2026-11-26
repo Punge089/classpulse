@@ -1,0 +1,377 @@
+{
+  "run": "CP-EX-001-D-20261126",
+  "source": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "startUtc": "2026-11-26T07:56:25.715Z",
+  "rows": [
+    {
+      "id": "UAT-02 / AC-25 zero",
+      "expected": {
+        "status": 400,
+        "count": 0
+      },
+      "actual": {
+        "input": {
+          "answers": [
+            {
+              "questionId": 6,
+              "ratingValue": 0
+            },
+            {
+              "questionId": 7,
+              "optionId": 3
+            }
+          ]
+        },
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.385Z"
+    },
+    {
+      "id": "UAT-02 / AC-25 above-five",
+      "expected": {
+        "status": 400,
+        "count": 0
+      },
+      "actual": {
+        "input": {
+          "answers": [
+            {
+              "questionId": 6,
+              "ratingValue": 6
+            },
+            {
+              "questionId": 7,
+              "optionId": 3
+            }
+          ]
+        },
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.412Z"
+    },
+    {
+      "id": "UAT-02 / AC-25 fraction",
+      "expected": {
+        "status": 400,
+        "count": 0
+      },
+      "actual": {
+        "input": {
+          "answers": [
+            {
+              "questionId": 6,
+              "ratingValue": 2.5
+            },
+            {
+              "questionId": 7,
+              "optionId": 3
+            }
+          ]
+        },
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.437Z"
+    },
+    {
+      "id": "UAT-02 / AC-25 string",
+      "expected": {
+        "status": 400,
+        "count": 0
+      },
+      "actual": {
+        "input": {
+          "answers": [
+            {
+              "questionId": 6,
+              "ratingValue": "3"
+            },
+            {
+              "questionId": 7,
+              "optionId": 3
+            }
+          ]
+        },
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.465Z"
+    },
+    {
+      "id": "CD-03 / AC-25 choice required",
+      "expected": {
+        "status": 400,
+        "count": 0
+      },
+      "actual": {
+        "status": 400,
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.510Z"
+    },
+    {
+      "id": "UAT-04 / AC-22 duplicate submission",
+      "expected": {
+        "status": 409,
+        "code": "ALREADY_RESPONDED",
+        "count": 1
+      },
+      "actual": {
+        "status": 409,
+        "code": "ALREADY_RESPONDED",
+        "count": 1
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.785Z"
+    },
+    {
+      "id": "UAT-04 saved answer unchanged",
+      "expected": {
+        "status": 200,
+        "json": {
+          "response": {
+            "id": 3,
+            "surveyId": 4,
+            "submittedAt": "2026-11-26T07:56:28.697Z",
+            "answers": [
+              {
+                "questionId": 6,
+                "prompt": "Overall rating",
+                "type": "RATING",
+                "ratingValue": 4
+              },
+              {
+                "questionId": 7,
+                "prompt": "Preferred format",
+                "type": "SINGLE_CHOICE",
+                "optionId": 3,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      },
+      "actual": {
+        "status": 200,
+        "json": {
+          "response": {
+            "id": 3,
+            "surveyId": 4,
+            "submittedAt": "2026-11-26T07:56:28.697Z",
+            "answers": [
+              {
+                "questionId": 6,
+                "prompt": "Overall rating",
+                "type": "RATING",
+                "ratingValue": 4
+              },
+              {
+                "questionId": 7,
+                "prompt": "Preferred format",
+                "type": "SINGLE_CHOICE",
+                "optionId": 3,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.795Z"
+    },
+    {
+      "id": "UAT-04 / AC-28 submitted feedback",
+      "expected": {
+        "badgeVisible": true
+      },
+      "actual": {
+        "survey": 4,
+        "response": 3,
+        "serverListItem": {
+          "id": 4,
+          "title": "CP-EX-001-D-20261126 Verification",
+          "courseCode": "CPE334",
+          "mode": "IDENTIFIED",
+          "status": "PUBLISHED",
+          "hasResponded": true
+        },
+        "rowText": {
+          "parent": "CP-EX-001-D-20261126 Verification\nCPE334 · Identified survey",
+          "card": "CP-EX-001-D-20261126 Verification\nCPE334 · Identified survey\nSubmitted",
+          "near": "CP-EX-001-D-20261126 Verification\nCPE334 · Identified survey\nSubmitted"
+        },
+        "submittedLabels": 1
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:28.965Z"
+    },
+    {
+      "id": "CD-02 authoring title-120",
+      "expected": {
+        "status": 201,
+        "newSurveys": 1
+      },
+      "actual": {
+        "status": 201,
+        "created": [
+          5
+        ],
+        "declaredLength": 120
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.344Z"
+    },
+    {
+      "id": "CD-02 authoring title-121",
+      "expected": {
+        "status": 400,
+        "newSurveys": 0
+      },
+      "actual": {
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "created": [],
+        "details": [
+          {
+            "field": "title",
+            "message": "Title must be 1 to 120 characters"
+          }
+        ],
+        "declaredLength": 121
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.382Z"
+    },
+    {
+      "id": "CD-02 authoring empty-questions",
+      "expected": {
+        "status": 400,
+        "newSurveys": 0
+      },
+      "actual": {
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "created": [],
+        "details": [
+          {
+            "field": "questions",
+            "message": "Add 1 to 20 questions"
+          }
+        ],
+        "declaredLength": 36
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.415Z"
+    },
+    {
+      "id": "CD-02 authoring prompt-301",
+      "expected": {
+        "status": 400,
+        "newSurveys": 0
+      },
+      "actual": {
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "created": [],
+        "details": [
+          {
+            "field": "questions[0].prompt",
+            "message": "Question text must be 1 to 300 characters"
+          }
+        ],
+        "declaredLength": 31
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.451Z"
+    },
+    {
+      "id": "CD-02 authoring requires-two-options",
+      "expected": {
+        "status": 400,
+        "newSurveys": 0
+      },
+      "actual": {
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "created": [],
+        "details": [
+          {
+            "field": "questions[0].options",
+            "message": "Give 2 to 6 different options of 1 to 100 characters"
+          }
+        ],
+        "declaredLength": 41
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.484Z"
+    },
+    {
+      "id": "CD-02 authoring case-folded-duplicate-option",
+      "expected": {
+        "status": 400,
+        "newSurveys": 0
+      },
+      "actual": {
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "created": [],
+        "details": [
+          {
+            "field": "questions[0].options",
+            "message": "Give 2 to 6 different options of 1 to 100 characters"
+          }
+        ],
+        "declaredLength": 49
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.519Z"
+    },
+    {
+      "id": "CD-02 authoring description-1001",
+      "expected": {
+        "status": 400,
+        "newSurveys": 0
+      },
+      "actual": {
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "created": [],
+        "details": [
+          {
+            "field": "description",
+            "message": "Description can be at most 1000 characters"
+          }
+        ],
+        "declaredLength": 37
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:56:29.549Z"
+    }
+  ],
+  "fixtures": [
+    {
+      "survey": 4,
+      "title": "CP-EX-001-D-20261126 Verification",
+      "responses": [
+        3
+      ]
+    },
+    {
+      "survey": 5,
+      "title": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+      "responses": []
+    }
+  ],
+  "endUtc": "2026-11-26T07:56:29.870Z"
+}

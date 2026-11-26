@@ -1,0 +1,97 @@
+{
+  "issue": 106,
+  "evidenceId": "CD-CPV01-TEST05-EXACT-20261125",
+  "product": "ClassPulse",
+  "case": "TEST-05 expired stored session; supporting automated verification",
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "servingRevision": "N/A (local supporting run)",
+  "actualOperator": "Codex (GPT-6.2 Sol), under Thira Rungruangkaset, tester D / EN-037_P5",
+  "runStartedBangkok": "2026-11-25T20:30:14+07:00",
+  "runFinishedBangkok": "2026-11-25T20:30:18+07:00",
+  "command": "npm test -- tests/api/auth.test.ts",
+  "wholeAuthFile": {
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "files": 1,
+    "exitCode": 0
+  },
+  "expected": "GET /api/auth/me 200 before fixture expiry, then 401 UNAUTHENTICATED after expiresAt is backdated by one minute",
+  "actual": "C/D reports those unchanged TEST-05 assertions passed within the eight-test auth file; supplied default output confirms 8/8 file total.",
+  "result": "SUPPORTING PASS (C/D execution; A artifact/source/provenance review)",
+  "outputGranularity": "Default reporter shows whole-file total and one slow TEST-02 name; test05Output is empty. No separate TEST-05 HTTP transcript or verbose earlier-run artifact is supplied in this ZIP. Inclusion is checked against all eight unchanged source tests, no filters, and the full-file PASS.",
+  "database": {
+    "databaseName": "classpulse_test",
+    "host": "127.0.0.1",
+    "port": 61063,
+    "listener": "127.0.0.1",
+    "postgresVersion": "16.16",
+    "clusterSystemIdentifier": "7712100869532501428",
+    "ownsFreshDataDirectory": true,
+    "publicTableCountBeforeMigrations": 0,
+    "otherSessionsBeforeTests": 0
+  },
+  "migrationExitCode": 0,
+  "sourceBeforeAfterEqual": true,
+  "recordedCheckoutCleanBeforeAfter": true,
+  "databaseStoppedReported": true,
+  "pinnedSourceFilesReviewed": {
+    "server/package.json": {
+      "gitBlob": "e82cca46533abb7e847a6d86b9ba570fb9ec0f2a",
+      "sha256": "e2569417852b51fcd4a25e8e615b3f0fb1a71aef0fd46490cafe11fc03075f92"
+    },
+    "server/tests/api/auth.test.ts": {
+      "gitBlob": "35e05d3e672dbce27d671f923f0cad8f25be40a8",
+      "sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036"
+    },
+    "server/tests/setup.ts": {
+      "gitBlob": "08020d930d20014b40924978d841f6b465de420e",
+      "sha256": "b419f2d5b2be3334b72c63412269ff46329cf5d516f0f491ee111e8dd0fc1d32"
+    },
+    "server/tests/helpers/fixture.ts": {
+      "gitBlob": "ff8d9ce327513e5bdd394c93eef04302f7c8065e",
+      "sha256": "e00e36d9b84fec3b29285fb305ff491c8672f266c08b2624b2a2f0700ff2fd9a"
+    }
+  },
+  "zip": {
+    "filename": "ClassPulse_CP-V01_TEST-05_Exact_Command_20261125.zip",
+    "sha256": "3396e6c1a71ff0775a10909fff4069859e9d6efac5688b58eb056c86657ca048",
+    "entries": [
+      {
+        "entry": "REPORT.md",
+        "sha256": "9a6cf76c2f883c7fc1f9a75293274fb790c15e3ab2f1fe7eef00cf28f3cf1d51",
+        "bytes": 2344
+      },
+      {
+        "entry": "auth-test-output.txt",
+        "sha256": "392e1097f69643acd1a4f574a571ca7506725cbc454cee15da2616728d7ad4fc",
+        "bytes": 615
+      },
+      {
+        "entry": "migration-output.txt",
+        "sha256": "26d3033cc870fa2d136b26bdef980ad3128b69dd795e18b7a2c37eb3b4a68e00",
+        "bytes": 407
+      },
+      {
+        "entry": "run-proof.json",
+        "sha256": "4f5be9a5400b0210b5ba9080d84ed5a60ee6160e7a9c105078d55a8579615d18",
+        "bytes": 1296
+      }
+    ]
+  },
+  "reviewOperator": "Codex GPT-6 under Student A/Punge089",
+  "reviewKind": "Read-only artifact/source/public repository comparison; no A app test or cloud/DB operation",
+  "preservationNotes": [
+    "Original UTF-8 bytes retained. REPORT.md uses an en dash between test times; structured ISO dates corroborate the same range. A console encoding limitation initially displayed it incorrectly; the supplied file has no replacement character.",
+    "run-proof.json uses standard JSON unicode escaping for the em dash in its N/A local revision value. Parsed value is normal Unicode; no source artifact correction is needed.",
+    "No earlier verbose-run artifact is assumed received. C/D narrative and supplied full-file output are the supporting execution evidence.",
+    "Workflow PR68 author osizk and actual operator Codex GPT-6.2 Sol under Thira are separate attributions. No Ashira execution inferred."
+  ],
+  "independentLiveExpiry": "OPEN",
+  "deployedEightHourTtlVerified": false,
+  "wholeCd01Complete": false,
+  "finalAcceptance": "PENDING",
+  "classPulsePartD": "PENDING",
+  "productionOrReleaseChangeByA": false,
+  "survey26AndResponses13To15": "Preserved; no operation in this review"
+}

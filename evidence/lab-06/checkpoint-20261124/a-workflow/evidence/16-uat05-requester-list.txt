@@ -1,0 +1,34 @@
+Browser tab: 3, Title: "Workflow and Approval System", URL: "https://scd928edd-4d7hbszvwq-as.a.run.app/requests".
+1 AXWebArea Workflow and Approval System, URL: scd928edd-4d7hbszvwq-as.a.run.app/requests
+	2 container My requests
+		3 text Workflow and Approval System
+		14 heading My requests, Value: 1, ID: page-title
+			15 text My requests
+		16 link Description: Create request, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/new
+		17 content list
+			18 container
+				19 link Description: UAT-05-A-210340 Reject reason, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/b1f4b385-04b4-4e7a-905f-7f9091e65db2
+				20 text 300.00 THB  ·  REJECTED
+			21 container
+				22 link Description: UAT-01-A-210340 Desk supplies, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67
+				23 text 125.50 THB  ·  APPROVED
+			24 container
+				25 link Description: Lab 5 – Submission recapture, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/c01db56d-8067-4151-842c-edd93c4e2eec
+				26 text 125.50 THB  ·  SUBMITTED
+			27 container
+				28 link Description: Lab 5 – Evidence capture, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/6b080e50-6c34-4d6b-a19f-b62cf481296c
+				29 text 125.50 THB  ·  APPROVED
+			30 container
+				31 link Description: Lab 5 browser test, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/573661f0-88ce-44bd-ab4f-c20a5afbf572
+				32 text 125.50 THB  ·  APPROVED
+			33 container
+				34 link Description: [DEMO CHECK] APPROVE 2026-11-20 15:19:44 +07, Value: scd928edd-4d7hbszvwq-as.a.run.app/requests/8abc3e60-8691-4f6d-8f73-6f091f5ce58c
+				35 text 125.50 THB  ·  APPROVED
+		36 container
+			37 text Signed in as  Requester .
+		38 button Sign out
+		11 container
+			12 text Release 
+			13 text 82a4806b5291
+
+The focused UI element is 14 heading My requests, Value: 1, ID: page-title

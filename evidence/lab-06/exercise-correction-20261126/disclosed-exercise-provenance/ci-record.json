@@ -1,0 +1,193 @@
+{
+  "ci": {
+    "conclusion": "failure",
+    "databaseId": 45666188098,
+    "headSha": "4199888409fefafa920a773991d735f14ffb4ac8",
+    "jobs": [
+      {
+        "completedAt": "2026-11-25T17:35:28Z",
+        "conclusion": "failure",
+        "databaseId": 139388847040,
+        "name": "test-and-docker",
+        "startedAt": "2026-11-25T17:34:28Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-11-25T17:34:30Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-11-25T17:34:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:34:53Z",
+            "conclusion": "success",
+            "name": "Initialize containers",
+            "number": 2,
+            "startedAt": "2026-11-25T17:34:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:34:54Z",
+            "conclusion": "success",
+            "name": "Check out source",
+            "number": 3,
+            "startedAt": "2026-11-25T17:34:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:34:56Z",
+            "conclusion": "success",
+            "name": "Set up Node.js 24",
+            "number": 4,
+            "startedAt": "2026-11-25T17:34:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:01Z",
+            "conclusion": "success",
+            "name": "Install root dependencies",
+            "number": 5,
+            "startedAt": "2026-11-25T17:34:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:05Z",
+            "conclusion": "success",
+            "name": "Install server dependencies",
+            "number": 6,
+            "startedAt": "2026-11-25T17:35:01Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:07Z",
+            "conclusion": "success",
+            "name": "Install client dependencies",
+            "number": 7,
+            "startedAt": "2026-11-25T17:35:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:08Z",
+            "conclusion": "success",
+            "name": "Generate Prisma client",
+            "number": 8,
+            "startedAt": "2026-11-25T17:35:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:09Z",
+            "conclusion": "success",
+            "name": "Apply database migrations",
+            "number": 9,
+            "startedAt": "2026-11-25T17:35:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:10Z",
+            "conclusion": "success",
+            "name": "Seed synthetic test accounts",
+            "number": 10,
+            "startedAt": "2026-11-25T17:35:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:24Z",
+            "conclusion": "failure",
+            "name": "Test server",
+            "number": 11,
+            "startedAt": "2026-11-25T17:35:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:24Z",
+            "conclusion": "skipped",
+            "name": "Test client",
+            "number": 12,
+            "startedAt": "2026-11-25T17:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:24Z",
+            "conclusion": "skipped",
+            "name": "Build server",
+            "number": 13,
+            "startedAt": "2026-11-25T17:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:24Z",
+            "conclusion": "skipped",
+            "name": "Build client",
+            "number": 14,
+            "startedAt": "2026-11-25T17:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:24Z",
+            "conclusion": "skipped",
+            "name": "Build Docker image locally",
+            "number": 15,
+            "startedAt": "2026-11-25T17:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:24Z",
+            "conclusion": "skipped",
+            "name": "Post Set up Node.js 24",
+            "number": 28,
+            "startedAt": "2026-11-25T17:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:25Z",
+            "conclusion": "success",
+            "name": "Post Check out source",
+            "number": 29,
+            "startedAt": "2026-11-25T17:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:27Z",
+            "conclusion": "success",
+            "name": "Stop containers",
+            "number": 30,
+            "startedAt": "2026-11-25T17:35:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-25T17:35:27Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 31,
+            "startedAt": "2026-11-25T17:35:27Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Punge089/classpulse/actions/runs/45666188098/job/139388847040"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/Punge089/classpulse/actions/runs/45666188098"
+  },
+  "checkoutCommitFromLog": "25a02e6b051b60330eb534e7e2027490d3646c1e",
+  "summaryLines": [
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9468975Z  Test Files  2 failed | 14 passed (16)",
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9469686Z       Tests  5 failed | 134 passed (139)"
+  ],
+  "failureTitles": [
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9273195Z  FAIL  tests/api/ownerSurveys.test.ts > F-03 create a survey > TEST-12 invalid bodies are 400 VALIDATION_ERROR with details and store nothing",
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9398317Z  FAIL  tests/api/ownerSurveys.test.ts > F-03 create a survey > TEST-13 course ownership (404) is checked before field validation (400)",
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9419107Z  FAIL  tests/unit/surveyValidation.test.ts > TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 1 title empty is rejected and names the field",
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9420572Z  FAIL  tests/unit/surveyValidation.test.ts > TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > case 2 title spaces only is rejected and names the field",
+    "test-and-docker\tTest server\t2026-11-25T17:35:24.9460253Z  FAIL  tests/unit/surveyValidation.test.ts > TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1 > several bad fields are all listed, one entry per field"
+  ],
+  "interpretation": "Expected server suite failure on educational source; downstream client/build/Docker steps skipped by workflow after failure. Corresponding local client/builds passed; no local Docker build. Not a green merge approval or independent UAT.",
+  "rawLogHandling": "Only selected test/version summaries retained; no full workflow environment/credential log copied.",
+  "checkoutTreeComparison": {
+    "feature": "e04c441e33f58a323dcdcdd826287d35589a3798",
+    "ciCheckout": "e04c441e33f58a323dcdcdd826287d35589a3798"
+  },
+  "entireTrackedTreeEqualsFeatureSource": true
+}

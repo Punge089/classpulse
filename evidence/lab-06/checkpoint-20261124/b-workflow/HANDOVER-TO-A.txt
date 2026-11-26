@@ -1,0 +1,30 @@
+Hi A — B's A3 follow-up, 24 November 2026:
+
+PR78 is merged at cdcf460a1f928b15a197889b4bda21425902e1d3.
+
+I completed an actual technical UI run21:27:28–21:34:37 Bangkok, operated by Codex GPT-6.1 Sol under book6349. Evidence run UAT6-B-2026-11-24T14-27-28-126Z contains48 observations, not48 cases. The visible marker remained82a4806b5291. Cloud mapping remains C/D's A3 record for original sourcesha82a4806/revisionscd928edd-00007-477/digest6554d7f8cccdf1b4ded95f3f7d1a2560a786b0ecf7613cab62d59d942613a4fb/100%.
+
+UAT02: expected amount UI behavior observed;0.00/0.001/1000000.01 rejected,0.01 and1000000.00 saved. IDs:
+5ba5da73-7d7e-4bd1-9984-8b9e13ddc553
+0063548a-0d21-4685-ba19-6dea12c3e88c
+Formatting qualification: the UI renders1000000.00 without the comma used in the handoff example. Please disposition this discrepancy.
+
+UAT03: requester2/reviewer2 lists exclude B's request; direct details show Request not found without details/history/decision controls; requester1 readback remains89.00/SUBMITTED/one event. IDd27f11e6-a057-4a1f-b190-980688127c63.
+
+UAT06 update: the human ran the prepared probe in Chrome DevTools as book6349. Screenshot at2026-11-24T14:57:46.326Z(21:57:46.326Bangkok) shows403/FORBIDDEN and unchanged:true, with both GETs200 and the same125.50/SUBMITTED/single original event on9b734a22-085a-4f7f-a33f-3fe475c96012. Expected authorization behavior is observed for this attempt. See UAT06-human-result.txt and UAT06-console.png. The screenshot does not show a fresh release-marker readback; preserve that qualification. The earlier21:34:21 timestamp was record creation, not execution.
+
+B accepts ADD02–05 A2; A retains ADD01/06. ADD02's17 UI length/trim/Unicode attempts and ADD03's UI reason limits have supplemental observations/readbacks; backend status codes are unmeasured. ADD02e/f and ADD04/05 API probes remain NOT RUN. ADD03 APPROVE501 captured Saving decision before reload, so its final rejection response is not established and must be rerun. ASCII/Unicode500 rejection reasons persisted on separate B records, confirmed from both roles.
+
+Setup qualification: same temporary IAB tab with role logouts; a fresh private window per case was not established. Start notice was posted to you in Issue77/comment7134381903 requesting private-channel relay; that delivery is unverified. Please obtain C/D's actual setup disposition before whole-case acceptance. A's two records were not mutated. Final logout observed.
+
+Provisioner scope:
+Issue80 https://github.com/Punge089/classpulse/issues/80
+Draft contract-only PR81 https://github.com/Punge089/classpulse/pull/81
+Head11e0a2193365ba0de917d9b781428495f2d798da
+CI45416589669 SUCCESS https://github.com/Punge089/classpulse/actions/runs/45416589669
+Please give C3 on the exact contract before tests/implementation. The contract specifies human target/private-input gates, exact baseline/collision guards,2newusers/1enrollment, actual rollback/concurrency tests and preservation. No new fixture, DB/cloud admin operation or provisioner code/test has been run.
+
+Historical B identity is Papangkorn Jitvoottikrai/67070503421, but direct confirmation and personal availability have not yet been supplied.25November discussion is not a booked slot.
+C/D's CD08 result and serving mapping are acknowledged; corrected Workflow live retest, final acceptance and our ClassPulse PartD remain pending.
+
+Attach ClassPulse_B_UAT_and_Provisioner_20261124_v2.zip. RESULTS.txt lists detailed results/limits; observations.json retains48 raw records; the screenshot and checksum manifest are included. No secret values are included.

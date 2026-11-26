@@ -1,0 +1,18 @@
+{
+  "runId": "UAT6-B-2026-11-24T14-27-28-126Z",
+  "originalUiObservationCount": 48,
+  "originalUiTimeBangkok": "24Nov21:27:28\u201321:34:37",
+  "uiOperator": "Codex GPT-6.1 Sol under book6349, as supplied by B",
+  "laterUat06TimeUtc": "2026-11-24T14:57:46.326Z",
+  "laterUat06Operator": "B-reported human-run Chrome DevTools probe; console operator string book6349",
+  "cases": {
+    "UAT-02": "Expected UI numeric behavior observed; comma example and browser setup disposition pending",
+    "UAT-03": "Expected UI isolation/unchanged-state behavior observed; browser setup disposition pending",
+    "UAT-06": "Expected403/FORBIDDEN and unchanged before/after200 observed in screenshot; fresh marker/expanded identity absent; setup/version qualification pending"
+  },
+  "remainingB": "ADD02e/f API; complete APPROVE501 response; ADD04/05 and other incomplete subcases",
+  "wholeProductAcceptance": false,
+  "freshCorrectedRetest": false,
+  "provisionerExecutableExistsInPackage": false,
+  "supersession": "Later human UAT06 addendum supersedes original blocked checkpoint for one probe. Original raw48records remain unchanged. C3-pending package text is older than actual A C3."
+}

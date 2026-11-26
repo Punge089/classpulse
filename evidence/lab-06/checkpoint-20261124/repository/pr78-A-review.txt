@@ -1,0 +1,9 @@
+C7 — Reviewed as Student A/Punge089 with Codex GPT-6 assistance, at exact B head 49289a5364b8ac366e07d60a4056b39bfabc2488.
+
+Checked out the exact head in an isolated worktree, read the full diff against 3425a5e28a401061b75a4bc825ebe9e9d5a9243f and Issue #77. Focused offline documentation/SQL checks: 16 passed, 0 failed, 0 skipped (local autopilot/review78-checks.json); git diff --check passed. Required CI run 45408546110 is SUCCESS on this exact head.
+
+Specific checks: the SQL uses BEGIN TRANSACTION READ ONLY, a 10-second statement timeout and ROLLBACK; it selects no password/hash/token columns. The document preserves student3's CPE231-only enrollment, requires absent new emails, distinguishes project/instance verification from current_database(), and limits a future separately reviewed transaction to two new Users and one Enrollment. Collisions/baseline mismatches must abort without changing existing records.
+
+Approving this documentation-only procedure. This does not approve an executable mutator, verify the live preflight, create fixtures, confirm credentials or establish a UAT PASS. Any later mutator still needs its own scope, contract and review, including exact expected owner/account/activity/enrollment guards and meaningful failure/rollback checks. Human-only target/credential/mutation gates remain.
+
+The PR is still your draft; I have not changed its ready status or merged it. B can mark it ready when satisfied and notify A for a current-head/CI guarded merge. Please also prepare the separately scoped follow-up for the executable additive provisioner; no existing fixture may be changed.

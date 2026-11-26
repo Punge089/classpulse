@@ -1,0 +1,95 @@
+{
+  "observedAtUtc": "2026-11-24T15:53:02.943Z",
+  "clientDateContext": "2026-11-24",
+  "operator": "Codex under Student A/Punge089 after explicit user authorization",
+  "target": {
+    "project": "cpe-334-en-034",
+    "region": "asia-southeast1",
+    "instance": "classpulse-pg",
+    "database": "classpulse",
+    "databaseRole": "classpulse_app"
+  },
+  "transactionReadOnly": "on",
+  "courseRows": [
+    {
+      "id": 2,
+      "code": "CPE231",
+      "ownerId": 2,
+      "ownerEmail": "ben.kim@classpulse.test",
+      "ownerRole": "OWNER",
+      "ownerActive": true
+    },
+    {
+      "id": 1,
+      "code": "CPE334",
+      "ownerId": 1,
+      "ownerEmail": "ann.lee@classpulse.test",
+      "ownerRole": "OWNER",
+      "ownerActive": true
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "ann.lee@classpulse.test",
+      "role": "OWNER",
+      "isActive": true,
+      "enrollments": []
+    },
+    {
+      "id": 2,
+      "email": "ben.kim@classpulse.test",
+      "role": "OWNER",
+      "isActive": true,
+      "enrollments": []
+    },
+    {
+      "id": 3,
+      "email": "student1@classpulse.test",
+      "role": "RESPONDENT",
+      "isActive": true,
+      "enrollments": [
+        {
+          "id": 1,
+          "courseId": 1,
+          "courseCode": "CPE334"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "email": "student2@classpulse.test",
+      "role": "RESPONDENT",
+      "isActive": true,
+      "enrollments": [
+        {
+          "id": 2,
+          "courseId": 1,
+          "courseCode": "CPE334"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "email": "student3@classpulse.test",
+      "role": "RESPONDENT",
+      "isActive": true,
+      "enrollments": [
+        {
+          "id": 3,
+          "courseId": 2,
+          "courseCode": "CPE231"
+        }
+      ]
+    }
+  ],
+  "normalizedTargetEmailsAbsent": [
+    "uat6.extra@classpulse.test",
+    "uat6.inactive@classpulse.test"
+  ],
+  "credentialValuesSaved": false,
+  "mutationPerformed": false,
+  "fixturesCreated": false,
+  "humanApprovedApplyBaseline": false,
+  "limit": "Point-in-time agent-observed read-only baseline; not authorization for a live write. Recheck guards inside any later reviewed transaction."
+}

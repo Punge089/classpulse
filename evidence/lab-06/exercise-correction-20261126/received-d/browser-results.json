@@ -1,0 +1,397 @@
+{
+  "run": "CP-EX-001-D-20261126",
+  "source": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "startUtc": "2026-11-26T07:55:12.736Z",
+  "rows": [
+    {
+      "id": "UAT-07 respondent reload",
+      "expected": {
+        "path": "/surveys",
+        "identity": 200
+      },
+      "actual": {
+        "path": "/surveys",
+        "identity": 200
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:17.747Z"
+    },
+    {
+      "id": "UAT-10 draft visibility",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS",
+      "at": "2026-11-26T07:55:18.663Z"
+    },
+    {
+      "id": "UAT-08 zero aggregate",
+      "expected": {
+        "count": 0,
+        "ratings": [
+          {
+            "mean": null,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          {
+            "mean": null,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            0
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "actual": {
+        "count": 0,
+        "ratings": [
+          {
+            "mean": null,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          },
+          {
+            "mean": null,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            0
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:18.825Z"
+    },
+    {
+      "id": "UAT-06 non-enrolled listing",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS",
+      "at": "2026-11-26T07:55:18.947Z"
+    },
+    {
+      "id": "UAT-01 saved response",
+      "expected": {
+        "status": 200,
+        "rating": 4,
+        "choice": "Online",
+        "answers": 2
+      },
+      "actual": {
+        "status": 200,
+        "rating": 4,
+        "choice": "Online",
+        "answers": 2
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:19.331Z"
+    },
+    {
+      "id": "UAT-01 summary",
+      "expected": {
+        "count": 1,
+        "ratings": [
+          {
+            "mean": 4,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 1,
+              "5": 0
+            }
+          },
+          {
+            "mean": null,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            1
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "actual": {
+        "count": 1,
+        "ratings": [
+          {
+            "mean": 4,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 1,
+              "5": 0
+            }
+          },
+          {
+            "mean": null,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            1
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:19.432Z"
+    },
+    {
+      "id": "UAT-09 own saved history reload",
+      "expected": {
+        "status": 200,
+        "json": {
+          "response": {
+            "id": 1,
+            "surveyId": 2,
+            "submittedAt": "2026-11-26T07:55:19.237Z",
+            "answers": [
+              {
+                "questionId": 2,
+                "prompt": "Overall rating",
+                "type": "RATING",
+                "ratingValue": 4
+              },
+              {
+                "questionId": 3,
+                "prompt": "Preferred format",
+                "type": "SINGLE_CHOICE",
+                "optionId": 1,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      },
+      "actual": {
+        "status": 200,
+        "json": {
+          "response": {
+            "id": 1,
+            "surveyId": 2,
+            "submittedAt": "2026-11-26T07:55:19.237Z",
+            "answers": [
+              {
+                "questionId": 2,
+                "prompt": "Overall rating",
+                "type": "RATING",
+                "ratingValue": 4
+              },
+              {
+                "questionId": 3,
+                "prompt": "Preferred format",
+                "type": "SINGLE_CHOICE",
+                "optionId": 1,
+                "optionLabel": "Online"
+              }
+            ]
+          }
+        }
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:19.564Z"
+    },
+    {
+      "id": "UAT-03 other-owner listing",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS",
+      "at": "2026-11-26T07:55:19.666Z"
+    },
+    {
+      "id": "UAT-11 optional and aggregate",
+      "expected": {
+        "count": 2,
+        "ratings": [
+          {
+            "mean": 4.5,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 1,
+              "5": 1
+            }
+          },
+          {
+            "mean": 1,
+            "distribution": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            2
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "actual": {
+        "count": 2,
+        "ratings": [
+          {
+            "mean": 4.5,
+            "distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 1,
+              "5": 1
+            }
+          },
+          {
+            "mean": 1,
+            "distribution": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            2
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:20.079Z"
+    },
+    {
+      "id": "UAT-11 saved extra rating",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS",
+      "at": "2026-11-26T07:55:20.080Z"
+    },
+    {
+      "id": "UAT-11 summary identity privacy",
+      "expected": false,
+      "actual": false,
+      "status": "PASS",
+      "at": "2026-11-26T07:55:20.321Z"
+    },
+    {
+      "id": "UAT-04 submitted list badge",
+      "expected": true,
+      "actual": false,
+      "status": "FAIL",
+      "at": "2026-11-26T07:55:20.474Z"
+    },
+    {
+      "id": "UAT-05 closed survey hidden and records preserved",
+      "expected": {
+        "listCount": 0,
+        "summaryCount": 2
+      },
+      "actual": {
+        "listCount": 0,
+        "summaryCount": 2
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:55:20.827Z"
+    },
+    {
+      "id": "UAT-02 empty title prevents creation",
+      "expected": "/owner/surveys/new",
+      "actual": "/owner/surveys/new",
+      "status": "PASS",
+      "at": "2026-11-26T07:55:20.976Z"
+    },
+    {
+      "id": "UAT-02 visible validation",
+      "expected": "Field validation shown",
+      "actual": "Title | Question 1 is required",
+      "status": "OBSERVED",
+      "at": "2026-11-26T07:55:20.981Z"
+    }
+  ],
+  "fixtures": [
+    {
+      "survey": 2,
+      "title": "CP-EX-001-D-20261126 Core",
+      "responses": [
+        1,
+        2
+      ]
+    }
+  ],
+  "endUtc": "2026-11-26T07:55:22.917Z"
+}

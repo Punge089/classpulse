@@ -1,0 +1,122 @@
+[
+  {
+    "id": "03-uat01-submitted",
+    "atUtc": "2026-11-24T14:04:41.371Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+    "actualObservation": "Fresh synthetic request e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67 shows SUBMITTED,125.50THB,correct purpose and one SUBMITTED history entry.",
+    "evidence": "evidence/03-uat01-submitted.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "04-uat01-reviewer-queue",
+    "atUtc": "2026-11-24T14:04:52.570Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews",
+    "actualObservation": "Assigned reviewer1 queue includes the exact fresh request ID/title,125.50THB,SUBMITTED.",
+    "evidence": "evidence/04-uat01-reviewer-queue.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "05-uat01-before-approve",
+    "atUtc": "2026-11-24T14:05:02.088Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+    "actualObservation": "Reviewer detail confirms original submitted state,one history event; Reason is blank and Approve/Reject are available.",
+    "evidence": "evidence/05-uat01-before-approve.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "06-uat01-approved",
+    "atUtc": "2026-11-24T14:05:09.142Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+    "actualObservation": "Approve with blank Reason succeeded; APPROVED,125.50THB,exactly SUBMITTED then APPROVED; decision controls absent.",
+    "evidence": "evidence/06-uat01-approved.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "07-uat01-requester-readback",
+    "atUtc": "2026-11-24T14:05:38.877Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+    "actualObservation": "Requester1 reopened its original request after reviewer approval:125.50THB,APPROVED,exactly SUBMITTED then APPROVED with original timestamps. UAT01 required behavior observed.",
+    "evidence": "evidence/07-uat01-requester-readback.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "08-uat04-signed-out-denial",
+    "atUtc": "2026-11-24T14:06:19.973Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/login",
+    "actualObservation": "Explicit logout,closed old temporary tab,then replacement IAB tab opened original detail URL and redirected to/login without request data. New private-window isolation is not verified; setup deviation requires Product Team disposition. A stale closed-tab helper was rebound before any credential action; no app failure.",
+    "evidence": "evidence/08-uat04-signed-out-denial.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "09-uat04-requester-persistence",
+    "atUtc": "2026-11-24T14:06:42.260Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+    "actualObservation": "New authenticated requester session reopens the same ID:125.50THB,APPROVED and original SUBMITTED/APPROVED timestamps unchanged.",
+    "evidence": "evidence/09-uat04-requester-persistence.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "10-uat04-reviewer-reload",
+    "atUtc": "2026-11-24T14:07:20.381Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/e1cc8f10-ccb4-49b1-a391-3d44fd4e3f67",
+    "actualObservation": "Reviewer1 reopened the same approved ID from its queue and explicitly reloaded:125.50THB and original two events unchanged; Approve/Reject control counts both0. Optional app-restart check NOT RUN; replacement-tab/private-window deviation awaits C/D disposition.",
+    "evidence": "evidence/10-uat04-reviewer-reload.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "11-uat05-inputs",
+    "atUtc": "2026-11-24T14:07:42.339Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/new",
+    "actualObservation": "New separate synthetic request prepared with300.00THB and the specified rejection-test purpose.",
+    "evidence": "evidence/11-uat05-inputs.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "12-uat05-submitted",
+    "atUtc": "2026-11-24T14:08:00.677Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/b1f4b385-04b4-4e7a-905f-7f9091e65db2",
+    "actualObservation": "Separate request b1f4b385-04b4-4e7a-905f-7f9091e65db2 saved SUBMITTED,300.00THB,one SUBMITTED event. The title suffix uses the run-start clock; actual per-step timestamps are recorded separately.",
+    "evidence": "evidence/12-uat05-submitted.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "13-uat05-empty-reason-denial",
+    "atUtc": "2026-11-24T14:08:28.806Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/b1f4b385-04b4-4e7a-905f-7f9091e65db2",
+    "actualObservation": "Reject with blank Reason displayed A rejection reason is required; status remained SUBMITTED,300.00THB,one initial history event. This is UI validation, not a claimed HTTP status.",
+    "evidence": "evidence/13-uat05-empty-reason-denial.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "14-uat05-denial-readback",
+    "atUtc": "2026-11-24T14:08:41.312Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/b1f4b385-04b4-4e7a-905f-7f9091e65db2",
+    "actualObservation": "After explicit reload following blank-reason denial,the exact request remained SUBMITTED,300.00THB,one SUBMITTED event; no rejection event appeared.",
+    "evidence": "evidence/14-uat05-denial-readback.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "15-uat05-rejected",
+    "atUtc": "2026-11-24T14:08:48.735Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/reviews/b1f4b385-04b4-4e7a-905f-7f9091e65db2",
+    "actualObservation": "Valid reason saved:REJECTED,300.00THB,exactly SUBMITTED then REJECTED; final event contains Budget unavailable for this purchase; decision controls absent.",
+    "evidence": "evidence/15-uat05-rejected.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "16-uat05-requester-list",
+    "atUtc": "2026-11-24T14:09:00.304Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests",
+    "actualObservation": "Requester1 list shows this run's approved125.50 request and rejected300.00 request; earlier pre-existing records remain visible and were not modified by this run.",
+    "evidence": "evidence/16-uat05-requester-list.txt",
+    "operator": "Codex under Student A/Punge089"
+  },
+  {
+    "id": "17-uat05-requester-readback",
+    "atUtc": "2026-11-24T14:09:45.848Z",
+    "url": "https://scd928edd-4d7hbszvwq-as.a.run.app/requests/b1f4b385-04b4-4e7a-905f-7f9091e65db2",
+    "actualObservation": "Requester1 reopened rejected request b1f4b385-04b4-4e7a-905f-7f9091e65db2:300.00THB,REJECTED,exact reason Budget unavailable for this purchase,exactly SUBMITTED then REJECTED with original timestamps.",
+    "evidence": "evidence/17-uat05-requester-readback.txt",
+    "operator": "Codex under Student A/Punge089"
+  }
+]

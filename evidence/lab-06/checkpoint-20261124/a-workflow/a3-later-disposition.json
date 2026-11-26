@@ -1,0 +1,31 @@
+{
+  "runId": "UAT6-20261124-A-210340",
+  "recordType": "Later disposition; original run files unchanged",
+  "basis": "Received EN037-A3-SETUP-DISPOSITION.md under Thira delegated technical review; six incoming ZIP payloads preserved",
+  "originalSource": "82a4806b5291b57ad7e76a28fb7d40e1e947b9a6",
+  "setup": "Explicit logout, closed old tab, replacement tab, signed-out redirect and fresh login accepted for these recorded paths; literal private-window repeat unnecessary for this scope",
+  "cases": [
+    {
+      "id": "UAT-01",
+      "result": "PASS",
+      "scope": "Recorded submission, approval and requester readback"
+    },
+    {
+      "id": "UAT-04",
+      "result": "PASS",
+      "scope": "Recorded signed-out/new-login persistence and terminal controls"
+    },
+    {
+      "id": "UAT-05",
+      "result": "PASS",
+      "scope": "Recorded blank-reason denial, valid rejection and requester readback"
+    }
+  ],
+  "optionalRestart": "NOT RUN",
+  "literalPrivateContext": "NOT VERIFIED; not required for accepted setup variation",
+  "cookieReplayExpiry": "Separate untested/setup-dependent assertions",
+  "wholeProductAcceptance": false,
+  "BExecution": "NOT RUN by latest supplied B handover",
+  "newLiveRun": false,
+  "originalEvidencePreserved": true
+}

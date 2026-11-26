@@ -1,0 +1,76 @@
+# Lab 6 version and release register
+
+## Current status — 25 November 2026, exact-command supporting result received
+
+**TEST-05: supporting PASS; independent live expiry: OPEN; final acceptance and ClassPulse Part D: PENDING.** C/D operator Codex GPT-6.2 Sol under Thira/D ran `npm test -- tests/api/auth.test.ts` at CP-V01 `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, 20:30:14-20:30:18 Bangkok: **8 passed, 0 failed, 0 skipped, exit 0**. This was a fresh localhost `classpulse_test` database; serving revision **N/A**. A reviewed the supplied artifacts and pinned source, without rerunning the app. [Evidence and limits](../../../evidence/lab-06/checkpoint-20261124/received-test05-exact-20261125/a-review.json); [report/output/proof](../../../evidence/lab-06/checkpoint-20261124/received-test05-exact-20261125/README.md).
+
+TEST-05 asserts /me200 before backdating fixture expiresAt and /me401 UNAUTHENTICATED afterward. The default reporter confirms the full eight-test file, not a separate HTTP transcript. This supports stored-session expiry rejection; it does not establish the deployed eight-hour TTL. CD01 inactive login/CD07 aggregate remain scoped PASS; preserve survey26/responses13-15. Remaining coverage, both product decisions, ClassPulse PartD and the reviewed final PDF/submission remain open. No code/schema/shared-file/release/cloud/live-data change was made. B must review this Issue106 evidence update; prior PR103 is already merged. Current A assistance: Codex GPT-6, artifact/report work only.
+
+Earlier dated receipt/method statuses below are history; the later received result above supersedes their NOT RECEIVED state.
+
+## Historical status — 25 November 2026, companion review before TEST-05 receipt
+
+**CD-01 inactive login and CD-07 exact aggregate are PASS within the recorded scope**, now supported by C/D's received [JSON](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/fixture-case-results.json) and [summary image](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/CD07-summary.png), which A reviewed against the preserved report. Inactive user17: before/login/after401 with INVALID_CREDENTIALS at login. Survey26: baseline0; respondents3/5/16 -> responses13/14/15, ratings4/4/5; count3/average4.33, distribution0/0/0/2/1, Online3/In person0; aggregate values agree across API/UI/image without respondent identities. Four active logout204/identity401 observations do not prove controlled expiry/replay. Preserve survey26/responses13–15. [Artifact assessment](../../../evidence/lab-06/checkpoint-20261124/r2-companion-review-20261125/companion-review.json).
+
+**A confirms existing TEST-05 as supporting automated verification only.** C/D may run exact CP-V01 source `1fe3e3b82dfb0537be30223c9b598b3479b4affe` against an isolated local `classpulse_test` target and return actual output. The test backdates fixture expiresAt, then asserts /me401; it does not wait out the live8-hour TTL. Supporting execution/result remains **NOT RUN / NOT RECEIVED** here. **Independent live expiry remains OPEN; final acceptance remains PENDING.** See [method, isolation and return evidence](session-expiry-support.md). No production TTL, code, schema, shared file, deployment or live data change is part of this approval.
+
+C/D run `UAT6-20261125-CodexD-R2` was25Nov17:49:22–17:52:43Bangkok; operator Codex under Thira, model unspecified. Exact reported CP-V01 source is `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, revision `classpulse-00006-6w6`; the earlier narrative supplies digest `sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795`/100% from A's00:36:54mapping. The JSON retains source/revision but states digest/internal wording was removed. No fresh cloud mapping in that run is claimed. Its live origin/asset and unverified-notice/operator limitations remain; no Ashira participation or retrospective start approval is inferred.
+
+Human setup/A READ ONLY postchecks, B's corrected provisioner review/139tests and PR82/84/85 merges are separate completed records; closed Issues79/80 cover their scoped documentation/tool work, not Lab6 completion. WF-BUG-001 is fixed/independently verified/closed for Workflow, not ClassPulsePartD. Remaining coverage, **ClassPulse PartD**, both product decisions and final PDF/submission remain incomplete. No exercise defect is selected. This block stays within new Issue102's Lab6-owned files; Lab7/Sprint2/shared changes require prior coordination. Automations remain paused.
+
+This status supersedes historical missing-companion/report-only statements below. Original received bytes and prior receipt states remain unchanged. No proposed supporting test is presented as executed or as independent live UAT.
+
+## Latest verified state —24November2026, after WF-FIX-001 retest
+
+- Workflow WF-BUG-001 independent corrected-live retest **PASS**:2original boundary tests plus5supplemental checks,0failures/skips,23:03:13–15Bangkok. Full sourcead2cbef67decf9953219694898327dea0bb66034; markers before/afterad2cbef67dec; revision00008-9zd,100%. [Independent result](../../../evidence/lab-06/checkpoint-20261124/a-wf-bug-retest/INDEPENDENT-RETEST.md). C/D cloud mapping is attributed; A checked served source/browser and remote deployment. All A/B business records were left untouched.
+- [C/D's latest B-v2 dispositions](../../../evidence/lab-06/checkpoint-20261124/received-cd-corrected/EN037-B-V2-DISPOSITION.md) accept the recorded same-tab/logout02/03 paths, numeric1000000.00 display and scoped06denial; no repeat solely for those capture limits. Earlier original82a4806 snapshots remain historical. B06 still lacks a fresh marker/expanded identity in its screenshot; predeployment C/D readback corroborates release continuity without inventing that capture. The six original Workflow paths have scoped PASS evidence; required unexecuted additional branches and whole-product acceptance remain pending.
+- ClassPulse [actual read-only baseline](../../../evidence/lab-06/checkpoint-20261124/fixture-baseline/README.md) completed22:53:02Bangkok:target emails absent, student2id5/student3id4, student3CPE231-only. No accounts created. This is an agent-observed point-in-time snapshot, not human-approved live apply.
+- B contract81 merged6dc55d8 after exact-head approval/CI. B implemented PR83; A ran138server tests/build/typecheck at294efc4 but independently reproduced a normalized-email concurrency race and [requested changes](../../../evidence/lab-06/checkpoint-20261124/repository/PR83-REVIEW.md). No live fixture apply until B's regression/fix and new A review, then human target/baseline approval and execution.
+- C/D still needs the new inactive/third-respondent fixtures for CD01/CD07, controlled-session coverage disposition and actual peer contribution evidence. ClassPulse PartD is incomplete. The Workflow fix and provisioner review do not substitute. A sends the scoped retest return; B fixes83 and reviews82 at its current head. Final acceptance/PDF/human submission remain pending. Automations remain paused.
+
+Earlier dated paragraphs below retain the sequence of evidence received. Where they say corrected deployment/retest, B setup disposition, live email absence, or provisioner implementation is pending, this latest section supersedes them. Raw incoming/execution files are unchanged.
+
+## Verified repository references, 19 November 2026
+
+| Reference | SHA / observation | Meaning |
+|---|---|---|
+| Protected Sprint 1 tag v1.0.0-sprint1 | d4bad74211729032697164f378638efb834a67b6 | Baseline; never move/recreate |
+| Remote main at preparation | 1fe3e3b82dfb0537be30223c9b598b3479b4affe | Main source observed with Git; not proof of live serving image |
+| Remote sprint-2-staging at branch creation | 8c239225c75dc8f0f4db191797282ed9698850d4 | Documentation branch baseline |
+| Candidate service URL | https://classpulse-zdwglar6eq-as.a.run.app/ | Needs agreed version readback before UAT |
+| Last recorded Lab 5 revision | classpulse-00006-6w6, 100% traffic | Historical observation only |
+| Last recorded image digest | sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795 | Historical image tied to main 1fe3e3b in Lab 5; not a fresh serving readback |
+
+Historical metadata provenance: [Lab 5 deployment evidence](../lab-05/deployment.md). Do not reuse its manual test results as Lab 6 independent execution.
+
+## Initial and corrected session register — updated24November2026
+
+| Version ID | Purpose | Source SHA | Digest | Serving revision(s)/traffic | URL | Actual time/operator | Release/CI/smoke evidence |
+|---|---|---|---|---|---|---|---|
+| CP-V01 | Initial ClassPulse independent UAT | 1fe3e3b82dfb0537be30223c9b598b3479b4affe | sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795 | classpulse-00006-6w6,100% | Candidate URL above | A latest saved Console24Nov02:16:41Bangkok; C/D actual run17:31–18:03 | [Time-specific readback](../../../evidence/lab-06/checkpoint-20261124/cp-v01/reconfirmation.txt); developer preflight8/8, not acceptance |
+| PARTNER-V01 | Original Workflow independent UAT | 82a4806b5291b57ad7e76a28fb7d40e1e947b9a6 | sha256:6554d7f8cccdf1b4ded95f3f7d1a2560a786b0ecf7613cab62d59d942613a4fb | scd928edd-00007-477,100% | https://scd928edd-4d7hbszvwq-as.a.run.app | C/D cloud mapping24Nov20:51:51–58Bangkok; A run21:03:40–21:09:45 | [Supplied mapping](../../../evidence/lab-06/checkpoint-20261124/received-cd-a2/Workflow/current-serving-version.json); A footer matched, setup variation later accepted in C/D A3 |
+| PARTNER-FIX-01 | Workflow correction branch only, NOT a deployed release | 84a62c781c730ecf5779c80be0607df7ce0fe74f | PENDING corrected deployment | PENDING corrected deployment | Original URL still serves PARTNER-V01 | A inspected remote PR63/CI; no deployed retest | DraftPR63;CI45407729755SUCCESS; actual teammate review/integration/deployment/retest pending |
+
+Append corrected releases and retest versions when they exist. Each correction needs traceable original defective code -> RED test commit -> fix/GREEN commit -> feature merge -> reviewed main release -> deployed image/revision -> independent retest/decision. Explain merge SHA differences. Use CP-EX-* IDs for the professor-standardized educational exercise, never label it as a natural defect of the healthy release.
+
+## Readback procedure
+
+Before handoff and after each correction deployment, read Cloud Run service traffic and serving revision image digest, match Artifact Registry immutable digest to the full source SHA tag and actual release run. Record timestamp/operator and all serving traffic; a latest-ready revision alone does not prove it receives requests. Public health/ready/SPA/auth smoke cannot identify the source image. No environment-secret values should be inspected or captured. Notify the UAT Team before deployment affects their session.
+
+Acceptance is release-specific. Keep initial failures/evidence and corrected observations as separate runs; do not overwrite earlier results. See [record templates R02/R06/R07](records-template.md) and [coordination](coordination.md).
+
+## Standardized exercise lineage
+
+Track healthy source/initial thorough independent run -> new Sprint staging exercise commit -> independently accessible staging test instance -> blind UAT finding -> reproducer RED -> correction GREEN/regression -> reviewed fixed integration/main release -> corrected deployed revision -> independent retest. CP-EX labels identify educational origin. Record failing existing checks honestly; they do not authorize a defective main deployment or disabling CI. See [exercise protocol](exercise-protocol.md) and [coverage audit](coverage-review.md).
+
+## Current integration boundary
+
+PR75 merged3425a5e,PR76 mergedb98369c and PR78 mergedcdcf460 are documentation changes on staging. They do not change main1fe3e3b or provision accounts/deploy an app. Protected annotated Sprint1 tag object7f2a63d8 peels tod4bad742; it has not moved. See [checkpoint](checkpoint-20261124.md). No corrected ClassPulse/exercise release exists yet; final acceptance remains PENDING.
+
+C/D A3 reattaches the original Workflow mapping only. It is neither a new cloud verification nor a corrected serving release. PR63 now Ready at the same84a62c7, but no corrected source/digest/revision/traffic mapping exists. See [later response](../../../evidence/lab-06/checkpoint-20261124/received-cd-a3/Workflow/CORRECTION-STATUS.md).
+
+B v2 UI observes original82a4806 marker21:27:28–21:34:37 Bangkok; later human06 at21:57:46 lacks a fresh marker/mapping in its screenshot and remains qualified. Workflow release64 targets main at eee7c7e with actual osizk approval/current CI; that source is not yet a corrected serving release. Obtain actual post-merge source/marker/revision/digest/traffic/time and keep further execution/retest in a new versioned run.
+
+## CP-V01 fixture data addendum — 25 November
+
+The human setup added user16/user17 and enrollment4; it is not a corrected application release. The same source/revision/digest/100%traffic was freshly confirmed at00:36:54Bangkok. [Immutable source-tag readback](../../../evidence/lab-06/checkpoint-20261124/fixture-ready-20261125/serving-reconfirmation.json). New fixture results must name this actual version and time; no future deployment freeze is assumed.
