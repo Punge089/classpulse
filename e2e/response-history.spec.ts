@@ -25,6 +25,13 @@ test("TEST-179 respondent can read and revisit a saved response after survey clo
   await page.getByRole("button", { name: "Submit" }).click();
   await expect(page).toHaveURL(/\/responses\/\d+$/);
   const responseId = Number(page.url().match(/\/responses\/(\d+)$/)?.[1]);
+  const owner = await playwright.request.newContext({ baseURL });
+  try {
+    const login = await owner.post("/api/auth/login", { data: { email: "ann.lee@classpulse.test", password: seedPassword() } });
+    expect(login.status()).toBe(200);
+    const closed = await owner.post(`/api/owner/surveys/${surveyId}/close`);
+    expect(closed.status()).toBe(200);
+  } finally { await owner.dispose(); }
   await page.getByRole("link", { name: /my responses/i }).click();
   await expect(page.getByRole("link", { name: title })).toBeVisible();
   await page.getByRole("link", { name: title }).click();
