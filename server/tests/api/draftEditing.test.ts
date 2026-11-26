@@ -224,6 +224,37 @@ test("TEST-124 unauthenticated and respondent writes cannot change an owned draf
   expect(after).toEqual(original);
 });
 
+test("TEST-122 malformed tokens and unexpected fields preserve the draft", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const valid = { expectedUpdatedAt: original.updatedAt.toISOString(), questions: [{ prompt: "Valid", type: "RATING" }] };
+  for (const body of [
+    { questions: valid.questions },
+    { ...valid, expectedUpdatedAt: "not-a-date" },
+    { ...valid, expectedUpdatedAt: 123 },
+    { ...valid, expectedUpdatedAt: "2026-11-26T00:00:00Z" },
+    { ...valid, status: "PUBLISHED" }
+  ]) {
+    const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send(body);
+    expect(result.status).toBe(400);
+    expect(result.body.error.code).toBe("VALIDATION_ERROR");
+  }
+  const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(after).toEqual(original);
+});
+
+test("TEST-124 missing and malformed survey identifiers return 404", async () => {
+  const owner = await loginAs(app, fixture.owner1.email);
+  const body = { expectedUpdatedAt: "2026-11-26T00:00:00.000Z", questions: [{ prompt: "Valid", type: "RATING" }] };
+  for (const id of ["bad", "2147483647"]) {
+    const result = await owner.put(`/api/owner/surveys/${id}/questions`).send(body);
+    expect(result.status).toBe(404);
+    expect(result.body.error.code).toBe("NOT_FOUND");
+  }
+});
+
 test.each([
   { name: "empty", questions: [] },
   { name: "too many", questions: Array.from({ length: 21 }, () => ({ prompt: "Q", type: "RATING" })) },
