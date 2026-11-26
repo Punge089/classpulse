@@ -89,6 +89,21 @@ check(c_review["id"] == 7190900011 and c_review["reviewer"] == "osizk" and "No c
 audit = read("a-artifact-review.json")
 check(audit["cloudSubcasesPassed"] == 5 and audit["localRetentionPassed"] == 1 and audit["AApplicationRerun"] is False, "artifact versus app-run attribution")
 
+decision = read("d-decision-20261126.json")
+check(decision["decision"] == "NOT ACCEPTED" and decision["decisionBangkok"] == "2026-11-26T19:05:26+07:00", "actual D-reported decision/time")
+check(decision["source"] == SOURCE and decision["revision"] == REVISION and decision["trafficPercent"] == 100, "decision exact release")
+check(decision["cd01Ac04"] == "BLOCKED" and decision["cFinalDecisionReview"] == "PENDING", "live blocker and separate C decision review")
+check(decision["additionalDecisionAttachmentReceived"] is False and decision["newGenuineApplicationDefectEstablished"] is False, "relay provenance and no invented defect")
+continuity = read("auth-source-continuity.json")
+check(continuity["cpFix001"] == SOURCE and continuity["appTestsRun"] is False, "source comparison is not an app run")
+check(continuity["identicalFiles"] == len(continuity["files"]) == 8, "eight compared files")
+for row in continuity["files"]:
+    check(row["byteIdentical"] and row["cpV01Blob"] == row["cpFix001Blob"] and row["cpV01Sha256"] == row["cpFix001Sha256"], "source identity receipt: " + row["path"])
+workflow = read("workflow-latest-release-20261126.json")
+check(workflow["source"] == "41a8fefa7a5d93b6531dff88daae39574d72dcb7" and workflow["revision"] == "scd928edd-00009-fsg", "new Workflow mapping")
+check(workflow["aCloudReadback"] is False and workflow["aAppExecution"] is False, "Workflow supplied mapping, no A execution")
+check(len(workflow["changedRuntimeOrDeploymentFiles"]) == 6 and any(x["filename"] == "prisma/schema.prisma" for x in workflow["changedRuntimeOrDeploymentFiles"]), "Workflow applicability review required")
+
 # Scan this new public receipt and current documentation, not unrelated historical files.
 docs = [ROOT / "docs/labs/lab-06" / name for name in ["cp-ex-f01-closure.md", "final-acceptance-readiness.md", "report.md", "versions.md", "contributions.md"]]
 text_files = [p for p in HERE.rglob("*") if p.suffix in {".md", ".json"}] + docs

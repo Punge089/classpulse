@@ -9,6 +9,8 @@ Issue #122. These actual roles supersede earlier pending-receipt statements with
 | D / Thira Rungruangkaset, 67070503419 | Independent local finding on `4199888`; corrected Cloud retest on `bee0d122`, 26 November 18:30:40–49 Bangkok, operated by Codex (GPT-6) under D. Five Cloud subcases passed; separate 18:26:54 local read preserved drafts 3/6/9. D used A's Cloud mapping. |
 | C / Ashira Sansoda, 67070503445, osizk | Actual original-finding review 7186481546 and corrected-retest review 7190900011. Reviewed hashes, screenshots and readbacks; no C rerun. The comment identifies Codex assistance without specifying the exact model; D's model is not attributed to C. |
 
+At 26 November 19:05:26 Bangkok, D separately records Not Accepted on current CP-FIX-001 evidence, with live CD-01 blocked by the operator safety constraint. The user relayed the decision; no separate decision attachment was supplied. C's final-decision review remains pending. A's subsequent 8-file auth/source comparison and Workflow release-diff review were read-only inspections, not new independent UAT. Method M01 is a proposal, not a completed verification.
+
 ---
 
 ## Historical contribution snapshots

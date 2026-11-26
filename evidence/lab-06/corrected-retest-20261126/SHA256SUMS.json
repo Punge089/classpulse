@@ -3,13 +3,15 @@
   "a-artifact-review.json": "adedfa0bb9c9f87ca9676e059a10e48eafc9e59bf1e82bb863d9c98f48623110",
   "a-release-review.json": "646c65e7be02e91e9609199d151dc278efe23cb96eba25704f09084a4e52f945",
   "a-release121-review-summary.json": "31385829a6e7669e57928995e806ee729a79632f91b74204a780035dcefc02f9",
+  "auth-source-continuity.json": "85e691679ba31874c469e7451bb5d1a4f361e4627f882a3fc5426bd7bc27a6f5",
   "b-correction-review.json": "83e476089a1347327f15085704c5870b7cb91c3c511d619fbdae347a47b6600b",
   "c-retest-review.json": "909d44d1c314d5ac1079cd6914b011a9964f9f2ae16fba1eb4360e67bee4cb97",
   "CP-FIX-001-verified-release.json": "8d4fe7f80cccd5358ab2a12e51532f4af8408e16e1a6daf6c03a081db0c3430d",
+  "d-decision-20261126.json": "f8a5f9feb6b04020c91ace7acefc5eaa313ca554f9f67210b993327d82369609",
   "deployed-fixture-auth.json": "08e8278d3dc69c4db9793bfa60b8c3d22c51f227cf41a686909b2a87dca4333d",
   "deployed-public-smoke.json": "21f2bdfb32157a479abb3be5febec8223292790d2fdf14495437cda50c8126fa",
   "main-deploy-verified.json": "e84aaab9339d6c5db61f66adfe1cd24fe36dfa872ddd93f2776eac388e4f746e",
-  "README.md": "b3626d28f3b6f72a53370c588c1a9f475713373d9c80f5ceddd6f461cae21f33",
+  "README.md": "e50c4647f6670b40699b2eecfa2e26041bf1a772305bb893e6b792393e8189c2",
   "received-d/CP-RT-01-before.png": "c344fe8525959ad1e02ca73be847ae624f2ed9cc45b6e63bdeafc0fe384e456b",
   "received-d/CP-RT-01-error.png": "6d1a0310cdbad0a7c2bd9c532f4e948ee6b09d3b8ce65cb2e11b4504b5f5f87a",
   "received-d/CP-RT-02-error.png": "3f1a0e6bfaae8800002d11710aeaf757b1083d46a2c117699141524226192f5c",
@@ -21,5 +23,6 @@
   "received-d/retest-results.json": "93c519d0ee565c763facd76a256d2575480afb0404cd88c6f6dec9ef77424d0b",
   "registry-index-membership.json": "05f73c1de57d7511985a807f8b6b95a94684ac72c6e5ff0c096218ca20d0d577",
   "source-archive-receipt.json": "f133360ca65c0e124059d271c6bd16c9988d03f67294fba8d30110e349acd7f7",
-  "verify.py": "39026faccc88eeabb58a3c90976dc8a9cb01781853e1733dd83624db793d382c"
+  "verify.py": "61ac546a4f900232de816da75cb0c839b112e6ce18c2c44baa521dd2e96e238b",
+  "workflow-latest-release-20261126.json": "589f152d110f1df8d5454ab69ba2e87a3b5029775610e6a58bb5cb77fb54a190"
 }
