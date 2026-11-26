@@ -12,3 +12,7 @@
 ## Server RED run
 
 See `red-server-ci-45775486265.txt` for PR #119 test source `f5f9a06`, Actions run `45775486265` and synthetic merge `8a76829`. The isolated server suite ran 235 tests: 223 passed and 12 new F-09 endpoint tests failed because `GET /api/responses/mine` is not implemented yet. Later workflow stages were skipped after the expected RED. No shared local DB was touched.
+
+## Latest server RED run
+
+Current test source `0ed8539` was tested in Actions run `45776073332` (synthetic merge `d33e987`) against staging `e6043a9`. The isolated server suite ran235 tests:223 passed and12 new F-09 API tests failed because the history endpoint is not implemented yet. No shared local database was touched; see `red-server-ci-45776073332.txt`.
