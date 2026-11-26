@@ -153,6 +153,25 @@ test("TEST-126 concurrent publish and edit preserve one complete serial outcome"
   }
 });
 
+test("TEST-128 refuses an inconsistent draft with responses without deleting data", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const saved = await prisma.response.create({ data: { surveyId: original.id, respondentId: fixture.student1.id } });
+  await prisma.answer.create({ data: { responseId: saved.id, questionId: original.questions[0].id, ratingValue: 4 } });
+  const before = await prisma.response.findUniqueOrThrow({ where: { id: saved.id }, include: { answers: true } });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(),
+    questions: [{ prompt: "Replacement", type: "RATING" }]
+  });
+  expect(result.status).toBe(409);
+  expect(result.body.error.code).toBe("DRAFT_HAS_RESPONSES");
+  const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } });
+  expect(after).toEqual(original);
+  expect(await prisma.response.findUniqueOrThrow({ where: { id: saved.id }, include: { answers: true } })).toEqual(before);
+});
+
 test.each([
   { name: "empty", questions: [] },
   { name: "too many", questions: Array.from({ length: 21 }, () => ({ prompt: "Q", type: "RATING" })) },

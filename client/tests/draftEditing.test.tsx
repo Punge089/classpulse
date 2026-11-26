@@ -80,3 +80,15 @@ test("TEST-129 non-drafts explain the restriction and cannot be saved", async ()
   expect(screen.queryByRole("button", { name: "Save questions" })).toBeNull();
   expect(vi.mocked(apiFetch)).toHaveBeenCalledTimes(1);
 });
+
+test("TEST-129 cancel discards unsaved edits without a write request", async () => {
+  const user = userEvent.setup();
+  vi.mocked(apiFetch).mockReset().mockResolvedValueOnce({ survey: draft });
+  editor();
+  const prompt = await screen.findByLabelText("Question 1 text");
+  await user.clear(prompt);
+  await user.type(prompt, "Unsaved");
+  await user.click(screen.getByRole("link", { name: "Cancel and return" }));
+  expect(await screen.findByText("Returned to detail")).toBeTruthy();
+  expect(vi.mocked(apiFetch)).toHaveBeenCalledTimes(1);
+});
