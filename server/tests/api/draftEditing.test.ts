@@ -125,6 +125,34 @@ test("TEST-127 failed replacement rolls back questions, options and update token
   }
 });
 
+test("TEST-126 concurrent publish and edit preserve one complete serial outcome", async () => {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+    const editor = await loginAs(app, fixture.owner1.email);
+    const publisher = await loginAs(app, fixture.owner1.email);
+    const [edit, publish] = await Promise.all([
+      editor.put(`/api/owner/surveys/${original.id}/questions`).send({
+        expectedUpdatedAt: original.updatedAt.toISOString(),
+        questions: [{ prompt: "Complete replacement", type: "RATING", required: true }]
+      }),
+      publisher.post(`/api/owner/surveys/${original.id}/publish`)
+    ]);
+    expect(publish.status).toBe(200);
+    expect([200, 409]).toContain(edit.status);
+    if (edit.status === 409) expect(edit.body.error.code).toBe("INVALID_TRANSITION");
+    const after = await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+      questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+    } });
+    expect(after.status).toBe("PUBLISHED");
+    if (edit.status === 200) {
+      expect(after.questions.map(q => [q.prompt, q.position])).toEqual([["Complete replacement", 1]]);
+      expect(after.questions[0].options).toEqual([]);
+    } else {
+      expect(after.questions).toEqual(original.questions);
+    }
+  }
+});
+
 test.each([
   { name: "empty", questions: [] },
   { name: "too many", questions: Array.from({ length: 21 }, () => ({ prompt: "Q", type: "RATING" })) },
