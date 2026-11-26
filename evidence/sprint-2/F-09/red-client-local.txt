@@ -1,0 +1,36 @@
+
+> classpulse-client@0.1.0 test
+> vitest run tests/responseHistory.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client
+
+ ❯ tests/responseHistory.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/responseHistory.test.tsx [ tests/responseHistory.test.tsx ]
+Error: Failed to resolve import "../src/pages/respondent/MyResponsesPage" from "tests/responseHistory.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/tests/responseHistory.test.tsx:15:38
+  13 |  const __vi_import_2__ = await import('@testing-library/user-event')
+  14 |  const __vi_import_3__ = await import('react-router-dom')
+  15 |  const __vi_import_4__ = await import('../src/pages/respondent/MyResponsesPage')
+     |                                       ^
+  16 |  const __vi_import_5__ = await import('../src/components/NavBar')
+  17 |  
+ ❯ TransformPluginContext._formatError ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41
+ ❯ TransformPluginContext.error ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16
+ ❯ normalizeUrl ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23
+ ❯ ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+ ❯ TransformPluginContext.transform ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7
+ ❯ PluginContainer.transform ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18
+ ❯ loadAndTransform ../../../../../../../../%E0%B9%80%E0%B8%94%E0%B8%AA%E0%B8%81%E0%B9%8C%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client/node_modules/vitest/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  14:17:54
+   Duration  4.30s (transform 197ms, setup 58ms, collect 0ms, tests 0ms, environment 2.66s, prepare 830ms)
+
