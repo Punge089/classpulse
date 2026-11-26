@@ -111,7 +111,8 @@ describe("Sprint 2 F-09 response history API", () => {
       const result = await student.get(`/api/responses/mine?${query}`);
       expect(result.status).toBe(400);
       expect(result.body.error.code).toBe("VALIDATION_ERROR");
-      expect(fields(result)).toContain(query.includes("cursor") ? "cursor" : "limit");
+      const field = query.startsWith("cursor=") ? "cursor" : query.startsWith("other=") ? "other" : "limit";
+      expect(fields(result)).toContain(field);
       expect(result.body).not.toHaveProperty("responses");
     }
   });
