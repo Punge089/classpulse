@@ -14,11 +14,12 @@
   "testedFileSha256": {
     "tools/uat/m01_live_check.py": "6156db43b1aa20b48ab50908ff1581848740e2bd70440a0e7d82a8a5328840bc",
     "tools/uat/test_m01_live_check.py": "441be534ebd5f0862ca85abf68997406966fc4de724187ff69fdb874c015fb02",
-    "docs/labs/lab-06/m01-live-client.md": "19461959ec9a14af0d2daca3fdd06e645dde65c6274bee9b8f829af96d2dd124"
+    "docs/labs/lab-06/m01-live-client.md": "c8462181742e2c18537ff9d1b78dc98723689594aaaa56eabb3eab3d54763925"
   },
   "existingContract": "F-01 AC04 and PR123 M01 method; operational evidence utility, no new product requirement/feature",
   "independentLiveM01": "NOT RUN by this validation",
-  "reviewGate": "B exact executable review/current CI pending; no self approval",
+  "reviewGate": "B review NOT PERFORMED, specifically waived by human A27Nov for standalone utility; actual C/D execution still pending. No self approval/main release or CI bypass.",
   "workflowPythonSuiteIncluded": false,
-  "ciScope": "Existing mandatory PR workflow checks app/build/Docker; B separately runs documented Python utility suite"
+  "ciScope": "Existing mandatory PR workflow checks app/build/Docker; B separately runs documented Python utility suite",
+  "documentationUpdatedAfterTest": "Runbook only: records explicit user review exception; executable/tests unchanged from25PASS run"
 }

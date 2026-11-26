@@ -4,7 +4,7 @@ This standalone evidence utility implements the existing F-01 AC-04 and reviewed
 
 ## Review and version gates
 
-B must review the exact executable SHA/file hash and actual offline checks before C/D uses it live. Before that review this is a review candidate, not an approved tester. Do not infer approval from a prior documentation review or this page. No merge into main or app deployment is needed to execute the standalone reviewed file. Keep the pinned ClassPulse release coordinated through completion; further Workflow testing is separate.
+On27November2026 A's human owner explicitly instructed this chat to skip B's review because B is unavailable. This **specific standalone utility** may therefore be handed to C/D after A's offline validation; it has **not been reviewed or approved by B**. This exception does not create a peer review, relax the application acceptance criterion or authorize a main merge/deployment/protection change. The earlier planned B gate is superseded for this utility only. No merge or app deployment is needed to execute the exact distributed file. Keep the pinned ClassPulse release coordinated through completion; further Workflow testing is separate.
 
 Application target is CP-FIX-001 source `bee0d122bf23410e3d2db69649ad5e44959b6cd8`, revision `classpulse-00007-6t9`, runtime manifest `sha256:e00257d3b1c9cfdaabbe9b3f1d238c1d26fb342665f80122dcddc4550bc4388d`, traffic100%. The tool's own feature commit/hash is separate from this deployed source. Each result calculates its actual client-file SHA256. Match it to B's reviewed file/package; do not execute a subsequently changed file under an older approval.
 
@@ -24,7 +24,7 @@ The release hold remains in effect through the tester's finish; use the latest A
 
 ## Run as the independent C/D operator
 
-After B's exact-file review, record the real start notice in the agreed LAB6 channel. Then run from the extracted review package or exact reviewed checkout. Replace the private path and model label with the tester's actual values; never insert a secret value in the command.
+Under A's specific review exception, verify the supplied client hash and record the real start notice in the agreed LAB6 channel. Then run from the extracted package or exact distributed checkout. Replace the private path and model label with the tester's actual values; never insert a secret value in the command.
 
 ```powershell
 python tools/uat/m01_live_check.py --release-record release-verification.json --credentials-file C:/private/student1.json --operator "Thira D / EN-037_P5" --operator-kind ai --model "ACTUAL_MODEL_NAME" --output M01-live-result.json
@@ -56,4 +56,4 @@ python -m unittest discover -s tools/uat -p test_m01_live_check.py -v
 
 These fake-transport tests verify utility behavior/privacy/guards and use no application, real password, network, Cloud or database. Their results are **not ClassPulse UAT PASS**. The existing mandatory PR CI still checks application/build compatibility; its workflow does not run the Python utility suite, so B also runs this command locally. No tests were disabled, focused or weakened.
 
-Assistance: A/Punge089 with Codex GPT-6 implemented this utility and its offline validation. B exact-code review and C/D independent execution remain separately attributable and pending until their actual records exist.
+Assistance: A/Punge089 with Codex GPT-6 implemented this utility and its offline validation. B review is **not performed, specifically waived by A's human owner for this utility**. C/D independent execution remains separately attributable and pending until its actual record exists.
