@@ -217,13 +217,30 @@ describe("Sprint 2 F-09 response history API", () => {
     expect(other.body).toEqual(missing.body);
   });
 
-  test("TEST-177 closed survey preserves the saved detail and list entry", async () => {
-    const prior = await saved(f.student1, "CLOSED");
+  test("TEST-177 closing after submission preserves the response and saved answers", async () => {
+    const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, status: "PUBLISHED" });
     const student = await loginAs(app, "student1@classpulse.test");
+    const submitted = await student.post(`/api/surveys/${survey.id}/responses`).send(answers(survey));
+    expect(submitted.status).toBe(201);
+    const responseId = submitted.body.response.id as number;
+    const before = await prisma.response.findUniqueOrThrow({
+      where: { id: responseId },
+      include: { answers: { orderBy: { questionId: "asc" } } }
+    });
+    const owner = await loginAs(app, "ann.lee@classpulse.test");
+    const closed = await owner.post(`/api/owner/surveys/${survey.id}/close`);
+    expect(closed.status).toBe(200);
+    expect(closed.body.survey.status).toBe("CLOSED");
     const list = await student.get("/api/responses/mine");
     expect(list.status).toBe(200);
-    expect(list.body.responses[0].id).toBe(prior.response.id);
-    const detail = await student.get(`/api/responses/${prior.response.id}`);
+    expect(list.body.responses).toContainEqual(expect.objectContaining({ id: responseId, surveyStatus: "CLOSED" }));
+    const detail = await student.get(`/api/responses/${responseId}`);
     expect(detail.status).toBe(200);
+    expect(detail.body.response.answers).toHaveLength(before.answers.length);
+    const after = await prisma.response.findUniqueOrThrow({
+      where: { id: responseId },
+      include: { answers: { orderBy: { questionId: "asc" } } }
+    });
+    expect(after).toEqual(before);
   });
 });

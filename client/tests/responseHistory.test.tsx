@@ -69,7 +69,7 @@ test("TEST-179 a failed next-page retry preserves rows and appends the next row 
   expect(screen.getAllByText("Saved 1")).toHaveLength(1);
 });
 
-test("TEST-178 respondent navigation offers My responses and scoped detail can return", async () => {
+test("TEST-178 respondent can keyboard-navigate My responses and return from saved detail", async () => {
   const user = userEvent.setup();
   apiFetch.mockResolvedValueOnce({ responses: [row(7)], nextCursor: null })
     .mockResolvedValueOnce({ response: { ...row(7), answers: [{ questionId: 1, prompt: "Pace", type: "RATING", ratingValue: 4 }] } })
@@ -77,9 +77,20 @@ test("TEST-178 respondent navigation offers My responses and scoped detail can r
   page();
   const navigation = await screen.findByRole("link", { name: /my responses/i });
   expect(navigation.getAttribute("href")).toBe("/my-responses");
-  await user.click(screen.getByRole("link", { name: "Saved 7" }));
+  const tabTo = async (target: HTMLElement) => {
+    for (let i = 0; i < 10 && document.activeElement !== target; i++) await user.tab();
+    expect(document.activeElement).toBe(target);
+  };
+  await tabTo(navigation);
+  expect(document.activeElement).toBe(navigation);
+  await user.keyboard("{Enter}");
+  const saved = await screen.findByRole("link", { name: "Saved 7" });
+  await tabTo(saved);
+  await user.keyboard("{Enter}");
   expect(await screen.findByText("Pace")).toBeTruthy();
-  await user.click(screen.getByRole("link", { name: /back to my responses/i }));
+  const back = screen.getByRole("link", { name: /back to my responses/i });
+  await tabTo(back);
+  await user.keyboard("{Enter}");
   expect(await screen.findByText("Saved 7")).toBeTruthy();
 });
 
