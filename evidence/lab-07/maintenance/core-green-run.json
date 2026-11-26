@@ -1,0 +1,111 @@
+{
+  "databaseId": 45601152925,
+  "headSha": "3203c3af8b33adea086b62d654c93dd4a1e77d90",
+  "headBranch": "feature/87-lab7-survey-reopening",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/Punge089/classpulse/actions/runs/45601152925",
+  "createdAt": "2026-11-25T11:05:33Z",
+  "updatedAt": "2026-11-25T11:07:15Z",
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install root dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install server dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install client dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Generate Prisma client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Apply database migrations",
+      "conclusion": "success"
+    },
+    {
+      "name": "Seed synthetic test accounts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build Docker image locally",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": {
+    "core-green-test-server.txt": "5e292cc39ffe0707b275b606a9c3edc66a2c64b4212ffe8e2f7c07b8b285279c",
+    "core-green-test-client.txt": "b27f1378d32ea41ad234f720eba4097ad7ba6bbee78b885ae426faf34f0d8595",
+    "core-green-build-server.txt": "09a925f5a34b17f7eb0f275cc34d18d5db5a3bf24edcfb9fb671f2a6314c57dd",
+    "core-green-build-client.txt": "4042f090784b4d56b63a88e98faf0761453731dcd43810ad341180227a76ca26",
+    "core-green-build-docker-image-locally.txt": "b0e9329cbdb9739823d9e9b939f4d75abf50bca54f6ea10045335705d851fcd8"
+  },
+  "Test server": {
+    "command": "npm test",
+    "workingDirectory": "server",
+    "passed": 176,
+    "failed": 0,
+    "skipped": 0,
+    "total": 176
+  },
+  "Test client": {
+    "command": "npm test",
+    "workingDirectory": "client",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "total": 1
+  }
+}

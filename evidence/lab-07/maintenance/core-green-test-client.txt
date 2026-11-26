@@ -1,0 +1,18 @@
+﻿2026-11-25T11:06:41.2731408Z ##[group]Run npm test
+2026-11-25T11:06:41.2731644Z npm test
+2026-11-25T11:06:41.2761171Z shell: /usr/bin/bash -e {0}
+2026-11-25T11:06:41.2761419Z ##[endgroup]
+2026-11-25T11:06:41.3577670Z
+2026-11-25T11:06:41.3578465Z > classpulse-client@0.1.0 test
+2026-11-25T11:06:41.3578768Z > vitest run
+2026-11-25T11:06:41.3578873Z
+2026-11-25T11:06:41.5917052Z
+2026-11-25T11:06:41.5918920Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/client
+2026-11-25T11:06:41.5919516Z
+2026-11-25T11:06:42.3213292Z  ✓ tests/RatingDots.test.tsx (1 test) 140ms
+2026-11-25T11:06:42.3387744Z
+2026-11-25T11:06:42.3395032Z  Test Files  1 passed (1)
+2026-11-25T11:06:42.3396247Z       Tests  1 passed (1)
+2026-11-25T11:06:42.3397048Z    Start at  11:06:41
+2026-11-25T11:06:42.3398415Z    Duration  747ms (transform 42ms, setup 14ms, collect 109ms, tests 140ms, environment 267ms, prepare 50ms)
+2026-11-25T11:06:42.3399054Z

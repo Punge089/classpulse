@@ -1,0 +1,17 @@
+﻿2026-11-25T11:06:43.7929370Z ##[group]Run npm run build
+2026-11-25T11:06:43.7929624Z npm run build
+2026-11-25T11:06:43.7958568Z shell: /usr/bin/bash -e {0}
+2026-11-25T11:06:43.7958795Z ##[endgroup]
+2026-11-25T11:06:43.8753135Z
+2026-11-25T11:06:43.8753907Z > classpulse-client@0.1.0 build
+2026-11-25T11:06:43.8755067Z > tsc --noEmit && vite build
+2026-11-25T11:06:43.8755334Z
+2026-11-25T11:06:45.6614361Z vite v6.0.15 building for production...
+2026-11-25T11:06:45.7196829Z transforming...
+2026-11-25T11:06:46.4598782Z ✓ 46 modules transformed.
+2026-11-25T11:06:46.5860376Z rendering chunks...
+2026-11-25T11:06:46.5913766Z computing gzip size...
+2026-11-25T11:06:46.5979143Z dist/index.html                   0.68 kB │ gzip:  0.37 kB
+2026-11-25T11:06:46.5980252Z dist/assets/index-BU5Qbnca.css  233.83 kB │ gzip: 31.58 kB
+2026-11-25T11:06:46.5981336Z dist/assets/index-Bi1ZvEdG.js   189.33 kB │ gzip: 59.79 kB
+2026-11-25T11:06:46.5982067Z ✓ built in 913ms

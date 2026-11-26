@@ -90,5 +90,30 @@ jobs:
         working-directory: client
         run: npm run build
 
+      - name: Install Chromium for preserved and maintenance browser tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Reseed synthetic CI accounts for browser tests
+        working-directory: server
+        env:
+          DATABASE_URL: postgresql://classpulse:ci_only_password@localhost:5432/classpulse_test?schema=public
+          SEED_PASSWORD: ci_only_seed_password
+        run: npm run prisma:seed
+
+      - name: Test complete browser suite
+        env:
+          DATABASE_URL: postgresql://classpulse:ci_only_password@localhost:5432/classpulse_test?schema=public
+          SEED_PASSWORD: ci_only_seed_password
+        run: npm run test:e2e -- --reporter=line
+
+      - name: Retain browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: lab7-browser-${{ github.sha }}
+          path: test-results/
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Build Docker image locally
         run: docker build --tag classpulse-ci:ci .

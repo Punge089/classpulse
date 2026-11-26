@@ -1,0 +1,119 @@
+{
+  "databaseId": 45597034491,
+  "headSha": "3f8918ceefd5eb55cdebd970710fd0789bd38c98",
+  "headBranch": "feature/87-lab7-survey-reopening",
+  "status": "completed",
+  "conclusion": "failure",
+  "url": "https://github.com/Punge089/classpulse/actions/runs/45597034491",
+  "createdAt": "2026-11-25T10:39:14Z",
+  "updatedAt": "2026-11-25T10:40:25Z",
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install root dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install server dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install client dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Generate Prisma client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Apply database migrations",
+      "conclusion": "success"
+    },
+    {
+      "name": "Seed synthetic test accounts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test server",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Test client",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Build server",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Build client",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Build Docker image locally",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Post Set up Node.js 24",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Post Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "command": "npm test (working-directory server)",
+  "oldImplementationCommit": "8017c9183302e4e0c5ff04cd997704255420b8fb",
+  "githubPRTestMergeAtRunStart": "d34d22018affa62c75009fa4e8be01b7ab728799",
+  "testMergeSource": "GitHub PR92 API readback after test-only push; CI logs below establish actual checkout",
+  "checkoutMentionedTestMerge": true,
+  "summary": [
+    "2026-11-25T10:40:19.4828642Z  \u276f tests/api/surveyReopen.test.ts (2 tests | 2 failed) 462ms",
+    "2026-11-25T10:40:19.4832029Z      \u2192 expected 404 to be 200 // Object.is equality",
+    "2026-11-25T10:40:19.4834517Z      \u2192 expected 404 to be 200 // Object.is equality",
+    "2026-11-25T10:40:21.0990552Z \u23af\u23af\u23af\u23af\u23af\u23af\u23af Failed Tests 2 \u23af\u23af\u23af\u23af\u23af\u23af\u23af",
+    "2026-11-25T10:40:21.0992719Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey",
+    "2026-11-25T10:40:21.0995152Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey",
+    "2026-11-25T10:40:21.1010415Z AssertionError: expected 404 to be 200 // Object.is equality",
+    "2026-11-25T10:40:21.1015724Z  \u276f tests/api/surveyReopen.test.ts:43:26",
+    "2026-11-25T10:40:21.1219472Z  Test Files  1 failed | 16 passed (17)",
+    "2026-11-25T10:40:21.1228163Z       Tests  2 failed | 139 passed (141)",
+    "2026-11-25T10:40:21.1231121Z    Duration  15.84s (transform 247ms, setup 85ms, collect 1.28s, tests 11.77s, environment 3ms, prepare 785ms)",
+    "2026-11-25T10:40:21.1263641Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality",
+    " \u276f tests/api/surveyReopen.test.ts:43:26",
+    "2026-11-25T10:40:21.1274091Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality",
+    " \u276f tests/api/surveyReopen.test.ts:43:26"
+  ],
+  "logSha256": "534c67d02286b9e397ea17cd7dd834a5845333ad801c53983d3f84dde4d995e8",
+  "note": "Only Test server step retained; environment values redacted. Later workflow steps skipped because server tests failed; no tests disabled.",
+  "testCounts": {
+    "passed": 139,
+    "failed": 2,
+    "skipped": 0,
+    "total": 141
+  },
+  "readability": "ANSI controls removed; environment values omitted; all Test server step lines otherwise retained; trailing whitespace trimmed in follow-up after initial diff-check failure; gh caret-escaped ANSI also removed without altering assertions/counts"
+}
