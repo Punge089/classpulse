@@ -1,0 +1,10 @@
+{
+  "source": "52f07a1",
+  "command": "npm --prefix client test -- tests/draftEditing.test.tsx",
+  "passed": 0,
+  "failed": 1,
+  "skipped": 0,
+  "reason": "draft detail lacks Edit questions link",
+  "output_sha256": "2869bdf7c3177c066237160f2bb9f299a2e23036269b9146b1279fcf26d53491",
+  "scope": "mocked client state, not DB or browser acceptance"
+}
