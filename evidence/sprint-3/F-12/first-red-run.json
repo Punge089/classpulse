@@ -1,0 +1,16 @@
+{
+  "pr": 139,
+  "source": "a819fbff484b4bc56e0ebaa7c8a49f61ed51ba0d",
+  "base": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+  "testedMerge": "84f9f6960ab9457dfd57dd48190ad0e8044e08d3",
+  "workflowRun": 46058262944,
+  "command": "npm test (server)",
+  "passed": 272,
+  "failed": 2,
+  "skippedTests": 0,
+  "skippedDownstreamWorkflowSteps": 8,
+  "observedFailures": {
+    "TEST-240": "No route: received 404 instead of 200 after two valid saved responses",
+    "TEST-242": "No route: received 404 instead of 400 for an unexpected query"
+  }
+}
