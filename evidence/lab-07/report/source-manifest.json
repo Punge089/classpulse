@@ -337,6 +337,13 @@
       "file": "inputs/nov28-final-metrics-review.json",
       "sha256": "3a6051fbfc6138528b5f0be7651ad9be063a9eba516489f1d4bf66436ccf2c6e",
       "derivation": "A's exact-head source review, GitHub PR #148 review/merge and CI 46056322908"
+    },
+    {
+      "file": "inputs/nov28-release-pr143-reviews.json",
+      "sha256": "28e8181102d7a80ee25b9cec2f8a811353b3a45eb3464bcc74dd1a24a4223ce0",
+      "commit": "N/A",
+      "path": "GitHub pull request #143 reviews",
+      "derivation": "GitHub REST API readback 2026-11-28; review bodies verbatim"
     }
   ],
   "sourceSnapshotVersion": "1"

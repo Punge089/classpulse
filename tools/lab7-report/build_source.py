@@ -190,9 +190,13 @@ def assemble() -> None:
     cloud = data("nov28-live-readback.json")
     legacy = cloud["retentionSample"]
     live = data("nov28-live-reopen.json")
+    pr143 = data("nov28-release-pr143-reviews.json")["reviews"]
+    def quote(text: str) -> str:
+        return "> " + " ".join(line.strip() for line in text.strip().splitlines() if line.strip())
     observed = {step["id"]: step["actual"] for step in live["checks"]}
     def bangkok(time: str) -> str:
         return datetime.fromisoformat(time.replace("Z", "+00:00")).astimezone(BG).strftime("%d %b %Y %H:%M:%S ICT")
+    release_reviews = "\n\n".join(f'B/{r["author"]}, {r["state"]}, {bangkok(r["submittedAt"])}, on `{r["commit"][:7]}` (review {r["id"]}):\n\n{quote(r["body"])}' for r in pr143)
 
     staging_state = integration["merge"]
     review_time = bangkok(integration["reviewedAt"])
@@ -206,9 +210,15 @@ def assemble() -> None:
     assert len(retro_answers.splitlines()) == 3 and "PENDING independent UAT disposition" in final_readiness
     interpretation = re.search(r"^Interpretation at this refresh \(75 words\): (.+)$", read("b-final-metrics.md"), re.M).group(1)
     assert len(interpretation.split()) <= 100
+    action_text = ("Risk: every release signal is developer-run. M3 passed 307/307 tests and M5 completed 2/2 jobs, and A's 14 live API "
+                   "checks passed, but M4 shows no independent Lab 7 UAT disposition for the changed reopen path. A green suite does not "
+                   "show that another user can reopen a survey correctly. Action: A asks the EN-037_P5 testers to run the L7-B11/B12 "
+                   "reopen and preserved-response steps on classpulse-00008-qlw and records PASS/FAIL in Issue #87 before Final Delivery; "
+                   "B reviews the record. Until then the maintained scope stays NOT READY.")
+    assert len(action_text.split()) <= 100
     report = f'''# ClassPulse - Lab 7 maintenance report
 
-**Version 1.0 - Lab 7 maintenance report**
+**Version 1.1 - Lab 7 maintenance report**
 
 Historical test and metrics snapshot: {manifest["observedAtBangkok"]}. Baseline and PR #92 readback: {readback["observedBangkok"]}. Lab 7 merged into main and automated deployment passed. Cloud Run and a pre-existing response were verified. The live API check passed. The report includes B’s reviewed metrics. This PDF covers Lab 7.
 
@@ -243,8 +253,9 @@ Theme 10: university course feedback. Repository: https://github.com/Punge089/cl
 | GitHub main before Lab 7 release | {readback["main"]} | Prior Lab 6 release from PR #121 |
 | Reviewed Lab 7 main merge | {release["main"]} | PR #143; automated deploy run {release["deployRun"]} passed. No release tag is claimed |
 | Lab 7 service URL | {release["url"]} | {cloud["servingRevision"]} received {cloud["trafficPercent"]}% of traffic at readback. See B6 for image digests. |
+| Unrelated work in the same release | PR #93 F-06 draft editing; PR #119 F-09 response history | Sprint 2 features released with #92; not Lab 7 evidence (B6) |
 
-Intervening work includes Lab 5 deployment/CI and Lab 6 test tooling and UAT evidence. The Lab 6 title-validation correction reached main in PR #121. Sprint 2 staging has since absorbed later-sprint work, including F-09 response history (PR #119). The two old lifecycle implementation files match across the accepted release and the RED source. See A1 for the source comparison.
+Intervening work: Lab 5 CI/CD, Lab 6 tooling and evidence, and the Lab 6 fix (PR #121). The old lifecycle files match across the accepted release and the RED source (A1).
 
 # Part A - Change impact and updated contract (25)
 
@@ -297,11 +308,11 @@ The following complete relevant state/UI/API/data/impact/AC/STS excerpts are fro
 
 ## A4 - Genuine teammate review before tests/code (L7-A04)
 
-B/book6349, {c3["created_at"]}, Issue #87 comment{c3["id"]}, reviewed contract 8017c91:
+B/book6349, {c3["created_at"]} ({bangkok(c3["created_at"])}), Issue #87 comment {c3["id"]}, reviewed contract 8017c91:
 
 > {c3["body"]}
 
-Git timestamps below are actual committed times converted to Bangkok; the C3 comment time above is separately recorded server metadata. Later unit/fault/migration/browser additions are regression increments, not falsely presented as preceding the original backend code.
+Sequence in Bangkok time: contract 8017c91 committed 25 Nov 14:58:28; B's review above at {bangkok(c3["created_at"])}; first test-only commit 17:39:03; backend code 18:05:22. Git timestamps below are actual committed times converted to Bangkok; the review time is GitHub comment metadata. Later unit/fault/migration/browser additions are regression increments, not falsely presented as preceding the original backend code.
 
 | Event | Full commit | Committed at Bangkok |
 |---|---|---|
@@ -434,6 +445,19 @@ Failed, cancelled or skipped job steps: {ci_steps}. CI evidence: {integration["r
 
 B/book6349 approved release PR #{release["pr"]} at {release["approvedHead"]} and merged it into main as {release["main"]} on {bangkok(release["mergedAt"])}. Required pre-merge CI {release["preMergeCI"]} and main deploy run {release["deployRun"]} passed 272 server, 23 client and 12 browser tests, 0 failures or skips, both builds and Docker.
 
+Release scope. Main moved from the Lab 6 release bee0d122 to 8316f27 in one reviewed merge. The application and schema files it changed come from three feature merges; the other staging merges in the release changed only documentation, evidence, report tools or one Lab 6 test file. The 307-test release suite therefore covers more than the Lab 7 change; the Lab 7 change alone was tested in PR #92 (219/10/10, above).
+
+| Staging merge | Purpose | Application/schema files changed (server/src, client/src, server/prisma) |
+|---|---|---|
+| e6043a9 PR #92 | Lab 7 maintenance change (this report) | migration 20261125110000_survey_lifecycle_audit, schema.prisma, lib/errors.ts, lib/surveyLifecycle.ts, lib/surveyReopenValidation.ts, routes/ownerSurveys.ts; client SurveyDetailPage.tsx, surveyTypes.ts |
+| 4f1f03a PR #93 | Unrelated Sprint 2 F-06 draft editing | lib/errors.ts, routes/ownerSurveys.ts; client main.tsx, EditSurveyPage.tsx, SurveyDetailPage.tsx, surveyTypes.ts |
+| f46805f PR #119 | Unrelated Sprint 2 F-09 respondent response history | routes/responses.ts; client NavBar.tsx, main.tsx, MyResponsesPage.tsx |
+| #114, #95, #118, #123, #133, #144, #145 | Lab 6/Lab 7 documentation, evidence, report tools; #118 adds the Lab 6 regression test | none |
+
+B's review of release PR #143, verbatim (first a change request, then approval of the corrected head):
+
+{release_reviews}
+
 Deploy run {release["deployRun"]} completed at {bangkok(release["deployCompletedAt"])}. The production migrate/update step and smoke passed. Smoke checked /api/health, /api/ready, / and /api/auth/me. Service: {release["url"]}. Workflow image digest: {release["digest"]}. The Cloud Run console showed {cloud["servingRevision"]} serving {cloud["trafficPercent"]}% of traffic after rollout at {bangkok(cloud["deployedBangkok"])}. The revision uses {cloud["platformManifestDigest"]}, the image manifest from the same build as the workflow's published manifest list digest above.
 
 Production job {cloud["migrationExecution"]} succeeded (1/1 task, exit 0). The log shows {cloud["migrationName"]} applied at {bangkok(cloud["migrationAppliedBangkok"])}. At {bangkok(legacy["startedAtUtc"])}, the synthetic respondent read response 15 on survey 26 via its normal authenticated response API (HTTP 200). Both saved answers, rating 5 and Online, matched Lab 6 CD-07 and predate the migration. This is one retained response sample. On {bangkok(live["finishedAtUtc"])}, A's API check passed all 14 observations on dedicated synthetic survey {live["fixture"]["surveyId"]}: 3 sign-ins, 5 setup checks and 6 live checks. Failures and skips: 0. Cloud Run showed the same revision and 100% traffic before and after. Authentication was via three separate synthetic sessions; each logout returned 204.
@@ -477,26 +501,26 @@ M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population i
 
 ## C3 - Interpretation and concrete next action (L7-C03)
 
-{interpretation}
+{action_text}
 
-Actual word count: {len(interpretation.split())}, maximum 100. No issue/PR/test-count target is invented to improve the metric.
+Actual word count: {len(action_text.split())}, maximum 100. No issue/PR/test-count target is invented to improve the metric. B's reviewed 75-word interpretation in PR #148 stays unchanged in the metrics source; this action-oriented version replaces it in the report and is reviewed by B in PR #104.
 
 # Part D - Release readiness and retrospective (10)
 
 ## D1 - Maintained-scope readiness (L7-D01)
 
-**NOT READY at the 28 November readiness review.** The maintained Sprint 1 scope, including controlled reopening and preserved behavior, has verified deployment checks. Independent Lab 7 UAT defect disposition is unrecorded. The exact PDF review and LEB2 receipt are tracked separately.
+**NOT READY for the maintained Sprint 1 scope at the 28 November readiness review.** Deployed version: main 8316f27, Cloud Run classpulse-00008-qlw. The approved reopen change and the preserved Sprint 1 behavior pass the release CI (307/307) and A's developer-run deployed checks (14/14), with no failed or skipped test. Two items keep the scope NOT READY: (1) no independent user test of the changed reopen path is recorded for Lab 7; (2) setup/README run instructions have not been verified on a fresh clone of this release. Owners and actions are in the table. Later-sprint features in the same release (F-06, F-09; see B6) are not counted as Sprint 1 maintenance evidence.
 
 | Readiness item | Evidence / status | Owner / next action |
 |---|---|---|
 | Accepted baseline and submitted/deployed mapping | Lab 6 CP-FIX-001 accepted by D; C acknowledged. Lab 7 main, serving revision, traffic and scoped live API checks verified | A verified Cloud Run revision and image; B reviews the evidence |
 | Automated rule/access/data/UI/browser results | PR #92 integrated tree: 219 server, 10 client, 10 browser passed, 0 failed, 0 skipped. Primary, expanded and UI RED retained | See B6 for the separate 307-test release CI |
-| Defects by severity/status | CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001; Independent Lab 7 UAT disposition PENDING | Keep A’s developer checks separate from independent UAT |
+| Defects by severity/status | Open defects: none known. CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001. Independent Lab 7 UAT disposition PENDING | A asks EN-037_P5 to run L7-B11/B12 on classpulse-00008-qlw and records the result in Issue #87 before Final Delivery; B reviews |
 | Technical debt | Two observed engineering risks listed below, distinct from defects and incomplete release work | A scopes later reviewed fixes/measurement |
 | Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; Deploy configuration validation and Workload Identity sign-in passed | Human manages credentials/IAM; no separate secrets audit claimed |
-| Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | B checks report/source; final README/release setup verification remains open |
+| Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | Open. B follows the README setup and test commands on a fresh clone of 8316f27 before Final Delivery and records the result; A fixes any gap found |
 | Review/integration/deployment/smoke | B approved and merged #92 into staging as {staging_state}; main, automated smoke and deployed changed/preserved API checks verified | B independently reviews A’s scoped deployed evidence |
-| PDF and LEB2 | Final PDF review and upload receipt tracked separately | A assembles/renders; B reviews exact final PDF; human submits separately |
+| Report submission (not a readiness criterion) | B reviews the exact PDF in PR #104; the human uploads it to LEB2 | Administrative; does not affect the READY/NOT READY decision above |
 
 ## D2 - Debt, observed failures and limitations (L7-D02)
 
@@ -505,7 +529,7 @@ Actual word count: {len(interpretation.split())}, maximum 100. No issue/PR/test-
 | Default browser/local server configuration assumes3000/5173 and can reuse a local server outsideCI | Current Playwright/Vite source; parallel local work requires manual instance/port isolation. This report used disposable CI with reuse disabled | Medium; A to scope configurable isolated local runner before using shared-machine browser tests; current local DB remains untouched |
 | Pinned upload-artifact v4 runtime warning | Actual CI annotates Node20 target forced onto Node24; upload succeeded, so this is maintenance risk rather than an observed functional failure | Medium; A to review a supported pinned action revision in a separate scoped change; rerun required CI |
 
-Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classpulse-00007-6t9) passed five Cloud subcases: empty and whitespace titles returned 400; valid and 120-character titles returned 201 and survived reload; a 121-character title returned 400. Local readback retained three drafts. Historical M01 remains BLOCKED. Isolated TEST-04 and this retest support the Lab 6 decision. Part B retains the intended old-code RED results and skipped pipeline steps separately from tooling errors. Lab 7 production migration and scoped persistence passed.
+Observed failures and skips, all disclosed in Part B: the intended old-code RED runs (primary 139/2/0 with 5 skipped pipeline steps; expanded 144/32/0); UI RED 2/6/0 before UI code; corrected tooling errors not counted as product RED; staging CI 45998174147 attempt 1 timed out on TEST-179 and passed on attempt 2 (C2). No test was disabled or weakened. Known limitations: deployed checks are developer-run, not independent UAT; one pre-migration response was sampled, so broader data retention is not inferred; the Lab 6 baseline details are in A1.
 
 ## D3 - Three brief retrospective answers (L7-D03)
 
@@ -518,7 +542,7 @@ Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classp
 | A / Punge089 | Issue #87 contracts/specs; primary/expanded RED; backend/UI/atomic audit; unit/fault/migration/browser regressions; CI/artifacts; reviewed and merged B’s metrics including #148; production API and report assembly | Own PR approval/merge, final Lab 6 acceptance, production migration/deployment, final PDF acceptance/submission |
 | B / book6349 | C3 on 8017c91; authored metrics/readiness/retrospective; exact-head PR #92 review, approval and staging merge | A performed the deployed API check; PDF approval is recorded separately |
 
-A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B reviewed implementation, approved the release, and supplied the final metrics. PDF review and submission are tracked separately.
+A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B reviewed implementation, approved the release, and supplied the final metrics. On 28 November A used Claude Opus 5.5 (Anthropic) to check this report against the assignment and to draft version 1.1: release scope and B's #143 review text in B6, the C3 review time in Bangkok, an action-oriented C3 interpretation, and owners/actions for the open readiness items. Test outcomes, decisions, approvals and merges were made by the named students. PDF review and submission are tracked separately.
 
 Submission record: PR #104 tracks code review, CI and B’s review of the exact PDF hash. The human owner uploads those reviewed bytes in LEB2 and retains the receipt.
 
@@ -526,13 +550,13 @@ Submission record: PR #104 tracks code review, CI and B’s review of the exact 
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` re-reads the historical Git/GitHub sources at the pinned cutoff. The later acceptance and staging readback uses its own retained record. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
 
-Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and deploy receipt. v0.6 adds Cloud Run and retained-response evidence. v0.7 adds the tested live reopen and preservation outcomes. v1.0 incorporates B’s reviewed final metrics, readiness and retrospective.
+Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and deploy receipt. v0.6 adds Cloud Run and retained-response evidence. v0.7 adds the tested live reopen and preservation outcomes. v1.0 incorporates B’s reviewed final metrics, readiness and retrospective. v1.1 (28 Nov) adds the release scope and B's #143 review text, states the C3 review time in Bangkok, replaces the C3 interpretation with an action and owner, gives owners/actions for the open readiness items, separates report submission from readiness, and shortens the Lab 6 paragraph in D2. No test result or decision changed.
 '''
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "report.md").write_text(report, encoding="utf-8", newline="\n")
-    index = """# Lab 7 report evidence index - v1.0 PDF review candidate
+    index = """# Lab 7 report evidence index - v1.1 PDF review candidate
 
-Issue #101. Pages below refer to the v1.0 PDF. Submission review is tracked in #104.
+Issue #101. Pages below refer to the v1.1 PDF. Submission review is tracked in #104.
 
 | Assignment requirement | Status | Evidence and source | Draft PDF pages | Owner / next action |
 |---|---|---|---|---|
@@ -541,15 +565,15 @@ Issue #101. Pages below refer to the v1.0 PDF. Submission review is tracked in #
 | p. 3, Part B: meaningful old-code RED, same-test GREEN and actual diff | Verified | L7-B01..B02; 3f8918c and run 45597034491, unchanged primary assertions, retained backend/GUI GREEN and implementation | 14-17 | A pinned and reproduced the evidence |
 | p. 3, Part B: regression, preservation and authorization | Verified in disposable CI | L7-B03..B07; historical logs, TEST-111 data check, owner/response tests and three browser figures | 17-23 | A retains expected RED and every recorded failure/skip |
 | p. 3, Part B: peer review, CI and staging | Verified | L7-B08; B review 6061752216 on 698b1e9, CI 45645429150, actual merge e6043a9 | 24-25 | B approved and merged; A compared tested and merged trees |
-| pp. 3 and 6, Part B: main, GCP and deployed changed/preserved checks | Verified: main, Cloud Run, migration, sampled legacy retention and live reopen | L7-B09..B12; #143, 8316f27 and deploy run 46050688714 | 2, 24-25 | B reviews the live evidence |
-| p. 4, Part C: five dated metrics, sources and action | Final metrics source verified | L7-C01..C03; #148, 26 historical issue/PR rows, release suite and two deploy jobs, independent UAT pending | 26-28 | B authored metrics; A verified source evidence |
-| p. 5, Part D: readiness, defects/debt, three answers and contributions | Readiness assessment and retrospective included | L7-D01..D03 and D4; defect/debt, observed failures/skips, and independent UAT boundary | 29-30 | B checks PDF against reviewed source |
-| pp. 6-7: self-contained PDF, reviewed version and handoff | Candidate verified; B exact-hash review pending | Version map, internal navigation, checked draft hash and evidence above | 1-2, 30 | A renders; B reviews exact hash; human hands off private test accounts and uploads to LEB2 |
+| pp. 3 and 6, Part B: main, GCP and deployed changed/preserved checks | Verified: main, Cloud Run, migration, sampled legacy retention and live reopen | L7-B09..B12; #143, 8316f27 and deploy run 46050688714; release scope and B's #143 review text | 2, 24-26 | B reviews the live evidence |
+| p. 4, Part C: five dated metrics, sources and action | Final metrics source verified | L7-C01..C03; #148, 26 historical issue/PR rows, release suite and two deploy jobs, independent UAT pending; action-oriented C3 | 27-29 | B authored metrics; A verified source evidence |
+| p. 5, Part D: readiness, defects/debt, three answers and contributions | Readiness assessment and retrospective included | L7-D01..D03 and D4; defect/debt, observed failures/skips, and independent UAT boundary; owners/actions for open items | 30-31 | B checks PDF against reviewed source |
+| pp. 6-7: self-contained PDF, reviewed version and handoff | Candidate verified; B exact-hash review pending | Version map, internal navigation, checked draft hash and evidence above | 1-2, 31 | A renders; B reviews exact hash; human hands off private test accounts and uploads to LEB2 |
 
 Pinned input paths and hashes are in `evidence/lab-07/report/source-manifest.json`. The report is scoped to Lab 7. Release and deployment results are embedded; independent Lab 7 UAT remains unrecorded.
 """
     (DOCS / "report-evidence-index.md").write_text(index, encoding="utf-8", newline="\n")
-    print(json.dumps({"report": "docs/labs/lab-07/report.md", "inputHashesVerified": len(manifest["records"]), "interpretationWords": len(interpretation.split()), "ciRunsInScope": len(window["runs"]), "status": "v1.0 candidate for exact PDF review"}))
+    print(json.dumps({"report": "docs/labs/lab-07/report.md", "inputHashesVerified": len(manifest["records"]), "interpretationWords": len(interpretation.split()), "ciRunsInScope": len(window["runs"]), "status": "v1.1 candidate for exact PDF review"}))
 
 
 if __name__ == "__main__":

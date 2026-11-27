@@ -325,3 +325,7 @@ A/Punge089 authorized Codex GPT-6.2 Sol to use the three synthetic roles for a d
 ## Final Lab 7 report candidate - Issue #101, Student A, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to review and merge B's #148 metrics, reconcile source hashes and package the Lab 7 report for exact PDF review. B authored the refresh. Independent Lab 7 UAT remains unrecorded, and B's final PDF review and the human submission receipt are tracked separately.
+
+## Lab 7 report v1.1 review - Student A, 28 November 2026
+
+Under Issue #101 / PR #104, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, Claude desktop app) to check the v1.0 Lab 7 PDF against the seven-page assignment and the supplied announcement, then fix supported gaps. Claude edited `tools/lab7-report/build_source.py` (plus version labels in the renderer/checkers and the C3 word-count check), pinned B's verbatim release PR #143 reviews as a new hashed input, and regenerated the report Markdown, evidence index and PDF. Changes: release scope and unrelated Sprint 2 work in B6, B's #143 review text, the C3 review time in Bangkok, an action-oriented C3 interpretation with owner, owners/actions for open readiness items, report submission separated from readiness, and a shorter Lab 6 paragraph in D2. B's metrics source files and all earlier pinned inputs are unchanged. No test result, decision, application code, main, deployment or LEB2 action changed. B reviews the exact PDF hash; A cannot approve or merge.

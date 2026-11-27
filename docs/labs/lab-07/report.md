@@ -1,6 +1,6 @@
 # ClassPulse - Lab 7 maintenance report
 
-**Version 1.0 - Lab 7 maintenance report**
+**Version 1.1 - Lab 7 maintenance report**
 
 Historical test and metrics snapshot: 2026-11-25T19:50:53.113529+07:00. Baseline and PR #92 readback: 2026-11-27T18:20:33+07:00. Lab 7 merged into main and automated deployment passed. Cloud Run and a pre-existing response were verified. The live API check passed. The report includes B’s reviewed metrics. This PDF covers Lab 7.
 
@@ -35,8 +35,9 @@ Theme 10: university course feedback. Repository: https://github.com/Punge089/cl
 | GitHub main before Lab 7 release | bee0d122bf23410e3d2db69649ad5e44959b6cd8 | Prior Lab 6 release from PR #121 |
 | Reviewed Lab 7 main merge | 8316f270cb11d47c75f848de3f3d40acefbe8def | PR #143; automated deploy run 46050688714 passed. No release tag is claimed |
 | Lab 7 service URL | https://classpulse-zdwglar6eq-as.a.run.app | classpulse-00008-qlw received 100% of traffic at readback. See B6 for image digests. |
+| Unrelated work in the same release | PR #93 F-06 draft editing; PR #119 F-09 response history | Sprint 2 features released with #92; not Lab 7 evidence (B6) |
 
-Intervening work includes Lab 5 deployment/CI and Lab 6 test tooling and UAT evidence. The Lab 6 title-validation correction reached main in PR #121. Sprint 2 staging has since absorbed later-sprint work, including F-09 response history (PR #119). The two old lifecycle implementation files match across the accepted release and the RED source. See A1 for the source comparison.
+Intervening work: Lab 5 CI/CD, Lab 6 tooling and evidence, and the Lab 6 fix (PR #121). The old lifecycle files match across the accepted release and the RED source (A1).
 
 # Part A - Change impact and updated contract (25)
 
@@ -329,11 +330,11 @@ RED staging strategy: first add executable API assertions TEST-100 and valid upp
 
 ## A4 - Genuine teammate review before tests/code (L7-A04)
 
-B/book6349, 2026-11-25T10:25:30Z, Issue #87 comment7159676041, reviewed contract 8017c91:
+B/book6349, 2026-11-25T10:25:30Z (25 Nov 2026 17:25:30 ICT), Issue #87 comment 7159676041, reviewed contract 8017c91:
 
 > @Punge089 I checked AC-100..111 against TEST-100..114 and reviewed the state/action matrix, stale and concurrent version handling, audit rollback, access/error order, migration, and preserved response/summary behavior. The issue-driven contract check found no uncovered acceptance criterion. The assignment-change record preserves the supplied announcement and its provenance limitation. Go ahead with the test-only RED work; keep F-08 integration behind its separately reviewed contract revision.
 
-Git timestamps below are actual committed times converted to Bangkok; the C3 comment time above is separately recorded server metadata. Later unit/fault/migration/browser additions are regression increments, not falsely presented as preceding the original backend code.
+Sequence in Bangkok time: contract 8017c91 committed 25 Nov 14:58:28; B's review above at 25 Nov 2026 17:25:30 ICT; first test-only commit 17:39:03; backend code 18:05:22. Git timestamps below are actual committed times converted to Bangkok; the review time is GitHub comment metadata. Later unit/fault/migration/browser additions are regression increments, not falsely presented as preceding the original backend code.
 
 | Event | Full commit | Committed at Bangkok |
 |---|---|---|
@@ -751,6 +752,25 @@ Failed, cancelled or skipped job steps: none. CI evidence: https://github.com/Pu
 
 B/book6349 approved release PR #143 at 2f99a06b531c95b9b0a86b2b082f53d4974ee046 and merged it into main as 8316f270cb11d47c75f848de3f3d40acefbe8def on 28 Nov 2026 01:36:02 ICT. Required pre-merge CI 46049699597 and main deploy run 46050688714 passed 272 server, 23 client and 12 browser tests, 0 failures or skips, both builds and Docker.
 
+Release scope. Main moved from the Lab 6 release bee0d122 to 8316f27 in one reviewed merge. The application and schema files it changed come from three feature merges; the other staging merges in the release changed only documentation, evidence, report tools or one Lab 6 test file. The 307-test release suite therefore covers more than the Lab 7 change; the Lab 7 change alone was tested in PR #92 (219/10/10, above).
+
+| Staging merge | Purpose | Application/schema files changed (server/src, client/src, server/prisma) |
+|---|---|---|
+| e6043a9 PR #92 | Lab 7 maintenance change (this report) | migration 20261125110000_survey_lifecycle_audit, schema.prisma, lib/errors.ts, lib/surveyLifecycle.ts, lib/surveyReopenValidation.ts, routes/ownerSurveys.ts; client SurveyDetailPage.tsx, surveyTypes.ts |
+| 4f1f03a PR #93 | Unrelated Sprint 2 F-06 draft editing | lib/errors.ts, routes/ownerSurveys.ts; client main.tsx, EditSurveyPage.tsx, SurveyDetailPage.tsx, surveyTypes.ts |
+| f46805f PR #119 | Unrelated Sprint 2 F-09 respondent response history | routes/responses.ts; client NavBar.tsx, main.tsx, MyResponsesPage.tsx |
+| #114, #95, #118, #123, #133, #144, #145 | Lab 6/Lab 7 documentation, evidence, report tools; #118 adds the Lab 6 regression test | none |
+
+B's review of release PR #143, verbatim (first a change request, then approval of the corrected head):
+
+B/book6349, CHANGES_REQUESTED, 28 Nov 2026 01:00:25 ICT, on `0653290` (review 6091832154):
+
+> Reviewed the release candidate at exact head `0653290139ff7ad1484e9c9e21c2e5787f1021aa` against `main` `bee0d122bf23410e3d2db69649ad5e44959b6cd8`, after merging the ancestry-only #144 update. Compare confirms #144 added 0 files to staging and the tested merge tree matches the current head. Fresh release CI [46045501294](https://github.com/Punge089/classpulse/actions/runs/46045501294) passed on this exact head: server 272, client 23, browser 12 (307 total), with 0 failures/skips; migration, both builds and Docker passed. The previously reviewed feature changes have their own exact-head approvals and CI. Please correct two stale Lab 7 status statements in the release tree before main approval: 1. `docs/labs/lab-07/assignment-changes.md` says “B's agreement is pending,” but B's C3 on Issue #87 (comment 7159676041) reviewed the contract and explicitly allowed test-only RED work. 2. `docs/labs/lab-07/execution-plan.md` says PR #95 still needs B review/CI on the current commit, but B approved exact head `dea22a2` and merged it to staging as `bed5880` (#95). These are factual status mismatches in the release documentation. I am not approving or merging #143 yet; after the corrections, please update staging and request a fresh release CI/review.
+
+B/book6349, APPROVED, 28 Nov 2026 01:32:32 ICT, on `2f99a06` (review 6092118547):
+
+> Approved the current release candidate at exact head 2f99a06b531c95b9b0a86b2b082f53d4974ee046 against main bee0d122bf23410e3d2db69649ad5e44959b6cd8. The head is the merge commit for #145, which corrects both previously identified Lab 7 status mismatches: B's C3/test-only RED authorization is recorded, and PR #95's exact approval and staging merge are recorded. The three-file correction is documentation-only and within the release plan's scope. Fresh exact-head CI run 46049699597 passed: server 272, client 23, browser 12 (307 total), 0 failed/skipped; database migrations, server/client builds, and Docker image build passed. PR #143 remains a main-release coordination gate; this review does not merge it. Deployment and post-release GCP evidence remain pending.
+
 Deploy run 46050688714 completed at 28 Nov 2026 01:40:12 ICT. The production migrate/update step and smoke passed. Smoke checked /api/health, /api/ready, / and /api/auth/me. Service: https://classpulse-zdwglar6eq-as.a.run.app. Workflow image digest: sha256:7acc661c6f49606a63ad1c536b5657fe46ca72fa2e99c4a139876cdd867ed389. The Cloud Run console showed classpulse-00008-qlw serving 100% of traffic after rollout at 28 Nov 2026 01:39:50 ICT. The revision uses sha256:60c23699db69a6badb92f50d638fed23885498d12b9e2e7f9a0d6e3a34ab2b0a, the image manifest from the same build as the workflow's published manifest list digest above.
 
 Production job classpulse-migrate-62khg succeeded (1/1 task, exit 0). The log shows 20261125110000_survey_lifecycle_audit applied at 28 Nov 2026 01:39:37 ICT. At 28 Nov 2026 01:52:50 ICT, the synthetic respondent read response 15 on survey 26 via its normal authenticated response API (HTTP 200). Both saved answers, rating 5 and Online, matched Lab 6 CD-07 and predate the migration. This is one retained response sample. On 28 Nov 2026 01:58:57 ICT, A's API check passed all 14 observations on dedicated synthetic survey 30: 3 sign-ins, 5 setup checks and 6 live checks. Failures and skips: 0. Cloud Run showed the same revision and 100% traffic before and after. Authentication was via three separate synthetic sessions; each logout returned 204.
@@ -842,26 +862,26 @@ M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population i
 
 ## C3 - Interpretation and concrete next action (L7-C03)
 
-The exact main release passed 307 automated tests, and the deploy workflow completed both jobs, migration/update and read-only smoke. A's 14/14 live API observations on the serving revision covered the changed reopen path and preserved answers, duplicate protection and ownership denial. These are developer-operated checks, not independent course UAT. The independent UAT defect disposition remains pending, so the overall report remains NOT READY until B reviews the exact final PDF and the human submits it.
+Risk: every release signal is developer-run. M3 passed 307/307 tests and M5 completed 2/2 jobs, and A's 14 live API checks passed, but M4 shows no independent Lab 7 UAT disposition for the changed reopen path. A green suite does not show that another user can reopen a survey correctly. Action: A asks the EN-037_P5 testers to run the L7-B11/B12 reopen and preserved-response steps on classpulse-00008-qlw and records PASS/FAIL in Issue #87 before Final Delivery; B reviews the record. Until then the maintained scope stays NOT READY.
 
-Actual word count: 75, maximum 100. No issue/PR/test-count target is invented to improve the metric.
+Actual word count: 87, maximum 100. No issue/PR/test-count target is invented to improve the metric. B's reviewed 75-word interpretation in PR #148 stays unchanged in the metrics source; this action-oriented version replaces it in the report and is reviewed by B in PR #104.
 
 # Part D - Release readiness and retrospective (10)
 
 ## D1 - Maintained-scope readiness (L7-D01)
 
-**NOT READY at the 28 November readiness review.** The maintained Sprint 1 scope, including controlled reopening and preserved behavior, has verified deployment checks. Independent Lab 7 UAT defect disposition is unrecorded. The exact PDF review and LEB2 receipt are tracked separately.
+**NOT READY for the maintained Sprint 1 scope at the 28 November readiness review.** Deployed version: main 8316f27, Cloud Run classpulse-00008-qlw. The approved reopen change and the preserved Sprint 1 behavior pass the release CI (307/307) and A's developer-run deployed checks (14/14), with no failed or skipped test. Two items keep the scope NOT READY: (1) no independent user test of the changed reopen path is recorded for Lab 7; (2) setup/README run instructions have not been verified on a fresh clone of this release. Owners and actions are in the table. Later-sprint features in the same release (F-06, F-09; see B6) are not counted as Sprint 1 maintenance evidence.
 
 | Readiness item | Evidence / status | Owner / next action |
 |---|---|---|
 | Accepted baseline and submitted/deployed mapping | Lab 6 CP-FIX-001 accepted by D; C acknowledged. Lab 7 main, serving revision, traffic and scoped live API checks verified | A verified Cloud Run revision and image; B reviews the evidence |
 | Automated rule/access/data/UI/browser results | PR #92 integrated tree: 219 server, 10 client, 10 browser passed, 0 failed, 0 skipped. Primary, expanded and UI RED retained | See B6 for the separate 307-test release CI |
-| Defects by severity/status | CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001; Independent Lab 7 UAT disposition PENDING | Keep A’s developer checks separate from independent UAT |
+| Defects by severity/status | Open defects: none known. CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001. Independent Lab 7 UAT disposition PENDING | A asks EN-037_P5 to run L7-B11/B12 on classpulse-00008-qlw and records the result in Issue #87 before Final Delivery; B reviews |
 | Technical debt | Two observed engineering risks listed below, distinct from defects and incomplete release work | A scopes later reviewed fixes/measurement |
 | Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; Deploy configuration validation and Workload Identity sign-in passed | Human manages credentials/IAM; no separate secrets audit claimed |
-| Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | B checks report/source; final README/release setup verification remains open |
+| Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | Open. B follows the README setup and test commands on a fresh clone of 8316f27 before Final Delivery and records the result; A fixes any gap found |
 | Review/integration/deployment/smoke | B approved and merged #92 into staging as e6043a9843eaeebaa63464aa19e5e8d1e503996a; main, automated smoke and deployed changed/preserved API checks verified | B independently reviews A’s scoped deployed evidence |
-| PDF and LEB2 | Final PDF review and upload receipt tracked separately | A assembles/renders; B reviews exact final PDF; human submits separately |
+| Report submission (not a readiness criterion) | B reviews the exact PDF in PR #104; the human uploads it to LEB2 | Administrative; does not affect the READY/NOT READY decision above |
 
 ## D2 - Debt, observed failures and limitations (L7-D02)
 
@@ -870,7 +890,7 @@ Actual word count: 75, maximum 100. No issue/PR/test-count target is invented to
 | Default browser/local server configuration assumes3000/5173 and can reuse a local server outsideCI | Current Playwright/Vite source; parallel local work requires manual instance/port isolation. This report used disposable CI with reuse disabled | Medium; A to scope configurable isolated local runner before using shared-machine browser tests; current local DB remains untouched |
 | Pinned upload-artifact v4 runtime warning | Actual CI annotates Node20 target forced onto Node24; upload succeeded, so this is maintenance risk rather than an observed functional failure | Medium; A to review a supported pinned action revision in a separate scoped change; rerun required CI |
 
-Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classpulse-00007-6t9) passed five Cloud subcases: empty and whitespace titles returned 400; valid and 120-character titles returned 201 and survived reload; a 121-character title returned 400. Local readback retained three drafts. Historical M01 remains BLOCKED. Isolated TEST-04 and this retest support the Lab 6 decision. Part B retains the intended old-code RED results and skipped pipeline steps separately from tooling errors. Lab 7 production migration and scoped persistence passed.
+Observed failures and skips, all disclosed in Part B: the intended old-code RED runs (primary 139/2/0 with 5 skipped pipeline steps; expanded 144/32/0); UI RED 2/6/0 before UI code; corrected tooling errors not counted as product RED; staging CI 45998174147 attempt 1 timed out on TEST-179 and passed on attempt 2 (C2). No test was disabled or weakened. Known limitations: deployed checks are developer-run, not independent UAT; one pre-migration response was sampled, so broader data retention is not inferred; the Lab 6 baseline details are in A1.
 
 ## D3 - Three brief retrospective answers (L7-D03)
 
@@ -885,7 +905,7 @@ Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classp
 | A / Punge089 | Issue #87 contracts/specs; primary/expanded RED; backend/UI/atomic audit; unit/fault/migration/browser regressions; CI/artifacts; reviewed and merged B’s metrics including #148; production API and report assembly | Own PR approval/merge, final Lab 6 acceptance, production migration/deployment, final PDF acceptance/submission |
 | B / book6349 | C3 on 8017c91; authored metrics/readiness/retrospective; exact-head PR #92 review, approval and staging merge | A performed the deployed API check; PDF approval is recorded separately |
 
-A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B reviewed implementation, approved the release, and supplied the final metrics. PDF review and submission are tracked separately.
+A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B reviewed implementation, approved the release, and supplied the final metrics. On 28 November A used Claude Opus 5.5 (Anthropic) to check this report against the assignment and to draft version 1.1: release scope and B's #143 review text in B6, the C3 review time in Bangkok, an action-oriented C3 interpretation, and owners/actions for the open readiness items. Test outcomes, decisions, approvals and merges were made by the named students. PDF review and submission are tracked separately.
 
 Submission record: PR #104 tracks code review, CI and B’s review of the exact PDF hash. The human owner uploads those reviewed bytes in LEB2 and retains the receipt.
 
@@ -893,4 +913,4 @@ Submission record: PR #104 tracks code review, CI and B’s review of the exact 
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` re-reads the historical Git/GitHub sources at the pinned cutoff. The later acceptance and staging readback uses its own retained record. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
 
-Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and deploy receipt. v0.6 adds Cloud Run and retained-response evidence. v0.7 adds the tested live reopen and preservation outcomes. v1.0 incorporates B’s reviewed final metrics, readiness and retrospective.
+Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and deploy receipt. v0.6 adds Cloud Run and retained-response evidence. v0.7 adds the tested live reopen and preservation outcomes. v1.0 incorporates B’s reviewed final metrics, readiness and retrospective. v1.1 (28 Nov) adds the release scope and B's #143 review text, states the C3 review time in Bangkok, replaces the C3 interpretation with an action and owner, gives owners/actions for the open readiness items, separates report submission from readiness, and shortens the Lab 6 paragraph in D2. No test result or decision changed.
