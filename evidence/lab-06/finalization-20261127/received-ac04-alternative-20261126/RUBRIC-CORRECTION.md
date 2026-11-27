@@ -1,0 +1,7 @@
+AC04 rubric correction - supersedes the earlier claim that team agreement alone can replace required deployed M01.
+
+A re-read the actual Lab6 handout, section3.2/page3 and section3.4/page5: testing is on the identified deployed release; supporting API tests do not replace independent user testing; acceptance must not be claimed while required tests are BLOCKED. F01/AC04 explicitly includes same-cookie replay. The new local15assertions do not perform replay; the earlier isolated TEST04 and identical source remain supporting evidence.
+
+A accepts the received local artifacts as scoped supporting evidence only. A's earlier proposed combined alternative basis is NOT established as sufficient to waive the required live branch under the grading rubric. Team agreement alone does not establish instructor approval. Do not issue Accepted merely on that earlier wording. Complete the authorized independent human M01 on the pinned release, OR obtain a specific instructor/TA decision accepting the exact combined local method in place of the required deployed replay. Preserve all original BLOCKED and NotAccepted history and disclose the limits. No instructor approval or new live execution is claimed.
+
+CP-FIX-001 source bee0d122bf23410e3d2db69649ad5e44959b6cd8 / mapped revision classpulse-00007-6t9. New D local run26Nov21:58:51-52 has revisionN/A and15PASS; A performed25offline review checks, not app tests. PartD corrected-defect deployment/retest evidence remains intact and separate. No score guarantee.
