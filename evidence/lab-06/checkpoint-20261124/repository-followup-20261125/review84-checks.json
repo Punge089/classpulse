@@ -1,0 +1,74 @@
+{
+  "head": "a8207db4a91825a96dac189713a37c4705029189",
+  "passed": 16,
+  "failed": 0,
+  "skipped": 0,
+  "scope": "Offline exact-head documentation review only; no new app/UAT/cloud/DB test",
+  "checks": [
+    {
+      "name": "Checked out the actual B head",
+      "passed": true
+    },
+    {
+      "name": "Exactly one Issue80-owned documentation file changed",
+      "passed": true
+    },
+    {
+      "name": "Original document bytes preserved by append-only change",
+      "passed": true
+    },
+    {
+      "name": "Application and original RED/GREEN evidence trees unchanged",
+      "passed": true
+    },
+    {
+      "name": "Superseding lock order matches actual implementation",
+      "passed": true
+    },
+    {
+      "name": "Recorded RED and GREEN match actual separate reviewer outputs",
+      "passed": true
+    },
+    {
+      "name": "Race outcome/counts match actual A reproduction",
+      "passed": true
+    },
+    {
+      "name": "Historical model labels preserved without inferred equivalence",
+      "passed": true
+    },
+    {
+      "name": "New B commit declares actual current assistance",
+      "passed": true
+    },
+    {
+      "name": "PR82 and PR83 actual merge references retained",
+      "passed": true
+    },
+    {
+      "name": "Technical A2 acceptance and unexecuted branches stay distinct",
+      "passed": true
+    },
+    {
+      "name": "Reported live setup is attributed to A rather than B verification",
+      "passed": true
+    },
+    {
+      "name": "Independent coverage/acceptance/PartD remain incomplete",
+      "passed": true
+    },
+    {
+      "name": "Document relative links resolve",
+      "passed": true
+    },
+    {
+      "name": "Diff whitespace check",
+      "passed": true
+    },
+    {
+      "name": "No credential value pattern in the changed document",
+      "passed": true
+    }
+  ],
+  "brokenLinks": []
+}

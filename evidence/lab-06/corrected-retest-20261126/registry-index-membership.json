@@ -1,0 +1,18 @@
+{
+  "observedAtUtc": "2026-11-26T10:37:19.125Z",
+  "sourceTag": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "indexDigest": "sha256:ff599f3bdf57eb83d2840709b83fbdc5b1e56ae5994e4866e10e5dfa8d25a89f",
+  "indexMediaType": "application/vnd.oci.image.index.v1+json",
+  "platformManifest": {
+    "digest": "sha256:e00257d3b1c9cfdaabbe9b3f1d238c1d26fb342665f80122dcddc4550bc4388d",
+    "os": "linux",
+    "architecture": "amd64"
+  },
+  "attestationManifest": "sha256:c6cee819e3fe5023a40c86e0cab407d7617d0657fc144b77b642fbb84dff5fb0",
+  "membershipMethod": "Read visible Manifest JSON in authenticated Artifact Registry UI",
+  "cloudObservedAtUtc": "2026-11-26T10:34:24.572Z",
+  "cloudRevision": "classpulse-00007-6t9",
+  "cloudTrafficPercent": 100,
+  "cloudImageDigest": "sha256:e00257d3b1c9cfdaabbe9b3f1d238c1d26fb342665f80122dcddc4550bc4388d",
+  "readOnly": true
+}

@@ -1,0 +1,15 @@
+{
+  "checkedAtBangkok": "2026-11-26T14:59:00.3481957+07:00",
+  "source": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "verifiedRef": "sprint-1-staging",
+  "artifactHash": "9cafee1d2d7180933bd3a4dad1e1d0dadea093fb1b85fdc4b28e30427888f9fd",
+  "approvedFilesVerified": 35,
+  "lastBrowserLogout": "Attempted in each exercise browser; browser contexts closed",
+  "backendStoppedPid": 3896,
+  "frontendStoppedPid": 21796,
+  "postgresRetained": [
+    "TCP    127.0.0.1:49505        0.0.0.0:0              LISTENING       20024"
+  ],
+  "cloudRevision": "N/A",
+  "cloudTraffic": "N/A"
+}

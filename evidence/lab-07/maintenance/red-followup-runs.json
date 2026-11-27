@@ -1,0 +1,65 @@
+[
+  {
+    "runId": 45597483396,
+    "testHead": "c7d7e15ce661e0227a5dfad366babd311bfadcf7",
+    "url": "https://github.com/Punge089/classpulse/actions/runs/45597483396",
+    "conclusion": "failure",
+    "counts": {
+      "passed": 139,
+      "failed": 2,
+      "skipped": 0,
+      "total": 141
+    },
+    "serverLog": "red-ci-45597483396-server.txt",
+    "sha256": "6bbb3dd280d39aef5a76cc2f34eb858bfcf708d48ef3dacf5914872a76cd3c06",
+    "skippedSteps": [
+      "Test client",
+      "Build server",
+      "Build client",
+      "Build Docker image locally",
+      "Post Set up Node.js 24"
+    ]
+  },
+  {
+    "runId": 45597550300,
+    "testHead": "d137db072d52c6984f7f8c06bb9251af2e6fbcbe",
+    "url": "https://github.com/Punge089/classpulse/actions/runs/45597550300",
+    "conclusion": "failure",
+    "counts": {
+      "passed": 139,
+      "failed": 2,
+      "skipped": 0,
+      "total": 141
+    },
+    "serverLog": "red-ci-45597550300-server.txt",
+    "sha256": "4db9e88ed4064b0c7bae987fe64638a2ece753e717d86c4624c5c43e231399e7",
+    "skippedSteps": [
+      "Test client",
+      "Build server",
+      "Build client",
+      "Build Docker image locally",
+      "Post Set up Node.js 24"
+    ]
+  },
+  {
+    "runId": 45600224063,
+    "testHead": "a9cdbce9e76dfd07eb3f2c47051455b748ce326c",
+    "url": "https://github.com/Punge089/classpulse/actions/runs/45600224063",
+    "conclusion": "failure",
+    "counts": {
+      "passed": 144,
+      "failed": 32,
+      "skipped": 0,
+      "total": 176
+    },
+    "serverLog": "red-ci-45600224063-server.txt",
+    "sha256": "24e146c3c33d9e89afe1c072244570d78ea45fc6761122e5be2c9ea757d9edd6",
+    "skippedSteps": [
+      "Test client",
+      "Build server",
+      "Build client",
+      "Build Docker image locally",
+      "Post Set up Node.js 24"
+    ]
+  }
+]

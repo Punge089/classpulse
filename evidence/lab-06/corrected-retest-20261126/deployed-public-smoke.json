@@ -1,0 +1,79 @@
+{
+  "sourceCommit": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "servingRevision": "classpulse-00007-6t9",
+  "trafficPercent": 100,
+  "mappingBasis": "Authenticated Cloud/Registry readback in supplied release record; GET results alone do not prove backend revision",
+  "operator": "Codex GPT-6 under A/Punge089",
+  "kind": "Read-only developer deployed smoke, not independent UAT",
+  "checkedAtUtc": "2026-11-26T10:39:20.888535+00:00",
+  "passed": 8,
+  "failed": 0,
+  "skipped": 0,
+  "checks": [
+    {
+      "name": "root SPA",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "bodySha256": "fcb08071de1a7e6e94355164af719942919303931f498b2fbb816773ee4658a9"
+    },
+    {
+      "name": "login SPA",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/login",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "bodySha256": "fcb08071de1a7e6e94355164af719942919303931f498b2fbb816773ee4658a9"
+    },
+    {
+      "name": "health",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/api/health",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "bodySha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+    },
+    {
+      "name": "readiness",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/api/ready",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "bodySha256": "d5292c5b778e52ed0dc11cf99d37eedf00a4ec2edbf567dc105e543c70d13116"
+    },
+    {
+      "name": "signed-out identity",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/api/auth/me",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "bodySha256": "731d35b04f5e6a517c76508096703f8b30c31d1a219b3489c37e3be5d97af518"
+    },
+    {
+      "name": "signed-out owner list",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/api/owner/surveys",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "bodySha256": "731d35b04f5e6a517c76508096703f8b30c31d1a219b3489c37e3be5d97af518"
+    },
+    {
+      "name": "console-listed alias health",
+      "url": "https://classpulse-91139895529.asia-southeast1.run.app/api/health",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "bodySha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+    },
+    {
+      "name": "served compiled client asset",
+      "url": "https://classpulse-zdwglar6eq-as.a.run.app/assets/index-Bi1ZvEdG.js",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "bodySha256": "affa701b2a29d0134847e14178428bb0105d0278711776155a73fd8c8a7248cf"
+    }
+  ],
+  "appWrites": false
+}

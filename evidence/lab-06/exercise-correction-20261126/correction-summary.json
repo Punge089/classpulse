@@ -1,0 +1,50 @@
+{
+  "finding": "CP-EX-F01",
+  "independentFindingSource": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "contractCommit": "997353a7df9c3a2e0f3e2186e71fd285245f280d",
+  "newTestCommit": "6839effe99e25cfa422c02d0ec4878fc8533db6d",
+  "initialFix": "73b640db908016ef0515be55be9a432f496e2abd",
+  "processDeviation": "Initial RED ran/saved before first fix but UTF-8 copy failed; first RED evidence not committed before first fix. Preserved, disclosed, followed by append-only repeat. No history rewritten.",
+  "repeatDefectiveCommit": "29c1d51bc6c884dac60ae1f86480e3bce4c756ee",
+  "repeatRedEvidenceCommit": "aed4be86b54ac786450737bc7a4f6426101f30f7",
+  "finalFixAndTestedSource": "3d6f0874ccbaa8a14756ada9b12c2e20fa003e2b",
+  "red": {
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0,
+    "actualFailure": "HTTP201 expected400 for empty/whitespace title"
+  },
+  "greenFocused": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0
+  },
+  "serverFull": {
+    "passed": 143,
+    "failed": 0,
+    "skipped": 0,
+    "files": 17
+  },
+  "clientFull": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "existingOwnerBrowserRegression": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "TEST21a/21b, local source/dev runtime"
+  },
+  "builds": "server and client PASS",
+  "cloudRevision": "N/A local validation",
+  "cloudTraffic": "N/A local validation",
+  "DDataTouched": false,
+  "BCurrentHeadReview": "PENDING",
+  "currentGreenCI": "PENDING",
+  "correctedReleaseDeployment": "NOT DONE",
+  "independentRetest": "NOT RUN",
+  "CReview": "PENDING",
+  "finalAcceptance": "PENDING",
+  "operator": "Codex GPT-6 under A/Punge089"
+}

@@ -1,0 +1,68 @@
+{
+  "operator": "Codex under Student A/Punge089",
+  "model": "GPT-6",
+  "kind": "Independent local isolated verification",
+  "source": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "servingRevision": "N/A",
+  "startedBangkok": "2026-11-27T02:20:22.918211+07:00",
+  "steps": [
+    {
+      "step": "versions",
+      "command": "node --version",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:20:23.008459+07:00",
+      "finishedBangkok": "2026-11-27T02:20:23.042743+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\versions.txt"
+    },
+    {
+      "step": "postgres-version",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\postgres.exe\" --version",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:20:23.043762+07:00",
+      "finishedBangkok": "2026-11-27T02:20:23.086560+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\postgres-version.txt"
+    },
+    {
+      "step": "initdb",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\initdb.exe\" -D C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\postgres-data -U uat6_local --auth=scram-sha-256 --pwfile=C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\init-password.txt --encoding=UTF8 --locale=C",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:20:23.087708+07:00",
+      "finishedBangkok": "2026-11-27T02:20:26.128127+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\initdb.txt"
+    }
+  ],
+  "target": {
+    "address": "127.0.0.1",
+    "port": 61327,
+    "database": "workflow_uat6_20261127_test",
+    "developmentDatabase": "workflow_uat6_20261127_dev",
+    "routingOptions": false,
+    "freshOwnedCluster": true
+  },
+  "priorLive36RequestsAccessed": false,
+  "cloudOperation": false,
+  "appSourceChanged": false,
+  "transportIsolation": "External Node preload forces default TCP binds to loopback and records listener addresses; application/tests unchanged",
+  "runtimeDifference": "A uses PostgreSQL18.4/Node24.19.0/npm11.17.0; C/D earlier16.x/24.14.0/11.9.0. No claim of identical runtime or Cloud verification.",
+  "productTeamAgreementSha256": "a5f08d54920db5245e4098e916663dfbdfa1dc0d7ca0d52d124e9f67c852b5f9",
+  "sourceHashesBefore": {
+    "src/auth.ts": "a55f097eedab0d07d27f4fb882ca33730838b03a78318f0faa77f9f9ec4a9435",
+    "src/requests.ts": "25316ad0d340dba7e8a575b3eef76572c1bc1eab60e1142b2235331be63f5b7d",
+    "src/server.ts": "6becc20d5dd6ce8d1b932bc53fc029fa5d537e37f6f770c87fd258aaddf54507",
+    "tests/auth.test.mjs": "985adfbc7b7d8f2088fc2ea708418740ce214c26a39e1f72e8fef4ec343a650a",
+    "tests/requests.test.mjs": "aa3452bc0d2695da52fd57cffebd9d1ae7e691ccc13106cca02b5eba811e359f",
+    "tests/decisions.test.mjs": "fb71b509e4a8db396f89204f5af04c1873f90a449bd70beb90a418aac194e8a4",
+    "tests/journey.test.mjs": "e38a6dd98e52c1e878c36246cf6b62d7a896f4dd1f59c3767817cd7081c4c693",
+    "tests/schema.sql": "ffb6cc16a77d7612c5f721802fa9ef9554f16bc3ff6cf09a33eec87aa0e75c20",
+    "scripts/test-db.mjs": "000313def0c93a9fedca1c589e353c9363484c5c7511fa5c3d0d12c49cf14a7b",
+    "prisma/schema.prisma": "cc26d674db9c0760a6f998d6daf1e28e27cefc045c50c68fff6da49d336bbf8c",
+    "package-lock.json": "bc85421604eaa9d2e3f190a964775f895899e45e72a0a6358af19b9ff702d60c"
+  },
+  "outcome": "FAIL",
+  "failure": "[WinError 32] The process cannot access the file because it is being used by another process: 'C:\\\\Users\\\\MSII\\\\OneDrive\\\\Desktop\\\\Soft_eng\\\\classpulse\\\\autopilot\\\\lab6-corrected-release-20261126\\\\workflow-special-setup-20261127\\\\.private\\\\postgres-start.raw'",
+  "postgresListenerAfter": true,
+  "finishedBangkok": "2026-11-27T02:20:26.434639+07:00"
+}

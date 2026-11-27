@@ -1,0 +1,31 @@
+{
+  "id": "CP-RT-05",
+  "status": "PASS",
+  "atUtc": "2026-11-26T11:26:54.444676+00:00",
+  "identity": {
+    "db": "classpulse_uat6_exercise",
+    "ip": "127.0.0.1",
+    "port": 49505,
+    "server": "16.16",
+    "readOnly": "on"
+  },
+  "ownedDataDirectoryVerified": true,
+  "localRecords": [
+    {
+      "id": 3,
+      "title": "",
+      "status": "DRAFT"
+    },
+    {
+      "id": 6,
+      "title": "",
+      "status": "DRAFT"
+    },
+    {
+      "id": 9,
+      "title": "",
+      "status": "DRAFT"
+    }
+  ],
+  "mode": "read-only database transaction; no app start or data write"
+}
