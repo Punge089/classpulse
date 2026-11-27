@@ -1,14 +1,14 @@
 {
-  "pdfSha256": "382516679aadd7e805be6306d8ee446d666f447cc88ac12b44dcf0e94ce51585",
+  "pdfSha256": "6d6fc6e54182ac2e21802bb5810064c41427cc9f23373f2aef38f4d7bf4e0165",
   "pages": 77,
   "artifactChecksPassed": 26,
   "artifactChecksFailed": 0,
-  "visualReview": "Rendered all 77 final pages. Inspected all three contact sheets and full pages 1,4,11,76,77 for the new owner acknowledgment, date/bounded receipt time, current decision and revised-file review distinction. Historical appendix labels, seven-observation table and older evidence remain legible and clear of the footer. No clipping or overlap observed.",
+  "visualReview": "Rendered all77 submission-candidate pages and inspected all three contact sheets; full pages1,2,11 checked for stable title/footer, complete decisions, navigation table and separate approval/upload control. Historical appendix labels and observation table retained; no clipping, overlap or missing body glyph observed.",
   "tableFooterClearanceMm": 116.13192952473959,
-  "humanBFinalConfirmation": "Identity and product decision CONFIRMED dated 27Nov; receipt observed by16:18:31ICT; exact human-message instant unknown. New PDF/current-head review remains pending.",
+  "humanBFinalConfirmation": "Identity and product concurrence received dated27Nov; receipt observed by16:18:31ICT, exact instant unknown. Current-file approval and actual upload remain separately recorded.",
+  "noRebuildSolelyForApprovalMergeOrSubmission": true,
   "noAppTestRerun": true,
   "intermediateDocumentationIssues": [
-    "An initial relative-path editing helper ran from the nested worktree and found no local path; no file changed; corrected using explicit paths.",
-    "Windows core.autocrlf was identified before commit; frozen inputs use scoped -text attributes to retain original evidence byte hashes."
+    "New candidate assertion initially failed twice (25pass/1fail) because case-sensitive prose matching did not accommodate lower-case text/PDF line wrapping; actual footers, receipt state, sources and hashes matched. Normalized case/whitespace after inspecting extracted text; final26/26. No runtime assertion or evidence changed."
   ]
 }

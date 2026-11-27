@@ -4,7 +4,7 @@
   "checks": {
     "PDF hash matches exact receipt": true,
     "PDF page count matches": true,
-    "review copy not a submitted final": true,
+    "stable submission candidate does not claim approval or upload": true,
     "all actual read input hashes match": true,
     "curated input bytes preserved": true,
     "no private cluster or dependency tree in curated paths": true,
@@ -30,12 +30,13 @@
     "no actual credentials or raw cookies in curated text": true
   },
   "pdf": "docs/labs/lab-06/report/ClassPulse_Lab6_REVIEW_20261127.pdf",
-  "pdfSha256": "382516679aadd7e805be6306d8ee446d666f447cc88ac12b44dcf0e94ce51585",
+  "pdfSha256": "6d6fc6e54182ac2e21802bb5810064c41427cc9f23373f2aef38f4d7bf4e0165",
   "pages": 77,
   "tablePage": 71,
   "tableBottomY": 512.6968994140625,
   "footerClearanceMm": 116.13192952473959,
   "humanBDecision": "CONFIRMED27Nov; receipt observed by16:18:31ICT; exact human-message time unknown",
-  "revisedPdfApproval": "PENDING fresh review; earlier review belongs to ca77/f4739f PDF",
+  "revisedPdfApproval": "Recorded separately in PR133 for actual reviewed head/PDF hash; candidate itself claims no approval or upload",
+  "noRebuildSolelyForApprovalMergeOrSubmission": true,
   "appTestsRerunByVerifier": false
 }

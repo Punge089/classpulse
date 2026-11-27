@@ -1,0 +1,6 @@
+{
+  "passed": 25,
+  "failed": 1,
+  "reason": "New prose assertion initially expected an uppercase literal phrase across PDF line wrapping; corrected whitespace and case normalization after verifying the actual lower-case text. Both attempts were25pass/1fail of document verification only. Footer/state/source/hash/layout assertions matched; no evidence or app test changed.",
+  "attempts": 2
+}

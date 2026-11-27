@@ -23,7 +23,7 @@ def verify(name,condition):
 
 verify('PDF hash matches exact receipt',hashlib.sha256(pdf.read_bytes()).hexdigest()==manifest['pdfSha256'])
 verify('PDF page count matches',len(reader.pages)==manifest['pages'])
-verify('review copy not a submitted final',manifest['draft'] and manifest['notForSubmission'] and all('DRAFT - NOT FOR SUBMISSION' in p.get_text() for p in doc))
+verify('stable submission candidate does not claim approval or upload',manifest['draft'] is False and manifest['notForSubmission'] is False and manifest['submissionCandidate'] is True and manifest['submitted'] is False and manifest['currentFileApprovalClaimed'] is False and all('CLASSPULSE LAB 6 | UAT, DEFECT AND RETEST EVIDENCE' in page.get_text() for page in doc) and 'norebuildisrequiredsolely' in compact.lower())
 verify('all actual read input hashes match',all((ROOT/name).is_file() and hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest for name,digest in manifest['inputHashes'].items()))
 provenance=json.loads((FINAL/'input-provenance.json').read_text())
 verify('curated input bytes preserved',all((ROOT/name).is_file() and hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==item['sha256'] for name,item in provenance['files'].items()))
@@ -71,7 +71,7 @@ for n,page in enumerate(doc,1):
     for block in page.get_text('dict')['blocks']:
         for line in block.get('lines',[]):
             for span in line['spans']:
-                if 'DRAFT - NOT FOR SUBMISSION' not in span['text'] and span['text']!=str(n):
+                if 'CLASSPULSE LAB 6 | UAT, DEFECT AND RETEST EVIDENCE' not in span['text'] and span['text']!=str(n):
                     body_bottoms.append(span['bbox'][3])
 verify('all body text remains clear of footer',bool(body_bottoms) and max(body_bottoms)<790)
 verify('no connection string or raw session value in PDF','postgresql://' not in text and 'postgres://' not in text and not re.search(r'(?:cp_session|session)=[a-f0-9]{32,}',text))
@@ -82,7 +82,7 @@ for name in provenance['files']:
         s=p.read_text(encoding='utf-8-sig')
         if 'postgresql://classpulse_app:' in s or 'postgresql://uat6_local:' in s or re.search(r'(?:cp_session|session)=[a-f0-9]{32,}',s):unsafe.append(name)
 verify('no actual credentials or raw cookies in curated text',not unsafe)
-report={'passed':sum(checks.values()),'failed':sum(not value for value in checks.values()),'checks':checks,'pdf':manifest['pdf'],'pdfSha256':manifest['pdfSha256'],'pages':manifest['pages'],'tablePage':table_pages[0].number+1 if table_pages else None,'tableBottomY':table_bottom,'footerClearanceMm':(table_pages[0].rect.height-table_bottom)*25.4/72 if table_bottom is not None else None,'humanBDecision':'CONFIRMED27Nov; receipt observed by16:18:31ICT; exact human-message time unknown','revisedPdfApproval':'PENDING fresh review; earlier review belongs to ca77/f4739f PDF','appTestsRerunByVerifier':False}
+report={'passed':sum(checks.values()),'failed':sum(not value for value in checks.values()),'checks':checks,'pdf':manifest['pdf'],'pdfSha256':manifest['pdfSha256'],'pages':manifest['pages'],'tablePage':table_pages[0].number+1 if table_pages else None,'tableBottomY':table_bottom,'footerClearanceMm':(table_pages[0].rect.height-table_bottom)*25.4/72 if table_bottom is not None else None,'humanBDecision':'CONFIRMED27Nov; receipt observed by16:18:31ICT; exact human-message time unknown','revisedPdfApproval':'Recorded separately in PR133 for actual reviewed head/PDF hash; candidate itself claims no approval or upload', 'noRebuildSolelyForApprovalMergeOrSubmission':True,'appTestsRerunByVerifier':False}
 (FINAL/'artifact-verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,indent=2))
 sys.exit(1 if report['failed'] else 0)

@@ -12,9 +12,9 @@ Issue #132, Student A/Punge089. This report/evidence update changes no applicati
 
 CP-EX-F01 is fixed and independently verified on the corrected ClassPulse deployment: five Cloud subcases passed and the original local exercise drafts were separately retained. WF-BUG-001 is also fixed/independently verified. Their correction/retest chains and exact versions are embedded in the report; Lab 7/Sprint 2 remain separate.
 
-## Review copy and reproduction
+## Stable submission candidate and reproduction
 
-The [review PDF](report/ClassPulse_Lab6_REVIEW_20261127.pdf) and [exact receipt](report/report-receipt.json) are not a submitted or approved final-file version; the human B product-decision concurrence is now recorded separately. Historical status text is explicitly dated and preserved. The earlier measured-observation table starts on a fresh page to clear the footer. The later C/D acknowledgment and B's original review files are embedded.
+The [submission candidate PDF](report/ClassPulse_Lab6_REVIEW_20261127.pdf) has a retained legacy REVIEW filename but no authored draft or not-for-submission watermark. Its [exact receipt](report/report-receipt.json) records the hash and input provenance, without claiming current-file approval or an actual upload. B reviews this exact candidate/current head and green CI once; if sound, the submitting student uploads the same PDF bytes. Do not rebuild solely to record approval, merge or upload; retain those records separately in PR #133 and the LEB2 receipt. The human B product-decision concurrence is already received. Historical status text is explicitly dated and preserved. The earlier measured-observation table starts on a fresh page to clear the footer. The later C/D acknowledgment and B's original review files are embedded.
 
 On Windows with Tahoma/Consolas fonts, Python packages `reportlab`, `pypdf`, `Pillow` and `PyMuPDF`:
 
@@ -30,7 +30,7 @@ The existing complete Sprint 1 case definitions, STS, selected readbacks/screens
 ## Remaining closeout
 
 - Human B identity/decision concurrence is received and embedded with bounded time provenance. B reviews the new acknowledgment-bearing PDF/current PR head and green CI; the old ca77 review is not reused as approval of a changed file.
-- B reviews this PR's actual current head and required CI before approval/merge. A cannot approve or merge this A-authored PR.
+- B reviews this PR's actual current head and required CI before approval/merge under B's own authority. A cannot approve or merge this A-authored PR. No second approval is needed solely because a reviewed file is uploaded unchanged.
 - Human A/B verify cover details and actual extended deadline/course filename, then submit the final PDF to LEB2 and retain receipt. No deadline or submission is invented.
 
 No selected new runtime test is pending by default. Further testing follows an actual review finding or new observed defect, not the act of assembling this report. Residual live eight-hour observation, production storage/full logs, internal concurrency schedule and optional exploratory checks retain their documented limits. 06c-N was not selected because actual local 06c-R was the agreed alternative.
