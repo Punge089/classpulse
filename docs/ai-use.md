@@ -253,3 +253,11 @@ At the user's explicit request to finish in one handoff, A/Punge089 used Codex G
 ## Sprint 2 F-06 review preparation - Student A, 27 November 2026
 
 A/Punge089 used Codex GPT-6 to merge staging 5fe00fd into the F-06 feature branch and resolve the disclosure conflict by preserving both histories. The branch merge changes no F-06 behavior or tests. Previous CI run 45856836256 covered c6e708e on the earlier staging base. CI on the integrated head and B's exact-head PR review are required for staging integration.
+
+## Lab 7 Issue #89 current PR #92 and staging readback - Student B, 25 November 2026
+
+Student B/book6349 verified PR #92 head `87971f59da5bc63634bd8ce963667f6a5a8efcb9`, its successful Actions run 45638095728 and tested merge `9b74772155143c0526edf213083dfe011d5629ac` against base `841ad5ca6d62e4f04d8a943d89a4a91e919feeb5`. B inspected job logs showing 219 server, 10 client and 10 browser tests passed, 0 failed/skipped, both builds and Docker passed. B distinguished this from current staging `9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35`, which later advanced when PR #112 merged. B updated only Issue #89 metrics, readiness, source snapshot and this append-only disclosure. No local application tests, UAT, live migration, release or deployment were performed. Lab 7 remains separate from D2.
+
+## Lab 7 Issue #89 staging integration - Student B, 27 November 2026
+
+Student B/book6349 used Codex GPT-6 to compare PR #114 head `4b2dafb9172d3c20c49c283fb06124aef4d8f3c4` with current `sprint-2-staging` `5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347`, and to prepare a merge preserving the staging tree, all Lab 6/Lab 7 files, and both students' AI-use declarations. The three Issue #89 metric/readiness source files retain B's reviewed content; their dated 25 November readbacks remain historical. No application tests, UAT, migration, release, or deployment were run during this integration; current-head CI and A's review remain pending.
