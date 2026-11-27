@@ -1,17 +1,18 @@
-# Lab7 report sources - draft only
+# Lab 7 report evidence
 
-These are pinned report inputs and derived document checks, not application modules or new test execution. The source snapshot is25November2026 at19:50:53Bangkok; the candidate is45f48cd, CI45613368930. No final PDF, release acceptance or submission exists in this draft.
+The report uses the 25 November historical test and metrics snapshot plus a separate 27 November readback for the accepted Lab 6 Sprint 1 baseline and the merged PR #92. The latter includes the baseline disposition, old lifecycle source comparison, exact B review and inline finding, CI checkout/run/counts, and the staging merge. The CI checkout and staging merge have the same parents and tree. B's metric definitions are credited, and the dated B-owned source files are preserved.
 
-Run the source builder without --capture to verify36 recorded input hashes and rebuild the Markdown offline. Run tools/lab7-report/check_source.py for the61 provenance/chronology/coverage/count/figure/draft-boundary checks. --capture deliberately reads pinned Git and public GitHub evidence again; it does not run tests, touch a database or deploy.
+Run the document tools from the report worktree with Python, ReportLab, Pillow, pypdf and pdfplumber:
 
-The manifest records source commits/paths or API/run provenance and SHA256s. Two text copies had only trailing-whitespace/EOF normalization; their original byte hashes and the exact normalization are retained. The scoped .gitattributes preserves stored input/screenshot bytes on Windows and Linux. Report Markdown hashes use canonical UTF8/LF; this is not a final PDF hash. Screenshots are exact original bytes.
+```powershell
+python -B tools/lab7-report/build_source.py
+python -B tools/lab7-report/check_source.py
+python -B tools/lab7-report/render_draft.py
+python -B tools/lab7-report/check_pdf_draft.py
+```
 
-B's original metric/readiness sources are attributed and unchanged in their own paths. The draft embeds the assessed contract/actual C3/test setup/RED-GREEN/code/metric source material, with final peer/main/deployed/accepted-baseline/PDF requirements explicitly pending. Deliverable2 remains a separate report.
+The default source build runs offline, verifies 37 stored input hashes, and produces 71 source checks. The historical `--capture` option re-reads its original 25 November cutoff and preserves both the historical review snapshot and the 27 November readback. The evidence manifest records file hashes and provenance. Two historical inputs disclose normalization of trailing whitespace with original byte hashes retained. Screenshot bytes are preserved.
 
-## Working PDF layout v0.2
+The 30-page v0.3 working PDF contains A3-13, B14-25, C26-28 and D29-30. All pages were visually inspected and checked for bounds, content and draft labeling. Four Part navigation destinations and all three original image pixel hashes passed. Two renders gave SHA-256 `a5e5a47555ea697811dda7e5b1e160a1c40dab25e47fee180d7afdc7216ee13f`. See `pdf-draft-qa.json` for page checks.
 
-Run build_source.py, render_draft.py, then check_source.py and check_pdf_draft.py from tools/lab7-report. The renderer uses the bundled ReportLab/Pillow/pypdf libraries and Windows Arial/Consolas/Segoe Symbol fonts. It creates only output/pdf/ClassPulse-Lab7-DRAFT.pdf; final filename/acceptance/submission remain absent.
-
-The checked working PDF has29pages: A3-13, B14-24, C25-27, D28-29. A4 text pages and3A3 landscape evidence sheets keep original screenshot text readable. Every page is visibly NOT READY. Four unique Part navigation targets/page ranges are checked; all29pages are bounded/nonblank;3 embedded images preserve original RGB pixels. A inspected every latest rendered page through8 contact sheets and4 full-resolution spot checks. PDF draft QA is in pdf-draft-qa.json. This agent layout review is not B's final PDF approval.
-
-Two consecutive renders are byte-identical because PDF metadata is intentionally invariant; it is not a test execution timestamp. Actual evidence observation/CI times are separately pinned. Working PDF SHA256:80c977a1e9a5bcda9c0d5d24032d85d5df74308210ef09830bf1a5d7ca2abdbb. Final peer/baseline/main/deployed/M4/report-refresh/PDF-hash review gates remain open.
+Lab 7 remains **NOT READY**. The reviewed main release, GCP migration and serving-revision readback, changed and preserved behavior on that deployment, B's final metrics and PDF review, and the LEB2 receipt are pending.

@@ -262,6 +262,28 @@
       "file": "inputs/assignment-provenance.json",
       "sha256": "78f0c2b7b433efe87f6f6554466061d2325a8b79a911a3f3d5ca73fe51fe201d",
       "derivation": "Lab7 entries selected from original supplied-source manifest"
+    },
+    {
+      "file": "inputs/nov27-baseline-and-staging.json",
+      "sha256": "b06ff9bcfbaa656bea08f9af7b73e8e51b02a908a31c8346a5f8dd9a7f552db0",
+      "gitSource": "5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347",
+      "gitPaths": [
+        "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/D-ACCEPTANCE-STATUS.md",
+        "evidence/lab-06/finalization-20261127/received-c-final-20261127/C-REVIEW.md",
+        "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/REPORT.md",
+        "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/received-d/D-RETEST-REPORT.redacted.md",
+        "docs/labs/lab-06/cp-ex-f01-closure.md"
+      ],
+      "endpoints": [
+        "pulls/92",
+        "pulls/92/reviews",
+        "pulls/92/comments",
+        "actions/runs/45645429150/jobs",
+        "git/commits/3b76494e3defb8e8f6280f22d63eada833d50f9d",
+        "pulls/114"
+      ],
+      "run": 45645429150,
+      "derivation": "Selected source lines and structured metadata; CI checkout/count summaries read from the run log."
     }
   ],
   "sourceSnapshotVersion": "1"

@@ -27,7 +27,7 @@ check("WORKING DRAFT - NOT READY FOR SUBMISSION" in report, "unambiguous working
 check(all(f"# Part {part} -" in report for part in "ABCD"), "all four separate assessed parts")
 check(set(map(int, re.findall(r"^\| AC-(\d+) \|", report, re.M))) == set(range(100, 112)), "all12 stable acceptance IDs")
 check(set(map(int, re.findall(r"^\| TEST-(\d+) \|", report, re.M))) == set(range(100, 115)), "all15 complete reviewed STS designs")
-check("PARTIAL: named suites/CI pass; peer/main/deployed acceptance PENDING" in report, "release AC not claimed complete")
+check("PARTIAL: named suites, B review and staging verified; main/deployed checks PENDING" in report, "release AC not claimed complete")
 timeline = json.loads((EV / "inputs/timeline.json").read_text(encoding="utf-8"))
 times = {x["role"]: datetime.fromisoformat(x["committedAt"]) for x in timeline}
 c3 = json.loads((EV / "inputs/b-c3.json").read_text(encoding="utf-8"))
@@ -45,7 +45,7 @@ check(red["testCounts"] == {"passed": 139, "failed": 2, "skipped": 0, "total": 1
 check(sum(x["conclusion"] == "skipped" for x in red["steps"]) == 5, "five skipped pipeline steps disclosed separately")
 for name, expected in [("server", 219), ("client", 10)]:
     text = (EV / f"inputs/candidate-{name}-log.txt").read_text(encoding="utf-8")
-    check(bool(re.search(rf"Tests\s+{expected} passed \({expected}\)", text)), f"actual current {name} complete passed count")
+    check(bool(re.search(rf"Tests\s+{expected} passed \({expected}\)", text)), f"retained historical {name} complete passed count")
 check("10 passed" in (EV / "inputs/candidate-browser-log.txt").read_text(encoding="utf-8"), "complete10 browser passed count")
 window = json.loads((EV / "inputs/branch-ci-window.json").read_text(encoding="utf-8"))
 check(len({x["id"] for x in window["runs"]}) == len(window["runs"]), "CI runs unique within fully paginated scope")
@@ -58,7 +58,22 @@ paragraph = interpretation.split("\n\n", 1)[1].split("\n\n", 1)[0]
 check(len(paragraph.split()) <= 100, "action/owner interpretation<=100words")
 figures = re.findall(r"!\[[^\]]+\]\(([^)]+)\)", report)
 check(len(figures) == 3 and all((REPORT.parent / x).resolve().is_file() for x in figures), "all3 self-contained figure links resolve")
-check("M4 independent UAT defect disposition" in report and "PENDING; source checkpoint" in report, "no invented zero-defect disposition")
+readback = json.loads((EV / "inputs/nov27-baseline-and-staging.json").read_bytes())
+baseline = readback["baseline"]
+integration = readback["integration"]
+decision_time = datetime.fromisoformat("2026-11-27T01:35:39+07:00")
+check(times["backend implementation"] < datetime.fromisoformat(integration["mergedAt"]) < decision_time, "baseline acceptance chronology follows feature implementation and staging merge")
+for path, expected in baseline["oldFiles"].items():
+    revisions = [baseline["source"], timeline[0]["commit"], same["oldCommit"]]
+    check(all(subprocess.check_output(["git", "rev-parse", f"{ref}:{path}"], cwd=ROOT, text=True).strip() == expected for ref in revisions), f"identical old-code blob on baseline and RED sources: {path}")
+check(baseline["source"] in report and baseline["revision"] in report and "Historical live M01 remains **BLOCKED**" in report and "isolated exact-source auth suite passed 8/8" in report, "accepted baseline and isolated/live limits embedded")
+check(integration["reviewBody"] in report and integration["inlineBody"] in report and integration["head"] in report, "review and precise inline finding embedded")
+merge_info = subprocess.check_output(["git", "show", "-s", "--format=%P %T", integration["merge"]], cwd=ROOT, text=True).split()
+check(merge_info == [integration["base"], integration["head"], integration["tree"]], "staging merge pins both parents and tested tree")
+check(integration["testedMerge"] in report and str(integration["runId"]) in report and all(step["conclusion"] == "success" for step in integration["jobSteps"]), "exact PR CI checkout, run and all job step outcomes")
+check(integration["counts"] == {area: {"passed": passed, "failed": 0, "skipped": 0} for area, passed in (("server", 219), ("client", 10), ("browser", 10))}, "latest PR CI counts by suite")
+check("1/1 recorded exercise defects resolved" in report and "CP-EX-F01 Minor" in report and "Lab 7 deployed product disposition pending" in report, "M4 records only the independently verified exercise defect")
+check(all(x in report for x in ("L7-B09", "L7-B10", "L7-B11", "L7-B12")), "all four release and manual readback obligations embedded")
 check(not (ROOT / "output/pdf/ClassPulse-Lab7.pdf").exists(), "no falsely finalized PDF")
 before = hashlib.sha256(REPORT.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
 subprocess.run([sys.executable, str(ROOT / "tools/lab7-report/build_source.py")], cwd=ROOT, check=True, stdout=subprocess.PIPE)
