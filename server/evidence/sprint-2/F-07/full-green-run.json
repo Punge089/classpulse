@@ -1,0 +1,19 @@
+{
+  "headCommit": "f861bcdba583da1d60dc1a1da10096781744f090",
+  "ciMergeCommit": "01d8320cb63b4e0905afd88d67243b20c6534252",
+  "stagingBase": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+  "workflowRun": 46058610015,
+  "command": "GitHub Actions: cd server && npm test; cd client && npm test; npx playwright test; Prisma migrations; npm run build (server/client); docker build --tag classpulse-ci:ci .",
+  "server": { "filesPassed": 22, "tests": 292, "passed": 292, "failed": 0, "skipped": 0 },
+  "client": { "filesPassed": 5, "tests": 27, "passed": 27, "failed": 0, "skipped": 0 },
+  "browser": { "tests": 13, "passed": 13, "failed": 0, "skipped": 0 },
+  "totalTests": 332,
+  "totalPassed": 332,
+  "totalFailed": 0,
+  "totalSkipped": 0,
+  "migrations": "passed",
+  "serverBuild": "passed",
+  "clientBuild": "passed",
+  "dockerBuild": "passed",
+  "phase": "F-07 implementation exact-head green CI"
+}

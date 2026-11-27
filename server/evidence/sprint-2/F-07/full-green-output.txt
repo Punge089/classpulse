@@ -1,0 +1,7 @@
+F-07 exact-head GREEN checkpoint
+Implementation head: f861bcdba583da1d60dc1a1da10096781744f090
+GitHub Actions run: 46058610015 (CI merge commit 01d8320cb63b4e0905afd88d67243b20c6534252; sprint-2-staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0)
+Command: GitHub Actions ran Prisma migrations, cd server && npm test; cd client && npm test; npx playwright test; server/client builds; docker build --tag classpulse-ci:ci .
+Results: server 292/292 across 22 files; client 27/27 across 5 files; browser 13/13; total 332 passed, 0 failed, 0 skipped.
+Migrations, both builds and Docker image build passed. Job test-and-docker completed successfully.
+The prior browser run 46058029214 had one owner-summary route timeout; the test now awaits the /owner redirect. This exact-head run verifies the correction.

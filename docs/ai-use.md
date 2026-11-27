@@ -301,3 +301,7 @@ B/book6349 used Codex GPT-6.2 Sol to add test-first RED coverage for draft repla
 ## Lab 7 release review status corrections - Issue #94 follow-up, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.
+
+## F-07 extended answer path — exact-head GREEN — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to complete F-07 draft edit, TEXT/MULTI_CHOICE answer validation and persistence, own-history details, identified aggregate summaries, and corresponding UI. Exact-head CI run 46058610015 tested head f861bcdba583da1d60dc1a1da10096781744f090 (CI merge commit 01d8320cb63b4e0905afd88d67243b20c6534252; staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0). It passed migrations, 292 server tests, 27 client tests and 13 browser tests (332 total; zero failed or skipped), both builds and Docker. Run 46058029214 had 12 browser tests pass and one owner-summary route timeout; the E2E test now waits for the /owner redirect and the exact-head rerun passed all 13. Local PostgreSQL-backed API execution remains unavailable because local classpulse_test authentication was rejected before assertions; CI's isolated PostgreSQL migration and API suites passed. The earlier expected-red results remain recorded in the RED evidence. No tests were disabled, focused or weakened.
