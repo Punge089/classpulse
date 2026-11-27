@@ -1,0 +1,94 @@
+﻿2026-11-25T10:42:50.7060198Z ##[group]Run npm test
+2026-11-25T10:42:50.7060670Z npm test
+2026-11-25T10:42:50.7107440Z shell: /usr/bin/bash -e {0}
+2026-11-25T10:42:50.7107890Z env:
+2026-11-25T10:42:50.7108863Z   DATABASE_URL: [omitted]
+2026-11-25T10:42:50.7109800Z   SEED_PASSWORD: [omitted]
+2026-11-25T10:42:50.7110274Z ##[endgroup]
+2026-11-25T10:42:50.8403356Z
+2026-11-25T10:42:50.8403940Z > classpulse-server@0.1.0 test
+2026-11-25T10:42:50.8404330Z > vitest run
+2026-11-25T10:42:50.8404483Z
+2026-11-25T10:42:51.1216641Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+2026-11-25T10:42:51.1529501Z
+2026-11-25T10:42:51.1531570Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+2026-11-25T10:42:51.1532521Z
+2026-11-25T10:42:53.0825766Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1622ms
+2026-11-25T10:42:55.8172525Z  ✓ tests/api/responses.test.ts (10 tests) 2296ms
+2026-11-25T10:42:55.8175122Z    ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 346ms
+2026-11-25T10:42:58.2395434Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 2084ms
+2026-11-25T10:43:00.3032259Z  ✓ tests/api/auth.test.ts (8 tests) 1737ms
+2026-11-25T10:43:01.4092754Z  ✓ tests/api/summary.test.ts (3 tests) 792ms
+2026-11-25T10:43:01.4095576Z    ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 310ms
+2026-11-25T10:43:01.6307323Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 12ms
+2026-11-25T10:43:02.0288363Z  ✓ tests/api/cloudReady.test.ts (3 tests) 83ms
+2026-11-25T10:43:03.2753253Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 1041ms
+2026-11-25T10:43:03.2755553Z    ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 373ms
+2026-11-25T10:43:04.6493122Z  ✓ tests/db/constraints.test.ts (3 tests) 1181ms
+2026-11-25T10:43:04.6494595Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 772ms
+2026-11-25T10:43:04.8483085Z  ✓ tests/unit/summary.test.ts (6 tests) 6ms
+2026-11-25T10:43:05.0498025Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 8ms
+2026-11-25T10:43:05.8373159Z  ❯ tests/api/surveyReopen.test.ts (2 tests | 2 failed) 474ms
+2026-11-25T10:43:05.8376941Z    × Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey 278ms
+2026-11-25T10:43:05.8377846Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T10:43:05.8378980Z    × Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey 188ms
+2026-11-25T10:43:05.8380179Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T10:43:06.1932230Z  ✓ tests/api/health.test.ts (1 test) 73ms
+2026-11-25T10:43:06.5328941Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 45ms
+2026-11-25T10:43:07.1391327Z  ✓ tests/unit/password.test.ts (1 test) 396ms
+2026-11-25T10:43:07.1392771Z    ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 389ms
+2026-11-25T10:43:07.3585174Z  ✓ tests/unit/seedConfig.test.ts (1 test) 4ms
+2026-11-25T10:43:07.5567313Z  ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 5ms
+2026-11-25T10:43:07.5659945Z
+2026-11-25T10:43:07.5667045Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+2026-11-25T10:43:07.5667590Z
+2026-11-25T10:43:07.5671461Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey
+2026-11-25T10:43:07.5674432Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey
+2026-11-25T10:43:07.5696667Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T10:43:07.5698112Z
+2026-11-25T10:43:07.5698632Z - Expected
+2026-11-25T10:43:07.5699773Z + Received
+2026-11-25T10:43:07.5700263Z
+2026-11-25T10:43:07.5700692Z - 200
+2026-11-25T10:43:07.5701321Z + 404
+2026-11-25T10:43:07.5701705Z
+2026-11-25T10:43:07.5702462Z  ❯ tests/api/surveyReopen.test.ts:43:26
+2026-11-25T10:43:07.5862903Z      41|     // Assert behavior before touching any future DTO/model fields so …
+2026-11-25T10:43:07.5865157Z      42|     // failures cannot masquerade as the missing-behavior failure.
+2026-11-25T10:43:07.5866736Z      43|     expect(reply.status).toBe(200);
+2026-11-25T10:43:07.5868036Z        |                          ^
+2026-11-25T10:43:07.5869456Z      44|     expect(reply.body.survey).toMatchObject({
+2026-11-25T10:43:07.5871160Z      45|       id: original.id,
+2026-11-25T10:43:07.5871938Z
+2026-11-25T10:43:07.5872823Z  Test Files  1 failed | 16 passed (17)
+2026-11-25T10:43:07.5874340Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+2026-11-25T10:43:07.5875572Z       Tests  2 failed | 139 passed (141)
+2026-11-25T10:43:07.5876542Z
+2026-11-25T10:43:07.5876938Z    Start at  10:42:51
+2026-11-25T10:43:07.5878649Z    Duration  16.41s (transform 249ms, setup 87ms, collect 1.39s, tests 11.86s, environment 3ms, prepare 928ms)
+2026-11-25T10:43:07.5881730Z
+2026-11-25T10:43:07.5892244Z
+2026-11-25T10:43:07.5923623Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:43:26
+
+
+2026-11-25T10:43:07.5936794Z
+2026-11-25T10:43:07.5939756Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:43:26
+
+
+2026-11-25T10:43:07.6169196Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,41 @@
+﻿2026-11-25T12:02:57.4050721Z ##[group]Run npm test
+2026-11-25T12:02:57.4051185Z npm test
+2026-11-25T12:02:57.4069905Z shell: /usr/bin/bash -e {0}
+2026-11-25T12:02:57.4070217Z env:
+2026-11-25T12:02:57.4070904Z   DATABASE_URL: [omitted]
+2026-11-25T12:02:57.4071254Z   SEED_PASSWORD: [omitted]
+2026-11-25T12:02:57.4071681Z ##[endgroup]
+2026-11-25T12:02:57.4880241Z
+2026-11-25T12:02:57.4881456Z > classpulse-server@0.1.0 test
+2026-11-25T12:02:57.4882528Z > vitest run
+2026-11-25T12:02:57.4882888Z
+2026-11-25T12:02:57.7310720Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+2026-11-25T12:02:57.7507964Z
+2026-11-25T12:02:57.7509856Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+2026-11-25T12:02:57.7510534Z
+2026-11-25T12:03:04.6569227Z  ✓ tests/api/surveyReopen.test.ts (41 tests) 6542ms
+2026-11-25T12:03:04.6571185Z    ✓ Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 history is empty for legacy rows, then paginates without duplicates or foreign events 325ms
+2026-11-25T12:03:06.0270340Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1193ms
+2026-11-25T12:03:08.0187752Z  ✓ tests/api/responses.test.ts (10 tests) 1773ms
+2026-11-25T12:03:09.9110528Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 1653ms
+2026-11-25T12:03:11.4990599Z  ✓ tests/api/auth.test.ts (8 tests) 1367ms
+2026-11-25T12:03:12.3272785Z  ✓ tests/api/summary.test.ts (3 tests) 612ms
+2026-11-25T12:03:12.4715221Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 7ms
+2026-11-25T12:03:12.7491792Z  ✓ tests/api/cloudReady.test.ts (3 tests) 57ms
+2026-11-25T12:03:13.6537937Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 764ms
+2026-11-25T12:03:14.7233771Z  ✓ tests/db/constraints.test.ts (3 tests) 924ms
+2026-11-25T12:03:14.7234877Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 616ms
+2026-11-25T12:03:14.8686310Z  ✓ tests/unit/summary.test.ts (6 tests) 4ms
+2026-11-25T12:03:15.0090666Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 5ms
+2026-11-25T12:03:15.1510403Z  ✓ tests/unit/surveyReopenValidation.test.ts (32 tests) 8ms
+2026-11-25T12:03:15.2876381Z  ✓ tests/unit/surveyLifecycle.test.ts (9 tests) 3ms
+2026-11-25T12:03:15.5207883Z  ✓ tests/api/health.test.ts (1 test) 51ms
+2026-11-25T12:03:15.7657431Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 30ms
+2026-11-25T12:03:16.2227599Z  ✓ tests/unit/password.test.ts (1 test) 303ms
+2026-11-25T12:03:16.3795675Z  ✓ tests/unit/seedConfig.test.ts (1 test) 3ms
+2026-11-25T12:03:16.3879733Z
+2026-11-25T12:03:16.3887499Z  Test Files  18 passed (18)
+2026-11-25T12:03:16.3888674Z       Tests  215 passed (215)
+2026-11-25T12:03:16.3890142Z    Start at  12:02:57
+2026-11-25T12:03:16.3891328Z    Duration  18.64s (transform 198ms, setup 68ms, collect 1.01s, tests 15.30s, environment 2ms, prepare 633ms)
+2026-11-25T12:03:16.3892165Z

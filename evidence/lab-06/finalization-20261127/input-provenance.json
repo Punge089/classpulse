@@ -1,0 +1,504 @@
+{
+  "issue": 132,
+  "purpose": "Unchanged received/input artifacts; no application rerun by documentation assembly",
+  "files": {
+    "evidence/lab-06/finalization-20261127/report-draft/inputs/classpulse-r11-additional-cases.md": {
+      "sha256": "b57613b1fd4b53781c4d9e36ccc6899f9c2edd734afa90de52db6ddb8445b122",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/report-draft/inputs/classpulse-r11-additional-cases.md"
+    },
+    "evidence/lab-06/finalization-20261127/report-draft/inputs/workflow-original-cases.md": {
+      "sha256": "77150e3f25166eda1ae9d7de790fe6978efe2f6b2a021c331274cf359d55baf3",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/report-draft/inputs/workflow-original-cases.md"
+    },
+    "evidence/lab-06/finalization-20261127/report-draft/inputs/workflow-contract-v06.md": {
+      "sha256": "1c6a1e7c788a6af4e8dcb927593ca6ef6c9a30c2a494b7c6b07468f22f392ff4",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/report-draft/inputs/workflow-contract-v06.md"
+    },
+    "evidence/lab-06/finalization-20261127/coordination-2011/pr123-reviewed-and-merged.json": {
+      "sha256": "cc048c98d9e1a01a77e9e461b2acac273883fbc5c6b0753e1c2875360cc4d9a3",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/coordination-2011/pr123-reviewed-and-merged.json"
+    },
+    "evidence/lab-06/finalization-20261127/report-draft/inputs/classpulse-baseline-coverage.md": {
+      "sha256": "4a9d4d63de5ae83321ab0e20e22166b9c79d6047aee5c4f8ce654b72a80e2e3c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/report-draft/inputs/classpulse-baseline-coverage.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-decision-20261126/CLASS-PULSE-ACCEPTANCE-DISPOSITION.md": {
+      "sha256": "ebe336959ccd18e408f6edfa37f807d7bb5057d9882ed4e878c56dd4ab58321c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-decision-20261126/CLASS-PULSE-ACCEPTANCE-DISPOSITION.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-decision-20261126/C-ACCEPTANCE-DECISION-REVIEW.md": {
+      "sha256": "d1944f914ea41785094d624ebd82c68c1bc88c21f68ba783072b334ba639e48b",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-decision-20261126/C-ACCEPTANCE-DECISION-REVIEW.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-decision-20261126/WORKFLOW-A2-RELEASE-APPLICABILITY.md": {
+      "sha256": "a660564b578d214ea7011cf8d0efede42c7d3e3a06585772c46c2c8e5d132046",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-decision-20261126/WORKFLOW-A2-RELEASE-APPLICABILITY.md"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-a-live-20261126/A-RESULTS.md": {
+      "sha256": "922178da968dd525e10b408b769c0f6aea574bfbf246f99acaaa732aaaedce7b",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-a-live-20261126/A-RESULTS.md"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-a-live-20261126/bundle-receipt.json": {
+      "sha256": "aca802022c4e63a5b9f76dd1a441f74d57dbe3d3d4aa8414604094b327804467",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-a-live-20261126/bundle-receipt.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-a-live-20261126/11-keyboard-visible-focus.jpg": {
+      "sha256": "484fe9aa01d08709848e7f7d8213344b4e805d81176d163548ac846e7d548f69",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-a-live-20261126/11-keyboard-visible-focus.jpg"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-a-live-20261126/24-mobile-requester-final-readback.jpg": {
+      "sha256": "76990c5e7c26b0b8959087a1de8fc9113c1031f814425cbf59af5db52179e67d",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-a-live-20261126/24-mobile-requester-final-readback.jpg"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-closure-20261126/COMBINED-RESULTS.md": {
+      "sha256": "b7b6d3ddd42db4b721571a26a0a1c141c8e4f3f652f9391622ecb74074d060ca",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-closure-20261126/COMBINED-RESULTS.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-ac04-alternative-20261126/RUBRIC-CORRECTION.md": {
+      "sha256": "39b2e50677cbb5222496d54be33603d5f33bf6548be9e3f4dcfe51204094e737",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-ac04-alternative-20261126/RUBRIC-CORRECTION.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/D-ACCEPTANCE-STATUS.md": {
+      "sha256": "b07008a6f388433f8c72950f33ffbc566582f9af7608cf1224f1ea853f6e4709",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/D-ACCEPTANCE-STATUS.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-c-final-20261127/C-REVIEW.md": {
+      "sha256": "c9f415d812d88d00b0ff8cd1f98a88c5ae98326c09a10bbcb4d64c819bed5978",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-c-final-20261127/C-REVIEW.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/REPORT.md": {
+      "sha256": "3ee5c272efd71c596d62c636de561a134648a5cde24798fdf458f2d554445ff8",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/REPORT.md"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/auth-test-output.txt": {
+      "sha256": "81a73ddbdd6cc43f8cd9d608f8dc089f4a3a3eb3f895545b41f03137889611f6",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/auth-test-output.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/A-ARTIFACT-REVIEW.json": {
+      "sha256": "40a0ea3c66a04db82cde3be28adad2f840ad6e668111add68c71e7e3c25a33be",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/A-ARTIFACT-REVIEW.json"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/run-record.json": {
+      "sha256": "f3cd0421dcf0ee28aa6aebf1ea5905f0de3ce2e8804b10e6bab3e2385d1a8817",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/run-record.json"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/fixture-setup-failure.json": {
+      "sha256": "9096dfce273b2842465b9110d418695541c99e914689bfc864662ca434e32ec9",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/fixture-setup-failure.json"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/fixture-setup-failure-output.txt": {
+      "sha256": "d9dd0daf063d5d410240b6d2dd56837a605319db1ad7f2b46a15a83c5a44a9b4",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/fixture-setup-failure-output.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/setup-output.txt": {
+      "sha256": "1a583cd047660fa1d17f14ba0004cc7cabba45e165d0939e801b86ba6217293a",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-cd-acceptance-20261127/CP-FIX-001-TEST-04-ISOLATED/setup-output.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-c-final-20261127/A-RECEIPT.json": {
+      "sha256": "caca178d3fd0b8bf10052714168e5de57163b881c45341d885089864cb80e4d2",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-c-final-20261127/A-RECEIPT.json"
+    },
+    "evidence/lab-06/finalization-20261127/received-c-final-20261127/SPECIAL-SETUP-STATUS-20261127.md": {
+      "sha256": "e8643193ac0a11866bca3a5831d4734ff4da54ebfac33a9ba336b4a88e956566",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-c-final-20261127/SPECIAL-SETUP-STATUS-20261127.md"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/PRODUCT-TEAM-METHOD-AGREEMENT.txt": {
+      "sha256": "a5f08d54920db5245e4098e916663dfbdfa1dc0d7ca0d52d124e9f67c852b5f9",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/PRODUCT-TEAM-METHOD-AGREEMENT.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/RESULTS.txt": {
+      "sha256": "ef737e3d9a9f900adca7a3bdd7f7107404fc611ff1547850daee8a3acfa3c50a",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/RESULTS.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/case-results.json": {
+      "sha256": "6aa474b9d197e9f056c64af8231aa0ceca92f589bbbf64a8833b3cfd20ca4471",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/case-results.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/unmodified-full-suite.txt": {
+      "sha256": "3ab34310061772c4392b0c820e3c599c74a7ed35536930c40894158e3615fe92",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/unmodified-full-suite.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/tests/auth.test.mjs": {
+      "sha256": "985adfbc7b7d8f2088fc2ea708418740ce214c26a39e1f72e8fef4ec343a650a",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/tests/auth.test.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/tests/decisions.test.mjs": {
+      "sha256": "fb71b509e4a8db396f89204f5af04c1873f90a449bd70beb90a418aac194e8a4",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/tests/decisions.test.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/tests/schema.sql": {
+      "sha256": "ffb6cc16a77d7612c5f721802fa9ef9554f16bc3ff6cf09a33eec87aa0e75c20",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/tests/schema.sql"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/unmodified-schema-check.txt": {
+      "sha256": "2df796160e216ff3b56f8d261957ba978e7bbe651877a78a866c8874679c3edf",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/unmodified-schema-check.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/schema-before.txt": {
+      "sha256": "e33c78a16a96de4d81e388cd6d2e21f7ef4a5b5cb2678b4e6eba211212c19bc9",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/schema-before.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/schema-after.txt": {
+      "sha256": "e33c78a16a96de4d81e388cd6d2e21f7ef4a5b5cb2678b4e6eba211212c19bc9",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/schema-after.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/A-WORKFLOW-DECISION.json": {
+      "sha256": "efbf02d3fc7be288fe343e1e19367517aa9d575a6a1798c219428595d1af70c4",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/A-WORKFLOW-DECISION.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/run-record.json": {
+      "sha256": "40798edc8aaeb7e7f45d7092acb7009dcb872a42371265af2f33add886d58283",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/run-record.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/supplemental-results.json": {
+      "sha256": "3e128ec01106df9a5f5cfcec403d79bfa2a38db93237c8560ee0a0a4cac4c968",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/supplemental-results.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/listeners.jsonl": {
+      "sha256": "170b4974970fd5e10754620660f3ba484b15fbd5cfe264dc3a5cc4ed8598ae6c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/listeners.jsonl"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/ARTIFACT-REVIEW.json": {
+      "sha256": "f2c7fd00db2bfbe9617c4796a5b3fea68fb0e0069ef671357ed294bc9537f2c1",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/ARTIFACT-REVIEW.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/CD-PRODUCT-ACKNOWLEDGMENT.json": {
+      "sha256": "535226e980faed0a67b597226a810d41f8f2f0ecc8881915141847ab0e1f737d",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/CD-PRODUCT-ACKNOWLEDGMENT.json"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/ClassPulse_B_Workflow_decision_review_20261127.txt": {
+      "sha256": "f32b3423536ed2eac4521a01ed793487d5727779e98c5a3b9e8bc64bbd24181d",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-b-final-review-20261127/ClassPulse_B_Workflow_decision_review_20261127.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/ClassPulse_B_PDF_comparison_20261127.txt": {
+      "sha256": "baaba7bb63a527a051afc85812fc691b59b8f0b64b5f5065c25ab48c06604a59",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-b-final-review-20261127/ClassPulse_B_PDF_comparison_20261127.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/RECEIPT.json": {
+      "sha256": "9e10acd4f25d5a1a43d120dc6c33795bed1569339821dc94c20e83af9a9f1dc5",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/received-b-final-review-20261127/RECEIPT.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/supplemental-readbacks.mjs": {
+      "sha256": "aa5f1b5a8cc72e965af162348fec55efc5f4ddefc464e83000650ff91e62f965",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/supplemental-readbacks.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/loopback-only.mjs": {
+      "sha256": "aaccf8a4acbfc08eb8977af673e5996ed6abfef877837fb7c60d7986658ed9e1",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/loopback-only.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/bundle-receipt.json": {
+      "sha256": "8205d6a9d08a4b96b3ae96a909f23a9fbf953a9c679c9ff91b1c1c1eabf533dc",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/bundle-receipt.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-01/run-record.json": {
+      "sha256": "7b7c6ac010bce4a39c9357da8feca119b73b3a5a85ecd524a02c5f9f7121e8b8",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-01/run-record.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-01/logs/initdb.txt": {
+      "sha256": "feb98df4b51198eb57fe3ede5ff7c39ac7be696db6edb2da6483577bd5f36c69",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-01/logs/initdb.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-01/logs/postgres-start.txt": {
+      "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-01/logs/postgres-start.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-01/logs/postgres-version.txt": {
+      "sha256": "f3922186ea51891d414943f9651dc2327e267b944e1ab081da4047ea7feef364",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-01/logs/postgres-version.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-01/logs/versions.txt": {
+      "sha256": "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-01/logs/versions.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/run-record.json": {
+      "sha256": "f96ad8c8d574f98f14fe62f1bb1dc96d3b758df5fa06469294ea771fa621efc6",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/run-record.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/create-workflow_uat6_20261127_dev.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/create-workflow_uat6_20261127_dev.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/create-workflow_uat6_20261127_test.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/create-workflow_uat6_20261127_test.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/database-preflight.txt": {
+      "sha256": "2fc1f1dbe1254df896dde4f281923043adbde483db6ce355a09e751b61d6d996",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/database-preflight.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/generate-client.txt": {
+      "sha256": "8b5a1049603bbd7932ed3949ec1dff665970224d02ec868cd7915ca55cfa3ea0",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/generate-client.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/guard-and-migrate.txt": {
+      "sha256": "ebd4feea56c15cde9b2456d28a81ecdeec1bb2f1a97dd4689552e1d8a4fa4a85",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/guard-and-migrate.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/initdb.txt": {
+      "sha256": "62179089eb14cab783853881b44b084a1a66682aa9872fb62614d37520c1767e",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/initdb.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/postgres-start.txt": {
+      "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/postgres-start.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/postgres-stop.txt": {
+      "sha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/postgres-stop.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/postgres-version.txt": {
+      "sha256": "f3922186ea51891d414943f9651dc2327e267b944e1ab081da4047ea7feef364",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/postgres-version.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-02/logs/versions.txt": {
+      "sha256": "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-02/logs/versions.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/run-record.json": {
+      "sha256": "eb6e4bb104c5645b0c3dac97c7192c128d053ee7dfe76997963bd8a341cc6c43",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/run-record.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/supplemental-results.json": {
+      "sha256": "9e93485e5b1d7fa6186fde6d764d5c48255d5da84362b79e247d983a67c37159",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/supplemental-results.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/create-workflow_uat6_20261127_dev.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/create-workflow_uat6_20261127_dev.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/create-workflow_uat6_20261127_test.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/create-workflow_uat6_20261127_test.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/database-preflight.txt": {
+      "sha256": "24d8f33083d9c56c93e802f34567c337634a95d58a0f60c87fffc261c9121d1c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/database-preflight.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/generate-client.txt": {
+      "sha256": "7d70b03dd79e74b96e864c558c549bced94188d9d3ec4d55bef048c2ce5b57df",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/generate-client.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/guard-and-migrate.txt": {
+      "sha256": "1795fa439234358b91a7b1b5d9c7a2912d339e215ed33e8e7192d6f4cf880039",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/guard-and-migrate.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/initdb.txt": {
+      "sha256": "7cc0ead5f849908aab274d07b0a7ea0448c115bebb0b0ba6f28325cd823b746c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/initdb.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/postgres-start.txt": {
+      "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/postgres-start.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/postgres-stop.txt": {
+      "sha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/postgres-stop.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/postgres-version.txt": {
+      "sha256": "f3922186ea51891d414943f9651dc2327e267b944e1ab081da4047ea7feef364",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/postgres-version.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/supplemental-readbacks.txt": {
+      "sha256": "da445f5216e2a9ee1d2056ac8f09065aaad91e1c30853300ab23c293bb4efd1c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/supplemental-readbacks.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/unmodified-full-suite.txt": {
+      "sha256": "3ab34310061772c4392b0c820e3c599c74a7ed35536930c40894158e3615fe92",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/unmodified-full-suite.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/attempt-03/logs/versions.txt": {
+      "sha256": "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/attempt-03/logs/versions.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/create-workflow_uat6_20261127_dev.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/create-workflow_uat6_20261127_dev.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/create-workflow_uat6_20261127_test.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/create-workflow_uat6_20261127_test.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/database-preflight.txt": {
+      "sha256": "f2b8588fe4a8c9012170c4439420f4f48f995b0b2e354ef5b5324c693f6b5652",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/database-preflight.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/generate-client.txt": {
+      "sha256": "8e5221c470a0eb9acae34713ddffb1a02a720c99f9742a575418b49ad0beca3b",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/generate-client.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/guard-and-migrate.txt": {
+      "sha256": "1795fa439234358b91a7b1b5d9c7a2912d339e215ed33e8e7192d6f4cf880039",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/guard-and-migrate.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/initdb.txt": {
+      "sha256": "712ba21286f1abbb364d6d29427b3267667c9dce4da2c7bafccc94e2410aa538",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/initdb.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/postgres-start.txt": {
+      "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/postgres-start.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/postgres-stop.txt": {
+      "sha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/postgres-stop.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/postgres-version.txt": {
+      "sha256": "f3922186ea51891d414943f9651dc2327e267b944e1ab081da4047ea7feef364",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/postgres-version.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/schema-after.txt": {
+      "sha256": "e33c78a16a96de4d81e388cd6d2e21f7ef4a5b5cb2678b4e6eba211212c19bc9",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/schema-after.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/schema-before.txt": {
+      "sha256": "e33c78a16a96de4d81e388cd6d2e21f7ef4a5b5cb2678b4e6eba211212c19bc9",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/schema-before.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/supplemental-readbacks.txt": {
+      "sha256": "f83bcf0cc7d7a2d0fc8a4bc9769cc3c9ca227778e04f1a7cea2b7524be9a1f28",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/supplemental-readbacks.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/unmodified-full-suite.txt": {
+      "sha256": "3ab34310061772c4392b0c820e3c599c74a7ed35536930c40894158e3615fe92",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/unmodified-full-suite.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/unmodified-schema-check.txt": {
+      "sha256": "2df796160e216ff3b56f8d261957ba978e7bbe651877a78a866c8874679c3edf",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/unmodified-schema-check.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/logs/versions.txt": {
+      "sha256": "bc697de995dc791df53d688ef69c08994cdffc8ce30c906b1ffc65b131ccd0eb",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/logs/versions.txt"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/package-lock.json": {
+      "sha256": "bc85421604eaa9d2e3f190a964775f895899e45e72a0a6358af19b9ff702d60c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/package-lock.json"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/prisma/schema.prisma": {
+      "sha256": "cc26d674db9c0760a6f998d6daf1e28e27cefc045c50c68fff6da49d336bbf8c",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/prisma/schema.prisma"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/scripts/test-db.mjs": {
+      "sha256": "000313def0c93a9fedca1c589e353c9363484c5c7511fa5c3d0d12c49cf14a7b",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/scripts/test-db.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/src/auth.ts": {
+      "sha256": "a55f097eedab0d07d27f4fb882ca33730838b03a78318f0faa77f9f9ec4a9435",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/src/auth.ts"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/src/requests.ts": {
+      "sha256": "25316ad0d340dba7e8a575b3eef76572c1bc1eab60e1142b2235331be63f5b7d",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/src/requests.ts"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/src/server.ts": {
+      "sha256": "6becc20d5dd6ce8d1b932bc53fc029fa5d537e37f6f770c87fd258aaddf54507",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/src/server.ts"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/tests/journey.test.mjs": {
+      "sha256": "e38a6dd98e52c1e878c36246cf6b62d7a896f4dd1f59c3767817cd7081c4c693",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/tests/journey.test.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/pinned-source-excerpts/tests/requests.test.mjs": {
+      "sha256": "aa3452bc0d2695da52fd57cffebd9d1ae7e691ccc13106cca02b5eba811e359f",
+      "originalLocalPath": "autopilot/lab6-corrected-release-20261126/workflow-special-setup-20261127/pinned-source-excerpts/tests/requests.test.mjs"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/docs/labs/lab-06/cp-ex-f01-closure.md": {
+      "sha256": "6ca1976fd51e438e089e443b0a38bba5f110997e0dbad68ef5d32af5fc20c3b1",
+      "originalLocalPath": "autopilot/work122/docs/labs/lab-06/cp-ex-f01-closure.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/exercise-correction-20261126/red/reported-case-tests.txt": {
+      "sha256": "a78d2a1a3a4bd60d729d962a85c34ef3f2b750cc6c3c1787a0488c2c869f2793",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/exercise-correction-20261126/red/reported-case-tests.txt",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/exercise-correction-20261126/green/reported-case-tests.txt": {
+      "sha256": "1689cd8306bc1823579f7ba16119916607d789e453d8e9ff6d20115f3a1b17c5",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/exercise-correction-20261126/green/reported-case-tests.txt",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/docs/labs/lab-06/handoff.md": {
+      "sha256": "bf6e235e65e649f66de82795cf33239aff615d1c091b3b9065707e1d5f56f246",
+      "originalLocalPath": "autopilot/work122/docs/labs/lab-06/handoff.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/docs/sprints/sprint-1/F-01-authentication.md": {
+      "sha256": "54254e198f7ee8dce8507f3555b33e3ed7166fe139b8c1834c4059f1f75e4a24",
+      "originalLocalPath": "autopilot/work122/docs/sprints/sprint-1/F-01-authentication.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/docs/sprints/sprint-1/F-03-survey-authoring.md": {
+      "sha256": "4f137fe15174d6c829bd6d2bacac0fbf86e191eda536ca3e364355599bcae1c0",
+      "originalLocalPath": "autopilot/work122/docs/sprints/sprint-1/F-03-survey-authoring.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/docs/sprints/sprint-1/F-04-response-submission.md": {
+      "sha256": "a6cfab20766a524ef21441453c28d866fe23c0f0c4010438f090f0cfd104b74f",
+      "originalLocalPath": "autopilot/work122/docs/sprints/sprint-1/F-04-response-submission.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/docs/sprints/sprint-1/F-05-aggregate-summary.md": {
+      "sha256": "47ae9903d0b70661c9458a361cdd36ecc548bd01bc1c85024d47afb677bd8c53",
+      "originalLocalPath": "autopilot/work122/docs/sprints/sprint-1/F-05-aggregate-summary.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/checkpoint-20261124/workflow-additional-cases-a2.md": {
+      "sha256": "bb510fc6524a08e8bfafbdb305ef82c35622cfea129bd9c22678a0a32141d56d",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/checkpoint-20261124/workflow-additional-cases-a2.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/b-correction-review.json": {
+      "sha256": "83e476089a1347327f15085704c5870b7cb91c3c511d619fbdae347a47b6600b",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/b-correction-review.json",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/a-release-review.json": {
+      "sha256": "646c65e7be02e91e9609199d151dc278efe23cb96eba25704f09084a4e52f945",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/a-release-review.json",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/a-release121-review-summary.json": {
+      "sha256": "31385829a6e7669e57928995e806ee729a79632f91b74204a780035dcefc02f9",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/a-release121-review-summary.json",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/received-d/D-RETEST-REPORT.redacted.md": {
+      "sha256": "fd532af6264da94cfe43cca7e07bdc75e997ff0315f4f54c81d4701cbf290e27",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/received-d/D-RETEST-REPORT.redacted.md",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/checkpoint-20261124/a-workflow/evidence/06-uat01-approved.jpg": {
+      "sha256": "f7586160bdc6c27aa293c3ac8017af461254f08812f04b1f722bce7117b28939",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/checkpoint-20261124/a-workflow/evidence/06-uat01-approved.jpg",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/checkpoint-20261124/a-workflow/evidence/13-uat05-empty-reason-denial.jpg": {
+      "sha256": "13af5367127c4be40ae863fbc15e9105c27653db9f7cca064ec29f7a348e86b4",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/checkpoint-20261124/a-workflow/evidence/13-uat05-empty-reason-denial.jpg",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/exercise-correction-20261126/received-d/CP-EX-F01-created-draft.png": {
+      "sha256": "4151508565e387718c9d047c694e41c96837b93a21d5893d23f45d97ee2c507d",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/exercise-correction-20261126/received-d/CP-EX-F01-created-draft.png",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/received-d/CP-RT-01-error.png": {
+      "sha256": "6d1a0310cdbad0a7c2bd9c532f4e948ee6b09d3b8ce65cb2e11b4504b5f5f87a",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/received-d/CP-RT-01-error.png",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/baseline-snapshots/evidence/lab-06/corrected-retest-20261126/received-d/CP-RT-03-draft.png": {
+      "sha256": "ebf283a094d890be5f027f37c014fdf809502d6504cdfc99b8cf1a4045ffe4e1",
+      "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/received-d/CP-RT-03-draft.png",
+      "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-owner-confirmation-20261127/ClassPulse_B_Workflow_confirmation_and_PR133_review_20261127.txt": {
+      "sha256": "ba4ba344cc7021623ea8a82597f5f712ae67400b56a4f7f59435ce5f24ce16cd",
+      "originalLocalPath": "C:\\Users\\MSII\\Downloads\\ClassPulse_B_Workflow_confirmation_and_PR133_review_20261127.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-owner-confirmation-20261127/RECEIPT.json": {
+      "sha256": "de303306d6bc1ae4d4cd10749da78ac03dc00e672530d7757f6d85c97aea1809",
+      "originalLocalPath": "A-created provenance receipt; exact human time unknown, upper bound preserved"
+    }
+  }
+}

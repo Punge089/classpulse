@@ -195,3 +195,17 @@ The approved `main` release, cloud resources and all live C-02/C-04/C-05/C-06 ev
 |---|---|---|
 | 1.2 | Added a Lab 5 as-built deployment architecture, CI/release flow, evidence status and human-gate boundaries while retaining the Sprint 1 baseline. | Issue #33; reflects merged staging head `9dae599`; no live deployment is claimed. |
 | 1.1 | Clarified response endpoint check order, inactive-session handling, and production cookie security; split the role matrix by operation and named the PulseLine loading state. | Addressed the review on PR #16 and aligned the SDS with plan §§2.5/2.9 and F-01 §3. |
+
+
+## Lab 7 proposed system revision v1.3 - Issue #87
+
+Prepared by A within #87 Files; B remains system-document owner/reviewer. This section revises the current proposed lifecycle design before implementation, while §§1-8 retain historical Sprint 1/Lab 5 context. B C3 pending; not as-built. [Normative feature contract](labs/lab-07/maintenance-contract.md).
+
+- Data (§2): additive Survey.statusVersion default0 and SurveyLifecycleEvent (id, surveyId, actorId, action, from/to status, version, occurredAt, reason, previousClosedAt), unique survey/version and survey/id index. Restrictive audit FKs; no event update/delete API. Existing records/timestamps/answers retained, no invented historic events. Test cleanup deletes audit rows first only in isolated guarded test DB.
+- Transactions (§2): publish, close and new reopen conditionally update owned status/version and insert event in one transaction; failure rolls back both. Reopen preserves first publishedAt and captures previous closedAt before clearing it. Legacy CLOSED without publishedAt rejects without repair. Concurrent/stale requests409; no automatic retry.
+- UI (§3): owner CLOSED detail gets reason + explicit confirm/cancel, conflict/reload guidance and paginated read-only history. Preserve entered reason on error, identified labeling and original questions/summary.
+- API (§4): POST /api/owner/surveys/:id/reopen accepts exactly reason and expectedVersion, returns owner survey DTO plus statusVersion; GET /api/owner/surveys/:id/lifecycle accepts limit1..100(default20)/before cursor, returns scoped events and nextCursor. Owner create/detail/mutation DTO gains statusVersion. Exact fields, order and invalid cases are in contract §§4-6.
+- Permissions (§5): both new routes401 without session,403 for RESPONDENT,404 for foreign/missing/malformed id; ownership before body/query validation. Audit response excludes actor emails, credentials, respondents and answers. Original publish/close rules remain on their own endpoints.
+- Deployment (§7): additive reviewed migration, preserve historical data, no live seed/reset. Old-code rollback after new audit writes needs frozen lifecycle mutations and explicit review, because old code cannot maintain event completeness. Lab 6 active deployment remains coordinated separately.
+
+Version v1.3 proposed,25 Nov2026,A: introduce controlled reopen/audit impact before tests/code; B approval and actual implementation are pending.

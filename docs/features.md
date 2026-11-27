@@ -45,3 +45,8 @@ the number is left empty so existing IDs never change.
   without F-03, because tests create surveys directly in the database; only the full UI journey needs F-03.
 - F-07 touches authoring, answering and the summary, so it follows F-03, F-04 and F-05.
 - F-11 (anonymous) needs F-07 types and the Sprint 3 privacy design; F-12 needs F-11.
+
+
+## Lab 7 F-03 maintenance extension (proposed v1.1, 25 November 2026)
+
+Issue #87 adds FR-19/BR-15 and revises BR-03 within existing F-03, preserving its stable ID and original Sprint 1 scope/history. Controlled reopening changes the formerly terminal CLOSED state through a separate owner-only operation with reason, optimistic lifecycle version and atomic audit; original publish-on-CLOSED rejection stays. This is not F-06 draft editing or a replacement for F-06..F-10. [Complete contract/impact/AC/STS](labs/lab-07/maintenance-contract.md). State: contract proposed, B C3 pending, no tests/code/release. Version 1.1 reason: record changed collection need before implementation; prior v1.0 inventory remains the historical baseline.

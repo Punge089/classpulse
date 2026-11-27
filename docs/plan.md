@@ -872,3 +872,16 @@ put every rubric item somewhere concrete. The remaining risk is in execution:
 The two biggest threats to 80/80 are **time** (§0 checkpoints) and **review credibility**. A
 review conversation scripted in advance would *lower* the score if noticed: it cannot cite real
 lines or results, it reads as generic, and a TA may ask either student to explain it.
+
+
+## Lab 7 proposed shared-contract revision - 25 November 2026, Issue #87
+
+The Sprint 1 plan above remains historical. Before new tests/code, this addendum proposes the following current-version changes; B C3/team agreement is pending. It does not change the protected Sprint 1 tag or claim acceptance of Lab 6.
+
+| Registry item | Proposed revised definition | Contract / verification |
+|---|---|---|
+| FR-19 (new) / F-03 | Owner can explicitly reopen own closed survey with a reason/current lifecycle version and read durable lifecycle history while preserving responses. | [Lab 7 contract](labs/lab-07/maintenance-contract.md), AC-100..111 / TEST-100..114 |
+| BR-03 (revised) | Keep publish DRAFT->PUBLISHED and close PUBLISHED->CLOSED; add explicit reopen CLOSED->PUBLISHED. Publish on CLOSED still409; never return to DRAFT. | Contract state/action matrix; original TEST-15/16 retained |
+| BR-15 (new) | Trimmed reason10..300 UTF-16 units/current lifecycle version; atomic status/version/event for every new transition, immutable history, no fake past events or partial writes. | Contract body/schema/transaction boundary and negative tests |
+
+The full old/new SRS, system SDS impact and F-03 addendum are versioned in this same change. NFR-02/03 access applies to both new endpoints. Planned F-08 closing-time behavior must explicitly revise reopen deadline semantics before integration. F-06 remains draft-only; F-07/F-10/F-09 remain separate scoped work. Version1.0 of this addendum records a proposed meaningful changed requirement under the supplied announcement removing TA approval; teammate review and TDD gates remain.
