@@ -1,0 +1,15 @@
+{
+  "zip": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\ClassPulse_A_Workflow_Special_Setup_Results_20261127.zip",
+  "sha256": "4a35cacff1acbad10ae8c619641cdf7bcfaa807df11e78143b76bf3ad9eacd4d",
+  "crc": "PASS",
+  "payloadHashesVerified": 76,
+  "pdf": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\report-draft\\output\\pdf\\ClassPulse_Lab6_REVIEW_20261127.pdf",
+  "pdfSha256": "3a64600df0b3e4c653b42f5a22a80d5db3d203224ec3771f508506ab518c7f9d",
+  "pages": 74,
+  "artifactChecksPassed": 21,
+  "pdfChecksPassed": 19,
+  "reviewCopy": true,
+  "bFinalAcknowledgment": false,
+  "privateExternalMessageSent": false,
+  "finishedBangkok": "2026-11-27T02:32:43.288133+07:00"
+}

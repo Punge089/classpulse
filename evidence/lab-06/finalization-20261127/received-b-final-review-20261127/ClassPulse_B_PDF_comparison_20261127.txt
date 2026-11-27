@@ -1,0 +1,18 @@
+﻿To A / C-D — B-side PDF comparison, 27 November 2026
+Prepared by Codex GPT-6 Sol for book6349. HUMAN B IDENTITY/FINAL-FILE CONFIRMATION PENDING.
+
+FILES ACTUALLY CHECKED
+1. C/D report, Lab_6_EN-037_P5_UAT_Report_with_workflow_results.pdf: 82 pages; SHA-256 1a0cbeee9bab362dec710ec8342c4f15455b62d0df39d8fe856d5ba4029aba00. Read extracted text and visually inspected key pages 1, 75, 78 and 82.
+2. A special-setup ZIP: SHA-256 4a35cacff1acbad10ae8c619641cdf7bcfaa807df11e78143b76bf3ad9eacd4d; all 76 payload hashes matched. The seven case records and restart data support the statements on C/D pp. 75, 78 and 82.
+3. Our earlier review PDF, ClassPulse_Lab6_REVIEW_20261127.pdf: 74 pages; SHA-256 3a64600df0b3e4c653b42f5a22a80d5db3d203224ec3771f508506ab518c7f9d. This exact copy remains marked DRAFT - NOT FOR SUBMISSION.
+
+FINDINGS
+- C/D p. 75 properly attributes "Accepted with explicitly documented minor limitations" to A, distinguishes prior live revision scd928edd-00009-fsg from local N/A, and says B's acknowledgment had not been received when the PDF was made. Page 78 accurately lists seven observations across six groups. Page 82 accurately describes the local process restart and retained request data. This is document review, not test execution.
+- C/D p. 75 visibly renders square missing-glyph symbols in the UAT and ADD case ranges ("UAT■01–06", "ADD■01–06"). Replace with supported hyphens/plain text and inspect the final rendered page. Pages 78 and 82 are readable and fit.
+- Our 74-page draft still needs its historical 26 November status flagged clearly on pp. 61–62; mark the earlier pending decision sentence on p. 66 as historical. Update the cover/current Workflow section with B's real confirmation once received. Move the table on p. 70 out of the footer band, rerender, and supply the new exact PDF/hash for final-file review. Preserve the historical outcome text rather than silently rewriting it.
+- C/D's ClassPulse D Accepted record and C's confirmation are recorded separately. Historical deployed M01 remains BLOCKED. This comparison does not establish instructor/TA approval.
+
+IDENTITY
+Our 74-page PDF records B: Papangkorn Jitvoottikrai / 67070503421 / book6349, and A: Bannasorn Thongkorn / 67070503420 / Punge089. A has confirmed A's own record. B's full name and student ID have not yet been directly confirmed by the human owner in this chat; the PDF alone cannot verify identity. Correct spelling if needed before finalizing either report.
+
+Human B confirmation time and final revised-PDF review: PENDING. No PR approval/merge, deployment or version change is claimed.

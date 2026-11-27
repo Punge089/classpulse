@@ -1,0 +1,14 @@
+{
+  "pdfSha256": "6d6fc6e54182ac2e21802bb5810064c41427cc9f23373f2aef38f4d7bf4e0165",
+  "pages": 77,
+  "artifactChecksPassed": 26,
+  "artifactChecksFailed": 0,
+  "visualReview": "Rendered all77 submission-candidate pages and inspected all three contact sheets; full pages1,2,11 checked for stable title/footer, complete decisions, navigation table and separate approval/upload control. Historical appendix labels and observation table retained; no clipping, overlap or missing body glyph observed.",
+  "tableFooterClearanceMm": 116.13192952473959,
+  "humanBFinalConfirmation": "Identity and product concurrence received dated27Nov; receipt observed by16:18:31ICT, exact instant unknown. Current-file approval and actual upload remain separately recorded.",
+  "noRebuildSolelyForApprovalMergeOrSubmission": true,
+  "noAppTestRerun": true,
+  "intermediateDocumentationIssues": [
+    "New candidate assertion initially failed twice (25pass/1fail) because case-sensitive prose matching did not accommodate lower-case text/PDF line wrapping; actual footers, receipt state, sources and hashes matched. Normalized case/whitespace after inspecting extracted text; final26/26. No runtime assertion or evidence changed."
+  ]
+}

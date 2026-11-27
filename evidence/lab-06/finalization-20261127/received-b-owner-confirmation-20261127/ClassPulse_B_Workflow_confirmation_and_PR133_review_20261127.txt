@@ -1,0 +1,27 @@
+﻿To A / C-D — Student B owner confirmation for Lab 6 Workflow
+
+I, Student B/book6349, confirmed directly in my Codex chat on 27 November 2026 (Asia/Bangkok):
+- My recorded full name and student ID are Papangkorn Jitvoottikrai / 67070503421 / book6349.
+- I agree with Student A's decision, "Accepted with explicitly documented minor limitations," for the original implemented Sprint 1 Workflow scope on exact source 41a8fefa7a5d93b6531dff88daae39574d72dcb7. Earlier live observations used scd928edd-00009-fsg from C/D's mapping; A's special setup observations were isolated local with serving revision N/A.
+- I accept the limits already enumerated in my evidence review: controlled local expiry does not show eight elapsed live hours; local former-session rejection is not a new production replay; actual local restart is not a Cloud Run restart/new-instance test; local runtime differs from earlier C/D runs; external concurrency outcomes do not prove internal overlap; optional explorations remain unrun and 06c-N was not selected. Later withdrawal tests in the 19-test suite are outside original Lab 6 Sprint 1 counting.
+
+My own earlier Workflow ADD02–05 work comprised 41 scoped PASS observations on the prior live revision. For this latest special-setup bundle and report I performed evidence and document review only; I did not rerun A's seven observations, C/D's app tests, or any live test. My confirmation is for the stated product decision and scope, not an approval of a future revised PDF or a PR merge.
+
+Time provenance: The human confirmation message was received in this chat on 27 November 2026. The chat reply did not expose an exact message timestamp to this agent, so I will not invent one. The receipt had been observed by 16:18:31 ICT; its exact instant is unknown. This handover records that distinction rather than using A's decision time or a file creation time as B's confirmation time. If the report requires an exact human-message time, obtain it from the chat UI/owner.
+
+Student A's name/ID as recorded are Bannasorn Thongkorn / 67070503420 / Punge089; A confirms A's own identity. No application test, cloud action, main merge or deploy accompanied this acknowledgment.
+
+============================================================
+
+To A — Student B review of Draft PR #133 / Lab 6 R2 report
+
+Reviewed exact head ca77cc1ba8508ca7492452d3b3e28552dc180fcc against base a3a0424f6574696363ea5268131725ae2f390ba2. PR remains DRAFT/open. Required CI run 45969441310 is completed SUCCESS on that head; its suite includes 11 browser tests. No later head was substituted. The changed-file inventory is documentation, curated evidence, report tools and a PDF; no application/schema/deploy change identified.
+
+R2 ZIP SHA-256 784287892912fce21026260253425d199a01bd890c5fc6ef7b232a57a715c62c; archive CRC passed and all 10 manifest entries matched.
+Revised 76-page PDF SHA-256 f4739f93379dd4a5db7512236820a595f6ee4042e5984b29d5fda08b07aeedb1. Reviewed the rendered cover, historical pp.61–62, ClassPulse p.66, isolated observations p.71 and B/C-D acknowledgments pp.75–76. The dated HISTORICAL labels now distinguish old pending wording; p.66 explicitly prefixes the older C-pending snapshot; the WF-ISO table starts on p.71 with clear footer space. Enlarged p.66 inspection confirmed apostrophes render correctly. The earlier 74-page draft remains preserved as its own historical file/hash.
+
+On this exact checkout, ran the report verifier: 25 passed, 0 failed. It matched the PDF/receipt, input hashes, source/version boundaries, retained observations, historical labels and footer clearance (116 mm). This document verification did not run the application. The PR's earlier app CI belongs to the stated exact head; I did not personally rerun that suite.
+
+Disposition: The PDF/layout fixes and evidence separation are sound for this reviewed head, but current cover, status register, Appendix K and receipt still say human B confirmation PENDING. That was true when A built R2; B has now confirmed identity and the limited Workflow decision in this chat. Please add the actual B acknowledgment as a new, dated record without rewriting the old B files or A's decision, rebuild the PDF/receipt, and provide the new head and green CI for fresh B review. Do not call this R2 PDF the final approved file or merge PR #133 on ca77cc1. No PR review was posted to GitHub by this file.
+
+C/D's separate 82-page PDF SHA-256 1a0cbeee9bab362dec710ec8342c4f15455b62d0df39d8fe856d5ba4029aba00 still has the previously noted missing-glyph squares in its page-75 case range; C/D can fix that in its own final document. The ClassPulse historical live M01 remains BLOCKED despite D's separate Accepted decision and C's acknowledgment. No main merge/deploy/version change was made.

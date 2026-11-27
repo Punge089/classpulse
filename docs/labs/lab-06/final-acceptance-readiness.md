@@ -1,5 +1,9 @@
 # Final Sprint 1 acceptance readiness — 26 November 2026
 
+> **Later 27 November checkpoint — Issue #132:** B's direct owner confirmation is now received: Papangkorn Jitvoottikrai /67070503421 /book6349 concurs with A's limited Workflow decision. Exact human-message time is unavailable; receipt observed by16:18:31ICT. The earlier pending-B checkpoint below remains historical. The revised PDF/new PR head still needs fresh B review and greenCI; see [current register](final-report-status.md).
+
+> **27 November checkpoint — Issue #132:** This 26 November register is a historical snapshot. D subsequently records ClassPulse Accepted, C confirms the isolated evidence, and A completes the agreed Workflow local special methods and records acceptance with documented limits. B-side Codex review recommends concurrence but explicitly awaits human B confirmation. See [current decisions/report](final-report-status.md). The earlier outcomes below are preserved, not silently rewritten.
+
 Issue #122. A/Punge089, assisted by Codex GPT-6. **D records NOT ACCEPTED as of 26 November, 19:05:26 Bangkok, on CP-FIX-001. C's final-decision review is PENDING. Workflow whole-product decision is NOT RECORDED.** D's decision was relayed by the user; no separate final-decision attachment was supplied with this message. This register does not replace either team's sign-off. [Decision receipt](../../../evidence/lab-06/corrected-retest-20261126/d-decision-20261126.json).
 
 ## ClassPulse candidate and completed evidence
