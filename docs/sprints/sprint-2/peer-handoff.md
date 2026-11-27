@@ -1,6 +1,12 @@
 # Sprint 2 / D2 handoff
 
-## Current checkpoint - 25 November 2026
+## Current checkpoint - 27 November 2026
+
+B's next review action is to independently check out the exact head of F-06 PR #93, run the scoped verification and record C7. The 7f19aaf source/CI reading is already recorded. A keeps the head stable. B confirmed #134/F-07 as driver with A C3; F-10 #135 is unassigned. #130 asks B for the paired F-08 reopen contract decision, and its shared implementation slot follows F-07. Use #86 to agree the Sprint 3 working slice and any change to ownership.
+
+At the start of a D2 work round, inspect open Issues and PRs marked waiting-on for your account and direct review requests. Work the highest-priority actionable D2 item to a verifiable handoff and update the next person after posting the evidence. Lab 7 retains its separate report, scope and review queue.
+
+## Historical checkpoint - 25 November 2026
 
 The original preparation messages below are dated history. Actual B C3 now exists on #87/#90/#96/#98, and B authored the #88 contract/C2 at f4a5db8. A's #88 review7163876159 agrees retained own history after unenrollment, while precise cursor/query and mandatory policy/UI-state designs still need a committed revision before C3 test permission. Do not treat the earlier draft's optional unenrollment precondition as sufficient evidence.
 
