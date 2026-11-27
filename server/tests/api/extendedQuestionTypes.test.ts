@@ -34,7 +34,8 @@ function validBody(questions: Body[]) {
 
 describe("F-07 owner creation independent slice", () => {
   test("TEST-140 an owner creates a TEXT question with no options", async () => {
-    const response = await owner().post("/api/owner/surveys").send(validBody([
+    const agent = await owner();
+    const response = await agent.post("/api/owner/surveys").send(validBody([
       { prompt: "What helped you learn?", type: "TEXT" }
     ]));
 
@@ -52,7 +53,8 @@ describe("F-07 owner creation independent slice", () => {
   });
 
   test("TEST-140 an owner creates a MULTI_CHOICE question with persisted option order", async () => {
-    const response = await owner().post("/api/owner/surveys").send(validBody([
+    const agent = await owner();
+    const response = await agent.post("/api/owner/surveys").send(validBody([
       { prompt: "Which format helped?", type: "MULTI_CHOICE", options: ["Worked examples", "Discussion", "Practice"] }
     ]));
 
