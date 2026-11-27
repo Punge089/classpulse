@@ -1,0 +1,748 @@
+﻿2026-11-25T11:00:44.4684809Z ##[group]Run npm test
+2026-11-25T11:00:44.4685200Z npm test
+2026-11-25T11:00:44.4711171Z shell: /usr/bin/bash -e {0}
+2026-11-25T11:00:44.4711614Z env:
+2026-11-25T11:00:44.4712403Z   DATABASE_URL: [omitted]
+2026-11-25T11:00:44.4712865Z   SEED_PASSWORD: [omitted]
+2026-11-25T11:00:44.4713280Z ##[endgroup]
+2026-11-25T11:00:44.5456448Z
+2026-11-25T11:00:44.5456851Z > classpulse-server@0.1.0 test
+2026-11-25T11:00:44.5457244Z > vitest run
+2026-11-25T11:00:44.5457504Z
+2026-11-25T11:00:44.7412174Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+2026-11-25T11:00:44.7620577Z
+2026-11-25T11:00:44.7649594Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+2026-11-25T11:00:44.7650377Z
+2026-11-25T11:00:50.1881280Z  ❯ tests/api/surveyReopen.test.ts (37 tests | 32 failed) 5108ms
+2026-11-25T11:00:50.1883958Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body {} without changing rows 195ms
+2026-11-25T11:00:50.1884903Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1885909Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body [] without changing rows 135ms
+2026-11-25T11:00:50.1886969Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1888492Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { reason: ' ', expectedVersion: +0 } without changing rows 134ms
+2026-11-25T11:00:50.1889671Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1890786Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { reason: 'RRRRRRRRR', …(1) } without changing rows 131ms
+2026-11-25T11:00:50.1891627Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1892529Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows 134ms
+2026-11-25T11:00:50.1893307Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1894255Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { reason: 10, expectedVersion: +0 } without changing rows 132ms
+2026-11-25T11:00:50.1895116Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1896021Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows 131ms
+2026-11-25T11:00:50.1896786Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1897617Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows 130ms
+2026-11-25T11:00:50.1898818Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1899854Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows 130ms
+2026-11-25T11:00:50.1900635Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1901720Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows 130ms
+2026-11-25T11:00:50.1902751Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1903512Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows 130ms
+2026-11-25T11:00:50.1904198Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1904980Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(3) } without changing rows 130ms
+2026-11-25T11:00:50.1905654Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1906473Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 trims and counts Unicode reasons in UTF-16 units 130ms
+2026-11-25T11:00:50.1907240Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1908144Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-104 refuses reopen from DRAFT 130ms
+2026-11-25T11:00:50.1908768Z      → expected 404 to be 409 // Object.is equality
+2026-11-25T11:00:50.1909841Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-104 refuses reopen from PUBLISHED 129ms
+2026-11-25T11:00:50.1910450Z      → expected 404 to be 409 // Object.is equality
+2026-11-25T11:00:50.1911270Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-104 refuses legacy CLOSED without original publishedAt, without repair 131ms
+2026-11-25T11:00:50.1912078Z      → expected 404 to be 409 // Object.is equality
+2026-11-25T11:00:50.1912847Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-105 two same-version reopens yield one winner and one event 147ms
+2026-11-25T11:00:50.1913591Z      → expected [ 404, 404 ] to deeply equal [ 200, 409 ]
+2026-11-25T11:00:50.1914411Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-105 stale version cannot reopen after close/reopen/close ABA 130ms
+2026-11-25T11:00:50.1915089Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1915815Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=0 is400 132ms
+2026-11-25T11:00:50.1916432Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1917142Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=101 is400 130ms
+2026-11-25T11:00:50.1917920Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1918724Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=1.5 is400 130ms
+2026-11-25T11:00:50.1919334Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1920105Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=1&limit=2 is400 130ms
+2026-11-25T11:00:50.1920720Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1921441Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query before=0 is400 131ms
+2026-11-25T11:00:50.1922057Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1922787Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query before=2147483648 is400 130ms
+2026-11-25T11:00:50.1923522Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1924220Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query before=abc is400 130ms
+2026-11-25T11:00:50.1924819Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1925556Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query other=1 is400 132ms
+2026-11-25T11:00:50.1926138Z      → expected 404 to be 400 // Object.is equality
+2026-11-25T11:00:50.1927039Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 history is empty for legacy rows, then paginates without duplicates or foreign events 161ms
+2026-11-25T11:00:50.1928088Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1928928Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-109 publish/close/reopen retains complete versioned lifecycle 140ms
+2026-11-25T11:00:50.1929651Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1930562Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-110 reopening preserves old answers/summary and forbids repeat response 234ms
+2026-11-25T11:00:50.1931280Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1932097Z    × Lab 7 boundaries, access, concurrency and preserved behavior > TEST-111 legacy null closedAt is retained without fabricating a timestamp 134ms
+2026-11-25T11:00:50.1932891Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1933624Z    × Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey 131ms
+2026-11-25T11:00:50.1934240Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:50.1935009Z    × Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey 130ms
+2026-11-25T11:00:50.1935717Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T11:00:51.4495954Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1096ms
+2026-11-25T11:00:53.3111500Z  ✓ tests/api/responses.test.ts (10 tests) 1650ms
+2026-11-25T11:00:55.0279392Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 1493ms
+2026-11-25T11:00:56.4939015Z  ✓ tests/api/auth.test.ts (8 tests) 1253ms
+2026-11-25T11:00:57.2626842Z  ✓ tests/api/summary.test.ts (3 tests) 563ms
+2026-11-25T11:00:57.4034292Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 7ms
+2026-11-25T11:00:57.6514596Z  ✓ tests/api/cloudReady.test.ts (3 tests) 53ms
+2026-11-25T11:00:58.4869119Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 708ms
+2026-11-25T11:00:59.4640067Z  ✓ tests/db/constraints.test.ts (3 tests) 851ms
+2026-11-25T11:00:59.4641024Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 561ms
+2026-11-25T11:00:59.6009582Z  ✓ tests/unit/summary.test.ts (6 tests) 5ms
+2026-11-25T11:00:59.7321480Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 4ms
+2026-11-25T11:00:59.9541663Z  ✓ tests/api/health.test.ts (1 test) 48ms
+2026-11-25T11:01:00.1809335Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 28ms
+2026-11-25T11:01:00.6136387Z  ✓ tests/unit/password.test.ts (1 test) 289ms
+2026-11-25T11:01:00.7593099Z  ✓ tests/unit/seedConfig.test.ts (1 test) 2ms
+2026-11-25T11:01:00.8821603Z  ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 3ms
+2026-11-25T11:01:00.8894576Z
+2026-11-25T11:01:00.8900302Z ⎯⎯⎯⎯⎯⎯ Failed Tests 32 ⎯⎯⎯⎯⎯⎯⎯
+2026-11-25T11:01:00.8900764Z
+2026-11-25T11:01:00.8903258Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body {} without changing rows
+2026-11-25T11:01:00.8905210Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body [] without changing rows
+2026-11-25T11:01:00.8907166Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { reason: ' ', expectedVersion: +0 } without changing rows
+2026-11-25T11:01:00.8909728Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { reason: 'RRRRRRRRR', …(1) } without changing rows
+2026-11-25T11:01:00.8911950Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows
+2026-11-25T11:01:00.8913963Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { reason: 10, expectedVersion: +0 } without changing rows
+2026-11-25T11:01:00.8915919Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows
+2026-11-25T11:01:00.8917945Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows
+2026-11-25T11:01:00.8919816Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows
+2026-11-25T11:01:00.8921542Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows
+2026-11-25T11:01:00.8923434Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(2) } without changing rows
+2026-11-25T11:01:00.8925260Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 rejects invalid body { …(3) } without changing rows
+2026-11-25T11:01:00.8926484Z AssertionError: expected 404 to be 400 // Object.is equality
+2026-11-25T11:01:00.8948303Z
+2026-11-25T11:01:00.8988674Z - Expected
+2026-11-25T11:01:00.8989291Z + Received
+2026-11-25T11:01:00.8989537Z
+2026-11-25T11:01:00.8990159Z - 400
+2026-11-25T11:01:00.8990582Z + 404
+2026-11-25T11:01:00.8990810Z
+2026-11-25T11:01:00.8991319Z  ❯ tests/api/surveyReopen.test.ts:39:26
+2026-11-25T11:01:00.9106125Z      37|     const owner = await ownerLogin();
+2026-11-25T11:01:00.9107544Z      38|     const reply = await owner.post(`/api/owner/surveys/${original.id}/…
+2026-11-25T11:01:00.9109056Z      39|     expect(reply.status).toBe(400);
+2026-11-25T11:01:00.9119361Z        |                          ^
+2026-11-25T11:01:00.9123955Z      40|     expect(reply.body.error.code).toBe("VALIDATION_ERROR");
+2026-11-25T11:01:00.9125391Z      41|     expect(reply.body.error.details).toEqual(expect.arrayContaining([e…
+2026-11-25T11:01:00.9126002Z
+2026-11-25T11:01:00.9126836Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/32]⎯
+2026-11-25T11:01:00.9127129Z
+2026-11-25T11:01:00.9128448Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-101 trims and counts Unicode reasons in UTF-16 units
+2026-11-25T11:01:00.9129741Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9130248Z
+2026-11-25T11:01:00.9130984Z - Expected
+2026-11-25T11:01:00.9131339Z + Received
+2026-11-25T11:01:00.9131553Z
+2026-11-25T11:01:00.9131728Z - 200
+2026-11-25T11:01:00.9132029Z + 404
+2026-11-25T11:01:00.9132196Z
+2026-11-25T11:01:00.9132626Z  ❯ tests/api/surveyReopen.test.ts:55:26
+2026-11-25T11:01:00.9138433Z      53|     expect(reason.length).toBe(10);
+2026-11-25T11:01:00.9139937Z      54|     const reply = await owner.post(`/api/owner/surveys/${original.id}/…
+2026-11-25T11:01:00.9141042Z      55|     expect(reply.status).toBe(200);
+2026-11-25T11:01:00.9141719Z        |                          ^
+2026-11-25T11:01:00.9142790Z      56|     const history = await owner.get(`/api/owner/surveys/${original.id}…
+2026-11-25T11:01:00.9144052Z      57|     expect(history.body.events[0].reason).toBe(reason);
+2026-11-25T11:01:00.9144651Z
+2026-11-25T11:01:00.9144977Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/32]⎯
+2026-11-25T11:01:00.9145218Z
+2026-11-25T11:01:00.9146113Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-104 refuses reopen from DRAFT
+2026-11-25T11:01:00.9148007Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-104 refuses reopen from PUBLISHED
+2026-11-25T11:01:00.9149213Z AssertionError: expected 404 to be 409 // Object.is equality
+2026-11-25T11:01:00.9149566Z
+2026-11-25T11:01:00.9149773Z - Expected
+2026-11-25T11:01:00.9150177Z + Received
+2026-11-25T11:01:00.9150346Z
+2026-11-25T11:01:00.9150498Z - 409
+2026-11-25T11:01:00.9150832Z + 404
+2026-11-25T11:01:00.9151030Z
+2026-11-25T11:01:00.9151430Z  ❯ tests/api/surveyReopen.test.ts:64:26
+2026-11-25T11:01:00.9152461Z      62|     const owner = await ownerLogin();
+2026-11-25T11:01:00.9153631Z      63|     const reply = await owner.post(`/api/owner/surveys/${survey.id}/re…
+2026-11-25T11:01:00.9154721Z      64|     expect(reply.status).toBe(409);
+2026-11-25T11:01:00.9155453Z        |                          ^
+2026-11-25T11:01:00.9156417Z      65|     expect(reply.body.error.code).toBe("INVALID_TRANSITION");
+2026-11-25T11:01:00.9157654Z      66|     expect((await prisma.survey.findUniqueOrThrow({ where: { id: surve…
+2026-11-25T11:01:00.9158535Z
+2026-11-25T11:01:00.9158841Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/32]⎯
+2026-11-25T11:01:00.9159111Z
+2026-11-25T11:01:00.9160279Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-104 refuses legacy CLOSED without original publishedAt, without repair
+2026-11-25T11:01:00.9161534Z AssertionError: expected 404 to be 409 // Object.is equality
+2026-11-25T11:01:00.9161905Z
+2026-11-25T11:01:00.9162123Z - Expected
+2026-11-25T11:01:00.9162450Z + Received
+2026-11-25T11:01:00.9162637Z
+2026-11-25T11:01:00.9162809Z - 409
+2026-11-25T11:01:00.9163146Z + 404
+2026-11-25T11:01:00.9163482Z
+2026-11-25T11:01:00.9163870Z  ❯ tests/api/surveyReopen.test.ts:74:26
+2026-11-25T11:01:00.9164642Z      72|     const owner = await ownerLogin();
+2026-11-25T11:01:00.9165798Z      73|     const reply = await owner.post(`/api/owner/surveys/${original.id}/…
+2026-11-25T11:01:00.9166934Z      74|     expect(reply.status).toBe(409);
+2026-11-25T11:01:00.9167594Z        |                          ^
+2026-11-25T11:01:00.9168837Z      75|     expect(reply.body.error.code).toBe("INVALID_TRANSITION");
+2026-11-25T11:01:00.9170039Z      76|     const stored = await prisma.survey.findUniqueOrThrow({ where: { id…
+2026-11-25T11:01:00.9170736Z
+2026-11-25T11:01:00.9171047Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/32]⎯
+2026-11-25T11:01:00.9171383Z
+2026-11-25T11:01:00.9172396Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-105 two same-version reopens yield one winner and one event
+2026-11-25T11:01:00.9173676Z AssertionError: expected [ 404, 404 ] to deeply equal [ 200, 409 ]
+2026-11-25T11:01:00.9174106Z
+2026-11-25T11:01:00.9174272Z - Expected
+2026-11-25T11:01:00.9174631Z + Received
+2026-11-25T11:01:00.9174790Z
+2026-11-25T11:01:00.9175006Z   Array [
+2026-11-25T11:01:00.9175347Z -   200,
+2026-11-25T11:01:00.9175695Z -   409,
+2026-11-25T11:01:00.9176054Z +   404,
+2026-11-25T11:01:00.9176378Z +   404,
+2026-11-25T11:01:00.9176764Z   ]
+2026-11-25T11:01:00.9176915Z
+2026-11-25T11:01:00.9177317Z  ❯ tests/api/surveyReopen.test.ts:85:47
+2026-11-25T11:01:00.9178718Z      83|     const [first, second] = await Promise.all([ownerLogin(), ownerLogi…
+2026-11-25T11:01:00.9180334Z      84|     const replies = await Promise.all([first, second].map(owner => own…
+2026-11-25T11:01:00.9182284Z      85|     expect(replies.map(x => x.status).sort()).toEqual([200, 409]);
+2026-11-25T11:01:00.9183375Z        |                                               ^
+2026-11-25T11:01:00.9184483Z      86|     expect(replies.find(x => x.status === 409)!.body.error.code).toBe(…
+2026-11-25T11:01:00.9186033Z      87|     const history = await first.get(`/api/owner/surveys/${original.id}…
+2026-11-25T11:01:00.9186638Z
+2026-11-25T11:01:00.9186951Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/32]⎯
+2026-11-25T11:01:00.9187229Z
+2026-11-25T11:01:00.9188522Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-105 stale version cannot reopen after close/reopen/close ABA
+2026-11-25T11:01:00.9189793Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9190165Z
+2026-11-25T11:01:00.9190349Z - Expected
+2026-11-25T11:01:00.9190714Z + Received
+2026-11-25T11:01:00.9190871Z
+2026-11-25T11:01:00.9191044Z - 200
+2026-11-25T11:01:00.9191532Z + 404
+2026-11-25T11:01:00.9191701Z
+2026-11-25T11:01:00.9192066Z  ❯ tests/api/surveyReopen.test.ts:96:101
+2026-11-25T11:01:00.9192894Z      94|     const original = await closedSurvey();
+2026-11-25T11:01:00.9193790Z      95|     const owner = await ownerLogin();
+2026-11-25T11:01:00.9194958Z      96|     expect((await owner.post(`/api/owner/surveys/${original.id}/reopen…
+2026-11-25T11:01:00.9196047Z        |                                                                                                     ^
+2026-11-25T11:01:00.9197078Z      97|     expect((await owner.post(`/api/owner/surveys/${original.id}/close`…
+2026-11-25T11:01:00.9198619Z      98|     const before = await prisma.survey.findUniqueOrThrow({ where: { id…
+2026-11-25T11:01:00.9199236Z
+2026-11-25T11:01:00.9199531Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/32]⎯
+2026-11-25T11:01:00.9199813Z
+2026-11-25T11:01:00.9200738Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=0 is400
+2026-11-25T11:01:00.9202310Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=101 is400
+2026-11-25T11:01:00.9203851Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=1.5 is400
+2026-11-25T11:01:00.9205534Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query limit=1&limit=2 is400
+2026-11-25T11:01:00.9207122Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query before=0 is400
+2026-11-25T11:01:00.9209244Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query before=2147483648 is400
+2026-11-25T11:01:00.9211020Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query before=abc is400
+2026-11-25T11:01:00.9212631Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 invalid query other=1 is400
+2026-11-25T11:01:00.9213797Z AssertionError: expected 404 to be 400 // Object.is equality
+2026-11-25T11:01:00.9214133Z
+2026-11-25T11:01:00.9214396Z - Expected
+2026-11-25T11:01:00.9214727Z + Received
+2026-11-25T11:01:00.9214913Z
+2026-11-25T11:01:00.9215076Z - 400
+2026-11-25T11:01:00.9215395Z + 404
+2026-11-25T11:01:00.9215559Z
+2026-11-25T11:01:00.9215917Z  ❯ tests/api/surveyReopen.test.ts:132:28
+2026-11-25T11:01:00.9216714Z     130|       const owner = await ownerLogin();
+2026-11-25T11:01:00.9218071Z     131|       const reply = await owner.get(`/api/owner/surveys/${original.id}…
+2026-11-25T11:01:00.9219199Z     132|       expect(reply.status).toBe(400);
+2026-11-25T11:01:00.9220073Z        |                            ^
+2026-11-25T11:01:00.9220935Z     133|       expect(reply.body.error.code).toBe("VALIDATION_ERROR");
+2026-11-25T11:01:00.9221733Z     134|     }
+2026-11-25T11:01:00.9221918Z
+2026-11-25T11:01:00.9222220Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/32]⎯
+2026-11-25T11:01:00.9222514Z
+2026-11-25T11:01:00.9223769Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 history is empty for legacy rows, then paginates without duplicates or foreign events
+2026-11-25T11:01:00.9225074Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9225444Z
+2026-11-25T11:01:00.9225658Z - Expected
+2026-11-25T11:01:00.9226054Z + Received
+2026-11-25T11:01:00.9226224Z
+2026-11-25T11:01:00.9226388Z - 200
+2026-11-25T11:01:00.9226742Z + 404
+2026-11-25T11:01:00.9226965Z
+2026-11-25T11:01:00.9227321Z  ❯ tests/api/surveyReopen.test.ts:143:26
+2026-11-25T11:01:00.9228648Z     141|     const other = await loginAs(app, fixture.owner2.email);
+2026-11-25T11:01:00.9229996Z     142|     const empty = await owner.get(`/api/owner/surveys/${original.id}/l…
+2026-11-25T11:01:00.9231231Z     143|     expect(empty.status).toBe(200);
+2026-11-25T11:01:00.9231864Z        |                          ^
+2026-11-25T11:01:00.9232789Z     144|     expect(empty.body).toEqual({ events: [], nextCursor: null });
+2026-11-25T11:01:00.9234268Z     145|     expect((await other.post(`/api/owner/surveys/${foreign.id}/reopen`…
+2026-11-25T11:01:00.9234949Z
+2026-11-25T11:01:00.9235236Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/32]⎯
+2026-11-25T11:01:00.9235754Z
+2026-11-25T11:01:00.9236910Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-109 publish/close/reopen retains complete versioned lifecycle
+2026-11-25T11:01:00.9238456Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9238848Z
+2026-11-25T11:01:00.9239081Z - Expected
+2026-11-25T11:01:00.9239448Z + Received
+2026-11-25T11:01:00.9239632Z
+2026-11-25T11:01:00.9239791Z - 200
+2026-11-25T11:01:00.9240128Z + 404
+2026-11-25T11:01:00.9240306Z
+2026-11-25T11:01:00.9240712Z  ❯ tests/api/surveyReopen.test.ts:166:148
+2026-11-25T11:01:00.9241836Z     164|     expect((await owner.post(`/api/owner/surveys/${original.id}/publis…
+2026-11-25T11:01:00.9243295Z     165|     expect((await owner.post(`/api/owner/surveys/${original.id}/close`…
+2026-11-25T11:01:00.9244918Z     166|     expect((await owner.post(`/api/owner/surveys/${original.id}/reopen…
+2026-11-25T11:01:00.9246144Z        |                                                                                                                                                    ^
+2026-11-25T11:01:00.9247311Z     167|     expect((await owner.post(`/api/owner/surveys/${original.id}/close`…
+2026-11-25T11:01:00.9249176Z     168|     expect((await owner.post(`/api/owner/surveys/${original.id}/reopen…
+2026-11-25T11:01:00.9249767Z
+2026-11-25T11:01:00.9250060Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/32]⎯
+2026-11-25T11:01:00.9250446Z
+2026-11-25T11:01:00.9251506Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-110 reopening preserves old answers/summary and forbids repeat response
+2026-11-25T11:01:00.9252756Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9253127Z
+2026-11-25T11:01:00.9253322Z - Expected
+2026-11-25T11:01:00.9253738Z + Received
+2026-11-25T11:01:00.9253907Z
+2026-11-25T11:01:00.9254068Z - 200
+2026-11-25T11:01:00.9254425Z + 404
+2026-11-25T11:01:00.9254604Z
+2026-11-25T11:01:00.9254996Z  ❯ tests/api/surveyReopen.test.ts:189:128
+2026-11-25T11:01:00.9256012Z     187|     const beforeSummary = await owner.get(`/api/owner/surveys/${origin…
+2026-11-25T11:01:00.9257354Z     188|     expect((await owner.post(`/api/owner/surveys/${original.id}/close`…
+2026-11-25T11:01:00.9259083Z     189|     expect((await owner.post(`/api/owner/surveys/${original.id}/reopen…
+2026-11-25T11:01:00.9260164Z        |                                                                                                                                ^
+2026-11-25T11:01:00.9261252Z     190|     expect((await one.get(`/api/responses/${submitted.body.response.id…
+2026-11-25T11:01:00.9262483Z     191|     const afterSummary = await owner.get(`/api/owner/surveys/${origina…
+2026-11-25T11:01:00.9263200Z
+2026-11-25T11:01:00.9263476Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/32]⎯
+2026-11-25T11:01:00.9263746Z
+2026-11-25T11:01:00.9264765Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 boundaries, access, concurrency and preserved behavior > TEST-111 legacy null closedAt is retained without fabricating a timestamp
+2026-11-25T11:01:00.9265978Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9266292Z
+2026-11-25T11:01:00.9266542Z - Expected
+2026-11-25T11:01:00.9266891Z + Received
+2026-11-25T11:01:00.9267092Z
+2026-11-25T11:01:00.9267279Z - 200
+2026-11-25T11:01:00.9267936Z + 404
+2026-11-25T11:01:00.9268125Z
+2026-11-25T11:01:00.9268521Z  ❯ tests/api/surveyReopen.test.ts:206:101
+2026-11-25T11:01:00.9269627Z     204|     await prisma.survey.update({ where: { id: original.id }, data: { c…
+2026-11-25T11:01:00.9270599Z     205|     const owner = await ownerLogin();
+2026-11-25T11:01:00.9271743Z     206|     expect((await owner.post(`/api/owner/surveys/${original.id}/reopen…
+2026-11-25T11:01:00.9272706Z        |                                                                                                     ^
+2026-11-25T11:01:00.9273728Z     207|     const history = await owner.get(`/api/owner/surveys/${original.id}…
+2026-11-25T11:01:00.9274875Z     208|     expect(history.body.events[0].previousClosedAt).toBeNull();
+2026-11-25T11:01:00.9275387Z
+2026-11-25T11:01:00.9275629Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/32]⎯
+2026-11-25T11:01:00.9275895Z
+2026-11-25T11:01:00.9276730Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey
+2026-11-25T11:01:00.9278338Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey
+2026-11-25T11:01:00.9279516Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T11:01:00.9279847Z
+2026-11-25T11:01:00.9280039Z - Expected
+2026-11-25T11:01:00.9280348Z + Received
+2026-11-25T11:01:00.9280561Z
+2026-11-25T11:01:00.9280718Z - 200
+2026-11-25T11:01:00.9281043Z + 404
+2026-11-25T11:01:00.9281225Z
+2026-11-25T11:01:00.9281565Z  ❯ tests/api/surveyReopen.test.ts:239:26
+2026-11-25T11:01:00.9282356Z     237|     // Assert behavior before touching any future DTO/model fields so …
+2026-11-25T11:01:00.9283145Z     238|     // failures cannot masquerade as the missing-behavior failure.
+2026-11-25T11:01:00.9283983Z     239|     expect(reply.status).toBe(200);
+2026-11-25T11:01:00.9284640Z        |                          ^
+2026-11-25T11:01:00.9285359Z     240|     expect(reply.body.survey).toMatchObject({
+2026-11-25T11:01:00.9286062Z     241|       id: original.id,
+2026-11-25T11:01:00.9286340Z
+2026-11-25T11:01:00.9286691Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/32]⎯
+2026-11-25T11:01:00.9286965Z
+2026-11-25T11:01:00.9287487Z  Test Files  1 failed | 16 passed (17)
+2026-11-25T11:01:00.9288897Z       Tests  32 failed | 144 passed (176)
+2026-11-25T11:01:00.9289532Z    Start at  11:00:44
+2026-11-25T11:01:00.9290500Z    Duration  16.13s (transform 173ms, setup 63ms, collect 917ms, tests 13.16s, environment 2ms, prepare 567ms)
+2026-11-25T11:01:00.9291056Z
+2026-11-25T11:01:00.9291066Z
+2026-11-25T11:01:00.9313538Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9322469Z
+2026-11-25T11:01:00.9324726Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9326238Z
+2026-11-25T11:01:00.9328235Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9329563Z
+2026-11-25T11:01:00.9331741Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9332881Z
+2026-11-25T11:01:00.9334604Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9335743Z
+2026-11-25T11:01:00.9337275Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9338908Z
+2026-11-25T11:01:00.9340553Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9342864Z (node:3249) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 unhandledRejection listeners added to [process]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+2026-11-25T11:01:00.9344001Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-25T11:01:00.9344402Z
+2026-11-25T11:01:00.9346070Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9347369Z
+2026-11-25T11:01:00.9349360Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9350548Z
+2026-11-25T11:01:00.9352159Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9353528Z
+2026-11-25T11:01:00.9355343Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9356408Z
+2026-11-25T11:01:00.9358311Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:39:26
+
+
+2026-11-25T11:01:00.9359567Z
+2026-11-25T11:01:00.9361016Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:55:26
+
+
+2026-11-25T11:01:00.9362092Z
+2026-11-25T11:01:00.9363506Z ##[error]AssertionError: expected 404 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:64:26
+
+
+2026-11-25T11:01:00.9364512Z
+2026-11-25T11:01:00.9365986Z ##[error]AssertionError: expected 404 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:64:26
+
+
+2026-11-25T11:01:00.9367057Z
+2026-11-25T11:01:00.9368725Z ##[error]AssertionError: expected 404 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:74:26
+
+
+2026-11-25T11:01:00.9369793Z
+2026-11-25T11:01:00.9371607Z ##[error]AssertionError: expected [ 404, 404 ] to deeply equal [ 200, 409 ]
+
+- Expected
++ Received
+
+  Array [
+-   200,
+-   409,
++   404,
++   404,
+  ]
+
+ ❯ tests/api/surveyReopen.test.ts:85:47
+
+
+2026-11-25T11:01:00.9372961Z
+2026-11-25T11:01:00.9374432Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:96:101
+
+
+2026-11-25T11:01:00.9375459Z
+2026-11-25T11:01:00.9376876Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9378164Z
+2026-11-25T11:01:00.9379604Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9380810Z
+2026-11-25T11:01:00.9382188Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9383149Z
+2026-11-25T11:01:00.9384536Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9385595Z
+2026-11-25T11:01:00.9387021Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9388279Z
+2026-11-25T11:01:00.9389726Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9390856Z
+2026-11-25T11:01:00.9392262Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9393296Z
+2026-11-25T11:01:00.9394705Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:132:28
+
+
+2026-11-25T11:01:00.9395686Z
+2026-11-25T11:01:00.9397110Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:143:26
+
+
+2026-11-25T11:01:00.9398400Z
+2026-11-25T11:01:00.9399822Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:166:148
+
+
+2026-11-25T11:01:00.9401018Z
+2026-11-25T11:01:00.9403218Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:189:128
+
+
+2026-11-25T11:01:00.9404228Z
+2026-11-25T11:01:00.9405733Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:206:101
+
+
+2026-11-25T11:01:00.9406755Z
+2026-11-25T11:01:00.9408415Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:239:26
+
+
+2026-11-25T11:01:00.9409521Z
+2026-11-25T11:01:00.9411072Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:239:26
+
+
+2026-11-25T11:01:00.9487007Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,178 @@
+{
+  "run": "CP-EX-001-D-20261126",
+  "source": "4199888409fefafa920a773991d735f14ffb4ac8",
+  "startUtc": "2026-11-26T07:57:28.130Z",
+  "rows": [
+    {
+      "id": "UAT-02 / AC-19 blank title inline feedback",
+      "expected": {
+        "inline": true,
+        "created": false
+      },
+      "actual": {
+        "inline": false,
+        "body": "CPE334 · Identified survey\nDraft\nPublish\nBack to your surveys\n1. Valid rating prompt\nRating, 1 to 5 · required",
+        "titleErrorId": null,
+        "created": true
+      },
+      "status": "REVIEW",
+      "at": "2026-11-26T07:57:37.108Z"
+    },
+    {
+      "id": "UAT-10 / AC-14 Draft close",
+      "expected": {
+        "status": 409,
+        "code": "INVALID_TRANSITION",
+        "count": 0
+      },
+      "actual": {
+        "status": 409,
+        "code": "INVALID_TRANSITION",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:57:37.701Z"
+    },
+    {
+      "id": "UAT-10 / AC-14 repeat publish",
+      "expected": {
+        "status": 409,
+        "code": "INVALID_TRANSITION"
+      },
+      "actual": {
+        "status": 409,
+        "code": "INVALID_TRANSITION"
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:57:37.763Z"
+    },
+    {
+      "id": "UAT-05 / AC-15 close from Published",
+      "expected": 200,
+      "actual": 200,
+      "status": "PASS",
+      "at": "2026-11-26T07:57:37.916Z"
+    },
+    {
+      "id": "CD-05 / AC-23 and AC-28 stale response",
+      "expected": {
+        "status": 409,
+        "code": "SURVEY_NOT_OPEN",
+        "count": 0
+      },
+      "actual": {
+        "status": 409,
+        "code": "SURVEY_NOT_OPEN",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:57:37.965Z"
+    },
+    {
+      "id": "CD-05 stale feedback",
+      "expected": "Visible closed-survey feedback",
+      "actual": "CP-EX-001-D-20261126 Lifecycle\nCPE334\nBack to surveys\nIdentified survey — your name is stored with your answers\n\nThis survey is not open for responses\n\nOverall rating\n1 — Not at all\n5 — Very much\nPreferred format\nOnline\nIn person\nSubmit",
+      "status": "OBSERVED",
+      "at": "2026-11-26T07:57:37.967Z"
+    },
+    {
+      "id": "UAT-10 / AC-14 repeat close",
+      "expected": {
+        "status": 409,
+        "code": "INVALID_TRANSITION"
+      },
+      "actual": {
+        "status": 409,
+        "code": "INVALID_TRANSITION"
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:57:38.010Z"
+    },
+    {
+      "id": "UAT-10 / AC-14 Closed cannot be published",
+      "expected": {
+        "status": 409,
+        "code": "INVALID_TRANSITION",
+        "count": 0
+      },
+      "actual": {
+        "status": 409,
+        "code": "INVALID_TRANSITION",
+        "count": 0
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:57:38.031Z"
+    },
+    {
+      "id": "UAT-02 / AC-25 rating endpoints",
+      "expected": {
+        "count": 2,
+        "ratings": [
+          {
+            "mean": 3,
+            "distribution": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 1
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            2
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "actual": {
+        "count": 2,
+        "ratings": [
+          {
+            "mean": 3,
+            "distribution": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 1
+            }
+          }
+        ],
+        "choices": [
+          [
+            "Online",
+            2
+          ],
+          [
+            "In person",
+            0
+          ]
+        ]
+      },
+      "status": "PASS",
+      "at": "2026-11-26T07:57:39.536Z"
+    }
+  ],
+  "fixtures": [
+    {
+      "survey": 7,
+      "title": "CP-EX-001-D-20261126 Lifecycle",
+      "responses": []
+    },
+    {
+      "survey": 8,
+      "title": "CP-EX-001-D-20261126 Endpoints",
+      "responses": [
+        5,
+        6
+      ]
+    }
+  ],
+  "endUtc": "2026-11-26T07:57:39.908Z"
+}

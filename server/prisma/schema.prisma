@@ -22,24 +22,31 @@ enum SurveyStatus {
   CLOSED
 }
 
+enum SurveyLifecycleAction {
+  PUBLISH
+  CLOSE
+  REOPEN
+}
+
 enum QuestionType {
   RATING
   SINGLE_CHOICE
 }
 
 model User {
-  id           Int          @id @default(autoincrement())
-  email        String       @unique
-  fullName     String
-  role         Role
-  passwordHash String
-  isActive     Boolean      @default(true)
-  createdAt    DateTime     @default(now())
-  sessions     Session[]
-  courses      Course[]
-  enrollments  Enrollment[]
-  surveys      Survey[]
-  responses    Response[]
+  id              Int                    @id @default(autoincrement())
+  email           String                 @unique
+  fullName        String
+  role            Role
+  passwordHash    String
+  isActive        Boolean                @default(true)
+  createdAt       DateTime               @default(now())
+  sessions        Session[]
+  courses         Course[]
+  enrollments     Enrollment[]
+  surveys         Survey[]
+  responses       Response[]
+  lifecycleEvents SurveyLifecycleEvent[]
 }
 
 model Session {
@@ -74,21 +81,41 @@ model Enrollment {
 }
 
 model Survey {
-  id          Int          @id @default(autoincrement())
-  courseId    Int
-  ownerId     Int
-  title       String
-  description String?
-  mode        SurveyMode   @default(IDENTIFIED)
-  status      SurveyStatus @default(DRAFT)
-  publishedAt DateTime?
-  closedAt    DateTime?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  course      Course       @relation(fields: [courseId], references: [id])
-  owner       User         @relation(fields: [ownerId], references: [id])
-  questions   Question[]
-  responses   Response[]
+  id              Int                    @id @default(autoincrement())
+  courseId        Int
+  ownerId         Int
+  title           String
+  description     String?
+  mode            SurveyMode             @default(IDENTIFIED)
+  status          SurveyStatus           @default(DRAFT)
+  publishedAt     DateTime?
+  closedAt        DateTime?
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+  statusVersion   Int                    @default(0)
+  course          Course                 @relation(fields: [courseId], references: [id])
+  owner           User                   @relation(fields: [ownerId], references: [id])
+  questions       Question[]
+  responses       Response[]
+  lifecycleEvents SurveyLifecycleEvent[]
+}
+
+model SurveyLifecycleEvent {
+  id               Int                   @id @default(autoincrement())
+  surveyId         Int
+  actorId          Int
+  action           SurveyLifecycleAction
+  fromStatus       SurveyStatus
+  toStatus         SurveyStatus
+  version          Int
+  occurredAt       DateTime              @default(now())
+  reason           String?               @db.VarChar(300)
+  previousClosedAt DateTime?
+  survey           Survey                @relation(fields: [surveyId], references: [id], onDelete: Restrict)
+  actor            User                  @relation(fields: [actorId], references: [id], onDelete: Restrict)
+
+  @@unique([surveyId, version])
+  @@index([surveyId, id])
 }
 
 model Question {

@@ -84,3 +84,16 @@ The 42 baseline requirement rows above retain the assessed Sprint 1 results and 
 | 1.3 | 7 Nov 2026 | I-10: the result columns of the 23 Sprint 1 rows that have automated tests are filled (NFR-05 and NFR-09 say "manual" and point to their evidence) from `python tools/test_results.py` on commit `4eb2dce` (server 101, client 1, e2e 8 passed, 0 failed, 0 skipped, exit 0). TEST-40 (journey, `docs/sprints/sprint-1/I-10-journey.md`) is added to FR-07, FR-08 and NFR-07 next to the tests that already covered them. |
 | 1.4 | 8 Nov 2026 | I-11: the Sprint 1 results were produced again in a clean clone at the release tag `v1.0.0-sprint1` (commit `d4bad74`): server 101, client 1, e2e 8 passed, 0 failed, 0 skipped, generator exit 0, 39 of 39 acceptance criteria pass. The table is identical to the run on `4eb2dce` apart from the commit and the time, so the result cells now say `@ d4bad74`. |
 | 1.5 | 15 Nov 2026 | Issue33: add the verified Lab5 NFR-05 persistence extension with exact accepted evidence/review links and manual-readback limits. Preserve all42 baseline rows, Sprint1 result counts and protected tag; extension review requested from B. |
+
+
+## Lab 7 proposed traceability revision v1.6 - Issue #87
+
+The42 original baseline rows/results above are historical; none is relabeled as proof of new code. Proposed new/current behavior is NOT IMPLEMENTED, NOT RUN, NOT ACCEPTED. B C3 pending. [Contract and complete STS](labs/lab-07/maintenance-contract.md).
+
+| Requirement | Feature / delivery | AC | Planned test / file | Actual result/version |
+|---|---|---|---|---|
+| FR-19 (new) | F-03 / Lab 7 and D2 | AC-100..111 | TEST-100..114; server/tests/api/surveyReopen.test.ts, unit/surveyLifecycle.test.ts, unit/surveyReopenValidation.test.ts, client/tests/surveyReopen.test.tsx, e2e/survey-reopen.spec.ts | NOT RUN; contract proposed |
+| BR-03 revised | F-03 / Lab 7 | AC-100/101/103/104 | TEST-100/103/104/105/106/114; retain TEST-15/16 old publish/close expectations | NOT RUN; old Sprint1 PASS does not cover reopen |
+| BR-15 (new) | F-03 / Lab 7 | AC-102/103/104/106/107/109 | TEST-101/102/105/106/108/109/111 | NOT RUN; contract proposed |
+
+Preserved cross-cutting NFR-02/03 are explicitly tested by AC-105/TEST-107; persistence NFR-05 by AC-109/111 and TEST-111/113; original BR-04..10 by AC-108/TEST-110 and full regression. These are planned mappings, not new baseline requirements or passing results. Version1.6 proposed,25Nov2026,A: add changed requirement mappings and disclose unimplemented/unexecuted status before tests/code.

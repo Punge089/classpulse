@@ -1,0 +1,27 @@
+{
+  "receivedAtBangkok": "2026-11-27T15:41:58.808562+07:00",
+  "receivedVia": "User supplied B-side review files",
+  "sourceAuthoredDate": "27 November2026; exact review time not provided",
+  "operatorAsRecorded": "Codex GPT-6 Sol for book6349",
+  "recommendation": "Concur with A Accepted with explicitly documented minor limitations for original WorkflowSprint1 on41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "actualAppRerunByB": false,
+  "zipReviewedSha256": "4a35cacff1acbad10ae8c619641cdf7bcfaa807df11e78143b76bf3ad9eacd4d",
+  "zipPayloadHashesReviewed": 76,
+  "ourPdfReviewedSha256": "3a64600df0b3e4c653b42f5a22a80d5db3d203224ec3771f508506ab518c7f9d",
+  "ourPdfReviewedPages": 74,
+  "partnerPdfReviewedSha256": "1a0cbeee9bab362dec710ec8342c4f15455b62d0df39d8fe856d5ba4029aba00",
+  "partnerPdfReviewedPages": 82,
+  "humanBDecision": "PENDING explicitly in both files; earlier A user-relayed B okay is not assigned a decision time or signature here",
+  "humanBNameIdConfirmation": "PENDING explicitly",
+  "bExactRevisedPdfApproval": "PENDING after fixes",
+  "findings": [
+    "Clearly mark historical26Nov status on earlier74page61-62",
+    "Flag older pending-decision sentence on oldp66 as historical",
+    "Move oldp70observation table away from footer band",
+    "C/Dp75unsupported hyphen glyphs need ordinary hyphens"
+  ],
+  "suppliedFilesSha256": {
+    "ClassPulse_B_Workflow_decision_review_20261127.txt": "f32b3423536ed2eac4521a01ed793487d5727779e98c5a3b9e8bc64bbd24181d",
+    "ClassPulse_B_PDF_comparison_20261127.txt": "baaba7bb63a527a051afc85812fc691b59b8f0b64b5f5065c25ab48c06604a59"
+  }
+}

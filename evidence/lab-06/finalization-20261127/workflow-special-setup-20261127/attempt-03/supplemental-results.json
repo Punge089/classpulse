@@ -1,0 +1,18 @@
+{
+  "source": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "servingRevision": "N/A",
+  "operator": "Codex under Student A/Punge089",
+  "model": "GPT-6",
+  "runKind": "Independent isolated local API/DB and actual application process restart",
+  "started": "2026-11-26T19:22:28.690Z",
+  "observations": [],
+  "fixtureRowsPreservedInStoppedIsolatedCluster": true,
+  "outcome": "FAIL",
+  "failure": {
+    "step": "preflight",
+    "type": "AssertionError",
+    "assertionCode": "ERR_ASSERTION",
+    "detail": "Inspect sanitized retained local output; no raw secrets emitted"
+  },
+  "finished": "2026-11-26T19:22:28.862Z"
+}

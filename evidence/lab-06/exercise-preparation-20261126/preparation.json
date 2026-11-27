@@ -1,0 +1,20 @@
+{
+  "issue": 117,
+  "phase": "Source preparation before validation/exposure",
+  "operator": "Codex GPT-6 under A/Punge089",
+  "base": "9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35",
+  "contract": "3bc7722fd2afc283f2c69b8fa938de05156ae84b",
+  "c3": 7168743313,
+  "refAgreement": 7169092867,
+  "cdLocalAccessConfirmedViaUser": true,
+  "peerCoordinationNoticeSent": true,
+  "peerAcknowledged": true,
+  "exerciseSha": "Not self-referenced; generated verified manifest after commit",
+  "exposurePerformed": false,
+  "testGoAheadIssued": false,
+  "cloudOperation": false,
+  "newReportedCaseRegressionWritten": false,
+  "detailedDeveloperRecords": "Private until actual independent finding; not in tester artifact",
+  "finalAcceptance": "PENDING",
+  "partDComplete": false
+}

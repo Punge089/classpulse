@@ -1,0 +1,104 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-11-25T12:02:04Z",
+  "headSha": "49e1c5ac9cdb8eb588323f4a5f88bc3a1978489e",
+  "status": "completed",
+  "updatedAt": "2026-11-25T12:03:47Z",
+  "url": "https://github.com/Punge089/classpulse/actions/runs/45609911425",
+  "runId": 45609911425,
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install root dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install server dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install client dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Generate Prisma client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Apply database migrations",
+      "conclusion": "success"
+    },
+    {
+      "name": "Seed synthetic test accounts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build Docker image locally",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "sha256": {
+    "migration-ci-server.txt": "0602742ad118df6b7649aef211f2de7f37f13d699105b754d8d24be742cc8e93",
+    "migration-ci-client.txt": "9495d65a0d2d51a71ce226d26ccb93f4829923f04830fd16169592b9677d00ca"
+  },
+  "counts": {
+    "server": {
+      "passed": 215,
+      "failed": 0,
+      "skipped": 0
+    },
+    "client": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "method": "Disposable UUID schema, exact checked-in old and new migration SQL; compares all nine original tables. Not a production migration or migration-engine upgrade bookkeeping test."
+}
