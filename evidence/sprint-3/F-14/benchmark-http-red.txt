@@ -1,0 +1,61 @@
+# F-14 request-sequence RED
+
+Source 5889f9caaa5d8a115d9f525aa27de1e4ff462cc9. Command: npm --prefix server test -- tests/tools/summaryBenchmark.test.ts.
+A synthetic unused local configuration supplied the Vitest database-name guard. The test file injects request/time doubles and makes no database or network calls. The 3 request cases failed at the preimplementation stub. The existing 7 passed, with no skips within the selected file. Full CI is separate.
+
+> classpulse-server@0.1.0 test
+> vitest run tests/tools/summaryBenchmark.test.ts
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse-worktrees/work98/server
+
+ ❯ tests/tools/summaryBenchmark.test.ts (10 tests | 3 failed) 12ms
+   × TEST-281 request sequence validates five warmups and records twenty sequential body timings 3ms
+     → Summary request sequence has not been implemented
+   × TEST-281 request sequence fails on a bad warmup or transport error without retry or private output 3ms
+     → expected [Function] to throw error matching /^Warmup 1 did not return HTTP 200$/ but got 'Summary request sequence has not been…'
+   × TEST-281 refuses a non-loopback target before any request 0ms
+     → expected [Function] to throw error matching /^Benchmark app must use a loopback or…/ but got 'Summary request sequence has not been…'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tools/summaryBenchmark.test.ts > TEST-281 request sequence validates five warmups and records twenty sequential body timings
+Error: Summary request sequence has not been implemented
+ ❯ Module.runSummaryRequests ../tools/performance/summary-benchmark.mjs:71:9
+     69|
+     70| export async function runSummaryRequests() {
+     71|   throw new Error("Summary request sequence has not been implemented");
+       |         ^
+     72| }
+     73|
+ ❯ tests/tools/summaryBenchmark.test.ts:106:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/tools/summaryBenchmark.test.ts > TEST-281 request sequence fails on a bad warmup or transport error without retry or private output
+AssertionError: expected [Function] to throw error matching /^Warmup 1 did not return HTTP 200$/ but got 'Summary request sequence has not been…'
+
+- Expected:
+/^Warmup 1 did not return HTTP 200$/
+
++ Received:
+"Summary request sequence has not been implemented"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/tools/summaryBenchmark.test.ts > TEST-281 refuses a non-loopback target before any request
+AssertionError: expected [Function] to throw error matching /^Benchmark app must use a loopback or…/ but got 'Summary request sequence has not been…'
+
+- Expected:
+/^Benchmark app must use a loopback origin$/
+
++ Received:
+"Summary request sequence has not been implemented"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 7 passed (10)
+   Start at  19:20:44
+   Duration  286ms (transform 38ms, setup 21ms, collect 32ms, tests 12ms, environment 0ms, prepare 76ms)

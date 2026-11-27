@@ -285,3 +285,15 @@ Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Cl
 ## Final Lab 7 metrics and readiness refresh - Issue #89, Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6 to reconcile the final Issue #89 metrics, readiness and retrospective with main release 8316f27, deploy run 46050688714, and A's sanitized production receipts from PR #104 head b75f410. B authored the dated metrics evidence file and refreshed the three Issue #89 records. A performed and reported the production API check and GCP Console readbacks; B did not rerun application tests, perform UAT, use GCP, or submit to LEB2. The live developer check is not described as independent UAT. Final PDF review and human LEB2 submission remain pending.
+
+## Sprint 3 F-14 contract preparation - Student A,25November2026
+
+Under Issue98, A's Codex GPT-6.1 Sol drafted the complete F-14 hardening contract for NFR06/07/10: endpoint benchmark with500responses/20samples/nearest-rank p95, isolated data/authorization guards,375px usability, complete final screen-state inventory and AC280-287/TEST280-291. Current summary code/routes and screen inventory were read, but no actual benchmark/browser/runtime result or product defect is claimed. New tool/test implementation waits for B C3; any application fix requires separately scoped Files and genuine failure evidence. No B participation/approval, cloud/deployment or final PDF is invented. D2 still needs separately implemented/tested Sprint3 domain progress; this contract alone does not satisfy that outcome.
+
+A/Punge089 used Codex GPT-6 on #98 to apply B's existing C3 to a scoped Playwright baseline slice. It adds the 375px and 1280px sign-in/owner draft journey for TEST-285, including keyboard submit, named controls, persisted draft readback and actual root overflow measurement. Full inventory, timing benchmark and release evidence remain pending.
+
+A/Punge089 used Codex GPT-6 on #98 to add preimplementation TEST-282/283 tests, retain seven observed RED failures, implement the pure benchmark analysis/target validation, and verify all seven unchanged cases GREEN in CI. Fixture creation and real endpoint measurement remain pending.
+
+A/Punge089 used Codex GPT-6 on #98 to add and retain three observed preimplementation request-sequence failures for TEST-281, then implement guarded sequential warmup and sample requests with body timing and measured-response validation. The ten unchanged benchmark unit cases passed locally. Actual fixture, access probes and endpoint measurements remain pending.
+
+A/Punge089 used Codex GPT-6 on #98 to add TEST-286 owner and respondent mobile list-state cases with controlled list responses. CI 46000029026 ran both cases successfully. The remaining integrated inventory stays open.
