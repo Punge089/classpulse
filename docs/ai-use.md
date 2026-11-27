@@ -273,3 +273,7 @@ A/Punge089 used Codex GPT-6 to merge current staging into PR #95, preserve the s
 ## Lab 7 planning reference refresh - Issue #94, Student A, 28 November 2026
 
 After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report pointers and confirm the interim metrics merge. The Lab 7 release and final deployed evidence remain pending.
+
+## Lab 7 release review status corrections - Issue #94 follow-up, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.

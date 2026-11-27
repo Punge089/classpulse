@@ -12,7 +12,7 @@ Prepared 25 November 2026 by A under Issue #86. Source inventory/hashes: [manife
 
 Provenance: text supplied by A on 25 November 2026. The original publisher and publication timestamp have not been independently verified. The [attached image](../../../evidence/lab-07/sources/highlighted-original-approval.png) shows the original approval paragraph highlighted; it is context for the changed paragraph, not itself an image of the new announcement. Do not invent an approver, approval date or individual TA acceptance.
 
-Operational interpretation: A/B choose and review a nontrivial bounded change to previously implemented Sprint 1 behavior. There is no wait-for-TA-approval gate. The team's contract review remains required by AGENTS.md. The current proposal is Issue #87, explicit owner reopen of a closed survey with reason, concurrency control and durable lifecycle audit. B's agreement is pending. A simple changed constant would be a poor fit for the supplied announcement.
+Operational interpretation: A/B choose and review a nontrivial bounded change to previously implemented Sprint 1 behavior. There is no wait-for-TA-approval gate. The team's contract review remains required by AGENTS.md. The current proposal is Issue #87, explicit owner reopen of a closed survey with reason, concurrency control and durable lifecycle audit. In [C3 on Issue #87](https://github.com/Punge089/classpulse/issues/87#issuecomment-7159676041), B/book6349 reviewed the contract against AC-100 through AC-111 and TEST-100 through TEST-114 and authorized test-only RED work before implementation. A simple changed constant would be a poor fit for the supplied announcement.
 
 ## Earlier parallel-work clarification
 
@@ -27,3 +27,5 @@ The announcement does not eliminate peer review, RED evidence, backend authoriza
 v1.0, 25 November 2026, A: preserve supplied announcement and provenance; supersede the individual instructor/TA approval gate before any Lab 7 test/code work.
 
 v1.1,25Nov2026,A: move this source record into separate Lab7 planning Issue94/branch/PR after the user requested separation from D2. Original supplied text, image and source hashes are preserved.
+
+v1.2, 28 Nov 2026, A: link the recorded pre-implementation C3 decision. The supplied announcement and source provenance are preserved.
