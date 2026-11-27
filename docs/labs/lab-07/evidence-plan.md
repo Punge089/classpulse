@@ -1,17 +1,17 @@
 # Lab 7 evidence and PDF submission checklist
 
-Issue #94,version1.0,25November2026. A prepares; B reviews. One self-contained Lab7 PDF, separately submitted from Deliverable2. Deadline29November2026,23:59 Bangkok. No final PDF exists at this checkpoint.
+Issue #94, v1.1, 27 November 2026. A prepares and B reviews a self-contained Lab7 PDF, separately submitted from Deliverable2. Deadline 29 November 2026, 23:59 Bangkok. [PR #104](https://github.com/Punge089/classpulse/pull/104) contains working draft v0.3.
 
 | Part | Points | Include directly in the Lab7 PDF | Owner / current state |
 |---|---:|---|---|
-| A | 25 | Old/new implemented Sprint1 behavior; team selection and superseding announcement; accepted baseline/actual pre-change versions; impact across SRS/feature SDS/system SDS/AC/STS/code; revised relevant excerpts and B review before code | A #87, B review; pending |
-| B | 50 | Actual setup/assertions and RED on old behavior; same-test GREEN and code diff; relevant existing regression with commands/SHA/pass/fail/skip; dedicated Issue/branch/PR, substantive review, CI, staging/main/deployed mapping; changed and preserved deployed checks | A #87, B review; pending |
-| C | 15 | Five defined dated metrics with scope/window, values, sources/evidence IDs; compact underlying lists reconciling at least two values offline; <=100-word interpretation naming action/owner | B #89, A review; pending |
+| A | 25 | Old/new implemented Sprint1 behavior; team selection and superseding announcement; accepted baseline/actual pre-change versions; impact across SRS/feature SDS/system SDS/AC/STS/code; revised relevant excerpts and B review before code | A #87; B's pre-code C3 and accepted Lab6 baseline are recorded |
+| B | 50 | Actual setup/assertions and RED on old behavior; same-test GREEN and code diff; relevant existing regression with commands/SHA/pass/fail/skip; dedicated Issue/branch/PR, substantive review, CI, staging/main/deployed mapping; changed and preserved deployed checks | A #87 and B #92 review/staging verified; main release and deployed checks pending |
+| C | 15 | Five defined dated metrics with scope/window, values, sources/evidence IDs; compact underlying lists reconciling at least two values offline; <=100-word interpretation naming action/owner | B #89 dated snapshot exists; final metrics refresh and A review pending |
 | D | 10 | Maintained-Sprint1 READY/NOT READY checklist, deployed version, defects/severity/status, test failures/skips, technical debt distinct from defects, config/secrets/docs/setup/deploy checks; helped/hurt/change retrospective; actual contributions/AI/limits | B #89, A report assembly; NOT READY |
 
 ## Required version and evidence record
 
-Version table: immutable original Sprint1 tag/commit -> actually accepted Lab6 reference -> actual pre-change code/deployment and intervening work -> contract/review -> test-only RED -> implementation/GREEN -> reviewed staging merge -> reviewed main release -> CI run/image digest/serving revision/traffic -> changed/preserved smoke/persistence. Explain legitimate merge-SHA differences. Do not replace missing Lab6 acceptance with a tag or developer test.
+Version table: immutable original Sprint1 tag/commit -> actually accepted Lab6 reference -> actual pre-change code/deployment and intervening work -> contract/review -> test-only RED -> implementation/GREEN -> reviewed staging merge -> reviewed main release -> CI run/image digest/serving revision/traffic -> changed/preserved smoke/persistence. Explain legitimate merge-SHA differences. The accepted baseline is CP-FIX-001 `bee0d122`. Retain the protected original tag and actual RED version as separate records.
 
 Every evidence item includes ID, actual operator/tool/model, Bangkok/UTC time, relevant AC/TEST, starting conditions, command/steps, expected/actual, full tested commit or deployed revision and pass/fail/skip counts. Label manual results. Retain failed runs and later fixes separately. Compiler/setup/fixture errors do not qualify as the meaningful old-behavior RED.
 
@@ -36,3 +36,5 @@ Render and inspect every final page, legibility, tables, screenshots, logs and p
 ## Version history
 
 v1.0,25Nov2026,A: extract Lab7-specific rubric, metrics and submission requirements into its own planning Issue/branch/PR after the user requested visible separation from D2. All unexecuted evidence remains pending.
+
+v1.1, 27 Nov 2026, A: mark verified baseline and staging evidence, link the report draft, and retain the pending release and final-review checks.
