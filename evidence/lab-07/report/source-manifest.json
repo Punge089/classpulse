@@ -304,6 +304,39 @@
       "file": "inputs/nov28-live-reopen.json",
       "sha256": "bf3a2d469eb619e078baa2b889b2d6adf14f85fe637a4a046b3668f5655f607b",
       "derivation": "Sanitized direct deployed API observations, with Cloud Run revision checked before and after"
+    },
+    {
+      "file": "inputs/b-final-metrics.md",
+      "sha256": "560af1ed5f9486192afd276c4c96e3b8ad8364859f2358060f10e0ed668e6085",
+      "commit": "db00fc68cbaa02bff968fa84798dd73d5da41a09",
+      "path": "docs/labs/lab-07/metrics.md",
+      "derivation": "exact Git blob from reviewed B metrics PR #148"
+    },
+    {
+      "file": "inputs/b-final-readiness.md",
+      "sha256": "d4a48c9cdc7cc056003fb95ed18f1d476d6e4a6cab06f042e8ffd8e13b057b50",
+      "commit": "db00fc68cbaa02bff968fa84798dd73d5da41a09",
+      "path": "docs/labs/lab-07/readiness.md",
+      "derivation": "exact Git blob from reviewed B metrics PR #148"
+    },
+    {
+      "file": "inputs/b-final-retrospective.md",
+      "sha256": "9172bc2a87b4422210d2273f568aa64375528c3e18ddc245f0bf549b9416665e",
+      "commit": "db00fc68cbaa02bff968fa84798dd73d5da41a09",
+      "path": "docs/labs/lab-07/retrospective.md",
+      "derivation": "exact Git blob from reviewed B metrics PR #148"
+    },
+    {
+      "file": "inputs/b-final-production-refresh.md",
+      "sha256": "bc28076e6510c81b91442c6dc48856f73310cc67201afb36177655d9e3484c32",
+      "commit": "db00fc68cbaa02bff968fa84798dd73d5da41a09",
+      "path": "evidence/lab-07/metrics/2026-11-28-production-refresh.md",
+      "derivation": "exact Git blob from reviewed B metrics PR #148"
+    },
+    {
+      "file": "inputs/nov28-final-metrics-review.json",
+      "sha256": "3a6051fbfc6138528b5f0be7651ad9be063a9eba516489f1d4bf66436ccf2c6e",
+      "derivation": "A's exact-head source review, GitHub PR #148 review/merge and CI 46056322908"
     }
   ],
   "sourceSnapshotVersion": "1"

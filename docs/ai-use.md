@@ -282,6 +282,10 @@ A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/m
 
 Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Claude desktop app) to check the submitted Lab 6 PDF against the handout and repository, then to revise the report. Claude edited `tools/lab6/build_report.py` to state the AC-04 acceptance basis in Part D and on the cover, add the complete WF-BUG-001 outgoing report table in Part C from the retained confirmation/retest records, add a dedicated AI-use declaration, and state the exercise-selection reason and the coverage review required by the instructor clarification. It rebuilt the PDF and receipt and ran `tools/lab6/verify_report.py`. No test result, decision, finding, evidence file, application code, schema, workflow, main, tag or deployment changed, and no application test was rerun. B must review the exact head and PDF hash; A cannot approve or merge this A-authored PR. Humans upload the reviewed PDF to LEB2.
 
+## Final Lab 7 metrics and readiness refresh - Issue #89, Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6 to reconcile the final Issue #89 metrics, readiness and retrospective with main release 8316f27, deploy run 46050688714, and A's sanitized production receipts from PR #104 head b75f410. B authored the dated metrics evidence file and refreshed the three Issue #89 records. A performed and reported the production API check and GCP Console readbacks; B did not rerun application tests, perform UAT, use GCP, or submit to LEB2. The live developer check is not described as independent UAT. Final PDF review and human LEB2 submission remain pending.
+
 ## Lab7 report source assembly - Issue101, Student A,25November2026
 
 A/Punge089 used Codex GPT-6.1 Sol to reread all7 pages of the supplied Lab7 rubric and assemble a separate source-only report draft from pinned committed sources, actual GitHub C3/PR/CI metadata and complete sanitized current suite outputs. It embeds old/new relevant spec/contract/impact/12AC/15STS, actual pre-code dates/C3, original missing-behavior RED setup/assertions and unchanged-block proof, bounded actual code/migration, regression counts,3 previously inspected original CI screenshots,26 historical metric rows,15 fully paginated branch-CI outcomes, a57word interpretation and honest readiness/debt/retrospective/contribution gaps. B's existing metric/readiness files were inputs and were not changed. Current code review/main/deployed/accepted-baseline/PDF evidence remains PENDING; no final PDF or submission is claimed.
@@ -317,3 +321,7 @@ A/Punge089 used Codex GPT-6.2 Sol to read the existing Cloud Run revision and mi
 ## Lab 7 live reopen and preservation - Issue #101, Student A, 28 November 2026
 
 A/Punge089 authorized Codex GPT-6.2 Sol to use the three synthetic roles for a dedicated deployed behavior check. A entered the shared credential privately. The run wrote only a new synthetic survey and its test response and lifecycle, then logged out all three accounts. A verified the before/after Cloud Run revision. The report embeds the sanitized receipt. B's independent report review and final metrics remain pending.
+
+## Final Lab 7 report candidate - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to review and merge B's #148 metrics, reconcile source hashes and package the Lab 7 report for exact PDF review. B authored the refresh. Independent Lab 7 UAT remains unrecorded, and B's final PDF review and the human submission receipt are tracked separately.

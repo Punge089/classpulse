@@ -1,0 +1,19 @@
+{
+  "author": "book6349",
+  "pr": 148,
+  "issue": 89,
+  "approvedHead": "db00fc68cbaa02bff968fa84798dd73d5da41a09",
+  "merge": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+  "base": "4d99222c5fc19a91bedc010a1ed5d94ad2f34e7d",
+  "ci": 46056322908,
+  "testedCheckout": "073f5ddd58e0e937b35dbf3688685efb76d543d3",
+  "tree": "4947520bac1e087522e528cd024b97f6fd97e68f",
+  "localSourceChecks": 13,
+  "ciCounts": {
+    "server": 272,
+    "client": 23,
+    "browser": 12,
+    "failed": 0,
+    "skipped": 0
+  }
+}

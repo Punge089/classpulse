@@ -1,7 +1,7 @@
 {
   "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
-  "sha256": "cb5536d79b601e2374b6cf31ce7b5bbc9ccaac43635c233f794ed62ec297c4f2",
-  "sourceSha256UTF8LF": "90079386d242f6bf09906c159a68468e8ec36cffc14836deb0a0badc4569f3db",
+  "sha256": "c5d330ad1db492fe76124eb12dcb55e2370858bf36a31b31315e2f47d97385b2",
+  "sourceSha256UTF8LF": "11e38a35eacb2c8b203bd2f953f2c1e8afb878e06cdf11c6d5c36a7062a13a32",
   "pages": 30,
   "partStartPages": {
     "A": 3,
@@ -38,244 +38,244 @@
       "page": 1,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 143,
+      "words": 146,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 2,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 341,
+      "words": 338,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 3,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 477,
+      "words": 474,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 4,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 609,
+      "words": 606,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 5,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 768,
+      "words": 765,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 6,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 727,
+      "words": 724,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 7,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 579,
+      "words": 576,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 8,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 491,
+      "words": 488,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 9,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 532,
+      "words": 529,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 10,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 319,
+      "words": 316,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 11,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 332,
+      "words": 329,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 12,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 389,
+      "words": 386,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 13,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 126,
+      "words": 123,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 14,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 314,
+      "words": 311,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 15,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 233,
+      "words": 230,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 16,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 467,
+      "words": 464,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 17,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 319,
+      "words": 316,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 18,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 356,
+      "words": 353,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 19,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 523,
+      "words": 520,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 20,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 345,
+      "words": 342,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 21,
       "width": 1190.551,
       "height": 841.8898,
-      "words": 50,
+      "words": 47,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 22,
       "width": 1190.551,
       "height": 841.8898,
-      "words": 59,
+      "words": 56,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 23,
       "width": 1190.551,
       "height": 841.8898,
-      "words": 53,
+      "words": 50,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 24,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 457,
+      "words": 454,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 25,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 424,
+      "words": 421,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 26,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 362,
+      "words": 287,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 27,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 92,
+      "words": 144,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 28,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 296,
+      "words": 334,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 29,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 487,
+      "words": 479,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     },
     {
       "page": 30,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 456,
+      "words": 487,
       "outOfBoundsWords": 0,
-      "draftFooter": true
+      "reportFooter": true
     }
   ],
-  "structuralResult": "PASS: all pages bounded/nonblank/draft-labelled; all Part links/page ranges correct; original screenshot pixels preserved",
-  "visualQA": "PASS: compared all 30 page bodies with v0.6; inspected pages 1, 18, 25, 28, 29 and 30. Rechecked pages 29 and 30 after fixing a one-word page spill.",
-  "releaseState": "NOT READY; no B final PDF approval or submission"
+  "structuralResult": "PASS: all pages bounded/nonblank/versioned; all Part links/page ranges correct; original screenshot pixels preserved",
+  "visualQA": "PASS: rendered all 30 pages. Compared bodies to v0.7; visually inspected changed pages 1 and 26–30. Rechecked 1, 29 and 30 after final copy/spacing adjustments.",
+  "releaseState": "Version 1.0; exact review and submission tracked separately"
 }

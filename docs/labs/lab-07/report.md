@@ -1,15 +1,15 @@
 # ClassPulse - Lab 7 maintenance report
 
-**Version 0.7 - WORKING DRAFT - NOT READY FOR SUBMISSION**
+**Version 1.0 - Lab 7 maintenance report**
 
-Historical test and metrics snapshot: 2026-11-25T19:50:53.113529+07:00. Baseline and PR #92 readback: 2026-11-27T18:20:33+07:00. Lab 7 merged into main and automated deployment passed. Cloud Run and a pre-existing response were verified. The live API check passed. B’s final metrics and PDF review are pending. This PDF covers Lab 7.
+Historical test and metrics snapshot: 2026-11-25T19:50:53.113529+07:00. Baseline and PR #92 readback: 2026-11-27T18:20:33+07:00. Lab 7 merged into main and automated deployment passed. Cloud Run and a pre-existing response were verified. The live API check passed. The report includes B’s reviewed metrics. This PDF covers Lab 7.
 
 | Student | ID | GitHub | Actual role at this snapshot |
 |---|---|---|---|
-| Bannasorn Thongkorn | 67070503420 | Punge089 | Contract/test/implementation/report driver; reviewed and merged B's interim metrics PR #100 |
-| Papangkorn Jitvoottikrai | 67070503421 | book6349 | Reviewed the contract before tests; authored metrics/readiness/retrospective; approved and merged #92; final PDF review pending |
+| Bannasorn Thongkorn | 67070503420 | Punge089 | Contract, implementation, live checks and report; reviewed and merged B’s final metrics PR #148 |
+| Papangkorn Jitvoottikrai | 67070503421 | book6349 | Reviewed the contract; authored metrics, readiness and retrospective; approved and merged #92 and release #143 |
 
-Theme 10: university course feedback. Repository: https://github.com/Punge089/classpulse. Due 29 November 2026, 23:59 Asia/Bangkok. Final PDF submission is pending.
+Theme 10: university course feedback. Repository: https://github.com/Punge089/classpulse. Due 29 November 2026, 23:59 Asia/Bangkok. PDF review is tracked in PR #104. The LEB2 receipt records submission.
 
 ## Navigation and version map
 
@@ -768,15 +768,15 @@ Survey 30, question 68; original publication 28 Nov 2026 01:58:55 ICT; closed 28
 
 ## C1 - Five dated definitions and values (L7-C01)
 
-Scope: ClassPulse only. B authored the definitions/historical snapshot in Issue #89/PR #100, captured18:06:58 and refreshed18:41:29Bangkok25 Nov. A independently reconciled26/26 underlying rows and assembled this report; A updated M3 from the PR #92 integration run and M4 from the Lab 6 defect record. M5 retains the historical observation window. B's final report refresh/review remains required.
+Scope: ClassPulse only. B’s 28 November 02:11 ICT metrics refresh is from Issue #89, PR #148, reviewed by A and merged as ac630fb4a7e465a5410beb2cccb24f91255d8cd0. M1 and M2 remain dated Sprint 1 counts. A verified their 26 source rows and both live evidence hashes.
 
 | Metric | Definition / window | Value / evidence |
 |---|---|---|
 | M1 completed original parent Issues | Issues1-11 closed by8 NovBangkok /11 explicitly selected parent Issues | 11/11 (100%); embedded11 ID/date rows in C2; B snapshot |
 | M2 original Sprint 1 staging integration | Selected PR #12-26 merged into sprint-1-staging during5-8 NovBangkok /15 selected PRs; excludes main releases | 15/15 (100%); embedded15 ID/base/date rows in C2 |
-| M3 current named automated suite | server npm test on PR #92 test merge 3b76494e3defb8e8f6280f22d63eada833d50f9d, CI run 45645429150 on 25 Nov | 219/219 passed, 0 failed, 0 skipped; L7-B08. Client and browser each passed 10/10 in the same run |
-| M4 independent UAT defect disposition | Recorded independent disposition of Lab 6 exercise defect CP-EX-F01 as of the 27 Nov 01:35:39 ICT decision | 1/1 recorded exercise defects resolved: CP-EX-F01 Minor, corrected and independently verified (5/5 Cloud subcases); L7-A01 and L7-D01. Lab 7 deployed product disposition pending |
-| M5 historical branch CI run outcomes | CI and Docker; only feature/87-lab7-survey-reopening; 2026-11-25T00:00:00Z through 2026-11-25T12:50:53.113529+00:00; paginated to completion | 11 success / 4 failure / 0 cancelled / 0 other; 15 total selected runs. Every ID/head/outcome embedded in C2; intentional RED failures remain counted |
+| M3 named suites on the release | Main 8316f270cb11d47c75f848de3f3d40acefbe8def; deploy run 46050688714, 28 Nov ICT | 307/307 passed: server 272, client 23, browser 12. 0 failed/skipped; both builds and Docker. See B6 |
+| M4 independent UAT defect disposition | Lab 7 disposition remains PENDING at the 28 Nov readback. Historical Lab 6 comparator: 27 Nov 01:35:39 ICT | 1/1 recorded exercise defects resolved in Lab 6: CP-EX-F01, Minor, independently verified (5/5 Cloud subcases). Lab 7 developer API checks 14/14 are separate; no Lab 7 UAT defect count claimed |
+| M5 outcome of the release workflow | The two jobs in main deploy run 46050688714 for SHA 8316f270cb11d47c75f848de3f3d40acefbe8def | 2/2 jobs succeeded: test-and-docker and deploy. Production migration/update and automated read-only smoke passed. Earlier branch CI stays in C2 |
 
 ## C2 - Embedded underlying sources (L7-C02)
 
@@ -818,7 +818,7 @@ The following exact compact lists are B's dated source rows; A's independent rea
 | #25 | sprint-1-staging | 2026-11-08 09:18:56 |
 | #26 | sprint-1-staging | 2026-11-08 13:50:05 |
 
-M5 complete scoped source list, captured2026-11-25T12:50:53.113529+00:00:
+Historical feature-branch CI, 2026-11-25T00:00:00Z through 2026-11-25T12:50:53.113529+00:00, paginated: 11 success / 4 failure / 0 cancelled / 0 other (15 total). Intentional RED is retained.
 
 | Run ID | Full head | Actual state / outcome | Created at UTC |
 |---|---|---|---|
@@ -838,30 +838,30 @@ M5 complete scoped source list, captured2026-11-25T12:50:53.113529+00:00:
 | 45612126900 | `3457ff7333d7f25cc452e3a37338e2a19c51c8b8` | completed / success | 2026-11-25T12:16:09Z |
 | 45613368930 | `45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8` | completed / success | 2026-11-25T12:23:56Z |
 
-M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population is the single numbered exercise defect. A records B's metric definitions and this readback in the report. B's interim PR #114 merged into staging as 7d543a5de2e4b358308987e03223f9180b42264a on 27 Nov 2026 19:33:30 ICT. CI 45998174147 attempt 1 timed out on TEST-179 and skipped Docker and Node cleanup. Attempt 2 passed 239 server, 16 client and 11 browser tests with 0 failures or skips on the same tree. This is staging evidence. B owns the final deployed-scope metrics and readiness refresh.
+M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population is the single numbered exercise defect. A records B's metric definitions and this readback in the report. B's interim PR #114 merged into staging as 7d543a5de2e4b358308987e03223f9180b42264a on 27 Nov 2026 19:33:30 ICT. CI 45998174147 attempt 1 timed out on TEST-179 and skipped Docker and Node cleanup. Attempt 2 passed 239 server, 16 client and 11 browser tests with 0 failures or skips on the same tree. This is staging evidence. The reviewed final metrics are in PR #148; see C1.
 
 ## C3 - Interpretation and concrete next action (L7-C03)
 
-PR #92 entered staging with reviewer approval and passing regression, and the scoped Lab 6 defect is verified fixed. The reviewed main release passed automated smoke and the scoped live reopen and retention checks on one serving revision. A recorded the results and B will reconcile final metrics and readiness against that release.
+The exact main release passed 307 automated tests, and the deploy workflow completed both jobs, migration/update and read-only smoke. A's 14/14 live API observations on the serving revision covered the changed reopen path and preserved answers, duplicate protection and ownership denial. These are developer-operated checks, not independent course UAT. The independent UAT defect disposition remains pending, so the overall report remains NOT READY until B reviews the exact final PDF and the human submits it.
 
-Actual word count: 53, maximum 100. No issue/PR/test-count target is invented to improve the metric.
+Actual word count: 75, maximum 100. No issue/PR/test-count target is invented to improve the metric.
 
 # Part D - Release readiness and retrospective (10)
 
 ## D1 - Maintained-scope readiness (L7-D01)
 
-**NOT READY.** The scope is maintained Sprint 1 including controlled reopening and preserved previously accepted behavior, not the entire three-sprint product.
+**NOT READY at the 28 November readiness review.** The maintained Sprint 1 scope, including controlled reopening and preserved behavior, has verified deployment checks. Independent Lab 7 UAT defect disposition is unrecorded. The exact PDF review and LEB2 receipt are tracked separately.
 
 | Readiness item | Evidence / status | Owner / next action |
 |---|---|---|
 | Accepted baseline and submitted/deployed mapping | Lab 6 CP-FIX-001 accepted by D; C acknowledged. Lab 7 main, serving revision, traffic and scoped live API checks verified | A verified Cloud Run revision and image; B reviews the evidence |
 | Automated rule/access/data/UI/browser results | PR #92 integrated tree: 219 server, 10 client, 10 browser passed, 0 failed, 0 skipped. Primary, expanded and UI RED retained | See B6 for the separate 307-test release CI |
-| Defects by severity/status | CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001; Lab 7 deployed disposition PENDING | B refreshes defect/status inventory after deployed checks |
+| Defects by severity/status | CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001; Independent Lab 7 UAT disposition PENDING | Keep A’s developer checks separate from independent UAT |
 | Technical debt | Two observed engineering risks listed below, distinct from defects and incomplete release work | A scopes later reviewed fixes/measurement |
-| Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; candidate production configuration/credential review PENDING | A/B inspect exact release; human manages credentials/IAM |
+| Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; Deploy configuration validation and Workload Identity sign-in passed | Human manages credentials/IAM; no separate secrets audit claimed |
 | Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | B checks report/source; final README/release setup verification remains open |
 | Review/integration/deployment/smoke | B approved and merged #92 into staging as e6043a9843eaeebaa63464aa19e5e8d1e503996a; main, automated smoke and deployed changed/preserved API checks verified | B independently reviews A’s scoped deployed evidence |
-| PDF and LEB2 | Working draft; final PDF pagination/page review/hash and upload receipt PENDING | A assembles/renders; B reviews exact final PDF; human submits separately |
+| PDF and LEB2 | Final PDF review and upload receipt tracked separately | A assembles/renders; B reviews exact final PDF; human submits separately |
 
 ## D2 - Debt, observed failures and limitations (L7-D02)
 
@@ -870,27 +870,27 @@ Actual word count: 53, maximum 100. No issue/PR/test-count target is invented to
 | Default browser/local server configuration assumes3000/5173 and can reuse a local server outsideCI | Current Playwright/Vite source; parallel local work requires manual instance/port isolation. This report used disposable CI with reuse disabled | Medium; A to scope configurable isolated local runner before using shared-machine browser tests; current local DB remains untouched |
 | Pinned upload-artifact v4 runtime warning | Actual CI annotates Node20 target forced onto Node24; upload succeeded, so this is maintenance risk rather than an observed functional failure | Medium; A to review a supported pinned action revision in a separate scoped change; rerun required CI |
 
-Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classpulse-00007-6t9) passed five Cloud subcases: untouched empty and whitespace titles both returned 400, a valid title and a 120-character title both returned 201 and survived reload, and a 121-character title returned 400. A separate local check retained three original exercise drafts. Historical M01 remains BLOCKED. The exact-source isolated TEST-04 and the retest support the scoped Lab 6 decision. The scoped Lab 7 deployed API cases passed. Expected old-code primary/expanded/UI RED and skipped downstream pipeline steps are retained in Part B. Source typecheck/parser/whitespace fixes were tooling errors, not fabricated product RED. Production migration and scoped persistence checks passed.
+Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classpulse-00007-6t9) passed five Cloud subcases: empty and whitespace titles returned 400; valid and 120-character titles returned 201 and survived reload; a 121-character title returned 400. Local readback retained three drafts. Historical M01 remains BLOCKED. Isolated TEST-04 and this retest support the Lab 6 decision. Part B retains the intended old-code RED results and skipped pipeline steps separately from tooling errors. Lab 7 production migration and scoped persistence passed.
 
 ## D3 - Three brief retrospective answers (L7-D03)
 
-- **Helped:** The committed old/new contract and B's actual C3 preceded tests. Asserting HTTP200 before future DTO access made the old404 a meaningful RED and kept setup errors separate.
-- **Hurt:** Shared append-only AI declarations produced real staging conflicts, and the first titled staging merge on B's metrics branch had only one parent. Actual ancestry checks exposed the unresolved integration; a later real two-parent merge preserved history and restored CI.
-- **Change for final release:** A will integrate reviewed shared documentation before requesting the final code-head review, record runner UTC versus Bangkok explicitly, and pin final main/deployed/PDF hashes. B will recheck the actual accepted candidate and refresh metrics instead of carrying an old green snapshot forward.
+- **Helped:** Keeping the release head, deploy run, revision, traffic, migration result and live check IDs in one dated evidence record made the 307-test CI, 14/14 developer API observations and the still-pending independent UAT disposition easy to distinguish.
+- **Hurt:** Final metrics could not be reconciled from the earlier dated snapshot alone; the live receipt and release/deploy evidence arrived after that snapshot, while the report PDF was already being assembled. That required a separate refresh before final PDF review.
+- **Change next time:** Pin the exact release SHA and gather the sanitized deploy and selected-check receipts before assembling the final PDF; keep developer-operated checks distinct from independent UAT and reserve a fresh exact-hash review for the final PDF.
 
 ## D4 - Contributions, AI use and final gaps
 
 | Person | Completed, evidenced work | Not claimed |
 |---|---|---|
-| A / Punge089 | Issue #87 contracts/specs; primary/expanded RED; backend/UI/atomic audit; unit/fault/migration/browser regressions; CI/artifacts; reviewed/merged B100; report assembly and evidence readback | Own PR approval/merge, final Lab 6 acceptance, production migration/deployment, final PDF acceptance/submission |
-| B / book6349 | C3 on 8017c91; authored metrics/readiness/retrospective; exact-head PR #92 review, approval and staging merge | Lab 7 final report/PDF approval and deployed checks pending |
+| A / Punge089 | Issue #87 contracts/specs; primary/expanded RED; backend/UI/atomic audit; unit/fault/migration/browser regressions; CI/artifacts; reviewed and merged B’s metrics including #148; production API and report assembly | Own PR approval/merge, final Lab 6 acceptance, production migration/deployment, final PDF acceptance/submission |
+| B / book6349 | C3 on 8017c91; authored metrics/readiness/retrospective; exact-head PR #92 review, approval and staging merge | A performed the deployed API check; PDF approval is recorded separately |
 
-A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B completed implementation review; the final report review remains open.
+A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B reviewed implementation, approved the release, and supplied the final metrics. PDF review and submission are tracked separately.
 
-Final gates: B metrics and readiness refresh, A final PDF rendering and B exact-hash review, and human Lab 7 LEB2 upload/receipt.
+Submission record: PR #104 tracks code review, CI and B’s review of the exact PDF hash. The human owner uploads those reviewed bytes in LEB2 and retains the receipt.
 
 ## Reproducibility and provenance
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` re-reads the historical Git/GitHub sources at the pinned cutoff. The later acceptance and staging readback uses its own retained record. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
 
-Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and deploy receipt. v0.6 adds Cloud Run and retained-response evidence. v0.7 adds the tested live reopen and preservation outcomes.
+Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and deploy receipt. v0.6 adds Cloud Run and retained-response evidence. v0.7 adds the tested live reopen and preservation outcomes. v1.0 incorporates B’s reviewed final metrics, readiness and retrospective.

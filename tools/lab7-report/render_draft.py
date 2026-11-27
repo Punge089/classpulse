@@ -82,7 +82,7 @@ def styles():
 
 class DraftDoc(BaseDocTemplate):
     def __init__(self, path):
-        super().__init__(str(path), pagesize=A4, leftMargin=MARGIN, rightMargin=MARGIN, topMargin=53, bottomMargin=46, title="ClassPulse Lab7 - working draft, NOT READY", author="Bannasorn Thongkorn and Papangkorn Jitvoottikrai")
+        super().__init__(str(path), pagesize=A4, leftMargin=MARGIN, rightMargin=MARGIN, topMargin=53, bottomMargin=46, title="ClassPulse - Lab 7 maintenance report", author="Bannasorn Thongkorn and Papangkorn Jitvoottikrai")
         self.parts, self.headings = {}, []
         for name, size in [("portrait", A4), ("wide", WIDE)]:
             frame = Frame(MARGIN, 46, size[0] - 2 * MARGIN, size[1] - 99, leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
@@ -95,9 +95,9 @@ class DraftDoc(BaseDocTemplate):
         canvas.setFont("Bold", 8); canvas.setFillColor(NAVY)
         canvas.drawString(MARGIN, height - 27, "ClassPulse / LAB 7 MAINTENANCE")
         canvas.setFont("Body", 7.5)
-        canvas.drawRightString(width - MARGIN, height - 27, "Working draft v0.7 / 28 Nov 2026")
+        canvas.drawRightString(width - MARGIN, height - 27, "Version 1.0 / 28 Nov 2026")
         canvas.setFillColor(colors.HexColor("#a62f27")); canvas.setFont("Bold", 7.6)
-        canvas.drawString(MARGIN, 26, "WORKING DRAFT - NOT READY FOR SUBMISSION")
+        canvas.drawString(MARGIN, 26, "CLASS PULSE - LAB 7")
         canvas.setFillColor(INK); canvas.setFont("Body", 7.5)
         canvas.drawRightString(width - MARGIN, 26, f"Page {doc.page}"); canvas.restoreState()
 
@@ -188,7 +188,7 @@ def story(text, parts, total):
         if value.startswith("> "): result.append(Paragraph(inline(value[2:]), st["quote"]))
         elif value.startswith("- "): result.append(Paragraph("&#8226; " + inline(value[2:]), st["body"]))
         else:
-            p = Paragraph(inline(value), st["draft"] if "NOT READY FOR SUBMISSION" in value else st["body"])
+            p = Paragraph(inline(value), st["draft"] if "Version 1.0 - Lab 7 maintenance report" in value else st["body"])
             look = i
             while look < len(lines) and not lines[look].strip(): look += 1
             if look < len(lines) and lines[look].startswith("|"): p.keepWithNext = True
@@ -210,8 +210,8 @@ def main():
     else: raise RuntimeError("Part navigation failed to stabilize")
     reader = PdfReader(OUTPUT); assert len(reader.pages) == count
     text = "\n".join(p.extract_text() or "" for p in reader.pages)
-    for required in ["NOT READY FOR SUBMISSION", "Part A -", "Part B -", "Part C -", "Part D -", "expected 404 to be 200", "219 passed", "10 passed", "67070503420", "67070503421"]: assert required in text, required
-    metadata = {"artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf", "sha256": hashlib.sha256(OUTPUT.read_bytes()).hexdigest(), "sourceSha256UTF8LF": hashlib.sha256(source.encode("utf-8")).hexdigest(), "pages": count, "partStartPages": parts, "headings": doc.headings, "status": "WORKING DRAFT / NOT READY; no B final PDF approval or submission", "rendering": "embedded Arial/Consolas/Segoe Symbol; A4 text and A3 landscape original evidence figures; visible draft footer each page; stable navigation", "displayNormalization": "visual line wrapping; typographic dashes/decorative rules rendered as ASCII hyphens; BOM/variation selectors hidden for font display only; input bytes unchanged", "visualQA": "PENDING all-page rendered inspection"}
+    for required in ["Version 1.0 - Lab 7 maintenance report", "Part A -", "Part B -", "Part C -", "Part D -", "expected 404 to be 200", "219 passed", "10 passed", "67070503420", "67070503421"]: assert required in text, required
+    metadata = {"artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf", "sha256": hashlib.sha256(OUTPUT.read_bytes()).hexdigest(), "sourceSha256UTF8LF": hashlib.sha256(source.encode("utf-8")).hexdigest(), "pages": count, "partStartPages": parts, "headings": doc.headings, "status": "Version 1.0 candidate; confirm exact-hash approval in PR #104", "rendering": "embedded Arial/Consolas/Segoe Symbol; A4 text and A3 landscape original evidence figures; report footer each page; stable navigation", "displayNormalization": "visual line wrapping; typographic dashes/decorative rules rendered as ASCII hyphens; BOM/variation selectors hidden for font display only; input bytes unchanged", "visualQA": "PENDING all-page rendered inspection"}
     (ROOT / "autopilot/pdf-draft-render.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: metadata[k] for k in ["artifact", "sha256", "pages", "partStartPages", "visualQA"]}))
 

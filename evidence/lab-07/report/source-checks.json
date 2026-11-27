@@ -1,8 +1,8 @@
 {
-  "passed": 84,
+  "passed": 92,
   "failed": 0,
   "skipped": 0,
-  "reportSha256": "90079386d242f6bf09906c159a68468e8ec36cffc14836deb0a0badc4569f3db",
+  "reportSha256": "11e38a35eacb2c8b203bd2f953f2c1e8afb878e06cdf11c6d5c36a7062a13a32",
   "reportHashEncoding": "UTF8/LF canonical source, not a final PDF hash",
   "checks": [
     "input SHA256: inputs/contract-before-code.md",
@@ -46,7 +46,12 @@
     "input SHA256: inputs/nov28-main-release.json",
     "input SHA256: inputs/nov28-live-readback.json",
     "input SHA256: inputs/nov28-live-reopen.json",
-    "unambiguous working-draft state",
+    "input SHA256: inputs/b-final-metrics.md",
+    "input SHA256: inputs/b-final-readiness.md",
+    "input SHA256: inputs/b-final-retrospective.md",
+    "input SHA256: inputs/b-final-production-refresh.md",
+    "input SHA256: inputs/nov28-final-metrics-review.json",
+    "report version and review record are explicit",
     "all four separate assessed parts",
     "all12 stable acceptance IDs",
     "all15 complete reviewed STS designs",
@@ -88,7 +93,10 @@
     "three synthetic sessions logged out",
     "no falsely finalized PDF",
     "offline source rebuild deterministic in canonical UTF8/LF",
+    "final metrics and review source identified",
+    "final release values and separate UAT status",
+    "reviewed retrospective and interpretation carried into the PDF source",
     "git diff whitespace"
   ],
-  "status": "source-draft check only; final PDF/release not verified"
+  "status": "v1.0 report source checks; peer PDF review tracked separately"
 }
