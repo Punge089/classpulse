@@ -190,3 +190,48 @@ test("TEST-285 staged F-06 draft editor fits 375px and preserves save and cancel
   await page.getByRole("link", { name: "Edit questions" }).click();
   await expect(prompt).toHaveValue(saved);
 });
+
+test("TEST-285 mobile can read an aggregate and a saved history detail", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await signIn(page, "ann.lee@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/owner$/);
+  const title = "Mobile survey history and summary for the practical assessment";
+  const prompt = "How clearly did the practical assessment and written feedback explain the next steps?";
+  await page.getByRole("link", { name: "New survey" }).click();
+  await page.getByLabel("Course", { exact: true }).selectOption({ label: "CPE334 — Software Engineering" });
+  await page.getByLabel("Title", { exact: true }).fill(title);
+  await page.getByLabel("Question 1 text").fill(prompt);
+  await page.getByRole("button", { name: "Create survey" }).click();
+  await expect(page).toHaveURL(/\/owner\/surveys\/\d+$/);
+  const ownerDetail = new URL(page.url()).pathname;
+  const surveyId = ownerDetail.split("/").at(-1);
+  await page.getByRole("button", { name: "Publish" }).click();
+  await expect(page.getByText("Published", { exact: true })).toBeVisible();
+  await page.goto(ownerDetail + "/summary");
+  await expectWithinViewport(page, [page.getByRole("heading", { name: "Survey summary" }), page.getByText("No responses yet")]);
+
+  await page.getByRole("button", { name: "Logout" }).click();
+  await expect(page).toHaveURL(/\/login$/);
+  await signIn(page, "student1@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/surveys$/);
+  await page.goto("/surveys/" + surveyId);
+  await page.getByLabel("Rating 4 of 5").locator("xpath=..").click();
+  await page.getByRole("button", { name: "Submit", exact: true }).click();
+  await expect(page).toHaveURL(/\/responses\/\d+$/);
+  await page.getByRole("link", { name: "My responses", exact: true }).click();
+  const saved = page.getByRole("link", { name: title, exact: true });
+  await expectWithinViewport(page, [saved]);
+  await saved.click();
+  await expect(page).toHaveURL(/\/my-responses\/\d+$/);
+  await expectWithinViewport(page, [page.getByRole("heading", { name: "Saved response" }), page.getByText(prompt, { exact: true })]);
+  await page.screenshot({ path: testInfo.outputPath("mobile-identified-history.png"), fullPage: true });
+
+  await page.getByRole("button", { name: "Logout" }).click();
+  await expect(page).toHaveURL(/\/login$/);
+  await signIn(page, "ann.lee@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/owner$/);
+  await page.goto(ownerDetail + "/summary");
+  await expectWithinViewport(page, [page.getByLabel("Response count: 1"), page.getByRole("heading", { name: prompt })]);
+  await expect(page.getByText("4.00", { exact: true })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath("mobile-owner-summary.png"), fullPage: true });
+});
