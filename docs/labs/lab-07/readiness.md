@@ -58,3 +58,23 @@ TEST-111's separate historical-data check passed in disposable CI run 4560991142
 | Readiness | **NOT READY.** Passing exact-head CI does not satisfy the missing current-staging integration, B review, accepted-baseline/UAT, migration, release, or deployment evidence. |
 
 This was a remote check on the stated commit; B did not run local application tests, UAT, a live migration, release, or deployment during this readback. Lab 7 remains separate from D2; no Lab 6 files or live data were changed.
+
+## Final release readiness refresh - 28 November 2026, 02:11 Asia/Bangkok
+
+This is a dated status refresh using main commit 8316f270cb11d47c75f848de3f3d40acefbe8def and the evidence identified in METRIC-REFRESH-2026-11-28. **Overall: NOT READY for submission; the release is deployed, but final report acceptance and human submission are pending.**
+
+| Gate | Current evidence and status |
+|---|---|
+| Accepted baseline | D recorded acceptance of CP-FIX-001 / main bee0d122 on 27 November at 01:35:39 ICT; C's acknowledgment is separately recorded in the report sources. This is the accepted Lab 6 baseline, distinct from the immutable original Sprint 1 tag. |
+| Lab 7 reviewed release | PR #143 was approved by B on exact head 2f99a06 against main bee0d122, then merged with merge commit 8316f270cb11d47c75f848de3f3d40acefbe8def. The merge preserves both parents and the candidate tree. |
+| Automated tests and failures/skips | On main SHA 8316f27, deploy run 46050688714 passed server 272, client 23 and browser 12 tests: 307 passed, 0 failed, 0 skipped. Server/client builds and Docker passed. Historical intentional RED and any earlier failures remain separately documented; none are erased by this green run. |
+| Production deployment and migration | Deploy run 46050688714 completed successfully. A's sanitized Cloud Run readback reports revision classpulse-00008-qlw at 100% traffic before and after; published image digest sha256:7acc661c6f49606a63ad1c536b5657fe46ca72fa2e99c4a139876cdd867ed389 maps to platform manifest sha256:60c23699db69a6badb92f50d638fed23885498d12b9e2e7f9a0d6e3a34ab2b0a. Production job classpulse-migrate-62khg applied migration 20261125110000_survey_lifecycle_audit, 1/1 tasks succeeded, exit code 0. Automated read-only smoke paths /api/health, /api/ready, /, and /api/auth/me passed. |
+| Preserved prior data | A's read-only legacy sample readback found Lab 6 survey 26 / response 15, two answers, original choice and rating intact, HTTP 200. It is one sample and does not imply every historical record was inspected. |
+| Changed and preserved live API checks | A's developer-operated check on synthetic survey 30 passed 14/14 observations: close/reopen retained first publishedAt, moved lifecycle version 2 to 3, and returned a reasoned REOPEN event; response 17/rating 4 and summary count 1/average 4 stayed unchanged; duplicate returned 409 ALREADY_RESPONDED; a different lecturer received 404 for read and reopen; three synthetic sessions logged out with 204. This is not an independent UAT claim. |
+| Independent UAT and defects | PENDING independent UAT disposition. Do not claim zero UAT defects from the 14/14 developer-operated API checks. |
+| Technical debt | The reviewed debt register/status remains as documented in the report sources; this refresh does not reclassify debt as defects or claim no debt. |
+| Configuration and secrets | The deploy workflow's required configuration validation and Workload Identity authentication succeeded. No secret values were copied into the evidence or this refresh; no separate secrets audit is claimed. |
+| Report and setup documentation | A reports 84 source checks passed, 0 failed/skipped, 30 PDF pages structurally checked, and documentation CI run 46053752670 passed on PR #104 head b75f410. The artifact is still a WORKING DRAFT; B's exact-hash PDF review is pending. |
+| Human submission | No LEB2 upload or receipt exists yet. Human submission remains pending. |
+
+The release/deploy gates above are supported by the specific run and sanitized observations; they do not convert the independent UAT gate or the final PDF review into complete. Overall readiness remains **NOT READY**.
