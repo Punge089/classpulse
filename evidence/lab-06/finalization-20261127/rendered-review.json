@@ -1,11 +1,11 @@
 {
-  "pdfSha256": "f4739f93379dd4a5db7512236820a595f6ee4042e5984b29d5fda08b07aeedb1",
-  "pages": 76,
-  "artifactChecksPassed": 25,
+  "pdfSha256": "382516679aadd7e805be6306d8ee446d666f447cc88ac12b44dcf0e94ce51585",
+  "pages": 77,
+  "artifactChecksPassed": 26,
   "artifactChecksFailed": 0,
-  "visualReview": "Rendered all77pages before final TOC tightening; inspected every contact-sheet layout plus full historical61-63, issued-decision prefacing, observation table and B-review pages. Re-rendered all76final pages and inspected finalTOC2/PartA3/Historical61/table71/Breview76. Same content layout elsewhere shifted one page; no clipping/overlap or unreadable body glyph observed.",
+  "visualReview": "Rendered all 77 final pages. Inspected all three contact sheets and full pages 1,4,11,76,77 for the new owner acknowledgment, date/bounded receipt time, current decision and revised-file review distinction. Historical appendix labels, seven-observation table and older evidence remain legible and clear of the footer. No clipping or overlap observed.",
   "tableFooterClearanceMm": 116.13192952473959,
-  "humanBFinalConfirmation": "PENDING; recommendation only",
+  "humanBFinalConfirmation": "Identity and product decision CONFIRMED dated 27Nov; receipt observed by16:18:31ICT; exact human-message instant unknown. New PDF/current-head review remains pending.",
   "noAppTestRerun": true,
   "intermediateDocumentationIssues": [
     "An initial relative-path editing helper ran from the nested worktree and found no local path; no file changed; corrected using explicit paths.",

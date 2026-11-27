@@ -41,7 +41,10 @@ verify('original SQL fixture rollback',run['schemaFixtureRollback']['equal'] and
 verify('expected injected failure not hidden','Attempt01' in text and 'Attempt02' in text and 'Attempt03' in text and 'Attempt04' in text)
 verify('later scope excluded','laterwithdrawaltests' in compact and 'outsideLab6Sprint1acceptanceassertions' in compact)
 verify('C D accepted record and historical live block distinct','01:35:39' in text and '02:01:21' in text and 'Historical' in text and 'BLOCKED' in text and 'bee0d122bf23410e3d2db69649ad5e44959b6cd8' in text)
-verify('B recommendation not forged human confirmation','HUMANBCONFIRMATIONPENDING' in compact and 'recommendconcurrence' in compact and 'directhumanBconfirmationpending' in re.sub(r'\s+','',manifest['workflowDecision']))
+owner_dir=FINAL/'received-b-owner-confirmation-20261127'
+owner=json.loads((owner_dir/'RECEIPT.json').read_text())
+verify('historical B recommendation distinct from later owner confirmation','HUMANBCONFIRMATIONPENDING' in compact and 'recommendconcurrence' in compact and manifest['bHumanDecisionConfirmed'] is True and 'supersedesthatidentity/decisionstate' in compact)
+verify('B owner identity decision and bounded time preserved',owner['humanIdentityConfirmed'] is True and owner['humanDecisionConfirmed'] is True and owner['fullName']=='Papangkorn Jitvoottikrai' and owner['studentId']=='67070503421' and owner['sourceCommit']==run['source'] and owner['acknowledgedDateBangkok']=='2026-11-27' and owner['humanMessageExactAt'] is None and manifest['bHumanMessageExactAt'] is None and owner['receiptObservedByBangkok']==manifest['bReceiptObservedByBangkok']=='2026-11-27T16:18:31+07:00' and '16:18:31' in text and 'upperboundisnottheacknowledgment' in compact and hashlib.sha256((owner_dir/owner['sourceFile']).read_bytes()).hexdigest()==owner['sourceSha256'])
 verify('original B reviews embedded','Bownerdecisiontime:PENDINGDIRECTHUMANCONFIRMATION' in compact and 'HUMANBIDENTITY/FINAL-FILECONFIRMATIONPENDING' in compact)
 verify('Product Team result acknowledgment embedded','acknowledgesallsevenpassingobservations' in compact and 'sixagreedisolatedWorkflowcasegroups' in compact)
 h=manifest['headings']
@@ -79,7 +82,7 @@ for name in provenance['files']:
         s=p.read_text(encoding='utf-8-sig')
         if 'postgresql://classpulse_app:' in s or 'postgresql://uat6_local:' in s or re.search(r'(?:cp_session|session)=[a-f0-9]{32,}',s):unsafe.append(name)
 verify('no actual credentials or raw cookies in curated text',not unsafe)
-report={'passed':sum(checks.values()),'failed':sum(not value for value in checks.values()),'checks':checks,'pdf':manifest['pdf'],'pdfSha256':manifest['pdfSha256'],'pages':manifest['pages'],'tablePage':table_pages[0].number+1 if table_pages else None,'tableBottomY':table_bottom,'footerClearanceMm':(table_pages[0].rect.height-table_bottom)*25.4/72 if table_bottom is not None else None,'humanBDecision':'PENDING','appTestsRerunByVerifier':False}
+report={'passed':sum(checks.values()),'failed':sum(not value for value in checks.values()),'checks':checks,'pdf':manifest['pdf'],'pdfSha256':manifest['pdfSha256'],'pages':manifest['pages'],'tablePage':table_pages[0].number+1 if table_pages else None,'tableBottomY':table_bottom,'footerClearanceMm':(table_pages[0].rect.height-table_bottom)*25.4/72 if table_bottom is not None else None,'humanBDecision':'CONFIRMED27Nov; receipt observed by16:18:31ICT; exact human-message time unknown','revisedPdfApproval':'PENDING fresh review; earlier review belongs to ca77/f4739f PDF','appTestsRerunByVerifier':False}
 (FINAL/'artifact-verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,indent=2))
 sys.exit(1 if report['failed'] else 0)

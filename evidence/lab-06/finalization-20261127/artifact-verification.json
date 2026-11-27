@@ -1,5 +1,5 @@
 {
-  "passed": 25,
+  "passed": 26,
   "failed": 0,
   "checks": {
     "PDF hash matches exact receipt": true,
@@ -17,7 +17,8 @@
     "expected injected failure not hidden": true,
     "later scope excluded": true,
     "C D accepted record and historical live block distinct": true,
-    "B recommendation not forged human confirmation": true,
+    "historical B recommendation distinct from later owner confirmation": true,
+    "B owner identity decision and bounded time preserved": true,
     "original B reviews embedded": true,
     "Product Team result acknowledgment embedded": true,
     "every historical H page explicitly labeled": true,
@@ -29,11 +30,12 @@
     "no actual credentials or raw cookies in curated text": true
   },
   "pdf": "docs/labs/lab-06/report/ClassPulse_Lab6_REVIEW_20261127.pdf",
-  "pdfSha256": "f4739f93379dd4a5db7512236820a595f6ee4042e5984b29d5fda08b07aeedb1",
-  "pages": 76,
+  "pdfSha256": "382516679aadd7e805be6306d8ee446d666f447cc88ac12b44dcf0e94ce51585",
+  "pages": 77,
   "tablePage": 71,
   "tableBottomY": 512.6968994140625,
   "footerClearanceMm": 116.13192952473959,
-  "humanBDecision": "PENDING",
+  "humanBDecision": "CONFIRMED27Nov; receipt observed by16:18:31ICT; exact human-message time unknown",
+  "revisedPdfApproval": "PENDING fresh review; earlier review belongs to ca77/f4739f PDF",
   "appTestsRerunByVerifier": false
 }

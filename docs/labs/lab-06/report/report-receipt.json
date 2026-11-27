@@ -2,8 +2,8 @@
   "draft": true,
   "notForSubmission": true,
   "pdf": "docs/labs/lab-06/report/ClassPulse_Lab6_REVIEW_20261127.pdf",
-  "pdfSha256": "f4739f93379dd4a5db7512236820a595f6ee4042e5984b29d5fda08b07aeedb1",
-  "pages": 76,
+  "pdfSha256": "382516679aadd7e805be6306d8ee446d666f447cc88ac12b44dcf0e94ce51585",
+  "pages": 77,
   "partPageRanges": {
     "A": "3-3",
     "B": "4-5",
@@ -33,8 +33,13 @@
   "classPulseCandidate": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
   "classPulseRevision": "classpulse-00007-6t9",
   "currentDecision": "D Accepted27Nov01:35:39; C evidence confirmation/acknowledgment02:01:21 received; historical liveM01BLOCKED retained",
-  "workflowDecision": "Student A Accepted with explicitly documented minor limitations on exact41a8fefa source; B-side Codex recommends concurrence, direct humanB confirmation pending",
-  "workflowRemainingCases": "Agreed selected special methods complete;06cNnotselected alternative; C/D artifact acknowledgment received. HumanBidentity/decision/time/conditions, revised final-file review and human submission pending",
+  "workflowDecision": "A Accepted with explicitly documented minor limitations on exact41a8fefa; human B identity and concurrence confirmed27Nov, receipt observed by16:18:31ICT, exact instant unknown",
+  "bHumanDecisionConfirmed": true,
+  "bAcknowledgedDateBangkok": "2026-11-27",
+  "bHumanMessageExactAt": null,
+  "bReceiptObservedByBangkok": "2026-11-27T16:18:31+07:00",
+  "bReviewedPreviousHead": "ca77cc1ba8508ca7492452d3b3e28552dc180fcc",
+  "workflowRemainingCases": "Selected methods complete;06cNnotselected; C/D acknowledgment and humanBidentity/decision concurrence received. Revised PDF/currenthead greenCI review, C/D relay and human submission remain",
   "newAppTestsRunDuringThisBuild": false,
   "retainedRuntimeEvidence": true,
   "workflowAActualSource": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
@@ -101,6 +106,8 @@
     "evidence/lab-06/finalization-20261127/workflow-special-setup-20261127/CD-PRODUCT-ACKNOWLEDGMENT.json": "535226e980faed0a67b597226a810d41f8f2f0ecc8881915141847ab0e1f737d",
     "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/ClassPulse_B_Workflow_decision_review_20261127.txt": "f32b3423536ed2eac4521a01ed793487d5727779e98c5a3b9e8bc64bbd24181d",
     "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/ClassPulse_B_PDF_comparison_20261127.txt": "baaba7bb63a527a051afc85812fc691b59b8f0b64b5f5065c25ab48c06604a59",
-    "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/RECEIPT.json": "9e10acd4f25d5a1a43d120dc6c33795bed1569339821dc94c20e83af9a9f1dc5"
+    "evidence/lab-06/finalization-20261127/received-b-final-review-20261127/RECEIPT.json": "9e10acd4f25d5a1a43d120dc6c33795bed1569339821dc94c20e83af9a9f1dc5",
+    "evidence/lab-06/finalization-20261127/received-b-owner-confirmation-20261127/ClassPulse_B_Workflow_confirmation_and_PR133_review_20261127.txt": "ba4ba344cc7021623ea8a82597f5f712ae67400b56a4f7f59435ce5f24ce16cd",
+    "evidence/lab-06/finalization-20261127/received-b-owner-confirmation-20261127/RECEIPT.json": "de303306d6bc1ae4d4cd10749da78ac03dc00e672530d7757f6d85c97aea1809"
   }
 }

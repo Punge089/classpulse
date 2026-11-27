@@ -491,6 +491,14 @@
       "sha256": "ebf283a094d890be5f027f37c014fdf809502d6504cdfc99b8cf1a4045ffe4e1",
       "originalLocalPath": "autopilot/work122/evidence/lab-06/corrected-retest-20261126/received-d/CP-RT-03-draft.png",
       "note": "Frozen baseline working-copy bytes including original newline format; source commit remains024ee302, no baseline document edit"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-owner-confirmation-20261127/ClassPulse_B_Workflow_confirmation_and_PR133_review_20261127.txt": {
+      "sha256": "ba4ba344cc7021623ea8a82597f5f712ae67400b56a4f7f59435ce5f24ce16cd",
+      "originalLocalPath": "C:\\Users\\MSII\\Downloads\\ClassPulse_B_Workflow_confirmation_and_PR133_review_20261127.txt"
+    },
+    "evidence/lab-06/finalization-20261127/received-b-owner-confirmation-20261127/RECEIPT.json": {
+      "sha256": "de303306d6bc1ae4d4cd10749da78ac03dc00e672530d7757f6d85c97aea1809",
+      "originalLocalPath": "A-created provenance receipt; exact human time unknown, upper bound preserved"
     }
   }
 }
