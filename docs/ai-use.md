@@ -278,3 +278,7 @@ After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report 
 ## Sprint 2 F-07 contract proposal — Student B, 27 November 2026
 
 B/book6349 used Codex GPT-6 Sol to draft the four-type F-07 contract for Issue #134 after reading the current staging schema, authoring/response/summary/history paths, F-06/F-09 handoff, SRS and D2 brief. B owns this proposal and A reviews it. The proposal separates Sprint 2 aggregate text counts from the later F-13 raw-text view. No F-07 tests, implementation, migration, runtime result or C3 acceptance are claimed in this contract work block.
+
+## F-07 independent owner-create RED — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to add two test-only TEST-140 cases at `server/tests/api/extendedQuestionTypes.test.ts`, covering persisted owner creation of TEXT and MULTI_CHOICE. The initial CI attempt exposed an unawaited synthetic-login helper; B corrected the test harness before accepting the RED. Current-staging CI 46045085095 then ran the server `npm test` suite with 272 passed and the two expected new-type assertions failing (400 received, 201 expected), zero skipped tests; downstream client, builds, browser and Docker steps were skipped. The test, output and run JSON were committed before implementation. No application/schema/migration code or local database was changed; local execution was unavailable in the isolated checkout.
