@@ -139,6 +139,13 @@ Student B/book6349 used Codex GPT-6 and the connected GitHub repository API to r
 On 25 November 2026, after A's two inline review comments on B's PR #100, B used Codex GPT-6 and GitHub API reads to compare the timestamped Issue #89 snapshot with PR #92 commits and GitHub Check Runs, then updated the metrics, readiness, snapshot and retrospective records. B did not rerun ClassPulse application tests; the current results cited are the actual GitHub Actions run metadata and retained output from A's branch. The existing isolated-worktree `git diff --check` result is documented with its commit/path provenance.
 
 
+## Sprint 2 F-06 contract preparation - Student A, 25 November 2026
+
+Under Issue #90, A's Codex GPT-6 prepared the draft-question editing feature SDS/UI/API/data/no-migration contract, AC-120..128 and TEST-120..131 before tests/code. The design uses atomic full replacement on an owner-owned draft, optimistic updatedAt and row-lock serialization against publish, preserving historical answers. Shared owner files wait for Lab 7 #87 and route registration follows B #88 integration. B C3 is pending; there are no new tests, implementation, runtime counts, approval, merge, cloud changes or release claimed.
+
+A's Codex GPT-6.1 Sol imported latest reviewed staging documentation into the isolated F06 contract branch, preserving all incoming Lab6/B metrics and both AI disclosures. No F06 test/application code was written; actual87 integration remains required before those Files can be edited.
+
+A's Codex GPT-6.1 Sol updated the F06 execution checkpoint after reading B's real C3 comment7159681538 and current Lab7 lifecycle source45f48cd. The already-reviewed F06 semantics remain unchanged; the serialized87-before-tests and F09-before-route-registration gates remain. Issue Files now names errors.ts solely for the pre-existing DRAFT_HAS_RESPONSES response discriminant, before any edit to that code. This is contract/inventory preparation only; no F06 test, product code, local database or runtime proof is claimed. A's separate B100 review/merge is documented in its review/merge records, not attributed to B execution.
 ## Lab 7 contract preparation - Student A, 25 November 2026
 
 Under Issue #87, A's Codex GPT-6 drafted controlled owner reopening with reason, optimistic lifecycle version and atomic durable audit; revised the relevant SRS/shared registry/feature/System SDS/F-03/traceability contract sections before new tests or application/schema changes. The source announcement removes individual TA approval, not B team review/C3. B has not yet agreed, reviewed, approved or merged this proposal. The Lab 6 accepted baseline and actual future RED/GREEN/release/deployed checks remain pending. No runtime test result or cloud operation is claimed.
@@ -221,9 +228,15 @@ Student B/book6349 used the connected GitHub account to verify A's review of mer
 
 A used Codex GPT-6.1 Terra to review B PR112 at 00e1764, independently checking its 68-word correction and scoped diff; A approved review6060170680 and merged as9bf820a after CI45639295078. A merged current staging into the Lab7 branch while preserving both disclosure histories and incoming B/Lab6 records. Final readiness and B's review remain pending.
 
+A used Codex GPT-6.1 Terra to review B F-09 contract v1.1 at 783f748: 20 AC and 20 STS, zero unmapped, with the requested ownership, cursor/query, unenrollment and client-state clarifications. A posted C3 on Issue88 after the review; no application tests were run for that document review. B merged Lab7 PR92 at e6043a9 after B review and CI. A imported that staging state into the F-06 worktree, retaining both AI histories and incoming Lab6/B files. F-06 implementation and RED remain pending.
+
+A used Codex GPT-6.1 Terra to expand F-06 preimplementation API tests in 35ab511 and retained actual CI45771490190 RED in 1acf4e9: 220 passed, 4 failed, 0 test skips; foreign-owner 404 also passed on the absent route and therefore did not yet prove enforcement. After retaining RED, A implemented the first scoped owner-only draft-replacement backend using the existing validation function and a transaction/row lock, adding the contracted error code and updatedAt DTO. No Lab6 exercise source or shared validation file was modified. Initial local server build could not find tsc before isolated worktree dependencies were installed; npm ci, Prisma client generation and server TypeScript build then passed. Runtime GREEN, additional boundary/race/UI tests, B review and release remain pending.
+
 ## Deliverable 2 F-09 contract preparation - Student B, 25 November 2026
 
 Student B (book6349) used Codex GPT-6 to draft the F-09 response-history contract for Issue #88 on `feature/88-d2-my-responses`, based on the current Issue, D2 plan, shared requirements, and read-only GitHub inspection of the existing response route and authentication/role middleware. The contract is a proposal awaiting A's C3; the enrollment-history policy question remains open for review. No tests, implementation, database, deployment, or application behavior changes were performed in this step. The connected GitHub profile is book6349. The local OneDrive checkout was readable for documents but Git denied access to the repository path, so no local Git diff or status check was available.
+
+A used Codex GPT-6 to prepare the unrouted F-06 editor in 1239b08 and merge current staging into the draft branch. A reviewed and merged B's F-09 PR119 at f46805f after isolated CI; its merge message mistakenly placed the AI credit on the prose line rather than as a recognized trailer, disclosed in Issue88 comment7188637259. F-06 interaction tests, integration and peer review remain pending.
 
 ## Lab 6 report consolidation and review fixes — Student A, 27 November 2026
 
@@ -236,6 +249,10 @@ A/Punge089 used Codex GPT-6 to append the received B owner-confirmation and ca77
 ## Lab 6 stable submission candidate — Student A, 27 November 2026
 
 At the user's explicit request to finish in one handoff, A/Punge089 used Codex GPT-6 under Issue132 to remove authored draft/not-for-submission presentation, retain the same measured evidence and genuine owner decisions, and keep actual current-file approval/merge/upload records separate. The receipt and verifier distinguish a complete submission candidate from an invented approval/upload. No PDF rebuild is required solely to mark a later review, merge or submission; B reviews the final exact head/hash/current CI once and humans can upload those identical bytes. All original B and C/D files, historic blocks and residual limits remain unchanged; no app test is added or weakened and no source/schema/main/cloud operation is performed.
+
+## Sprint 2 F-06 review preparation - Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 to merge staging 5fe00fd into the F-06 feature branch and resolve the disclosure conflict by preserving both histories. The branch merge changes no F-06 behavior or tests. Previous CI run 45856836256 covered c6e708e on the earlier staging base. CI on the integrated head and B's exact-head PR review are required for staging integration.
 
 ## Lab 7 Issue #89 current PR #92 and staging readback - Student B, 25 November 2026
 
