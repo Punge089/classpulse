@@ -66,3 +66,7 @@ export function validateBenchmarkTarget({ baseUrl, databaseUrl, approvedDatabase
 
   return app.origin;
 }
+
+export async function runSummaryRequests() {
+  throw new Error("Summary request sequence has not been implemented");
+}

@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { analyzeSummarySamples, validateBenchmarkTarget } from "../../../tools/performance/summary-benchmark.mjs";
+import { analyzeSummarySamples, runSummaryRequests, validateBenchmarkTarget } from "../../../tools/performance/summary-benchmark.mjs";
 
 const expectedSummary = { responseCount: 500, average: 3 };
 
@@ -96,4 +96,85 @@ test("TEST-283 rejects invalid configuration without exposing the private URL", 
   expect(() => validateBenchmarkTarget({ ...isolatedTarget, approvedDatabasePort: 0 })).toThrow(
     /^Benchmark database must be the approved loopback classpulse_test instance$/
   );
+});
+
+test("TEST-281 request sequence validates five warmups and records twenty sequential body timings", async () => {
+  let calls = 0;
+  let validations = 0;
+  let tick = 0;
+  let pending = false;
+  const result = await runSummaryRequests({
+    target: isolatedTarget,
+    surveyId: 42,
+    cookie: "cp_session=synthetic-test-session",
+    verifySummary: (body: unknown) => {
+      expect(pending).toBe(false);
+      validations += 1;
+      tick += 1000;
+      return matchesExpectedSummary(body);
+    },
+    now: () => tick,
+    request: async (url: string, init: RequestInit) => {
+      expect(pending).toBe(false);
+      pending = true;
+      calls += 1;
+      expect(url).toBe("http://127.0.0.1:3107/api/owner/surveys/42/summary");
+      expect(init.redirect).toBe("manual");
+      expect(new Headers(init.headers).get("cookie")).toBe("cp_session=synthetic-test-session");
+      tick += 2;
+      return {
+        status: 200,
+        text: async () => {
+          await Promise.resolve();
+          tick += calls;
+          pending = false;
+          return JSON.stringify(expectedSummary);
+        }
+      };
+    }
+  });
+  expect(calls).toBe(25);
+  expect(validations).toBe(25);
+  expect(result.samplesMs).toEqual(Array.from({ length: 20 }, (_, index) => index + 8));
+  expect(result.p95Ms).toBe(26);
+});
+
+test("TEST-281 request sequence fails on a bad warmup or transport error without retry or private output", async () => {
+  let calls = 0;
+  const setup = {
+    target: isolatedTarget,
+    surveyId: 42,
+    cookie: "cp_session=synthetic-test-session",
+    verifySummary: matchesExpectedSummary
+  };
+  await expect(runSummaryRequests({
+    ...setup,
+    request: async () => {
+      calls += 1;
+      return { status: 302, text: async () => "" };
+    }
+  })).rejects.toThrow(/^Warmup 1 did not return HTTP 200$/);
+  expect(calls).toBe(1);
+
+  calls = 0;
+  await expect(runSummaryRequests({
+    ...setup,
+    request: async () => {
+      calls += 1;
+      throw new Error("synthetic-test-session");
+    }
+  })).rejects.toThrow(/^Warmup 1 request or body read failed$/);
+  expect(calls).toBe(1);
+});
+
+test("TEST-281 refuses a non-loopback target before any request", async () => {
+  let calls = 0;
+  await expect(runSummaryRequests({
+    target: { ...isolatedTarget, baseUrl: "http://example.invalid" },
+    surveyId: 42,
+    cookie: "cp_session=synthetic-test-session",
+    verifySummary: matchesExpectedSummary,
+    request: async () => { calls += 1; }
+  })).rejects.toThrow(/^Benchmark app must use a loopback origin$/);
+  expect(calls).toBe(0);
 });
