@@ -1,7 +1,7 @@
 # F-07 — Extended question types
 
-**Issue:** #134 · **Version:** 1.0 proposal, 27 November 2026  
-**Driver:** Papangkorn Jitvoottikrai (Student B, `book6349`) · **C3 reviewer:** Bannasorn Thongkorn (Student A, `Punge089`)  
+**Issue:** #134 · **Version:** 1.0 proposal, 27 November 2026
+**Driver:** Papangkorn Jitvoottikrai (Student B, `book6349`) · **C3 reviewer:** Bannasorn Thongkorn (Student A, `Punge089`)
 **Requirements:** FR-11, BR-12; preserves BR-02, BR-04–10 and NFR-02/03/05/07/09. Depends on F-03/F-04/F-05, accepted F-09, and the F-06 draft editor before editing shared authoring files. No F-07 test or implementation is authorized before A's C3.
 
 ## 1. Baseline, outcome and boundary
