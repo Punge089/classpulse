@@ -158,7 +158,7 @@ surveyResponsesRouter.post("/:surveyId/responses", asyncRoute(async (req, res) =
             ...(answer.optionId === undefined ? {} : { optionId: answer.optionId }),
             ...(answer.textValue === undefined ? {} : { textValue: answer.textValue }),
             ...(answer.optionIds === undefined ? {} : {
-              selections: { create: answer.optionIds.map(optionId => ({ questionId: answer.questionId, optionId })) }
+              selections: { create: answer.optionIds.map(optionId => ({ optionId })) }
             })
           }))
         }

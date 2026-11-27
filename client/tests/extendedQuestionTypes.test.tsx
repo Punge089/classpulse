@@ -47,7 +47,8 @@ test("TEST-149 respondent submits text and a multi-choice selection without losi
       { id: 10, position: 1, prompt: "What helped?", type: "TEXT", required: true, options: [] },
       { id: 11, position: 2, prompt: "Which formats?", type: "MULTI_CHOICE", required: false, options: [
         { id: 21, position: 1, label: "Practice" }, { id: 22, position: 2, label: "Examples" }
-      ] }
+      ] },
+      { id: 12, position: 3, prompt: "Anything else?", type: "TEXT", required: false, options: [] }
     ] } })
     .mockRejectedValueOnce(new ApiClientError(400, "VALIDATION_ERROR", "Please correct the answers."))
     .mockResolvedValueOnce({ response: { id: 99 } });
@@ -57,6 +58,8 @@ test("TEST-149 respondent submits text and a multi-choice selection without losi
   </Routes></MemoryRouter>);
   await user.type(await screen.findByLabelText("What helped?"), "Practice examples");
   await user.click(screen.getByLabelText("Practice"));
+  await user.type(screen.getByLabelText("Anything else?"), "temporary");
+  await user.clear(screen.getByLabelText("Anything else?"));
   await user.click(screen.getByRole("button", { name: "Submit" }));
   expect(await screen.findByRole("alert")).toBeTruthy();
   expect((screen.getByLabelText("What helped?") as HTMLTextAreaElement).value).toBe("Practice examples");

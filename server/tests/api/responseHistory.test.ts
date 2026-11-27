@@ -218,8 +218,8 @@ describe("Sprint 2 F-09 response history API", () => {
     const response = await prisma.response.create({ data: { surveyId: survey.id, respondentId: f.student1.id } });
     await prisma.answer.create({ data: { responseId: response.id, questionId: text.id, textValue: "Helpful practice" } });
     await prisma.answer.create({ data: { responseId: response.id, questionId: multi.id, selections: { create: [
-      { questionId: multi.id, optionId: multi.options[2].id },
-      { questionId: multi.id, optionId: multi.options[0].id }
+      { optionId: multi.options[2].id },
+      { optionId: multi.options[0].id }
     ] } } });
     const student = await loginAs(app, "student1@classpulse.test");
     const detail = await student.get(`/api/responses/${response.id}`);

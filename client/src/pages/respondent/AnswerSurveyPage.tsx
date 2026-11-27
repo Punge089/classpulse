@@ -61,6 +61,7 @@ export function AnswerSurveyPage() {
     for (const question of survey.questions) {
       const answer = answers[question.id];
       if (answer === undefined) continue;
+      if (question.type === "TEXT" && !question.required && typeof answer === "string" && !answer.trim()) continue;
       if (question.type === "RATING") {
         payloadAnswers.push({ questionId: question.id, ratingValue: answer as number });
       } else if (question.type === "SINGLE_CHOICE") {

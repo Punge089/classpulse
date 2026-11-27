@@ -175,11 +175,11 @@ describe("F-05 owner survey summary", () => {
     const response2 = await prisma.response.create({ data: { surveyId: survey.id, respondentId: f.student2.id } });
     await prisma.answer.create({ data: { responseId: response1.id, questionId: textQuestion.id, textValue: "private answer" } });
     await prisma.answer.create({ data: { responseId: response1.id, questionId: multiQuestion.id, selections: { create: [
-      { questionId: multiQuestion.id, optionId: multiQuestion.options[0].id },
-      { questionId: multiQuestion.id, optionId: multiQuestion.options[2].id }
+      { optionId: multiQuestion.options[0].id },
+      { optionId: multiQuestion.options[2].id }
     ] } } });
     await prisma.answer.create({ data: { responseId: response2.id, questionId: multiQuestion.id, selections: { create: [
-      { questionId: multiQuestion.id, optionId: multiQuestion.options[2].id }
+      { optionId: multiQuestion.options[2].id }
     ] } } });
 
     const owner = await loginAs(app, "ann.lee@classpulse.test");
