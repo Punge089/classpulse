@@ -1,0 +1,19 @@
+{
+  "commit": "ab64818b9af74f5f1758095d9faeb86836513094",
+  "ciMergeCommit": "e218abbb5dc60245e11b696a1dd718fd0bfe02d7",
+  "workflowRun": 46056748884,
+  "command": "cd server && npm test",
+  "testFiles": 22,
+  "filesPassed": 19,
+  "filesFailed": 3,
+  "tests": 288,
+  "passed": 276,
+  "failed": 12,
+  "skipped": 0,
+  "phase": "test-only RED before implementation",
+  "expectedFailures": [
+    "2 response API acceptance/readback assertions",
+    "8 TEXT/MULTI_CHOICE validation assertions",
+    "2 summary shape assertions"
+  ]
+}

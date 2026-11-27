@@ -108,7 +108,7 @@ describe("F-07 TEST-147 text and multi-choice aggregate summaries", () => {
     ] as unknown as SummaryAnswer[];
     const result = summarize([text, multi], answers, 3);
     expect(result.questions[0]).toEqual({ questionId: 40, prompt: "What helped?", type: "TEXT", text: { answeredCount: 2 } });
-    expect(result.questions[1]).toEqual({ questionId: 41, prompt: "Which formats?", type: "MULTI_CHOICE", choice: { options: [
+    expect(result.questions[1]).toEqual({ questionId: 41, prompt: "Which formats?", type: "MULTI_CHOICE", multiChoice: { answeredCount: 2, options: [
       { optionId: 51, label: "Examples", count: 1 },
       { optionId: 52, label: "Discussion", count: 0 },
       { optionId: 53, label: "Practice", count: 2 }
@@ -121,6 +121,6 @@ describe("F-07 TEST-147 text and multi-choice aggregate summaries", () => {
     const multi = { ...choiceQuestion(61), type: "MULTI_CHOICE" } as SummaryQuestion;
     const result = summarize([text, multi], [], 0);
     expect(result.questions[0]).toMatchObject({ type: "TEXT", text: { answeredCount: 0 } });
-    expect(result.questions[1]).toMatchObject({ type: "MULTI_CHOICE", choice: { options: [{ count: 0 }, { count: 0 }] } });
+    expect(result.questions[1]).toMatchObject({ type: "MULTI_CHOICE", multiChoice: { answeredCount: 0, options: [{ count: 0 }, { count: 0 }] } });
   });
 });

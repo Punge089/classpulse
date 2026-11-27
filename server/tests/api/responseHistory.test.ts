@@ -209,6 +209,34 @@ describe("Sprint 2 F-09 response history API", () => {
     expect(result.body.response.answers.map((answer: { questionId: number }) => answer.questionId)).toEqual([first.id, second.id]);
   });
 
+  test("F-07 TEST-146 own history returns text and ordered selected options while the list stays metadata-only", async () => {
+    const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, questions: [
+      { prompt: "What helped?", type: "TEXT" },
+      { prompt: "Which formats?", type: "MULTI_CHOICE", options: ["Practice", "Examples", "Discussion"] }
+    ] });
+    const [text, multi] = survey.questions;
+    const response = await prisma.response.create({ data: { surveyId: survey.id, respondentId: f.student1.id } });
+    await prisma.answer.create({ data: { responseId: response.id, questionId: text.id, textValue: "Helpful practice" } });
+    await prisma.answer.create({ data: { responseId: response.id, questionId: multi.id, selections: { create: [
+      { questionId: multi.id, optionId: multi.options[2].id },
+      { questionId: multi.id, optionId: multi.options[0].id }
+    ] } } });
+    const student = await loginAs(app, "student1@classpulse.test");
+    const detail = await student.get(`/api/responses/${response.id}`);
+    expect(detail.status).toBe(200);
+    expect(detail.body.response.answers).toEqual([
+      expect.objectContaining({ questionId: text.id, type: "TEXT", textValue: "Helpful practice" }),
+      expect.objectContaining({ questionId: multi.id, type: "MULTI_CHOICE", selectedOptions: [
+        { optionId: multi.options[0].id, label: "Practice" }, { optionId: multi.options[2].id, label: "Discussion" }
+      ] })
+    ]);
+    const list = await student.get("/api/responses/mine");
+    expect(list.status).toBe(200);
+    expect(JSON.stringify(list.body)).not.toMatch(/Helpful practice|selectedOptions|textValue|optionId/);
+    const otherStudent = await loginAs(app, "student2@classpulse.test");
+    expect((await otherStudent.get(`/api/responses/${response.id}`)).status).toBe(404);
+  });
+
   test("TEST-176 foreign and missing detail IDs have the same public 404 shape", async () => {
     const foreign = await saved(f.student2);
     const student = await loginAs(app, "student1@classpulse.test");

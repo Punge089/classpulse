@@ -4,8 +4,8 @@ import { ApiClientError, apiFetch } from "../../api";
 import { PulseLine } from "../../components/pulse/PulseLine";
 import { RatingDots } from "../../components/pulse/RatingDots";
 
-type QuestionType = "RATING" | "SINGLE_CHOICE";
-type DraftAnswer = number | string;
+type QuestionType = "RATING" | "SINGLE_CHOICE" | "TEXT" | "MULTI_CHOICE";
+type DraftAnswer = number | string | number[];
 
 interface SurveyQuestion {
   id: number;
@@ -57,14 +57,18 @@ export function AnswerSurveyPage() {
     setSending(true);
     setError(null);
 
-    const payloadAnswers: Array<{ questionId: number; ratingValue?: number; optionId?: number }> = [];
+    const payloadAnswers: Array<{ questionId: number; ratingValue?: number; optionId?: number; textValue?: string; optionIds?: number[] }> = [];
     for (const question of survey.questions) {
       const answer = answers[question.id];
       if (answer === undefined) continue;
       if (question.type === "RATING") {
         payloadAnswers.push({ questionId: question.id, ratingValue: answer as number });
-      } else {
+      } else if (question.type === "SINGLE_CHOICE") {
         payloadAnswers.push({ questionId: question.id, optionId: answer as number });
+      } else if (question.type === "TEXT") {
+        payloadAnswers.push({ questionId: question.id, textValue: answer as string });
+      } else {
+        payloadAnswers.push({ questionId: question.id, optionIds: answer as number[] });
       }
     }
     const payload = { answers: payloadAnswers };
@@ -144,6 +148,18 @@ export function AnswerSurveyPage() {
                   <span>1 — Not at all</span><span>5 — Very much</span>
                 </div>
               </>
+            ) : question.type === "TEXT" ? (
+              <>
+                <textarea
+                  className="form-control" rows={4} maxLength={1000}
+                  aria-label={question.prompt} aria-describedby={`question-${question.id}-remaining`}
+                  value={typeof answers[question.id] === "string" ? answers[question.id] as string : ""}
+                  onChange={event => setAnswers(current => ({ ...current, [question.id]: event.target.value }))}
+                />
+                <div id={`question-${question.id}-remaining`} className="cp-muted small mt-1" aria-live="polite">
+                  {500 - Array.from(typeof answers[question.id] === "string" ? answers[question.id] as string : "").length} characters remaining (500 maximum)
+                </div>
+              </>
             ) : (
               <div className="d-grid gap-2">
                 {question.options.map(option => {
@@ -151,10 +167,16 @@ export function AnswerSurveyPage() {
                   return (
                     <div className="form-check" key={option.id}>
                       <input
-                        className="form-check-input" type="radio" id={inputId}
+                        className="form-check-input" type={question.type === "MULTI_CHOICE" ? "checkbox" : "radio"} id={inputId}
                         name={`question-${question.id}`} value={option.id}
-                        checked={answers[question.id] === option.id}
-                        onChange={() => setAnswers(current => ({ ...current, [question.id]: option.id }))}
+                        checked={question.type === "MULTI_CHOICE"
+                          ? Array.isArray(answers[question.id]) && (answers[question.id] as number[]).includes(option.id)
+                          : answers[question.id] === option.id}
+                        onChange={event => setAnswers(current => ({ ...current, [question.id]: question.type === "MULTI_CHOICE"
+                          ? event.target.checked
+                            ? [...(Array.isArray(current[question.id]) ? current[question.id] as number[] : []), option.id]
+                            : (Array.isArray(current[question.id]) ? current[question.id] as number[] : []).filter(id => id !== option.id)
+                          : option.id }))}
                       />
                       <label className="form-check-label" htmlFor={inputId}>{option.label}</label>
                     </div>

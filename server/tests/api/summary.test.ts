@@ -164,4 +164,39 @@ describe("F-05 owner survey summary", () => {
       expect(question).not.toHaveProperty("answers");
     }
   });
+
+  test("F-07 TEST-147 reports text and multi-choice counts without raw answers", async () => {
+    const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, questions: [
+      { prompt: "What helped?", type: "TEXT", required: false },
+      { prompt: "Which formats?", type: "MULTI_CHOICE", options: ["Practice", "Examples", "Discussion"] }
+    ] });
+    const [textQuestion, multiQuestion] = survey.questions;
+    const response1 = await prisma.response.create({ data: { surveyId: survey.id, respondentId: f.student1.id } });
+    const response2 = await prisma.response.create({ data: { surveyId: survey.id, respondentId: f.student2.id } });
+    await prisma.answer.create({ data: { responseId: response1.id, questionId: textQuestion.id, textValue: "private answer" } });
+    await prisma.answer.create({ data: { responseId: response1.id, questionId: multiQuestion.id, selections: { create: [
+      { questionId: multiQuestion.id, optionId: multiQuestion.options[0].id },
+      { questionId: multiQuestion.id, optionId: multiQuestion.options[2].id }
+    ] } } });
+    await prisma.answer.create({ data: { responseId: response2.id, questionId: multiQuestion.id, selections: { create: [
+      { questionId: multiQuestion.id, optionId: multiQuestion.options[2].id }
+    ] } } });
+
+    const owner = await loginAs(app, "ann.lee@classpulse.test");
+    const result = await owner.get(`/api/owner/surveys/${survey.id}/summary`);
+    expect(result.status).toBe(200);
+    expect(result.body.summary).toMatchObject({
+      responseCount: 2,
+      questions: [
+        { questionId: textQuestion.id, type: "TEXT", text: { answeredCount: 1 } },
+        { questionId: multiQuestion.id, type: "MULTI_CHOICE", multiChoice: { answeredCount: 2, options: [
+          { optionId: multiQuestion.options[0].id, label: "Practice", count: 1 },
+          { optionId: multiQuestion.options[1].id, label: "Examples", count: 0 },
+          { optionId: multiQuestion.options[2].id, label: "Discussion", count: 2 }
+        ] } }
+      ]
+    });
+    expect(JSON.stringify(result.body)).not.toContain("private answer");
+    expect(JSON.stringify(result.body)).not.toMatch(/respondentId|responseId|student1@classpulse.test/);
+  });
 });

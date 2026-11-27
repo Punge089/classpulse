@@ -4,7 +4,9 @@ export type SummaryQuestion = Pick<Question, "id" | "position" | "prompt" | "typ
   options: Array<Pick<QuestionOption, "id" | "position" | "label">>;
 };
 
-export type SummaryAnswer = Pick<Answer, "questionId" | "ratingValue" | "optionId">;
+export type SummaryAnswer = Pick<Answer, "questionId" | "ratingValue" | "optionId" | "textValue"> & {
+  optionIds?: number[];
+};
 
 type RatingSummary = {
   average: number | null;
@@ -13,7 +15,9 @@ type RatingSummary = {
 
 type QuestionSummary =
   | { questionId: number; prompt: string; type: "RATING"; rating: RatingSummary }
-  | { questionId: number; prompt: string; type: "SINGLE_CHOICE"; choice: { options: Array<{ optionId: number; label: string; count: number }> } };
+  | { questionId: number; prompt: string; type: "SINGLE_CHOICE"; choice: { options: Array<{ optionId: number; label: string; count: number }> } }
+  | { questionId: number; prompt: string; type: "MULTI_CHOICE"; multiChoice: { answeredCount: number; options: Array<{ optionId: number; label: string; count: number }> } }
+  | { questionId: number; prompt: string; type: "TEXT"; text: { answeredCount: number } };
 
 export type SurveySummary = {
   responseCount: number;
@@ -64,22 +68,30 @@ export function summarize(
         };
       }
 
+      if (question.type === "TEXT") {
+        return {
+          questionId: question.id,
+          prompt: question.prompt,
+          type: "TEXT",
+          text: { answeredCount: questionAnswers.filter(answer => answer.textValue !== null && answer.textValue !== undefined).length }
+        };
+      }
+
       const counts = new Map<number, number>();
       for (const answer of questionAnswers) {
-        if (answer.optionId !== null && answer.optionId !== undefined) {
+        if (question.type === "MULTI_CHOICE") {
+          for (const optionId of answer.optionIds ?? []) counts.set(optionId, (counts.get(optionId) ?? 0) + 1);
+        } else if (answer.optionId !== null && answer.optionId !== undefined) {
           counts.set(answer.optionId, (counts.get(answer.optionId) ?? 0) + 1);
         }
       }
-      return {
-        questionId: question.id,
-        prompt: question.prompt,
-        type: "SINGLE_CHOICE",
-        choice: {
-          options: [...question.options]
-            .sort((a, b) => a.position - b.position)
-            .map(option => ({ optionId: option.id, label: option.label, count: counts.get(option.id) ?? 0 }))
-        }
-      };
+      const options = [...question.options]
+        .sort((a, b) => a.position - b.position)
+        .map(option => ({ optionId: option.id, label: option.label, count: counts.get(option.id) ?? 0 }));
+      if (question.type === "MULTI_CHOICE") {
+        return { questionId: question.id, prompt: question.prompt, type: "MULTI_CHOICE", multiChoice: { answeredCount: questionAnswers.length, options } };
+      }
+      return { questionId: question.id, prompt: question.prompt, type: "SINGLE_CHOICE", choice: { options } };
     })
   };
 }

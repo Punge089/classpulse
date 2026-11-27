@@ -12,6 +12,8 @@ export type ValidatedAnswer = {
   questionId: number;
   ratingValue?: number;
   optionId?: number;
+  textValue?: string;
+  optionIds?: number[];
 };
 
 export type AnswerValidation =
@@ -62,7 +64,11 @@ export function validateAnswers(
 
     const allowedKeys = question.type === "RATING"
       ? new Set(["questionId", "ratingValue"])
-      : new Set(["questionId", "optionId"]);
+      : question.type === "SINGLE_CHOICE"
+        ? new Set(["questionId", "optionId"])
+        : question.type === "TEXT"
+          ? new Set(["questionId", "textValue"])
+          : new Set(["questionId", "optionIds"]);
     if (Object.keys(item).some(key => !allowedKeys.has(key))) {
       details.push({ field: prefix, message: "Answer has fields that do not match the question" });
       return;
@@ -75,6 +81,46 @@ export function validateAnswers(
         return;
       }
       value.push({ questionId, ratingValue });
+      return;
+    }
+
+    if (question.type === "TEXT") {
+      const rawText = item.textValue;
+      if (typeof rawText !== "string") {
+        details.push({ field: `${prefix}.textValue`, message: "Enter text for this question" });
+        return;
+      }
+      const textValue = rawText.trim();
+      const codePoints = [...textValue];
+      const hasUnpairedSurrogate = codePoints.some(character => {
+        const code = character.codePointAt(0)!;
+        return code >= 0xd800 && code <= 0xdfff;
+      });
+      if (!textValue) {
+        if (question.required) details.push({ field: `${prefix}.textValue`, message: "This question is required" });
+        return;
+      }
+      if (codePoints.length > 500 || hasUnpairedSurrogate) {
+        details.push({ field: `${prefix}.textValue`, message: "Text must contain 1 to 500 valid Unicode characters" });
+        return;
+      }
+      value.push({ questionId, textValue });
+      return;
+    }
+
+    if (question.type === "MULTI_CHOICE") {
+      const optionIds = item.optionIds;
+      if (!Array.isArray(optionIds) || optionIds.length < 1 || optionIds.length > question.options.length ||
+          optionIds.some(id => typeof id !== "number" || !Number.isInteger(id) || id < 1) ||
+          new Set(optionIds).size !== optionIds.length ||
+          optionIds.some(id => !question.options.some(option => option.id === id))) {
+        details.push({ field: `${prefix}.optionIds`, message: "Choose one or more distinct options for this question" });
+        return;
+      }
+      const ordered = [...optionIds].sort((a, b) =>
+        question.options.find(option => option.id === a)!.position - question.options.find(option => option.id === b)!.position
+      );
+      value.push({ questionId, optionIds: ordered });
       return;
     }
 

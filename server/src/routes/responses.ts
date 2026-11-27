@@ -155,7 +155,11 @@ surveyResponsesRouter.post("/:surveyId/responses", asyncRoute(async (req, res) =
           create: validated.value.map(answer => ({
             questionId: answer.questionId,
             ...(answer.ratingValue === undefined ? {} : { ratingValue: answer.ratingValue }),
-            ...(answer.optionId === undefined ? {} : { optionId: answer.optionId })
+            ...(answer.optionId === undefined ? {} : { optionId: answer.optionId }),
+            ...(answer.textValue === undefined ? {} : { textValue: answer.textValue }),
+            ...(answer.optionIds === undefined ? {} : {
+              selections: { create: answer.optionIds.map(optionId => ({ questionId: answer.questionId, optionId })) }
+            })
           }))
         }
       },
@@ -217,7 +221,8 @@ responsesRouter.get("/:id", asyncRoute(async (req, res) => {
       answers: {
         include: {
           question: { select: { position: true, prompt: true, type: true } },
-          option: { select: { label: true } }
+          option: { select: { label: true } },
+          selections: { orderBy: [{ option: { position: "asc" } }, { optionId: "asc" }], include: { option: { select: { label: true } } } }
         }
       }
     }
@@ -236,7 +241,11 @@ responsesRouter.get("/:id", asyncRoute(async (req, res) => {
           prompt: answer.question.prompt,
           type: answer.question.type,
           ...(answer.ratingValue === null ? {} : { ratingValue: answer.ratingValue }),
-          ...(answer.optionId === null ? {} : { optionId: answer.optionId, optionLabel: answer.option?.label })
+          ...(answer.optionId === null ? {} : { optionId: answer.optionId, optionLabel: answer.option?.label }),
+          ...(answer.textValue === null ? {} : { textValue: answer.textValue }),
+          ...(answer.selections.length === 0 ? {} : { selectedOptions: answer.selections.map(selection => ({
+            optionId: selection.optionId, label: selection.option.label
+          })) })
         }))
     }
   });

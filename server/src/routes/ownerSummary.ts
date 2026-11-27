@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Prisma } from "@prisma/client";
 import { asyncRoute } from "../lib/asyncRoute";
 import { ApiError } from "../lib/errors";
 import { parseId } from "../lib/params";
@@ -10,34 +11,39 @@ export const ownerSummaryRouter = Router();
 ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
   const id = parseId(req.params.id);
   const prisma = getPrisma();
-  const survey = await prisma.survey.findFirst({
-    where: { id, ownerId: req.user!.id },
-    select: {
-      id: true,
-      status: true,
-      questions: {
-        orderBy: { position: "asc" },
-        include: { options: { orderBy: { position: "asc" } } }
+  const aggregate = await prisma.$transaction(async tx => {
+    const survey = await tx.survey.findFirst({
+      where: { id, ownerId: req.user!.id },
+      select: {
+        id: true,
+        status: true,
+        questions: {
+          orderBy: { position: "asc" },
+          include: { options: { orderBy: { position: "asc" } } }
+        }
       }
-    }
-  });
-  if (!survey) throw new ApiError(404, "NOT_FOUND", "Survey not found");
-
-  const [responseCount, answers] = await Promise.all([
-    prisma.response.count({ where: { surveyId: survey.id } }),
-    prisma.answer.findMany({
-      where: { question: { surveyId: survey.id } },
-      select: { questionId: true, ratingValue: true, optionId: true }
-    })
-  ]);
-  const aggregate = summarize(survey.questions, answers, responseCount);
+    });
+    if (!survey) throw new ApiError(404, "NOT_FOUND", "Survey not found");
+    const [responseCount, rows] = await Promise.all([
+      tx.response.count({ where: { surveyId: survey.id } }),
+      tx.answer.findMany({
+        where: { question: { surveyId: survey.id } },
+        select: {
+          questionId: true, ratingValue: true, optionId: true, textValue: true,
+          selections: { select: { optionId: true } }
+        }
+      })
+    ]);
+    const answers = rows.map(row => ({ ...row, optionIds: row.selections.map(selection => selection.optionId) }));
+    return { survey, summary: summarize(survey.questions, answers, responseCount) };
+  }, { isolationLevel: Prisma.TransactionIsolationLevel.RepeatableRead });
 
   res.json({
     summary: {
-      surveyId: survey.id,
-      status: survey.status,
-      responseCount: aggregate.responseCount,
-      questions: aggregate.questions
+      surveyId: aggregate.survey.id,
+      status: aggregate.survey.status,
+      responseCount: aggregate.summary.responseCount,
+      questions: aggregate.summary.questions
     }
   });
 }));

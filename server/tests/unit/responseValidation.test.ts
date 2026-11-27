@@ -91,6 +91,7 @@ describe("F-07 TEST-143/144 text and multi-choice answer validation", () => {
     const result = validateAnswers(extended, {
       answers: [
         { questionId: 40, textValue: "  useful examples  " },
+        { questionId: 41, textValue: "   " },
         { questionId: 42, optionIds: [53, 51] }
       ]
     });
@@ -116,7 +117,7 @@ describe("F-07 TEST-143/144 text and multi-choice answer validation", () => {
   test("accepts 500 Unicode code points and omits a blank optional text answer", () => {
     const text = "🙂".repeat(500);
     const result = validateAnswers(extended, {
-      answers: [{ questionId: 40, textValue: text }, { questionId: 42, optionIds: [52] }]
+      answers: [{ questionId: 40, textValue: text }, { questionId: 41, textValue: " " }, { questionId: 42, optionIds: [52] }]
     });
     expect(result.ok).toBe(true);
     if (result.ok) expect(result.value[0]).toEqual({ questionId: 40, textValue: text });
