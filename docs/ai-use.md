@@ -273,3 +273,7 @@ A/Punge089 used Codex GPT-6 to merge current staging into PR #95, preserve the s
 ## Lab 7 planning reference refresh - Issue #94, Student A, 28 November 2026
 
 After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report pointers and confirm the interim metrics merge. The Lab 7 release and final deployed evidence remain pending.
+
+## Lab 6 report revision 2 - Student A, 28 November 2026
+
+Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Claude desktop app) to check the submitted Lab 6 PDF against the handout and repository, then to revise the report. Claude edited `tools/lab6/build_report.py` to state the AC-04 acceptance basis in Part D and on the cover, add the complete WF-BUG-001 outgoing report table in Part C from the retained confirmation/retest records, and add a dedicated AI-use declaration. It rebuilt the PDF and receipt and ran `tools/lab6/verify_report.py`. No test result, decision, finding, evidence file, application code, schema, workflow, main, tag or deployment changed, and no application test was rerun. B must review the exact head and PDF hash; A cannot approve or merge this A-authored PR. Humans upload the reviewed PDF to LEB2.
