@@ -1,0 +1,70 @@
+test-and-docker	Test server	2026-11-26T06:39:24.1989668Z > classpulse-server@0.1.0 test
+test-and-docker	Test server	2026-11-26T06:39:24.1989988Z > vitest run
+test-and-docker	Test server	2026-11-26T06:39:24.1990246Z
+test-and-docker	Test server	2026-11-26T06:39:24.3988670Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+test-and-docker	Test server	2026-11-26T06:39:24.4260454Z
+test-and-docker	Test server	2026-11-26T06:39:24.4262035Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+test-and-docker	Test server	2026-11-26T06:39:24.4262563Z
+test-and-docker	Test server	2026-11-26T06:39:31.9039886Z  ✓ tests/api/surveyReopen.test.ts (45 tests) 7112ms
+test-and-docker	Test server	2026-11-26T06:39:31.9041844Z    ✓ Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 history is empty for legacy rows, then paginates without duplicates or foreign events 319ms
+test-and-docker	Test server	2026-11-26T06:39:33.2542811Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1185ms
+test-and-docker	Test server	2026-11-26T06:39:35.2333101Z  ✓ tests/api/responses.test.ts (10 tests) 1762ms
+test-and-docker	Test server	2026-11-26T06:39:37.0985343Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 1625ms
+test-and-docker	Test server	2026-11-26T06:39:38.6733520Z  ✓ tests/api/auth.test.ts (8 tests) 1349ms
+test-and-docker	Test server	2026-11-26T06:39:39.4951274Z  ✓ tests/api/summary.test.ts (3 tests) 604ms
+test-and-docker	Test server	2026-11-26T06:39:39.6572938Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 7ms
+test-and-docker	Test server	2026-11-26T06:39:39.9213580Z  ✓ tests/api/cloudReady.test.ts (3 tests) 57ms
+test-and-docker	Test server	2026-11-26T06:39:40.8047317Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 745ms
+test-and-docker	Test server	2026-11-26T06:39:41.8458688Z  ✓ tests/db/constraints.test.ts (3 tests) 912ms
+test-and-docker	Test server	2026-11-26T06:39:41.8459865Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 608ms
+test-and-docker	Test server	2026-11-26T06:39:41.9883927Z  ✓ tests/unit/summary.test.ts (6 tests) 4ms
+test-and-docker	Test server	2026-11-26T06:39:42.1253725Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 4ms
+test-and-docker	Test server	2026-11-26T06:39:42.2633253Z  ✓ tests/unit/surveyReopenValidation.test.ts (32 tests) 7ms
+test-and-docker	Test server	2026-11-26T06:39:42.6833230Z  ❯ tests/api/draftEditing.test.ts (1 test | 1 failed) 213ms
+test-and-docker	Test server	2026-11-26T06:39:42.6834169Z    × TEST-120 replaces an owned draft's questions in order 213ms
+test-and-docker	Test server	2026-11-26T06:39:42.6834709Z      → expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-26T06:39:42.8228683Z  ✓ tests/unit/surveyLifecycle.test.ts (9 tests) 3ms
+test-and-docker	Test server	2026-11-26T06:39:43.0601730Z  ✓ tests/api/health.test.ts (1 test) 52ms
+test-and-docker	Test server	2026-11-26T06:39:43.3004046Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 30ms
+test-and-docker	Test server	2026-11-26T06:39:43.7556957Z  ✓ tests/unit/password.test.ts (1 test) 301ms
+test-and-docker	Test server	2026-11-26T06:39:43.9080968Z  ✓ tests/unit/seedConfig.test.ts (1 test) 2ms
+test-and-docker	Test server	2026-11-26T06:39:43.9153228Z
+test-and-docker	Test server	2026-11-26T06:39:43.9159533Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+test-and-docker	Test server	2026-11-26T06:39:43.9160110Z
+test-and-docker	Test server	2026-11-26T06:39:43.9161294Z  FAIL  tests/api/draftEditing.test.ts > TEST-120 replaces an owned draft's questions in order
+test-and-docker	Test server	2026-11-26T06:39:43.9174096Z AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-26T06:39:43.9174656Z
+test-and-docker	Test server	2026-11-26T06:39:43.9175090Z - Expected
+test-and-docker	Test server	2026-11-26T06:39:43.9175629Z + Received
+test-and-docker	Test server	2026-11-26T06:39:43.9176151Z
+test-and-docker	Test server	2026-11-26T06:39:43.9176429Z - 200
+test-and-docker	Test server	2026-11-26T06:39:43.9176933Z + 404
+test-and-docker	Test server	2026-11-26T06:39:43.9177214Z
+test-and-docker	Test server	2026-11-26T06:39:43.9177647Z  ❯ tests/api/draftEditing.test.ts:29:27
+test-and-docker	Test server	2026-11-26T06:39:43.9276108Z      27|     ]
+test-and-docker	Test server	2026-11-26T06:39:43.9276904Z      28|   });
+test-and-docker	Test server	2026-11-26T06:39:43.9277822Z      29|   expect(response.status).toBe(200);
+test-and-docker	Test server	2026-11-26T06:39:43.9278706Z        |                           ^
+test-and-docker	Test server	2026-11-26T06:39:43.9279782Z      30|   const stored = await prisma.survey.findUniqueOrThrow({
+test-and-docker	Test server	2026-11-26T06:39:43.9281327Z  Test Files  1 failed | 18 passed (19)
+test-and-docker	Test server	2026-11-26T06:39:43.9282384Z       Tests  1 failed | 219 passed (220)
+test-and-docker	Test server	2026-11-26T06:39:43.9283048Z    Start at  06:39:24
+test-and-docker	Test server	2026-11-26T06:39:43.9283958Z    Duration  19.49s (transform 197ms, setup 73ms, collect 1.07s, tests 15.97s, environment 2ms, prepare 660ms)
+test-and-docker	Test server	2026-11-26T06:39:43.9284529Z
+test-and-docker	Test server	2026-11-26T06:39:43.9285126Z      31|     where: { id: original.id },
+test-and-docker	Test server	2026-11-26T06:39:43.9285580Z
+test-and-docker	Test server	2026-11-26T06:39:43.9286233Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+test-and-docker	Test server	2026-11-26T06:39:43.9286647Z
+test-and-docker	Test server	2026-11-26T06:39:43.9291081Z
+test-and-docker	Test server	2026-11-26T06:39:43.9313388Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server
+test-and-docker	Test server	- Expected
+test-and-docker	Test server	+ Received
+test-and-docker	Test server
+test-and-docker	Test server	- 200
+test-and-docker	Test server	+ 404
+test-and-docker	Test server
+test-and-docker	Test server	 ❯ tests/api/draftEditing.test.ts:29:27
+test-and-docker	Test server
+test-and-docker	Test server
+test-and-docker	Test server	2026-11-26T06:39:43.9469449Z ##[error]Process completed with exit code 1.

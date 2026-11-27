@@ -17,3 +17,11 @@ The earlier “no local diff check” statement is a dated historical note, not 
 ## Exact PR-head diff check - 25 November 2026, 19:01:56 Asia/Bangkok
 
 After fetching `feature/89-lab7-metrics-readiness` into the isolated review worktree, I verified that `FETCH_HEAD` was `45ff5dfc6ea3e342bdeb96856822b56e0fd91a6a`, matching PR #100 at that time. I ran `git diff --check c99748c0f5d7044aa6cbf8e7124fa9300e0006ff 45ff5dfc6ea3e342bdeb96856822b56e0fd91a6a`; it exited 0. The prior check at `04dab39` and A's independent check remain separately attributed. No application tests or UAT were run by B for this documentation review.
+
+## Post-deployment retrospective - 28 November 2026
+
+- **Helped:** Keeping the release head, deploy run, revision, traffic, migration result and live check IDs in one dated evidence record made the 307-test CI, 14/14 developer API observations and the still-pending independent UAT disposition easy to distinguish.
+- **Hurt:** Final metrics could not be reconciled from the earlier dated snapshot alone; the live receipt and release/deploy evidence arrived after that snapshot, while the report PDF was already being assembled. That required a separate refresh before final PDF review.
+- **Change next time:** Pin the exact release SHA and gather the sanitized deploy and selected-check receipts before assembling the final PDF; keep developer-operated checks distinct from independent UAT and reserve a fresh exact-hash review for the final PDF.
+
+This update records work completed through 28 November. It does not claim independent UAT, final PDF approval, or LEB2 submission.
