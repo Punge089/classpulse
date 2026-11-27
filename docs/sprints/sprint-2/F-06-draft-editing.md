@@ -92,3 +92,14 @@ Implementation, tests, C3, GREEN and release are all pending. No runtime test co
 v1.0,25 November2026,A/Codex GPT-6: initial draft-edit contract and test design before new tests/code; serialize shared file implementation with Lab 7 and B work.
 
 v1.1 execution inventory,25November2026,A/Codex GPT-6.1 Sol: record actual B C3 and inspected87 row-lock compatibility, preserve the integration-before-tests gate, and name the already-required error-union discriminant file before implementation. No behavior/AC/STS change and no F06 tests/code written.
+
+### v1.2 proposed F-07 compatibility addendum, 28 November 2026
+
+A/Punge089, with Codex GPT-6.2 Sol. B/book6349 is the independent reviewer. This revision follows the accepted standalone F-06 staging merge 4f1f03a (#93, B reviewed 6aa7b21) and F-07 contract proposal 575f873 (#134/#137). It defines the F-07 authoring extension before shared editor implementation. F-06's original AC-120–128 and TEST-120–131 evidence remains tied to its original implementation and staged version.
+
+- In the F-07 increment, the same owner PUT endpoint accepts a complete ordered question list containing RATING, SINGLE_CHOICE, TEXT and MULTI_CHOICE. RATING and TEXT take no nonempty option list. SINGLE_CHOICE and MULTI_CHOICE take 2–6 trimmed distinct labels, with the existing length and position rules. The editor clears inapplicable options on a switch to a no-option type. The F-07 submitted-answer TEXT length and multiple selected option rules remain in the F-07 contract.
+- Keep owner-scoped authorization and row lock, current updatedAt token, DRAFT/no-response preconditions, unchanged statusVersion, all-or-nothing replacement, persisted order, stale write and publish/edit serial outcomes. Invalid type or options produce the existing matching field error and preserve the entire saved question list and token.
+- F-07 TEST-142 verifies mixed-type replacement, invalid-option rollback and reload, and preserves stale, foreign and non-draft denials. TEST-149 verifies type switches and keyboard editor behavior. Keep the complete F-06 tests enabled and record integrated results on the actual candidate. The fixture, browser and application file inventory remains in #134.
+- No F-06 API schema or application behavior changes in this documentation PR. Run current CI and obtain B's review of this exact addendum before B modifies the shared F-06 editor or handler for F-07. B can work on the already reviewed independent F-07 RED after #134 lists its exact test/evidence paths.
+
+Version reason: preserve the reviewed F-06 mutation guarantees as F-07 expands allowed authoring types; the original F-06 acceptance evidence remains readable.
