@@ -274,7 +274,6 @@ A/Punge089 used Codex GPT-6 to merge current staging into PR #95, preserve the s
 
 After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report pointers and confirm the interim metrics merge. The Lab 7 release and final deployed evidence remain pending.
 
-
 ## Sprint 2 F-07 contract proposal — Student B, 27 November 2026
 
 B/book6349 used Codex GPT-6 Sol to draft the four-type F-07 contract for Issue #134 after reading the current staging schema, authoring/response/summary/history paths, F-06/F-09 handoff, SRS and D2 brief. B owns this proposal and A reviews it. The proposal separates Sprint 2 aggregate text counts from the later F-13 raw-text view. No F-07 tests, implementation, migration, runtime result or C3 acceptance are claimed in this contract work block.
@@ -286,3 +285,7 @@ B/book6349 used Codex GPT-6.2 Sol to add two test-only TEST-140 cases at `server
 ## F-07 owner-create implementation — Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6.2 Sol to implement the first independent TEST-140 owner-create slice under Issue #134: add TEXT and MULTI_CHOICE to the Prisma question enum, add the corresponding PostgreSQL enum migration, and accept those types in the existing owner-create validator. The shared F-06 editor, answers, response/history APIs and summaries remain outside this checkpoint. Local execution of the API tests is blocked because no isolated PostgreSQL database or Docker daemon is available; the current CI result is pending.
+
+## Lab 7 release review status corrections - Issue #94 follow-up, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.
