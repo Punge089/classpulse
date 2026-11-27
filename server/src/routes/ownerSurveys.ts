@@ -25,6 +25,7 @@ function toSurveyDto(survey: SurveyRow) {
     mode: survey.mode,
     status: survey.status,
     statusVersion: survey.statusVersion,
+    updatedAt: survey.updatedAt,
     publishedAt: survey.publishedAt,
     closedAt: survey.closedAt,
     createdAt: survey.createdAt,
@@ -165,6 +166,54 @@ ownerSurveysRouter.get("/surveys/:id", asyncRoute(async (req, res) => {
   });
   if (!survey) throw notFound();
   res.json({ survey: toSurveyDto(survey) });
+}));
+
+ownerSurveysRouter.put("/surveys/:id/questions", asyncRoute(async (req, res) => {
+  const id = parseId(req.params.id);
+  const ownerId = req.user!.id;
+  const prisma = getPrisma();
+  const updated = await prisma.$transaction(async tx => {
+    const owned = await tx.$queryRaw<{ id: number }[]>`
+      SELECT "id" FROM "Survey" WHERE "id" = ${id} AND "ownerId" = ${ownerId} FOR UPDATE`;
+    if (owned.length !== 1) throw notFound();
+    const survey = await tx.survey.findFirstOrThrow({ where: { id, ownerId } });
+    const invalid = (field: string, message: string): never => {
+      throw new ApiError(400, "VALIDATION_ERROR", "Check the highlighted fields", [{ field, message }]);
+    };
+    if (typeof req.body !== "object" || req.body === null || Array.isArray(req.body)) invalid("body", "Send a JSON object");
+    const body = req.body as Record<string, unknown>;
+    if (Object.keys(body).some(key => key !== "expectedUpdatedAt" && key !== "questions")) invalid("body", "Unexpected field");
+    const value = body.expectedUpdatedAt;
+    if (typeof value !== "string") invalid("expectedUpdatedAt", "Use the current timestamp");
+    const token = new Date(value as string);
+    if (!Number.isFinite(token.getTime()) || token.toISOString() !== value) invalid("expectedUpdatedAt", "Use a canonical timestamp");
+    if (Array.isArray(body.questions)) {
+      body.questions.forEach((q: unknown, i: number) => {
+        if (typeof q === "object" && q !== null && !Array.isArray(q) &&
+          Object.keys(q).some(key => !["prompt", "type", "required", "options"].includes(key))) {
+          invalid(`questions[${i}]`, "Unexpected field");
+        }
+      });
+    }
+    const parsed = validateSurveyInput({ courseId: survey.courseId, title: survey.title, questions: body.questions });
+    if (!parsed.ok) throw new ApiError(400, "VALIDATION_ERROR", "Check the highlighted fields", parsed.details);
+    if (survey.status !== "DRAFT") throw new ApiError(409, "INVALID_TRANSITION", "Only drafts may be edited");
+    if (survey.updatedAt.getTime() !== token.getTime()) throw new ApiError(409, "STALE_SURVEY", "The survey changed; reload and try again");
+    if (await tx.response.count({ where: { surveyId: id } }) > 0) {
+      throw new ApiError(409, "DRAFT_HAS_RESPONSES", "This draft contains responses and cannot be edited");
+    }
+    const changed = await tx.survey.updateMany({ where: { id, ownerId, status: "DRAFT", updatedAt: token },
+      data: { updatedAt: new Date(Math.max(Date.now(), token.getTime() + 1)) } });
+    if (changed.count !== 1) throw new ApiError(409, "STALE_SURVEY", "The survey changed; reload and try again");
+    await tx.questionOption.deleteMany({ where: { question: { surveyId: id } } });
+    await tx.question.deleteMany({ where: { surveyId: id } });
+    for (const [index, q] of parsed.value.questions.entries()) {
+      await tx.question.create({ data: { surveyId: id, position: index + 1, prompt: q.prompt, type: q.type,
+        required: q.required, options: { create: q.options.map((label, i) => ({ position: i + 1, label })) } } });
+    }
+    return tx.survey.findFirstOrThrow({ where: { id, ownerId }, include: surveyInclude });
+  });
+  res.json({ survey: toSurveyDto(updated) });
 }));
 
 ownerSurveysRouter.post("/surveys/:id/publish", transition("publish"));
