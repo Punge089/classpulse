@@ -1,0 +1,46 @@
+
+> test:sprint1
+> npm run build && node --test --test-concurrency=1 tests/test-db.test.mjs tests/auth.test.mjs tests/auth-safety.test.mjs tests/auth-ui.test.mjs tests/requests.test.mjs tests/request-ui.test.mjs tests/decisions.test.mjs tests/review-ui.test.mjs tests/journey.test.mjs tests/health.test.mjs
+
+
+> build
+> tsc -p tsconfig.json && vite build client --outDir ../client-dist --emptyOutDir
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 25 modules transformed.
+rendering chunks...
+computing gzip size...
+../client-dist/index.html                   0.43 kB │ gzip:  0.29 kB
+../client-dist/assets/index-DSo3uI6F.css    1.57 kB │ gzip:  0.70 kB
+../client-dist/assets/index-Cj7YpvkQ.js   235.89 kB │ gzip: 72.83 kB
+✓ built in 743ms
+✔ WF-BUG-001: oversized JSON returns 413 before authentication or database access (89.1507ms)
+✔ database failure returns a generic error and logs no sensitive details (11.5583ms)
+✔ F-01: browser login, reload and logout against PostgreSQL (2432.0728ms)
+✔ TEST-01 to TEST-03: login, current identity, role isolation and logout (338.4781ms)
+✔ TEST-03: expired session and wrong origin are refused (92.901ms)
+✔ TEST-09–11: assigned review, reason bounds, durable history and role isolation (343.0408ms)
+✔ TEST-12: concurrent and repeated decisions create one terminal event (62.7441ms)
+API request failed
+✔ TEST-13: failed event insert rolls back the status update (19.0178ms)
+✔ health responds without querying the database (57.7459ms)
+✔ readiness runs a database query before reporting connected (10.1486ms)
+✔ readiness rejects a failed database without exposing connection details (8.4663ms)
+✔ Sprint 1: requester to reviewer decision survives application restart (2691.6832ms)
+✔ F-02: browser submits and retrieves a saved request (1909.1174ms)
+✔ TEST-19: an owner withdraws a submitted request and the assigned reviewer sees read-only history (2172.9891ms)
+✔ F-02: guarded submission, scoped retrieval and durable history (557.3845ms)
+API request failed
+✔ AC-15 to AC-18, AC-20 and AC-21: requester withdrawal API and persistence (474.3938ms)
+✔ F-03: reviewer rejects an assigned request and reads persisted history (1999.0252ms)
+✔ requires an explicit disposable test database distinct from development (0.9207ms)
+✔ reads development database from local .env before migrating (59.6268ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15870.0561

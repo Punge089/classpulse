@@ -1,0 +1,46 @@
+﻿2026-11-25T12:08:07.7311617Z ##[group]Run npm test
+2026-11-25T12:08:07.7312136Z npm test
+2026-11-25T12:08:07.7341668Z shell: /usr/bin/bash -e {0}
+2026-11-25T12:08:07.7342213Z env:
+2026-11-25T12:08:07.7343195Z   DATABASE_URL: [omitted]
+2026-11-25T12:08:07.7343977Z   SEED_PASSWORD: [omitted]
+2026-11-25T12:08:07.7344514Z ##[endgroup]
+2026-11-25T12:08:07.8414770Z
+2026-11-25T12:08:07.8415428Z > classpulse-server@0.1.0 test
+2026-11-25T12:08:07.8416196Z > vitest run
+2026-11-25T12:08:07.8416399Z
+2026-11-25T12:08:08.0570829Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+2026-11-25T12:08:08.0837419Z
+2026-11-25T12:08:08.0838840Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+2026-11-25T12:08:08.0839496Z
+2026-11-25T12:08:15.6040414Z  ✓ tests/api/surveyReopen.test.ts (41 tests) 7100ms
+2026-11-25T12:08:15.6042493Z    ✓ Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 history is empty for legacy rows, then paginates without duplicates or foreign events 378ms
+2026-11-25T12:08:15.6043872Z    ✓ Lab 7 boundaries, access, concurrency and preserved behavior > TEST-110 reopening preserves old answers/summary and forbids repeat response 332ms
+2026-11-25T12:08:17.1633323Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1365ms
+2026-11-25T12:08:19.4672711Z  ✓ tests/api/responses.test.ts (10 tests) 2049ms
+2026-11-25T12:08:19.4674978Z    ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 304ms
+2026-11-25T12:08:21.4943962Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 1757ms
+2026-11-25T12:08:23.3806615Z  ✓ tests/api/auth.test.ts (8 tests) 1641ms
+2026-11-25T12:08:24.4153153Z  ✓ tests/api/summary.test.ts (3 tests) 778ms
+2026-11-25T12:08:24.4155822Z    ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 336ms
+2026-11-25T12:08:24.5808357Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 10ms
+2026-11-25T12:08:24.8814048Z  ✓ tests/api/cloudReady.test.ts (3 tests) 65ms
+2026-11-25T12:08:25.8730099Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 842ms
+2026-11-25T12:08:25.8731989Z    ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 301ms
+2026-11-25T12:08:27.0231982Z  ✓ tests/db/constraints.test.ts (3 tests) 997ms
+2026-11-25T12:08:27.0233288Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 649ms
+2026-11-25T12:08:27.1866690Z  ✓ tests/unit/summary.test.ts (6 tests) 4ms
+2026-11-25T12:08:27.3552146Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 5ms
+2026-11-25T12:08:27.5181294Z  ✓ tests/unit/surveyReopenValidation.test.ts (32 tests) 10ms
+2026-11-25T12:08:27.6667324Z  ✓ tests/unit/surveyLifecycle.test.ts (9 tests) 4ms
+2026-11-25T12:08:27.9355995Z  ✓ tests/api/health.test.ts (1 test) 60ms
+2026-11-25T12:08:28.1999967Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 36ms
+2026-11-25T12:08:28.6916067Z  ✓ tests/unit/password.test.ts (1 test) 329ms
+2026-11-25T12:08:28.6917124Z    ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 322ms
+2026-11-25T12:08:28.8636095Z  ✓ tests/unit/seedConfig.test.ts (1 test) 3ms
+2026-11-25T12:08:28.8700373Z
+2026-11-25T12:08:28.8710832Z  Test Files  18 passed (18)
+2026-11-25T12:08:28.8712188Z       Tests  215 passed (215)
+2026-11-25T12:08:28.8713053Z    Start at  12:08:08
+2026-11-25T12:08:28.8714359Z    Duration  20.79s (transform 221ms, setup 74ms, collect 1.12s, tests 17.05s, environment 3ms, prepare 744ms)
+2026-11-25T12:08:28.8715082Z

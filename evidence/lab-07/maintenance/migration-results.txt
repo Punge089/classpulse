@@ -1,0 +1,10 @@
+TEST-111 historical-data preservation: PASS on actual CI45609911425.
+Test source d7251f6c20a409e67b6aa4e9af16ddf4f078b0be; tested merge head49e1c5ac9cdb8eb588323f4a5f88bc3a1978489e.
+The merge imports staging documentation only; all incoming Lab6 files equal staging without edits.
+Command: npm test from server ->215passed,0failed,0skipped; client npm test ->8passed,0failed,0skipped; both builds and Docker passed.
+TEST111 creates a guarded UUID schema on the disposable CI PostgreSQL16 service, applies original Sprint1 SQL, and inserts synthetic data in all9 pre-change tables.
+Four surveys cover DRAFT, PUBLISHED, CLOSED with closure and legacy CLOSED without closure; sessions, enrollments, both question types/options, submitted responses and answers are nonempty.
+Applying exact additive lifecycle SQL preserves every old ID/value/timestamp, assigns statusVersion0 on all4 surveys and creates0 fabricated events. The test drops only its own validated schema in finally.
+This validates old-data SQL preservation; the existing CI migrate-deploy step separately tests fresh installation, not old Prisma migration-engine bookkeeping or production deployment.
+Sources: migration-ci-server.txt, migration-ci-client.txt and migration-ci-run.json with SHA256s and complete step outcomes. Default Vitest output reports all41 cases in surveyReopen.test.ts passing, not each individual name.
+The already-retained API test separately confirms legacy-null closure remains null in the actual reopen event. Browser/E2E, peer review, release and deployed manual evidence remain pending at this run.

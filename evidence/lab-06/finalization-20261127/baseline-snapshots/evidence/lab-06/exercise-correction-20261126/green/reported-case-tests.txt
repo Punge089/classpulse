@@ -1,0 +1,16 @@
+
+> classpulse-server@0.1.0 test
+> vitest run tests/api/uat6TitleRegression.test.ts
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/work117/server
+
+ ✓ tests/api/uat6TitleRegression.test.ts (4 tests) 935ms
+   ✓ CP-EX-F01 reported-case regression (AC-11, AC-19, BR-02) > 'A exact empty input' rejects the otherwise valid owner request without writes 363ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  15:23:05
+   Duration  1.79s (transform 137ms, setup 24ms, collect 416ms, tests 935ms, environment 0ms, prepare 98ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m

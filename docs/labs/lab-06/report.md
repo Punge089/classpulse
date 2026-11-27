@@ -1,3 +1,18 @@
+# ClassPulse Lab 6 report — current draft, 26 November 2026
+
+Issue #122. A/Punge089, assisted by Codex GPT-6. **DRAFT — NOT FOR SUBMISSION.** D records **Not Accepted** for ClassPulse CP-FIX-001 at 26 November 19:05:26 Bangkok; C's final-decision review is pending. A/B's Workflow whole-product decision is not recorded. Older dated checkpoints below are historical.
+
+- **CP-EX-F01: fixed and independently verified.** D's 5 Cloud subcases passed on CP-FIX-001 `bee0d122bf23410e3d2db69649ad5e44959b6cd8`, A-mapped `classpulse-00007-6t9` / 100% traffic. The separate local read preserved drafts 3/6/9; Cloud drafts 28/29 are separate records. C's actual evidence review 7190900011 is complete without rerun.
+- [The closure record](cp-ex-f01-closure.md) traces the original failure, actual RED/GREEN and disclosed ordering deviation/repeat, reviews, CI, deployed image mapping and independent retest. [Received evidence](../../../evidence/lab-06/corrected-retest-20261126/README.md) preserves original/public hash provenance and omits the private DM URL.
+- [Acceptance readiness](final-acceptance-readiness.md) lists CD-01 live replay BLOCKED, natural live expiry OPEN with local support, the agreed observation limits, and the separate unresolved Workflow inventory. Entry into the educational exercise was not final sign-off.
+- D's decision names the operator safety constraint as the live CD-01 blocker, while affirming the successful correction. Proposed method M01 remains unagreed and unexecuted. A verified 8 unchanged auth/contract files between CP-V01 and CP-FIX-001; this source comparison is supporting evidence, not a live test. Workflow's newly supplied source `41a8fefa` / revision `scd928edd-00009-fsg` includes Lab 7 withdrawal/schema changes; applicability and actual start must be coordinated before further Lab 6 execution.
+
+The final PDF still needs actual independent decisions and required-coverage disposition, complete embedded cases/evidence, contribution and AI disclosures, B's report review and human submission. No final acceptance, full Lab 6 completion or guaranteed score is claimed. Later sprint features are outside this release.
+
+---
+
+## Historical draft checkpoints (preserved context)
+
 # ClassPulse — Lab 6 report source
 
 ## Current R3 result disposition — 25 November 2026

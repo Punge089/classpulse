@@ -15,6 +15,8 @@ import { SurveySummaryPage } from "./pages/owner/SurveySummaryPage";
 import { AnswerSurveyPage } from "./pages/respondent/AnswerSurveyPage";
 import { ConfirmationPage } from "./pages/respondent/ConfirmationPage";
 import { SurveyListPage } from "./pages/respondent/SurveyListPage";
+import { MyResponsesPage } from "./pages/respondent/MyResponsesPage";
+import { EditSurveyPage } from "./pages/owner/EditSurveyPage";
 
 function ShellPage({ title }: { title: string }) {
   return (
@@ -51,6 +53,9 @@ function App() {
           <Route path="/surveys" element={<RequireRole role="RESPONDENT"><SurveyListPage /></RequireRole>} />
           <Route path="/surveys/:id" element={<RequireRole role="RESPONDENT"><AnswerSurveyPage /></RequireRole>} />
           <Route path="/responses/:id" element={<RequireRole role="RESPONDENT"><ConfirmationPage /></RequireRole>} />
+          <Route path="/my-responses" element={<RequireRole role="RESPONDENT"><MyResponsesPage /></RequireRole>} />
+          <Route path="/my-responses/:responseId" element={<RequireRole role="RESPONDENT"><MyResponsesPage /></RequireRole>} />
+          <Route path="/owner/surveys/:id/edit" element={<RequireRole role="OWNER"><EditSurveyPage /></RequireRole>} />
           <Route path="*" element={<ShellPage title="Page not found" />} />
         </Routes>
       </main>

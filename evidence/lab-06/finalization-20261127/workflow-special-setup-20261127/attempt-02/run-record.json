@@ -1,0 +1,147 @@
+{
+  "operator": "Codex under Student A/Punge089",
+  "model": "GPT-6",
+  "kind": "Independent local isolated verification",
+  "source": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "servingRevision": "N/A",
+  "startedBangkok": "2026-11-27T02:21:00.561208+07:00",
+  "steps": [
+    {
+      "step": "versions",
+      "command": "node --version",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:21:00.647274+07:00",
+      "finishedBangkok": "2026-11-27T02:21:00.683495+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\versions.txt"
+    },
+    {
+      "step": "postgres-version",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\postgres.exe\" --version",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:21:00.684360+07:00",
+      "finishedBangkok": "2026-11-27T02:21:00.708365+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\postgres-version.txt"
+    },
+    {
+      "step": "initdb",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\initdb.exe\" -D C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\postgres-data-attempt2 -U uat6_local --auth=scram-sha-256 --pwfile=C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\init-password.txt --encoding=UTF8 --locale=C",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:21:00.709984+07:00",
+      "finishedBangkok": "2026-11-27T02:21:03.793282+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\initdb.txt"
+    },
+    {
+      "step": "postgres-start",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\pg_ctl.exe\" -D C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\postgres-data-attempt2 -l C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\postgres-attempt2.log -o \"-h 127.0.0.1 -p 61327\" -w start",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:21:03.794122+07:00",
+      "finishedBangkok": "2026-11-27T02:21:04.118510+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\postgres-start.txt"
+    },
+    {
+      "step": "create-workflow_uat6_20261127_test",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\createdb.exe\" -h 127.0.0.1 -p 61327 -U uat6_local workflow_uat6_20261127_test",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:21:04.119525+07:00",
+      "finishedBangkok": "2026-11-27T02:21:04.612562+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\create-workflow_uat6_20261127_test.txt"
+    },
+    {
+      "step": "create-workflow_uat6_20261127_dev",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\createdb.exe\" -h 127.0.0.1 -p 61327 -U uat6_local workflow_uat6_20261127_dev",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:21:04.613244+07:00",
+      "finishedBangkok": "2026-11-27T02:21:04.982811+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\create-workflow_uat6_20261127_dev.txt"
+    },
+    {
+      "step": "database-preflight",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\psql.exe\" -X -At -v ON_ERROR_STOP=1 -c \"SELECT current_database(), inet_server_addr(), inet_server_port(), current_setting('data_directory'), current_setting('listen_addresses'), (SELECT count(*) FROM information_schema.tables WHERE table_schema='public');\"",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:21:04.983836+07:00",
+      "finishedBangkok": "2026-11-27T02:21:05.065831+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\database-preflight.txt"
+    },
+    {
+      "step": "generate-client",
+      "command": "node node_modules/prisma/build/index.js generate",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:21:05.067577+07:00",
+      "finishedBangkok": "2026-11-27T02:21:06.571651+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\generate-client.txt"
+    },
+    {
+      "step": "guard-and-migrate",
+      "command": "node scripts/test-db.mjs",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:21:06.572585+07:00",
+      "finishedBangkok": "2026-11-27T02:21:07.823151+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\guard-and-migrate.txt"
+    },
+    {
+      "step": "unmodified-full-suite",
+      "command": "npm.cmd run test:sprint1",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\source",
+      "startedBangkok": "2026-11-27T02:21:07.823959+07:00",
+      "finishedBangkok": "2026-11-27T02:21:27.376275+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\unmodified-full-suite.txt"
+    },
+    {
+      "step": "postgres-stop",
+      "command": "\"C:\\Program Files\\PostgreSQL\\18\\bin\\pg_ctl.exe\" -D C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\.private\\postgres-data-attempt2 -m fast -w stop",
+      "cwd": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127",
+      "startedBangkok": "2026-11-27T02:21:27.376997+07:00",
+      "finishedBangkok": "2026-11-27T02:21:28.266503+07:00",
+      "exitCode": 0,
+      "output": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\lab6-corrected-release-20261126\\workflow-special-setup-20261127\\logs\\postgres-stop.txt"
+    }
+  ],
+  "target": {
+    "address": "127.0.0.1",
+    "port": 61327,
+    "database": "workflow_uat6_20261127_test",
+    "developmentDatabase": "workflow_uat6_20261127_dev",
+    "routingOptions": false,
+    "freshOwnedCluster": true,
+    "dataDirectoryMatched": true,
+    "publicTablesBeforeMigration": 0
+  },
+  "priorLive36RequestsAccessed": false,
+  "cloudOperation": false,
+  "appSourceChanged": false,
+  "transportIsolation": "External Node preload forces default TCP binds to loopback and records listener addresses; application/tests unchanged",
+  "runtimeDifference": "A uses PostgreSQL18.4/Node24.19.0/npm11.17.0; C/D earlier16.x/24.14.0/11.9.0. No claim of identical runtime or Cloud verification.",
+  "productTeamAgreementSha256": "a5f08d54920db5245e4098e916663dfbdfa1dc0d7ca0d52d124e9f67c852b5f9",
+  "sourceHashesBefore": {
+    "src/auth.ts": "a55f097eedab0d07d27f4fb882ca33730838b03a78318f0faa77f9f9ec4a9435",
+    "src/requests.ts": "25316ad0d340dba7e8a575b3eef76572c1bc1eab60e1142b2235331be63f5b7d",
+    "src/server.ts": "6becc20d5dd6ce8d1b932bc53fc029fa5d537e37f6f770c87fd258aaddf54507",
+    "tests/auth.test.mjs": "985adfbc7b7d8f2088fc2ea708418740ce214c26a39e1f72e8fef4ec343a650a",
+    "tests/requests.test.mjs": "aa3452bc0d2695da52fd57cffebd9d1ae7e691ccc13106cca02b5eba811e359f",
+    "tests/decisions.test.mjs": "fb71b509e4a8db396f89204f5af04c1873f90a449bd70beb90a418aac194e8a4",
+    "tests/journey.test.mjs": "e38a6dd98e52c1e878c36246cf6b62d7a896f4dd1f59c3767817cd7081c4c693",
+    "tests/schema.sql": "ffb6cc16a77d7612c5f721802fa9ef9554f16bc3ff6cf09a33eec87aa0e75c20",
+    "scripts/test-db.mjs": "000313def0c93a9fedca1c589e353c9363484c5c7511fa5c3d0d12c49cf14a7b",
+    "prisma/schema.prisma": "cc26d674db9c0760a6f998d6daf1e28e27cefc045c50c68fff6da49d336bbf8c",
+    "package-lock.json": "bc85421604eaa9d2e3f190a964775f895899e45e72a0a6358af19b9ff702d60c"
+  },
+  "earlierSetupFailure": "Attempt01 server started, then A logger hit Windows file-lock on private raw-output cleanup before any application test. Own cluster was immediately verified/stopped; listener closed. Original record/logs retained under attempt-01. New attempt uses a fresh cluster and corrected scratch-file cleanup, not changed app/tests.",
+  "privateScratchRetainedUntilStop": [
+    "postgres-start.raw"
+  ],
+  "outcome": "FAIL",
+  "failure": "'NoneType' object has no attribute 'group'",
+  "isolatedClusterStopped": true,
+  "postgresListenerAfter": false,
+  "finishedBangkok": "2026-11-27T02:21:30.303290+07:00"
+}

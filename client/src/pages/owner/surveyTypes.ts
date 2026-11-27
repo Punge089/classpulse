@@ -33,7 +33,20 @@ export interface SurveyDetail {
   mode: "IDENTIFIED";
   status: SurveyStatus;
   publishedAt: string | null;
+  statusVersion: number;
   closedAt: string | null;
   createdAt: string;
+  updatedAt: string;
   questions: SurveyQuestion[];
+}
+
+export interface SurveyLifecycleEvent {
+  id: number;
+  version: number;
+  action: "PUBLISH" | "CLOSE" | "REOPEN";
+  fromStatus: SurveyStatus;
+  toStatus: SurveyStatus;
+  reason: string | null;
+  occurredAt: string;
+  previousClosedAt: string | null;
 }

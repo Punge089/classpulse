@@ -1,0 +1,358 @@
+> classpulse-client@0.1.0 test
+> vitest run tests/draftEditing.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse-worktrees/work90/client
+
+stderr | tests/draftEditing.test.tsx > TEST-127 draft detail exposes a link to edit its questions
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ❯ tests/draftEditing.test.tsx (1 test | 1 failed) 1027ms
+   × TEST-127 draft detail exposes a link to edit its questions 1026ms
+     → Unable to find role="link" and name "Edit questions"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Draft feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-draft"
+      >
+        Draft
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        Publish
+      </button>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+    <section
+      aria-label="Lifecycle history"
+      class="cp-card p-3 mt-3"
+    >
+      <h2
+        class="h5"
+      >
+        Lifecycle history
+      </h2>
+      <p
+        class="cp-muted mb-0"
+      >
+        No lifecycle events recorded for this version
+      </p>
+      <ol
+        class="list-unstyled mb-0"
+      />
+    </section>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Draft feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-draft"
+      >
+        Draft
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        Publish
+      </button>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+    <section
+      aria-label="Lifecycle history"
+      class="cp-card p-3 mt-3"
+    >
+      <h2
+        class="h5"
+      >
+        Lifecycle history
+      </h2>
+      <p
+        class="cp-muted mb-0"
+      >
+        No lifecycle events recorded for this version
+      </p>
+      <ol
+        class="list-unstyled mb-0"
+      />
+    </section>
+  </div>
+</body>
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/draftEditing.test.tsx > TEST-127 draft detail exposes a link to edit its questions
+TestingLibraryElementError: Unable to find role="link" and name "Edit questions"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Draft feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-draft"
+      >
+        Draft
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        Publish
+      </button>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+    <section
+      aria-label="Lifecycle history"
+      class="cp-card p-3 mt-3"
+    >
+      <h2
+        class="h5"
+      >
+        Lifecycle history
+      </h2>
+      <p
+        class="cp-muted mb-0"
+      >
+        No lifecycle events recorded for this version
+      </p>
+      <ol
+        class="list-unstyled mb-0"
+      />
+    </section>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Draft feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-draft"
+      >
+        Draft
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        Publish
+      </button>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+    <section
+      aria-label="Lifecycle history"
+      class="cp-card p-3 mt-3"
+    >
+      <h2
+        class="h5"
+      >
+        Lifecycle history
+      </h2>
+      <p
+        class="cp-muted mb-0"
+      >
+        No lifecycle events recorded for this version
+      </p>
+      <ol
+        class="list-unstyled mb-0"
+      />
+    </section>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/draftEditing.test.tsx:22:29
+     20|     <Routes><Route path="/owner/surveys/:id" element={<SurveyDetailPag…
+     21|   </MemoryRouter>);
+     22|   const link = await screen.findByRole("link", { name: "Edit questions…
+       |                             ^
+     23|   expect(link.getAttribute("href")).toBe("/owner/surveys/1/edit");
+     24| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  14:54:56
+   Duration  3.02s (transform 124ms, setup 24ms, collect 368ms, tests 1.03s, environment 773ms, prepare 203ms)

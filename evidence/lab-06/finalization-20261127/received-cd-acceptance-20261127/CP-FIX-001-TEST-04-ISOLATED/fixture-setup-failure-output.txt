@@ -1,0 +1,52 @@
+
+> classpulse-server@0.1.0 test
+> vitest run tests/api/auth.test.ts --reporter=verbose
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/KEN/Documents/ChatGPT/Software Engineer/classpulse-cp-fix-001-local-ac04/server
+
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-03 /me returns the current user with a cookie and 401 without one
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-04 logout deletes the session and the replayed cookie is rejected
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-05 a session whose expiresAt has passed is rejected
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-55 a malformed login body is a 400 with no cookie and no session
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-56 the session cookie is Secure in production (login and logout) and not in test
+   → Set the test SEED_PASSWORD before seeding fixtures
+ × tests/api/auth.test.ts > F-01 login, session and current user > TEST-57 the server never writes a password or a session token to its console
+   → Set the test SEED_PASSWORD before seeding fixtures
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-01 valid login returns the user and an HttpOnly SameSite=Lax cp_session cookie
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-03 /me returns the current user with a cookie and 401 without one
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-04 logout deletes the session and the replayed cookie is rejected
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-05 a session whose expiresAt has passed is rejected
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-55 a malformed login body is a 400 with no cookie and no session
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-56 the session cookie is Secure in production (login and logout) and not in test
+ FAIL  tests/api/auth.test.ts > F-01 login, session and current user > TEST-57 the server never writes a password or a session token to its console
+Error: Set the test SEED_PASSWORD before seeding fixtures
+ ❯ Module.seedFixture tests/helpers/fixture.ts:54:24
+     52| export async function seedFixture(): Promise<Fixture> {
+     53|   const password = process.env.SEED_PASSWORD;
+     54|   if (!password) throw new Error("Set the test SEED_PASSWORD before se…
+       |                        ^
+     55|   return getPrisma().$transaction(db => seedAccounts(db, password));
+     56| }
+ ❯ tests/api/auth.test.ts:16:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ Test Files  1 failed (1)
+      Tests  8 failed (8)
+   Start at  01:14:31
+   Duration  1.72s (transform 380ms, setup 40ms, collect 1.09s, tests 124ms, environment 0ms, prepare 180ms)
+
