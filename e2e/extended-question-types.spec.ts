@@ -43,6 +43,7 @@ test("TEST-150/151 creates, edits, answers and summarizes TEXT and MULTI_CHOICE"
   await page.getByRole("button", { name: "Logout" }).click();
 
   await signIn(page, "ann.lee@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/owner$/, { timeout: 5_000 });
   await page.goto(`/owner/surveys/${surveyId}/summary`);
   await expect(page.getByText("What helped you learn?")).toBeVisible();
   await expect(page.getByText(/Answered:\s*1/).first()).toBeVisible();
