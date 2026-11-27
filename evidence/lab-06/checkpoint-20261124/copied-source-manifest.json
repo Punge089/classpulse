@@ -333,6 +333,73 @@
       "bytes": 2199
     },
     {
+      "path": "fixture-ready-20261125/SHA256SUMS.txt",
+      "sha256": "3a7a7b883f398b04c84d02dbe607ba61329286f4c32cd27ba493c7e124b0096f",
+      "bytes": 658
+    },
+    {
+      "path": "fixture-ready-20261125/START-HERE.md",
+      "sha256": "8da29ce6e874541309033990a6ae83d85d1401dcf19ea2800fa6c96db8c53fb6",
+      "bytes": 3712
+    },
+    {
+      "path": "fixture-ready-20261125/actual-readonly-postcheck.json",
+      "sha256": "1598c39f1fe5a1a461405e97217fa60cbeb57b586a540e4107903291751748b0",
+      "bytes": 1666
+    },
+    {
+      "path": "fixture-ready-20261125/actual-readonly-preflight.json",
+      "sha256": "25035b85dddad403e4c1fce780e6a8434ca519fccb98bacee97b21d90df2e513",
+      "bytes": 1773
+    },
+    {
+      "path": "fixture-ready-20261125/credential-validation-summary.json",
+      "sha256": "790e3e0380b1f2563d9782a03ee2851d306eafaee4c7d0be7e7d5bd1c1455e20",
+      "bytes": 400
+    },
+    {
+      "path": "fixture-ready-20261125/fixture-ready-record.json",
+      "sha256": "77edda32b030e1ee59ed984f315b96e13dbd6968dcad31b0660cff7dc9cb5fc6",
+      "bytes": 1481
+    },
+    {
+      "path": "fixture-ready-20261125/human-apply-result.json",
+      "sha256": "c4dca33aec486246b154c2478cb86c18baf3aaf6a566d60414dd54fa561f58ed",
+      "bytes": 652
+    },
+    {
+      "path": "fixture-ready-20261125/serving-reconfirmation.json",
+      "sha256": "d1fa50c2561f58271911998401e29012c88cdb24d309d10f957cc7a3b9882407",
+      "bytes": 630
+    },
+    {
+      "path": "r2-companion-review-20261125/CD-EXPIRY-PROPOSAL.txt",
+      "sha256": "8934b6d522a3da23f04ebfaa487ff572676c1acfcc0eb64bf43027eaca61bdcf",
+      "bytes": 539,
+      "source": "User-forwarded C/D proposal transcription"
+    },
+    {
+      "path": "r2-companion-review-20261125/CPV01-auth.test.ts",
+      "sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036",
+      "bytes": 8289,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "sourcePath": "server/tests/api/auth.test.ts"
+    },
+    {
+      "path": "r2-companion-review-20261125/CPV01-test-fixture.ts",
+      "sha256": "e00e36d9b84fec3b29285fb305ff491c8672f266c08b2624b2a2f0700ff2fd9a",
+      "bytes": 2646,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "sourcePath": "server/tests/helpers/fixture.ts"
+    },
+    {
+      "path": "r2-companion-review-20261125/CPV01-test-setup.ts",
+      "sha256": "b419f2d5b2be3334b72c63412269ff46329cf5d516f0f491ee111e8dd0fc1d32",
+      "bytes": 427,
+      "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+      "sourcePath": "server/tests/setup.ts"
+    },
+    {
       "path": "received-cd-a2/ClassPulse/CD08-missing-ID-result.json",
       "sha256": "463cbfbebd6a5235e78c865b5a70fa7359b0ac6b930d0941ea5b68dfad9e0fd3",
       "bytes": 509
@@ -518,6 +585,124 @@
       "bytes": 90531
     },
     {
+      "path": "received-cd-r2-20261125/CD07-summary.png",
+      "sha256": "e98c4888b94eef12b2c813ac5dccd5a91b23b9e6663a4450b74a5fad9f2f3067",
+      "bytes": 76911,
+      "sourceAttachmentName": "codex-clipboard-7f132584-1ca7-4e3c-ab7d-48dbc1c3b1f5.png",
+      "storedNameReason": "User supplied this clipboard PNG as the requested CD07 screenshot; stored under the narrative reference after visual/JSON comparison. No original-file byte-equivalence claim beyond supplied bytes."
+    },
+    {
+      "path": "received-cd-r2-20261125/FIXTURE-CASE-REPORT.md",
+      "sha256": "73719f6c2e782d736858306af184d8081390190b6f97e0a71f489768b10650ae",
+      "bytes": 2950
+    },
+    {
+      "path": "received-cd-r2-20261125/fixture-case-results.json",
+      "sha256": "2d059aa538206e7820cedb9357f3c40174eccc01b1820abaae3437d6c297a8f6",
+      "bytes": 18426,
+      "sourceAttachmentName": "fixture-case-results.json"
+    },
+    {
+      "path": "repository-followup-20261125/CD-CLOSURE-USER-TRANSCRIPTION.txt",
+      "sha256": "02150f92938e6580a135e790137a17e4fecc51047e17b0507ba64375b6bfc372",
+      "bytes": 343
+    },
+    {
+      "path": "repository-followup-20261125/pr82-merge-commit-record.json",
+      "sha256": "2234172383824b67cf466cbf5fee8a7e243d9cd59067f960a517810285481079",
+      "bytes": 381
+    },
+    {
+      "path": "repository-followup-20261125/pr82-merged-record.json",
+      "sha256": "a53357a4769fc0bcaf60b1267b1d5594028372bba84a7f7dde7f839c199c149c",
+      "bytes": 217
+    },
+    {
+      "path": "repository-followup-20261125/pr83-fixed-approval-result.json",
+      "sha256": "362b0f3e19fbbe8be04ed6cb82db1c954e85a12ee7a38522d3f2749f10d18bd9",
+      "bytes": 3045
+    },
+    {
+      "path": "repository-followup-20261125/pr83-fixed-merge-result.json",
+      "sha256": "0d036dea16fd022890bb9a7a73a3f61fa90596269b44dbd61a84e4547a47781b",
+      "bytes": 109
+    },
+    {
+      "path": "repository-followup-20261125/pr84-merged-record.json",
+      "sha256": "305d52696394b37ba1c0550a0f41b5669e8722997aa448db8847d285b90b6b71",
+      "bytes": 140
+    },
+    {
+      "path": "repository-followup-20261125/review83-build-at-d51ef87.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "repository-followup-20261125/review83-cli-typecheck-at-d51ef87.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "repository-followup-20261125/review83-fixed-normalized-race-result.json",
+      "sha256": "6f0bdde0e2af3fa0375ca65e473cf2d3d6a6ff6024cdc4d30e32f4d9c2e02838",
+      "bytes": 473
+    },
+    {
+      "path": "repository-followup-20261125/review83-fixed-normalized-race.cjs",
+      "sha256": "3e5c6f7fea94f8ee2d4d1dbfd4c3454072a006eaea1883f64854b87a1b4bd3cd",
+      "bytes": 5671
+    },
+    {
+      "path": "repository-followup-20261125/review83-local-checks-at-d51ef87.json",
+      "sha256": "4d364af959fde575ea2012e78b7903ebc83d5bcc8cfb673dca7052ae3d22c902",
+      "bytes": 490
+    },
+    {
+      "path": "repository-followup-20261125/review83-local-checks-at-dc65104.json",
+      "sha256": "715499e586325dc48fdb335c9762a71af4872a1723cd6ebcfbc345e6c2e9a793",
+      "bytes": 647
+    },
+    {
+      "path": "repository-followup-20261125/review83-server-tests-at-d51ef87.txt",
+      "sha256": "4dbc7c2925baa3a02a7688a7492259f160ca441397e911d46fcb211aa50c1781",
+      "bytes": 1812
+    },
+    {
+      "path": "repository-followup-20261125/review83-server-tests-at-dc65104.txt",
+      "sha256": "bad6eadd661f084cc9c875cc392df82f3d081c678fa5ce3b7e364a1d7cd43a8f",
+      "bytes": 2307
+    },
+    {
+      "path": "repository-followup-20261125/review84-approval-result.json",
+      "sha256": "8066e7093cafde980d9064f0c89cb3920a2e241e1c8e023321306658a4900463",
+      "bytes": 2498
+    },
+    {
+      "path": "repository-followup-20261125/review84-checker-setup-note.txt",
+      "sha256": "7d6f74c9dcafcdd9c4dea019b70f5bbdd30543b733333ab4f443fcb55fe12abd",
+      "bytes": 253
+    },
+    {
+      "path": "repository-followup-20261125/review84-checks.json",
+      "sha256": "bc000e592d2d94e4636f13a87c2acbfc5df48af8ddd5c376dfae9bbb58df8fa7",
+      "bytes": 1930
+    },
+    {
+      "path": "repository-followup-20261125/review84-ci.json",
+      "sha256": "aac48eff07f6007b441bb01ead9cc75db579f1ce9c92b1aef114ed6ec9b7ee64",
+      "bytes": 194
+    },
+    {
+      "path": "repository-followup-20261125/review84-merge-result.json",
+      "sha256": "94ca95a36f20838c2565551fe987c14d8118f6b27f87e0fc2dddaf13748acb23",
+      "bytes": 109
+    },
+    {
+      "path": "repository-followup-20261125/workflow-issue62-after-retest.json",
+      "sha256": "417c689b5f6dc578eda68cc27e6c837248601f62af4a6449e412000ace4955de",
+      "bytes": 167
+    },
+    {
       "path": "repository/pr75-reviews.json",
       "sha256": "dc855b6014c40e4a98938885102ed07db55432f48b8ca45ad8fc2cbd48bd6e14",
       "bytes": 4736
@@ -626,6 +811,26 @@
       "path": "workflow-additional-cases-a2.md",
       "sha256": "bb510fc6524a08e8bfafbdb305ef82c35622cfea129bd9c22678a0a32141d56d",
       "bytes": 16318
+    },
+    {
+      "path": "received-test05-exact-20261125/REPORT.md",
+      "sha256": "9a6cf76c2f883c7fc1f9a75293274fb790c15e3ab2f1fe7eef00cf28f3cf1d51",
+      "bytes": 2344
+    },
+    {
+      "path": "received-test05-exact-20261125/auth-test-output.txt",
+      "sha256": "392e1097f69643acd1a4f574a571ca7506725cbc454cee15da2616728d7ad4fc",
+      "bytes": 615
+    },
+    {
+      "path": "received-test05-exact-20261125/migration-output.txt",
+      "sha256": "26d3033cc870fa2d136b26bdef980ad3128b69dd795e18b7a2c37eb3b4a68e00",
+      "bytes": 407
+    },
+    {
+      "path": "received-test05-exact-20261125/run-proof.json",
+      "sha256": "4f5be9a5400b0210b5ba9080d84ed5a60ee6160e7a9c105078d55a8579615d18",
+      "bytes": 1296
     }
   ]
 }

@@ -18,6 +18,7 @@ export function NavBar() {
         </Link>
         {user && (
           <div className="d-flex align-items-center gap-3">
+            {user.role === "RESPONDENT" && <Link to="/my-responses">My responses</Link>}
             <span className="cp-muted">{user.fullName} · {user.role}</span>
             <button type="button" className="btn btn-outline-secondary btn-sm" onClick={handleLogout}>
               Logout

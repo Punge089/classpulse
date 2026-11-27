@@ -1,0 +1,86 @@
+
+> classpulse-client@0.1.0 test
+> vitest run tests/responseHistory.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/OneDrive/เดสก์ท็อป/SEfinal/classpulse/classpulse-git/autopilot/worktrees/issue88-contract/client
+
+stderr | tests/responseHistory.test.tsx > TEST-179 loading is announced before data and an empty history stays empty
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+stderr | tests/responseHistory.test.tsx > TEST-178 respondent navigation offers My responses and scoped detail can return
+Warning: Each child in a list should have a unique "key" prop.
+
+Check the render method of `MyResponsesPage`. See https://reactjs.org/link/warning-keys for more information.
+    at li
+    at MyResponsesPage (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\src\pages\respondent\MyResponsesPage.tsx:18:65)
+    at RenderedRoute (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:539:7)
+    at Routes (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:1273:7)
+    at Router (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at MemoryRouter (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:1101:7)
+
+stderr | tests/responseHistory.test.tsx > TEST-178 respondent navigation offers My responses and scoped detail can return
+Error: Uncaught [TypeError: Cannot read properties of undefined (reading 'then')]
+    at reportException (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\jsdom\lib\jsdom\living\helpers\runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:353:9)
+    at invokeEventListeners (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:4213:16)
+    at invokeGuardedCallback (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:4277:31)
+    at reportUncaughtErrorInDEV (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:22877:5)
+    at captureCommitPhaseError (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:27165:5) TypeError: Cannot read properties of undefined (reading 'then')
+    at C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\src\pages\respondent\MyResponsesPage.tsx:74:50
+    at commitHookEffectListMount (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:23189:26)
+    at commitPassiveMountOnFiber (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:24970:11)
+    at commitPassiveMountEffects_complete (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:24930:9)
+    at commitPassiveMountEffects_begin (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:24917:7)
+    at commitPassiveMountEffects (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:24905:3)
+    at flushPassiveEffectsImpl (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:27078:3)
+    at flushPassiveEffects (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:27023:14)
+    at commitRootImpl (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:26974:5)
+    at commitRoot (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-dom\cjs\react-dom.development.js:26721:5)
+The above error occurred in the <MyResponsesPage> component:
+
+    at MyResponsesPage (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\src\pages\respondent\MyResponsesPage.tsx:18:65)
+    at RenderedRoute (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:539:7)
+    at Routes (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:1273:7)
+    at Router (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at MemoryRouter (C:\Users\Jitvoottikrai\OneDrive\เดสก์ท็อป\SEfinal\classpulse\classpulse-git\autopilot\worktrees\issue88-contract\client\node_modules\react-router\dist\umd\react-router.development.js:1101:7)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+ ❯ tests/responseHistory.test.tsx (4 tests | 1 failed) 472ms
+   × TEST-178 respondent navigation offers My responses and scoped detail can return 108ms
+     → Cannot read properties of undefined (reading 'then')
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/responseHistory.test.tsx > TEST-178 respondent navigation offers My responses and scoped detail can return
+TypeError: Cannot read properties of undefined (reading 'then')
+ ❯ src/pages/respondent/MyResponsesPage.tsx:74:50
+     72|         });
+     73|     } else {
+     74|       apiFetch<HistoryPage>("/api/responses/mine")
+       |                                                  ^
+     75|         .then(result => {
+     76|           if (generation.current === requestGeneration) setHistory(res…
+ ❯ commitHookEffectListMount node_modules/react-dom/cjs/react-dom.development.js:23189:26
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom.development.js:24970:11
+ ❯ commitPassiveMountEffects_complete node_modules/react-dom/cjs/react-dom.development.js:24930:9
+ ❯ commitPassiveMountEffects_begin node_modules/react-dom/cjs/react-dom.development.js:24917:7
+ ❯ commitPassiveMountEffects node_modules/react-dom/cjs/react-dom.development.js:24905:3
+ ❯ flushPassiveEffectsImpl node_modules/react-dom/cjs/react-dom.development.js:27078:3
+ ❯ flushPassiveEffects node_modules/react-dom/cjs/react-dom.development.js:27023:14
+ ❯ commitRootImpl node_modules/react-dom/cjs/react-dom.development.js:26974:5
+ ❯ commitRoot node_modules/react-dom/cjs/react-dom.development.js:26721:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  14:39:25
+   Duration  6.18s (transform 249ms, setup 30ms, collect 1.28s, tests 472ms, environment 2.92s, prepare 689ms)

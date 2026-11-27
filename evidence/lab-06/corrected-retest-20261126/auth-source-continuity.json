@@ -1,0 +1,76 @@
+{
+  "reviewer": "A/Punge089 with Codex GPT-6",
+  "kind": "Read-only source comparison, not application execution",
+  "cpV01": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "cpFix001": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "files": [
+    {
+      "path": "server/src/app.ts",
+      "cpV01Blob": "936b8e7a134b558465c5c6e8cf633bb802325660",
+      "cpFix001Blob": "936b8e7a134b558465c5c6e8cf633bb802325660",
+      "cpV01Sha256": "a490fac508fd27d5fa1b20b2f81474553c85990ce65547d422700aee28fb174e",
+      "cpFix001Sha256": "a490fac508fd27d5fa1b20b2f81474553c85990ce65547d422700aee28fb174e",
+      "byteIdentical": true
+    },
+    {
+      "path": "server/src/routes/auth.ts",
+      "cpV01Blob": "bdc6bf76b8f8c9a6f5a9f63edd77027e1e9a9beb",
+      "cpFix001Blob": "bdc6bf76b8f8c9a6f5a9f63edd77027e1e9a9beb",
+      "cpV01Sha256": "196f288e5dc5a79cef7f1c97fc2d3f47a871a8d8db23f7f535b4791c88460d8c",
+      "cpFix001Sha256": "196f288e5dc5a79cef7f1c97fc2d3f47a871a8d8db23f7f535b4791c88460d8c",
+      "byteIdentical": true
+    },
+    {
+      "path": "server/src/lib/session.ts",
+      "cpV01Blob": "30dc988b20a8f0151253c778510397adead74516",
+      "cpFix001Blob": "30dc988b20a8f0151253c778510397adead74516",
+      "cpV01Sha256": "ccce3661aac24bd7fd6b6483278e78c818361b946d2afd8c90b4fc0d5b520a7e",
+      "cpFix001Sha256": "ccce3661aac24bd7fd6b6483278e78c818361b946d2afd8c90b4fc0d5b520a7e",
+      "byteIdentical": true
+    },
+    {
+      "path": "server/src/middleware/auth.ts",
+      "cpV01Blob": "8f3ac1b8330ba56440a5faf7c8d1bf2c7f29b0d5",
+      "cpFix001Blob": "8f3ac1b8330ba56440a5faf7c8d1bf2c7f29b0d5",
+      "cpV01Sha256": "6de76d1f19ab954103a409428907658bd30c4dae609fb9007cc228e7321f18f1",
+      "cpFix001Sha256": "6de76d1f19ab954103a409428907658bd30c4dae609fb9007cc228e7321f18f1",
+      "byteIdentical": true
+    },
+    {
+      "path": "server/src/prisma.ts",
+      "cpV01Blob": "f8bea665a8d255736cad9d0226116eb2292febdc",
+      "cpFix001Blob": "f8bea665a8d255736cad9d0226116eb2292febdc",
+      "cpV01Sha256": "c83df9960efdc4f84b13126cfe325e278c4ac0afebfc996a928f57addaf20733",
+      "cpFix001Sha256": "c83df9960efdc4f84b13126cfe325e278c4ac0afebfc996a928f57addaf20733",
+      "byteIdentical": true
+    },
+    {
+      "path": "server/prisma/schema.prisma",
+      "cpV01Blob": "090d224ecee6e3996001041cab4679cf4f90f63e",
+      "cpFix001Blob": "090d224ecee6e3996001041cab4679cf4f90f63e",
+      "cpV01Sha256": "cbcd3dd374b6fbbcf7638fc9f1a92282887ca9d7e6d7905d4a7a64830a7623cd",
+      "cpFix001Sha256": "cbcd3dd374b6fbbcf7638fc9f1a92282887ca9d7e6d7905d4a7a64830a7623cd",
+      "byteIdentical": true
+    },
+    {
+      "path": "server/tests/api/auth.test.ts",
+      "cpV01Blob": "35e05d3e672dbce27d671f923f0cad8f25be40a8",
+      "cpFix001Blob": "35e05d3e672dbce27d671f923f0cad8f25be40a8",
+      "cpV01Sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036",
+      "cpFix001Sha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036",
+      "byteIdentical": true
+    },
+    {
+      "path": "docs/sprints/sprint-1/F-01-authentication.md",
+      "cpV01Blob": "8eaa702080bebab4b63d1a11dab5ccce37bb732e",
+      "cpFix001Blob": "8eaa702080bebab4b63d1a11dab5ccce37bb732e",
+      "cpV01Sha256": "cb869f0b880c93e6b5fed4645cf4beb7453603ba76519b306f28f47807c92485",
+      "cpFix001Sha256": "cb869f0b880c93e6b5fed4645cf4beb7453603ba76519b306f28f47807c92485",
+      "byteIdentical": true
+    }
+  ],
+  "identicalFiles": 8,
+  "appTestsRun": false,
+  "scopeLimit": "Source identity corroborates earlier isolated TEST-04/05 support. It does not demonstrate live behavior, production Session rows, elapsed eight-hour TTL or an independent final acceptance decision.",
+  "proposedMethodStatus": "PROPOSED, not accepted or executed"
+}

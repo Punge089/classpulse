@@ -29,3 +29,15 @@ describe("TEST-15 survey status transitions (BR-03)", () => {
     expect(caught).toMatchObject({ status: 409, code: "INVALID_TRANSITION" });
   });
 });
+
+describe("TEST-103 explicit reopen completes the state/action matrix", () => {
+  test("CLOSED reopens to PUBLISHED through the explicit action", () => {
+    expect(nextStatus("CLOSED", "reopen")).toBe("PUBLISHED");
+  });
+  test.each(["DRAFT", "PUBLISHED"] as const)("%s cannot reopen", status => {
+    expect(() => nextStatus(status, "reopen")).toThrow(ApiError);
+    try { nextStatus(status, "reopen"); } catch (error) {
+      expect(error).toMatchObject({ status: 409, code: "INVALID_TRANSITION" });
+    }
+  });
+});

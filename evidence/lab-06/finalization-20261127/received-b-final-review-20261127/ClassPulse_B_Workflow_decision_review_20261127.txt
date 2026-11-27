@@ -1,0 +1,19 @@
+﻿To A / C-D — B-side Workflow evidence review, 27 November 2026
+Prepared by Codex GPT-6 Sol for book6349. HUMAN B CONFIRMATION PENDING.
+
+RECOMMENDATION
+I recommend concurrence with A's recorded decision: "Accepted with explicitly documented minor limitations" for original implemented Sprint 1 Workflow, source 41a8fefa7a5d93b6531dff88daae39574d72dcb7. This is an evidence-review recommendation, not yet B's human-signed final acknowledgment. B has been asked to confirm the decision and accepted limits directly.
+
+WHAT WAS CHECKED
+- A's special-setup ZIP SHA-256 4a35cacff1acbad10ae8c619641cdf7bcfaa807df11e78143b76bf3ad9eacd4d: CRC and all 76 listed payload hashes matched.
+- Reviewed the method agreement, scripts, source excerpts, raw sanitized output, case inventory, listeners and A decision record. The supplied unchanged suite records 19 passed, 0 failed, 0 skipped, exit 0. SQL fixture rolled back with unchanged counts.
+- Seven supplemental PASS observations across six agreed groups match the raw JSON, case records and timestamps. Controlled expiry, former-session rejection, missing/wrong-role mapping, SQL self-assignment refusal, injected event rollback and actual local process restart were represented by executable assertions.
+- Restart changed PID 59380 to 35984 on the same loopback origin/database without reseed. Request f205c2b7-6db4-4944-b643-caf93791bb82 retained 125.50 THB, APPROVED, and identical complete requester/reviewer histories. Listener records contain both PIDs on the same port.
+- Earlier setup/parser/preflight interruptions are retained. No case was rerun for this review.
+
+VERSION AND LIMITS
+Prior live observations used revision scd928edd-00009-fsg per C/D's supplied mapping. A's special setups were isolated local tests with serving revision N/A. No fresh Cloud readback occurred here. Controlled expiry is not eight elapsed live hours; the former-session rejection is not a fresh production-session replay; local restart is not Cloud Run restart/new-instance evidence. Runtime versions differed from C/D's earlier run. External concurrency outcome does not prove exact internal transaction overlap. The optional exploratory branches remain NOT RUN; 06c-N was not selected. Two later-withdrawal tests in the 19-test suite are excluded from original Sprint 1 Lab 6 acceptance counting.
+
+The supplied C/D report correctly states A's decision, these version boundaries and seven observations. This review does not claim C/D acceptance on B's behalf, a new live run, PR approval/merge or deployment.
+
+B owner decision time: PENDING DIRECT HUMAN CONFIRMATION (Asia/Bangkok). Do not present this file as B's final signed decision until the owner confirms it.

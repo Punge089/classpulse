@@ -1,0 +1,13 @@
+{
+  "verifiedAtUtc": "2026-11-24T17:36:54Z",
+  "verifiedAtBangkok": "2026-11-25 00:36:54 UTC+7",
+  "operator": "Codex under A/Punge089, actual Cloud Shell gcloud READ ONLY queries",
+  "sourceCommit": "1fe3e3b82dfb0537be30223c9b598b3479b4affe",
+  "sourceTagDigest": "sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795",
+  "servingImageDigest": "sha256:60f61ccccbc559e6c060383ad9acafc6918e1202ec1e7e5e43aa107c35707795",
+  "revision": "classpulse-00006-6w6",
+  "trafficPercent": 100,
+  "url": "https://classpulse-zdwglar6eq-as.a.run.app",
+  "sourceTagMatchesServingDigest": true,
+  "deploymentPerformed": false
+}

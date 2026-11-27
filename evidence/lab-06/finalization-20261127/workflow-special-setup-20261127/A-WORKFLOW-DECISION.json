@@ -1,0 +1,27 @@
+{
+  "recordedAtBangkok": "2026-11-27T02:28:53.103703+07:00",
+  "decision": "Accepted with explicitly documented minor limitations",
+  "decisionOwner": "Student A / Punge089, independent UAT tester for EN-037_P5 Workflow",
+  "assistance": "Codex GPT-6",
+  "scope": "Original implemented Sprint1 Workflow paths: original UAT01-06, agreed A2ADD01-06; later withdrawal outside the Lab6 acceptance assertions",
+  "acceptedSourceCommit": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "liveRevisionForPriorLiveChecks": "scd928edd-00009-fsg",
+  "liveMappingProvenance": "C/D supplied26Nov20:57:26, public marker before/after A/B run; no fresh A Cloud readback in this local block",
+  "liveDigest": "sha256:06e187cc4d1a9dc809925d4b68873014092a1c0cd6e83e440ec9a9e9bb60193d",
+  "localSpecialSetupsRevision": "N/A",
+  "basis": "Earlier independent A/B deployed original/boundary/access/persistence UAT plus WF-BUG001 independent corrected retest and this ProductTeam-agreed independent local special-setup verification",
+  "criticalMajorUnresolvedObservedDefects": 0,
+  "requiredSelectedSpecialMethodsBlocked": 0,
+  "alternative06cN": "NOT SELECTED: Product Team explicitly accepts actual06cR instead; not a PASS claim",
+  "studentBFinalDecisionAcknowledgment": "NOT RECEIVED. B participated in earlier UAT and evidence review; do not fabricate B signature or a final-file approval. This is A own recorded decision for review.",
+  "productTeamNewResultAcknowledgment": "Requested in handoff, not received yet",
+  "limits": [
+    "Natural full eight-hour live timing and new production-session replay not executed; agreed controlled local expiry and local previous-session rejection completed.",
+    "Actual local restart is not Cloud Run restart/new-instance evidence.",
+    "A local runtime PostgreSQL18.4/Node24.19.0/npm11.17.0 differs from C/D earlier16.x/24.14.0/11.9.0.",
+    "Existing supplied full test:sprint1 includes later withdrawal tests; all19ran unfiltered, but those later tests are not counted as Sprint1 UAT assertions.",
+    "Concurrency external winner/conflict evidence does not prove internal execution overlap.",
+    "Optional exploratory padded reason/rejected-terminal extensions not represented as completed.",
+    "Raw credentials/cookies/private DB cluster are excluded; local identified fixture IDs are synthetic."
+  ]
+}

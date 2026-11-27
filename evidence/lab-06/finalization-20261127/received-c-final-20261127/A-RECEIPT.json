@@ -1,0 +1,76 @@
+{
+  "reviewedAtBangkok": "2026-11-27T02:05:49.903730+07:00",
+  "reviewer": "Codex under Student A/Punge089",
+  "reviewKind": "Supplied-file review only; no app rerun, database/cloud or shared repository change",
+  "suppliedFileSha256": {
+    "C-REVIEW.md": "c9f415d812d88d00b0ff8cd1f98a88c5ae98326c09a10bbcb4d64c819bed5978",
+    "SPECIAL-SETUP-STATUS-20261127.md": "e8643193ac0a11866bca3a5831d4734ff4da54ebfac33a9ba336b4a88e956566"
+  },
+  "artifactChecksPassed": 12,
+  "artifactChecksFailed": 0,
+  "checks": {
+    "C named identity and actual confirmation time": true,
+    "C pins exact corrected source": true,
+    "C distinguishes supplied live revision and local N/A": true,
+    "C confirms eight auth passes and all AC04 observations": true,
+    "C review is not a rerun": true,
+    "historical live M01 remains blocked": true,
+    "C explicitly acknowledges D Accepted": true,
+    "C limitation on unavailable original D record disclosed": true,
+    "Workflow source and revision pinned": true,
+    "all seven setup rows received": true,
+    "no new Workflow run claimed": true,
+    "Workflow status separate from ClassPulse decision": true
+  },
+  "reviewerSetupCorrection": "Initial A parser expected eight pipe-prefixed lines, omitting the Markdown separator row. Corrected to nine (header, separator, seven data rows); source attachments unchanged.",
+  "classPulseDecision": {
+    "state": "Accepted by D, acknowledged by C",
+    "scope": "Sprint1 identified-survey",
+    "source": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+    "revision": "classpulse-00007-6t9 (supplied live mapping; isolated run N/A)",
+    "dDecisionBangkok": "2026-11-27T01:35:39+07:00",
+    "cConfirmationBangkok": "2026-11-27T02:01:21+07:00",
+    "cRerun": false,
+    "cReviewedOriginalDRecordWording": false,
+    "liveM01": "Historical BLOCKED, not upgraded",
+    "taApprovalClaimed": false
+  },
+  "workflowInventory": [
+    {
+      "id": "ADD-01 controlled expiry / AC-03",
+      "state": "OPEN independent live observation",
+      "next": "Agree exact-source independent isolated controlled-expiry verification or reasoned explicit residual disposition; developer support alone is not independent execution"
+    },
+    {
+      "id": "ADD-01 previous-session rejection / AC-03",
+      "state": "NOT RUN independently",
+      "next": "Agree exact-source independent isolated auth test or private live method; current signed-out401 is not same-old-cookie proof"
+    },
+    {
+      "id": "reviewer mapping / AC-06",
+      "state": "NOT RUN independently",
+      "next": "Approved isolated absent/wrong-role fixtures and unchanged-state assertions"
+    },
+    {
+      "id": "self-assignment / AC-06 BR-01",
+      "state": "NOT RUN independently",
+      "next": "Approved isolated schema constraint test with rollback"
+    },
+    {
+      "id": "forced event rollback / AC-13",
+      "state": "NOT RUN independently",
+      "next": "Approved isolated failure fixture; verify status/history rollback"
+    },
+    {
+      "id": "ADD-06c-R actual restart / AC-14 NFR-01",
+      "state": "NOT RUN",
+      "next": "Agree isolated persistent-DB runtime restart on exact source plus independent retained-record readback; live restart requires separate coordination"
+    },
+    {
+      "id": "ADD-06c-N new-instance / AC-14 NFR-01",
+      "state": "NOT RUN; alternative only",
+      "next": "Select only if explicitly agreed as alternative to actual restart; require evidence new instance handled readback"
+    }
+  ],
+  "wholeLab6Complete": false
+}

@@ -1,0 +1,15 @@
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse/autopilot/work117/client
+
+ ✓ tests/RatingDots.test.tsx (1 test) 331ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 330ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  15:21:28
+   Duration  3.01s (transform 68ms, setup 24ms, collect 651ms, tests 331ms, environment 1.27s, prepare 241ms)
+

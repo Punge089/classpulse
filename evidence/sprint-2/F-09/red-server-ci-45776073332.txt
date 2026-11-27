@@ -1,0 +1,18 @@
+F-09 RED run captured from GitHub Actions
+=======================================
+PR: #119 (draft); current branch test source: 0ed85391f42505bbb15dd8f01ff3c40578b320d8
+Base: sprint-2-staging at e6043a9843eaeebaa63464aa19e5e8d1e503996a
+Workflow run: 45776073332; job: 139759918623 (test-and-docker)
+Actions tested synthetic merge commit: d33e987d10ac162ab0ec9be1431a9dda900be815
+Command: in `server/`, `npm test`
+Exit: 1
+
+Vitest result (ANSI color removed from the captured lines):
+  tests/api/responseHistory.test.ts (16 tests | 12 failed)
+  Test Files: 1 failed | 18 passed (19)
+  Tests: 12 failed | 223 passed (235)
+  Duration: 19.23s (transform 186ms, setup 62ms, collect 975ms, tests 15.92s, environment 2ms, prepare 589ms)
+
+Failures: TEST-160/161/162/163/164/165/166/168/171/172/177 expected the contracted success response but received 404 because GET /api/responses/mine is absent in the pre-implementation source; TEST-170 expected malformed-cursor 400 and received 404 from the absent route. New authentication precedence and existing detail ownership/order tests passed. All 18 existing server test files passed. The server Vitest run had 0 skipped tests. Subsequent CI client/build/browser/Docker steps were skipped because the server test command failed, not because those checks passed.
+
+The workflow used its own PostgreSQL 16 service and disposable `classpulse_test`; no shared local database was used or reset. This file preserves the run ID, tested source/synthetic merge and exact test counts, with ANSI styling removed. Full job log: https://github.com/Punge089/classpulse/actions/runs/45776073332

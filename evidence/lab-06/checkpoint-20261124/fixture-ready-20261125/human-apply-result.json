@@ -1,0 +1,27 @@
+{
+  "observedCompletedBeforeUtc": "2026-11-24T17:32:56.435Z",
+  "operator": "Human at Cloud Shell; exact target and hidden prompts completed by user",
+  "reviewedMerge": "f4533eac6ba035885a67eb6010cfba570b8f3f3e",
+  "result": {
+    "users": [
+      {
+        "id": 16,
+        "email": "uat6.extra@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": true
+      },
+      {
+        "id": 17,
+        "email": "uat6.inactive@classpulse.test",
+        "role": "RESPONDENT",
+        "isActive": false
+      }
+    ],
+    "enrollment": {
+      "id": 4,
+      "userId": 16,
+      "courseId": 1
+    },
+    "existingBaselineUnchanged": true
+  }
+}
