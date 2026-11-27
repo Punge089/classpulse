@@ -1,7 +1,7 @@
 {
   "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
-  "sha256": "c18f41583b366029533512ad38f2ce310904491d17d5807c85e27feacf89b230",
-  "sourceSha256UTF8LF": "b26654bb8d4bd160892515dad1a04a780c1740a383de2007d31d8d8e37a7af3a",
+  "sha256": "cb5536d79b601e2374b6cf31ce7b5bbc9ccaac43635c233f794ed62ec297c4f2",
+  "sourceSha256UTF8LF": "90079386d242f6bf09906c159a68468e8ec36cffc14836deb0a0badc4569f3db",
   "pages": 30,
   "partStartPages": {
     "A": 3,
@@ -38,7 +38,7 @@
       "page": 1,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 140,
+      "words": 143,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -230,7 +230,7 @@
       "page": 25,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 313,
+      "words": 424,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -254,7 +254,7 @@
       "page": 28,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 304,
+      "words": 296,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -262,7 +262,7 @@
       "page": 29,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 497,
+      "words": 487,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -270,12 +270,12 @@
       "page": 30,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 454,
+      "words": 456,
       "outOfBoundsWords": 0,
       "draftFooter": true
     }
   ],
   "structuralResult": "PASS: all pages bounded/nonblank/draft-labelled; all Part links/page ranges correct; original screenshot pixels preserved",
-  "visualQA": "PASS: Poppler rendered all 30 pages. Compared page bodies with v0.5 and visually inspected changed pages 1, 2, 24, 25, 29 and 30.",
+  "visualQA": "PASS: compared all 30 page bodies with v0.6; inspected pages 1, 18, 25, 28, 29 and 30. Rechecked pages 29 and 30 after fixing a one-word page spill.",
   "releaseState": "NOT READY; no B final PDF approval or submission"
 }

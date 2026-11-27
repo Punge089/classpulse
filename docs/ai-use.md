@@ -313,3 +313,7 @@ A/Punge089 used Codex GPT-6.2 Sol to reconcile the approved release PR, the actu
 ## Lab 7 Cloud Run and legacy response readback - Issue #101, Student A, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to read the existing Cloud Run revision and migration execution, compare image manifests, and read one older response using a synthetic account. A retained only the named release facts and checked values; no application business records or cloud settings were changed. Live checks requiring a dedicated reopened survey are pending.
+
+## Lab 7 live reopen and preservation - Issue #101, Student A, 28 November 2026
+
+A/Punge089 authorized Codex GPT-6.2 Sol to use the three synthetic roles for a dedicated deployed behavior check. A entered the shared credential privately. The run wrote only a new synthetic survey and its test response and lifecycle, then logged out all three accounts. A verified the before/after Cloud Run revision. The report embeds the sanitized receipt. B's independent report review and final metrics remain pending.

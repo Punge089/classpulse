@@ -299,6 +299,11 @@
       "file": "inputs/nov28-live-readback.json",
       "sha256": "45f4a84f94062cbda7b5b9f38c043825765bbd6f033f1cd38676a239d664a6c2",
       "derivation": "Read-only Cloud Run revision/history and exact migration execution, GitHub Actions image export readback, and authenticated synthetic legacy response matching CD-07"
+    },
+    {
+      "file": "inputs/nov28-live-reopen.json",
+      "sha256": "bf3a2d469eb619e078baa2b889b2d6adf14f85fe637a4a046b3668f5655f607b",
+      "derivation": "Sanitized direct deployed API observations, with Cloud Run revision checked before and after"
     }
   ],
   "sourceSnapshotVersion": "1"

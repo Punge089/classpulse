@@ -27,7 +27,7 @@ check("WORKING DRAFT - NOT READY FOR SUBMISSION" in report, "unambiguous working
 check(all(f"# Part {part} -" in report for part in "ABCD"), "all four separate assessed parts")
 check(set(map(int, re.findall(r"^\| AC-(\d+) \|", report, re.M))) == set(range(100, 112)), "all12 stable acceptance IDs")
 check(set(map(int, re.findall(r"^\| TEST-(\d+) \|", report, re.M))) == set(range(100, 115)), "all15 complete reviewed STS designs")
-check("PARTIAL: suites, review, staging, main and automated deployment verified; live checks PENDING" in report, "release AC not claimed complete")
+check("PASS in scoped checks: regression, review, main, deployment and live API verification" in report, "scoped AC-111 checks recorded without claiming final report approval")
 timeline = json.loads((EV / "inputs/timeline.json").read_text(encoding="utf-8"))
 times = {x["role"]: datetime.fromisoformat(x["committedAt"]) for x in timeline}
 c3 = json.loads((EV / "inputs/b-c3.json").read_text(encoding="utf-8"))
@@ -83,7 +83,11 @@ check(cloud["sourceCommit"] == release["main"] and cloud["publishedIndexDigest"]
 check(cloud["trafficPercent"] == 100 and cloud["migrationTaskExitCode"] == 0 and all(cloud[k] in report for k in ("servingRevision", "platformManifestDigest", "migrationExecution", "migrationName")), "Cloud Run traffic, platform digest and named successful migration embedded")
 legacy = cloud["retentionSample"]
 check(legacy["result"] == "PASS" and legacy["responseStatus"] == 200 and legacy["actual"]["ratingMatched"] and legacy["actual"]["choiceMatched"] and "This is one retained response sample." in report, "pre-migration sample readback is embedded with its limit")
-check("live reopen checks PENDING" in report and "The changed and preserved behavior around a new reopen has yet to be checked." in report, "keeps post-reopen live evidence pending")
+live = json.loads((EV / "inputs/nov28-live-reopen.json").read_bytes())
+check(live["source"] == cloud["sourceCommit"] and live["postRunConsole"]["revision"] == cloud["servingRevision"] and live["postRunConsole"]["trafficPercent"] == 100, "before and after revision match the live run")
+check(live["result"] == "PASS" and len(live["checks"]) == 14 and all(c["outcome"] == "PASS" for c in live["checks"]), "14 actual live observations all passed")
+check(all(x in report for x in ("HTTP 409 ALREADY_RESPONDED", "both 404", "Response 17 retained rating 4", "CLOSED version 2 reopened")), "changed and preserved results embedded")
+check(len(live["logouts"]) == 3 and all(c["status"] == 204 for c in live["logouts"]), "three synthetic sessions logged out")
 check(not (ROOT / "output/pdf/ClassPulse-Lab7.pdf").exists(), "no falsely finalized PDF")
 before = hashlib.sha256(REPORT.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
 subprocess.run([sys.executable, str(ROOT / "tools/lab7-report/build_source.py")], cwd=ROOT, check=True, stdout=subprocess.PIPE)
