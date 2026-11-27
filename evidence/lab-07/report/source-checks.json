@@ -1,8 +1,8 @@
 {
-  "passed": 76,
+  "passed": 80,
   "failed": 0,
   "skipped": 0,
-  "reportSha256": "42dd1f738f376275922551308967ea67c1294e37556619c5a7b15b040a0b5064",
+  "reportSha256": "b26654bb8d4bd160892515dad1a04a780c1740a383de2007d31d8d8e37a7af3a",
   "reportHashEncoding": "UTF8/LF canonical source, not a final PDF hash",
   "checks": [
     "input SHA256: inputs/contract-before-code.md",
@@ -44,6 +44,7 @@
     "input SHA256: inputs/nov27-baseline-and-staging.json",
     "input SHA256: inputs/nov28-metrics-integration.json",
     "input SHA256: inputs/nov28-main-release.json",
+    "input SHA256: inputs/nov28-live-readback.json",
     "unambiguous working-draft state",
     "all four separate assessed parts",
     "all12 stable acceptance IDs",
@@ -77,7 +78,10 @@
     "all four release and manual readback obligations embedded",
     "actual main merge parents and tree match release evidence",
     "main and automated deploy details embedded",
-    "serving revision and traffic await independent observation",
+    "live revision mapped to the exact deployed release",
+    "Cloud Run traffic, platform digest and named successful migration embedded",
+    "pre-migration sample readback is embedded with its limit",
+    "keeps post-reopen live evidence pending",
     "no falsely finalized PDF",
     "offline source rebuild deterministic in canonical UTF8/LF",
     "git diff whitespace"

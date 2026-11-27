@@ -1,7 +1,7 @@
 {
   "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
-  "sha256": "71a76cd1691b754e009317b6af0c89ad728cfabb73f8ba59685f5a5fe9e45873",
-  "sourceSha256UTF8LF": "42dd1f738f376275922551308967ea67c1294e37556619c5a7b15b040a0b5064",
+  "sha256": "c18f41583b366029533512ad38f2ce310904491d17d5807c85e27feacf89b230",
+  "sourceSha256UTF8LF": "b26654bb8d4bd160892515dad1a04a780c1740a383de2007d31d8d8e37a7af3a",
   "pages": 30,
   "partStartPages": {
     "A": 3,
@@ -38,7 +38,7 @@
       "page": 1,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 132,
+      "words": 140,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -46,7 +46,7 @@
       "page": 2,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 340,
+      "words": 341,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -222,7 +222,7 @@
       "page": 24,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 390,
+      "words": 457,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -230,7 +230,7 @@
       "page": 25,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 288,
+      "words": 313,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -262,7 +262,7 @@
       "page": 29,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 488,
+      "words": 497,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -270,12 +270,12 @@
       "page": 30,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 447,
+      "words": 454,
       "outOfBoundsWords": 0,
       "draftFooter": true
     }
   ],
   "structuralResult": "PASS: all pages bounded/nonblank/draft-labelled; all Part links/page ranges correct; original screenshot pixels preserved",
-  "visualQA": "PASS: rendered all 30 pages using Poppler and compared to v0.4. Inspected changed pages 1, 2, 18, 24, 25, 28, 29 and 30. Rechecked the final renders of pages 1, 29 and 30 after removing a one-line paragraph spill.",
+  "visualQA": "PASS: Poppler rendered all 30 pages. Compared page bodies with v0.5 and visually inspected changed pages 1, 2, 24, 25, 29 and 30.",
   "releaseState": "NOT READY; no B final PDF approval or submission"
 }

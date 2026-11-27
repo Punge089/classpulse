@@ -294,6 +294,11 @@
       "file": "inputs/nov28-main-release.json",
       "sha256": "eac7066c7d13952a81b64739d91f6f30365bb64ed5f4e9c278163c5db94af7b1",
       "derivation": "GitHub PR #143, main merge object, Actions 46050688714 metadata and selected log readback; smoke_test.py from main"
+    },
+    {
+      "file": "inputs/nov28-live-readback.json",
+      "sha256": "45f4a84f94062cbda7b5b9f38c043825765bbd6f033f1cd38676a239d664a6c2",
+      "derivation": "Read-only Cloud Run revision/history and exact migration execution, GitHub Actions image export readback, and authenticated synthetic legacy response matching CD-07"
     }
   ],
   "sourceSnapshotVersion": "1"

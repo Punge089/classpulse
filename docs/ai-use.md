@@ -309,3 +309,7 @@ A/Punge089 used Codex GPT-6.2 Sol to verify B's interim metrics PR #114 staging 
 ## Lab 7 release evidence - Issue #101, Student A, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to reconcile the approved release PR, the actual main merge and its GitHub deployment logs. A recorded automation results separately from the pending Cloud Run revision and live application checks. B approved and merged the release.
+
+## Lab 7 Cloud Run and legacy response readback - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to read the existing Cloud Run revision and migration execution, compare image manifests, and read one older response using a synthetic account. A retained only the named release facts and checked values; no application business records or cloud settings were changed. Live checks requiring a dedicated reopened survey are pending.
