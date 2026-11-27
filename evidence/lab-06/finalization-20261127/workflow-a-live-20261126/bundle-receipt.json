@@ -1,0 +1,14 @@
+{
+  "zip": "C:\\Users\\MSII\\OneDrive\\Desktop\\Soft_eng\\classpulse\\autopilot\\ClassPulse_A_Workflow_UAT_Results_20261126.zip",
+  "sha256": "f32aa87038b25fc94f748674f5e0e468463d8010000acef4837c7a0232b1e708",
+  "bytes": 808361,
+  "payloadHashesVerified": 72,
+  "crc": "PASS",
+  "scope": "A actual Workflow ADD01/06 permitted branches, not B participation or whole-product acceptance",
+  "privateInputLoadersExcluded": true,
+  "newRequestId": "5deda680-a443-4268-becb-8816bfebacaf",
+  "initialHttpPassRetained": true,
+  "latestHttpPassed": 30,
+  "latestHttpFailed": 0,
+  "teamFreezeReleased": false
+}
