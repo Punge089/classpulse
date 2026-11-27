@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "2f8581d70570e50ba5c375c14d40c11d9899c2d5",
+  "path": "docs/labs/lab-06/classpulse/R3/REPORT.md",
+  "gitBlob": "3241c011c1ade1965345b3d2e09f8795ccf53235",
+  "sha256": "c6b30b81f3d1256fc8f6a65c1fe9bdf287d42880f0a1a1ea6dde5834fdad1e9f",
+  "bytes": 4118,
+  "results": {
+    "path": "docs/labs/lab-06/classpulse/R3/results.json",
+    "gitBlob": "ee7a40c943111c35acd7d676366208404125c9d5",
+    "sha256": "bd797164387b409da2fd21844988cb93acecbcb9fed4a7e1ac5dd8ea0e7464d1",
+    "bytes": 8216
+  },
+  "earlierVerboseAuth": {
+    "path": "docs/labs/lab-06/classpulse/CP-V01-TEST-05/auth-test-output.txt",
+    "gitBlob": "9d2c405b4edc77b338060247261b4239293f3a29",
+    "sha256": "5e23825fc593a8f7b43fd27178fa2a6dbe3132a2c94a0300981deb26d71f4319",
+    "bytes": 1635,
+    "scope": "Earlier local support referenced by R3; not R3 live execution"
+  },
+  "partnerPr": 75,
+  "partnerRepo": "osizk/WorkflowAndApprovalSystem",
+  "stateAtReceipt": "OPEN; requested osizk review pending",
+  "originalReportUrl": "https://github.com/osizk/WorkflowAndApprovalSystem/blob/2f8581d70570e50ba5c375c14d40c11d9899c2d5/docs/labs/lab-06/classpulse/R3/REPORT.md",
+  "relativeLinks": {
+    "results.json": "results.json",
+    "../CP-V01-TEST-05/auth-test-output.txt": "https://github.com/osizk/WorkflowAndApprovalSystem/blob/2f8581d70570e50ba5c375c14d40c11d9899c2d5/docs/labs/lab-06/classpulse/CP-V01-TEST-05/auth-test-output.txt"
+  },
+  "linkLimit": "Original report bytes keep their upstream directory context. Its older relative auth-output link maps to the immutable URL here; locally supplied copy is earlier-verbose-auth-output.txt."
+}

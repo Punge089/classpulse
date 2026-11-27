@@ -1,0 +1,30 @@
+2026-11-25T11:07:02.9039626Z #22 [production 7/9] COPY --from=server-builder /app/server/prisma ./prisma
+2026-11-25T11:07:02.9040132Z #22 DONE 0.0s
+2026-11-25T11:07:02.9040332Z
+2026-11-25T11:07:02.9040860Z #23 [production 8/9] COPY --from=server-builder /app/server/src/lib/password.ts ./src/lib/password.ts
+2026-11-25T11:07:02.9041461Z #23 DONE 0.0s
+2026-11-25T11:07:02.9041630Z
+2026-11-25T11:07:02.9041831Z #18 [client-builder 6/6] RUN npm run build
+2026-11-25T11:07:02.9042562Z #18 4.566 ✓ 46 modules transformed.
+2026-11-25T11:07:03.0160282Z #18 4.678 rendering chunks...
+2026-11-25T11:07:03.2086556Z #18 4.684 computing gzip size...
+2026-11-25T11:07:03.2087466Z #18 4.691 dist/index.html                   0.68 kB │ gzip:  0.37 kB
+2026-11-25T11:07:03.2087959Z #18 4.691 dist/assets/index-BU5Qbnca.css  233.83 kB │ gzip: 31.58 kB
+2026-11-25T11:07:03.2088686Z #18 4.691 dist/assets/index-Bi1ZvEdG.js   189.33 kB │ gzip: 59.79 kB
+2026-11-25T11:07:03.2089032Z #18 4.692 ✓ built in 1.12s
+2026-11-25T11:07:03.2089297Z #18 DONE 4.8s
+2026-11-25T11:07:03.2089434Z
+2026-11-25T11:07:03.2089701Z #24 [production 9/9] COPY --from=client-builder /app/client/dist /app/client/dist
+2026-11-25T11:07:03.4104145Z #24 DONE 0.0s
+2026-11-25T11:07:03.4104413Z
+2026-11-25T11:07:03.4119567Z #25 exporting to image
+2026-11-25T11:07:03.4119932Z #25 exporting layers
+2026-11-25T11:07:09.3051921Z #25 exporting layers 6.0s done
+2026-11-25T11:07:09.4786622Z #25 exporting manifest sha256:43b1e0731c63d0b245a60460dbd9b3a4dccedd7d6e97d7dc7444586538dae5dd done
+2026-11-25T11:07:09.4787682Z #25 exporting config sha256:dd548a5540a1ba93a051902d5ce6324d44f3655d8eef74fc788bfb71044d4ba1 done
+2026-11-25T11:07:09.4789522Z #25 exporting attestation manifest sha256:d15ed909e583d6955be2fc380002d6aeb10dd57d5f8e7626b5d088130b20c63e done
+2026-11-25T11:07:09.4790266Z #25 exporting manifest list sha256:00132c634c351d905988d7eb592c35b6c811ccb9959527229cc3e9c47e28d199 done
+2026-11-25T11:07:09.4790839Z #25 naming to docker.io/library/classpulse-ci:ci done
+2026-11-25T11:07:09.4791179Z #25 unpacking to docker.io/library/classpulse-ci:ci
+2026-11-25T11:07:10.2517303Z #25 unpacking to docker.io/library/classpulse-ci:ci 0.9s done
+2026-11-25T11:07:10.3136388Z #25 DONE 7.0s

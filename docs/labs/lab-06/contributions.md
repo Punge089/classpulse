@@ -1,6 +1,39 @@
+# Lab 6 actual contributions — current checkpoint, 26 November 2026
+
+Issue #122. These actual roles supersede earlier pending-receipt statements without rewriting history or model labels. [Closure](cp-ex-f01-closure.md) and [artifact provenance](../../../evidence/lab-06/corrected-retest-20261126/README.md) provide the evidence. Final acceptance is separate.
+
+| Participant | Actual contribution |
+|---|---|
+| A / Punge089 | Codex GPT-6 implemented the exercise/correction, preserved RED/GREEN and the initial ordering deviation/repeat, ran exact-source regression, reviewed B-authored release PR #121, and read Cloud/Registry mapping. The human personally initiated the approved main merge/deployment. A reviewed D's 9 hashes, JSON and 6 screenshots, and C's actual comment; no A retest rerun. This receipt PR still needs B review. |
+| B / book6349 | Review 6070920924 at `0b8df1c` included actual 4 focused / 143 server / 1 client tests and builds; B merged PR #118 into Sprint 2 staging. B recorded the limited release-route disposition, guarded original-S1 fast-forward and authored draft release PR #121. These handovers name Codex GPT-6 Sol; older model disclosures remain historical. No new B independent retest is inferred. |
+| D / Thira Rungruangkaset, 67070503419 | Independent local finding on `4199888`; corrected Cloud retest on `bee0d122`, 26 November 18:30:40–49 Bangkok, operated by Codex (GPT-6) under D. Five Cloud subcases passed; separate 18:26:54 local read preserved drafts 3/6/9. D used A's Cloud mapping. |
+| C / Ashira Sansoda, 67070503445, osizk | Actual original-finding review 7186481546 and corrected-retest review 7190900011. Reviewed hashes, screenshots and readbacks; no C rerun. The comment identifies Codex assistance without specifying the exact model; D's model is not attributed to C. |
+
+At 26 November 19:05:26 Bangkok, D separately records Not Accepted on current CP-FIX-001 evidence, with live CD-01 blocked by the operator safety constraint. The user relayed the decision; no separate decision attachment was supplied. C's final-decision review remains pending. A's subsequent 8-file auth/source comparison and Workflow release-diff review were read-only inspections, not new independent UAT. Method M01 is a proposal, not a completed verification.
+
+---
+
+## Historical contribution snapshots
+
 # Lab 6 actual contributions and disclosure register
 
-## Current status — 25 November 2026, after companion review
+## Current R3 result disposition — 25 November 2026
+
+[R3 baseline review](r3-baseline-review.md): C/D Codex GPT-6 under Thira/D reports three scoped live branch groups PASS (CD06 anonymous PUT/DELETE, respondent reload, cookie attributes/clearing) on CP-V01 source1fe3e3b/revisionclasspulse-00006-6w6,21:39-21:44Bangkok. Survey27/response16 is retained and unchanged; survey26/responses13-15 preserved. Live old-session replay remains BLOCKED without a specific technical blocker; earlier local TEST04 is supporting PASS only. Natural live expiry remains OPEN. C actual review, B result/limit review and explicit replay-limit disposition precede the baseline gate; final acceptance/PartD remain PENDING, no exercise defect selected. Received source/revision/full hashes/operator/version/notice limits are in the linked review; no A live rerun or release change occurred. Earlier plan-only states below are historical.
+
+## Current coverage action — 25 November 2026, C/D consolidated report
+
+C/D PR69's consolidated report is received; no genuine ClassPulse defect was established in completed checks. [A's residual-branch disposition](coverage-disposition-a3.md) requests the short anonymous PUT/DELETE, live old-session replay, cookie metadata and respondent reload checks before the no-defect PartD gate. Natural live8-hour expiry remains OPEN with local TEST05 supporting PASS; production storage/log inspection and extra rounding tie retain explicit limits pending C/D/B agreement. C's actual report review remains pending. A requests work now; proposed26/27Nov slots are not booked. A's readonly CloudConsole observation at25Nov21:15:48Bangkok confirms classpulse-00006-6w6/100%/sameCP-V01digest/TTL8; source mapping is carried from the prior identical immutable image. No new UAT result, exercise defect, code/schema/shared-file/cloud mutation or release/deploy is claimed. PartD entry NOT READY and final acceptance PENDING until results/dispositions are reviewed.
+
+## Current status — 25 November 2026, exact-command supporting result received
+
+**TEST-05: supporting PASS; independent live expiry: OPEN; final acceptance and ClassPulse Part D: PENDING.** C/D operator Codex GPT-6.2 Sol under Thira/D ran `npm test -- tests/api/auth.test.ts` at CP-V01 `1fe3e3b82dfb0537be30223c9b598b3479b4affe`, 20:30:14-20:30:18 Bangkok: **8 passed, 0 failed, 0 skipped, exit 0**. This was a fresh localhost `classpulse_test` database; serving revision **N/A**. A reviewed the supplied artifacts and pinned source, without rerunning the app. [Evidence and limits](../../../evidence/lab-06/checkpoint-20261124/received-test05-exact-20261125/a-review.json); [report/output/proof](../../../evidence/lab-06/checkpoint-20261124/received-test05-exact-20261125/README.md).
+
+TEST-05 asserts /me200 before backdating fixture expiresAt and /me401 UNAUTHENTICATED afterward. The default reporter confirms the full eight-test file, not a separate HTTP transcript. This supports stored-session expiry rejection; it does not establish the deployed eight-hour TTL. CD01 inactive login/CD07 aggregate remain scoped PASS; preserve survey26/responses13-15. Remaining coverage, both product decisions, ClassPulse PartD and the reviewed final PDF/submission remain open. No code/schema/shared-file/release/cloud/live-data change was made. B must review this Issue106 evidence update; prior PR103 is already merged. Current A assistance: Codex GPT-6, artifact/report work only.
+
+Earlier dated receipt/method statuses below are history; the later received result above supersedes their NOT RECEIVED state.
+
+## Historical status — 25 November 2026, companion review before TEST-05 receipt
 
 **CD-01 inactive login and CD-07 exact aggregate are PASS within the recorded scope**, now supported by C/D's received [JSON](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/fixture-case-results.json) and [summary image](../../../evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/CD07-summary.png), which A reviewed against the preserved report. Inactive user17: before/login/after401 with INVALID_CREDENTIALS at login. Survey26: baseline0; respondents3/5/16 -> responses13/14/15, ratings4/4/5; count3/average4.33, distribution0/0/0/2/1, Online3/In person0; aggregate values agree across API/UI/image without respondent identities. Four active logout204/identity401 observations do not prove controlled expiry/replay. Preserve survey26/responses13–15. [Artifact assessment](../../../evidence/lab-06/checkpoint-20261124/r2-companion-review-20261125/companion-review.json).
 

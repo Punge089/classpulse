@@ -1,0 +1,97 @@
+﻿2026-11-25T10:43:13.9624943Z ##[group]Run npm test
+2026-11-25T10:43:13.9625372Z npm test
+2026-11-25T10:43:13.9676135Z shell: /usr/bin/bash -e {0}
+2026-11-25T10:43:13.9676552Z env:
+2026-11-25T10:43:13.9677503Z   DATABASE_URL: [omitted]
+2026-11-25T10:43:13.9678095Z   SEED_PASSWORD: [omitted]
+2026-11-25T10:43:13.9678514Z ##[endgroup]
+2026-11-25T10:43:14.1072600Z
+2026-11-25T10:43:14.1073464Z > classpulse-server@0.1.0 test
+2026-11-25T10:43:14.1073920Z > vitest run
+2026-11-25T10:43:14.1074058Z
+2026-11-25T10:43:14.3922219Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+2026-11-25T10:43:14.4257468Z
+2026-11-25T10:43:14.4259242Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+2026-11-25T10:43:14.4260224Z
+2026-11-25T10:43:16.4536263Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1711ms
+2026-11-25T10:43:19.4088669Z  ✓ tests/api/responses.test.ts (10 tests) 2500ms
+2026-11-25T10:43:19.4091560Z    ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 375ms
+2026-11-25T10:43:22.0545162Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 2299ms
+2026-11-25T10:43:22.0547280Z    ✓ F-03 create a survey > TEST-10 an owner creates a DRAFT survey with ordered questions and options 310ms
+2026-11-25T10:43:24.3081448Z  ✓ tests/api/auth.test.ts (8 tests) 1921ms
+2026-11-25T10:43:24.3084499Z    ✓ F-01 login, session and current user > TEST-02 wrong password, unknown email and an inactive user are indistinguishable 327ms
+2026-11-25T10:43:25.5076373Z  ✓ tests/api/summary.test.ts (3 tests) 871ms
+2026-11-25T10:43:25.5079216Z    ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 340ms
+2026-11-25T10:43:25.5084374Z    ✓ F-05 owner survey summary > TEST-36 empty summary, ownership, role and invalid-id checks 308ms
+2026-11-25T10:43:25.7305458Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 12ms
+2026-11-25T10:43:26.1326939Z  ✓ tests/api/cloudReady.test.ts (3 tests) 78ms
+2026-11-25T10:43:27.4597125Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 1121ms
+2026-11-25T10:43:27.4624274Z    ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 396ms
+2026-11-25T10:43:28.9730406Z  ✓ tests/db/constraints.test.ts (3 tests) 1304ms
+2026-11-25T10:43:28.9731885Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 864ms
+2026-11-25T10:43:29.1800630Z  ✓ tests/unit/summary.test.ts (6 tests) 6ms
+2026-11-25T10:43:29.3932267Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 7ms
+2026-11-25T10:43:30.2478348Z  ❯ tests/api/surveyReopen.test.ts (2 tests | 2 failed) 525ms
+2026-11-25T10:43:30.2484560Z    × Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey 307ms
+2026-11-25T10:43:30.2486035Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T10:43:30.2488732Z    × Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey 210ms
+2026-11-25T10:43:30.2490380Z      → expected 404 to be 200 // Object.is equality
+2026-11-25T10:43:30.6184700Z  ✓ tests/api/health.test.ts (1 test) 74ms
+2026-11-25T10:43:30.9826662Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 44ms
+2026-11-25T10:43:31.6607273Z  ✓ tests/unit/password.test.ts (1 test) 441ms
+2026-11-25T10:43:31.6608582Z    ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 434ms
+2026-11-25T10:43:31.8973476Z  ✓ tests/unit/seedConfig.test.ts (1 test) 4ms
+2026-11-25T10:43:32.1128982Z  ✓ tests/unit/surveyLifecycle.test.ts (6 tests) 6ms
+2026-11-25T10:43:32.1232204Z
+2026-11-25T10:43:32.1241364Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+2026-11-25T10:43:32.1241846Z
+2026-11-25T10:43:32.1244400Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-100' accepts a 10-character reason on a CLOSED survey
+2026-11-25T10:43:32.1246840Z  FAIL  tests/api/surveyReopen.test.ts > Lab 7 controlled reopening (AC-100, AC-102) > 'TEST-101 upper reason boundary' accepts a 300-character reason on a CLOSED survey
+2026-11-25T10:43:32.1268985Z AssertionError: expected 404 to be 200 // Object.is equality
+2026-11-25T10:43:32.1270438Z
+2026-11-25T10:43:32.1270873Z - Expected
+2026-11-25T10:43:32.1271475Z + Received
+2026-11-25T10:43:32.1271854Z
+2026-11-25T10:43:32.1272189Z - 200
+2026-11-25T10:43:32.1272691Z + 404
+2026-11-25T10:43:32.1272996Z
+2026-11-25T10:43:32.1273676Z  ❯ tests/api/surveyReopen.test.ts:43:26
+2026-11-25T10:43:32.1455501Z      41|     // Assert behavior before touching any future DTO/model fields so …
+2026-11-25T10:43:32.1456794Z      42|     // failures cannot masquerade as the missing-behavior failure.
+2026-11-25T10:43:32.1457961Z      43|     expect(reply.status).toBe(200);
+2026-11-25T10:43:32.1458875Z        |                          ^
+2026-11-25T10:43:32.1459874Z      44|     expect(reply.body.survey).toMatchObject({
+2026-11-25T10:43:32.1461109Z      45|       id: original.id,
+2026-11-25T10:43:32.1461490Z
+2026-11-25T10:43:32.1461891Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+2026-11-25T10:43:32.1462247Z
+2026-11-25T10:43:32.1465819Z  Test Files  1 failed | 16 passed (17)
+2026-11-25T10:43:32.1467286Z       Tests  2 failed | 139 passed (141)
+2026-11-25T10:43:32.1468121Z    Start at  10:43:14
+2026-11-25T10:43:32.1469316Z    Duration  17.70s (transform 262ms, setup 93ms, collect 1.43s, tests 12.93s, environment 3ms, prepare 909ms)
+2026-11-25T10:43:32.1470001Z
+2026-11-25T10:43:32.1481817Z
+2026-11-25T10:43:32.1509360Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:43:26
+
+
+2026-11-25T10:43:32.1529138Z
+2026-11-25T10:43:32.1531423Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/api/surveyReopen.test.ts:43:26
+
+
+2026-11-25T10:43:32.1795316Z ##[error]Process completed with exit code 1.

@@ -61,6 +61,7 @@ payment or any external API, real student data.
 | FR-16 | An owner creates an anonymous survey; respondents are told before answering. | 3 |
 | FR-17 | An owner exports responses as CSV (identified: with respondent; anonymous: without). | 3 |
 | FR-18 | An owner filters the summary by section and reads text answers. | 3 |
+| FR-19 | An owner reopens an own closed survey with a reason and current lifecycle version and reads durable lifecycle history; historical responses are preserved. Proposed #87, not implemented. | Lab 7 / D2 |
 
 **Observable behaviour of Sprint 1 requirements**
 
@@ -80,7 +81,7 @@ payment or any external API, real student data.
 |---|---|---|
 | BR-01 | Only `DRAFT` surveys may have questions added, changed or removed. | 2 |
 | BR-02 | A survey has 1–20 questions; prompt 1–300 chars; a `SINGLE_CHOICE` question has 2–6 distinct, non-empty options (≤ 100 chars); a `RATING` question has no options. Title 1–120 chars, description ≤ 1000. | 1 |
-| BR-03 | Status changes only `DRAFT → PUBLISHED` (publish) and `PUBLISHED → CLOSED` (close). Any other request is rejected and the status is unchanged. | 1 |
+| BR-03 | Original Sprint 1: DRAFT -> PUBLISHED (publish), PUBLISHED -> CLOSED (close). Lab 7 proposal #87 additionally permits CLOSED -> PUBLISHED through explicit owner reopen with reason/current lifecycle version; publish on CLOSED still rejects. See BR-15. | 1 + Lab 7 proposed |
 | BR-04 | Responses are accepted only while the survey is `PUBLISHED`. | 1 |
 | BR-05 | Only respondents enrolled in the survey's course may respond. | 1 |
 | BR-06 | At most one response per respondent per survey, including simultaneous attempts. | 1 |
@@ -92,6 +93,7 @@ payment or any external API, real student data.
 | BR-12 | `TEXT` answers ≤ 500 chars; `MULTI_CHOICE` answers pick 1…n distinct options of that question. | 2 |
 | BR-13 | Anonymous mode: no stored link between a respondent and their answers; participation is recorded separately; mode cannot change after publish. | 3 |
 | BR-14 | Aggregate results of an anonymous survey are hidden until it has ≥ 5 responses. | 3 |
+| BR-15 | Explicit reopen requires a trimmed 10-300 UTF-16-unit reason and matching lifecycle version. Every new publish/close/reopen transition atomically increments that version and appends an immutable event; failure leaves state/history unchanged. No fake historical backfill. Proposed #87. | Lab 7 / D2 |
 
 Clarification of BR-07: a question marked `required: false` may be left unanswered; no `Answer` row is stored for it.
 
@@ -131,7 +133,7 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
 | D-05 | Wrong role → 403; a record the caller does not own → 404. | A 404 does not reveal that another owner's survey or another student's response exists. |
 | D-06 | Opaque session token in an httpOnly cookie, hash stored in a `Session` table. | Logout can invalidate immediately (NFR-04); no token in client code. |
 | D-07 | Ratings are integers 1–5. | Simple, comparable averages and distributions. |
-| D-08 | Status flow is only DRAFT → PUBLISHED → CLOSED. | Deterministic lifecycle; reopening is not needed for the stakeholder problem. |
+| D-08 | Original Sprint 1 made CLOSED terminal. Lab 7 proposal #87 allows explicit controlled reopen, never a return to DRAFT. | Changed need: extend collection after a class interruption without cloning or losing answers; retain reasons and audit. B team review pending. |
 
 ## 10. Open questions and their resolution
 
@@ -148,3 +150,4 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
 |---|---|---|
 | 1.0 | 6 Nov 2026 | Initial SRS. |
 | 1.1 | 6 Nov 2026 | After the review of PR #12 by book6349: D-04 no longer attributes both BR-06 and BR-09 to one database constraint (BR-06 is the unique constraint, BR-09 is the API exposing no write route); NFR-01's verification now includes TEST-57, which checks that no plaintext password or session token reaches the server's logs. |
+| 1.2 proposed | 25 Nov 2026 | Issue #87, A: revise BR-03/D-08 and add FR-19/BR-15 before tests/code for controlled reopening. B agreement/C3 pending; old terminal behavior retained in tag/history. Detailed AC-100..111/TEST-100..114 in [Lab 7 contract](labs/lab-07/maintenance-contract.md). |
