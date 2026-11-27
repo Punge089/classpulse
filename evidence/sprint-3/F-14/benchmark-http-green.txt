@@ -1,0 +1,9 @@
+# F-14 request-sequence GREEN
+
+Command: npm --prefix server test -- tests/tools/summaryBenchmark.test.ts.
+All ten cases passed against the request implementation, including the same three from RED. No cases were skipped within the selected file. The request adapter and monotonic clock were controlled in this run; no live endpoint timing, database writes or fixture operations occurred.
+> vitest run tests/tools/summaryBenchmark.test.ts
+ ✓ tests/tools/summaryBenchmark.test.ts (10 tests) 10ms
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Duration  292ms (transform 38ms, setup 23ms, collect 30ms, tests 10ms, environment 0ms, prepare 82ms)

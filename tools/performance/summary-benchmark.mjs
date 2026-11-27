@@ -8,27 +8,29 @@ export function analyzeSummarySamples(measurements, verifySummary) {
     throw new Error(`Exactly ${SAMPLE_COUNT} samples are required`);
   }
 
-  const samplesMs = Array.from(measurements, (measurement, index) => {
-    const sample = index + 1;
-    if (!Number.isFinite(measurement?.elapsedMs) || measurement.elapsedMs < 0) {
-      throw new Error(`Sample ${sample} has an invalid duration`);
-    }
-    if (measurement.status !== 200) {
-      throw new Error(`Sample ${sample} did not return HTTP 200`);
-    }
+  return summarizeSampleTimes(Array.from(measurements, (measurement, index) =>
+    validateMeasurement(measurement, verifySummary, `Sample ${index + 1}`)));
+}
 
-    let matches = false;
-    try {
-      matches = verifySummary(measurement.body) === true;
-    } catch {
-      // A malformed response may contain private data. Report the sample number only.
-    }
-    if (!matches) {
-      throw new Error(`Sample ${sample} summary did not match`);
-    }
-    return measurement.elapsedMs;
-  });
+function validateMeasurement(measurement, verifySummary, label) {
+  if (!Number.isFinite(measurement?.elapsedMs) || measurement.elapsedMs < 0) {
+    throw new Error(`${label} has an invalid duration`);
+  }
+  if (measurement.status !== 200) {
+    throw new Error(`${label} did not return HTTP 200`);
+  }
 
+  let matches = false;
+  try {
+    matches = verifySummary(measurement.body) === true;
+  } catch {
+    // A malformed response may contain private data. Report the sample label only.
+  }
+  if (!matches) throw new Error(`${label} summary did not match`);
+  return measurement.elapsedMs;
+}
+
+function summarizeSampleTimes(samplesMs) {
   const sortedSamplesMs = [...samplesMs].sort((left, right) => left - right);
   const rank = Math.ceil(PERCENTILE * SAMPLE_COUNT);
   const p95Ms = sortedSamplesMs[rank - 1];
@@ -67,6 +69,50 @@ export function validateBenchmarkTarget({ baseUrl, databaseUrl, approvedDatabase
   return app.origin;
 }
 
-export async function runSummaryRequests() {
-  throw new Error("Summary request sequence has not been implemented");
+export async function runSummaryRequests({
+  target,
+  surveyId,
+  cookie,
+  verifySummary,
+  request = fetch,
+  now = () => performance.now()
+}) {
+  const origin = validateBenchmarkTarget(target);
+  if (!Number.isSafeInteger(surveyId) || surveyId < 1 || surveyId > 2147483647) {
+    throw new Error("Benchmark requires a valid survey ID");
+  }
+  if (typeof cookie !== "string" || !/^cp_session=[A-Za-z0-9_-]+$/.test(cookie)) {
+    throw new Error("Benchmark requires one valid session cookie");
+  }
+  const url = `${origin}/api/owner/surveys/${surveyId}/summary`;
+  const warmupCount = 5;
+  const samplesMs = [];
+  for (let index = 0; index < warmupCount + SAMPLE_COUNT; index += 1) {
+    const warmup = index < warmupCount;
+    const label = warmup ? `Warmup ${index + 1}` : `Sample ${index - warmupCount + 1}`;
+    const started = now();
+    let response;
+    let rawBody;
+    try {
+      response = await request(url, {
+        headers: { cookie, accept: "application/json" },
+        redirect: "manual",
+        signal: AbortSignal.timeout(10000)
+      });
+      rawBody = await response.text();
+    } catch {
+      throw new Error(`${label} request or body read failed`);
+    }
+    const elapsedMs = now() - started;
+    if (response.status !== 200) throw new Error(`${label} did not return HTTP 200`);
+    let body;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      throw new Error(`${label} summary did not match`);
+    }
+    const validated = validateMeasurement({ elapsedMs, status: response.status, body }, verifySummary, label);
+    if (!warmup) samplesMs.push(validated);
+  }
+  return summarizeSampleTimes(samplesMs);
 }

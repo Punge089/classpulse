@@ -245,3 +245,5 @@ Under Issue98, A's Codex GPT-6.1 Sol drafted the complete F-14 hardening contrac
 A/Punge089 used Codex GPT-6 on #98 to apply B's existing C3 to a scoped Playwright baseline slice. It adds the 375px and 1280px sign-in/owner draft journey for TEST-285, including keyboard submit, named controls, persisted draft readback and actual root overflow measurement. Full inventory, timing benchmark and release evidence remain pending.
 
 A/Punge089 used Codex GPT-6 on #98 to add preimplementation TEST-282/283 tests, retain seven observed RED failures, implement the pure benchmark analysis/target validation, and verify all seven unchanged cases GREEN in CI. Fixture creation and real endpoint measurement remain pending.
+
+A/Punge089 used Codex GPT-6 on #98 to add and retain three observed preimplementation request-sequence failures for TEST-281, then implement guarded sequential warmup and sample requests with body timing and measured-response validation. The ten unchanged benchmark unit cases passed locally. Actual fixture, access probes and endpoint measurements remain pending.
