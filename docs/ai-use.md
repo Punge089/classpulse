@@ -262,6 +262,22 @@ Student B/book6349 verified PR #92 head `87971f59da5bc63634bd8ce963667f6a5a8efcb
 
 Student B/book6349 used Codex GPT-6 to compare PR #114 head `4b2dafb9172d3c20c49c283fb06124aef4d8f3c4` with current `sprint-2-staging` `5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347`, and to prepare a merge preserving the staging tree, all Lab 6/Lab 7 files, and both students' AI-use declarations. The three Issue #89 metric/readiness source files retain B's reviewed content; their dated 25 November readbacks remain historical. No application tests, UAT, migration, release, or deployment were run during this integration; current-head CI and A's review remain pending.
 
+## Separate Lab 7 submission planning - Student A,25November2026
+
+Under Issue94, A's Codex GPT-6 separated Lab7's execution plan, A-D evidence/metrics/PDF checklist and supplied announcement/source inventory from D2 planning PR91 at the user's explicit request. Original source image/manifest bytes and historical coordination commit1354a2a are preserved. Lab7 retains distinct feature Issue87/PR92 and proposed B metric/readiness Issue89. D2 has its own plan/checklist/PDF/upload. No final PDF, feature implementation, runtime test, B acceptance, deployment or submission is claimed. B reviews this exact documentation PR and works under B own authority.
+
+## Lab 7 planning recheck - Issue #94, Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 to merge current staging into PR #95, preserve the source bytes and both students' AI-use entries, and update the planning and evidence checklist from the recorded Lab 6 decision and PR #92 staging evidence. B/book6349 approved the earlier planning head. B's review of the refreshed head and the Lab 7 release, deployed checks and submission remain pending.
+
+## Lab 7 planning reference refresh - Issue #94, Student A, 28 November 2026
+
+After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report pointers and confirm the interim metrics merge. The Lab 7 release and final deployed evidence remain pending.
+
+## Lab 7 release review status corrections - Issue #94 follow-up, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.
+
 ## Sprint 3 F-14 contract preparation - Student A,25November2026
 
 Under Issue98, A's Codex GPT-6.1 Sol drafted the complete F-14 hardening contract for NFR06/07/10: endpoint benchmark with500responses/20samples/nearest-rank p95, isolated data/authorization guards,375px usability, complete final screen-state inventory and AC280-287/TEST280-291. Current summary code/routes and screen inventory were read, but no actual benchmark/browser/runtime result or product defect is claimed. New tool/test implementation waits for B C3; any application fix requires separately scoped Files and genuine failure evidence. No B participation/approval, cloud/deployment or final PDF is invented. D2 still needs separately implemented/tested Sprint3 domain progress; this contract alone does not satisfy that outcome.
