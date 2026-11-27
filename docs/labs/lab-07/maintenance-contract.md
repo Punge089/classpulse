@@ -172,3 +172,15 @@ Initial v1.0 had no runtime checks; actual RED/GREEN/fault/UI execution is now r
 | 1.4 execution evidence | 2026-11-25 | A / Codex GPT-6.1 Sol | Record actual old-data preservation GREEN215/8 and implement already-designed TEST113 browser source/CI execution support; browser runtime and final acceptance still pending. |
 | 1.5 execution evidence | 2026-11-25 | A / Codex GPT-6.1 Sol | Retain actual complete browser GREEN and3 inspected screenshots; finish explicitly planned TEST112/114 boundary/concurrency regression source without product/AC/STS changes. |
 | 1.6 review candidate | 2026-11-25 | A / Codex GPT-6.1 Sol | Retain actual complete regression GREEN219/10/10 at d96059b, update executed checklist, request B review after final evidence-head CI; final release/accepted baseline/PDF still open. |
+| 1.7 proposed F-08 integration | 2026-11-27 | A / Codex GPT-6 | Preserve the standalone #87 contract and add the scoped, versioned rules below for the future D2 candidate. B's integration C3 is pending. |
+
+## 13. Proposed F-08 dependency, v1.7
+
+Applies when D2 integrates the F-08 deadline field. The accepted Lab 7 standalone baseline and original test results remain historical evidence. See the [versioned integration contract](../../sprints/sprint-2/F-08-reopen-integration.md) and [paired F-08 v1.2](https://github.com/Punge089/classpulse/pull/97).
+
+- AC-100/107: after ownership, reason/version, lifecycle, publication-time and version-capacity checks in the locked transaction, reopen accepts null or strictly future deadline. Equality and elapsed deadlines return 409 CLOSING_TIME_PASSED. Manual close remains available after deadline. TEST-184 and TEST-190 verify the boundary and explicit close/reschedule/reopen with audit and answer preservation.
+- AC-102/103/105: for an owned survey, invalid reason wins over expiry with 400 VALIDATION_ERROR and a reason detail. A valid request with stale lifecycle version wins over expiry with 409 STALE_SURVEY. Foreign records retain 404 before body validation. TEST-195 verifies precedence and unchanged state.
+- AC-103/104/107: successful publish/close/reopen advances updatedAt strictly within the existing atomic audit transaction. The time recorded in the event is the actual post-lock server sample. Schedule edits advance updatedAt and leave lifecycle version/events intact. TEST-196 verifies same-millisecond tokens and TEST-197 verifies both lock orderings.
+- AC-104/108/110/111: expired and rolled-back writes preserve timestamps, version, deadline, answers and audit. TEST-198 verifies database rollback; retain the existing Lab 7 suites and use F-08 TEST-192–194 for integration and candidate evidence.
+
+This is a contract proposal for the integrated version. B's C3 is required before affected test and implementation changes.
