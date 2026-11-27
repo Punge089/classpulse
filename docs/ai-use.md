@@ -255,3 +255,5 @@ Student B/book6349 verified PR #92 head `87971f59da5bc63634bd8ce963667f6a5a8efcb
 ## Lab 7 Issue #89 staging integration - Student B, 27 November 2026
 
 Student B/book6349 used Codex GPT-6 to compare PR #114 head `4b2dafb9172d3c20c49c283fb06124aef4d8f3c4` with current `sprint-2-staging` `5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347`, and to prepare a merge preserving the staging tree, all Lab 6/Lab 7 files, and both students' AI-use declarations. The three Issue #89 metric/readiness source files retain B's reviewed content; their dated 25 November readbacks remain historical. No application tests, UAT, migration, release, or deployment were run during this integration; current-head CI and A's review remain pending.
+
+A/Punge089 used Codex GPT-6 on #98 to add TEST-286 owner and respondent mobile list-state cases with controlled list responses. CI 46000029026 ran both cases successfully. The remaining integrated inventory stays open.
