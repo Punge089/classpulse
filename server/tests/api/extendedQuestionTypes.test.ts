@@ -3,7 +3,7 @@ import { afterAll, beforeEach, describe, expect, test } from "vitest";
 import { createApp } from "../../src/app";
 import { getPrisma } from "../../src/prisma";
 import { loginAs } from "../helpers/auth";
-import { resetDb, seedFixture, type Fixture } from "../helpers/fixture";
+import { makeSurvey, resetDb, seedFixture, type Fixture } from "../helpers/fixture";
 
 const app = createApp();
 const prisma = getPrisma();
@@ -78,5 +78,62 @@ describe("F-07 owner creation independent slice", () => {
     expect(stored.questions.map(question => [question.type, question.options.map(option => option.label)])).toEqual([
       ["MULTI_CHOICE", ["Worked examples", "Discussion", "Practice"]]
     ]);
+  });
+});
+
+describe("F-07 TEST-145/146 mixed answers and own history", () => {
+  test("submits text and multiple selections atomically and returns them in own detail", async () => {
+    const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, status: "PUBLISHED" });
+    const text = await prisma.question.create({ data: {
+      surveyId: survey.id, position: 3, prompt: "What helped?", type: "TEXT", required: true
+    } });
+    const multi = await prisma.question.create({ data: {
+      surveyId: survey.id, position: 4, prompt: "Which formats?", type: "MULTI_CHOICE", required: true,
+      options: { create: [{ position: 1, label: "Practice" }, { position: 2, label: "Examples" }, { position: 3, label: "Discussion" }] }
+    } });
+    const choices = await prisma.questionOption.findMany({ where: { questionId: multi.id }, orderBy: { position: "asc" } });
+    const student = await loginAs(app, "student1@classpulse.test");
+    const submitted = await student.post(`/api/surveys/${survey.id}/responses`).send({ answers: [
+      { questionId: survey.questions[0].id, ratingValue: 5 },
+      { questionId: survey.questions[1].id, optionId: survey.questions[1].options[0].id },
+      { questionId: text.id, textValue: "Helpful practice" },
+      { questionId: multi.id, optionIds: [choices[2].id, choices[0].id] }
+    ] });
+    expect(submitted.status).toBe(201);
+    const stored = await prisma.response.findUniqueOrThrow({ where: { id: submitted.body.response.id }, include: { answers: true } });
+    expect(stored.answers).toHaveLength(4);
+    expect((stored.answers.find(answer => answer.questionId === text.id) as any).textValue).toBe("Helpful practice");
+    const studentHistory = await student.get(`/api/responses/${stored.id}`);
+    expect(studentHistory.status).toBe(200);
+    expect(studentHistory.body.response.answers).toContainEqual(expect.objectContaining({
+      questionId: text.id, prompt: "What helped?", type: "TEXT", textValue: "Helpful practice"
+    }));
+    expect(studentHistory.body.response.answers).toContainEqual(expect.objectContaining({
+      questionId: multi.id, prompt: "Which formats?", type: "MULTI_CHOICE", optionLabels: ["Practice", "Discussion"]
+    }));
+    expect(JSON.stringify(studentHistory.body)).not.toMatch(/respondentId|email|rawAnswerId/);
+  });
+
+  test("rejects an invalid multi-choice answer without creating a response or partial answers", async () => {
+    const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, status: "PUBLISHED" });
+    const text = await prisma.question.create({ data: {
+      surveyId: survey.id, position: 3, prompt: "What helped?", type: "TEXT", required: true
+    } });
+    const multi = await prisma.question.create({ data: {
+      surveyId: survey.id, position: 4, prompt: "Which formats?", type: "MULTI_CHOICE", required: true,
+      options: { create: [{ position: 1, label: "Practice" }, { position: 2, label: "Examples" }] }
+    } });
+    const [practice, examples] = await prisma.questionOption.findMany({ where: { questionId: multi.id }, orderBy: { position: "asc" } });
+    const student = await loginAs(app, "student1@classpulse.test");
+    const rejected = await student.post(`/api/surveys/${survey.id}/responses`).send({ answers: [
+      { questionId: survey.questions[0].id, ratingValue: 4 },
+      { questionId: survey.questions[1].id, optionId: survey.questions[1].options[0].id },
+      { questionId: text.id, textValue: "Useful" },
+      { questionId: multi.id, optionIds: [practice.id, practice.id] }
+    ] });
+    expect(rejected.status).toBe(400);
+    expect(rejected.body.error.details.map((detail: { field: string }) => detail.field)).toContain("answers[3].optionIds");
+    expect(await prisma.response.count({ where: { surveyId: survey.id, respondentId: f.student1.id } })).toBe(0);
+    expect(examples.id).not.toBe(practice.id);
   });
 });

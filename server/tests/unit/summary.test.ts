@@ -86,3 +86,41 @@ describe("TEST-35 empty aggregates (AC-31)", () => {
     });
   });
 });
+
+describe("F-07 TEST-147 text and multi-choice aggregate summaries", () => {
+  test("reports text answeredCount and per-option counts without exposing text values or response IDs", () => {
+    const text = {
+      ...ratingQuestion(40, 1), prompt: "What helped?", type: "TEXT", required: false, options: []
+    } as SummaryQuestion;
+    const multi = {
+      ...choiceQuestion(41, 2), prompt: "Which formats?", type: "MULTI_CHOICE",
+      options: [
+        { id: 51, questionId: 41, position: 1, label: "Examples" },
+        { id: 52, questionId: 41, position: 2, label: "Discussion" },
+        { id: 53, questionId: 41, position: 3, label: "Practice" }
+      ]
+    } as SummaryQuestion;
+    const answers = [
+      { questionId: 40, ratingValue: null, optionId: null, textValue: "private free text", optionIds: [] },
+      { questionId: 40, ratingValue: null, optionId: null, textValue: "another private answer", optionIds: [] },
+      { questionId: 41, ratingValue: null, optionId: null, textValue: null, optionIds: [51, 53] },
+      { questionId: 41, ratingValue: null, optionId: null, textValue: null, optionIds: [53] }
+    ] as unknown as SummaryAnswer[];
+    const result = summarize([text, multi], answers, 3);
+    expect(result.questions[0]).toEqual({ questionId: 40, prompt: "What helped?", type: "TEXT", text: { answeredCount: 2 } });
+    expect(result.questions[1]).toEqual({ questionId: 41, prompt: "Which formats?", type: "MULTI_CHOICE", choice: { options: [
+      { optionId: 51, label: "Examples", count: 1 },
+      { optionId: 52, label: "Discussion", count: 0 },
+      { optionId: 53, label: "Practice", count: 2 }
+    ] } });
+    expect(JSON.stringify(result)).not.toMatch(/private free text|another private answer|responseId|respondentId/);
+  });
+
+  test("retains zero counts for unanswered extended questions", () => {
+    const text = { ...ratingQuestion(60), type: "TEXT" } as SummaryQuestion;
+    const multi = { ...choiceQuestion(61), type: "MULTI_CHOICE" } as SummaryQuestion;
+    const result = summarize([text, multi], [], 0);
+    expect(result.questions[0]).toMatchObject({ type: "TEXT", text: { answeredCount: 0 } });
+    expect(result.questions[1]).toMatchObject({ type: "MULTI_CHOICE", choice: { options: [{ count: 0 }, { count: 0 }] } });
+  });
+});
