@@ -1,0 +1,2 @@
+Exact tested clean source3d6f0874ccbaa8a14756ada9b12c2e20fa003e2b. Server command `npm test -- tests/api/uat6TitleRegression.test.ts`:4passed/0failed/0skipped; full `npm test`:143passed/0failed/0skipped across17files; client `npm test`:1passed/0failed/0skipped; server/client `npm run build` passed. Fresh owned loopback classpulse_test, cluster stopped.
+Operator Codex GPT-6 under A/Punge089; revision/traffic N/A local. No D persistent/cloud data connected. Docker not run locally. Full outputs preserve warnings; no focused/disabled test assertion.

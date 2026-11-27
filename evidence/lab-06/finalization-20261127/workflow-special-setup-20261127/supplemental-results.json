@@ -1,0 +1,300 @@
+{
+  "source": "41a8fefa7a5d93b6531dff88daae39574d72dcb7",
+  "servingRevision": "N/A",
+  "operator": "Codex under Student A/Punge089",
+  "model": "GPT-6",
+  "runKind": "Independent isolated local API/DB and actual application process restart",
+  "started": "2026-11-26T19:23:41.078Z",
+  "observations": [
+    {
+      "name": "ADD-01 previous-session rejection / AC-03",
+      "at": "2026-11-26T19:23:41.471Z",
+      "result": "PASS",
+      "actual": {
+        "before": 200,
+        "logout": 204,
+        "sameCookieCheckedAfterward": true,
+        "after": 401,
+        "code": "AUTH_REQUIRED",
+        "clearingDirective": true,
+        "sessionsAfter": 0
+      }
+    },
+    {
+      "name": "ADD-01 controlled exact expiry / AC-03",
+      "at": "2026-11-26T19:23:41.496Z",
+      "result": "PASS",
+      "actual": {
+        "before": 200,
+        "fixtureClockAtExpiry": "2026-11-26T19:23:42.079Z",
+        "expiresAt": "2026-11-26T19:23:42.079Z",
+        "after": 401,
+        "code": "AUTH_REQUIRED",
+        "fullEightHoursElapsed": false
+      }
+    },
+    {
+      "name": "Absent reviewer mapping / AC-06",
+      "at": "2026-11-26T19:23:42.113Z",
+      "result": "PASS",
+      "actual": {
+        "http": 409,
+        "code": "REVIEWER_UNAVAILABLE",
+        "before": {
+          "requests": 0,
+          "events": 0
+        },
+        "after": {
+          "requests": 0,
+          "events": 0
+        },
+        "noRequestOrEventSaved": true
+      }
+    },
+    {
+      "name": "Wrong-role reviewer mapping / AC-06",
+      "at": "2026-11-26T19:23:42.124Z",
+      "result": "PASS",
+      "actual": {
+        "mappedRole": "REQUESTER",
+        "http": 409,
+        "code": "REVIEWER_UNAVAILABLE",
+        "before": {
+          "requests": 0,
+          "events": 0
+        },
+        "after": {
+          "requests": 0,
+          "events": 0
+        },
+        "noRequestOrEventSaved": true
+      }
+    },
+    {
+      "name": "Self-assignment refusal / AC-06",
+      "at": "2026-11-26T19:23:42.130Z",
+      "result": "PASS",
+      "actual": {
+        "layer": "database",
+        "sqlState": "23514",
+        "transactionRolledBack": true,
+        "originalMappingPreserved": true,
+        "httpExpected": "N/A"
+      }
+    },
+    {
+      "name": "Forced event-insertion rollback / AC-13",
+      "at": "2026-11-26T19:23:42.202Z",
+      "result": "PASS",
+      "actual": {
+        "id": "91a16288-0740-4c28-8be1-e6e753ca629b",
+        "http": 500,
+        "code": "INTERNAL_ERROR",
+        "injectedFixture": "pre-existing terminal event as in TEST-13",
+        "before": {
+          "id": "91a16288-0740-4c28-8be1-e6e753ca629b",
+          "title": "UAT6 A rollback fixture",
+          "amount": "125.50",
+          "currency": "THB",
+          "status": "SUBMITTED",
+          "createdAt": "2026-11-26T19:23:42.131Z",
+          "purpose": "Independent isolated Sprint 1 verification",
+          "requesterId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+          "reviewerId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+          "history": [
+            {
+              "id": "9bb4f382-f694-4867-a049-052ec3878357",
+              "type": "SUBMITTED",
+              "actorId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+              "createdAt": "2026-11-26T19:23:42.131Z",
+              "reason": null
+            },
+            {
+              "id": "aa35d146-2bb5-4637-87ac-77d127296596",
+              "type": "APPROVED",
+              "actorId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+              "createdAt": "2026-11-26T19:23:42.135Z",
+              "reason": null
+            }
+          ]
+        },
+        "after": {
+          "id": "91a16288-0740-4c28-8be1-e6e753ca629b",
+          "title": "UAT6 A rollback fixture",
+          "amount": "125.50",
+          "currency": "THB",
+          "status": "SUBMITTED",
+          "createdAt": "2026-11-26T19:23:42.131Z",
+          "purpose": "Independent isolated Sprint 1 verification",
+          "requesterId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+          "reviewerId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+          "history": [
+            {
+              "id": "9bb4f382-f694-4867-a049-052ec3878357",
+              "type": "SUBMITTED",
+              "actorId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+              "createdAt": "2026-11-26T19:23:42.131Z",
+              "reason": null
+            },
+            {
+              "id": "aa35d146-2bb5-4637-87ac-77d127296596",
+              "type": "APPROVED",
+              "actorId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+              "createdAt": "2026-11-26T19:23:42.135Z",
+              "reason": null
+            }
+          ]
+        },
+        "completeHistoryUnchanged": true,
+        "reviewerReadbackMatched": true
+      }
+    },
+    {
+      "name": "06c-R actual local app restart / AC-14 NFR-01",
+      "at": "2026-11-26T19:23:42.580Z",
+      "result": "PASS",
+      "actual": {
+        "id": "f205c2b7-6db4-4944-b643-caf93791bb82",
+        "oldPid": 59380,
+        "newPid": 35984,
+        "origin": "http://127.0.0.1:51189",
+        "stopRequested": "2026-11-26T19:23:42.260Z",
+        "stopped": "2026-11-26T19:23:42.270Z",
+        "newProcessReady": "2026-11-26T19:23:42.516Z",
+        "oldExit": {
+          "exitCode": null,
+          "signalCode": "SIGTERM"
+        },
+        "sameDatabase": true,
+        "reseedBetweenObservations": false,
+        "beforeRequester": {
+          "id": "f205c2b7-6db4-4944-b643-caf93791bb82",
+          "title": "UAT6 A isolated durable request",
+          "amount": "125.50",
+          "currency": "THB",
+          "status": "APPROVED",
+          "createdAt": "2026-11-26T19:23:42.214Z",
+          "purpose": "Independent isolated Sprint 1 verification",
+          "requesterId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+          "reviewerId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+          "history": [
+            {
+              "id": "5b3aaeb6-296d-4de0-8347-a80b5c627ce0",
+              "type": "SUBMITTED",
+              "actorId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+              "createdAt": "2026-11-26T19:23:42.214Z",
+              "reason": null
+            },
+            {
+              "id": "46b64437-2bfc-42ac-ba79-96b295a48cb0",
+              "type": "APPROVED",
+              "actorId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+              "createdAt": "2026-11-26T19:23:42.231Z",
+              "reason": null
+            }
+          ]
+        },
+        "afterRequester": {
+          "id": "f205c2b7-6db4-4944-b643-caf93791bb82",
+          "title": "UAT6 A isolated durable request",
+          "amount": "125.50",
+          "currency": "THB",
+          "status": "APPROVED",
+          "createdAt": "2026-11-26T19:23:42.214Z",
+          "purpose": "Independent isolated Sprint 1 verification",
+          "requesterId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+          "reviewerId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+          "history": [
+            {
+              "id": "5b3aaeb6-296d-4de0-8347-a80b5c627ce0",
+              "type": "SUBMITTED",
+              "actorId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+              "createdAt": "2026-11-26T19:23:42.214Z",
+              "reason": null
+            },
+            {
+              "id": "46b64437-2bfc-42ac-ba79-96b295a48cb0",
+              "type": "APPROVED",
+              "actorId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+              "createdAt": "2026-11-26T19:23:42.231Z",
+              "reason": null
+            }
+          ]
+        },
+        "beforeReviewer": {
+          "id": "f205c2b7-6db4-4944-b643-caf93791bb82",
+          "title": "UAT6 A isolated durable request",
+          "amount": "125.50",
+          "currency": "THB",
+          "status": "APPROVED",
+          "createdAt": "2026-11-26T19:23:42.214Z",
+          "purpose": "Independent isolated Sprint 1 verification",
+          "requesterId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+          "reviewerId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+          "history": [
+            {
+              "id": "5b3aaeb6-296d-4de0-8347-a80b5c627ce0",
+              "type": "SUBMITTED",
+              "actorId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+              "createdAt": "2026-11-26T19:23:42.214Z",
+              "reason": null
+            },
+            {
+              "id": "46b64437-2bfc-42ac-ba79-96b295a48cb0",
+              "type": "APPROVED",
+              "actorId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+              "createdAt": "2026-11-26T19:23:42.231Z",
+              "reason": null
+            }
+          ]
+        },
+        "afterReviewer": {
+          "id": "f205c2b7-6db4-4944-b643-caf93791bb82",
+          "title": "UAT6 A isolated durable request",
+          "amount": "125.50",
+          "currency": "THB",
+          "status": "APPROVED",
+          "createdAt": "2026-11-26T19:23:42.214Z",
+          "purpose": "Independent isolated Sprint 1 verification",
+          "requesterId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+          "reviewerId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+          "history": [
+            {
+              "id": "5b3aaeb6-296d-4de0-8347-a80b5c627ce0",
+              "type": "SUBMITTED",
+              "actorId": "955f0a85-a2c3-465b-9be2-3c4aec1dfb71",
+              "createdAt": "2026-11-26T19:23:42.214Z",
+              "reason": null
+            },
+            {
+              "id": "46b64437-2bfc-42ac-ba79-96b295a48cb0",
+              "type": "APPROVED",
+              "actorId": "7431b7c3-0cd0-4e75-a55c-dc7b54b4dcb4",
+              "createdAt": "2026-11-26T19:23:42.231Z",
+              "reason": null
+            }
+          ]
+        },
+        "idAmountStatusCompleteHistoryEqual": true
+      }
+    }
+  ],
+  "fixtureRowsPreservedInStoppedIsolatedCluster": true,
+  "target": {
+    "database": "workflow_uat6_20261127_test",
+    "address": "127.0.0.1",
+    "port": 61327
+  },
+  "cleanup": {
+    "ownNormalSessionsLoggedOut": true,
+    "retainedRequestIds": [
+      "91a16288-0740-4c28-8be1-e6e753ca629b",
+      "f205c2b7-6db4-4944-b643-caf93791bb82"
+    ],
+    "isolatedFixtureRetentionOnly": true
+  },
+  "outcome": "PASS",
+  "caseGroups": 6,
+  "observationsPassed": 7,
+  "finished": "2026-11-26T19:23:42.639Z"
+}

@@ -1,0 +1,1633 @@
+Command:npm --prefix client test
+Test source:ff5e2999c2d60fe2fc7a619087b6b37b79e017c5
+Old UI unchanged from pre-UI implementation; mocked API supplies synthetic owned survey.
+
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse-worktrees/work87/client
+
+stderr | tests/surveyReopen.test.tsx > TEST-112 confirms reopen with reason/current version then refreshes durable history
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ tests/RatingDots.test.tsx (1 test) 336ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 335ms
+ ❯ tests/surveyReopen.test.tsx (7 tests | 6 failed) 6181ms
+   × TEST-112 confirms reopen with reason/current version then refreshes durable history 1040ms
+     → Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+   × TEST-112 invalid reason and cancel never submit a mutation 1019ms
+     → Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+   × TEST-112 stale version preserves reason and requires explicit reload without auto retry 1019ms
+     → Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+   × TEST-112 network error preserves reason for an explicit retry 1008ms
+     → Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+   × TEST-112 history pagination renders reasons as text and loads older events 1017ms
+     → Unable to find role="button" and name "Load older"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+   × TEST-112 history errors are visible and do not imply an empty history 1006ms
+     → Unable to find an element with the text: Could not load lifecycle history.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/surveyReopen.test.tsx > TEST-112 confirms reopen with reason/current version then refreshes durable history
+TestingLibraryElementError: Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/surveyReopen.test.tsx:40:33
+     38|   });
+     39|   const user = userEvent.setup(); page();
+     40|   await user.click(await screen.findByRole("button", { name: "Reopen" …
+       |                                 ^
+     41|   await user.type(screen.getByLabelText("Reason for reopening"), reaso…
+     42|   await user.click(screen.getByRole("button", { name: "Confirm reopen"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/surveyReopen.test.tsx > TEST-112 invalid reason and cancel never submit a mutation
+TestingLibraryElementError: Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/surveyReopen.test.tsx:50:33
+     48| test("TEST-112 invalid reason and cancel never submit a mutation", asy…
+     49|   const user = userEvent.setup(); page();
+     50|   await user.click(await screen.findByRole("button", { name: "Reopen" …
+       |                                 ^
+     51|   await user.type(screen.getByLabelText("Reason for reopening"), "too …
+     52|   await user.click(screen.getByRole("button", { name: "Confirm reopen"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/surveyReopen.test.tsx > TEST-112 stale version preserves reason and requires explicit reload without auto retry
+TestingLibraryElementError: Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/surveyReopen.test.tsx:65:33
+     63|   });
+     64|   const user = userEvent.setup(); page();
+     65|   await user.click(await screen.findByRole("button", { name: "Reopen" …
+       |                                 ^
+     66|   await user.type(screen.getByLabelText("Reason for reopening"), reaso…
+     67|   await user.click(screen.getByRole("button", { name: "Confirm reopen"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/surveyReopen.test.tsx > TEST-112 network error preserves reason for an explicit retry
+TestingLibraryElementError: Unable to find role="button" and name "Reopen"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/surveyReopen.test.tsx:81:33
+     79|   });
+     80|   const user = userEvent.setup(); page();
+     81|   await user.click(await screen.findByRole("button", { name: "Reopen" …
+       |                                 ^
+     82|   await user.type(screen.getByLabelText("Reason for reopening"), reaso…
+     83|   await user.click(screen.getByRole("button", { name: "Confirm reopen"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/surveyReopen.test.tsx > TEST-112 history pagination renders reasons as text and loads older events
+TestingLibraryElementError: Unable to find role="button" and name "Load older"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/surveyReopen.test.tsx:96:33
+     94|   });
+     95|   const user = userEvent.setup(); const view = page();
+     96|   await user.click(await screen.findByRole("button", { name: "Load old…
+       |                                 ^
+     97|   expect(await screen.findByText("<b>Earlier collection</b>")).toBeTru…
+     98|   expect(view.container.querySelector("b")).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/surveyReopen.test.tsx > TEST-112 history errors are visible and do not imply an empty history
+TestingLibraryElementError: Unable to find an element with the text: Could not load lifecycle history.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="d-flex align-items-start justify-content-between gap-3 flex-wrap"
+    >
+      <div>
+        <h1
+          class="mb-1"
+        >
+          Reopen class feedback
+        </h1>
+        <div
+          class="cp-muted"
+        >
+          CPE334
+           · Identified survey
+        </div>
+      </div>
+      <span
+        class="cp-badge cp-badge-closed"
+      >
+        Closed
+      </span>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="cp-pulse"
+      height="22"
+      preserveAspectRatio="none"
+      viewBox="0 0 240 22"
+      width="240"
+    >
+      <path
+        d="M0 12h92l8-4 8 8 10-14 10 18 8-8h104"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    <div
+      class="d-flex gap-2 flex-wrap my-3"
+    >
+      <a
+        class="btn btn-outline-secondary"
+        href="/owner/surveys/1/summary"
+      >
+        View summary
+      </a>
+      <a
+        class="btn btn-link"
+        href="/owner"
+      >
+        Back to your surveys
+      </a>
+    </div>
+    <ol
+      class="list-unstyled d-grid gap-2 mb-0"
+    />
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/surveyReopen.test.tsx:108:23
+    106|   });
+    107|   page();
+    108|   expect(await screen.findByText("Could not load lifecycle history."))…
+       |                       ^
+    109|   expect(screen.queryByText("No lifecycle events recorded for this ver…
+    110| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  6 failed | 2 passed (8)
+   Start at  18:24:48
+   Duration  9.06s (transform 204ms, setup 47ms, collect 1.40s, tests 6.52s, environment 2.75s, prepare 384ms)

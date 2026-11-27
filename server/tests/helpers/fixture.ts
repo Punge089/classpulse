@@ -37,6 +37,7 @@ export async function resetDb(): Promise<void> {
   }
 
   await prisma.$transaction([
+    prisma.surveyLifecycleEvent.deleteMany(),
     prisma.answer.deleteMany(),
     prisma.response.deleteMany(),
     prisma.questionOption.deleteMany(),

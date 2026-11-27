@@ -1,0 +1,4 @@
+warning: in the working copy of 'client/src/components/NavBar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'client/src/main.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'client/tests/responseHistory.test.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'server/src/routes/responses.ts', LF will be replaced by CRLF the next time Git touches it

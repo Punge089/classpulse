@@ -1,0 +1,31 @@
+{
+  "recordKind": "D decision relayed by the user in this chat; not a new app run or independently fetched final-decision artifact",
+  "product": "ClassPulse",
+  "release": "CP-FIX-001",
+  "source": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "revision": "classpulse-00007-6t9",
+  "trafficPercent": 100,
+  "mappingAttribution": "A supplied mapping, 26 November 17:34:24 Cloud / 17:37:19 Registry; no new D Cloud readback",
+  "decision": "NOT ACCEPTED",
+  "decisionBangkok": "2026-11-26T19:05:26+07:00",
+  "decisionMaker": "Thira/D, as reported in user-relayed message",
+  "operatorDisclosure": "Codex under D; current message does not restate an exact model for this decision",
+  "cpExF01": "FIXED / INDEPENDENTLY VERIFIED; five Cloud title checks PASS, local retention separately verified",
+  "cd01Ac04": "BLOCKED",
+  "observedBlockerReported": "The operator safety constraint prevented a live check using the revoked session credential.",
+  "ac04SupportingEvidence": [
+    "ordinary logout",
+    "isolated TEST-04"
+  ],
+  "ac05": "Expired-session rejection required; local TEST-05 supporting PASS, natural eight-hour live observation OPEN",
+  "remainingLimits": [
+    "production storage/full-log inspection unobserved",
+    "extra rounding tie not run",
+    "exact internal concurrency schedule not observed"
+  ],
+  "cRetestEvidenceReview": 7190900011,
+  "cFinalDecisionReview": "PENDING",
+  "additionalDecisionAttachmentReceived": false,
+  "newGenuineApplicationDefectEstablished": false,
+  "nextAction": "Agree an authorized independent method on the pinned release; retain Not Accepted until a later actual independent decision supersedes it."
+}

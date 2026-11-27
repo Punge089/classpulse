@@ -1,0 +1,19 @@
+{
+  "passed": 12,
+  "failed": 0,
+  "sourceCommit": "3d6f0874ccbaa8a14756ada9b12c2e20fa003e2b",
+  "checks": [
+    "final tested source",
+    "exercise ancestry preserved",
+    "committed actual RED precedes final fix on defective source",
+    "reported-case assertions unchanged through repeat/GREEN",
+    "all existing tests unchanged",
+    "schema/client/routes/CI unchanged",
+    "all repeat/GREEN/browser runs clean and owned clusters stopped",
+    "browser-owned app ports released",
+    "55 evidence payload hashes",
+    "12 original D payload hashes unchanged",
+    "credential-URL scan of publishable text",
+    "original exercise ref remains frozen"
+  ]
+}

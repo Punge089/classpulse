@@ -1,4 +1,27 @@
+# ClassPulse Lab 6 report — current draft, 26 November 2026
+
+Issue #122. A/Punge089, assisted by Codex GPT-6. **DRAFT — NOT FOR SUBMISSION.** D records **Not Accepted** for ClassPulse CP-FIX-001 at 26 November 19:05:26 Bangkok; C's final-decision review is pending. A/B's Workflow whole-product decision is not recorded. Older dated checkpoints below are historical.
+
+- **CP-EX-F01: fixed and independently verified.** D's 5 Cloud subcases passed on CP-FIX-001 `bee0d122bf23410e3d2db69649ad5e44959b6cd8`, A-mapped `classpulse-00007-6t9` / 100% traffic. The separate local read preserved drafts 3/6/9; Cloud drafts 28/29 are separate records. C's actual evidence review 7190900011 is complete without rerun.
+- [The closure record](cp-ex-f01-closure.md) traces the original failure, actual RED/GREEN and disclosed ordering deviation/repeat, reviews, CI, deployed image mapping and independent retest. [Received evidence](../../../evidence/lab-06/corrected-retest-20261126/README.md) preserves original/public hash provenance and omits the private DM URL.
+- [Acceptance readiness](final-acceptance-readiness.md) lists CD-01 live replay BLOCKED, natural live expiry OPEN with local support, the agreed observation limits, and the separate unresolved Workflow inventory. Entry into the educational exercise was not final sign-off.
+- D's decision names the operator safety constraint as the live CD-01 blocker, while affirming the successful correction. Proposed method M01 remains unagreed and unexecuted. A verified 8 unchanged auth/contract files between CP-V01 and CP-FIX-001; this source comparison is supporting evidence, not a live test. Workflow's newly supplied source `41a8fefa` / revision `scd928edd-00009-fsg` includes Lab 7 withdrawal/schema changes; applicability and actual start must be coordinated before further Lab 6 execution.
+
+The final PDF still needs actual independent decisions and required-coverage disposition, complete embedded cases/evidence, contribution and AI disclosures, B's report review and human submission. No final acceptance, full Lab 6 completion or guaranteed score is claimed. Later sprint features are outside this release.
+
+---
+
+## Historical draft checkpoints (preserved context)
+
 # ClassPulse — Lab 6 report source
+
+## Current R3 result disposition — 25 November 2026
+
+[R3 baseline review](r3-baseline-review.md): C/D Codex GPT-6 under Thira/D reports three scoped live branch groups PASS (CD06 anonymous PUT/DELETE, respondent reload, cookie attributes/clearing) on CP-V01 source1fe3e3b/revisionclasspulse-00006-6w6,21:39-21:44Bangkok. Survey27/response16 is retained and unchanged; survey26/responses13-15 preserved. Live old-session replay remains BLOCKED without a specific technical blocker; earlier local TEST04 is supporting PASS only. Natural live expiry remains OPEN. C actual review, B result/limit review and explicit replay-limit disposition precede the baseline gate; final acceptance/PartD remain PENDING, no exercise defect selected. Received source/revision/full hashes/operator/version/notice limits are in the linked review; no A live rerun or release change occurred. Earlier plan-only states below are historical.
+
+## Current coverage action — 25 November 2026, C/D consolidated report
+
+C/D PR69's consolidated report is received; no genuine ClassPulse defect was established in completed checks. [A's residual-branch disposition](coverage-disposition-a3.md) requests the short anonymous PUT/DELETE, live old-session replay, cookie metadata and respondent reload checks before the no-defect PartD gate. Natural live8-hour expiry remains OPEN with local TEST05 supporting PASS; production storage/log inspection and extra rounding tie retain explicit limits pending C/D/B agreement. C's actual report review remains pending. A requests work now; proposed26/27Nov slots are not booked. A's readonly CloudConsole observation at25Nov21:15:48Bangkok confirms classpulse-00006-6w6/100%/sameCP-V01digest/TTL8; source mapping is carried from the prior identical immutable image. No new UAT result, exercise defect, code/schema/shared-file/cloud mutation or release/deploy is claimed. PartD entry NOT READY and final acceptance PENDING until results/dispositions are reviewed.
 
 ## Current status — 25 November 2026, exact-command supporting result received
 
