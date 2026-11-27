@@ -1,0 +1,36 @@
+
+> classpulse-client@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/MSII/OneDrive/Desktop/Soft_eng/classpulse-worktrees/work90/client
+
+stderr | tests/draftEditing.test.tsx > TEST-127 draft detail exposes a link to edit its questions
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ tests/draftEditing.test.tsx (1 test) 98ms
+stderr | tests/surveyReopen.test.tsx > TEST-112 server validation keeps reason and shows its field error without retrying
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+stderr | tests/responseHistory.test.tsx > TEST-179 loading is announced before data and an empty history stays empty
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ tests/RatingDots.test.tsx (1 test) 320ms
+   ✓ TEST-54 rating exposes five radios, supports arrows and ignores read-only input 319ms
+ ✓ tests/responseHistory.test.tsx (6 tests) 1147ms
+   ✓ TEST-178 respondent can keyboard-navigate My responses and return from saved detail 528ms
+ ✓ tests/surveyReopen.test.tsx (9 tests) 2756ms
+   ✓ TEST-112 server validation keeps reason and shows its field error without retrying 621ms
+   ✓ TEST-112 confirms reopen with reason/current version then refreshes durable history 549ms
+   ✓ TEST-112 invalid reason and cancel never submit a mutation 360ms
+   ✓ TEST-112 stale version preserves reason and requires explicit reload without auto retry 537ms
+   ✓ TEST-112 network error preserves reason for an explicit retry 508ms
+
+ Test Files  4 passed (4)
+      Tests  17 passed (17)
+   Start at  17:14:35
+   Duration  5.02s (transform 309ms, setup 51ms, collect 1.98s, tests 4.32s, environment 3.75s, prepare 1.08s)
+
