@@ -278,6 +278,14 @@ After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report 
 
 A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.
 
+## Lab 6 report revision 2 - Student A, 28 November 2026
+
+Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Claude desktop app) to check the submitted Lab 6 PDF against the handout and repository, then to revise the report. Claude edited `tools/lab6/build_report.py` to state the AC-04 acceptance basis in Part D and on the cover, add the complete WF-BUG-001 outgoing report table in Part C from the retained confirmation/retest records, add a dedicated AI-use declaration, and state the exercise-selection reason and the coverage review required by the instructor clarification. It rebuilt the PDF and receipt and ran `tools/lab6/verify_report.py`. No test result, decision, finding, evidence file, application code, schema, workflow, main, tag or deployment changed, and no application test was rerun. B must review the exact head and PDF hash; A cannot approve or merge this A-authored PR. Humans upload the reviewed PDF to LEB2.
+
+## Final Lab 7 metrics and readiness refresh - Issue #89, Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6 to reconcile the final Issue #89 metrics, readiness and retrospective with main release 8316f27, deploy run 46050688714, and A's sanitized production receipts from PR #104 head b75f410. B authored the dated metrics evidence file and refreshed the three Issue #89 records. A performed and reported the production API check and GCP Console readbacks; B did not rerun application tests, perform UAT, use GCP, or submit to LEB2. The live developer check is not described as independent UAT. Final PDF review and human LEB2 submission remain pending.
+
 ## Sprint 3 F-14 contract preparation - Student A,25November2026
 
 Under Issue98, A's Codex GPT-6.1 Sol drafted the complete F-14 hardening contract for NFR06/07/10: endpoint benchmark with500responses/20samples/nearest-rank p95, isolated data/authorization guards,375px usability, complete final screen-state inventory and AC280-287/TEST280-291. Current summary code/routes and screen inventory were read, but no actual benchmark/browser/runtime result or product defect is claimed. New tool/test implementation waits for B C3; any application fix requires separately scoped Files and genuine failure evidence. No B participation/approval, cloud/deployment or final PDF is invented. D2 still needs separately implemented/tested Sprint3 domain progress; this contract alone does not satisfy that outcome.
