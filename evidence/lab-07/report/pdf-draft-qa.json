@@ -1,7 +1,7 @@
 {
   "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
-  "sha256": "da6639da6eb1ee994989c665c3ce4596f132d66c72f5199a17a31596a8de10c7",
-  "sourceSha256UTF8LF": "406d16dfe824241db7a62c1a6f1415f3b18d85e3bd476af816e55b7a992e2f5f",
+  "sha256": "71a76cd1691b754e009317b6af0c89ad728cfabb73f8ba59685f5a5fe9e45873",
+  "sourceSha256UTF8LF": "42dd1f738f376275922551308967ea67c1294e37556619c5a7b15b040a0b5064",
   "pages": 30,
   "partStartPages": {
     "A": 3,
@@ -38,7 +38,7 @@
       "page": 1,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 127,
+      "words": 132,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -174,7 +174,7 @@
       "page": 18,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 355,
+      "words": 356,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -222,7 +222,7 @@
       "page": 24,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 339,
+      "words": 390,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -230,7 +230,7 @@
       "page": 25,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 234,
+      "words": 288,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -262,7 +262,7 @@
       "page": 29,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 489,
+      "words": 488,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -270,12 +270,12 @@
       "page": 30,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 441,
+      "words": 447,
       "outOfBoundsWords": 0,
       "draftFooter": true
     }
   ],
   "structuralResult": "PASS: all pages bounded/nonblank/draft-labelled; all Part links/page ranges correct; original screenshot pixels preserved",
-  "visualQA": "PASS: rendered all 30 pages at 95 DPI with Poppler. Compared body pixels with inspected v0.3 and visually inspected changed pages 1, 28 and 30. Verified the new repeating header on the inspected pages.",
+  "visualQA": "PASS: rendered all 30 pages using Poppler and compared to v0.4. Inspected changed pages 1, 2, 18, 24, 25, 28, 29 and 30. Rechecked the final renders of pages 1, 29 and 30 after removing a one-line paragraph spill.",
   "releaseState": "NOT READY; no B final PDF approval or submission"
 }

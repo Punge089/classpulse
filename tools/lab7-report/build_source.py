@@ -97,7 +97,7 @@ def capture() -> None:
     assert c3["user"]["login"] == "book6349"
     saved_json("b-c3.json", {k: c3[k] for k in ["id", "body", "created_at", "html_url"]}, {"endpoint": "issues/comments/7159676041", "author": "book6349"})
     prior_manifest = json.loads((EVIDENCE / "source-manifest.json").read_text(encoding="utf-8"))
-    for name in ("implementation-review.json", "nov27-baseline-and-staging.json", "nov28-metrics-integration.json"):
+    for name in ("implementation-review.json", "nov27-baseline-and-staging.json", "nov28-metrics-integration.json", "nov28-main-release.json"):
         relative = "inputs/" + name
         record = next(item for item in prior_manifest["records"] if item["file"] == relative)
         assert hashlib.sha256((EVIDENCE / relative).read_bytes()).hexdigest() == record["sha256"], relative
@@ -186,6 +186,7 @@ def assemble() -> None:
     baseline = readback["baseline"]
     integration = readback["integration"]
     metrics_pr = data("nov28-metrics-integration.json")
+    release = data("nov28-main-release.json")
     def bangkok(time: str) -> str:
         return datetime.fromisoformat(time.replace("Z", "+00:00")).astimezone(BG).strftime("%d %b %Y %H:%M:%S ICT")
 
@@ -194,20 +195,20 @@ def assemble() -> None:
     merge_time = bangkok(integration["mergedAt"])
     ci_time = bangkok(integration["completedAt"])
     ci_steps = ", ".join(step["name"] for step in integration["jobSteps"] if step["conclusion"] in {"failure", "skipped", "cancelled"}) or "none"
-    interpretation = "PR #92 entered staging with reviewer approval and passing regression, and the scoped Lab 6 defect is verified fixed. The deployment still needs evidence for reopening and old-response preservation on one serving revision. The D2 release coordinator will publish the reviewed main candidate. A will record the changed and preserved checks, and B will reconcile the final metrics against that release."
+    interpretation = "PR #92 entered staging with reviewer approval and passing regression, and the scoped Lab 6 defect is verified fixed. The deployment still needs evidence for reopening and old-response preservation on one serving revision. The reviewed main release is published and automated smoke passed. A will record the changed and preserved checks, and B will reconcile the final metrics against that release."
     assert len(interpretation.split()) <= 100
     report = f'''# ClassPulse - Lab 7 maintenance report
 
-**Version 0.4 - WORKING DRAFT - NOT READY FOR SUBMISSION**
+**Version 0.5 - WORKING DRAFT - NOT READY FOR SUBMISSION**
 
-Historical test and metrics snapshot: {manifest["observedAtBangkok"]}. Baseline and PR #92 readback: {readback["observedBangkok"]}. Lab 7 main release, deployed checks and final PDF review are pending. This PDF covers Lab 7.
+Historical test and metrics snapshot: {manifest["observedAtBangkok"]}. Baseline and PR #92 readback: {readback["observedBangkok"]}. Lab 7 merged into main and automated deployment passed. Live behavior, revision readback and final PDF review are pending. This PDF covers Lab 7.
 
 | Student | ID | GitHub | Actual role at this snapshot |
 |---|---|---|---|
 | Bannasorn Thongkorn | 67070503420 | Punge089 | Contract/test/implementation/report driver; reviewed and merged B's interim metrics PR #100 |
 | Papangkorn Jitvoottikrai | 67070503421 | book6349 | Reviewed the contract before tests; authored metrics/readiness/retrospective; approved and merged #92; final PDF review pending |
 
-Theme 10: university course feedback. Repository: https://github.com/Punge089/classpulse. Due 29 November 2026, 23:59 Asia/Bangkok. No report or deployment submission is claimed.
+Theme 10: university course feedback. Repository: https://github.com/Punge089/classpulse. Due 29 November 2026, 23:59 Asia/Bangkok. Final PDF submission is pending.
 
 ## Navigation and version map
 
@@ -230,9 +231,9 @@ Theme 10: university course feedback. Repository: https://github.com/Punge089/cl
 | B-approved PR #92 head | {integration["head"]} | B C7 {review_time}; required CI run {integration["runId"]} |
 | Feature staging integration | {staging_state} | B merged {merge_time}; same parents and tree as required CI checkout |
 | GitHub staging at readback | {readback["staging"]} | Descendant of the Lab 7 feature merge |
-| GitHub main at readback | {readback["main"]} | Lab 6 release PR #121. Lab 7 merge absent from main ancestry |
-| Accepted main tag/commit | PENDING reviewed release | No new release tag is claimed |
-| Service URL and version | {baseline["url"]} | Lab 6 mapping: {baseline["revision"]}. Lab 7 revision, image digest and traffic pending coordinated readback |
+| GitHub main before Lab 7 release | {readback["main"]} | Prior Lab 6 release from PR #121 |
+| Reviewed Lab 7 main merge | {release["main"]} | PR #143; automated deploy run {release["deployRun"]} passed. No release tag is claimed |
+| Lab 7 service URL | {release["url"]} | Workflow image digest in B6. Serving revision and traffic pending readback |
 
 Intervening work includes Lab 5 deployment/CI and Lab 6 test tooling and UAT evidence. The Lab 6 title-validation correction reached main in PR #121. Sprint 2 staging has since absorbed later-sprint work, including F-09 response history (PR #119). The two old lifecycle implementation files match across the accepted release and the RED source. See A1 for the source comparison.
 
@@ -357,7 +358,7 @@ The acceptance coverage below distinguishes executed checks from release obligat
 | AC-108 | TEST-110 API; TEST-113 browser | PASS original answers/summary/uniqueness/eligibility preserved |
 | AC-109 | TEST-111 SQL/API | PASS old-data preservation, version0/no fake audit and null legacy closure |
 | AC-110 | TEST-112 client; TEST-113 browser | PASS confirmation/cancel/validation/conflict/reload/history states |
-| AC-111 | TEST-114 regression plus peer/release/deployed process | PARTIAL: named suites, B review and staging verified; main/deployed checks PENDING |
+| AC-111 | TEST-114 regression plus peer/release/deployed process | PARTIAL: suites, review, staging, main and automated deployment verified; live checks PENDING |
 
 Actual retained 45f48cd suite summaries (UTC timestamps removed for display):
 
@@ -418,14 +419,18 @@ Run {integration["runId"]} completed {ci_time}. The runner checked out `{integra
 | root / npm run test:e2e -- --reporter=line | {integration["counts"]["browser"]["passed"]} | 0 | 0 |
 | server and client builds; Docker | PASS | 0 | 0 |
 
-Failed, cancelled or skipped job steps: {ci_steps}. CI evidence: {integration["runUrl"]}. At readback, reviewed release and deployed Lab 7 checks were pending.
+Failed, cancelled or skipped job steps: {ci_steps}. CI evidence: {integration["runUrl"]}. This staging run predates the main release below.
 
-### Release and deployed evidence to collect
+### Main release and deployed evidence (L7-B09 to L7-B12)
+
+B/book6349 approved release PR #{release["pr"]} at {release["approvedHead"]} and merged it into main as {release["main"]} on {bangkok(release["mergedAt"])}. Required pre-merge CI {release["preMergeCI"]} and main deploy run {release["deployRun"]} passed 272 server, 23 client and 12 browser tests, 0 failures or skips, both builds and Docker.
+
+Deploy run {release["deployRun"]} completed at {bangkok(release["deployCompletedAt"])}. The production migrate/update step and smoke passed. Smoke checked /api/health, /api/ready, / and /api/auth/me. Service: {release["url"]}. Workflow image digest: {release["digest"]}. The named lifecycle migration is visible in the isolated CI log. Production migration execution details, traffic and retained rows await the human readback.
 
 | Gate | Expected result and evidence | Owner / state |
 |---|---|---|
-| L7-B09 reviewed release | PR from agreed staging candidate into main, teammate review at exact head, required CI, main merge SHA and deployment workflow | D2 release coordinator and non-author reviewer / PENDING |
-| L7-B10 GCP readback and migration | Record deploy run, time, public URL, image digest, serving revision and traffic allocation; verify additive migration applied and representative pre-existing survey/response counts retained using approved redacted readback | Human release operator / PENDING |
+| L7-B09 reviewed release | PR from agreed staging candidate into main, teammate review at exact head, required CI, main merge SHA and deployment workflow | Verified: B approved and merged #143; main deploy run passed |
+| L7-B10 GCP readback and migration | Record deploy run, time, public URL, image digest, serving revision and traffic allocation; verify additive migration applied and representative pre-existing survey/response counts retained using approved redacted readback | Workflow step passed; human revision/traffic and migration preservation readback PENDING |
 | L7-B11 manual changed path | On one mapped deployed revision, use a synthetic course owner's CLOSED survey with a saved response. Reopen with a reason and current version. Expect PUBLISHED, original publishedAt, cleared closedAt and exactly one reasoned audit event with the prior closure. Read it again in a fresh session. | A with human release operator / PENDING |
 | L7-B12 manual preserved path | Original eligible synthetic respondent sees the same saved confirmation and cannot submit a second response; owner summary retains the saved count and answer. A different course owner cannot read or reopen the survey. | A with B verification / PENDING |
 
@@ -473,13 +478,13 @@ Actual word count: {len(interpretation.split())}, maximum 100. No issue/PR/test-
 
 | Readiness item | Evidence / status | Owner / next action |
 |---|---|---|
-| Accepted baseline and submitted/deployed mapping | Lab 6 CP-FIX-001 accepted by D; C acknowledged. Lab 7 main SHA and serving revision/digest/traffic PENDING | D2 coordinator and release operator map the reviewed release |
-| Automated rule/access/data/UI/browser results | PR #92 integrated tree: 219 server, 10 client, 10 browser passed, 0 failed, 0 skipped. Primary, expanded and UI RED retained | A pins current release CI when available |
+| Accepted baseline and submitted/deployed mapping | Lab 6 CP-FIX-001 accepted by D; C acknowledged. Lab 7 main SHA and workflow image digest verified; serving revision/traffic PENDING | D2 coordinator and release operator map the reviewed release |
+| Automated rule/access/data/UI/browser results | PR #92 integrated tree: 219 server, 10 client, 10 browser passed, 0 failed, 0 skipped. Primary, expanded and UI RED retained | See B6 for the separate 307-test release CI |
 | Defects by severity/status | CP-EX-F01 Minor, fixed and independently verified on Lab 6 CP-FIX-001; Lab 7 deployed disposition PENDING | B refreshes defect/status inventory after deployed checks |
 | Technical debt | Two observed engineering risks listed below, distinct from defects and incomplete release work | A scopes later reviewed fixes/measurement |
 | Configuration/secrets | Sanitized report inputs; CI uses disposable synthetic identities; candidate production configuration/credential review PENDING | A/B inspect exact release; human manages credentials/IAM |
 | Setup and documentation | Source/commands/versions/excerpts embedded; no fresh local instance/setup acceptance claimed | B checks report/source; final README/release setup verification remains open |
-| Review/integration/deployment/smoke | B approved and merged #92 into staging as {staging_state}; main and deployed changed/preserved checks PENDING | D2 coordinator arranges the reviewed release with Lab 6 and the human operator |
+| Review/integration/deployment/smoke | B approved and merged #92 into staging as {staging_state}; main and automated smoke verified; deployed changed/preserved behavior PENDING | A/B record the live changed/preserved checks on the confirmed serving revision |
 | PDF and LEB2 | Working draft; final PDF pagination/page review/hash and upload receipt PENDING | A assembles/renders; B reviews exact final PDF; human submits separately |
 
 ## D2 - Debt, observed failures and limitations (L7-D02)
@@ -489,7 +494,7 @@ Actual word count: {len(interpretation.split())}, maximum 100. No issue/PR/test-
 | Default browser/local server configuration assumes3000/5173 and can reuse a local server outsideCI | Current Playwright/Vite source; parallel local work requires manual instance/port isolation. This report used disposable CI with reuse disabled | Medium; A to scope configurable isolated local runner before using shared-machine browser tests; current local DB remains untouched |
 | Pinned upload-artifact v4 runtime warning | Actual CI annotates Node20 target forced onto Node24; upload succeeded, so this is maintenance risk rather than an observed functional failure | Medium; A to review a supported pinned action revision in a separate scoped change; rerun required CI |
 
-Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classpulse-00007-6t9) passed five Cloud subcases: untouched empty and whitespace titles both returned 400, a valid title and a 120-character title both returned 201 and survived reload, and a 121-character title returned 400. A separate local check retained three original exercise drafts. Historical M01 remains BLOCKED. The exact-source isolated TEST-04 and the retest support the scoped Lab 6 decision. Lab 7 deployed checks are open. Expected old-code primary/expanded/UI RED and skipped downstream pipeline steps are retained in Part B. Source typecheck/parser/whitespace fixes were tooling errors, not fabricated product RED. Local setup, cloud mutation, full production migration-engine upgrade bookkeeping and deployed persistence are not claimed.
+Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classpulse-00007-6t9) passed five Cloud subcases: untouched empty and whitespace titles both returned 400, a valid title and a 120-character title both returned 201 and survived reload, and a 121-character title returned 400. A separate local check retained three original exercise drafts. Historical M01 remains BLOCKED. The exact-source isolated TEST-04 and the retest support the scoped Lab 6 decision. Lab 7 deployed checks are open. Expected old-code primary/expanded/UI RED and skipped downstream pipeline steps are retained in Part B. Source typecheck/parser/whitespace fixes were tooling errors, not fabricated product RED. Production migration readback and live persistence are pending.
 
 ## D3 - Three brief retrospective answers (L7-D03)
 
@@ -506,19 +511,19 @@ Lab 6 independent retest on 26 November at 18:30:40–49 ICT (CP-FIX-001, classp
 
 A used Codex GPT-6 for initial contract preparation and Codex GPT-6.1 Sol for the subsequent recorded test/implementation/review/report work; historical declarations remain attributed. B's supplied declaration names Codex GPT-6 for B's metrics work. Commits/reviews disclose actual assistance; this table does not invent pair programming or equal commit counts. A used Codex GPT-6 for the 27 November baseline/CI readback and PDF draft refresh. B completed implementation review; the final report review remains open.
 
-Final gates: coordinated reviewed main release, human GCP/migration readback, deployed changed/preserved/persistence checks, B metrics and readiness refresh, A final PDF rendering and B exact-hash review, and human Lab 7 LEB2 upload/receipt.
+Final gates: human GCP/migration readback, deployed changed/preserved/persistence checks, B metrics and readiness refresh, A final PDF rendering and B exact-hash review, and human Lab 7 LEB2 upload/receipt.
 
 ## Reproducibility and provenance
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` re-reads the historical Git/GitHub sources at the pinned cutoff. The later acceptance and staging readback uses its own retained record. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
 
-Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts.
+Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts. v0.5 records the reviewed main merge and automated deploy receipt.
 '''
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "report.md").write_text(report, encoding="utf-8", newline="\n")
-    index = """# Lab 7 report evidence index - working draft v0.4
+    index = """# Lab 7 report evidence index - working draft v0.5
 
-Issue #101. Pages below refer to the v0.4 working PDF. Release status: **NOT READY**.
+Issue #101. Pages below refer to the v0.5 working PDF. Release status: **NOT READY**.
 
 | Assignment requirement | Status | Evidence and source | Draft PDF pages | Owner / next action |
 |---|---|---|---|---|
@@ -527,7 +532,7 @@ Issue #101. Pages below refer to the v0.4 working PDF. Release status: **NOT REA
 | p. 3, Part B: meaningful old-code RED, same-test GREEN and actual diff | Verified | L7-B01..B02; 3f8918c and run 45597034491, unchanged primary assertions, retained backend/GUI GREEN and implementation | 14-17 | A pinned and reproduced the evidence |
 | p. 3, Part B: regression, preservation and authorization | Verified in disposable CI | L7-B03..B07; historical logs, TEST-111 data check, owner/response tests and three browser figures | 17-23 | A retains expected RED and every recorded failure/skip |
 | p. 3, Part B: peer review, CI and staging | Verified | L7-B08; B review 6061752216 on 698b1e9, CI 45645429150, actual merge e6043a9 | 24-25 | B approved and merged; A compared tested and merged trees |
-| pp. 3 and 6, Part B: main, GCP and deployed changed/preserved checks | Blocked on reviewed release | L7-B09..B12; expected results and collection steps. Main readback is Lab 6 bee0d122 | 2, 24-25 | D2 coordinator agrees release; human deploys; A/B capture checks |
+| pp. 3 and 6, Part B: main, GCP and deployed changed/preserved checks | Main and automated deploy verified; live readback pending | L7-B09..B12; #143, 8316f27 and deploy run 46050688714 | 2, 24-25 | Human verifies Cloud Run; A/B capture live checks |
 | p. 4, Part C: five dated metrics, sources and action | Historical and staging values verified; release refresh pending | L7-C01..C03; 26 historic issue/PR rows, 15 scoped CI runs, staging suite, independent CP-EX-F01 disposition | 26-28 | PR #114 merged; B reconciles final release metrics after deployed checks |
 | p. 5, Part D: readiness, defects/debt, three answers and contributions | Draft complete; released-scope outcome pending | L7-D01..D03 and D4; NOT READY, defect/debt, actual failures/skips and next actions | 29-30 | A/B update after live checks |
 | pp. 6-7: self-contained PDF, reviewed version and handoff | Draft verified; final acceptance pending | Version map, internal navigation, checked draft hash and evidence above | 1-2, 30 | A renders; B reviews exact hash; human hands off private test accounts and uploads to LEB2 |

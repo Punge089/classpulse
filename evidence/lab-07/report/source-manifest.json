@@ -289,6 +289,11 @@
       "file": "inputs/nov28-metrics-integration.json",
       "sha256": "f1d11f29570e10aeb7bb0acb9340dcdbd3039b55511bc255966995f0080d0b51",
       "derivation": "GitHub PR #114 readback and CI 45998174147 attempts 1 and 2; compared CI checkout tree with staging merge"
+    },
+    {
+      "file": "inputs/nov28-main-release.json",
+      "sha256": "eac7066c7d13952a81b64739d91f6f30365bb64ed5f4e9c278163c5db94af7b1",
+      "derivation": "GitHub PR #143, main merge object, Actions 46050688714 metadata and selected log readback; smoke_test.py from main"
     }
   ],
   "sourceSnapshotVersion": "1"

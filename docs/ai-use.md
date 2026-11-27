@@ -274,6 +274,10 @@ A/Punge089 used Codex GPT-6 to merge current staging into PR #95, preserve the s
 
 After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report pointers and confirm the interim metrics merge. The Lab 7 release and final deployed evidence remain pending.
 
+## Lab 7 release review status corrections - Issue #94 follow-up, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.
+
 ## Lab7 report source assembly - Issue101, Student A,25November2026
 
 A/Punge089 used Codex GPT-6.1 Sol to reread all7 pages of the supplied Lab7 rubric and assemble a separate source-only report draft from pinned committed sources, actual GitHub C3/PR/CI metadata and complete sanitized current suite outputs. It embeds old/new relevant spec/contract/impact/12AC/15STS, actual pre-code dates/C3, original missing-behavior RED setup/assertions and unchanged-block proof, bounded actual code/migration, regression counts,3 previously inspected original CI screenshots,26 historical metric rows,15 fully paginated branch-CI outcomes, a57word interpretation and honest readiness/debt/retrospective/contribution gaps. B's existing metric/readiness files were inputs and were not changed. Current code review/main/deployed/accepted-baseline/PDF evidence remains PENDING; no final PDF or submission is claimed.
@@ -297,3 +301,7 @@ A/Punge089 used Codex GPT-6 to verify the accepted ClassPulse Lab 6 baseline and
 ## Lab 7 interim metrics integration readback - Issue #101, Student A, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to verify B's interim metrics PR #114 staging merge and compare the reviewed CI checkout tree with the actual merge tree. A recorded the first attempt's TEST-179 timeout and skipped steps, as well as the full successful rerun, in the v0.4 Lab 7 draft. A rebuilt the document, ran 72 source checks and inspected the changed PDF pages after comparing all 30 page bodies to v0.3. The final deployed scope and B's final report review remain pending.
+
+## Lab 7 release evidence - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to reconcile the approved release PR, the actual main merge and its GitHub deployment logs. A recorded automation results separately from the pending Cloud Run revision and live application checks. B approved and merged the release.
