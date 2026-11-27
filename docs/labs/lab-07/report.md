@@ -1,6 +1,6 @@
 # ClassPulse - Lab 7 maintenance report
 
-**Version 0.3 - WORKING DRAFT - NOT READY FOR SUBMISSION**
+**Version 0.4 - WORKING DRAFT - NOT READY FOR SUBMISSION**
 
 Historical test and metrics snapshot: 2026-11-25T19:50:53.113529+07:00. Baseline and PR #92 readback: 2026-11-27T18:20:33+07:00. Lab 7 main release, deployed checks and final PDF review are pending. This PDF covers Lab 7.
 
@@ -832,7 +832,7 @@ M5 complete scoped source list, captured2026-11-25T12:50:53.113529+00:00:
 | 45612126900 | `3457ff7333d7f25cc452e3a37338e2a19c51c8b8` | completed / success | 2026-11-25T12:16:09Z |
 | 45613368930 | `45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8` | completed / success | 2026-11-25T12:23:56Z |
 
-M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population is the single numbered exercise defect. A records B's metric definitions and this readback in the report. B's PR #114 at 4b2dafb9172d3c20c49c283fb06124aef4d8f3c4 conflicts with staging; B owns the final metrics/readiness refresh.
+M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population is the single numbered exercise defect. A records B's metric definitions and this readback in the report. B's interim PR #114 merged into staging as 7d543a5de2e4b358308987e03223f9180b42264a on 27 Nov 2026 19:33:30 ICT. CI 45998174147 attempt 1 timed out on TEST-179 and skipped Docker and Node cleanup. Attempt 2 passed 239 server, 16 client and 11 browser tests with 0 failures or skips on the same tree. This is staging evidence. B owns the final deployed-scope metrics and readiness refresh.
 
 ## C3 - Interpretation and concrete next action (L7-C03)
 
@@ -887,4 +887,4 @@ Final gates: coordinated reviewed main release, human GCP/migration readback, de
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` re-reads the historical Git/GitHub sources at the pinned cutoff. The later acceptance and staging readback uses its own retained record. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
 
-Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan.
+Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts.

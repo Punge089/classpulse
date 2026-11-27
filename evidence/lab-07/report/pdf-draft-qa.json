@@ -1,7 +1,7 @@
 {
   "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
-  "sha256": "a5e5a47555ea697811dda7e5b1e160a1c40dab25e47fee180d7afdc7216ee13f",
-  "sourceSha256UTF8LF": "c1758d0aab09b2a5f7847f6bd0f8317fc32c1514384f74f326407b49a5d329d4",
+  "sha256": "da6639da6eb1ee994989c665c3ce4596f132d66c72f5199a17a31596a8de10c7",
+  "sourceSha256UTF8LF": "406d16dfe824241db7a62c1a6f1415f3b18d85e3bd476af816e55b7a992e2f5f",
   "pages": 30,
   "partStartPages": {
     "A": 3,
@@ -254,7 +254,7 @@
       "page": 28,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 256,
+      "words": 304,
       "outOfBoundsWords": 0,
       "draftFooter": true
     },
@@ -270,32 +270,12 @@
       "page": 30,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 430,
+      "words": 441,
       "outOfBoundsWords": 0,
       "draftFooter": true
     }
   ],
   "structuralResult": "PASS: all pages bounded/nonblank/draft-labelled; all Part links/page ranges correct; original screenshot pixels preserved",
-  "visualQA": {
-    "result": "PASS",
-    "method": "Poppler at 115 DPI; eight contact sheets cover all 30 rendered pages. On the final pass, all page PNGs were compared with the inspected draft; the three changed pages and selected evidence pages were reopened at full resolution.",
-    "fullResolutionPages": [
-      2,
-      3,
-      24,
-      25,
-      26,
-      29,
-      30
-    ],
-    "changedPagesReinspected": [
-      3,
-      26,
-      30
-    ],
-    "inspection": "Correct navigation, legible reviewed evidence and tables, complete screenshots, no clipping or overlap.",
-    "reviewer": "A with Codex GPT-6",
-    "repeatRenderSha256": "a5e5a47555ea697811dda7e5b1e160a1c40dab25e47fee180d7afdc7216ee13f"
-  },
+  "visualQA": "PASS: rendered all 30 pages at 95 DPI with Poppler. Compared body pixels with inspected v0.3 and visually inspected changed pages 1, 28 and 30. Verified the new repeating header on the inspected pages.",
   "releaseState": "NOT READY; no B final PDF approval or submission"
 }

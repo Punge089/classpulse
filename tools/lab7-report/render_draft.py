@@ -95,7 +95,7 @@ class DraftDoc(BaseDocTemplate):
         canvas.setFont("Bold", 8); canvas.setFillColor(NAVY)
         canvas.drawString(MARGIN, height - 27, "ClassPulse / LAB 7 MAINTENANCE")
         canvas.setFont("Body", 7.5)
-        canvas.drawRightString(width - MARGIN, height - 27, "Working draft v0.3 / 27 Nov 2026")
+        canvas.drawRightString(width - MARGIN, height - 27, "Working draft v0.4 / 28 Nov 2026")
         canvas.setFillColor(colors.HexColor("#a62f27")); canvas.setFont("Bold", 7.6)
         canvas.drawString(MARGIN, 26, "WORKING DRAFT - NOT READY FOR SUBMISSION")
         canvas.setFillColor(INK); canvas.setFont("Body", 7.5)

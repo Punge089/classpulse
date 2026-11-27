@@ -1,8 +1,8 @@
 {
-  "passed": 71,
+  "passed": 72,
   "failed": 0,
   "skipped": 0,
-  "reportSha256": "c1758d0aab09b2a5f7847f6bd0f8317fc32c1514384f74f326407b49a5d329d4",
+  "reportSha256": "406d16dfe824241db7a62c1a6f1415f3b18d85e3bd476af816e55b7a992e2f5f",
   "reportHashEncoding": "UTF8/LF canonical source, not a final PDF hash",
   "checks": [
     "input SHA256: inputs/contract-before-code.md",
@@ -42,6 +42,7 @@
     "input SHA256: inputs/same-test-proof.json",
     "input SHA256: inputs/assignment-provenance.json",
     "input SHA256: inputs/nov27-baseline-and-staging.json",
+    "input SHA256: inputs/nov28-metrics-integration.json",
     "unambiguous working-draft state",
     "all four separate assessed parts",
     "all12 stable acceptance IDs",

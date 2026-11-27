@@ -97,7 +97,7 @@ def capture() -> None:
     assert c3["user"]["login"] == "book6349"
     saved_json("b-c3.json", {k: c3[k] for k in ["id", "body", "created_at", "html_url"]}, {"endpoint": "issues/comments/7159676041", "author": "book6349"})
     prior_manifest = json.loads((EVIDENCE / "source-manifest.json").read_text(encoding="utf-8"))
-    for name in ("implementation-review.json", "nov27-baseline-and-staging.json"):
+    for name in ("implementation-review.json", "nov27-baseline-and-staging.json", "nov28-metrics-integration.json"):
         relative = "inputs/" + name
         record = next(item for item in prior_manifest["records"] if item["file"] == relative)
         assert hashlib.sha256((EVIDENCE / relative).read_bytes()).hexdigest() == record["sha256"], relative
@@ -185,7 +185,7 @@ def assemble() -> None:
     readback = data("nov27-baseline-and-staging.json")
     baseline = readback["baseline"]
     integration = readback["integration"]
-    metrics_pr = readback["metricsPR"]
+    metrics_pr = data("nov28-metrics-integration.json")
     def bangkok(time: str) -> str:
         return datetime.fromisoformat(time.replace("Z", "+00:00")).astimezone(BG).strftime("%d %b %Y %H:%M:%S ICT")
 
@@ -198,7 +198,7 @@ def assemble() -> None:
     assert len(interpretation.split()) <= 100
     report = f'''# ClassPulse - Lab 7 maintenance report
 
-**Version 0.3 - WORKING DRAFT - NOT READY FOR SUBMISSION**
+**Version 0.4 - WORKING DRAFT - NOT READY FOR SUBMISSION**
 
 Historical test and metrics snapshot: {manifest["observedAtBangkok"]}. Baseline and PR #92 readback: {readback["observedBangkok"]}. Lab 7 main release, deployed checks and final PDF review are pending. This PDF covers Lab 7.
 
@@ -457,7 +457,7 @@ M5 complete scoped source list, captured{manifest["observedAtUTC"]}:
 |---|---|---|---|
 {ci_rows}
 
-M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population is the single numbered exercise defect. A records B's metric definitions and this readback in the report. B's PR #114 at {metrics_pr["head"]} conflicts with staging; B owns the final metrics/readiness refresh.
+M4 source: Lab 6 CP-EX-F01 closure and D retest record. The counted population is the single numbered exercise defect. A records B's metric definitions and this readback in the report. B's interim PR #114 merged into staging as {metrics_pr["stagingMerge"]} on {bangkok(metrics_pr["mergedAt"])}. CI {metrics_pr["run"]} attempt 1 timed out on TEST-179 and skipped Docker and Node cleanup. Attempt 2 passed 239 server, 16 client and 11 browser tests with 0 failures or skips on the same tree. This is staging evidence. B owns the final deployed-scope metrics and readiness refresh.
 
 ## C3 - Interpretation and concrete next action (L7-C03)
 
@@ -512,13 +512,13 @@ Final gates: coordinated reviewed main release, human GCP/migration readback, de
 
 `tools/lab7-report/build_source.py` rebuilds this source offline after verifying every stored input SHA256 against `evidence/lab-07/report/source-manifest.json`. `--capture` re-reads the historical Git/GitHub sources at the pinned cutoff. The later acceptance and staging readback uses its own retained record. Original complete sanitized logs and selected code/spec inputs accompany this source. No application source/test or B-owned metric file is changed by this report. The final PDF must embed assessed text/images and internal references rather than asking the grader to open these source links.
 
-Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan.
+Revision history: v0.1 assembled the pinned 25 November source. v0.2 added the working PDF and page navigation. v0.3 adds the accepted baseline, exact PR #92 review/CI/staging, scoped CP-EX-F01 metrics and deployed verification plan. v0.4 records the reviewed #114 staging integration and both CI attempts.
 '''
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "report.md").write_text(report, encoding="utf-8", newline="\n")
-    index = """# Lab 7 report evidence index - working draft v0.3
+    index = """# Lab 7 report evidence index - working draft v0.4
 
-Issue #101. Pages below refer to the v0.3 working PDF. Release status: **NOT READY**.
+Issue #101. Pages below refer to the v0.4 working PDF. Release status: **NOT READY**.
 
 | Assignment requirement | Status | Evidence and source | Draft PDF pages | Owner / next action |
 |---|---|---|---|---|
@@ -528,7 +528,7 @@ Issue #101. Pages below refer to the v0.3 working PDF. Release status: **NOT REA
 | p. 3, Part B: regression, preservation and authorization | Verified in disposable CI | L7-B03..B07; historical logs, TEST-111 data check, owner/response tests and three browser figures | 17-23 | A retains expected RED and every recorded failure/skip |
 | p. 3, Part B: peer review, CI and staging | Verified | L7-B08; B review 6061752216 on 698b1e9, CI 45645429150, actual merge e6043a9 | 24-25 | B approved and merged; A compared tested and merged trees |
 | pp. 3 and 6, Part B: main, GCP and deployed changed/preserved checks | Blocked on reviewed release | L7-B09..B12; expected results and collection steps. Main readback is Lab 6 bee0d122 | 2, 24-25 | D2 coordinator agrees release; human deploys; A/B capture checks |
-| p. 4, Part C: five dated metrics, sources and action | Historical and staging values verified; release refresh pending | L7-C01..C03; 26 historic issue/PR rows, 15 scoped CI runs, staging suite, independent CP-EX-F01 disposition | 26-28 | B reconciles final release metrics at new head; PR #114 conflicts |
+| p. 4, Part C: five dated metrics, sources and action | Historical and staging values verified; release refresh pending | L7-C01..C03; 26 historic issue/PR rows, 15 scoped CI runs, staging suite, independent CP-EX-F01 disposition | 26-28 | PR #114 merged; B reconciles final release metrics after deployed checks |
 | p. 5, Part D: readiness, defects/debt, three answers and contributions | Draft complete; released-scope outcome pending | L7-D01..D03 and D4; NOT READY, defect/debt, actual failures/skips and next actions | 29-30 | A/B update after live checks |
 | pp. 6-7: self-contained PDF, reviewed version and handoff | Draft verified; final acceptance pending | Version map, internal navigation, checked draft hash and evidence above | 1-2, 30 | A renders; B reviews exact hash; human hands off private test accounts and uploads to LEB2 |
 

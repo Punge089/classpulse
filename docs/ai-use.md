@@ -264,3 +264,7 @@ The first staged diff check correctly stopped before commit because Git detected
 ## Lab 7 accepted baseline and staging report refresh - Issue #101, Student A, 27 November 2026
 
 A/Punge089 used Codex GPT-6 to verify the accepted ClassPulse Lab 6 baseline and preserved old lifecycle blobs, read B's genuine review and staging merge of #92, match the GitHub CI checkout tree to the staging merge, and rebuild and inspect the 30-page Lab 7 draft. B/book6349 authored the C7 review and merged #92. D issued the Lab 6 decision, and C acknowledged it. A reconciled the report's evidence and prepared the release verification cases. The report work has 71 passing document checks. CI runtime counts cited for #92 are GitHub Actions readbacks. Lab 7 deployment, final PDF approval and submission remain pending.
+
+## Lab 7 interim metrics integration readback - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to verify B's interim metrics PR #114 staging merge and compare the reviewed CI checkout tree with the actual merge tree. A recorded the first attempt's TEST-179 timeout and skipped steps, as well as the full successful rerun, in the v0.4 Lab 7 draft. A rebuilt the document, ran 72 source checks and inspected the changed PDF pages after comparing all 30 page bodies to v0.3. The final deployed scope and B's final report review remain pending.
