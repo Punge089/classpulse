@@ -102,3 +102,56 @@ for (const list of surveyLists) {
     await expect(page.getByText(list.empty)).toHaveCount(0);
   });
 }
+
+test("TEST-287 respondent sees the mode and completes an identified form by keyboard at 375px", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await signIn(page, "ann.lee@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/owner$/);
+  await page.getByRole("link", { name: "New survey" }).click();
+
+  const title = "Keyboard survey validation";
+  const question = "How clear were the assignment instructions?";
+  await page.getByLabel("Course", { exact: true }).selectOption({ label: "CPE334 — Software Engineering" });
+  await page.getByLabel("Title", { exact: true }).fill(title);
+  await page.getByLabel("Question 1 text").fill(question);
+  await page.getByRole("button", { name: "Create survey" }).click();
+  await expect(page).toHaveURL(/\/owner\/surveys\/\d+$/);
+  const surveyId = new URL(page.url()).pathname.split("/").at(-1);
+  await page.getByRole("button", { name: "Publish" }).click();
+  await expect(page.getByText("Published", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Logout" }).click();
+  await expect(page).toHaveURL(/\/login$/);
+
+  await signIn(page, "student1@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/surveys$/);
+  await page.goto("/surveys/" + surveyId);
+  const notice = page.getByRole("note").filter({ hasText: "Identified survey" });
+  const submit = page.getByRole("button", { name: "Submit", exact: true });
+  await expect(notice).toHaveText("Identified survey — your name is stored with your answers");
+  await expectWithinViewport(page, [notice, submit]);
+
+  await submit.focus();
+  await expect(submit).toBeFocused();
+  await page.keyboard.press("Enter");
+  const alert = page.getByRole("alert");
+  await expect(alert).toContainText(/Required question \d+ is missing/);
+  await expectWithinViewport(page, [alert]);
+
+  const firstRating = page.getByLabel("Rating 1 of 5");
+  const secondRating = page.getByLabel("Rating 2 of 5");
+  await firstRating.focus();
+  await expect(firstRating).toBeFocused();
+  await page.keyboard.press("Space");
+  await page.keyboard.press("ArrowRight");
+  await expect(secondRating).toBeChecked();
+  await expect(secondRating).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(submit).toBeFocused();
+  await page.keyboard.press("Enter");
+
+  await expect(page).toHaveURL(/\/responses\/\d+$/);
+  await expect(page.getByText("Thanks — your response is in.", { exact: true })).toBeVisible();
+  await expect(page.getByText(question, { exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByText(question, { exact: true })).toBeVisible();
+});
