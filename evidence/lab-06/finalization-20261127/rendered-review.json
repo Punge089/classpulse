@@ -1,0 +1,14 @@
+{
+  "pdfSha256": "f4739f93379dd4a5db7512236820a595f6ee4042e5984b29d5fda08b07aeedb1",
+  "pages": 76,
+  "artifactChecksPassed": 25,
+  "artifactChecksFailed": 0,
+  "visualReview": "Rendered all77pages before final TOC tightening; inspected every contact-sheet layout plus full historical61-63, issued-decision prefacing, observation table and B-review pages. Re-rendered all76final pages and inspected finalTOC2/PartA3/Historical61/table71/Breview76. Same content layout elsewhere shifted one page; no clipping/overlap or unreadable body glyph observed.",
+  "tableFooterClearanceMm": 116.13192952473959,
+  "humanBFinalConfirmation": "PENDING; recommendation only",
+  "noAppTestRerun": true,
+  "intermediateDocumentationIssues": [
+    "An initial relative-path editing helper ran from the nested worktree and found no local path; no file changed; corrected using explicit paths.",
+    "Windows core.autocrlf was identified before commit; frozen inputs use scoped -text attributes to retain original evidence byte hashes."
+  ]
+}

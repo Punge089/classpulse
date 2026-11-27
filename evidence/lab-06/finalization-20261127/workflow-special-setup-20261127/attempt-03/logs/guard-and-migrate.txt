@@ -1,0 +1,20 @@
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "workflow_uat6_20261127_test", schema "public" at "127.0.0.1:61327"
+
+3 migrations found in prisma/migrations
+
+Applying migration `20261107000000_initial_schema`
+Applying migration `20261126050000_withdrawn_status`
+Applying migration `20261126050100_withdrawal_constraints`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261107000000_initial_schema/
+    └─ migration.sql
+  └─ 20261126050000_withdrawn_status/
+    └─ migration.sql
+  └─ 20261126050100_withdrawal_constraints/
+    └─ migration.sql
+      
+All migrations have been successfully applied.

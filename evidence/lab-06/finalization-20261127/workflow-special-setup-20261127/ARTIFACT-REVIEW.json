@@ -1,0 +1,30 @@
+{
+  "reviewedAtBangkok": "2026-11-27T02:28:53.103703+07:00",
+  "artifactChecksPassed": 21,
+  "artifactChecksFailed": 0,
+  "checks": {
+    "run passed": true,
+    "exact pinned source": true,
+    "both records local revision N/A": true,
+    "unchanged suite19passed": true,
+    "already passing suite not rerun": true,
+    "all seven supplemental observations pass": true,
+    "same session rejected": true,
+    "expiry exact boundary": true,
+    "absent and wrong role mapping separate": true,
+    "database self assignment refuses23514": true,
+    "original schema script rolled back": true,
+    "forced rollback500 has full before after equality": true,
+    "actual process restart changes PID": true,
+    "restart same DB without reseed": true,
+    "restart both roles complete equal records": true,
+    "restart same ID amount status history": true,
+    "loopback only verified": true,
+    "isolated cluster stopped": true,
+    "source clean after tests": true,
+    "private connection scratch deleted": true,
+    "no live or cloud operation": true
+  },
+  "appRerunDuringArtifactReview": false,
+  "earlierOperationalFailures": "Attempt1 Windows raw-log handle; attempt2 reporter-format parser after actual19/19PASS; attempt3 supplemental host-format guard before app observations. Original records retained, no product defect inferred or test weakened."
+}

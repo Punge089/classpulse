@@ -1,0 +1,28 @@
+{
+  "source": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "cleanBefore": true,
+  "cleanAfter": true,
+  "servingRevision": "N/A",
+  "operator": "Codex under Thira (D)",
+  "model": "GPT-6.2 Sol",
+  "startedBangkok": "2026-11-27T01:14:30.7622205+07:00",
+  "finishedBangkok": "2026-11-27T01:14:33.7248912+07:00",
+  "command": "npm test -- tests/api/auth.test.ts --reporter=verbose",
+  "exitCode": 1,
+  "runtime": {
+    "platform": "Windows x64",
+    "node": "v24.14.0",
+    "npm": "11.9.0",
+    "postgres": "pg_ctl (PostgreSQL) 16.16"
+  },
+  "database": {
+    "address": "127.0.0.1",
+    "port": 61247,
+    "dataDirectoryMatched": true,
+    "name": "classpulse_test",
+    "stopped": true,
+    "ownNewCluster": true,
+    "publicTablesBeforeMigration": 0,
+    "listenerAfter": false
+  }
+}
