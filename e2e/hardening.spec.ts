@@ -155,3 +155,38 @@ test("TEST-287 respondent sees the mode and completes an identified form by keyb
   await page.reload();
   await expect(page.getByText(question, { exact: true })).toBeVisible();
 });
+
+test("TEST-285 staged F-06 draft editor fits 375px and preserves save and cancel behavior", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await signIn(page, "ann.lee@classpulse.test", seedPassword());
+  await expect(page).toHaveURL(/\/owner$/);
+  await page.getByRole("link", { name: "New survey" }).click();
+  const initial = "How clear were the instructions?";
+  const saved = "How clear were the assignment instructions and the feedback on your practical exercise?";
+  await page.getByLabel("Course", { exact: true }).selectOption({ label: "CPE334 — Software Engineering" });
+  await page.getByLabel("Title", { exact: true }).fill("Mobile draft changes");
+  await page.getByLabel("Question 1 text").fill(initial);
+  await page.getByRole("button", { name: "Create survey" }).click();
+  await expect(page).toHaveURL(/\/owner\/surveys\/\d+$/);
+  await page.getByRole("link", { name: "Edit questions" }).click();
+
+  const prompt = page.getByLabel("Question 1 text", { exact: true });
+  const type = page.getByLabel("Question 1 type", { exact: true });
+  const save = page.getByRole("button", { name: "Save questions" });
+  const cancel = page.getByRole("link", { name: "Cancel and return" });
+  await expect(prompt).toHaveValue(initial);
+  await expectWithinViewport(page, [prompt, type, save, cancel]);
+  await prompt.fill(saved);
+  await save.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/owner\/surveys\/\d+$/);
+  await page.getByRole("link", { name: "Edit questions" }).click();
+  await expect(prompt).toHaveValue(saved);
+  await prompt.fill("Discard this change");
+  await cancel.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/owner\/surveys\/\d+$/);
+  await page.reload();
+  await page.getByRole("link", { name: "Edit questions" }).click();
+  await expect(prompt).toHaveValue(saved);
+});
