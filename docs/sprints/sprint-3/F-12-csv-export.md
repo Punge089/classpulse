@@ -78,3 +78,7 @@ B approves the exact contract through C3. Update #138 with exact paths. Preserve
 ## 12. Version history
 
 v1.0 · 28 November 2026 · A with Codex GPT-6.2 Sol. Initial full FR-17 contract and identified-only first slice for review.
+
+### v1.1 C3 clarifications, 28 November 2026
+
+B's C3 at #138 covers the identified-only first slice and requests these verification clarifications. In TEST-242, reject a valid owned survey request with an unexpected query parameter as a 400 JSON error before sending CSV headers. In TEST-246, pin count and row reads to one PostgreSQL repeatable-read or stronger transaction, and coordinate an actual concurrent submission between them with database barriers. Verify the same observation excludes the intervening submission and a fresh request includes it. No time-based sleep or weakened assertion. Keep newer question types pending their F-07 implementation and anonymous export disabled.
