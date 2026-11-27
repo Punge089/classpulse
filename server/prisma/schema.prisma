@@ -31,6 +31,8 @@ enum SurveyLifecycleAction {
 enum QuestionType {
   RATING
   SINGLE_CHOICE
+  TEXT
+  MULTI_CHOICE
 }
 
 model User {

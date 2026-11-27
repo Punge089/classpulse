@@ -282,3 +282,7 @@ B/book6349 used Codex GPT-6 Sol to draft the four-type F-07 contract for Issue #
 ## F-07 independent owner-create RED — Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6.2 Sol to add two test-only TEST-140 cases at `server/tests/api/extendedQuestionTypes.test.ts`, covering persisted owner creation of TEXT and MULTI_CHOICE. The initial CI attempt exposed an unawaited synthetic-login helper; B corrected the test harness before accepting the RED. Current-staging CI 46045085095 then ran the server `npm test` suite with 272 passed and the two expected new-type assertions failing (400 received, 201 expected), zero skipped tests; downstream client, builds, browser and Docker steps were skipped. The test, output and run JSON were committed before implementation. No application/schema/migration code or local database was changed; local execution was unavailable in the isolated checkout.
+
+## F-07 owner-create implementation — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to implement the first independent TEST-140 owner-create slice under Issue #134: add TEXT and MULTI_CHOICE to the Prisma question enum, add the corresponding PostgreSQL enum migration, and accept those types in the existing owner-create validator. The shared F-06 editor, answers, response/history APIs and summaries remain outside this checkpoint. Local execution of the API tests is blocked because no isolated PostgreSQL database or Docker daemon is available; the current CI result is pending.

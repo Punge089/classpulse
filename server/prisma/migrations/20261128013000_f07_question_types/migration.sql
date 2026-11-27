@@ -1,0 +1,2 @@
+ALTER TYPE "QuestionType" ADD VALUE 'TEXT';
+ALTER TYPE "QuestionType" ADD VALUE 'MULTI_CHOICE';
