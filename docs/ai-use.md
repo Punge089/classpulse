@@ -285,3 +285,7 @@ Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Cl
 ## Final Lab 7 metrics and readiness refresh - Issue #89, Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6 to reconcile the final Issue #89 metrics, readiness and retrospective with main release 8316f27, deploy run 46050688714, and A's sanitized production receipts from PR #104 head b75f410. B authored the dated metrics evidence file and refreshed the three Issue #89 records. A performed and reported the production API check and GCP Console readbacks; B did not rerun application tests, perform UAT, use GCP, or submit to LEB2. The live developer check is not described as independent UAT. Final PDF review and human LEB2 submission remain pending.
+
+A used Codex GPT-6 to draft the proposed F-08/Lab7 deadline integration in Issue130 from staging a3a0424 and F-08 contract v1.1. B review, canonical contract revisions, tests and implementation remain pending.
+
+A/Punge089 used Codex GPT-6 on #130 to incorporate B's proposal feedback into F-08/Lab 7 addendum v0.2 and proposed canonical Lab 7 v1.7. The changes specify lock-time deadline/error order, both optimistic-token outcomes and stable test designs. A refreshed the branch from staging without altering the Lab 7 execution evidence. B's integration C3 and test execution remain pending.
