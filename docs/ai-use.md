@@ -244,3 +244,7 @@ Under Issue96, A's Codex GPT-6.1 Sol read current shared contracts and deadline-
 ## F-08 execution inventory after actual C3 - Student A, 25 November 2026
 
 A's Codex GPT-6.1 Sol recorded B's actual C3 7159683176 in F-08 contract v1.1, read the proposed Lab7 implementation d1b41c3 without editing it, and identified the authoritative submission-read/row-lock and shared timestamp integration points. The already-contracted CLOSING_TIME_PASSED discriminant file was added to Issue96's Files list before implementation. A imported reviewed staging documentation, preserving all incoming Lab6/B sources and both complete AI declarations. No F-08 tests, application/schema/workflow, database, cloud or deployment operation was performed. The separate #87 contract addendum/review and serialized integration remain prerequisites; B's initial C3 is not fabricated approval of that future change.
+
+## Sprint 2 F-08 independent RED - Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 under Issue #96 to write TEST-180 from B's reviewed test design before implementation. The disposable CI server suite on test-only eb198dd produced 239 passes, one expected missing-route failure, and zero test skips. The assertion output and skipped workflow steps are retained under evidence/sprint-2/F-08. The separate reopen addendum, shared implementation slot, same-test GREEN, B review and release remain pending. F-08 product code, schema and workflows were untouched.
