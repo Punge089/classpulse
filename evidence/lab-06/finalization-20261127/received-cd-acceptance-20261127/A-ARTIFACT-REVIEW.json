@@ -1,0 +1,157 @@
+{
+  "reviewedAtBangkok": "2026-11-27T01:41:52.539298+07:00",
+  "reviewer": "Codex under Student A/Punge089",
+  "reviewKind": "Read-only supplied artifact and pinned-source review; no A app rerun, DB or cloud operation",
+  "archive": {
+    "file": "ClassPulse_CP-FIX-001_TEST-04_Isolated_Evidence_20261127.zip",
+    "sha256": "5635f08cb986f5a3571f2c947b8cd3b8da44555b46f81f78b9bcc455ec1fa89f",
+    "crc": "PASS",
+    "payloadCount": 6,
+    "suppliedManifest": false,
+    "aComputedPayloadHashes": {
+      "CP-FIX-001-TEST-04-ISOLATED/auth-test-output.txt": "81a73ddbdd6cc43f8cd9d608f8dc089f4a3a3eb3f895545b41f03137889611f6",
+      "CP-FIX-001-TEST-04-ISOLATED/fixture-setup-failure.json": "9096dfce273b2842465b9110d418695541c99e914689bfc864662ca434e32ec9",
+      "CP-FIX-001-TEST-04-ISOLATED/fixture-setup-failure-output.txt": "d9dd0daf063d5d410240b6d2dd56837a605319db1ad7f2b46a15a83c5a44a9b4",
+      "CP-FIX-001-TEST-04-ISOLATED/REPORT.md": "3ee5c272efd71c596d62c636de561a134648a5cde24798fdf458f2d554445ff8",
+      "CP-FIX-001-TEST-04-ISOLATED/run-record.json": "f3cd0421dcf0ee28aa6aebf1ea5905f0de3ce2e8804b10e6bab3e2385d1a8817",
+      "CP-FIX-001-TEST-04-ISOLATED/setup-output.txt": "1a583cd047660fa1d17f14ba0004cc7cabba45e165d0939e801b86ba6217293a"
+    }
+  },
+  "decision": {
+    "file": "D-ACCEPTANCE-STATUS.md",
+    "sha256": "b07008a6f388433f8c72950f33ffbc566582f9af7608cf1224f1ea853f6e4709",
+    "recordedAtBangkok": "2026-11-27T01:35:39+07:00",
+    "state": "Accepted",
+    "attribution": "D supplied decision; D reports Ashira/C Accepted. Original C final acknowledgment and timestamp not supplied.",
+    "source": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+    "revision": "classpulse-00007-6t9",
+    "scope": "Sprint 1 identified-survey scope",
+    "instructorApprovalReceived": false
+  },
+  "localRun": {
+    "source": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+    "cleanBefore": true,
+    "cleanAfter": true,
+    "servingRevision": "N/A",
+    "operator": "Codex under Thira (D)",
+    "model": "GPT-6.2 Sol",
+    "startedBangkok": "2026-11-27T01:15:20.3858374+07:00",
+    "finishedBangkok": "2026-11-27T01:15:23.9728492+07:00",
+    "command": "npm test -- tests/api/auth.test.ts --reporter=verbose",
+    "exitCode": 0,
+    "runtime": {
+      "platform": "Windows x64",
+      "npm": "11.9.0",
+      "node": "v24.14.0",
+      "postgres": "pg_ctl (PostgreSQL) 16.16"
+    },
+    "database": {
+      "port": 61247,
+      "name": "classpulse_test",
+      "stopped": true,
+      "dataDirectoryMatched": true,
+      "address": "127.0.0.1",
+      "listenerAfter": false,
+      "publicTablesBeforeMigration": 0,
+      "isolatedCluster": true
+    },
+    "counts": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    },
+    "test04": "PASS explicitly named in verbose output",
+    "earlierFailurePreserved": true
+  },
+  "pinnedAuthFileSha256": "5cee208944272495f2fbe76937335b9048e841deeadc59c779a430ad4fe59036",
+  "checks": [
+    {
+      "check": "archive CRC",
+      "passed": true
+    },
+    {
+      "check": "six supplied payloads",
+      "passed": true
+    },
+    {
+      "check": "safe relative archive paths",
+      "passed": true
+    },
+    {
+      "check": "exact CP-FIX-001 source",
+      "passed": true
+    },
+    {
+      "check": "local revision is N/A",
+      "passed": true
+    },
+    {
+      "check": "unchanged checkout reported before and after",
+      "passed": true
+    },
+    {
+      "check": "actual D AI operator named",
+      "passed": true
+    },
+    {
+      "check": "unfiltered verbose auth-file command",
+      "passed": true
+    },
+    {
+      "check": "successful exit",
+      "passed": true
+    },
+    {
+      "check": "fresh owned isolated loopback database",
+      "passed": true
+    },
+    {
+      "check": "database stopped with listener closed",
+      "passed": true
+    },
+    {
+      "check": "eight verbose PASS entries including TEST-04",
+      "passed": true
+    },
+    {
+      "check": "whole auth file passed eight of eight",
+      "passed": true
+    },
+    {
+      "check": "initial fixture failure retained and disclosed",
+      "passed": true
+    },
+    {
+      "check": "historical live result not upgraded",
+      "passed": true
+    },
+    {
+      "check": "actual local interval has Bangkok offset",
+      "passed": true
+    },
+    {
+      "check": "D Accepted record pins release and decision time",
+      "passed": true
+    },
+    {
+      "check": "C original acknowledgment is explicitly unavailable",
+      "passed": true
+    },
+    {
+      "check": "referenced C-REVIEW is absent from this ZIP",
+      "passed": true
+    },
+    {
+      "check": "pinned TEST-04 includes all required protocol and DB assertions",
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Local evidence has serving revision N/A; do not label it Cloud/live replay PASS.",
+    "Historical live M01 BLOCKED remains historical.",
+    "C-REVIEW.md linked by the decision is not in this six-file ZIP; obtain the original and C final method/decision acknowledgment.",
+    "Earlier C review reportedly requested TA approval or live evidence. Do not claim C superseded that request without the actual final acknowledgment.",
+    "No instructor/TA approval is claimed or represented as an explicit handout requirement.",
+    "Whole Lab6, Workflow final decision, PDF final review and human submission remain separate."
+  ]
+}

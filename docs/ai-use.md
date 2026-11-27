@@ -225,6 +225,26 @@ A used Codex GPT-6.1 Terra to review B PR112 at 00e1764, independently checking 
 
 Student B (book6349) used Codex GPT-6 to draft the F-09 response-history contract for Issue #88 on `feature/88-d2-my-responses`, based on the current Issue, D2 plan, shared requirements, and read-only GitHub inspection of the existing response route and authentication/role middleware. The contract is a proposal awaiting A's C3; the enrollment-history policy question remains open for review. No tests, implementation, database, deployment, or application behavior changes were performed in this step. The connected GitHub profile is book6349. The local OneDrive checkout was readable for documents but Git denied access to the repository path, so no local Git diff or status check was available.
 
+## Lab 6 report consolidation and review fixes — Student A, 27 November 2026
+
+Student A/Punge089 used Codex GPT-6 for Issue #132 to curate preserved UAT/retest/acceptance artifacts, implement a reproducible PDF build/verifier, label historical 26 November status text, move the measured-observation table clear of the footer, and embed C/D acknowledgment plus the two actual B-side Codex reviews. B's files identify Codex GPT-6 Sol under book6349 and explicitly leave human B identity/final decision and revised-file confirmation pending; A does not turn those recommendations into signatures. Earlier A independent Workflow local execution recorded the unchanged full suite19/19, existing SQL rollback and7supplemental PASS across6groups on exact41a8fefa (local revisionN/A), preserving operational failures and runtime differences. No new app test, product-code/schema/workflow change, main merge, cloud deployment or submission is performed by this documentation consolidation. A owns this PR and cannot approve or merge it.
+
+## Lab 6 B owner acknowledgment insertion — Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 to append the received B owner-confirmation and ca77 report-review record under Issue132/PR133 without changing A's original decision or earlier B files. The received record confirms B's name/ID and concurrence dated27Nov; exact human-message time is unavailable and receipt was observed by16:18:31ICT, preserved as a bound. B actually checked ca77/PDF76pages and ran25document checks without app rerun, requested this insertion and fresh new-head/CI review, and posted no GitHub review. A updated current report/register/verification expectations accordingly; no B approval of a future PDF, PR merge, app rerun or cloud action is inferred.
+
+## Lab 6 stable submission candidate — Student A, 27 November 2026
+
+At the user's explicit request to finish in one handoff, A/Punge089 used Codex GPT-6 under Issue132 to remove authored draft/not-for-submission presentation, retain the same measured evidence and genuine owner decisions, and keep actual current-file approval/merge/upload records separate. The receipt and verifier distinguish a complete submission candidate from an invented approval/upload. No PDF rebuild is required solely to mark a later review, merge or submission; B reviews the final exact head/hash/current CI once and humans can upload those identical bytes. All original B and C/D files, historic blocks and residual limits remain unchanged; no app test is added or weakened and no source/schema/main/cloud operation is performed.
+
+## Lab 7 Issue #89 current PR #92 and staging readback - Student B, 25 November 2026
+
+Student B/book6349 verified PR #92 head `87971f59da5bc63634bd8ce963667f6a5a8efcb9`, its successful Actions run 45638095728 and tested merge `9b74772155143c0526edf213083dfe011d5629ac` against base `841ad5ca6d62e4f04d8a943d89a4a91e919feeb5`. B inspected job logs showing 219 server, 10 client and 10 browser tests passed, 0 failed/skipped, both builds and Docker passed. B distinguished this from current staging `9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35`, which later advanced when PR #112 merged. B updated only Issue #89 metrics, readiness, source snapshot and this append-only disclosure. No local application tests, UAT, live migration, release or deployment were performed. Lab 7 remains separate from D2.
+
+## Lab 7 Issue #89 staging integration - Student B, 27 November 2026
+
+Student B/book6349 used Codex GPT-6 to compare PR #114 head `4b2dafb9172d3c20c49c283fb06124aef4d8f3c4` with current `sprint-2-staging` `5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347`, and to prepare a merge preserving the staging tree, all Lab 6/Lab 7 files, and both students' AI-use declarations. The three Issue #89 metric/readiness source files retain B's reviewed content; their dated 25 November readbacks remain historical. No application tests, UAT, migration, release, or deployment were run during this integration; current-head CI and A's review remain pending.
+
 A used Codex GPT-6 to draft the proposed F-13 contract in Issue #124 from staging a3a0424. Dependencies, privacy decisions, stable IDs, implementation files and B review remain open; no feature tests or code were written.
 
 ## Sprint 3 F-13 analysis filters contract revision — Student A, 28 November 2026
