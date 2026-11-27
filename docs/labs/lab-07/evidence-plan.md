@@ -1,6 +1,6 @@
 # Lab 7 evidence and PDF submission checklist
 
-Issue #94, v1.1, 27 November 2026. A prepares and B reviews a self-contained Lab7 PDF, separately submitted from Deliverable2. Deadline 29 November 2026, 23:59 Bangkok. [PR #104](https://github.com/Punge089/classpulse/pull/104) contains working draft v0.3.
+Issue #94, v1.2, 28 November 2026. A prepares and B reviews a self-contained Lab7 PDF, separately submitted from Deliverable2. Deadline 29 November 2026, 23:59 Bangkok. Use [PR #104](https://github.com/Punge089/classpulse/pull/104) for the current draft. The 28 November snapshot was v0.4 at `6948d6dfcf5baf038212d9851ea8188e23d75036`.
 
 | Part | Points | Include directly in the Lab7 PDF | Owner / current state |
 |---|---:|---|---|
@@ -38,3 +38,5 @@ Render and inspect every final page, legibility, tables, screenshots, logs and p
 v1.0,25Nov2026,A: extract Lab7-specific rubric, metrics and submission requirements into its own planning Issue/branch/PR after the user requested visible separation from D2. All unexecuted evidence remains pending.
 
 v1.1, 27 Nov 2026, A: mark verified baseline and staging evidence, link the report draft, and retain the pending release and final-review checks.
+
+v1.2, 28 Nov 2026, A: record the verified v0.4 snapshot and retain PR #104 as the source of the current draft.

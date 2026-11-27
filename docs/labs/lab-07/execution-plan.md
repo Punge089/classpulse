@@ -1,6 +1,6 @@
 # Lab 7 maintenance and submission plan
 
-Issue #94, v1.1, 27 November 2026. Author and driver: Bannasorn Thongkorn (67070503420, Punge089, A). Peer reviewer: Papangkorn Jitvoottikrai (67070503421, book6349, B). Assisted by Codex GPT-6.
+Issue #94, v1.2, 28 November 2026. Author and driver: Bannasorn Thongkorn (67070503420, Punge089, A). Peer reviewer: Papangkorn Jitvoottikrai (67070503421, book6349, B). Assisted by Codex GPT-6.
 
 ## Separate assessment
 
@@ -12,11 +12,11 @@ The same accepted code change may be in the evolving product and D2 candidate. T
 
 | Work | Owner / reviewer | Issue / PR | Current state |
 |---|---|---|---|
-| Lab7 plan, source provenance and report checklist | A / B | #94 / PR #95 | B approved v1.0 on `292a698`; exact-head review and CI for v1.1 pending |
+| Lab7 plan, source provenance and report checklist | A / B | #94 / PR #95 | B reviewed the previous integration head; review and CI required for the current commit |
 | Change request, impact and revised contract | A / B | #87 / PR #92 | Contract `8017c91`; B's C3 preceded tests |
 | Test-first RED, implementation/GREEN, regression | A / B | #87 / PR #92 | Retained RED/GREEN, B review and staging merge `e6043a9` verified |
-| Five metrics, readiness and retrospective | B / A | #89 / PR #114 | Dated input exists; B reconciles #114 with staging and updates release metrics when evidence is available |
-| Lab7 PDF assembly | A / B | #101 / PR #104 | Working v0.3 draft at `bb0fac9`; final deployed evidence and B's exact-PDF review pending |
+| Five metrics, readiness and retrospective | B / A | #89 / PR #114 | Interim #114 merged at `7d543a5`; B updates release metrics after deployed checks |
+| Lab7 PDF assembly | A / B | #101 / PR #104 | Use [PR #104](https://github.com/Punge089/classpulse/pull/104) for the current draft. The 28 November snapshot was v0.4 at `6948d6dfcf5baf038212d9851ea8188e23d75036`; deployed evidence and B's final PDF review pending |
 | Reviewed main release/deployed checks | Sprint2 release coordinator / non-author reviewer | Reviewed main release PR | Coordination pending; human operator handles GCP and supplies version readback |
 
 The reviewed change is controlled reopening of a closed survey with owner reason, lifecycle version, transactional audit and unchanged historical answers/duplicate-response restrictions. This changes previously correct terminal-CLOSED behavior from Sprint1. It is not an unchanged Sprint2 backlog feature. B checked the proposal before tests in C3. The newer announcement waived individual TA approval for the change request.
@@ -49,3 +49,5 @@ Human cloud/account/credential/migration actions are recorded with exact steps i
 v1.0,25Nov2026,A: create visibly separate Lab7 planning/submission track under #94 at user's request. Earlier combined coordination commit1354a2a remains historical; no report was combined or submitted.
 
 v1.1, 27 Nov 2026, A: record the verified baseline, feature review and staging merge, draft report and outstanding release coordination. v1.0 remains in Git history.
+
+v1.2, 28 Nov 2026, A: refresh the report and interim metrics pointers after B's review and retain the pending release gates.
