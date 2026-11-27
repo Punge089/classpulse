@@ -124,3 +124,20 @@ Execution boundaries: independent contract preparation is allowed now. F-08 prod
 v1.0,25 November2026,A/Codex GPT-6.1 Sol: initial scheduled-closing contract before tests/code, FR12/BR11 boundary and locked admission design, explicit separate Lab7 integration-review prerequisite; B C3 pending.
 
 v1.1 execution inventory,25 November2026,A/Codex GPT-6.1 Sol: record actual B C3 and read-only impact against proposed87 head d1b41c3; name the already-required error-union file before editing it, identify the current response admission/row-lock gap and shared timestamp impact, and preserve all AC/STS plus the separately scoped/reviewed87 integration prerequisite. No application tests, schema or implementation changed; no later feature assignment or integration approval inferred.
+
+v1.2 proposed F-08/Lab 7 integration, 27 November 2026, A/Codex GPT-6. Records the specific error and locking rules requested in B's proposal review. The approved standalone cutoff and original test design remain in their earlier versions. Integration C3 is pending.
+
+## 13. Proposed lifecycle integration v1.2
+
+Read with [#130 / PR #131](https://github.com/Punge089/classpulse/pull/131), which proposes Lab 7 maintenance contract v1.7. For reopen, the locked owner record is required before payload validation. Invalid reason returns HTTP 400 VALIDATION_ERROR with a reason detail, including on an expired survey. A valid body with a stale statusVersion returns HTTP 409 STALE_SURVEY. The existing transition legality, original publication timestamp and version-capacity checks precede the deadline. Publish and reopen accept null or strictly future deadline at the sampled post-lock server time. At or after the deadline, a valid transition attempt receives 409 CLOSING_TIME_PASSED. Failed transitions leave status, statusVersion, timestamps, schedule, answers and audit unchanged. Manual close continues to work after effective expiry.
+
+Every successful publish, close or reopen sets updatedAt to the greater of the post-lock server time and the previous updatedAt plus 1 ms, in the same transaction as the existing statusVersion increment and audit. The event records the physical server time. Successful schedule changes advance updatedAt by the same rule and keep statusVersion and audit unchanged. If the schedule edit gets the CLOSED survey lock first, reopen with the existing lifecycle version uses the newly committed deadline. If reopen succeeds first, the earlier schedule token gets STALE_SURVEY. A fresh schedule token on stored PUBLISHED gets INVALID_TRANSITION. Recheck response eligibility and the cutoff under that same row lock, preserving existing response error order and saved history/summary readback.
+
+| Test | Existing F-08 AC | Level and expected result |
+|---|---|---|
+| TEST-195 | AC-182, AC-183 | API/DB. Owned expired CLOSED survey: invalid reopen reason produces 400 with reason detail, stale version produces STALE_SURVEY, and otherwise valid reopen produces CLOSING_TIME_PASSED. Check role and foreign-record precedence and unchanged rows. |
+| TEST-196 | AC-181, AC-186 | API/DB. Freeze the sampled time within one millisecond, prove strictly increasing updatedAt across publish/close/reopen, physical event times and expected version increments. Prior schedule tokens become stale. |
+| TEST-197 | AC-181, AC-183, AC-186 | API/DB. Hold the row lock to exercise each schedule/reopen winner. Schedule-first uses the committed deadline. Reopen-first invalidates the old token and rejects a fresh token on PUBLISHED. Check final state and audit. |
+| TEST-198 | AC-183, AC-187 | API/DB. Start with previous responses. Test a deadline denial and an isolated audit insert failure, with a full pre/post comparison of schedule, timestamps, version, answers and audit. |
+
+These additions target the existing scoped file `server/tests/api/scheduledClosing.test.ts`, paired with TEST-184/186–194 and the existing Lab 7 regression. TEST-180 remains the executed independent RED. Affected tests await B C3, and implementation awaits the shared-file slot after F-06/F-07.

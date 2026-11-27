@@ -248,3 +248,5 @@ A's Codex GPT-6.1 Sol recorded B's actual C3 7159683176 in F-08 contract v1.1, r
 ## Sprint 2 F-08 independent RED - Student A, 27 November 2026
 
 A/Punge089 used Codex GPT-6 under Issue #96 to write TEST-180 from B's reviewed test design before implementation. The disposable CI server suite on test-only eb198dd produced 239 passes, one expected missing-route failure, and zero test skips. The assertion output and skipped workflow steps are retained under evidence/sprint-2/F-08. The separate reopen addendum, shared implementation slot, same-test GREEN, B review and release remain pending. F-08 product code, schema and workflows were untouched.
+
+A/Punge089 used Codex GPT-6 on #96 to prepare proposed F-08 contract v1.2 in response to B's #131 review. The new text specifies validation precedence, successful lifecycle updates to the schedule token, both lock orderings and stable TEST-195–198 coverage. TEST-180 and its retained RED were preserved. Integrated C3, dependent tests and product work remain pending.
