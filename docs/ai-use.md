@@ -236,3 +236,7 @@ A/Punge089 used Codex GPT-6 to append the received B owner-confirmation and ca77
 ## Lab 6 stable submission candidate — Student A, 27 November 2026
 
 At the user's explicit request to finish in one handoff, A/Punge089 used Codex GPT-6 under Issue132 to remove authored draft/not-for-submission presentation, retain the same measured evidence and genuine owner decisions, and keep actual current-file approval/merge/upload records separate. The receipt and verifier distinguish a complete submission candidate from an invented approval/upload. No PDF rebuild is required solely to mark a later review, merge or submission; B reviews the final exact head/hash/current CI once and humans can upload those identical bytes. All original B and C/D files, historic blocks and residual limits remain unchanged; no app test is added or weakened and no source/schema/main/cloud operation is performed.
+
+## Sprint 2 F-07 contract proposal — Student B, 27 November 2026
+
+B/book6349 used Codex GPT-6 Sol to draft the four-type F-07 contract for Issue #134 after reading the current staging schema, authoring/response/summary/history paths, F-06/F-09 handoff, SRS and D2 brief. B owns this proposal and A reviews it. The proposal separates Sprint 2 aggregate text counts from the later F-13 raw-text view. No F-07 tests, implementation, migration, runtime result or C3 acceptance are claimed in this contract work block.
