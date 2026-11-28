@@ -1,3 +1,4 @@
+import { setTimeout as delay } from "node:timers/promises";
 import request from "supertest";
 import { afterAll, beforeEach, describe, expect, test } from "vitest";
 import { createApp } from "../../src/app";
@@ -91,4 +92,55 @@ describe("F-12 identified owner export", () => {
     expect(result.headers["content-type"]).toMatch(/^application\/json/);
     expect(result.headers["content-disposition"]).toBeUndefined();
   });
+
+  test("TEST-246 exports a coherent snapshot across a concurrent saved submission", async () => {
+    const survey = await makeSurvey({
+      course: fixture.cpe334, owner: fixture.owner1,
+      questions: [{ prompt: "Optional rating", type: "RATING", required: false }]
+    });
+    const owner = await loginAs(app, fixture.owner1.email);
+    const firstStudent = await loginAs(app, fixture.student1.email);
+    const secondStudent = await loginAs(app, fixture.student2.email);
+    const submitPath = `/api/surveys/${survey.id}/responses`;
+    expect((await firstStudent.post(submitPath).send({ answers: [] })).status).toBe(201);
+
+    let acquired!: () => void;
+    let release!: () => void;
+    const lockReady = new Promise<void>(resolve => { acquired = resolve; });
+    const unlocked = new Promise<void>(resolve => { release = resolve; });
+    const holder = prisma.$transaction(async tx => {
+      await tx.$executeRaw`LOCK TABLE "Answer" IN ACCESS EXCLUSIVE MODE`;
+      acquired();
+      await unlocked;
+    }, { timeout: 8_000 });
+    await Promise.race([lockReady, holder]);
+    const exported = Promise.all([holder, owner.get(exportPath(survey.id))]);
+    void exported.catch(() => undefined);
+    try {
+      let observed = false;
+      const stopAt = Date.now() + 2_000;
+      do {
+        const [lock] = await prisma.$queryRaw<{ waiting: boolean }[]>`
+          SELECT EXISTS (
+            SELECT 1 FROM pg_locks
+            WHERE relation = '"Answer"'::regclass AND NOT granted AND mode = 'AccessShareLock'
+          ) AS waiting
+        `;
+        observed = lock.waiting;
+        if (!observed) await delay(15);
+      } while (!observed && Date.now() < stopAt);
+      expect(observed).toBe(true);
+      expect((await secondStudent.post(submitPath).send({ answers: [] })).status).toBe(201);
+    } finally {
+      release();
+    }
+    const [, first] = await exported;
+    const fresh = await owner.get(exportPath(survey.id));
+    expect([first.status, fresh.status]).toEqual([200, 200]);
+    expect(first.text).toContain(fixture.student1.email);
+    expect(first.text).not.toContain(fixture.student2.email);
+    expect(fresh.text).toContain(fixture.student1.email);
+    expect(fresh.text).toContain(fixture.student2.email);
+    expect(await prisma.response.count({ where: { surveyId: survey.id } })).toBe(2);
+  }, 12_000);
 });

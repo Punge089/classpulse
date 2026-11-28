@@ -9,3 +9,8 @@
 ## Browser test-only RED
 
 Source `53df47cdd88259b5f4edcf5d4bdb960b6fe29867`, staging `bd77c46`. [CI 46108850322](https://github.com/Punge089/classpulse/actions/runs/46108850322) tested `8a997eac24aa41bb4075b7694c5abe06476cb24d`. The real owner created and published a synthetic identified rating survey, the enrolled respondent submitted, and the summary displayed one saved response. TEST-247 then failed as expected because the respondent-identity notice and download control were absent. Full browser suite 13 passed, 1 expected failure, 0 test skips; 2 downstream steps skipped. Trace artifact ID 15248329267.
+
+## Browser GREEN and concurrent API check
+
+- Source `580cf35aa47b3128fbb44cc8315116ff5c39299d`, staging `bd77c46`. [CI 46109115975](https://github.com/Punge089/classpulse/actions/runs/46109115975) tested `a86ce4dd78334fa318253d6780ad7223f9ccbecf`. Server 296, client 27 and Chromium 14 passed, including unchanged TEST-247. Zero failures/skips. Migrations, builds and Docker passed. The keyboard-triggered download succeeded after a simulated temporary failure and contained the real saved rating and synthetic respondent identity.
+- TEST-246 now drives both the export and the intervening optional-answer submission through the real API. A acquired an isolated PostgreSQL table lock, observed the export wait with pg_locks, committed a second response before release and checked that the original snapshot excluded it while a fresh export included it. Server npm test with the new test and unchanged application source passed 297/297 with zero failures/skips. The product code remains byte-identical to the browser GREEN head. Current-head CI covers the added test.
