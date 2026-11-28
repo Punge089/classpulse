@@ -36,3 +36,36 @@ test("TEST-200 accepts all sections on an owned draft and advances the update to
   expect(reloaded.body.survey.sectionIds).toEqual([]);
   expect(reloaded.body.survey.updatedAt).toBe(stored.updatedAt.toISOString());
 });
+
+test("TEST-208 reports current eligibility separately from historical responses", async () => {
+  const survey = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "PUBLISHED" });
+  const courseId = fixture.cpe334.id;
+  await prisma.enrollment.create({ data: { courseId, userId: fixture.student3.id } });
+  const respondent = await loginAs(app, fixture.student1.email);
+  const [rating, choice] = survey.questions;
+  const submitted = await respondent.post(`/api/surveys/${survey.id}/responses`).send({ answers: [
+    { questionId: rating.id, ratingValue: 4 },
+    { questionId: choice.id, optionId: choice.options[0].id }
+  ] });
+  expect(submitted.status).toBe(201);
+
+  const owner = await loginAs(app, fixture.owner1.email);
+  const path = `/api/owner/surveys/${survey.id}/summary`;
+  const threeEligible = await owner.get(path);
+  expect(threeEligible.status).toBe(200);
+  expect(threeEligible.body.summary.responseCount).toBe(1);
+  expect(threeEligible.body.summary.responseRate).toEqual({ respondedEligible: 1, eligible: 3, percent: 33.33 });
+
+  await prisma.enrollment.deleteMany({ where: { courseId, userId: fixture.student1.id } });
+  const noEligibleRespondentsAnswered = await owner.get(path);
+  expect(noEligibleRespondentsAnswered.status).toBe(200);
+  expect(noEligibleRespondentsAnswered.body.summary.responseCount).toBe(1);
+  expect(noEligibleRespondentsAnswered.body.summary.responseRate).toEqual({ respondedEligible: 0, eligible: 2, percent: 0 });
+
+  await prisma.enrollment.deleteMany({ where: { courseId } });
+  const emptyRoster = await owner.get(path);
+  expect(emptyRoster.status).toBe(200);
+  expect(emptyRoster.body.summary.responseCount).toBe(1);
+  expect(emptyRoster.body.summary.responseRate).toEqual({ respondedEligible: 0, eligible: 0, percent: null });
+  expect(await prisma.response.count({ where: { surveyId: survey.id } })).toBe(1);
+});
