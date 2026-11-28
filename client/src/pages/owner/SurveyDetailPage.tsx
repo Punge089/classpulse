@@ -5,12 +5,28 @@ import { StatusBadge } from "../../components/StatusBadge";
 import { PulseLine } from "../../components/pulse/PulseLine";
 import type { SurveyDetail, SurveyLifecycleEvent } from "./surveyTypes";
 
+function localClosingTime(closesAt?: string | null): string {
+  if (!closesAt) return "";
+  const date = new Date(closesAt);
+  const datePart = [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+    .map((part, index) => String(part).padStart(index === 0 ? 4 : 2, "0")).join("-");
+  const [hour, minute, second] = [date.getHours(), date.getMinutes(), date.getSeconds()]
+    .map(part => String(part).padStart(2, "0"));
+  const milliseconds = String(date.getMilliseconds()).padStart(3, "0").replace(/0+$/, "");
+  const seconds = second === "00" && !milliseconds ? "" : `:${second}`;
+  const fraction = milliseconds ? `.${milliseconds}` : "";
+  return `${datePart}T${hour}:${minute}${seconds}${fraction}`;
+}
+
 export function SurveyDetailPage() {
   const { id } = useParams();
   const [survey, setSurvey] = useState<SurveyDetail | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
+  const [scheduleValue, setScheduleValue] = useState("");
+  const [scheduleError, setScheduleError] = useState<string | null>(null);
+  const [scheduleStale, setScheduleStale] = useState(false);
   const [reopenForm, setReopenForm] = useState(false);
   const [reason, setReason] = useState("");
   const [reasonError, setReasonError] = useState<string | null>(null);
@@ -58,6 +74,45 @@ export function SurveyDetailPage() {
     void loadHistory();
     return () => { cancelled = true; historyRequest.current++; };
   }, [id, loadHistory]);
+
+  function resetSchedule(closesAt?: string | null) {
+    setScheduleValue(localClosingTime(closesAt));
+    setScheduleError(null);
+    setScheduleStale(false);
+  }
+
+  useEffect(() => {
+    resetSchedule(survey?.closesAt);
+  }, [survey?.id, survey?.updatedAt, survey?.closesAt]);
+
+  async function saveSchedule(event: FormEvent) {
+    event.preventDefault();
+    if (!survey || sending || scheduleStale) return;
+    const selected = scheduleValue ? new Date(scheduleValue) : null;
+    if (selected && (!Number.isFinite(selected.getTime()) || selected.getFullYear() < 2000 || selected.getFullYear() > 9999 ||
+        localClosingTime(selected.toISOString()) !== scheduleValue)) {
+      setScheduleError("Enter a valid local closing time in years 2000 through 9999.");
+      return;
+    }
+    setSending(true);
+    setScheduleError(null);
+    try {
+      const result = await apiFetch<{ survey: SurveyDetail }>(`/api/owner/surveys/${survey.id}/schedule`, {
+        method: "PUT",
+        body: JSON.stringify({ closesAt: selected?.toISOString() ?? null, expectedUpdatedAt: survey.updatedAt })
+      });
+      setSurvey(result.survey);
+    } catch (caught) {
+      if (caught instanceof ApiClientError) {
+        setScheduleError(caught.details?.find(field => field.field === "closesAt")?.message ?? caught.message);
+        if (caught.code === "STALE_SURVEY") setScheduleStale(true);
+      } else {
+        setScheduleError("Could not save the closing time. Try again.");
+      }
+    } finally {
+      setSending(false);
+    }
+  }
 
   async function changeStatus(action: "publish" | "close") {
     setSending(true);
@@ -110,6 +165,7 @@ export function SurveyDetailPage() {
       const result = await apiFetch<{ survey: SurveyDetail }>(`/api/owner/surveys/${id}`);
       setSurvey(result.survey);
       setStale(false);
+      resetSchedule(result.survey.closesAt);
       await loadHistory();
     } catch (caught) {
       setActionError(caught instanceof ApiClientError ? caught.message : "Could not reload this survey.");
@@ -135,6 +191,8 @@ export function SurveyDetailPage() {
     );
   }
 
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const deadlineReached = survey.status === "PUBLISHED" && survey.closesAt && Date.parse(survey.closesAt) <= Date.now();
   return (
     <>
       <div className="d-flex align-items-start justify-content-between gap-3 flex-wrap">
@@ -142,7 +200,8 @@ export function SurveyDetailPage() {
           <h1 className="mb-1">{survey.title}</h1>
           <div className="cp-muted">{survey.courseCode} · Identified survey</div>
         </div>
-        <StatusBadge status={survey.status} />
+        {deadlineReached ? <span className="badge rounded-pill text-bg-secondary">Closed - deadline reached</span>
+          : <StatusBadge status={survey.status} />}
       </div>
       <PulseLine width={240} />
       {survey.description && <p className="mt-3">{survey.description}</p>}
@@ -171,6 +230,37 @@ export function SurveyDetailPage() {
         )}
         <Link to="/owner" className="btn btn-link">Back to your surveys</Link>
       </div>
+
+      <section className="cp-card p-3 mb-3" aria-labelledby="schedule-heading">
+        <h2 className="h5" id="schedule-heading">Response deadline</h2>
+        {survey.closesAt ? (
+          <p>Saved closing time: <time dateTime={survey.closesAt}>{new Date(survey.closesAt).toLocaleString(undefined, {
+            dateStyle: "medium", timeStyle: "short"
+          })} ({timezone})</time></p>
+        ) : <p>No closing time set.</p>}
+        {survey.status === "PUBLISHED" ? (
+          <p className="cp-muted mb-0">Close this survey before changing its deadline</p>
+        ) : (
+          <form onSubmit={saveSchedule} noValidate>
+            <label className="form-label" htmlFor="closing-time">Closing time</label>
+            <input id="closing-time" type="datetime-local" className="form-control" step="0.001"
+              min="2000-01-01T00:00" max="9999-12-31T23:59:59.999" value={scheduleValue}
+              onChange={event => setScheduleValue(event.target.value)} disabled={sending}
+              aria-invalid={Boolean(scheduleError)} aria-describedby={scheduleError ? "closing-time-zone closing-time-error" : "closing-time-zone"} />
+            <p id="closing-time-zone" className="cp-muted small mt-1">Local time ({timezone}). Leave blank for no deadline.</p>
+            {scheduleError && <p id="closing-time-error" role="alert" className="text-danger">{scheduleError}</p>}
+            {scheduleStale && <button type="button" className="btn btn-outline-secondary mb-2" disabled={sending}
+              onClick={() => void reloadSurvey()}>Reload closing time</button>}
+            <div className="d-flex flex-wrap gap-2">
+              <button type="submit" className="btn btn-primary" disabled={sending || scheduleStale}>Save closing time</button>
+              <button type="button" className="btn btn-outline-secondary" disabled={sending || !scheduleValue}
+                onClick={() => setScheduleValue("")}>Clear closing time</button>
+              <button type="button" className="btn btn-outline-secondary" disabled={sending}
+                onClick={() => { setScheduleValue(localClosingTime(survey.closesAt)); setScheduleError(null); }}>Cancel closing time</button>
+            </div>
+          </form>
+        )}
+      </section>
 
       {survey.status === "CLOSED" && reopenForm && (
         <form className="cp-card p-3 mb-3" noValidate onSubmit={reopen}>

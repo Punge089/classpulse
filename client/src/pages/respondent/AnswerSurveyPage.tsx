@@ -23,6 +23,7 @@ interface RespondentSurveyDetail {
   courseCode: string;
   mode: "IDENTIFIED";
   status: "PUBLISHED";
+  closesAt?: string | null;
   questions: SurveyQuestion[];
 }
 
@@ -122,6 +123,10 @@ export function AnswerSurveyPage() {
         Identified survey — your name is stored with your answers
       </div>
       {survey.description && <p>{survey.description}</p>}
+      {survey.closesAt && <p>Closes <time dateTime={survey.closesAt}>
+        {new Date(survey.closesAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })}
+        {" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")"}
+      </time></p>}
 
       <form className="cp-card p-3 p-sm-4 mt-3" onSubmit={submit} noValidate>
         {error && (

@@ -1,0 +1,27 @@
+test-and-docker	Check out source	2026-11-27T22:20:58.8315398Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +361c58147b9cfa8c9a9e3c86e167dbb14dccd08e:refs/remotes/pull/97/merge
+test-and-docker	Check out source	2026-11-27T22:20:59.5655950Z  * [new ref]         361c58147b9cfa8c9a9e3c86e167dbb14dccd08e -> pull/97/merge
+test-and-docker	Check out source	2026-11-27T22:20:59.6633404Z 361c58147b9cfa8c9a9e3c86e167dbb14dccd08e
+test-and-docker	Test server	2026-11-27T22:21:55.9443149Z  ^[[31m❯^[[39m tests/api/scheduledClosing.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m | ^[[22m^[[31m3 failed^[[39m^[[2m)^[[22m^[[33m 665^[[2mms^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:55.9445096Z ^[[31m   ^[[31m×^[[31m TEST-180 saves and persists a canonical closing deadline on an owned draft^[[90m 279^[[2mms^[[22m^[[31m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:55.9445860Z ^[[31m     → expected 404 to be 200 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T22:21:55.9447344Z ^[[31m   ^[[31m×^[[31m TEST-181 an owned draft accepts only one of two updates using the same schedule token^[[90m 201^[[2mms^[[22m^[[31m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:55.9448132Z ^[[31m     → expected [ 404, 404 ] to deeply equal [ 200, 409 ]^[[39m
+test-and-docker	Test server	2026-11-27T22:21:55.9448999Z ^[[31m   ^[[31m×^[[31m TEST-182 rejects a rollover closing date for an owned draft without changing rows^[[90m 184^[[2mms^[[22m^[[31m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:55.9449707Z ^[[31m     → expected 404 to be 400 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4506793Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/scheduledClosing.test.ts^[[2m > ^[[22mTEST-180 saves and persists a canonical closing deadline on an owned draft
+test-and-docker	Test server	2026-11-27T22:21:59.4527527Z ^[[31m^[[1mAssertionError^[[22m: expected 404 to be 200 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4531686Z ^[[36m ^[[2m❯^[[22m tests/api/scheduledClosing.test.ts:^[[2m25:27^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4717145Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/scheduledClosing.test.ts^[[2m > ^[[22mTEST-181 an owned draft accepts only one of two updates using the same schedule token
+test-and-docker	Test server	2026-11-27T22:21:59.4719032Z ^[[31m^[[1mAssertionError^[[22m: expected [ 404, 404 ] to deeply equal [ 200, 409 ]^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4723862Z ^[[36m ^[[2m❯^[[22m tests/api/scheduledClosing.test.ts:^[[2m47:61^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4746205Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/scheduledClosing.test.ts^[[2m > ^[[22mTEST-182 rejects a rollover closing date for an owned draft without changing rows
+test-and-docker	Test server	2026-11-27T22:21:59.4748024Z ^[[31m^[[1mAssertionError^[[22m: expected 404 to be 400 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4753344Z ^[[36m ^[[2m❯^[[22m tests/api/scheduledClosing.test.ts:^[[2m76:27^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4763586Z ^[[2m      Tests ^[[22m ^[[1m^[[31m3 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m272 passed^[[39m^[[22m^[[90m (275)^[[39m
+test-and-docker	Test server	2026-11-27T22:21:59.4793867Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	 ❯ tests/api/scheduledClosing.test.ts:25:27
+test-and-docker	Test server	2026-11-27T22:21:59.4818698Z ##[error]AssertionError: expected [ 404, 404 ] to deeply equal [ 200, 409 ]
+test-and-docker	Test server	 ❯ tests/api/scheduledClosing.test.ts:47:61
+test-and-docker	Test server	2026-11-27T22:21:59.4823197Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+test-and-docker	Test server	 ❯ tests/api/scheduledClosing.test.ts:76:27
+test-and-docker	Retain browser evidence	2026-11-27T22:21:59.5157461Z   name: lab7-browser-361c58147b9cfa8c9a9e3c86e167dbb14dccd08e
