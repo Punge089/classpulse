@@ -1,10 +1,11 @@
 export type SurveyStatus = "DRAFT" | "PUBLISHED" | "CLOSED";
-export type QuestionType = "RATING" | "SINGLE_CHOICE";
+export type QuestionType = "RATING" | "SINGLE_CHOICE" | "TEXT" | "MULTI_CHOICE";
 
 export interface Course {
   id: number;
   code: string;
   title: string;
+  sections?: Array<{ id: number; code: string; label: string }>;
 }
 
 export interface SurveyListItem {
@@ -35,9 +36,11 @@ export interface SurveyDetail {
   publishedAt: string | null;
   statusVersion: number;
   closedAt: string | null;
+  closesAt?: string | null;
   createdAt: string;
   updatedAt: string;
   questions: SurveyQuestion[];
+  sectionIds?: number[];
 }
 
 export interface SurveyLifecycleEvent {

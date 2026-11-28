@@ -1,0 +1,25 @@
+# F-12 identified export API verification
+
+- Test-only source `a819fbf`, CI 46058262944, checkout `84f9f69`. Server `npm test` reported 272 passed and two expected 404 failures, zero skipped tests and eight skipped workflow steps. The tests expected a 200 CSV response for persisted rows and 400 JSON for an extra query parameter.
+- With F-07 in staging at `bd77c46829d78dd983a8abed892fc79de3570c91`, B confirmed use of the already scoped owner-summary router in PR #139 comment 7233731889. The original API assertions remained byte-identical.
+- Source `06b165632bec7a19a075658a8496b6a665625b4d`. [CI 46108677062](https://github.com/Punge089/classpulse/actions/runs/46108677062) tested checkout `404ac5f2cd3ae823f7814f0bfd4d3c1e13bcb628`. Server `npm test` passed 296 including both unchanged API tests. Client `npm test` passed 27, and complete browser suite passed 13. Zero failures or skipped tests. Migrations, builds and Docker passed.
+- A independently ran server `npm test` with a disposable PostgreSQL database on a loopback port against the same source code before committing. It passed 296, including the two F-12 tests, with zero failures/skips. The tests verify two real stored responses, owner CSV contents, private/no-store, role/ownership denials and unchanged response count, plus JSON for an unexpected query parameter.
+- This checkpoint tests the identified rating/single-choice API and existing browser regressions. TEST-247 browser download/retry and later answer types/anonymous export have separate verification.
+
+## Browser test-only RED
+
+Source `53df47cdd88259b5f4edcf5d4bdb960b6fe29867`, staging `bd77c46`. [CI 46108850322](https://github.com/Punge089/classpulse/actions/runs/46108850322) tested `8a997eac24aa41bb4075b7694c5abe06476cb24d`. The real owner created and published a synthetic identified rating survey, the enrolled respondent submitted, and the summary displayed one saved response. TEST-247 then failed as expected because the respondent-identity notice and download control were absent. Full browser suite 13 passed, 1 expected failure, 0 test skips; 2 downstream steps skipped. Trace artifact ID 15248329267.
+
+## Browser GREEN and concurrent API check
+
+- Source `580cf35aa47b3128fbb44cc8315116ff5c39299d`, staging `bd77c46`. [CI 46109115975](https://github.com/Punge089/classpulse/actions/runs/46109115975) tested `a86ce4dd78334fa318253d6780ad7223f9ccbecf`. Server 296, client 27 and Chromium 14 passed, including unchanged TEST-247. Zero failures/skips. Migrations, builds and Docker passed. The keyboard-triggered download succeeded after a simulated temporary failure and contained the real saved rating and synthetic respondent identity.
+- TEST-246 now drives both the export and the intervening optional-answer submission through the real API. A acquired an isolated PostgreSQL table lock, observed the export wait with pg_locks, committed a second response before release and checked that the original snapshot excluded it while a fresh export included it. Server npm test with the new test and unchanged application source passed 297/297 with zero failures/skips. The product code remains byte-identical to the browser GREEN head. Current-head CI covers the added test.
+
+## C7 serializer follow-up RED
+
+B's review 6096345948 identified missing unit coverage for AC-244/245. Test-only head `78124b7`, base `09fa1e8`, checkout `38c1bb8` in [CI 46118916139](https://github.com/Punge089/classpulse/actions/runs/46118916139). Server npm test had 312 passed, two expected failures and zero skipped tests. The decoded fields were missing a protective apostrophe when a tab followed leading whitespace and when a formula followed a zero-width format control. Ordering, supported answer values, Thai text, CRLF, and the direct marker cases already passed.
+Downstream workflow steps skipped: 8.
+
+## C7 serializer follow-up GREEN
+
+On the corrected application source, the unchanged 11 CSV unit tests passed. Disposable PostgreSQL migration, server build and full server npm test passed, 314 total with zero failures/skips. Protection covers leading tab/CR/LF after whitespace, formula markers after whitespace and control/format characters, with visible text and CSV escaping unchanged. The initial local setup stopped at build because the generated Prisma client predated F-08; regenerate restored the exact red behavior before the fix. No test was weakened.

@@ -1,0 +1,172 @@
+{
+  "observedBangkok": "2026-11-27T18:20:33+07:00",
+  "staging": "5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347",
+  "main": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "baseline": {
+    "source": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+    "revision": "classpulse-00007-6t9",
+    "url": "https://classpulse-zdwglar6eq-as.a.run.app/",
+    "dDecision": "**Current C/D UAT decision: Accepted** for the ClassPulse Sprint 1 identified-survey scope on CP-FIX-001, source `bee0d122bf23410e3d2db69649ad5e44959b6cd8`, revision `classpulse-00007-6t9`. Recorded on 27 November 2026 at 01:35:39 Asia/Bangkok from Thira (D)’s decision and his report that Ashira (C) confirmed Accepted. Ashira’s original confirmation and its timestamp were not supplied.",
+    "cTimestamp": "- **Confirmation recorded** 2026-11-27 02:01:21 ICT (UTC+7)",
+    "cAcknowledgment": "I acknowledge the **Accepted** decision that A/B report receiving from D. This note completes my evidence confirmation for attachment to the report. The decision and its original timestamp belong to D's issued record. That record was not among the files available for this confirmation, so its wording and timestamp should be copied from D's original when attaching this file.",
+    "liveM01": "**Live M01 closeout.** Thira ended follow-up on the live run. Edge evidence records HTTP 200 before logout and HTTP 204 at logout. The prior-session result is unobserved, so the historical execution outcome is **BLOCKED**.",
+    "isolatedResult": "**TEST-04 passed.** The unchanged auth test file passed 8 tests, with 0 failed, 0 skipped and exit code 0. This records the isolated API/DB method proposed by ClassPulse A. Thira reported that Ashira agreed to the method before execution. Ashira’s review of the completed evidence and D’s updated acceptance decision are pending.",
+    "isolatedSetupFailure": "Earlier database startup attempts ended before Vitest. The first Vitest invocation reached the fixture hook without `SEED_PASSWORD`, which caused all eight tests to stop at setup. The final invocation used a freshly created empty database in the same isolated instance and a synthetic seed setting. The earlier output is retained separately.",
+    "defectSeverity": "CP-EX-F01 is the instructor's standardized required-field exercise. The healthy CP-V01 was not reported to contain this defect. Exercise source `4199888409fefafa920a773991d735f14ffb4ac8` deliberately removed the normalized title lower-bound check on original Sprint 1 staging. D independently created and reloaded a draft with an empty title and a valid required rating question. This contradicts UAT-02/CD-02, AC-11/AC-19 and BR-02. A adopted C's Minor functional severity; A's earlier Medium proposal remains historical. ClassPulse A/B owns the correction.",
+    "retest": "**Disposition: PASS on CP‑FIX‑001 for the reported defect and affected checks.** Run `CP-FIX-001-D-20261126` on 26 November 2026 at 18:30:40–18:30:49 Asia/Bangkok. Operator Codex (GPT‑6) under Thira (D), Microsoft Edge on Windows. Private start notice: D-reported; exact private URL retained in the original private handoff sent before execution.",
+    "retestRows": [
+      "| CP‑RT‑01 · UAT‑02 / CD‑02 · AC‑11/19 | Empty untouched title gives 400 with inline feedback and adds no draft | **PASS.** HTTP 400 `VALIDATION_ERROR`, detail field `title`, “Title must be 1 to 120 characters” under Title. Stayed on New survey. Owner list unchanged at 27. |",
+      "| CP‑RT‑02 · whitespace neighbor | Three spaces rejected with an inline title error and no draft | **PASS.** HTTP 400, title detail and inline feedback. List unchanged at 27. |",
+      "| CP‑RT‑03 · valid control | Valid title creates a Draft, and title/question survive reload | **PASS.** HTTP 201, new Cloud Draft **28**, detail 200 after reload with matching title/question. List 27 → 28. |",
+      "| CP‑RT‑04a · upper valid boundary | 120 ASCII characters accepted and persisted | **PASS.** Exactly 120 characters sent and read back. HTTP 201, new Cloud Draft **29**, detail 200. List 28 → 29. |",
+      "| CP‑RT‑04b · upper invalid boundary | 121 ASCII characters rejected and adds no Draft | **PASS.** Exactly 121 characters sent. HTTP 400, title detail and inline feedback. List unchanged at 29. |",
+      "| CP‑RT‑05 · local evidence retention | Original drafts 3/6/9 remain on the isolated exercise DB | **PASS.** At 18:26:54 Bangkok a read-only query verified the owned data directory, loopback target and all three local rows with empty title and DRAFT state. The local app was kept stopped. [Local readback](local-retention.json) |"
+    ],
+    "oldFiles": {
+      "server/src/routes/ownerSurveys.ts": "a2a00a493397ddcdc8a5947bf5a435ab8d88d47d",
+      "server/src/lib/surveyLifecycle.ts": "d315a489e0a3c6a2e044c5d0ab5c812cae343ef7"
+    },
+    "oldLifecycleCode": "import type { SurveyStatus } from \"@prisma/client\";\nimport { ApiError } from \"./errors\";\n\nexport type SurveyAction = \"publish\" | \"close\";\n\n/** BR-03: DRAFT → PUBLISHED on publish, PUBLISHED → CLOSED on close; everything else is 409 INVALID_TRANSITION. */\nexport function nextStatus(current: SurveyStatus, action: SurveyAction): SurveyStatus {\n  if (action === \"publish\" && current === \"DRAFT\") return \"PUBLISHED\";\n  if (action === \"close\" && current === \"PUBLISHED\") return \"CLOSED\";\n  const verb = action === \"publish\" ? \"published\" : \"closed\";\n  throw new ApiError(409, \"INVALID_TRANSITION\", `A ${current.toLowerCase()} survey cannot be ${verb}`);\n}"
+  },
+  "integration": {
+    "head": "698b1e965ba2c429e9296cac4159368b864ae4bd",
+    "base": "9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35",
+    "testedMerge": "3b76494e3defb8e8f6280f22d63eada833d50f9d",
+    "merge": "e6043a9843eaeebaa63464aa19e5e8d1e503996a",
+    "tree": "102a4adcee29321b7fbd5e4447a0947f6ee5ed2c",
+    "mergedAt": "2026-11-26T03:43:38Z",
+    "mergedBy": "book6349",
+    "reviewedAt": "2026-11-25T17:06:19Z",
+    "reviewBody": "@Punge089 I reviewed PR #92 at exact head `698b1e965ba2c429e9296cac4159368b864ae4bd`. All 64 changed paths are within Issue #87's Files inventory, and `git diff --check 9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35 HEAD` passed. Exact-head GitHub Actions run 45645429150 passed server tests (219), client tests (10), browser tests (10), both builds and Docker, with 0 failures and 0 skipped tests. The current product/test/workflow files are unchanged from the implementation head I reviewed; that review checked owner-scoped locking and update, atomic audit behavior, stale/access error handling, migration and preserved response behavior, plus explicit stale reload. The only CI annotation is a nonblocking Node 20 to Node 24 upload-artifact warning. I found no blocking gap and recommend approving C7 for this head.",
+    "reviewUrl": "https://github.com/Punge089/classpulse/pull/92#pullrequestreview-6061752216",
+    "inlineBody": "The row lock, conditional update, and audit insert share one transaction, so a lifecycle change cannot commit without its audit event.",
+    "inlinePath": "server/src/routes/ownerSurveys.ts",
+    "inlineLine": 43,
+    "inlineUrl": "https://github.com/Punge089/classpulse/pull/92#discussion_r4698209826",
+    "runId": 45645429150,
+    "runUrl": "https://github.com/Punge089/classpulse/actions/runs/45645429150",
+    "completedAt": "2026-11-25T15:30:11Z",
+    "jobSteps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success"
+      },
+      {
+        "name": "Initialize containers",
+        "conclusion": "success"
+      },
+      {
+        "name": "Check out source",
+        "conclusion": "success"
+      },
+      {
+        "name": "Set up Node.js 24",
+        "conclusion": "success"
+      },
+      {
+        "name": "Install root dependencies",
+        "conclusion": "success"
+      },
+      {
+        "name": "Install server dependencies",
+        "conclusion": "success"
+      },
+      {
+        "name": "Install client dependencies",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate Prisma client",
+        "conclusion": "success"
+      },
+      {
+        "name": "Apply database migrations",
+        "conclusion": "success"
+      },
+      {
+        "name": "Seed synthetic test accounts",
+        "conclusion": "success"
+      },
+      {
+        "name": "Test server",
+        "conclusion": "success"
+      },
+      {
+        "name": "Test client",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build server",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build client",
+        "conclusion": "success"
+      },
+      {
+        "name": "Install Chromium for preserved and maintenance browser tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "Reseed synthetic CI accounts for browser tests",
+        "conclusion": "success"
+      },
+      {
+        "name": "Test complete browser suite",
+        "conclusion": "success"
+      },
+      {
+        "name": "Retain browser evidence",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build Docker image locally",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Set up Node.js 24",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Check out source",
+        "conclusion": "success"
+      },
+      {
+        "name": "Stop containers",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success"
+      }
+    ],
+    "counts": {
+      "server": {
+        "passed": 219,
+        "failed": 0,
+        "skipped": 0
+      },
+      "client": {
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browser": {
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "sameScopesAsPriorRun": [
+      "server",
+      "client",
+      "e2e",
+      ".github/workflows"
+    ]
+  },
+  "metricsPR": {
+    "head": "4b2dafb9172d3c20c49c283fb06124aef4d8f3c4",
+    "mergeable": false,
+    "status": "dirty"
+  }
+}

@@ -1,0 +1,13 @@
+Selected CI checkout and server log lines. ANSI control characters removed.
+
+test-and-docker	Check out source	2026-11-28T03:51:59.0300344Z HEAD is now at 11b6e33 Merge 6df822f0b22e66f28d0f1ef9797464af84fa1bbc into ac630fb4a7e465a5410beb2cccb24f91255d8cd0
+test-and-docker	Check out source	2026-11-28T03:51:59.0376912Z 11b6e33e32a9cb9ef02bb64f7aeb64caa37b6a57
+test-and-docker	Test server	﻿2026-11-28T03:52:17.4625484Z ##[group]Run npm test
+test-and-docker	Test server	2026-11-28T03:52:55.3459838Z    × TEST-200 accepts all sections on an owned draft and advances the update token 283ms
+test-and-docker	Test server	2026-11-28T03:52:55.3460735Z      → expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-28T03:52:56.9412930Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+test-and-docker	Test server	2026-11-28T03:52:56.9414869Z  FAIL  tests/api/sectionEligibility.test.ts > TEST-200 accepts all sections on an owned draft and advances the update token
+test-and-docker	Test server	2026-11-28T03:52:56.9436589Z AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-28T03:52:56.9657390Z       Tests  1 failed | 272 passed (273)
+test-and-docker	Test server	2026-11-28T03:52:56.9702007Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-28T03:52:57.0020149Z ##[error]Process completed with exit code 1.

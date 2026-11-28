@@ -1,0 +1,9 @@
+F-10 TEST-208 preimplementation check on the test source in this commit.
+Parent 41eb32a, staged application source ac630fb. Command: server npm test in a disposable PostgreSQL instance named classpulse_test; migrations and server build passed. This run did not use a deployed or shared database.
+
+Test Files  1 failed | 21 passed (22)
+Tests  2 failed | 272 passed (274)
+No skipped tests. Exit 1.
+
+TEST-200: expected 404 to be 200 at the absent section write endpoint (retained result).
+TEST-208: setup created a third real enrollment, a respondent saved a response with HTTP 201, and the owner summary returned HTTP 200 with historical responseCount 1. The new assertion failed because summary.responseRate was undefined (expected 1 of 3, 33.33%). Zero-count and roster-change assertions remain in the same test for GREEN. No product code changed.

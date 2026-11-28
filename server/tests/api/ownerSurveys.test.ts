@@ -223,7 +223,8 @@ describe("F-03 lists", () => {
     const byId = new Map<number, Body>(res.body.surveys.map((s: Body) => [s.id, s]));
     expect([...byId.keys()].sort()).toEqual([mine.id, draft.id].sort());
     expect(byId.get(mine.id)).toEqual({
-      id: mine.id, title: "Fixture survey", status: "PUBLISHED", courseCode: "CPE334", responseCount: 1
+      id: mine.id, title: "Fixture survey", status: "PUBLISHED", courseCode: "CPE334", responseCount: 1,
+      closesAt: null, acceptingResponses: true, closureReason: null
     });
     expect(byId.get(draft.id)).toMatchObject({ status: "DRAFT", responseCount: 0 });
   });
@@ -232,6 +233,6 @@ describe("F-03 lists", () => {
     const owner = await ownerAgent();
     const res = await owner.get("/api/owner/courses");
     expect(res.status).toBe(200);
-    expect(res.body.courses).toEqual([{ id: f.cpe334.id, code: "CPE334", title: f.cpe334.title }]);
+    expect(res.body.courses).toEqual([{ id: f.cpe334.id, code: "CPE334", title: f.cpe334.title, sections: [] }]);
   });
 });

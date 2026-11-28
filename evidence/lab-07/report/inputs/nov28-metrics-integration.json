@@ -1,0 +1,28 @@
+{
+  "pr": 114,
+  "issue": 89,
+  "reviewedHead": "81239d573b4cd3c5ef81792d305b9135290a4d01",
+  "mergedAt": "2026-11-27T12:33:30Z",
+  "stagingMerge": "7d543a5de2e4b358308987e03223f9180b42264a",
+  "testedCheckout": "195e1d041dbac928d8129f50d045bdfed492d183",
+  "testedTree": "3668d8d45b8386815cd53c51a18a2a5efc9e01f8",
+  "run": 45998174147,
+  "attempt1": {
+    "conclusion": "failure",
+    "browserFailure": "TEST-179 timeout",
+    "skippedSteps": [
+      "Build Docker image locally",
+      "Post Set up Node.js 24"
+    ]
+  },
+  "attempt2": {
+    "conclusion": "success",
+    "passed": {
+      "server": 239,
+      "client": 16,
+      "browser": 11
+    },
+    "failed": 0,
+    "skipped": 0
+  }
+}

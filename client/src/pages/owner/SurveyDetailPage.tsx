@@ -3,7 +3,131 @@ import { Link, useParams } from "react-router-dom";
 import { ApiClientError, apiFetch } from "../../api";
 import { StatusBadge } from "../../components/StatusBadge";
 import { PulseLine } from "../../components/pulse/PulseLine";
-import type { SurveyDetail, SurveyLifecycleEvent } from "./surveyTypes";
+import type { Course, SurveyDetail, SurveyLifecycleEvent } from "./surveyTypes";
+
+function localClosingTime(closesAt?: string | null): string {
+  if (!closesAt) return "";
+  const date = new Date(closesAt);
+  const datePart = [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+    .map((part, index) => String(part).padStart(index === 0 ? 4 : 2, "0")).join("-");
+  const [hour, minute, second] = [date.getHours(), date.getMinutes(), date.getSeconds()]
+    .map(part => String(part).padStart(2, "0"));
+  const milliseconds = String(date.getMilliseconds()).padStart(3, "0").replace(/0+$/, "");
+  const seconds = second === "00" && !milliseconds ? "" : `:${second}`;
+  const fraction = milliseconds ? `.${milliseconds}` : "";
+  return `${datePart}T${hour}:${minute}${seconds}${fraction}`;
+}
+
+function SurveyAudience({ survey, busy, onSaved, onReload }: {
+  survey: SurveyDetail;
+  busy: boolean;
+  onSaved: (next: SurveyDetail) => void;
+  onReload: () => Promise<void>;
+}) {
+  const [sections, setSections] = useState<NonNullable<Course["sections"]> | null>(null);
+  const [all, setAll] = useState((survey.sectionIds?.length ?? 0) === 0);
+  const [selected, setSelected] = useState(survey.sectionIds ?? []);
+  const [saving, setSaving] = useState(false);
+  const [stale, setStale] = useState(false);
+  const [error, setError] = useState("");
+  const [loadError, setLoadError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  const draft = survey.status === "DRAFT";
+
+  useEffect(() => {
+    if (!draft) return;
+    let cancelled = false;
+    setLoadError("");
+    apiFetch<{ courses: Course[] }>("/api/owner/courses")
+      .then(({ courses }) => {
+        if (!cancelled) setSections(courses.find(course => course.id === survey.courseId)?.sections ?? []);
+      })
+      .catch(() => { if (!cancelled) setLoadError("Could not load course sections."); });
+    return () => { cancelled = true; };
+  }, [draft, survey.courseId, attempt]);
+
+  function reset() {
+    setAll((survey.sectionIds?.length ?? 0) === 0);
+    setSelected(survey.sectionIds ?? []);
+    setError("");
+  }
+
+  async function saveAudience(event: FormEvent) {
+    event.preventDefault();
+    if (busy || saving || stale || sections === null) return;
+    if (!all && selected.length === 0) {
+      setError("Choose at least one section.");
+      return;
+    }
+    setSaving(true);
+    setError("");
+    try {
+      const { survey: updated } = await apiFetch<{ survey: SurveyDetail }>(`/api/owner/surveys/${survey.id}/sections`, {
+        method: "PUT",
+        body: JSON.stringify({ expectedUpdatedAt: survey.updatedAt, sectionIds: all ? [] : selected })
+      });
+      onSaved(updated);
+    } catch (caught) {
+      if (caught instanceof ApiClientError) {
+        setError(caught.details?.find(field => field.field === "sectionIds")?.message ?? caught.message);
+        if (caught.code === "STALE_SURVEY") setStale(true);
+      } else {
+        setError("Could not save the audience. Try again.");
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <section className="cp-card p-3 mb-3" aria-labelledby="audience-heading">
+      <h2 id="audience-heading" className="h5">Survey audience</h2>
+      {!draft ? (
+        <p className="mb-0">{survey.sectionIds?.length ? "Restricted to selected sections" : "All sections"}</p>
+      ) : (
+        <form onSubmit={saveAudience}>
+          {loadError ? (
+            <div role="alert">
+              <p>{loadError}</p>
+              <button type="button" className="btn btn-outline-secondary" onClick={() => setAttempt(value => value + 1)}>Retry sections</button>
+            </div>
+          ) : sections === null ? <p role="status">Loading course sections…</p> : (
+            <fieldset disabled={busy || saving}>
+              <legend className="visually-hidden">Audience type</legend>
+              <label className="d-block">
+                <input type="radio" name="audience" className="form-check-input me-2" checked={all}
+                  onChange={() => setAll(true)} />All sections
+              </label>
+              <label className="d-block">
+                <input type="radio" name="audience" className="form-check-input me-2" checked={!all}
+                  disabled={sections.length === 0} onChange={() => setAll(false)} />Selected sections
+              </label>
+              {!sections.length && <p className="cp-muted">This course has no sections.</p>}
+              {!all && sections.map(section => (
+                <label key={section.id} className="d-block">
+                  <input type="checkbox" className="form-check-input me-2" checked={selected.includes(section.id)}
+                    onChange={event => {
+                      const checked = event.target.checked;
+                      setSelected(values => checked ? [...values, section.id] : values.filter(id => id !== section.id));
+                    }} />{section.code} · {section.label}
+                </label>
+              ))}
+              <div className="d-flex gap-2 mt-2">
+                <button type="submit" className="btn btn-primary" disabled={stale}>
+                  {saving ? "Saving audience…" : "Save audience"}
+                </button>
+                <button type="button" className="btn btn-outline-secondary" onClick={reset}>Cancel audience changes</button>
+              </div>
+            </fieldset>
+          )}
+          {error && <p role="alert" className="text-danger mt-2 mb-0">{error}</p>}
+          {stale && <button type="button" className="btn btn-outline-secondary mt-2" disabled={busy || saving}
+            onClick={() => void onReload()}>Reload audience</button>}
+        </form>
+      )}
+    </section>
+  );
+}
 
 export function SurveyDetailPage() {
   const { id } = useParams();
@@ -11,6 +135,9 @@ export function SurveyDetailPage() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
+  const [scheduleValue, setScheduleValue] = useState("");
+  const [scheduleError, setScheduleError] = useState<string | null>(null);
+  const [scheduleStale, setScheduleStale] = useState(false);
   const [reopenForm, setReopenForm] = useState(false);
   const [reason, setReason] = useState("");
   const [reasonError, setReasonError] = useState<string | null>(null);
@@ -58,6 +185,45 @@ export function SurveyDetailPage() {
     void loadHistory();
     return () => { cancelled = true; historyRequest.current++; };
   }, [id, loadHistory]);
+
+  function resetSchedule(closesAt?: string | null) {
+    setScheduleValue(localClosingTime(closesAt));
+    setScheduleError(null);
+    setScheduleStale(false);
+  }
+
+  useEffect(() => {
+    resetSchedule(survey?.closesAt);
+  }, [survey?.id, survey?.updatedAt, survey?.closesAt]);
+
+  async function saveSchedule(event: FormEvent) {
+    event.preventDefault();
+    if (!survey || sending || scheduleStale) return;
+    const selected = scheduleValue ? new Date(scheduleValue) : null;
+    if (selected && (!Number.isFinite(selected.getTime()) || selected.getFullYear() < 2000 || selected.getFullYear() > 9999 ||
+        localClosingTime(selected.toISOString()) !== scheduleValue)) {
+      setScheduleError("Enter a valid local closing time in years 2000 through 9999.");
+      return;
+    }
+    setSending(true);
+    setScheduleError(null);
+    try {
+      const result = await apiFetch<{ survey: SurveyDetail }>(`/api/owner/surveys/${survey.id}/schedule`, {
+        method: "PUT",
+        body: JSON.stringify({ closesAt: selected?.toISOString() ?? null, expectedUpdatedAt: survey.updatedAt })
+      });
+      setSurvey(result.survey);
+    } catch (caught) {
+      if (caught instanceof ApiClientError) {
+        setScheduleError(caught.details?.find(field => field.field === "closesAt")?.message ?? caught.message);
+        if (caught.code === "STALE_SURVEY") setScheduleStale(true);
+      } else {
+        setScheduleError("Could not save the closing time. Try again.");
+      }
+    } finally {
+      setSending(false);
+    }
+  }
 
   async function changeStatus(action: "publish" | "close") {
     setSending(true);
@@ -110,6 +276,7 @@ export function SurveyDetailPage() {
       const result = await apiFetch<{ survey: SurveyDetail }>(`/api/owner/surveys/${id}`);
       setSurvey(result.survey);
       setStale(false);
+      resetSchedule(result.survey.closesAt);
       await loadHistory();
     } catch (caught) {
       setActionError(caught instanceof ApiClientError ? caught.message : "Could not reload this survey.");
@@ -135,6 +302,8 @@ export function SurveyDetailPage() {
     );
   }
 
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const deadlineReached = survey.status === "PUBLISHED" && survey.closesAt && Date.parse(survey.closesAt) <= Date.now();
   return (
     <>
       <div className="d-flex align-items-start justify-content-between gap-3 flex-wrap">
@@ -142,7 +311,8 @@ export function SurveyDetailPage() {
           <h1 className="mb-1">{survey.title}</h1>
           <div className="cp-muted">{survey.courseCode} · Identified survey</div>
         </div>
-        <StatusBadge status={survey.status} />
+        {deadlineReached ? <span className="badge rounded-pill text-bg-secondary">Closed - deadline reached</span>
+          : <StatusBadge status={survey.status} />}
       </div>
       <PulseLine width={240} />
       {survey.description && <p className="mt-3">{survey.description}</p>}
@@ -172,6 +342,40 @@ export function SurveyDetailPage() {
         <Link to="/owner" className="btn btn-link">Back to your surveys</Link>
       </div>
 
+      <SurveyAudience key={`${survey.id}:${survey.updatedAt}`} survey={survey} busy={sending}
+        onSaved={setSurvey} onReload={reloadSurvey} />
+
+      <section className="cp-card p-3 mb-3" aria-labelledby="schedule-heading">
+        <h2 className="h5" id="schedule-heading">Response deadline</h2>
+        {survey.closesAt ? (
+          <p>Saved closing time: <time dateTime={survey.closesAt}>{new Date(survey.closesAt).toLocaleString(undefined, {
+            dateStyle: "medium", timeStyle: "short"
+          })} ({timezone})</time></p>
+        ) : <p>No closing time set.</p>}
+        {survey.status === "PUBLISHED" ? (
+          <p className="cp-muted mb-0">Close this survey before changing its deadline</p>
+        ) : (
+          <form onSubmit={saveSchedule} noValidate>
+            <label className="form-label" htmlFor="closing-time">Closing time</label>
+            <input id="closing-time" type="datetime-local" className="form-control" step="0.001"
+              min="2000-01-01T00:00" max="9999-12-31T23:59:59.999" value={scheduleValue}
+              onChange={event => setScheduleValue(event.target.value)} disabled={sending}
+              aria-invalid={Boolean(scheduleError)} aria-describedby={scheduleError ? "closing-time-zone closing-time-error" : "closing-time-zone"} />
+            <p id="closing-time-zone" className="cp-muted small mt-1">Local time ({timezone}). Leave blank for no deadline.</p>
+            {scheduleError && <p id="closing-time-error" role="alert" className="text-danger">{scheduleError}</p>}
+            {scheduleStale && <button type="button" className="btn btn-outline-secondary mb-2" disabled={sending}
+              onClick={() => void reloadSurvey()}>Reload closing time</button>}
+            <div className="d-flex flex-wrap gap-2">
+              <button type="submit" className="btn btn-primary" disabled={sending || scheduleStale}>Save closing time</button>
+              <button type="button" className="btn btn-outline-secondary" disabled={sending || !scheduleValue}
+                onClick={() => setScheduleValue("")}>Clear closing time</button>
+              <button type="button" className="btn btn-outline-secondary" disabled={sending}
+                onClick={() => { setScheduleValue(localClosingTime(survey.closesAt)); setScheduleError(null); }}>Cancel closing time</button>
+            </div>
+          </form>
+        )}
+      </section>
+
       {survey.status === "CLOSED" && reopenForm && (
         <form className="cp-card p-3 mb-3" noValidate onSubmit={reopen}>
           <p id="reopen-hint">Previous answers remain. Students who already answered cannot submit twice.</p>
@@ -193,7 +397,7 @@ export function SurveyDetailPage() {
           <li key={question.id} className="cp-card p-3">
             <div className="fw-semibold">{question.position}. {question.prompt}</div>
             <div className="cp-muted small">
-              {question.type === "RATING" ? "Rating, 1 to 5" : "Single choice"}
+              {question.type === "RATING" ? "Rating, 1 to 5" : question.type === "SINGLE_CHOICE" ? "Single choice" : question.type === "TEXT" ? "Text" : "Multiple choice"}
               {question.required ? " · required" : " · optional"}
             </div>
             {question.options.length > 0 && (

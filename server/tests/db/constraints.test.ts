@@ -56,6 +56,27 @@ test("TEST-51 rejects ratings outside 1–5 with the PostgreSQL check", async ()
   })).toMatchObject({ ratingValue: null, optionId: choice.options[0].id });
 });
 
+test("F-07 TEST-148 prevents linking a multi-choice answer to an option from another question", async () => {
+  const { prisma, seedFixture, makeSurvey } = await freshDatabase();
+  client = prisma;
+  const f = await seedFixture();
+  const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, questions: [
+    { prompt: "Select formats", type: "MULTI_CHOICE", options: ["Practice", "Examples"] },
+    { prompt: "Another question", type: "MULTI_CHOICE", options: ["Discussion", "Videos"] }
+  ] });
+  const [firstQuestion, secondQuestion] = survey.questions;
+  const response = await prisma.response.create({ data: { surveyId: survey.id, respondentId: f.student1.id } });
+  const answer = await prisma.answer.create({ data: { responseId: response.id, questionId: firstQuestion.id } });
+  await prisma.answerSelectedOption.create({ data: {
+    answerId: answer.id, questionId: firstQuestion.id, optionId: firstQuestion.options[0].id
+  } });
+  await expect(prisma.$executeRawUnsafe(
+    'INSERT INTO "AnswerSelectedOption" ("answerId", "questionId", "optionId") VALUES ($1, $2, $3)',
+    answer.id, firstQuestion.id, secondQuestion.options[0].id
+  )).rejects.toMatchObject({ code: "P2010", meta: { code: "23503" } });
+  expect(await prisma.answerSelectedOption.count({ where: { answerId: answer.id } })).toBe(1);
+});
+
 test("TEST-53 seeds the same fixture identities, relationships and credentials twice", async () => {
   const { prisma, resetDb, seedFixture } = await freshDatabase();
   client = prisma;

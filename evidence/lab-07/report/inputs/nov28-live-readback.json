@@ -1,0 +1,52 @@
+{
+  "operator": "A/Punge089 using Codex GPT-6.2 Sol",
+  "sourceCommit": "8316f270cb11d47c75f848de3f3d40acefbe8def",
+  "serviceSource": "Cloud Run Console, classpulse > Revision History",
+  "consoleObservedBangkok": "28 November 2026, approximately 01:50 ICT",
+  "servingRevision": "classpulse-00008-qlw",
+  "trafficPercent": 100,
+  "deployedBangkok": "2026-11-28T01:39:50+07:00",
+  "platformManifestDigest": "sha256:60c23699db69a6badb92f50d638fed23885498d12b9e2e7f9a0d6e3a34ab2b0a",
+  "publishedIndexDigest": "sha256:7acc661c6f49606a63ad1c536b5657fe46ca72fa2e99c4a139876cdd867ed389",
+  "digestEvidence": "Consecutive export manifest and export manifest list records for the same production image build in deploy run 46050688714",
+  "migrationExecution": "classpulse-migrate-62khg",
+  "migrationStartedBangkok": "2026-11-28T01:39:20+07:00",
+  "migrationEndedBangkok": "2026-11-28T01:39:43+07:00",
+  "migrationAppliedBangkok": "2026-11-28T01:39:37.159+07:00",
+  "migrationTasksSucceeded": 1,
+  "migrationTasksTotal": 1,
+  "migrationTaskExitCode": 0,
+  "migrationName": "20261125110000_survey_lifecycle_audit",
+  "migrationLogResult": "All migrations have been successfully applied.",
+  "retentionSample": {
+    "case": "L7-B10 legacy fixture sample",
+    "startedAtUtc": "2026-11-27T18:52:50.6858548Z",
+    "source": "8316f270cb11d47c75f848de3f3d40acefbe8def",
+    "revision": "classpulse-00008-qlw",
+    "priorFixture": "Lab 6 CD-07, 25 November 2026, survey 26 / response 15",
+    "expected": {
+      "choice": "Online",
+      "rating": 5,
+      "responseId": 15,
+      "surveyId": 26,
+      "status": 200
+    },
+    "appDataWrites": false,
+    "result": "PASS",
+    "checks": [],
+    "loginStatus": 200,
+    "responseStatus": 200,
+    "actual": {
+      "surveyId": 26,
+      "responseId": 15,
+      "submittedAt": "2026-11-25T10:52:01.318Z",
+      "answerCount": 2,
+      "choiceMatched": true,
+      "ratingMatched": true
+    },
+    "logoutStatus": 204,
+    "finishedAtUtc": "2026-11-27T18:52:51.4677218Z"
+  },
+  "retentionReference": "evidence/lab-06/checkpoint-20261124/received-cd-r2-20261125/FIXTURE-CASE-REPORT.md",
+  "liveChangedAndPreservedAfterReopen": "pending: owner, respondent and different owner sessions on a dedicated Lab 7 fixture"
+}

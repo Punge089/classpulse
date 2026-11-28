@@ -1,0 +1,118 @@
+diff --git a/docs/features.md b/docs/features.md
+index 4540292..759b1eb 100644
+--- a/docs/features.md
++++ b/docs/features.md
+@@ -45,3 +45,8 @@ the number is left empty so existing IDs never change.
+   without F-03, because tests create surveys directly in the database; only the full UI journey needs F-03.
+ - F-07 touches authoring, answering and the summary, so it follows F-03, F-04 and F-05.
+ - F-11 (anonymous) needs F-07 types and the Sprint 3 privacy design; F-12 needs F-11.
++
++
++## Lab 7 F-03 maintenance extension (proposed v1.1, 25 November 2026)
++
++Issue #87 adds FR-19/BR-15 and revises BR-03 within existing F-03, preserving its stable ID and original Sprint 1 scope/history. Controlled reopening changes the formerly terminal CLOSED state through a separate owner-only operation with reason, optimistic lifecycle version and atomic audit; original publish-on-CLOSED rejection stays. This is not F-06 draft editing or a replacement for F-06..F-10. [Complete contract/impact/AC/STS](labs/lab-07/maintenance-contract.md). State: contract proposed, B C3 pending, no tests/code/release. Version 1.1 reason: record changed collection need before implementation; prior v1.0 inventory remains the historical baseline.
+diff --git a/docs/sprints/sprint-1/F-03-survey-authoring.md b/docs/sprints/sprint-1/F-03-survey-authoring.md
+index d365cac..86a1b4c 100644
+--- a/docs/sprints/sprint-1/F-03-survey-authoring.md
++++ b/docs/sprints/sprint-1/F-03-survey-authoring.md
+@@ -169,3 +169,14 @@ All six owner routes are also appended to `PROTECTED_ROUTES` in `server/tests/ap
+ | v1.0 | 2026-11-06 | Punge089 | Initial contract, written before tests and code. |
+ | v1.1 | 2026-11-06 | Punge089 | After C3 review by book6349: (1) the check order for create now follows plan §2.5 (course ownership 404 before field validation 400; a malformed `courseId` is 400), with a test case for a foreign course plus an invalid title; (2) TEST-11 lists its 18 cases explicitly, including the duplicate pair `"Yes"` and `" yes "`. |
+ | v1.2 | 2026-11-07 | Punge089 | After the review of PR #18: two tests carried the ID TEST-20 (the survey list and the course list). The survey list keeps TEST-20; the course-list check becomes TEST-58, and AC-18 now names the course list so the test has a criterion. The two E2E scenarios of TEST-21 are named TEST-21a and TEST-21b. No behaviour change. |
++
++
++## Lab 7 maintenance addendum - proposed v2.0, Issue #87
++
++The v1.0-v1.2 sections above describe the original Sprint 1 contract and remain preserved. For the proposed Lab 7 version, §§2/3/5/6/7/8/9/10 are extended by the [complete maintenance contract](../../labs/lab-07/maintenance-contract.md), committed before tests/code. B C3 pending.
++
++Old: CLOSED is terminal. New: only the owner can explicitly POST reopen with a trimmed10..300 UTF-16-unit reason/current lifecycle version; CLOSED->PUBLISHED preserves original publishedAt/answers, records the previous closedAt, clears current closedAt, increments statusVersion and atomically appends an event. Existing publish-on-CLOSED remains409, so AC-14 and original TEST-15/16 remain valid. No draft edit, question mutation or repeated respondent submission is enabled.
++
++Additional endpoints: POST /api/owner/surveys/:id/reopen and GET /api/owner/surveys/:id/lifecycle; both use401/403/404 auth/role/ownership rules. Detail DTO adds statusVersion. New400 invalid reason/version/query and409 stale/invalid-state rules are explicit in maintenance §§4/6. UI shows CLOSED reason confirmation and durable paginated history. Additive statusVersion/event migration replaces the original no-schema-change statement only for this maintenance extension; no old rows or events are invented/deleted.
++
++New acceptance AC-100..111 and test designs TEST-100..114 cover boundaries, concurrency/ABA, audit rollback, history privacy, unchanged responses/summary, migration, UI and deployment. Complete inputs/preconditions/expected results/files are embedded in maintenance §10. The original six transition tests remain; new reopen cases are additive. Version2.0 proposed,25Nov2026,A: changed collection requirement, awaiting team review; no implementation is claimed.
+diff --git a/docs/srs.md b/docs/srs.md
+index 49082b4..4a3c301 100644
+--- a/docs/srs.md
++++ b/docs/srs.md
+@@ -61,6 +61,7 @@ payment or any external API, real student data.
+ | FR-16 | An owner creates an anonymous survey; respondents are told before answering. | 3 |
+ | FR-17 | An owner exports responses as CSV (identified: with respondent; anonymous: without). | 3 |
+ | FR-18 | An owner filters the summary by section and reads text answers. | 3 |
++| FR-19 | An owner reopens an own closed survey with a reason and current lifecycle version and reads durable lifecycle history; historical responses are preserved. Proposed #87, not implemented. | Lab 7 / D2 |
+
+ **Observable behaviour of Sprint 1 requirements**
+
+@@ -80,7 +81,7 @@ payment or any external API, real student data.
+ |---|---|---|
+ | BR-01 | Only `DRAFT` surveys may have questions added, changed or removed. | 2 |
+ | BR-02 | A survey has 1–20 questions; prompt 1–300 chars; a `SINGLE_CHOICE` question has 2–6 distinct, non-empty options (≤ 100 chars); a `RATING` question has no options. Title 1–120 chars, description ≤ 1000. | 1 |
+-| BR-03 | Status changes only `DRAFT → PUBLISHED` (publish) and `PUBLISHED → CLOSED` (close). Any other request is rejected and the status is unchanged. | 1 |
++| BR-03 | Original Sprint 1: DRAFT -> PUBLISHED (publish), PUBLISHED -> CLOSED (close). Lab 7 proposal #87 additionally permits CLOSED -> PUBLISHED through explicit owner reopen with reason/current lifecycle version; publish on CLOSED still rejects. See BR-15. | 1 + Lab 7 proposed |
+ | BR-04 | Responses are accepted only while the survey is `PUBLISHED`. | 1 |
+ | BR-05 | Only respondents enrolled in the survey's course may respond. | 1 |
+ | BR-06 | At most one response per respondent per survey, including simultaneous attempts. | 1 |
+@@ -92,6 +93,7 @@ payment or any external API, real student data.
+ | BR-12 | `TEXT` answers ≤ 500 chars; `MULTI_CHOICE` answers pick 1…n distinct options of that question. | 2 |
+ | BR-13 | Anonymous mode: no stored link between a respondent and their answers; participation is recorded separately; mode cannot change after publish. | 3 |
+ | BR-14 | Aggregate results of an anonymous survey are hidden until it has ≥ 5 responses. | 3 |
++| BR-15 | Explicit reopen requires a trimmed 10-300 UTF-16-unit reason and matching lifecycle version. Every new publish/close/reopen transition atomically increments that version and appends an immutable event; failure leaves state/history unchanged. No fake historical backfill. Proposed #87. | Lab 7 / D2 |
+
+ Clarification of BR-07: a question marked `required: false` may be left unanswered; no `Answer` row is stored for it.
+
+@@ -131,7 +133,7 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
+ | D-05 | Wrong role → 403; a record the caller does not own → 404. | A 404 does not reveal that another owner's survey or another student's response exists. |
+ | D-06 | Opaque session token in an httpOnly cookie, hash stored in a `Session` table. | Logout can invalidate immediately (NFR-04); no token in client code. |
+ | D-07 | Ratings are integers 1–5. | Simple, comparable averages and distributions. |
+-| D-08 | Status flow is only DRAFT → PUBLISHED → CLOSED. | Deterministic lifecycle; reopening is not needed for the stakeholder problem. |
++| D-08 | Original Sprint 1 made CLOSED terminal. Lab 7 proposal #87 allows explicit controlled reopen, never a return to DRAFT. | Changed need: extend collection after a class interruption without cloning or losing answers; retain reasons and audit. B team review pending. |
+
+ ## 10. Open questions and their resolution
+
+@@ -148,3 +150,4 @@ Clarification of BR-07: a question marked `required: false` may be left unanswer
+ |---|---|---|
+ | 1.0 | 6 Nov 2026 | Initial SRS. |
+ | 1.1 | 6 Nov 2026 | After the review of PR #12 by book6349: D-04 no longer attributes both BR-06 and BR-09 to one database constraint (BR-06 is the unique constraint, BR-09 is the API exposing no write route); NFR-01's verification now includes TEST-57, which checks that no plaintext password or session token reaches the server's logs. |
++| 1.2 proposed | 25 Nov 2026 | Issue #87, A: revise BR-03/D-08 and add FR-19/BR-15 before tests/code for controlled reopening. B agreement/C3 pending; old terminal behavior retained in tag/history. Detailed AC-100..111/TEST-100..114 in [Lab 7 contract](labs/lab-07/maintenance-contract.md). |
+diff --git a/docs/system-sds.md b/docs/system-sds.md
+index ad684fa..15db0f8 100644
+--- a/docs/system-sds.md
++++ b/docs/system-sds.md
+@@ -195,3 +195,17 @@ The approved `main` release, cloud resources and all live C-02/C-04/C-05/C-06 ev
+ |---|---|---|
+ | 1.2 | Added a Lab 5 as-built deployment architecture, CI/release flow, evidence status and human-gate boundaries while retaining the Sprint 1 baseline. | Issue #33; reflects merged staging head `9dae599`; no live deployment is claimed. |
+ | 1.1 | Clarified response endpoint check order, inactive-session handling, and production cookie security; split the role matrix by operation and named the PulseLine loading state. | Addressed the review on PR #16 and aligned the SDS with plan §§2.5/2.9 and F-01 §3. |
++
++
++## Lab 7 proposed system revision v1.3 - Issue #87
++
++Prepared by A within #87 Files; B remains system-document owner/reviewer. This section revises the current proposed lifecycle design before implementation, while §§1-8 retain historical Sprint 1/Lab 5 context. B C3 pending; not as-built. [Normative feature contract](labs/lab-07/maintenance-contract.md).
++
++- Data (§2): additive Survey.statusVersion default0 and SurveyLifecycleEvent (id, surveyId, actorId, action, from/to status, version, occurredAt, reason, previousClosedAt), unique survey/version and survey/id index. Restrictive audit FKs; no event update/delete API. Existing records/timestamps/answers retained, no invented historic events. Test cleanup deletes audit rows first only in isolated guarded test DB.
++- Transactions (§2): publish, close and new reopen conditionally update owned status/version and insert event in one transaction; failure rolls back both. Reopen preserves first publishedAt and captures previous closedAt before clearing it. Legacy CLOSED without publishedAt rejects without repair. Concurrent/stale requests409; no automatic retry.
++- UI (§3): owner CLOSED detail gets reason + explicit confirm/cancel, conflict/reload guidance and paginated read-only history. Preserve entered reason on error, identified labeling and original questions/summary.
++- API (§4): POST /api/owner/surveys/:id/reopen accepts exactly reason and expectedVersion, returns owner survey DTO plus statusVersion; GET /api/owner/surveys/:id/lifecycle accepts limit1..100(default20)/before cursor, returns scoped events and nextCursor. Owner create/detail/mutation DTO gains statusVersion. Exact fields, order and invalid cases are in contract §§4-6.
++- Permissions (§5): both new routes401 without session,403 for RESPONDENT,404 for foreign/missing/malformed id; ownership before body/query validation. Audit response excludes actor emails, credentials, respondents and answers. Original publish/close rules remain on their own endpoints.
++- Deployment (§7): additive reviewed migration, preserve historical data, no live seed/reset. Old-code rollback after new audit writes needs frozen lifecycle mutations and explicit review, because old code cannot maintain event completeness. Lab 6 active deployment remains coordinated separately.
++
++Version v1.3 proposed,25 Nov2026,A: introduce controlled reopen/audit impact before tests/code; B approval and actual implementation are pending.
+diff --git a/docs/traceability.md b/docs/traceability.md
+index 6ec174a..da431ec 100644
+--- a/docs/traceability.md
++++ b/docs/traceability.md
+@@ -84,3 +84,16 @@ The 42 baseline requirement rows above retain the assessed Sprint 1 results and
+ | 1.3 | 7 Nov 2026 | I-10: the result columns of the 23 Sprint 1 rows that have automated tests are filled (NFR-05 and NFR-09 say "manual" and point to their evidence) from `python tools/test_results.py` on commit `4eb2dce` (server 101, client 1, e2e 8 passed, 0 failed, 0 skipped, exit 0). TEST-40 (journey, `docs/sprints/sprint-1/I-10-journey.md`) is added to FR-07, FR-08 and NFR-07 next to the tests that already covered them. |
+ | 1.4 | 8 Nov 2026 | I-11: the Sprint 1 results were produced again in a clean clone at the release tag `v1.0.0-sprint1` (commit `d4bad74`): server 101, client 1, e2e 8 passed, 0 failed, 0 skipped, generator exit 0, 39 of 39 acceptance criteria pass. The table is identical to the run on `4eb2dce` apart from the commit and the time, so the result cells now say `@ d4bad74`. |
+ | 1.5 | 15 Nov 2026 | Issue33: add the verified Lab5 NFR-05 persistence extension with exact accepted evidence/review links and manual-readback limits. Preserve all42 baseline rows, Sprint1 result counts and protected tag; extension review requested from B. |
++
++
++## Lab 7 proposed traceability revision v1.6 - Issue #87
++
++The42 original baseline rows/results above are historical; none is relabeled as proof of new code. Proposed new/current behavior is NOT IMPLEMENTED, NOT RUN, NOT ACCEPTED. B C3 pending. [Contract and complete STS](labs/lab-07/maintenance-contract.md).
++
++| Requirement | Feature / delivery | AC | Planned test / file | Actual result/version |
++|---|---|---|---|---|
++| FR-19 (new) | F-03 / Lab 7 and D2 | AC-100..111 | TEST-100..114; server/tests/api/surveyReopen.test.ts, unit/surveyLifecycle.test.ts, unit/surveyReopenValidation.test.ts, client/tests/surveyReopen.test.tsx, e2e/survey-reopen.spec.ts | NOT RUN; contract proposed |
++| BR-03 revised | F-03 / Lab 7 | AC-100/101/103/104 | TEST-100/103/104/105/106/114; retain TEST-15/16 old publish/close expectations | NOT RUN; old Sprint1 PASS does not cover reopen |
++| BR-15 (new) | F-03 / Lab 7 | AC-102/103/104/106/107/109 | TEST-101/102/105/106/108/109/111 | NOT RUN; contract proposed |
++
++Preserved cross-cutting NFR-02/03 are explicitly tested by AC-105/TEST-107; persistence NFR-05 by AC-109/111 and TEST-111/113; original BR-04..10 by AC-108/TEST-110 and full regression. These are planned mappings, not new baseline requirements or passing results. Version1.6 proposed,25Nov2026,A: add changed requirement mappings and disclose unimplemented/unexecuted status before tests/code.
