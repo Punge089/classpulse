@@ -1,7 +1,7 @@
 F-07 exact-head GREEN after staging sync
 Implementation/test/evidence head: 37e0214bad863cc5c95c927f6e5930b3c65ab6fa
 GitHub Actions run: 46060277302 (CI merge commit 81da3ae; current sprint-2-staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0)
-Command: GitHub Actions ran Prisma migrations, cd server && npm test; cd client && npm test; npx playwright test; server/client builds; docker build --tag classpulse-ci:ci .
+Command: GitHub Actions ran Prisma migrations, cd server && npm test; cd client && npm test; npx playwright test; server/client builds; docker build --tag classpulse-[REDACTED_DATABASE_AUTH] .
 Results: server 292/292 across 22 files; client 27/27 across 5 files; browser 13/13; total 332 passed, 0 failed, 0 skipped.
 Migrations, both builds and Docker image build passed. Job test-and-docker completed successfully.
 The staging sync brought Lab 6 and Lab 7 records forward. The docs/ai-use.md conflict was resolved with both incoming entries and all F-07 entries preserved.
@@ -10,4 +10,4 @@ Supplemental C8 regression GREEN — implementation commit 60647da885642788cc376
 GitHub Actions run: 46106476724 (CI merge ed44a88a89d642cfe1b222509b7602e9d1929ddb; staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0)
 Server `npm test`: 22 files, 294 passed, 0 failed/skipped. Client `npm test`: 5 files, 27 passed, 0 failed/skipped. `npx playwright test`: 13 passed, 0 failed/skipped. Total: 334 passed, 0 failed, 0 skipped.
 Prisma migrations, server/client builds and Docker build passed. GitHub Actions job `test-and-docker` completed successfully.
-Local focused unit run: `DATABASE_URL=postgresql://ci:ci@127.0.0.1:5432/classpulse_test npm test -- --run tests/unit/responseValidation.test.ts` — 1 file, 22 passed, 0 failed/skipped. This URL only passed the repository safety check; no local database-backed test was run.
+Local focused unit run: `DATABASE_URL=[REDACTED_DATABASE_URL] npm test -- --run tests/unit/responseValidation.test.ts` — 1 file, 22 passed, 0 failed/skipped. This URL only passed the repository safety check; no local database-backed test was run.
