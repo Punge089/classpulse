@@ -407,3 +407,5 @@ A/Punge089 used Codex GPT-6 on #135 to draft the F-10 contract for FR-14 and FR-
 A/Punge089 used Codex GPT-6.2 Sol to implement the section storage, owner configuration, current cohort admission, section snapshot, rate and UI after F-08 staged. B/book6349 approved the v1.0 contract. A retained the initial test failures, resolved generated-client compatibility with the preserved Lab 6 fixture, and tested isolated PostgreSQL and the client. Browser and required exact-head CI are recorded separately.
 
 A/Punge089 used Codex GPT-6.2 Sol to add the executable migration and owner UI tests requested by B in exact-head PR review. A ran both focused suites and built both applications before requesting re-review.
+
+A/Punge089 used Codex GPT-6.2 Sol to reproduce the owner-summary scale failure, retain the failing API test, and change how selection rows are loaded within the existing transaction. A reran the unchanged test after the correction.

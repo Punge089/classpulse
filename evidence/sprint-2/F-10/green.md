@@ -30,3 +30,9 @@ Tests       1 failed | 320 passed (321)
 ```
 
 The separate F-14-sized benchmark on GitHub test checkout b8f7974 also returned HTTP 500 on the first warmup and reported PostgreSQL SQLSTATE 54001. No samples were accepted.
+
+## TEST-213 summary scale GREEN
+
+The retained RED test is unchanged from 4a040e0. The summary now loads selected options by survey and groups those rows by answer ID inside the existing repeatable-read transaction. This avoids the nested composite-key expansion while keeping rating, choice, roster snapshot and access behavior.
+
+Disposable PostgreSQL migrations and the server build passed. Server `npm test -- tests/api/sectionEligibility.test.ts` passed all six cases, zero failed or skipped. The same 500-response assertion now receives 200, sees 500/500 eligible at 100%, and verifies the stored rating, single-choice and multi-choice aggregates.

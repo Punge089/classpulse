@@ -27,18 +27,26 @@ ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
       }
     });
     if (!survey) throw new ApiError(404, "NOT_FOUND", "Survey not found");
-    const [responseCount, rows, responseRate] = await Promise.all([
+    const [responseCount, rows, selections, responseRate] = await Promise.all([
       tx.response.count({ where: { surveyId: survey.id } }),
       tx.answer.findMany({
         where: { question: { surveyId: survey.id } },
-        select: {
-          questionId: true, ratingValue: true, optionId: true, textValue: true,
-          selections: { select: { optionId: true } }
-        }
+        select: { id: true, questionId: true, ratingValue: true, optionId: true, textValue: true }
+      }),
+      // Filter selections by survey instead of expanding thousands of composite answer keys.
+      tx.answerSelectedOption.findMany({
+        where: { answer: { question: { surveyId: survey.id } } },
+        select: { answerId: true, optionId: true }
       }),
       currentRosterRate(tx, survey.id, survey.courseId)
     ]);
-    const answers = rows.map(row => ({ ...row, optionIds: row.selections.map(selection => selection.optionId) }));
+    const selectedOptions = new Map<number, number[]>();
+    for (const { answerId, optionId } of selections) {
+      const options = selectedOptions.get(answerId);
+      if (options) options.push(optionId);
+      else selectedOptions.set(answerId, [optionId]);
+    }
+    const answers = rows.map(row => ({ ...row, optionIds: selectedOptions.get(row.id) }));
     return { survey, summary: summarize(survey.questions, answers, responseCount), responseRate };
   }, { isolationLevel: Prisma.TransactionIsolationLevel.RepeatableRead });
 
