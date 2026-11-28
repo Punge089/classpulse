@@ -17,7 +17,7 @@ export function parseCourseId(body: unknown): number {
 
 export interface QuestionInput {
   prompt: string;
-  type: "RATING" | "SINGLE_CHOICE";
+  type: "RATING" | "SINGLE_CHOICE" | "TEXT" | "MULTI_CHOICE";
   required: boolean;
   options: string[];
 }
@@ -87,8 +87,10 @@ export function validateSurveyInput(body: unknown): SurveyValidation {
         fail(`${at}.prompt`, `Question text must be 1 to ${MAX_PROMPT} characters`);
       }
 
-      const type = q.type === "RATING" || q.type === "SINGLE_CHOICE" ? q.type : undefined;
-      if (!type) fail(`${at}.type`, "Choose Rating or Single choice");
+      const type = q.type === "RATING" || q.type === "SINGLE_CHOICE" || q.type === "TEXT" || q.type === "MULTI_CHOICE"
+        ? q.type
+        : undefined;
+      if (!type) fail(`${at}.type`, "Choose Rating, Single choice, Text or Multiple choice");
 
       let required = true;
       if (q.required !== undefined) {
@@ -97,11 +99,11 @@ export function validateSurveyInput(body: unknown): SurveyValidation {
       }
 
       const options: string[] = [];
-      if (type === "RATING") {
+      if (type === "RATING" || type === "TEXT") {
         if (q.options !== undefined && !(Array.isArray(q.options) && q.options.length === 0)) {
-          fail(`${at}.options`, "A rating question has no options");
+          fail(`${at}.options`, `A ${type === "RATING" ? "rating" : "text"} question has no options`);
         }
-      } else if (type === "SINGLE_CHOICE") {
+      } else if (type === "SINGLE_CHOICE" || type === "MULTI_CHOICE") {
         const raws = q.options;
         const trimmed = Array.isArray(raws) ? raws.map(o => (typeof o === "string" ? o.trim() : "")) : [];
         const lowered = new Set(trimmed.map(o => o.toLowerCase()));
