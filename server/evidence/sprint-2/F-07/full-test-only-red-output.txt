@@ -8,3 +8,10 @@ Expected RED failures: 2 response API cases returned 400 instead of accepting TE
 CI applied the migrations and seeded successfully before the server test step. Later client/build/browser/Docker steps were skipped because the required test-only RED stopped the workflow.
 
 Local focused unit RED before implementation: 29 total; 19 passed, 10 failed, 0 skipped. See test-only-red-output.txt and test-only-red-run.json.
+
+Supplemental C8 regression RED — test-only commit 8b10f9ad91d96f5b24a196aa14b974262e0e9d5c
+GitHub Actions run: 46105990128 (CI merge 4dc3eb2284800a49c078b6638b4fd2a41f7f65ff; staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0)
+Command: cd server && npm test
+Server: 22 files; 20 passed, 2 failed; 294 tests; 292 passed, 2 failed, 0 skipped.
+Expected RED: TEST-143 accepted U+0000 in TEXT validation; TEST-145 received HTTP 500 rather than 400. The no-response assertion did not execute because the status assertion failed first. Prisma migrations passed. Client tests, both builds, browser tests and Docker were skipped after the server test failure; no Vitest tests were skipped.
+Local focused attempt could not initialize because this worktree has no DATABASE_URL for the separate classpulse_test database; CI supplied the isolated database and captured both expected failures above.

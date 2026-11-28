@@ -90,6 +90,10 @@ export function validateAnswers(
         details.push({ field: `${prefix}.textValue`, message: "Enter text for this question" });
         return;
       }
+      if (rawText.includes("\u0000")) {
+        details.push({ field: `${prefix}.textValue`, message: "Text must not contain null characters" });
+        return;
+      }
       const textValue = rawText.trim();
       const codePoints = [...textValue];
       const hasUnpairedSurrogate = codePoints.some(character => {
