@@ -1,0 +1,20 @@
+test-and-docker	Check out source	2026-11-27T19:40:15.0428529Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +84f9f6960ab9457dfd57dd48190ad0e8044e08d3:refs/remotes/pull/139/merge
+test-and-docker	Check out source	2026-11-27T19:40:15.7105776Z  * [new ref]         84f9f6960ab9457dfd57dd48190ad0e8044e08d3 -> pull/139/merge
+test-and-docker	Check out source	2026-11-27T19:40:15.7857969Z 84f9f6960ab9457dfd57dd48190ad0e8044e08d3
+test-and-docker	Test server	2026-11-27T19:40:59.9665588Z  ^[[31m❯^[[39m tests/api/ownerExport.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m | ^[[22m^[[31m2 failed^[[39m^[[2m)^[[22m^[[33m 430^[[2mms^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T19:40:59.9666910Z ^[[31m   ^[[31m×^[[31m F-12 identified owner export^[[2m > ^[[22mTEST-240 exports saved answers as CSV and protects the same saved survey^[[90m 281^[[2mms^[[22m^[[31m^[[39m
+test-and-docker	Test server	2026-11-27T19:40:59.9668007Z ^[[31m     → expected 404 to be 200 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T19:40:59.9668961Z ^[[31m   ^[[31m×^[[31m F-12 identified owner export^[[2m > ^[[22mTEST-242 rejects an unexpected query parameter before sending CSV headers^[[90m 143^[[2mms^[[22m^[[31m^[[39m
+test-and-docker	Test server	2026-11-27T19:40:59.9669749Z ^[[31m     → expected 404 to be 400 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T19:41:02.4609958Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/ownerExport.test.ts^[[2m > ^[[22mF-12 identified owner export^[[2m > ^[[22mTEST-240 exports saved answers as CSV and protects the same saved survey
+test-and-docker	Test server	2026-11-27T19:41:02.4622994Z ^[[31m^[[1mAssertionError^[[22m: expected 404 to be 200 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T19:41:02.4629090Z ^[[36m ^[[2m❯^[[22m tests/api/ownerExport.test.ts:^[[2m53:29^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T19:41:02.4772401Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/api/ownerExport.test.ts^[[2m > ^[[22mF-12 identified owner export^[[2m > ^[[22mTEST-242 rejects an unexpected query parameter before sending CSV headers
+test-and-docker	Test server	2026-11-27T19:41:02.4773598Z ^[[31m^[[1mAssertionError^[[22m: expected 404 to be 400 // Object.is equality^[[39m
+test-and-docker	Test server	2026-11-27T19:41:02.4775717Z ^[[36m ^[[2m❯^[[22m tests/api/ownerExport.test.ts:^[[2m90:27^[[22m^[[39m
+test-and-docker	Test server	2026-11-27T19:41:02.4784783Z ^[[2m      Tests ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m272 passed^[[39m^[[22m^[[90m (274)^[[39m
+test-and-docker	Test server	2026-11-27T19:41:02.4811588Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	 ❯ tests/api/ownerExport.test.ts:53:29
+test-and-docker	Test server	2026-11-27T19:41:02.4818830Z ##[error]AssertionError: expected 404 to be 400 // Object.is equality
+test-and-docker	Test server	 ❯ tests/api/ownerExport.test.ts:90:27
+test-and-docker	Retain browser evidence	2026-11-27T19:41:02.5053055Z   name: lab7-browser-84f9f6960ab9457dfd57dd48190ad0e8044e08d3

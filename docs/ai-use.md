@@ -385,3 +385,15 @@ A/Punge089 used Codex GPT-6.2 Sol to review and merge B's #148 metrics, reconcil
 ## Lab 7 report v1.1 review - Student A, 28 November 2026
 
 Under Issue #101 / PR #104, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, Claude desktop app) to check the v1.0 Lab 7 PDF against the seven-page assignment and the supplied announcement, then fix supported gaps. Claude edited `tools/lab7-report/build_source.py` (plus version labels in the renderer/checkers and the C3 word-count check), pinned B's verbatim release PR #143 reviews as a new hashed input, and regenerated the report Markdown, evidence index and PDF. Changes: release scope and unrelated Sprint 2 work in B6, B's #143 review text, the C3 review time in Bangkok, an action-oriented C3 interpretation with owner, owners/actions for open readiness items, report submission separated from readiness, and a shorter Lab 6 paragraph in D2. B's metrics source files and all earlier pinned inputs are unchanged. No test result, decision, application code, main, deployment or LEB2 action changed. B reviews the exact PDF hash; A cannot approve or merge.
+
+## Sprint 3 F-12 CSV export contract — Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to draft the proposal and map FR-17, access controls, anonymous dependencies and the identified-only first slice to AC/TEST-240–248 on #138. B/book6349 is the requested independent reviewer. No feature tests or implementation were written and no runtime export was executed in this contract block.
+
+## F-12 identified CSV API slice - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol for the owner-only identified CSV route, bounded read snapshot and encoding. B/book6349 reviewed the contract, and advised using the already scoped owner-summary router after F-07 staged. The same two API assertions from test-only a819fbf ran locally against disposable PostgreSQL after the route was mounted. This checkpoint covers the identified API only. Client download, full answer-type coverage and anonymous export remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol for the F-12 owner browser download and retry and the deterministic API snapshot test. Playwright repeated TEST-247 unchanged from its retained failing checkpoint. The concurrent PostgreSQL check used a disposable database and real synthetic owner/respondent sessions. The D2 slice covers identified rating and single-choice surveys. Additional types and anonymous export remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol to address B's F-12 C7 by adding the agreed serializer unit file, capturing two actual RED cases and correcting spreadsheet-prefix handling. The same test cases passed with the full isolated server suite.
