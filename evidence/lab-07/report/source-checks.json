@@ -1,8 +1,8 @@
 {
-  "passed": 92,
+  "passed": 93,
   "failed": 0,
   "skipped": 0,
-  "reportSha256": "11e38a35eacb2c8b203bd2f953f2c1e8afb878e06cdf11c6d5c36a7062a13a32",
+  "reportSha256": "cb20ea203ef2724f1f1af1dfacfcf84ae0782eba0e0d574bed763341338b0527",
   "reportHashEncoding": "UTF8/LF canonical source, not a final PDF hash",
   "checks": [
     "input SHA256: inputs/contract-before-code.md",
@@ -51,6 +51,7 @@
     "input SHA256: inputs/b-final-retrospective.md",
     "input SHA256: inputs/b-final-production-refresh.md",
     "input SHA256: inputs/nov28-final-metrics-review.json",
+    "input SHA256: inputs/nov28-release-pr143-reviews.json",
     "report version and review record are explicit",
     "all four separate assessed parts",
     "all12 stable acceptance IDs",
@@ -95,8 +96,8 @@
     "offline source rebuild deterministic in canonical UTF8/LF",
     "final metrics and review source identified",
     "final release values and separate UAT status",
-    "reviewed retrospective and interpretation carried into the PDF source",
+    "reviewed retrospective and action-oriented interpretation carried into the PDF source",
     "git diff whitespace"
   ],
-  "status": "v1.0 report source checks; peer PDF review tracked separately"
+  "status": "v1.1 report source checks; peer PDF review tracked separately"
 }

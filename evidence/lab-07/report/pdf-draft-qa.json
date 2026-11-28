@@ -1,20 +1,20 @@
 {
   "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
-  "sha256": "c5d330ad1db492fe76124eb12dcb55e2370858bf36a31b31315e2f47d97385b2",
-  "sourceSha256UTF8LF": "11e38a35eacb2c8b203bd2f953f2c1e8afb878e06cdf11c6d5c36a7062a13a32",
-  "pages": 30,
+  "sha256": "7658f970b9feb814402e60ff66bda18960241da4a407869cc883d5cd4618a519",
+  "sourceSha256UTF8LF": "cb20ea203ef2724f1f1af1dfacfcf84ae0782eba0e0d574bed763341338b0527",
+  "pages": 32,
   "partStartPages": {
     "A": 3,
     "B": 14,
-    "C": 26,
-    "D": 29
+    "C": 27,
+    "D": 30
   },
   "navigationDestinations": [
     3,
     14,
     14,
-    26,
-    29
+    27,
+    30
   ],
   "images": [
     {
@@ -46,7 +46,7 @@
       "page": 2,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 338,
+      "words": 336,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -126,7 +126,7 @@
       "page": 12,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 386,
+      "words": 392,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -134,7 +134,7 @@
       "page": 13,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 123,
+      "words": 146,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -222,7 +222,7 @@
       "page": 24,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 454,
+      "words": 387,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -230,7 +230,7 @@
       "page": 25,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 421,
+      "words": 545,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -238,7 +238,7 @@
       "page": 26,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 287,
+      "words": 421,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -246,7 +246,7 @@
       "page": 27,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 144,
+      "words": 287,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -254,7 +254,7 @@
       "page": 28,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 334,
+      "words": 144,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -262,7 +262,7 @@
       "page": 29,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 479,
+      "words": 371,
       "outOfBoundsWords": 0,
       "reportFooter": true
     },
@@ -270,12 +270,28 @@
       "page": 30,
       "width": 595.2756,
       "height": 841.8898,
-      "words": 487,
+      "words": 415,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 31,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 596,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 32,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 149,
       "outOfBoundsWords": 0,
       "reportFooter": true
     }
   ],
   "structuralResult": "PASS: all pages bounded/nonblank/versioned; all Part links/page ranges correct; original screenshot pixels preserved",
-  "visualQA": "PASS: rendered all 30 pages. Compared bodies to v0.7; visually inspected changed pages 1 and 26–30. Rechecked 1, 29 and 30 after final copy/spacing adjustments.",
-  "releaseState": "Version 1.0; exact review and submission tracked separately"
+  "visualQA": "PASS: rendered all 32 pages with PyMuPDF (pdftoppm unavailable on this machine) and inspected two 16-page contact sheets; full-size inspection of changed pages 2, 3, 25, 26, 29, 30, 31 and 32. No blank, clipped or overflowing page; page 32 holds the complete Reproducibility and provenance section.",
+  "releaseState": "Version 1.1 after B's change request on d217030; exact review and submission tracked separately"
 }
