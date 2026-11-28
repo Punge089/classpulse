@@ -10,6 +10,7 @@ interface RespondentSurvey {
   mode: "IDENTIFIED";
   status: "PUBLISHED";
   hasResponded: boolean;
+  closesAt?: string | null;
 }
 
 export function SurveyListPage() {
@@ -52,6 +53,10 @@ export function SurveyListPage() {
               <div>
                 <Link to={`/surveys/${survey.id}`} className="fw-semibold">{survey.title}</Link>
                 <div className="cp-muted small">{survey.courseCode} · Identified survey</div>
+                {survey.closesAt && <div className="cp-muted small">Closes <time dateTime={survey.closesAt}>
+                  {new Date(survey.closesAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })}
+                  {" (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")"}
+                </time></div>}
               </div>
               {survey.hasResponded && <span className="badge rounded-pill text-bg-success">Submitted</span>}
             </li>

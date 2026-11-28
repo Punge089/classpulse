@@ -339,3 +339,5 @@ A/Punge089 used Codex GPT-6 on #96 to prepare proposed F-08 contract v1.2 in res
 ## F-08 scheduling backend - Student A, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol under Issue #96 after B/book6349 reviewed the cutoff and reopen contracts and F-07 staged. A implemented the deadline migration and owner and respondent backend behavior. A retained the original F-08 RED, ran the same tests with disposable PostgreSQL, and extended the exact TEST-20 owner-list object to assert the three contracted fields while preserving every prior assertion. Browser controls and further deadline-boundary, rollback and release verification remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol to implement the F-08 owner closing-time form and respondent deadline display after preserving the browser RED. The form sends a canonical UTC timestamp from the browser's named local time zone and retains input on failed or stale writes. The existing server remains authoritative for submissions.
