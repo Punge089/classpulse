@@ -233,6 +233,41 @@ test("TEST-121 add, remove and switch question types across saves", async () => 
   );
 });
 
+test("F-07 TEST-142 edits a draft with TEXT and MULTI_CHOICE while preserving option order", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const questions = [
+    { prompt: "Explain one idea", type: "TEXT", required: false },
+    { prompt: "Select useful formats", type: "MULTI_CHOICE", options: ["Examples", "Discussion", "Practice"] }
+  ];
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(), questions
+  });
+  expect(result.status).toBe(200);
+  expect(result.body.survey.questions.map((q: any) => ({ prompt: q.prompt, type: q.type, options: q.options.map((o: any) => o.label) }))).toEqual([
+    { prompt: "Explain one idea", type: "TEXT", options: [] },
+    { prompt: "Select useful formats", type: "MULTI_CHOICE", options: ["Examples", "Discussion", "Practice"] }
+  ]);
+  const stored = await prisma.question.findMany({ where: { surveyId: original.id }, orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } });
+  expect(stored.map(q => [q.type, q.options.map(o => o.label)])).toEqual([
+    ["TEXT", []], ["MULTI_CHOICE", ["Examples", "Discussion", "Practice"]]
+  ]);
+});
+
+test("F-07 TEST-142 invalid extended replacement leaves the existing draft intact", async () => {
+  const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const result = await owner.put(`/api/owner/surveys/${original.id}/questions`).send({
+    expectedUpdatedAt: original.updatedAt.toISOString(),
+    questions: [{ prompt: "Invalid", type: "MULTI_CHOICE", options: ["Same", " same "] }]
+  });
+  expect(result.status).toBe(400);
+  expect(result.body.error.details.map((detail: { field: string }) => detail.field)).toContain("questions[0].options");
+  expect(await prisma.survey.findUniqueOrThrow({ where: { id: original.id }, include: {
+    questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
+  } })).toEqual(original);
+});
+
 test("TEST-123 published response and answer survive rejected replacement", async () => {
   const original = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "PUBLISHED" });
   const response = await prisma.response.create({ data: { surveyId: original.id, respondentId: fixture.student1.id } });

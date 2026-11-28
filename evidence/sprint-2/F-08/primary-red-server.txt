@@ -1,0 +1,29 @@
+F-08 preimplementation RED (TEST-180 / AC-180)
+Original assertion and count lines from the GitHub Actions server test step follow, with terminal formatting removed.
+Run: https://github.com/Punge089/classpulse/actions/runs/45989533189 (attempt 1)
+Feature head: eb198dde00bffc4323fcce37876c629ac044598c
+Base: 5fe00fd3e065cc6fb0cb1edd0aaf80ae5bfbd347
+GitHub Actions checkout: 2e547a6ce0e74e2e45af0a0dcee226a676a1bcb7
+Command: npm test (working directory: server)
+239 passed, 1 failed, 0 skipped out of 240 tests. The 200 assertion follows fixture creation, authentication and timestamp read.
+The old server has no schedule PUT route. Persistence assertions after the failing status assertion are pending GREEN.
+CI steps skipped after failure (distinct from test skips):
+- Test client
+- Build server
+- Build client
+- Install Chromium for preserved and maintenance browser tests
+- Reseed synthetic CI accounts for browser tests
+- Test complete browser suite
+- Build Docker image locally
+- Post Set up Node.js 24
+The browser artifact step reported no files, as the browser suite did not run.
+
+test-and-docker	Test server	2026-11-27T11:20:35.2444468Z    × TEST-180 saves and persists a canonical closing deadline on an owned draft 190ms
+test-and-docker	Test server	2026-11-27T11:20:35.2445214Z      → expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-27T11:20:36.0391048Z  FAIL  tests/api/scheduledClosing.test.ts > TEST-180 saves and persists a canonical closing deadline on an owned draft
+test-and-docker	Test server	2026-11-27T11:20:36.0405202Z AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	2026-11-27T11:20:36.0407829Z  ❯ tests/api/scheduledClosing.test.ts:25:27
+test-and-docker	Test server	2026-11-27T11:20:36.0537758Z  Test Files  1 failed | 20 passed (21)
+test-and-docker	Test server	2026-11-27T11:20:36.0538721Z       Tests  1 failed | 239 passed (240)
+test-and-docker	Test server	2026-11-27T11:20:36.0564202Z ##[error]AssertionError: expected 404 to be 200 // Object.is equality
+test-and-docker	Test server	 ❯ tests/api/scheduledClosing.test.ts:25:27

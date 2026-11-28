@@ -3,6 +3,7 @@ import type { Prisma } from "@prisma/client";
 import { asyncRoute } from "../lib/asyncRoute";
 import { ApiError } from "../lib/errors";
 import { parseId } from "../lib/params";
+import { nextSurveyUpdateTime, parseScheduleInput, scheduleAvailability } from "../lib/surveySchedule";
 import { nextStatus, type SurveyAction } from "../lib/surveyLifecycle";
 import { parseCourseId, validateSurveyInput } from "../lib/surveyValidation";
 import { getPrisma } from "../prisma";
@@ -28,6 +29,7 @@ function toSurveyDto(survey: SurveyRow) {
     updatedAt: survey.updatedAt,
     publishedAt: survey.publishedAt,
     closedAt: survey.closedAt,
+    ...scheduleAvailability(survey.status, survey.closesAt, new Date()),
     createdAt: survey.createdAt,
     questions: survey.questions.map(q => ({
       id: q.id,
@@ -65,11 +67,15 @@ function transition(action: SurveyAction) {
       }
       if (survey.statusVersion >= 2147483647) throw stale();
       const now = new Date();
+      if (action !== "close" && survey.closesAt && survey.closesAt.getTime() <= now.getTime()) {
+        throw new ApiError(409, "CLOSING_TIME_PASSED", "Set a future closing time or clear it first");
+      }
       const changed = await tx.survey.updateMany({
         where: { id, ownerId, status: survey.status, statusVersion: survey.statusVersion },
         data: {
           status: to,
           statusVersion: { increment: 1 },
+          updatedAt: nextSurveyUpdateTime(survey.updatedAt, now),
           ...(action === "publish" ? { publishedAt: now } : action === "close" ? { closedAt: now } : { closedAt: null })
         }
       });
@@ -110,16 +116,42 @@ ownerSurveysRouter.get("/surveys", asyncRoute(async (req, res) => {
     where: { ownerId: req.user!.id },
     orderBy: { id: "desc" },
     select: {
-      id: true, title: true, status: true,
+      id: true, title: true, status: true, closesAt: true,
       course: { select: { code: true } },
       _count: { select: { responses: true } }
     }
   });
+  const now = new Date();
   res.json({
     surveys: rows.map(s => ({
-      id: s.id, title: s.title, status: s.status, courseCode: s.course.code, responseCount: s._count.responses
+      id: s.id, title: s.title, status: s.status, courseCode: s.course.code, responseCount: s._count.responses,
+      ...scheduleAvailability(s.status, s.closesAt, now)
     }))
   });
+}));
+
+ownerSurveysRouter.put("/surveys/:id/schedule", asyncRoute(async (req, res) => {
+  const id = parseId(req.params.id);
+  const ownerId = req.user!.id;
+  const updated = await getPrisma().$transaction(async tx => {
+    const owned = await tx.$queryRaw<{ id: number }[]>`
+      SELECT "id" FROM "Survey" WHERE "id" = ${id} AND "ownerId" = ${ownerId} FOR UPDATE`;
+    if (owned.length !== 1) throw notFound();
+    const survey = await tx.survey.findFirstOrThrow({ where: { id, ownerId } });
+    const { closesAt, expectedUpdatedAt } = parseScheduleInput(req.body);
+    if (survey.updatedAt.getTime() !== expectedUpdatedAt.getTime()) {
+      throw new ApiError(409, "STALE_SURVEY", "The survey changed; reload and try again");
+    }
+    if (survey.status === "PUBLISHED") {
+      throw new ApiError(409, "INVALID_TRANSITION", "Close this survey before changing its deadline");
+    }
+    return tx.survey.update({
+      where: { id },
+      data: { closesAt, updatedAt: nextSurveyUpdateTime(survey.updatedAt, new Date()) },
+      include: surveyInclude
+    });
+  });
+  res.json({ survey: toSurveyDto(updated) });
 }));
 
 ownerSurveysRouter.post("/surveys", asyncRoute(async (req, res) => {

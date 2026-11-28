@@ -51,7 +51,7 @@ export function EditSurveyPage() {
         method: "PUT",
         body: JSON.stringify({ expectedUpdatedAt: survey.updatedAt, questions: questions.map(q => ({
           prompt: q.prompt, type: q.type, required: q.required,
-          ...(q.type === "SINGLE_CHOICE" ? { options: q.options } : {})
+          ...(q.type === "SINGLE_CHOICE" || q.type === "MULTI_CHOICE" ? { options: q.options } : {})
         })) })
       });
       navigate(`/owner/surveys/${id}`);
@@ -78,10 +78,10 @@ export function EditSurveyPage() {
         <label className="form-label mt-2" htmlFor={`type-${index}`}>Question {index + 1} type</label>
         <select className="form-select" id={`type-${index}`} value={question.type} onChange={e => {
           const type = e.target.value as QuestionType;
-          update(index, { type, options: type === "SINGLE_CHOICE" ? ["", ""] : [] });
-        }}><option value="RATING">Rating</option><option value="SINGLE_CHOICE">Single choice</option></select>
+          update(index, { type, options: type === "SINGLE_CHOICE" || type === "MULTI_CHOICE" ? ["", ""] : [] });
+        }}><option value="RATING">Rating</option><option value="SINGLE_CHOICE">Single choice</option><option value="TEXT">Text</option><option value="MULTI_CHOICE">Multiple choice</option></select>
         <label className="d-block mt-2"><input type="checkbox" checked={question.required} onChange={e => update(index, { required: e.target.checked })} /> Required</label>
-        {question.type === "SINGLE_CHOICE" && <div>
+        {(question.type === "SINGLE_CHOICE" || question.type === "MULTI_CHOICE") && <div>
           {question.options.map((option, oi) => <div key={oi} className="my-2">
             <label htmlFor={`option-${index}-${oi}`}>Option {oi + 1}</label>
             <input className="form-control" id={`option-${index}-${oi}`} value={option} onChange={e => update(index, { options: question.options.map((v, i) => i === oi ? e.target.value : v) })} />

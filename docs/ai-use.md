@@ -274,9 +274,37 @@ A/Punge089 used Codex GPT-6 to merge current staging into PR #95, preserve the s
 
 After B's review of PR #95, A/Punge089 used Codex GPT-6.2 Sol to correct report pointers and confirm the interim metrics merge. The Lab 7 release and final deployed evidence remain pending.
 
+## Sprint 2 F-07 contract proposal — Student B, 27 November 2026
+
+B/book6349 used Codex GPT-6 Sol to draft the four-type F-07 contract for Issue #134 after reading the current staging schema, authoring/response/summary/history paths, F-06/F-09 handoff, SRS and D2 brief. B owns this proposal and A reviews it. The proposal separates Sprint 2 aggregate text counts from the later F-13 raw-text view. No F-07 tests, implementation, migration, runtime result or C3 acceptance are claimed in this contract work block.
+
+## F-07 independent owner-create RED — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to add two test-only TEST-140 cases at `server/tests/api/extendedQuestionTypes.test.ts`, covering persisted owner creation of TEXT and MULTI_CHOICE. The initial CI attempt exposed an unawaited synthetic-login helper; B corrected the test harness before accepting the RED. Current-staging CI 46045085095 then ran the server `npm test` suite with 272 passed and the two expected new-type assertions failing (400 received, 201 expected), zero skipped tests; downstream client, builds, browser and Docker steps were skipped. The test, output and run JSON were committed before implementation. No application/schema/migration code or local database was changed; local execution was unavailable in the isolated checkout.
+
+## F-07 owner-create implementation — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to implement the first independent TEST-140 owner-create slice under Issue #134: add TEXT and MULTI_CHOICE to the Prisma question enum, add the corresponding PostgreSQL enum migration, and accept those types in the existing owner-create validator. The shared F-06 editor, answers, response/history APIs and summaries remain outside this checkpoint. Local execution of the API tests is blocked because no isolated PostgreSQL database or Docker daemon is available; the current CI result is pending.
+
+## F-07 validator regression follow-up — Student B, 28 November 2026
+
+CI run 46050620679 on head `4c9b90a` passed 273 server tests and failed the pre-existing TEST-11 case that classified `TEXT` as an unknown type. B/book6349 used Codex GPT-6.2 Sol to change that test input to unsupported `UNKNOWN`, preserving its invalid-type and field-error assertions. The focused validator suite passed 27/27 locally. The database-backed TEST-140 suite awaits CI because this checkout has no isolated PostgreSQL database and Docker is unavailable. No test was disabled or removed.
+
+## F-07 TEST-140 implementation CI — Student B, 28 November 2026
+
+CI run 46051024962 tested implementation head `d8debf7fc106a80081367ba935c0f874cb9f17b9` merged with staging `2f99a06b531c95b9b0a86b2b082f53d4974ee046`. Server passed 274/274, client 23/23 and browser 12/12 (309 total), with 0 failures and 0 skipped tests. Prisma migrations, both builds and Docker passed. Codex GPT-6.2 Sol assisted B/book6349 with the enum migration and validator change. The wider F-07 edit/answer/history/summary slices remain pending their RED evidence and implementation.
+
+## F-07 extended answer path — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to add test-first RED coverage for draft replacement, text/multi-choice validation, response persistence and own-history readback, and aggregate-only summaries. Commit `ab64818` records those server tests and RED output before implementation; the focused validator/summary run had 10 failures and 19 passes out of 29, with zero skips. CI run `46056748884` on that test-only commit applied migrations and seeded PostgreSQL, then reported 276 passed and 12 expected failures out of 288 server tests, with zero skips; client/build/browser/Docker steps stopped after the RED server suite. The implementation then added the composite database relation test, an additive text/selection migration, typed API validation/persistence/readback, owner summaries in a repeatable-read snapshot, and the owner/respondent UI. Prisma validation, server type checking, the focused 29-test unit run, and the full 27-test client suite/build pass locally. Exact-head CI run `46057466481` applied migrations and seed, then reported 289 passed and 3 failed out of 292 server tests, with zero skips; all three exposed an invalid explicit `questionId` in nested selection creation. CI run `46058029214` then passed the migration, server 292/292, client 27/27 and both builds, but the browser suite had 12 passed and one E2E timeout because the owner sign-in redirect was not awaited before opening the summary. The follow-up removes the redundant nested `questionId`, adds the owner-route wait, and omits blank optional text from the client payload. A database-backed local attempt ran 62 tests but failed before their assertions because the local `classpulse_test` credentials were rejected; updated exact-head PostgreSQL/API/browser verification is pending CI. No test was skipped, disabled, focused or weakened.
+
 ## Lab 7 release review status corrections - Issue #94 follow-up, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to verify B's prior C3 and planning approval/merge and correct the two stale release document statuses identified in PR #143. Announcement provenance and release/deployed gates remain intact.
+
+## F-07 extended answer path — exact-head GREEN — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to complete F-07 draft edit, TEXT/MULTI_CHOICE answer validation and persistence, own-history details, identified aggregate summaries, and corresponding UI. Exact-head CI run 46058610015 tested head f861bcdba583da1d60dc1a1da10096781744f090 (CI merge commit 01d8320cb63b4e0905afd88d67243b20c6534252; staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0). It passed migrations, 292 server tests, 27 client tests and 13 browser tests (332 total; zero failed or skipped), both builds and Docker. Run 46058029214 had 12 browser tests pass and one owner-summary route timeout; the E2E test now waits for the /owner redirect and the exact-head rerun passed all 13. Local PostgreSQL-backed API execution remains unavailable because local classpulse_test authentication was rejected before assertions; CI's isolated PostgreSQL migration and API suites passed. The earlier expected-red results remain recorded in the RED evidence. No tests were disabled, focused or weakened.
 
 ## Lab 6 report revision 2 - Student A, 28 November 2026
 
@@ -285,6 +313,34 @@ Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Cl
 ## Final Lab 7 metrics and readiness refresh - Issue #89, Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6 to reconcile the final Issue #89 metrics, readiness and retrospective with main release 8316f27, deploy run 46050688714, and A's sanitized production receipts from PR #104 head b75f410. B authored the dated metrics evidence file and refreshed the three Issue #89 records. A performed and reported the production API check and GCP Console readbacks; B did not rerun application tests, perform UAT, use GCP, or submit to LEB2. The live developer check is not described as independent UAT. Final PDF review and human LEB2 submission remain pending.
+
+## F-07 exact-head CI after staging sync — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to synchronize F-07 with current sprint-2-staging at ac630fb, preserve the F-07 history and both incoming partner disclosures in docs/ai-use.md, then verify the merged head. CI run 46060277302 tested head 37e0214bad863cc5c95c927f6e5930b3c65ab6fa (CI merge commit 81da3ae): migrations passed; server 292/292, client 27/27 and browser 13/13 (332 total, zero failed/skipped); both builds and Docker passed. The merge-tree found only the shared AI-use disclosure conflict; three trailing-whitespace lines reported by git diff --cached --check were in untouched upstream evidence/lab-06/finalization-20261127/artifact-verification.json and remain unchanged. Local DB-backed API tests remain unable to authenticate before assertions; exact isolated-PostgreSQL CI passed.
+
+## F-07 null-character validation follow-up — Student B, 28 November 2026
+
+B/book6349 used Codex GPT-6.2 Sol to add TEST-143 and TEST-145 for PostgreSQL-incompatible U+0000 text answers. Test-only commit `8b10f9a` and CI run `46105990128` recorded both expected failures: server 292 passed, 2 failed, 0 skipped; migrations passed and later workflow steps were skipped after the RED. Fix commit `60647da` rejects NUL with a field-level 400 before persistence. The focused validator suite passed 22/22 locally. Exact-code-head CI run `46106476724` tested merge `ed44a88` on staging `ac630fb`: server 294/294, client 27/27, browser 13/13 (334 total), 0 failed/skipped; migrations, both builds and Docker passed. Local database-backed execution remains blocked because this worktree lacks a configured separate `classpulse_test` database. No tests were disabled, focused or weakened.
+
+## Sprint 2 F-08 contract preparation - Student A,25November2026
+
+Under Issue96, A's Codex GPT-6.1 Sol read current shared contracts and deadline-free survey/response routes, then drafted scheduled closing with exact UTC boundaries, locked response admission, owner-only configuration and explicit future-deadline integration with Lab7 reopening. AC180-189 and TEST180-194 are design only. B must review the proposed derived availability behavior and C3 before tests; any affected Lab7 contract revision needs separate scope/review. No new test/schema/application code, runtime result, B agreement, cloud mutation, deployment or PDF submission is claimed. Earlier model declarations describe their own dated work and are preserved.
+
+## F-08 execution inventory after actual C3 - Student A, 25 November 2026
+
+A's Codex GPT-6.1 Sol recorded B's actual C3 7159683176 in F-08 contract v1.1, read the proposed Lab7 implementation d1b41c3 without editing it, and identified the authoritative submission-read/row-lock and shared timestamp integration points. The already-contracted CLOSING_TIME_PASSED discriminant file was added to Issue96's Files list before implementation. A imported reviewed staging documentation, preserving all incoming Lab6/B sources and both complete AI declarations. No F-08 tests, application/schema/workflow, database, cloud or deployment operation was performed. The separate #87 contract addendum/review and serialized integration remain prerequisites; B's initial C3 is not fabricated approval of that future change.
+
+## Sprint 2 F-08 independent RED - Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 under Issue #96 to write TEST-180 from B's reviewed test design before implementation. The disposable CI server suite on test-only eb198dd produced 239 passes, one expected missing-route failure, and zero test skips. The assertion output and skipped workflow steps are retained under evidence/sprint-2/F-08. The separate reopen addendum, shared implementation slot, same-test GREEN, B review and release remain pending. F-08 product code, schema and workflows were untouched.
+
+A/Punge089 used Codex GPT-6 on #96 to prepare proposed F-08 contract v1.2 in response to B's #131 review. The new text specifies validation precedence, successful lifecycle updates to the schedule token, both lock orderings and stable TEST-195–198 coverage. TEST-180 and its retained RED were preserved. Integrated C3, dependent tests and product work remain pending.
+
+## F-08 scheduling backend - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol under Issue #96 after B/book6349 reviewed the cutoff and reopen contracts and F-07 staged. A implemented the deadline migration and owner and respondent backend behavior. A retained the original F-08 RED, ran the same tests with disposable PostgreSQL, and extended the exact TEST-20 owner-list object to assert the three contracted fields while preserving every prior assertion. Browser controls and further deadline-boundary, rollback and release verification remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol to implement the F-08 owner closing-time form and respondent deadline display after preserving the browser RED. The form sends a canonical UTC timestamp from the browser's named local time zone and retains input on failed or stale writes. The existing server remains authoritative for submissions.
 
 ## Sprint 2 F-10 contract proposal — Student A, 27 November 2026
 
