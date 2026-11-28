@@ -30,9 +30,9 @@
     "no actual credentials or raw cookies in curated text": true
   },
   "pdf": "docs/labs/lab-06/report/ClassPulse_Lab6_REVIEW_20261127.pdf",
-  "pdfSha256": "6d6fc6e54182ac2e21802bb5810064c41427cc9f23373f2aef38f4d7bf4e0165",
-  "pages": 77,
-  "tablePage": 71,
+  "pdfSha256": "9f0a04e189a2d0b3399939eb632ed5ddbebdb155f2e7dfc04579c874a56c0f32",
+  "pages": 79,
+  "tablePage": 73,
   "tableBottomY": 512.6968994140625,
   "footerClearanceMm": 116.13192952473959,
   "humanBDecision": "CONFIRMED27Nov; receipt observed by16:18:31ICT; exact human-message time unknown",

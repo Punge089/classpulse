@@ -1,0 +1,73 @@
+test-and-docker	Test server	2026-11-26T07:36:00.9375038Z > classpulse-server@0.1.0 test
+test-and-docker	Test server	2026-11-26T07:36:00.9375640Z > vitest run
+test-and-docker	Test server	2026-11-26T07:36:00.9375871Z
+test-and-docker	Test server	2026-11-26T07:36:01.2109112Z The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+test-and-docker	Test server	2026-11-26T07:36:01.2424048Z
+test-and-docker	Test server	2026-11-26T07:36:01.2426042Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/server
+test-and-docker	Test server	2026-11-26T07:36:01.2427151Z
+test-and-docker	Test server	2026-11-26T07:36:10.9061618Z  ✓ tests/api/surveyReopen.test.ts (45 tests) 9126ms
+test-and-docker	Test server	2026-11-26T07:36:10.9064897Z    ✓ Lab 7 boundaries, access, concurrency and preserved behavior > TEST-108 history is empty for legacy rows, then paginates without duplicates or foreign events 407ms
+test-and-docker	Test server	2026-11-26T07:36:10.9068231Z    ✓ Lab 7 boundaries, access, concurrency and preserved behavior > TEST-110 reopening preserves old answers/summary and forbids repeat response 367ms
+test-and-docker	Test server	2026-11-26T07:36:12.7635829Z  ✓ tests/tools/uat6Provisioner.db.test.ts (11 tests) 1628ms
+test-and-docker	Test server	2026-11-26T07:36:15.3739702Z  ✓ tests/api/responses.test.ts (10 tests) 2282ms
+test-and-docker	Test server	2026-11-26T07:36:15.3742251Z    ✓ F-04 respondent survey access > TEST-22 student1 lists only published surveys in enrolled courses with hasResponded 342ms
+test-and-docker	Test server	2026-11-26T07:36:17.8057164Z  ✓ tests/api/ownerSurveys.test.ts (10 tests) 2072ms
+test-and-docker	Test server	2026-11-26T07:36:19.8472132Z  ✓ tests/api/auth.test.ts (8 tests) 1728ms
+test-and-docker	Test server	2026-11-26T07:36:22.7421501Z  ✓ tests/api/draftEditing.test.ts (13 tests) 2578ms
+test-and-docker	Test server	2026-11-26T07:36:23.8424865Z  ✓ tests/api/summary.test.ts (3 tests) 786ms
+test-and-docker	Test server	2026-11-26T07:36:23.8427740Z    ✓ F-05 owner survey summary > TEST-34 scopes response counts and excludes omitted optional ratings from the average 309ms
+test-and-docker	Test server	2026-11-26T07:36:24.0551984Z  ✓ tests/unit/surveyValidation.test.ts (27 tests) 13ms
+test-and-docker	Test server	2026-11-26T07:36:24.4476071Z  ✓ tests/api/cloudReady.test.ts (3 tests) 79ms
+test-and-docker	Test server	2026-11-26T07:36:25.6980698Z  ✓ tests/tools/uat6Provisioner.test.ts (23 tests) 1054ms
+test-and-docker	Test server	2026-11-26T07:36:25.6982782Z    ✓ CLI fail-closed boundary > stops without a connection or valid interactive apply arguments 387ms
+test-and-docker	Test server	2026-11-26T07:36:27.0628280Z  ✓ tests/db/constraints.test.ts (3 tests) 1178ms
+test-and-docker	Test server	2026-11-26T07:36:27.0630177Z    ✓ TEST-53 seeds the same fixture identities, relationships and credentials twice 774ms
+test-and-docker	Test server	2026-11-26T07:36:27.2659963Z  ✓ tests/unit/summary.test.ts (6 tests) 6ms
+test-and-docker	Test server	2026-11-26T07:36:27.4659183Z  ✓ tests/unit/responseValidation.test.ts (13 tests) 8ms
+test-and-docker	Test server	2026-11-26T07:36:27.6857639Z  ✓ tests/unit/surveyReopenValidation.test.ts (32 tests) 14ms
+test-and-docker	Test server	2026-11-26T07:36:27.8944713Z  ✓ tests/unit/surveyLifecycle.test.ts (9 tests) 6ms
+test-and-docker	Test server	2026-11-26T07:36:28.2612010Z  ✓ tests/api/health.test.ts (1 test) 76ms
+test-and-docker	Test server	2026-11-26T07:36:28.6356804Z  ✓ tests/api/unauthenticated.test.ts (13 tests) 44ms
+test-and-docker	Test server	2026-11-26T07:36:29.2764028Z  ✓ tests/unit/password.test.ts (1 test) 396ms
+test-and-docker	Test server	2026-11-26T07:36:29.2765946Z    ✓ TEST-06 passwords are stored only as salted scrypt hashes that verify 389ms
+test-and-docker	Test server	2026-11-26T07:36:29.4959396Z  ✓ tests/unit/seedConfig.test.ts (1 test) 4ms
+test-and-docker	Test server	2026-11-26T07:36:29.5075128Z
+test-and-docker	Test server	2026-11-26T07:36:29.5086238Z  Test Files  19 passed (19)
+test-and-docker	Test server	2026-11-26T07:36:29.5087294Z       Tests  232 passed (232)
+test-and-docker	Test server	2026-11-26T07:36:29.5088354Z    Start at  07:36:01
+test-and-docker	Test server	2026-11-26T07:36:29.5090187Z    Duration  28.27s (transform 284ms, setup 95ms, collect 1.59s, tests 23.08s, environment 4ms, prepare 1.04s)
+test-and-docker	Test server	2026-11-26T07:36:29.5091074Z
+test-and-docker	Test client	2026-11-26T07:36:29.6429761Z > classpulse-client@0.1.0 test
+test-and-docker	Test client	2026-11-26T07:36:29.6430954Z > vitest run
+test-and-docker	Test client	2026-11-26T07:36:29.6431429Z
+test-and-docker	Test client	2026-11-26T07:36:29.9375543Z
+test-and-docker	Test client	2026-11-26T07:36:29.9377578Z  RUN  v2.1.9 /home/runner/work/classpulse/classpulse/client
+test-and-docker	Test client	2026-11-26T07:36:29.9378374Z
+test-and-docker	Test client	2026-11-26T07:36:30.9879843Z stderr | tests/surveyReopen.test.tsx > TEST-112 server validation keeps reason and shows its field error without retrying
+test-and-docker	Test client	2026-11-26T07:36:30.9884107Z ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+test-and-docker	Test client	2026-11-26T07:36:30.9889293Z ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+test-and-docker	Test client	2026-11-26T07:36:30.9891568Z
+test-and-docker	Test client	2026-11-26T07:36:31.0217430Z  ✓ tests/RatingDots.test.tsx (1 test) 215ms
+test-and-docker	Test client	2026-11-26T07:36:31.5967121Z  ✓ tests/surveyReopen.test.tsx (9 tests) 713ms
+test-and-docker	Test client	2026-11-26T07:36:31.6176965Z
+test-and-docker	Test client	2026-11-26T07:36:31.6185314Z  Test Files  2 passed (2)
+test-and-docker	Test client	2026-11-26T07:36:31.6186709Z       Tests  10 passed (10)
+test-and-docker	Test client	2026-11-26T07:36:31.6188303Z    Start at  07:36:29
+test-and-docker	Test client	2026-11-26T07:36:31.6189977Z    Duration  1.68s (transform 150ms, setup 19ms, collect 475ms, tests 929ms, environment 784ms, prepare 156ms)
+test-and-docker	Test client	2026-11-26T07:36:31.6191085Z
+test-and-docker	Test complete browser suite	2026-11-26T07:36:50.7396952Z > playwright test --reporter=line
+test-and-docker	Test complete browser suite	2026-11-26T07:36:50.7397341Z
+test-and-docker	Test complete browser suite	2026-11-26T07:36:53.4126099Z
+test-and-docker	Test complete browser suite	2026-11-26T07:36:53.4127253Z Running 10 tests using 1 worker
+test-and-docker	Test complete browser suite	2026-11-26T07:36:53.4128324Z
+test-and-docker	Test complete browser suite	2026-11-26T07:36:53.9651521Z [1/10] auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login
+test-and-docker	Test complete browser suite	2026-11-26T07:36:54.8464583Z [2/10] auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login
+test-and-docker	Test complete browser suite	2026-11-26T07:36:55.6489950Z [3/10] auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login
+test-and-docker	Test complete browser suite	2026-11-26T07:36:56.4278473Z [4/10] journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate
+test-and-docker	Test complete browser suite	2026-11-26T07:36:59.6783989Z [5/10] journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents
+test-and-docker	Test complete browser suite	2026-11-26T07:37:00.8182091Z [6/10] owner-survey.spec.ts:9:5 › TEST-21a an owner creates a two-question survey, sees it as Draft, publishes it and sees Published
+test-and-docker	Test complete browser suite	2026-11-26T07:37:02.5749331Z [7/10] owner-survey.spec.ts:47:5 › TEST-21b an empty title shows a message under the title field and creates nothing
+test-and-docker	Test complete browser suite	2026-11-26T07:37:03.2401590Z [8/10] respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation
+test-and-docker	Test complete browser suite	2026-11-26T07:37:07.4892330Z [9/10] survey-reopen.spec.ts:28:5 › TEST-113 reopening persists history and preserves answers, uniqueness and owner access
+test-and-docker	Test complete browser suite	2026-11-26T07:37:10.0570303Z [10/10] survey-reopen.spec.ts:98:5 › TEST-113 stale browser tab keeps reason and requires explicit reload before retry
+test-and-docker	Test complete browser suite	2026-11-26T07:37:12.3758547Z   10 passed (21.0s)

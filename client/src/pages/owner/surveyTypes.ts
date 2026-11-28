@@ -36,6 +36,7 @@ export interface SurveyDetail {
   statusVersion: number;
   closedAt: string | null;
   createdAt: string;
+  updatedAt: string;
   questions: SurveyQuestion[];
 }
 
