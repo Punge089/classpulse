@@ -31,6 +31,8 @@ enum SurveyLifecycleAction {
 enum QuestionType {
   RATING
   SINGLE_CHOICE
+  TEXT
+  MULTI_CHOICE
 }
 
 model User {
@@ -133,14 +135,16 @@ model Question {
 }
 
 model QuestionOption {
-  id         Int      @id @default(autoincrement())
+  id         Int                    @id @default(autoincrement())
   questionId Int
   position   Int
   label      String
-  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  question   Question               @relation(fields: [questionId], references: [id], onDelete: Cascade)
   answers    Answer[]
+  selections AnswerSelectedOption[]
 
   @@unique([questionId, position])
+  @@unique([id, questionId])
 }
 
 model Response {
@@ -156,14 +160,27 @@ model Response {
 }
 
 model Answer {
-  id          Int             @id @default(autoincrement())
+  id          Int                    @id @default(autoincrement())
   responseId  Int
   questionId  Int
-  ratingValue Int?            @map("rating_value")
+  ratingValue Int?                   @map("rating_value")
   optionId    Int?
-  response    Response        @relation(fields: [responseId], references: [id], onDelete: Cascade)
-  question    Question        @relation(fields: [questionId], references: [id])
-  option      QuestionOption? @relation(fields: [optionId], references: [id])
+  textValue   String?                @map("text_value") @db.VarChar(500)
+  response    Response               @relation(fields: [responseId], references: [id], onDelete: Cascade)
+  question    Question               @relation(fields: [questionId], references: [id])
+  option      QuestionOption?        @relation(fields: [optionId], references: [id])
+  selections  AnswerSelectedOption[]
 
   @@unique([responseId, questionId])
+  @@unique([id, questionId])
+}
+
+model AnswerSelectedOption {
+  answerId   Int
+  questionId Int
+  optionId   Int
+  answer     Answer         @relation(fields: [answerId, questionId], references: [id, questionId], onDelete: Cascade)
+  option     QuestionOption @relation(fields: [optionId, questionId], references: [id, questionId], onDelete: Restrict)
+
+  @@id([answerId, optionId])
 }

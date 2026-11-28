@@ -1,0 +1,44 @@
+{
+  "commit": "ab64818b9af74f5f1758095d9faeb86836513094",
+  "ciMergeCommit": "e218abbb5dc60245e11b696a1dd718fd0bfe02d7",
+  "workflowRun": 46056748884,
+  "command": "cd server && npm test",
+  "testFiles": 22,
+  "filesPassed": 19,
+  "filesFailed": 3,
+  "tests": 288,
+  "passed": 276,
+  "failed": 12,
+  "skipped": 0,
+  "phase": "test-only RED before implementation",
+  "expectedFailures": [
+    "2 response API acceptance/readback assertions",
+    "8 TEXT/MULTI_CHOICE validation assertions",
+    "2 summary shape assertions"
+  ],
+  "supplementalRedCheckpoints": [
+    {
+      "testCommit": "8b10f9ad91d96f5b24a196aa14b974262e0e9d5c",
+      "ciMergeCommit": "4dc3eb2284800a49c078b6638b4fd2a41f7f65ff",
+      "stagingBase": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+      "workflowRun": 46105990128,
+      "command": "cd server && npm test",
+      "testFiles": 22,
+      "filesPassed": 20,
+      "filesFailed": 2,
+      "tests": 294,
+      "passed": 292,
+      "failed": 2,
+      "skipped": 0,
+      "phase": "F-07 C8 regression test-only RED before implementation",
+      "expectedFailures": [
+        "TEST-143 validator accepts TEXT containing U+0000 instead of returning a field error",
+        "TEST-145 API returns HTTP 500 instead of HTTP 400; the no-response assertion did not execute in the failed test"
+      ],
+      "migrations": "passed",
+      "downstreamWorkflowSteps": "client tests, builds, browser suite, and Docker skipped after expected server test failures",
+      "localAttempt": "npm test -- --run tests/unit/responseValidation.test.ts could not initialize: required DATABASE_URL for classpulse_test is unavailable in this worktree",
+      "timestampUtc": "2026-11-28T04:07Z"
+    }
+  ]
+}

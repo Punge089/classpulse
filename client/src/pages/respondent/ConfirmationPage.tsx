@@ -7,10 +7,12 @@ import { RatingDots } from "../../components/pulse/RatingDots";
 interface SavedAnswer {
   questionId: number;
   prompt: string;
-  type: "RATING" | "SINGLE_CHOICE";
+  type: "RATING" | "SINGLE_CHOICE" | "TEXT" | "MULTI_CHOICE";
   ratingValue?: number;
   optionId?: number;
   optionLabel?: string;
+  textValue?: string;
+  selectedOptions?: Array<{ optionId: number; label: string }>;
 }
 
 interface SavedResponse {
@@ -70,6 +72,10 @@ export function ConfirmationPage() {
               <div className="fw-semibold">{answer.prompt}</div>
               {answer.type === "RATING" ? (
                 <RatingDots name={`response-${response.id}-question-${answer.questionId}`} value={answer.ratingValue ?? null} readOnly />
+              ) : answer.type === "TEXT" ? (
+                <div>{answer.textValue}</div>
+              ) : answer.type === "MULTI_CHOICE" ? (
+                <ul>{(answer.selectedOptions ?? []).map(option => <li key={option.optionId}>{option.label}</li>)}</ul>
               ) : (
                 <div>{answer.optionLabel}</div>
               )}
