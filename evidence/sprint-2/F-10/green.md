@@ -17,3 +17,16 @@ Ran server `npm test` on head 2e195e0 with the test addition in this commit, usi
 B requested the two in-scope test files after reviewing source 5c316de. TEST-210 now runs the real earlier migration chain in a uniquely named schema in classpulse_test, seeds legacy rows, applies the actual F-10 migration and verifies preserved rows and snapshots, accepted same-course links and rejected cross-course links. TEST-211 uses the actual owner pages and exercises loading, no sections, pending writes, validation, stale reload, network retry, cancel and the two zero-rate states against saved response totals.
 
 Local PostgreSQL: server `npm test -- tests/db/sectionEligibilityMigration.test.ts` passed 1/1. Client `npm test -- --run tests/sectionEligibility.test.tsx` passed 5/5. Zero failed or skipped. The server and client builds passed. No application behavior changes were needed in the C7 follow-up. The original TEST-200 and TEST-208 RED checkpoints remain in the branch history.
+
+## TEST-213 summary scale RED
+
+On source 13bc573 plus this test, the disposable PostgreSQL run applied all migrations and built the server. The full server `npm test` reproduced the owner summary HTTP 500 with 500 saved responses and 20 questions. The initial focused diagnostic selected only this test (one failed and five unselected). The full run failed once with zero test skips.
+
+```text
+FAIL tests/api/sectionEligibility.test.ts > TEST-213 preserves the owner aggregate at 500 responses and 20 questions
+AssertionError: expected 500 to be 200
+Test Files  1 failed | 26 passed (27)
+Tests       1 failed | 320 passed (321)
+```
+
+The separate F-14-sized benchmark on GitHub test checkout b8f7974 also returned HTTP 500 on the first warmup and reported PostgreSQL SQLSTATE 54001. No samples were accepted.

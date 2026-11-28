@@ -215,3 +215,65 @@ test("TEST-202/203 atomic audience writes preserve targets and reject a same-tok
   expect([forbidden.status, forbidden.body.error.code]).toEqual([409, "INVALID_TRANSITION"]);
   expect((await readback()).sectionTargets.map(target => target.sectionId)).toEqual(sectionIds);
 });
+
+test("TEST-213 preserves the owner aggregate at 500 responses and 20 questions", async () => {
+  const course = fixture.cpe334;
+  const owner = await loginAs(app, fixture.owner1.email);
+  const survey = await makeSurvey({
+    owner: fixture.owner1,
+    course,
+    questions: [
+      ...Array.from({ length: 10 }, (_, index) => ({ type: "RATING" as const, prompt: `Rating ${index + 1}` })),
+      ...Array.from({ length: 9 }, (_, index) => ({
+        type: "SINGLE_CHOICE" as const, prompt: `Choice ${index + 1}`, options: ["Yes", "No"]
+      })),
+      { type: "MULTI_CHOICE", prompt: "Select all that apply", options: ["Practice", "Examples"] }
+    ]
+  });
+  const members = await prisma.user.createManyAndReturn({
+    data: Array.from({ length: 500 }, (_, index) => ({
+      email: `f10-scale-${index}@classpulse.test`, fullName: "Synthetic respondent",
+      role: "RESPONDENT" as const, passwordHash: "unused-test-value"
+    })),
+    select: { id: true }
+  });
+  await prisma.enrollment.deleteMany({ where: { courseId: course.id } });
+  await prisma.enrollment.createMany({ data: members.map(member => ({ courseId: course.id, userId: member.id })) });
+  const responses = await prisma.response.createManyAndReturn({
+    data: members.map(member => ({ surveyId: survey.id, respondentId: member.id })),
+    select: { id: true }
+  });
+  await prisma.answer.createMany({
+    data: responses.flatMap(response => survey.questions.map(question => ({
+      responseId: response.id,
+      questionId: question.id,
+      ratingValue: question.type === "RATING" ? 4 : null,
+      optionId: question.type === "SINGLE_CHOICE" ? question.options[0].id : null
+    })))
+  });
+  const multiQuestion = survey.questions[19];
+  const multiAnswers = await prisma.answer.findMany({
+    where: { questionId: multiQuestion.id }, orderBy: { id: "asc" }, select: { id: true }
+  });
+  await prisma.answerSelectedOption.createMany({
+    data: multiAnswers.flatMap((answer, index) => multiQuestion.options.slice(0, index < 250 ? 2 : 1).map(option => ({
+      answerId: answer.id, questionId: multiQuestion.id, optionId: option.id
+    })))
+  });
+
+  const result = await owner.get(`/api/owner/surveys/${survey.id}/summary`);
+  expect(result.status).toBe(200);
+  expect(result.body.summary).toMatchObject({
+    responseCount: 500, responseRate: { respondedEligible: 500, eligible: 500, percent: 100 }
+  });
+  expect(result.body.summary.questions).toHaveLength(20);
+  expect(result.body.summary.questions[0]).toMatchObject({
+    type: "RATING", rating: { average: 4, distribution: { "4": 500 } }
+  });
+  expect(result.body.summary.questions[10]).toMatchObject({
+    type: "SINGLE_CHOICE", choice: { options: [{ count: 500 }, { count: 0 }] }
+  });
+  expect(result.body.summary.questions[19]).toMatchObject({
+    type: "MULTI_CHOICE", multiChoice: { answeredCount: 500, options: [{ count: 500 }, { count: 250 }] }
+  });
+}, 30_000);
