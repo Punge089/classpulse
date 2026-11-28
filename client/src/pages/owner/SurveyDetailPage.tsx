@@ -193,7 +193,7 @@ export function SurveyDetailPage() {
           <li key={question.id} className="cp-card p-3">
             <div className="fw-semibold">{question.position}. {question.prompt}</div>
             <div className="cp-muted small">
-              {question.type === "RATING" ? "Rating, 1 to 5" : "Single choice"}
+              {question.type === "RATING" ? "Rating, 1 to 5" : question.type === "SINGLE_CHOICE" ? "Single choice" : question.type === "TEXT" ? "Text" : "Multiple choice"}
               {question.required ? " · required" : " · optional"}
             </div>
             {question.options.length > 0 && (
