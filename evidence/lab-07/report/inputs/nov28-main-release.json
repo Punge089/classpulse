@@ -1,0 +1,34 @@
+{
+  "pr": 143,
+  "approvedHead": "2f99a06b531c95b9b0a86b2b082f53d4974ee046",
+  "base": "bee0d122bf23410e3d2db69649ad5e44959b6cd8",
+  "mergedBy": "book6349",
+  "main": "8316f270cb11d47c75f848de3f3d40acefbe8def",
+  "mergedAt": "2026-11-27T18:36:02Z",
+  "tree": "66af8781ed7d9901819224cd9aae3a8f1704752e",
+  "preMergeCI": 46049699597,
+  "deployRun": 46050688714,
+  "deployCompletedAt": "2026-11-27T18:40:12Z",
+  "testsPassed": {
+    "server": 272,
+    "client": 23,
+    "browser": 12
+  },
+  "testsFailed": 0,
+  "testsSkipped": 0,
+  "productionReleaseStep": "success: Resolve digest, migrate, and update Cloud Run",
+  "lifecycleMigration": "20261125110000_survey_lifecycle_audit",
+  "migrationEvidence": "Named migration applied in isolated CI; production release step succeeded. Independent production execution/readback and preservation pending.",
+  "smokePaths": [
+    "/api/health",
+    "/api/ready",
+    "/",
+    "/api/auth/me"
+  ],
+  "smoke": "success",
+  "url": "https://classpulse-zdwglar6eq-as.a.run.app",
+  "digest": "sha256:7acc661c6f49606a63ad1c536b5657fe46ca72fa2e99c4a139876cdd867ed389",
+  "revision": null,
+  "traffic": null,
+  "deployedChangedPreservedCases": "pending"
+}

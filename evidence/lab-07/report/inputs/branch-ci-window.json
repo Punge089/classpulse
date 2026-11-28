@@ -1,0 +1,128 @@
+{
+  "start": "2026-11-25T00:00:00Z",
+  "end": "2026-11-25T12:50:53.113529+00:00",
+  "workflow": "CI and Docker",
+  "branch": "feature/87-lab7-survey-reopening",
+  "runs": [
+    {
+      "id": 45572336105,
+      "head_sha": "8017c9183302e4e0c5ff04cd997704255420b8fb",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T07:58:39Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45572336105"
+    },
+    {
+      "id": 45597034491,
+      "head_sha": "3f8918ceefd5eb55cdebd970710fd0789bd38c98",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-25T10:39:14Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45597034491"
+    },
+    {
+      "id": 45597483396,
+      "head_sha": "c7d7e15ce661e0227a5dfad366babd311bfadcf7",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-25T10:42:05Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45597483396"
+    },
+    {
+      "id": 45597550300,
+      "head_sha": "d137db072d52c6984f7f8c06bb9251af2e6fbcbe",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-25T10:42:29Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45597550300"
+    },
+    {
+      "id": 45600224063,
+      "head_sha": "a9cdbce9e76dfd07eb3f2c47051455b748ce326c",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-25T10:59:49Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45600224063"
+    },
+    {
+      "id": 45601152925,
+      "head_sha": "3203c3af8b33adea086b62d654c93dd4a1e77d90",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T11:05:33Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45601152925"
+    },
+    {
+      "id": 45601627954,
+      "head_sha": "e9d1d41369032ab4913949d729e7f646f898060e",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T11:08:29Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45601627954"
+    },
+    {
+      "id": 45603858213,
+      "head_sha": "c4e67ca2b7b7abbba569d2810ac2274c77b487ff",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T11:22:38Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45603858213"
+    },
+    {
+      "id": 45604842565,
+      "head_sha": "7c4818cd6b6b7a11d0ce6fd668bc11a54872a302",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T11:29:00Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45604842565"
+    },
+    {
+      "id": 45605366295,
+      "head_sha": "10455948c40d65e476280936cde9abb278aa4bcc",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T11:32:21Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45605366295"
+    },
+    {
+      "id": 45609911425,
+      "head_sha": "49e1c5ac9cdb8eb588323f4a5f88bc3a1978489e",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T12:02:04Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45609911425"
+    },
+    {
+      "id": 45610750485,
+      "head_sha": "24eed7a1561c76d43f1b3275636e97b9478dab1f",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T12:07:23Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45610750485"
+    },
+    {
+      "id": 45611503013,
+      "head_sha": "d96059bb83b5f59f7bf2bb3c56614d188c8619fc",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T12:12:11Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45611503013"
+    },
+    {
+      "id": 45612126900,
+      "head_sha": "3457ff7333d7f25cc452e3a37338e2a19c51c8b8",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T12:16:09Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45612126900"
+    },
+    {
+      "id": 45613368930,
+      "head_sha": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-25T12:23:56Z",
+      "html_url": "https://github.com/Punge089/classpulse/actions/runs/45613368930"
+    }
+  ]
+}

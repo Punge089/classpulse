@@ -5,6 +5,7 @@ import { ApiError } from "../lib/errors";
 import { parseId } from "../lib/params";
 import { currentRosterRate } from "../lib/sectionEligibility";
 import { summarize } from "../lib/summary";
+import { readIdentifiedSurveyCsv } from "../lib/surveyCsv";
 import { getPrisma } from "../prisma";
 
 export const ownerSummaryRouter = Router();
@@ -50,4 +51,16 @@ ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
       questions: aggregate.summary.questions
     }
   });
+}));
+
+ownerSummaryRouter.get("/:id/export.csv", asyncRoute(async (req, res) => {
+  const rawId = req.params.id;
+  const id = Number(rawId);
+  if (!/^\d+$/.test(rawId) || !Number.isSafeInteger(id) || id < 1 || id > 2147483647) {
+    throw new ApiError(400, "VALIDATION_ERROR", "Choose a valid survey");
+  }
+  const csv = await readIdentifiedSurveyCsv(req.user!.id, id, Object.keys(req.query).length > 0);
+  res.attachment(`classpulse-survey-${id}.csv`);
+  res.set("Cache-Control", "private, no-store");
+  res.type("text/csv").send(csv);
 }));

@@ -1,0 +1,4 @@
+# Preserve recorded evidence bytes on every platform after explicit capture
+# normalization; do not CRLF-convert source copies or screenshots.
+inputs/** -text
+screenshots/** -text

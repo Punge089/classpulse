@@ -342,6 +342,62 @@ A/Punge089 used Codex GPT-6.2 Sol under Issue #96 after B/book6349 reviewed the 
 
 A/Punge089 used Codex GPT-6.2 Sol to implement the F-08 owner closing-time form and respondent deadline display after preserving the browser RED. The form sends a canonical UTC timestamp from the browser's named local time zone and retains input on failed or stale writes. The existing server remains authoritative for submissions.
 
+## Lab7 report source assembly - Issue101, Student A,25November2026
+
+A/Punge089 used Codex GPT-6.1 Sol to reread all7 pages of the supplied Lab7 rubric and assemble a separate source-only report draft from pinned committed sources, actual GitHub C3/PR/CI metadata and complete sanitized current suite outputs. It embeds old/new relevant spec/contract/impact/12AC/15STS, actual pre-code dates/C3, original missing-behavior RED setup/assertions and unchanged-block proof, bounded actual code/migration, regression counts,3 previously inspected original CI screenshots,26 historical metric rows,15 fully paginated branch-CI outcomes, a57word interpretation and honest readiness/debt/retrospective/contribution gaps. B's existing metric/readiness files were inputs and were not changed. Current code review/main/deployed/accepted-baseline/PDF evidence remains PENDING; no final PDF or submission is claimed.
+
+The offline builder verifies36 input hashes;61 source/chronology/same-test/coverage/count/figure/draft-boundary checks pass. Two historical source copies receive declared trailing-whitespace/EOF normalization with original byte hashes preserved; scoped input attributes prevent Windows CRLF conversion. Report Markdown SHA256 uses canonical UTF8/LF, not a final PDF hash. A syntax/context mismatch in an uncommitted report patch and an unsupported wildcard/native-shell read were corrected before checks; neither was an application test or RED. No application/server/database/browser/cloud/LEB2 operation was run for report assembly, and no independent UAT or teammate approval was invented. Mandatory docs-branch CI remains separate from the pinned feature candidate's219server/10client/10browser result.
+
+A made every report-input text read explicitly UTF8 so the source capture/checker is portable across Windows locale defaults. Rebuilding/checking without a forced UTF8 interpreter flag still passes61/0/0; the report/input hashes and snapshot are unchanged. This is a document-tool portability correction, not an application/test change or new runtime execution.
+
+## Lab7 working PDF layout - Issue101 v0.2, Student A,25November2026
+
+A's Codex GPT-6.1 Sol rendered the already-pinned report source as a separate29page WORKING DRAFT PDF with A-D page ranges/internal links, repeated table headers, embedded fonts, visible NOT READY footer on every page and original CI screenshots on large evidence sheets. Evidence data/snapshot and all36input hashes are unchanged. The document source checker remains61/0/0; its banner expectation was versioned from source-only v0.1 to working-draft v0.2, without changing application/test expectations. Renderer/structural checks verify all29pages bounded/nonblank,4unique correct Part destinations, correct ranges and3 original screenshot pixel payloads. Two consecutive renders have identical PDF SHA80c977a1e9a5bcda9c0d5d24032d85d5df74308210ef09830bf1a5d7ca2abdbb; invariant PDF metadata is not an execution timestamp.
+
+A rendered every latest page with Poppler and visually inspected8 contact sheets covering all29pages, plus pages2/11/22/27 at full resolution. The initial31page layout had2unwanted blank pages from template switches and tight/orphaned headers; these were corrected before publishing. An initial validator assumed one link annotation per Part; wrapped text legitimately creates multiple rectangles to the same target, so it now verifies exactly the4unique correct destinations. Final inspection found no clipping/overlap/missing glyph or unwanted blank page. This is agent layout QA only, not B's final PDF review, human UAT, main/deployed acceptance or submission. No app/Lab6/B-owned metric, database, local server, cloud or deployment operation was performed.
+
+The first staged diff check correctly stopped before commit because Git detected the ASCII85 PDF as text and flagged valid PDF/xref trailing spaces. A clarified Issue101 Files and added narrow binary attributes for the two named Lab7 PDF artifacts, preserving the original PDF bytes/hash and preventing CRLF conversion. No PDF whitespace was edited, no application test/check was weakened, and no failed commit was made.
+
+## Lab 7 accepted baseline and staging report refresh - Issue #101, Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 to verify the accepted ClassPulse Lab 6 baseline and preserved old lifecycle blobs, read B's genuine review and staging merge of #92, match the GitHub CI checkout tree to the staging merge, and rebuild and inspect the 30-page Lab 7 draft. B/book6349 authored the C7 review and merged #92. D issued the Lab 6 decision, and C acknowledged it. A reconciled the report's evidence and prepared the release verification cases. The report work has 71 passing document checks. CI runtime counts cited for #92 are GitHub Actions readbacks. Lab 7 deployment, final PDF approval and submission remain pending.
+
+## Lab 7 interim metrics integration readback - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to verify B's interim metrics PR #114 staging merge and compare the reviewed CI checkout tree with the actual merge tree. A recorded the first attempt's TEST-179 timeout and skipped steps, as well as the full successful rerun, in the v0.4 Lab 7 draft. A rebuilt the document, ran 72 source checks and inspected the changed PDF pages after comparing all 30 page bodies to v0.3. The final deployed scope and B's final report review remain pending.
+
+## Lab 7 release evidence - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to reconcile the approved release PR, the actual main merge and its GitHub deployment logs. A recorded automation results separately from the pending Cloud Run revision and live application checks. B approved and merged the release.
+
+## Lab 7 Cloud Run and legacy response readback - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to read the existing Cloud Run revision and migration execution, compare image manifests, and read one older response using a synthetic account. A retained only the named release facts and checked values; no application business records or cloud settings were changed. Live checks requiring a dedicated reopened survey are pending.
+
+## Lab 7 live reopen and preservation - Issue #101, Student A, 28 November 2026
+
+A/Punge089 authorized Codex GPT-6.2 Sol to use the three synthetic roles for a dedicated deployed behavior check. A entered the shared credential privately. The run wrote only a new synthetic survey and its test response and lifecycle, then logged out all three accounts. A verified the before/after Cloud Run revision. The report embeds the sanitized receipt. B's independent report review and final metrics remain pending.
+
+## Final Lab 7 report candidate - Issue #101, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to review and merge B's #148 metrics, reconcile source hashes and package the Lab 7 report for exact PDF review. B authored the refresh. Independent Lab 7 UAT remains unrecorded, and B's final PDF review and the human submission receipt are tracked separately.
+
+## Lab 7 report v1.1 review - Student A, 28 November 2026
+
+Under Issue #101 / PR #104, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, Claude desktop app) to check the v1.0 Lab 7 PDF against the seven-page assignment and the supplied announcement, then fix supported gaps. Claude edited `tools/lab7-report/build_source.py` (plus version labels in the renderer/checkers and the C3 word-count check), pinned B's verbatim release PR #143 reviews as a new hashed input, and regenerated the report Markdown, evidence index and PDF. Changes: release scope and unrelated Sprint 2 work in B6, B's #143 review text, the C3 review time in Bangkok, an action-oriented C3 interpretation with owner, owners/actions for open readiness items, report submission separated from readiness, and a shorter Lab 6 paragraph in D2. B's metrics source files and all earlier pinned inputs are unchanged. No test result, decision, application code, main, deployment or LEB2 action changed. B reviews the exact PDF hash; A cannot approve or merge.
+
+## Sprint 3 F-12 CSV export contract — Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to draft the proposal and map FR-17, access controls, anonymous dependencies and the identified-only first slice to AC/TEST-240–248 on #138. B/book6349 is the requested independent reviewer. No feature tests or implementation were written and no runtime export was executed in this contract block.
+
+## F-12 identified CSV API slice - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol for the owner-only identified CSV route, bounded read snapshot and encoding. B/book6349 reviewed the contract, and advised using the already scoped owner-summary router after F-07 staged. The same two API assertions from test-only a819fbf ran locally against disposable PostgreSQL after the route was mounted. This checkpoint covers the identified API only. Client download, full answer-type coverage and anonymous export remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol for the F-12 owner browser download and retry and the deterministic API snapshot test. Playwright repeated TEST-247 unchanged from its retained failing checkpoint. The concurrent PostgreSQL check used a disposable database and real synthetic owner/respondent sessions. The D2 slice covers identified rating and single-choice surveys. Additional types and anonymous export remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol to address B's F-12 C7 by adding the agreed serializer unit file, capturing two actual RED cases and correcting spreadsheet-prefix handling. The same test cases passed with the full isolated server suite.
+
 ## Sprint 2 F-10 contract proposal — Student A, 27 November 2026
 
 A/Punge089 used Codex GPT-6 on #135 to draft the F-10 contract for FR-14 and FR-15 after B confirmed capacity for F-07. The proposal defines section ownership, shared admission rules, current-roster rate, historical preservation and test designs. A is the driver and B reviews. No new application/test code or runtime result is claimed. Shared implementation remains sequenced after F-07 and F-08.
