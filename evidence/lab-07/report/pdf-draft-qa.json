@@ -1,0 +1,297 @@
+{
+  "artifact": "output/pdf/ClassPulse-Lab7-DRAFT.pdf",
+  "sha256": "7658f970b9feb814402e60ff66bda18960241da4a407869cc883d5cd4618a519",
+  "sourceSha256UTF8LF": "cb20ea203ef2724f1f1af1dfacfcf84ae0782eba0e0d574bed763341338b0527",
+  "pages": 32,
+  "partStartPages": {
+    "A": 3,
+    "B": 14,
+    "C": 27,
+    "D": 30
+  },
+  "navigationDestinations": [
+    3,
+    14,
+    14,
+    27,
+    30
+  ],
+  "images": [
+    {
+      "page": 21,
+      "source": "reopened-owner-history.png",
+      "originalPixelsPreserved": true
+    },
+    {
+      "page": 22,
+      "source": "stale-tab-explicit-reload.png",
+      "originalPixelsPreserved": true
+    },
+    {
+      "page": 23,
+      "source": "eligible-student-confirmation.png",
+      "originalPixelsPreserved": true
+    }
+  ],
+  "pageChecks": [
+    {
+      "page": 1,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 146,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 2,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 336,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 3,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 474,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 4,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 606,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 5,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 765,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 6,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 724,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 7,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 576,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 8,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 488,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 9,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 529,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 10,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 316,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 11,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 329,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 12,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 392,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 13,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 146,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 14,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 311,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 15,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 230,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 16,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 464,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 17,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 316,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 18,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 353,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 19,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 520,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 20,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 342,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 21,
+      "width": 1190.551,
+      "height": 841.8898,
+      "words": 47,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 22,
+      "width": 1190.551,
+      "height": 841.8898,
+      "words": 56,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 23,
+      "width": 1190.551,
+      "height": 841.8898,
+      "words": 50,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 24,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 387,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 25,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 545,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 26,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 421,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 27,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 287,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 28,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 144,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 29,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 371,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 30,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 415,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 31,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 596,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    },
+    {
+      "page": 32,
+      "width": 595.2756,
+      "height": 841.8898,
+      "words": 149,
+      "outOfBoundsWords": 0,
+      "reportFooter": true
+    }
+  ],
+  "structuralResult": "PASS: all pages bounded/nonblank/versioned; all Part links/page ranges correct; original screenshot pixels preserved",
+  "visualQA": "PASS: rendered all 32 pages with PyMuPDF (pdftoppm unavailable on this machine) and inspected two 16-page contact sheets; full-size inspection of changed pages 2, 3, 25, 26, 29, 30, 31 and 32. No blank, clipped or overflowing page; page 32 holds the complete Reproducibility and provenance section.",
+  "releaseState": "Version 1.1 after B's change request on d217030; exact review and submission tracked separately"
+}

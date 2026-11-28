@@ -1,0 +1,225 @@
+{
+  "source": "8316f270cb11d47c75f848de3f3d40acefbe8def",
+  "revisionAtPriorConsoleReadback": "classpulse-00008-qlw",
+  "startedAtUtc": "2026-11-27T18:58:28.6558707+00:00",
+  "operator": "Student A authorized Codex-assisted test",
+  "result": "PASS",
+  "checks": [
+    {
+      "id": "auth-owner",
+      "expected": "HTTP 200 and expected synthetic role",
+      "actual": {
+        "expectedRole": true,
+        "status": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:55.7309291+00:00"
+    },
+    {
+      "id": "auth-respondent",
+      "expected": "HTTP 200 and expected synthetic role",
+      "actual": {
+        "expectedRole": true,
+        "status": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:55.9254751+00:00"
+    },
+    {
+      "id": "auth-other",
+      "expected": "HTTP 200 and expected synthetic role",
+      "actual": {
+        "expectedRole": true,
+        "status": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.1045648+00:00"
+    },
+    {
+      "id": "fixture-create",
+      "expected": "HTTP 201 and a new DRAFT",
+      "actual": {
+        "status": 201,
+        "state": "DRAFT"
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.2835686+00:00"
+    },
+    {
+      "id": "fixture-publish",
+      "expected": "HTTP 200 and PUBLISHED with first publication time",
+      "actual": {
+        "status": 200,
+        "state": "PUBLISHED",
+        "publishedAt": "2026-11-27T18:58:55.235Z"
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.3923311+00:00"
+    },
+    {
+      "id": "fixture-original-response",
+      "expected": "HTTP 201 with saved response ID",
+      "actual": {
+        "status": 201,
+        "responseId": 17
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.5389298+00:00"
+    },
+    {
+      "id": "fixture-original-summary",
+      "expected": "HTTP 200; count 1, rating average 4, bucket 4 count 1",
+      "actual": {
+        "summary": {
+          "count": 1,
+          "average": 4,
+          "distribution": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 1,
+            "5": 0
+          }
+        },
+        "status": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.6370963+00:00"
+    },
+    {
+      "id": "fixture-close",
+      "expected": "HTTP 200 and CLOSED with closure time",
+      "actual": {
+        "status": 200,
+        "closedAt": "2026-11-27T18:58:55.586Z",
+        "state": "CLOSED",
+        "version": 2
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.7408168+00:00"
+    },
+    {
+      "id": "L7-B11a",
+      "expected": "HTTP 200; PUBLISHED; original publishedAt; cleared closedAt; version +1",
+      "actual": {
+        "status": 200,
+        "closedAt": null,
+        "state": "PUBLISHED",
+        "publishedAt": "2026-11-27T18:58:55.235Z",
+        "version": 3
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.8343568+00:00"
+    },
+    {
+      "id": "L7-B11b",
+      "expected": "Fresh HTTP reads retain new state and one matching REOPEN event plus prior CLOSE and PUBLISH",
+      "actual": {
+        "surveyStatus": 200,
+        "reopen": [
+          {
+            "id": 3,
+            "version": 3,
+            "action": "REOPEN",
+            "fromStatus": "CLOSED",
+            "toStatus": "PUBLISHED",
+            "reason": "Lab 7 synthetic test of controlled reopening",
+            "occurredAt": "2026-11-27T18:58:55.686Z",
+            "previousClosedAt": "2026-11-27T18:58:55.586Z"
+          }
+        ],
+        "types": [
+          "REOPEN",
+          "CLOSE",
+          "PUBLISH"
+        ],
+        "historyStatus": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:56.9762576+00:00"
+    },
+    {
+      "id": "L7-B12a",
+      "expected": "Same response ID, timestamp, rating 4 and unchanged owner summary",
+      "actual": {
+        "summaryStatus": 200,
+        "responseId": 17,
+        "submittedAt": "2026-11-27T18:58:55.384Z",
+        "rating": 4,
+        "summary": {
+          "count": 1,
+          "average": 4,
+          "distribution": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 1,
+            "5": 0
+          }
+        },
+        "responseStatus": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:57.1257093+00:00"
+    },
+    {
+      "id": "L7-B12b",
+      "expected": "HTTP 409 ALREADY_RESPONDED",
+      "actual": {
+        "status": 409,
+        "code": "ALREADY_RESPONDED"
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:57.2182162+00:00"
+    },
+    {
+      "id": "L7-B12c",
+      "expected": "Other lecturer sees 404 on both read and reopen",
+      "actual": {
+        "reopen": 404,
+        "read": 404
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:57.3510929+00:00"
+    },
+    {
+      "id": "L7-B12 final",
+      "expected": "Rejected actions leave summary and history unchanged",
+      "actual": {
+        "unchanged": true,
+        "summaryStatus": 200,
+        "historyStatus": 200
+      },
+      "outcome": "PASS",
+      "utc": "2026-11-27T18:58:57.4962865+00:00"
+    }
+  ],
+  "logouts": [
+    {
+      "status": 204,
+      "role": "owner"
+    },
+    {
+      "status": 204,
+      "role": "respondent"
+    },
+    {
+      "status": 204,
+      "role": "other"
+    }
+  ],
+  "fixture": {
+    "surveyId": 30,
+    "title": "LAB7-SYNTHETIC-20261127-185856",
+    "courseCode": "CPE334",
+    "questionId": 68
+  },
+  "finishedAtUtc": "2026-11-27T18:58:57.7148801+00:00",
+  "postRunConsole": {
+    "revision": "classpulse-00008-qlw",
+    "trafficPercent": 100,
+    "platformManifestDigest": "sha256:60c23699db69a6badb92f50d638fed23885498d12b9e2e7f9a0d6e3a34ab2b0a",
+    "observedBangkok": "28 November 2026, approximately 01:59 ICT"
+  },
+  "scope": "Fresh authenticated API GETs within the owner session; no separate production browser or independent UAT claim. Synthetic survey retained for review."
+}

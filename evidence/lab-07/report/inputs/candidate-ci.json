@@ -1,0 +1,205 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-11-25T12:23:56Z",
+  "headSha": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+  "jobs": [
+    {
+      "completedAt": "2026-11-25T12:26:20Z",
+      "conclusion": "success",
+      "databaseId": 139202364446,
+      "name": "test-and-docker",
+      "startedAt": "2026-11-25T12:23:58Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-25T12:23:59Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-25T12:23:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:21Z",
+          "conclusion": "success",
+          "name": "Initialize containers",
+          "number": 2,
+          "startedAt": "2026-11-25T12:23:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:22Z",
+          "conclusion": "success",
+          "name": "Check out source",
+          "number": 3,
+          "startedAt": "2026-11-25T12:24:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:24Z",
+          "conclusion": "success",
+          "name": "Set up Node.js 24",
+          "number": 4,
+          "startedAt": "2026-11-25T12:24:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:31Z",
+          "conclusion": "success",
+          "name": "Install root dependencies",
+          "number": 5,
+          "startedAt": "2026-11-25T12:24:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:35Z",
+          "conclusion": "success",
+          "name": "Install server dependencies",
+          "number": 6,
+          "startedAt": "2026-11-25T12:24:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:38Z",
+          "conclusion": "success",
+          "name": "Install client dependencies",
+          "number": 7,
+          "startedAt": "2026-11-25T12:24:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:39Z",
+          "conclusion": "success",
+          "name": "Generate Prisma client",
+          "number": 8,
+          "startedAt": "2026-11-25T12:24:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:40Z",
+          "conclusion": "success",
+          "name": "Apply database migrations",
+          "number": 9,
+          "startedAt": "2026-11-25T12:24:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:24:42Z",
+          "conclusion": "success",
+          "name": "Seed synthetic test accounts",
+          "number": 10,
+          "startedAt": "2026-11-25T12:24:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:07Z",
+          "conclusion": "success",
+          "name": "Test server",
+          "number": 11,
+          "startedAt": "2026-11-25T12:24:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:09Z",
+          "conclusion": "success",
+          "name": "Test client",
+          "number": 12,
+          "startedAt": "2026-11-25T12:25:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:11Z",
+          "conclusion": "success",
+          "name": "Build server",
+          "number": 13,
+          "startedAt": "2026-11-25T12:25:09Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:15Z",
+          "conclusion": "success",
+          "name": "Build client",
+          "number": 14,
+          "startedAt": "2026-11-25T12:25:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:28Z",
+          "conclusion": "success",
+          "name": "Install Chromium for preserved and maintenance browser tests",
+          "number": 15,
+          "startedAt": "2026-11-25T12:25:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:29Z",
+          "conclusion": "success",
+          "name": "Reseed synthetic CI accounts for browser tests",
+          "number": 16,
+          "startedAt": "2026-11-25T12:25:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:51Z",
+          "conclusion": "success",
+          "name": "Test complete browser suite",
+          "number": 17,
+          "startedAt": "2026-11-25T12:25:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:25:52Z",
+          "conclusion": "success",
+          "name": "Retain browser evidence",
+          "number": 18,
+          "startedAt": "2026-11-25T12:25:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:26:18Z",
+          "conclusion": "success",
+          "name": "Build Docker image locally",
+          "number": 19,
+          "startedAt": "2026-11-25T12:25:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:26:18Z",
+          "conclusion": "success",
+          "name": "Post Set up Node.js 24",
+          "number": 36,
+          "startedAt": "2026-11-25T12:26:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:26:18Z",
+          "conclusion": "success",
+          "name": "Post Check out source",
+          "number": 37,
+          "startedAt": "2026-11-25T12:26:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:26:18Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 38,
+          "startedAt": "2026-11-25T12:26:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-25T12:26:18Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 39,
+          "startedAt": "2026-11-25T12:26:18Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/Punge089/classpulse/actions/runs/45613368930/job/139202364446"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-11-25T12:26:21Z",
+  "url": "https://github.com/Punge089/classpulse/actions/runs/45613368930"
+}
