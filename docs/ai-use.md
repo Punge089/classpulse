@@ -397,3 +397,15 @@ A/Punge089 used Codex GPT-6.2 Sol for the owner-only identified CSV route, bound
 A/Punge089 used Codex GPT-6.2 Sol for the F-12 owner browser download and retry and the deterministic API snapshot test. Playwright repeated TEST-247 unchanged from its retained failing checkpoint. The concurrent PostgreSQL check used a disposable database and real synthetic owner/respondent sessions. The D2 slice covers identified rating and single-choice surveys. Additional types and anonymous export remain open.
 
 A/Punge089 used Codex GPT-6.2 Sol to address B's F-12 C7 by adding the agreed serializer unit file, capturing two actual RED cases and correcting spreadsheet-prefix handling. The same test cases passed with the full isolated server suite.
+
+## Sprint 2 F-10 contract proposal — Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 on #135 to draft the F-10 contract for FR-14 and FR-15 after B confirmed capacity for F-07. The proposal defines section ownership, shared admission rules, current-roster rate, historical preservation and test designs. A is the driver and B reviews. No new application/test code or runtime result is claimed. Shared implementation remains sequenced after F-07 and F-08.
+
+## F-10 section eligibility and response rate - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to implement the section storage, owner configuration, current cohort admission, section snapshot, rate and UI after F-08 staged. B/book6349 approved the v1.0 contract. A retained the initial test failures, resolved generated-client compatibility with the preserved Lab 6 fixture, and tested isolated PostgreSQL and the client. Browser and required exact-head CI are recorded separately.
+
+A/Punge089 used Codex GPT-6.2 Sol to add the executable migration and owner UI tests requested by B in exact-head PR review. A ran both focused suites and built both applications before requesting re-review.
+
+A/Punge089 used Codex GPT-6.2 Sol to reproduce the owner-summary scale failure, retain the failing API test, and change how selection rows are loaded within the existing transaction. A reran the unchanged test after the correction.

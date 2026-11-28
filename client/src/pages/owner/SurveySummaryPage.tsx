@@ -32,6 +32,7 @@ type Summary = {
   surveyId: number;
   status: string;
   responseCount: number;
+  responseRate?: { respondedEligible: number; eligible: number; percent: number | null };
   questions: Array<RatingQuestionSummary | ChoiceQuestionSummary | MultiChoiceQuestionSummary | TextQuestionSummary>;
 };
 
@@ -122,6 +123,15 @@ export function SurveySummaryPage() {
           <p className="cp-card p-3 mt-3" aria-label={`Response count: ${summary.responseCount}`}>
             <strong>Responses:</strong> {summary.responseCount}
           </p>
+          {summary.responseRate && (
+            <section className="cp-card p-3 mb-3" aria-labelledby="rate-heading">
+              <h2 id="rate-heading" className="h5">Current roster response rate</h2>
+              {summary.responseRate.percent === null ? <p>No eligible respondents</p> : (
+                <p>{summary.responseRate.percent}% · {summary.responseRate.respondedEligible} of {summary.responseRate.eligible}</p>
+              )}
+              <p className="cp-muted mb-0">Roster changes can change this rate. Saved responses remain in the totals above.</p>
+            </section>
+          )}
           {summary.responseCount === 0 && <p className="cp-muted">No responses yet</p>}
           {summary.status !== "DRAFT" && (
             summary.questions.some(question => question.type === "TEXT" || question.type === "MULTI_CHOICE")

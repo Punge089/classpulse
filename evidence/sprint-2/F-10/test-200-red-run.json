@@ -1,0 +1,18 @@
+{
+  "command": "npm test",
+  "working_directory": "server",
+  "test": "TEST-200",
+  "expected": "HTTP 200",
+  "actual": "HTTP 404",
+  "run": "https://github.com/Punge089/classpulse/actions/runs/46104827086",
+  "pull_request_head": "6df822f0b22e66f28d0f1ef9797464af84fa1bbc",
+  "base": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+  "checkout": "11b6e33e32a9cb9ef02bb64f7aeb64caa37b6a57",
+  "exit_code": 1,
+  "tests": {
+    "passed": 272,
+    "failed": 1,
+    "skipped": 0
+  },
+  "workflow_steps_skipped": 8
+}

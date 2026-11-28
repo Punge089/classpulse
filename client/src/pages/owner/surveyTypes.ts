@@ -5,6 +5,7 @@ export interface Course {
   id: number;
   code: string;
   title: string;
+  sections?: Array<{ id: number; code: string; label: string }>;
 }
 
 export interface SurveyListItem {
@@ -39,6 +40,7 @@ export interface SurveyDetail {
   createdAt: string;
   updatedAt: string;
   questions: SurveyQuestion[];
+  sectionIds?: number[];
 }
 
 export interface SurveyLifecycleEvent {

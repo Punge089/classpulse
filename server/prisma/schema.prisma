@@ -70,16 +70,35 @@ model Course {
   owner       User         @relation(fields: [ownerId], references: [id])
   enrollments Enrollment[]
   surveys     Survey[]
+  sections    CourseSection[]
+}
+
+model CourseSection {
+  id          Int             @id @default(autoincrement())
+  courseId    Int
+  code        String
+  label       String
+  course      Course          @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  enrollments Enrollment[]   @ignore
+  targets     SurveySection[]
+  responses   Response[]
+
+  @@unique([courseId, code])
+  @@unique([id, courseId])
 }
 
 model Enrollment {
-  id       Int    @id @default(autoincrement())
-  courseId Int
-  userId   Int
-  course   Course @relation(fields: [courseId], references: [id])
-  user     User   @relation(fields: [userId], references: [id])
+  id        Int            @id @default(autoincrement())
+  courseId  Int
+  userId    Int
+  /// Queried only by F-10 to preserve the older generated-client enrollment projection.
+  sectionId Int?          @ignore
+  course    Course         @relation(fields: [courseId], references: [id])
+  user      User           @relation(fields: [userId], references: [id])
+  section   CourseSection? @relation(fields: [sectionId, courseId], references: [id, courseId], onDelete: Restrict) @ignore
 
   @@unique([courseId, userId])
+  @@index([sectionId, courseId])
 }
 
 model Survey {
@@ -101,6 +120,20 @@ model Survey {
   questions       Question[]
   responses       Response[]
   lifecycleEvents SurveyLifecycleEvent[]
+  sectionTargets  SurveySection[]
+
+  @@unique([id, courseId])
+}
+
+model SurveySection {
+  surveyId  Int
+  courseId  Int
+  sectionId Int
+  survey    Survey        @relation(fields: [surveyId, courseId], references: [id, courseId], onDelete: Cascade)
+  section   CourseSection @relation(fields: [sectionId, courseId], references: [id, courseId], onDelete: Restrict)
+
+  @@id([surveyId, sectionId])
+  @@index([sectionId, courseId])
 }
 
 model SurveyLifecycleEvent {
@@ -149,15 +182,18 @@ model QuestionOption {
 }
 
 model Response {
-  id           Int      @id @default(autoincrement())
-  surveyId     Int
-  respondentId Int
-  submittedAt  DateTime @default(now())
-  survey       Survey   @relation(fields: [surveyId], references: [id])
-  respondent   User     @relation(fields: [respondentId], references: [id])
-  answers      Answer[]
+  id                    Int            @id @default(autoincrement())
+  surveyId              Int
+  respondentId          Int
+  submittedAt           DateTime       @default(now())
+  sectionIdAtSubmission Int?
+  survey                Survey         @relation(fields: [surveyId], references: [id])
+  respondent            User           @relation(fields: [respondentId], references: [id])
+  sectionAtSubmission   CourseSection? @relation(fields: [sectionIdAtSubmission], references: [id], onDelete: Restrict)
+  answers               Answer[]
 
   @@unique([surveyId, respondentId])
+  @@index([sectionIdAtSubmission])
 }
 
 model Answer {

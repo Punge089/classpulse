@@ -233,6 +233,6 @@ describe("F-03 lists", () => {
     const owner = await ownerAgent();
     const res = await owner.get("/api/owner/courses");
     expect(res.status).toBe(200);
-    expect(res.body.courses).toEqual([{ id: f.cpe334.id, code: "CPE334", title: f.cpe334.title }]);
+    expect(res.body.courses).toEqual([{ id: f.cpe334.id, code: "CPE334", title: f.cpe334.title, sections: [] }]);
   });
 });

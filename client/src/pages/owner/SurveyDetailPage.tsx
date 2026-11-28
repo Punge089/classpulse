@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ApiClientError, apiFetch } from "../../api";
 import { StatusBadge } from "../../components/StatusBadge";
 import { PulseLine } from "../../components/pulse/PulseLine";
-import type { SurveyDetail, SurveyLifecycleEvent } from "./surveyTypes";
+import type { Course, SurveyDetail, SurveyLifecycleEvent } from "./surveyTypes";
 
 function localClosingTime(closesAt?: string | null): string {
   if (!closesAt) return "";
@@ -16,6 +16,117 @@ function localClosingTime(closesAt?: string | null): string {
   const seconds = second === "00" && !milliseconds ? "" : `:${second}`;
   const fraction = milliseconds ? `.${milliseconds}` : "";
   return `${datePart}T${hour}:${minute}${seconds}${fraction}`;
+}
+
+function SurveyAudience({ survey, busy, onSaved, onReload }: {
+  survey: SurveyDetail;
+  busy: boolean;
+  onSaved: (next: SurveyDetail) => void;
+  onReload: () => Promise<void>;
+}) {
+  const [sections, setSections] = useState<NonNullable<Course["sections"]> | null>(null);
+  const [all, setAll] = useState((survey.sectionIds?.length ?? 0) === 0);
+  const [selected, setSelected] = useState(survey.sectionIds ?? []);
+  const [saving, setSaving] = useState(false);
+  const [stale, setStale] = useState(false);
+  const [error, setError] = useState("");
+  const [loadError, setLoadError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  const draft = survey.status === "DRAFT";
+
+  useEffect(() => {
+    if (!draft) return;
+    let cancelled = false;
+    setLoadError("");
+    apiFetch<{ courses: Course[] }>("/api/owner/courses")
+      .then(({ courses }) => {
+        if (!cancelled) setSections(courses.find(course => course.id === survey.courseId)?.sections ?? []);
+      })
+      .catch(() => { if (!cancelled) setLoadError("Could not load course sections."); });
+    return () => { cancelled = true; };
+  }, [draft, survey.courseId, attempt]);
+
+  function reset() {
+    setAll((survey.sectionIds?.length ?? 0) === 0);
+    setSelected(survey.sectionIds ?? []);
+    setError("");
+  }
+
+  async function saveAudience(event: FormEvent) {
+    event.preventDefault();
+    if (busy || saving || stale || sections === null) return;
+    if (!all && selected.length === 0) {
+      setError("Choose at least one section.");
+      return;
+    }
+    setSaving(true);
+    setError("");
+    try {
+      const { survey: updated } = await apiFetch<{ survey: SurveyDetail }>(`/api/owner/surveys/${survey.id}/sections`, {
+        method: "PUT",
+        body: JSON.stringify({ expectedUpdatedAt: survey.updatedAt, sectionIds: all ? [] : selected })
+      });
+      onSaved(updated);
+    } catch (caught) {
+      if (caught instanceof ApiClientError) {
+        setError(caught.details?.find(field => field.field === "sectionIds")?.message ?? caught.message);
+        if (caught.code === "STALE_SURVEY") setStale(true);
+      } else {
+        setError("Could not save the audience. Try again.");
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <section className="cp-card p-3 mb-3" aria-labelledby="audience-heading">
+      <h2 id="audience-heading" className="h5">Survey audience</h2>
+      {!draft ? (
+        <p className="mb-0">{survey.sectionIds?.length ? "Restricted to selected sections" : "All sections"}</p>
+      ) : (
+        <form onSubmit={saveAudience}>
+          {loadError ? (
+            <div role="alert">
+              <p>{loadError}</p>
+              <button type="button" className="btn btn-outline-secondary" onClick={() => setAttempt(value => value + 1)}>Retry sections</button>
+            </div>
+          ) : sections === null ? <p role="status">Loading course sections…</p> : (
+            <fieldset disabled={busy || saving}>
+              <legend className="visually-hidden">Audience type</legend>
+              <label className="d-block">
+                <input type="radio" name="audience" className="form-check-input me-2" checked={all}
+                  onChange={() => setAll(true)} />All sections
+              </label>
+              <label className="d-block">
+                <input type="radio" name="audience" className="form-check-input me-2" checked={!all}
+                  disabled={sections.length === 0} onChange={() => setAll(false)} />Selected sections
+              </label>
+              {!sections.length && <p className="cp-muted">This course has no sections.</p>}
+              {!all && sections.map(section => (
+                <label key={section.id} className="d-block">
+                  <input type="checkbox" className="form-check-input me-2" checked={selected.includes(section.id)}
+                    onChange={event => {
+                      const checked = event.target.checked;
+                      setSelected(values => checked ? [...values, section.id] : values.filter(id => id !== section.id));
+                    }} />{section.code} · {section.label}
+                </label>
+              ))}
+              <div className="d-flex gap-2 mt-2">
+                <button type="submit" className="btn btn-primary" disabled={stale}>
+                  {saving ? "Saving audience…" : "Save audience"}
+                </button>
+                <button type="button" className="btn btn-outline-secondary" onClick={reset}>Cancel audience changes</button>
+              </div>
+            </fieldset>
+          )}
+          {error && <p role="alert" className="text-danger mt-2 mb-0">{error}</p>}
+          {stale && <button type="button" className="btn btn-outline-secondary mt-2" disabled={busy || saving}
+            onClick={() => void onReload()}>Reload audience</button>}
+        </form>
+      )}
+    </section>
+  );
 }
 
 export function SurveyDetailPage() {
@@ -230,6 +341,9 @@ export function SurveyDetailPage() {
         )}
         <Link to="/owner" className="btn btn-link">Back to your surveys</Link>
       </div>
+
+      <SurveyAudience key={`${survey.id}:${survey.updatedAt}`} survey={survey} busy={sending}
+        onSaved={setSurvey} onReload={reloadSurvey} />
 
       <section className="cp-card p-3 mb-3" aria-labelledby="schedule-heading">
         <h2 className="h5" id="schedule-heading">Response deadline</h2>
