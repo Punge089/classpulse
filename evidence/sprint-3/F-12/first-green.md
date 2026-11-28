@@ -19,3 +19,7 @@ Source `53df47cdd88259b5f4edcf5d4bdb960b6fe29867`, staging `bd77c46`. [CI 461088
 
 B's review 6096345948 identified missing unit coverage for AC-244/245. Test-only head `78124b7`, base `09fa1e8`, checkout `38c1bb8` in [CI 46118916139](https://github.com/Punge089/classpulse/actions/runs/46118916139). Server npm test had 312 passed, two expected failures and zero skipped tests. The decoded fields were missing a protective apostrophe when a tab followed leading whitespace and when a formula followed a zero-width format control. Ordering, supported answer values, Thai text, CRLF, and the direct marker cases already passed.
 Downstream workflow steps skipped: 8.
+
+## C7 serializer follow-up GREEN
+
+On the corrected application source, the unchanged 11 CSV unit tests passed. Disposable PostgreSQL migration, server build and full server npm test passed, 314 total with zero failures/skips. Protection covers leading tab/CR/LF after whitespace, formula markers after whitespace and control/format characters, with visible text and CSV escaping unchanged. The initial local setup stopped at build because the generated Prisma client predated F-08; regenerate restored the exact red behavior before the fix. No test was weakened.

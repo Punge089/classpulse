@@ -9,7 +9,7 @@ const columns = [
 ];
 
 function csvCell(text: string): string {
-  const protectedText = /^[\t\r\n]/.test(text) || /^[\s\p{Cc}]*[=+\-@]/u.test(text)
+  const protectedText = /^[\s\p{Cc}\p{Cf}]*[=+\-@\t\r\n]/u.test(text)
     ? "'" + text
     : text;
   return /[",\r\n]/.test(protectedText) ? '"' + protectedText.replaceAll('"', '""') + '"' : protectedText;
