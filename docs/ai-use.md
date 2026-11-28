@@ -321,3 +321,28 @@ B/book6349 used Codex GPT-6.2 Sol to synchronize F-07 with current sprint-2-stag
 ## F-07 null-character validation follow-up — Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6.2 Sol to add TEST-143 and TEST-145 for PostgreSQL-incompatible U+0000 text answers. Test-only commit `8b10f9a` and CI run `46105990128` recorded both expected failures: server 292 passed, 2 failed, 0 skipped; migrations passed and later workflow steps were skipped after the RED. Fix commit `60647da` rejects NUL with a field-level 400 before persistence. The focused validator suite passed 22/22 locally. Exact-code-head CI run `46106476724` tested merge `ed44a88` on staging `ac630fb`: server 294/294, client 27/27, browser 13/13 (334 total), 0 failed/skipped; migrations, both builds and Docker passed. Local database-backed execution remains blocked because this worktree lacks a configured separate `classpulse_test` database. No tests were disabled, focused or weakened.
+
+## Lab 7 and Sprint 2 coordination - Student A, 25 November 2026
+
+Under Issue #86, A's Codex GPT-6 inspected the two supplied assignment PDFs, theme 10 in Group Work Specifications, current staging and the active Lab 6 context; created scoped Issues #86-90; and prepared isolated-worktree ownership, source provenance, rubric/evidence plans and handoff drafts. The newer announcement removing individual instructor/TA approval is attributed to text supplied by A; its publisher/date are not independently verified. The attached image depicts the original highlighted paragraph. B allocation/participation, C3 and PR approval remain pending, not fabricated. No application test, feature implementation, live UAT, cloud mutation, release or submission is claimed by this documentation change. A may prepare multiple Issue contracts in this coordinating chat under the user's explicit instruction while retaining separate worktrees and file scopes. B works under B's own authorization.
+
+At A's explicit correction on25November2026, Codex separated the planning/report content: PR91 now contains only D2 plan/handoff/evidence documents; Lab7 source provenance and its own plan/checklist move to Issue94 in a separate branch/PR. The earlier coordination commit remains history, not a combined submission. No PDFs have been produced or submitted.
+
+
+## D2 plan reference upkeep - Student A,25November2026
+
+Under Issue86, A's Codex GPT-6.1 Sol updated only D2 execution-plan rows/version history to link the now-scoped F08 Issue96/draftPR97 and F14 Issue98/draftPR99 contracts. These contracts are proposed and await B C3; measurements/new tests/implementation remain unexecuted. Separately, ignored work87 dependency preparation/build logs record source8017c91 and actual Node24/npm11/PostgreSQL18 client tools; no database connection or product RED/GREEN/acceptance is claimed. No code, Lab6 evidence, Lab7 report, review verdict or deployment is changed by this upkeep.
+
+A's Codex GPT-6.1 Sol imported current staging documentation into the isolated D2 planning branch, preserving all incoming Lab6/B metrics and both AI disclosure suffixes. No application/test or Lab6 evidence content was edited; plan progress is recorded separately from feature/release acceptance.
+
+## D2 planning checkpoint and F09 contract review - Student A,25November2026
+
+A's Codex GPT-6.1 Sol reviewed B's exact F09 contract f4a5db8 in isolated detached review88:20AC/20STS, no uncovered IDs and only2document changes. Current detail source already scopes by respondent ownership without enrollment/status, so A agreed retained own history after unenrollment while requiring explicit mandatory policy, cursor/query boundary and client failure/retry test designs before test permission. Actual C3 clarification request7163876159 and three Markdown hardbreak diff findings are recorded; no B source, feature test/runtime, DB/server/cloud or approval was fabricated.
+
+A updated the separate D2 execution/handoff plan to v1.3 with genuine B C3/C2 work, exact feature versus documentation CI distinctions, the available isolated CI lane and remaining shared-file/review/release gates. B's proposed later allocations and formal planning review remain pending; Lab7 report101/104 stays separate and does not replace D2 assessed material. Latest staging documentation was imported with both AI suffixes and all Lab6/B evidence preserved; no application/test or final release changed.
+
+A/Punge089 used Codex GPT-6 on #86 to resolve the staging disclosure conflict and update the D2-only plans with actual F-06/F-09 evidence, B's F-07 ownership and unassigned F-10 implementation. A preserved earlier disclosures and the approved previous plan in Git history. This revision changes planning and evidence status only.
+
+## D2 plan review follow-up - Issue #86, Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to address B's PR #91 review, preserve both students' staging disclosure history, and update the D2-only plan to observed feature, review and interim release evidence. This revision changes documentation only. B reviews and merges the refreshed planning head after CI.
