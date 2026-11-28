@@ -14,3 +14,7 @@ Second run, after extending that exact expected object:
 CI, client controls, the remaining deadline and concurrency cases, and peer review remain separate.
 
 Browser test-only RED: source a26be1f, staging bd77c46, actual checkout d72bec3, CI 46109335644. TEST-193 created the draft and reached the schedule form, then failed at the absent "Closing time" field. Browser 13 passed, 1 expected failure, 0 skipped tests, 2 downstream steps skipped.
+
+Browser GREEN: source 198072b, staging bd77c46, CI 46109707085 tested e49ec59. Server npm test 297, client npm test 27, complete Chromium 14. Zero failures or skips. TEST-193 passed unchanged: local Bangkok time round-tripped through UTC, reloaded, stayed fixed on publish, and could be cleared after close and before reopen.
+
+Additional server verification on the same application source: local disposable PostgreSQL and server npm test passed 300/300, 0 failed/skipped. TEST-184/195 verified exact-deadline publication/reopen, reason and stale-version precedence, and no lifecycle writes on rejection. TEST-186 verified 201 one millisecond before the cutoff, 409 at/after it, expired list/detail exclusion, and preserved saved history/summary. TEST-188 observed the waiting SQL lock, advanced the application clock to the deadline, and confirmed the post-lock check denied with zero saved responses. Exact-current-head CI covers these additional tests.
