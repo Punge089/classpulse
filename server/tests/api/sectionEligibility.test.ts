@@ -89,3 +89,63 @@ test("TEST-204 preserves role and ownership denials before validating section ta
   expect(foreign.body).toEqual(missing.body);
   expect(await prisma.survey.findUniqueOrThrow({ where: { id: draft.id } })).toEqual(before);
 });
+
+test("TEST-201/205/206 restricts sections and preserves the section captured with a response", async () => {
+  const courseId = fixture.cpe334.id;
+  const [alpha, beta, foreign] = await Promise.all([
+    prisma.courseSection.create({ data: { courseId, code: "A", label: "Alpha" } }),
+    prisma.courseSection.create({ data: { courseId, code: "B", label: "Beta" } }),
+    prisma.courseSection.create({ data: { courseId: fixture.cpe231.id, code: "A", label: "Different course" } })
+  ]);
+  const assign = (userId: number, sectionId: number) => prisma.$executeRaw`
+    UPDATE "Enrollment" SET "sectionId" = ${sectionId} WHERE "courseId" = ${courseId} AND "userId" = ${userId}`;
+  await assign(fixture.student1.id, alpha.id);
+  await assign(fixture.student2.id, beta.id);
+  const draft = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const target = `/api/owner/surveys/${draft.id}`;
+  const ownedCourses = await owner.get("/api/owner/courses");
+  expect(ownedCourses.body.courses).toEqual([{
+    id: courseId, code: fixture.cpe334.code, title: fixture.cpe334.title,
+    sections: [{ id: alpha.id, code: "A", label: "Alpha" }, { id: beta.id, code: "B", label: "Beta" }]
+  }]);
+
+  const changeAudience = (sectionIds: number[]) => owner.put(`${target}/sections`).send({
+    sectionIds, expectedUpdatedAt: draft.updatedAt.toISOString()
+  });
+  const invalid = await changeAudience([foreign.id]);
+  expect([invalid.status, invalid.body.error.code]).toEqual([400, "VALIDATION_ERROR"]);
+  expect(invalid.text).not.toContain(foreign.label);
+  const configured = await changeAudience([alpha.id]);
+  expect(configured.status).toBe(200);
+  expect(configured.body.survey.sectionIds).toEqual([alpha.id]);
+  const published = await owner.post(`${target}/publish`);
+  expect(published.status).toBe(200);
+  expect(published.body.survey.sectionIds).toEqual([alpha.id]);
+
+  const eligible = await loginAs(app, fixture.student1.email);
+  const ineligible = await loginAs(app, fixture.student2.email);
+  const survey = `/api/surveys/${draft.id}`;
+  expect((await eligible.get("/api/surveys")).body.surveys.map((row: { id: number }) => row.id)).toContain(draft.id);
+  expect((await ineligible.get("/api/surveys")).body.surveys.map((row: { id: number }) => row.id)).not.toContain(draft.id);
+  expect((await ineligible.get(survey)).status).toBe(404);
+  const [rating, choice] = draft.questions;
+  const body = { answers: [
+    { questionId: rating.id, ratingValue: 3 },
+    { questionId: choice.id, optionId: choice.options[0].id }
+  ] };
+  const rejected = await ineligible.post(`${survey}/responses`).send(body);
+  expect([rejected.status, rejected.body.error.code]).toEqual([403, "NOT_ELIGIBLE"]);
+  const saved = await eligible.post(`${survey}/responses`).send(body);
+  expect(saved.status).toBe(201);
+
+  await assign(fixture.student1.id, beta.id);
+  expect((await eligible.get(survey)).status).toBe(404);
+  expect((await eligible.get(`/api/responses/${saved.body.response.id}`)).status).toBe(200);
+  expect(await prisma.response.findUniqueOrThrow({ where: { id: saved.body.response.id } }))
+    .toMatchObject({ sectionIdAtSubmission: alpha.id });
+  const summary = await owner.get(`${target}/summary`);
+  expect(summary.body.summary).toMatchObject({
+    responseCount: 1, responseRate: { respondedEligible: 0, eligible: 0, percent: null }
+  });
+});

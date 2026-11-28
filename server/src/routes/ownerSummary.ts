@@ -3,6 +3,7 @@ import { Prisma } from "@prisma/client";
 import { asyncRoute } from "../lib/asyncRoute";
 import { ApiError } from "../lib/errors";
 import { parseId } from "../lib/params";
+import { currentRosterRate } from "../lib/sectionEligibility";
 import { summarize } from "../lib/summary";
 import { getPrisma } from "../prisma";
 
@@ -17,6 +18,7 @@ ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
       select: {
         id: true,
         status: true,
+        courseId: true,
         questions: {
           orderBy: { position: "asc" },
           include: { options: { orderBy: { position: "asc" } } }
@@ -24,7 +26,7 @@ ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
       }
     });
     if (!survey) throw new ApiError(404, "NOT_FOUND", "Survey not found");
-    const [responseCount, rows] = await Promise.all([
+    const [responseCount, rows, responseRate] = await Promise.all([
       tx.response.count({ where: { surveyId: survey.id } }),
       tx.answer.findMany({
         where: { question: { surveyId: survey.id } },
@@ -32,10 +34,11 @@ ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
           questionId: true, ratingValue: true, optionId: true, textValue: true,
           selections: { select: { optionId: true } }
         }
-      })
+      }),
+      currentRosterRate(tx, survey.id, survey.courseId)
     ]);
     const answers = rows.map(row => ({ ...row, optionIds: row.selections.map(selection => selection.optionId) }));
-    return { survey, summary: summarize(survey.questions, answers, responseCount) };
+    return { survey, summary: summarize(survey.questions, answers, responseCount), responseRate };
   }, { isolationLevel: Prisma.TransactionIsolationLevel.RepeatableRead });
 
   res.json({
@@ -43,6 +46,7 @@ ownerSummaryRouter.get("/:id/summary", asyncRoute(async (req, res) => {
       surveyId: aggregate.survey.id,
       status: aggregate.survey.status,
       responseCount: aggregate.summary.responseCount,
+      responseRate: aggregate.responseRate,
       questions: aggregate.summary.questions
     }
   });

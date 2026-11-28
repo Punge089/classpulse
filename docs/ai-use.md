@@ -345,3 +345,7 @@ A/Punge089 used Codex GPT-6.2 Sol to implement the F-08 owner closing-time form 
 ## Sprint 2 F-10 contract proposal — Student A, 27 November 2026
 
 A/Punge089 used Codex GPT-6 on #135 to draft the F-10 contract for FR-14 and FR-15 after B confirmed capacity for F-07. The proposal defines section ownership, shared admission rules, current-roster rate, historical preservation and test designs. A is the driver and B reviews. No new application/test code or runtime result is claimed. Shared implementation remains sequenced after F-07 and F-08.
+
+## F-10 section eligibility and response rate - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to implement the section storage, owner configuration, current cohort admission, section snapshot, rate and UI after F-08 staged. B/book6349 approved the v1.0 contract. A retained the initial test failures, resolved generated-client compatibility with the preserved Lab 6 fixture, and tested isolated PostgreSQL and the client. Browser and required exact-head CI are recorded separately.

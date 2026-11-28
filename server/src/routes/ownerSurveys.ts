@@ -3,6 +3,7 @@ import type { Prisma } from "@prisma/client";
 import { asyncRoute } from "../lib/asyncRoute";
 import { ApiError } from "../lib/errors";
 import { parseId } from "../lib/params";
+import { parseSectionTarget } from "../lib/sectionEligibility";
 import { nextSurveyUpdateTime, parseScheduleInput, scheduleAvailability } from "../lib/surveySchedule";
 import { nextStatus, type SurveyAction } from "../lib/surveyLifecycle";
 import { parseCourseId, validateSurveyInput } from "../lib/surveyValidation";
@@ -11,6 +12,7 @@ import { parseLifecycleQuery, parseReopenInput } from "../lib/surveyReopenValida
 
 const surveyInclude = {
   course: { select: { code: true } },
+  sectionTargets: { select: { sectionId: true }, orderBy: { sectionId: "asc" } },
   questions: { orderBy: { position: "asc" }, include: { options: { orderBy: { position: "asc" } } } }
 } satisfies Prisma.SurveyInclude;
 type SurveyRow = Prisma.SurveyGetPayload<{ include: typeof surveyInclude }>;
@@ -27,6 +29,7 @@ function toSurveyDto(survey: SurveyRow) {
     status: survey.status,
     statusVersion: survey.statusVersion,
     updatedAt: survey.updatedAt,
+    sectionIds: survey.sectionTargets.map(target => target.sectionId),
     publishedAt: survey.publishedAt,
     closedAt: survey.closedAt,
     ...scheduleAvailability(survey.status, survey.closesAt, new Date()),
@@ -106,7 +109,10 @@ ownerSurveysRouter.get("/courses", asyncRoute(async (req, res) => {
   const courses = await getPrisma().course.findMany({
     where: { ownerId: req.user!.id },
     orderBy: { code: "asc" },
-    select: { id: true, code: true, title: true }
+    select: {
+      id: true, code: true, title: true,
+      sections: { orderBy: [{ code: "asc" }, { id: "asc" }], select: { id: true, code: true, label: true } }
+    }
   });
   res.json({ courses });
 }));
@@ -128,6 +134,42 @@ ownerSurveysRouter.get("/surveys", asyncRoute(async (req, res) => {
       ...scheduleAvailability(s.status, s.closesAt, now)
     }))
   });
+}));
+
+ownerSurveysRouter.put("/surveys/:id/sections", asyncRoute(async (req, res) => {
+  const id = parseId(req.params.id);
+  const ownerId = req.user!.id;
+  const result = await getPrisma().$transaction(async tx => {
+    const locked = await tx.$queryRaw<{ id: number }[]>`
+      SELECT "id" FROM "Survey" WHERE "id" = ${id} AND "ownerId" = ${ownerId} FOR UPDATE`;
+    if (locked.length !== 1) throw notFound();
+    const survey = await tx.survey.findFirstOrThrow({ where: { id, ownerId } });
+    const { sectionIds, expectedUpdatedAt } = parseSectionTarget(req.body);
+    const matching = await tx.courseSection.count({ where: { courseId: survey.courseId, id: { in: sectionIds } } });
+    if (matching !== sectionIds.length) {
+      throw new ApiError(400, "VALIDATION_ERROR", "Check the selected sections", [
+        { field: "sectionIds", message: "Choose sections from this course" }
+      ]);
+    }
+    if (survey.updatedAt.getTime() !== expectedUpdatedAt.getTime()) {
+      throw new ApiError(409, "STALE_SURVEY", "The survey changed; reload and explicitly try again");
+    }
+    if (survey.status !== "DRAFT") {
+      throw new ApiError(409, "INVALID_TRANSITION", "Only draft surveys can change their audience");
+    }
+    await tx.surveySection.deleteMany({ where: { surveyId: id } });
+    if (sectionIds.length) {
+      await tx.surveySection.createMany({
+        data: sectionIds.map(sectionId => ({ surveyId: id, courseId: survey.courseId, sectionId }))
+      });
+    }
+    return tx.survey.update({
+      where: { id },
+      data: { updatedAt: nextSurveyUpdateTime(survey.updatedAt, new Date()) },
+      include: surveyInclude
+    });
+  });
+  res.json({ survey: toSurveyDto(result) });
 }));
 
 ownerSurveysRouter.put("/surveys/:id/schedule", asyncRoute(async (req, res) => {

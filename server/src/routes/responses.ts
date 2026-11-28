@@ -130,7 +130,7 @@ surveyResponsesRouter.post("/:surveyId/responses", asyncRoute(async (req, res) =
           courseId: true,
           status: true,
           closesAt: true,
-          course: { select: { enrollments: { where: { userId }, select: { id: true }, take: 1 } } },
+          sectionTargets: { select: { sectionId: true } },
           questions: {
             orderBy: { position: "asc" },
             select: {
@@ -141,8 +141,15 @@ surveyResponsesRouter.post("/:surveyId/responses", asyncRoute(async (req, res) =
         }
       });
       if (!survey) throw notFound();
-      if (survey.course.enrollments.length === 0) {
-        throw new ApiError(403, "NOT_ELIGIBLE", "You are not enrolled in this course");
+      const [enrollment] = await tx.$queryRaw<{ sectionId: number | null }[]>`
+        SELECT e."sectionId" FROM "Enrollment" e
+        JOIN "User" u ON u."id" = e."userId"
+        WHERE e."courseId" = ${survey.courseId} AND e."userId" = ${userId}
+          AND u."isActive" = true AND u."role" = 'RESPONDENT'
+        FOR UPDATE OF e`;
+      if (!enrollment || (survey.sectionTargets.length > 0 &&
+          !survey.sectionTargets.some(target => target.sectionId === enrollment.sectionId))) {
+        throw new ApiError(403, "NOT_ELIGIBLE", "You are not eligible for this survey");
       }
       if (!scheduleAvailability(survey.status, survey.closesAt, new Date()).acceptingResponses) {
         throw new ApiError(409, "SURVEY_NOT_OPEN", "This survey is not open for responses");
@@ -157,6 +164,7 @@ surveyResponsesRouter.post("/:surveyId/responses", asyncRoute(async (req, res) =
         data: {
           surveyId: survey.id,
           respondentId: userId,
+          sectionIdAtSubmission: enrollment.sectionId,
           answers: {
             create: validated.value.map(answer => ({
               questionId: answer.questionId,
