@@ -150,6 +150,7 @@ export function SurveyDetailPage() {
       {actionError && <div role="alert" className="alert alert-danger mt-3">{actionError}</div>}
       {stale && <button type="button" className="btn btn-outline-secondary" disabled={sending} onClick={() => void reloadSurvey()}>Reload survey</button>}
       <div className="d-flex gap-2 flex-wrap my-3">
+          {survey.status === "DRAFT" && <Link to={`/owner/surveys/${survey.id}/edit`} className="btn btn-outline-primary">Edit questions</Link>}
         {survey.status === "DRAFT" && (
           <button type="button" className="btn btn-primary" disabled={sending} onClick={() => changeStatus("publish")}>
             Publish
