@@ -1,0 +1,80 @@
+[
+  {
+    "commit": "8017c9183302e4e0c5ff04cd997704255420b8fb",
+    "committedAt": "2026-11-25T14:58:28+07:00",
+    "bangkok": "2026-11-25T14:58:28+07:00",
+    "role": "reviewed contract"
+  },
+  {
+    "commit": "3f8918ceefd5eb55cdebd970710fd0789bd38c98",
+    "committedAt": "2026-11-25T17:39:03+07:00",
+    "bangkok": "2026-11-25T17:39:03+07:00",
+    "role": "primary test-only"
+  },
+  {
+    "commit": "d137db072d52c6984f7f8c06bb9251af2e6fbcbe",
+    "committedAt": "2026-11-25T17:42:18+07:00",
+    "bangkok": "2026-11-25T17:42:18+07:00",
+    "role": "primary RED retained before code"
+  },
+  {
+    "commit": "a9cdbce9e76dfd07eb3f2c47051455b748ce326c",
+    "committedAt": "2026-11-25T17:59:38+07:00",
+    "bangkok": "2026-11-25T17:59:38+07:00",
+    "role": "expanded test-only"
+  },
+  {
+    "commit": "79459c86d70bca10b9d2337abcee4fbd941653ea",
+    "committedAt": "2026-11-25T18:04:36+07:00",
+    "bangkok": "2026-11-25T18:04:36+07:00",
+    "role": "expanded RED retained before code"
+  },
+  {
+    "commit": "3203c3af8b33adea086b62d654c93dd4a1e77d90",
+    "committedAt": "2026-11-25T18:05:22+07:00",
+    "bangkok": "2026-11-25T18:05:22+07:00",
+    "role": "backend implementation"
+  },
+  {
+    "commit": "ff5e2999c2d60fe2fc7a619087b6b37b79e017c5",
+    "committedAt": "2026-11-25T18:24:46+07:00",
+    "bangkok": "2026-11-25T18:24:46+07:00",
+    "role": "UI test-only"
+  },
+  {
+    "commit": "7e84f6f21b6283abd89c284a29b64daae7621e00",
+    "committedAt": "2026-11-25T18:26:34+07:00",
+    "bangkok": "2026-11-25T18:26:34+07:00",
+    "role": "UI RED retained before UI code"
+  },
+  {
+    "commit": "7c4818cd6b6b7a11d0ce6fd668bc11a54872a302",
+    "committedAt": "2026-11-25T18:28:49+07:00",
+    "bangkok": "2026-11-25T18:28:49+07:00",
+    "role": "UI implementation"
+  },
+  {
+    "commit": "d7251f6c20a409e67b6aa4e9af16ddf4f078b0be",
+    "committedAt": "2026-11-25T19:01:19+07:00",
+    "bangkok": "2026-11-25T19:01:19+07:00",
+    "role": "migration regression"
+  },
+  {
+    "commit": "24eed7a1561c76d43f1b3275636e97b9478dab1f",
+    "committedAt": "2026-11-25T19:07:13+07:00",
+    "bangkok": "2026-11-25T19:07:13+07:00",
+    "role": "real-browser regression"
+  },
+  {
+    "commit": "d96059bb83b5f59f7bf2bb3c56614d188c8619fc",
+    "committedAt": "2026-11-25T19:12:00+07:00",
+    "bangkok": "2026-11-25T19:12:00+07:00",
+    "role": "complete boundary regression"
+  },
+  {
+    "commit": "45f48cdcd0999e2dbbb5cb4e70638999ff25e3e8",
+    "committedAt": "2026-11-25T19:23:47+07:00",
+    "bangkok": "2026-11-25T19:23:47+07:00",
+    "role": "current review head"
+  }
+]

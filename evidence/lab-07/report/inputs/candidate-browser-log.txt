@@ -1,0 +1,25 @@
+﻿2026-11-25T12:25:29.4872010Z ##[group]Run npm run test:e2e -- --reporter=line
+2026-11-25T12:25:29.4872929Z npm run test:e2e -- --reporter=line
+2026-11-25T12:25:29.4918421Z shell: /usr/bin/bash -e {0}
+2026-11-25T12:25:29.4918846Z env:
+2026-11-25T12:25:29.4919742Z   DATABASE_URL: [omitted]
+2026-11-25T12:25:29.4920390Z   SEED_PASSWORD: [omitted]
+2026-11-25T12:25:29.4920864Z ##[endgroup]
+2026-11-25T12:25:29.6041054Z
+2026-11-25T12:25:29.6041860Z > classpulse@0.1.0 test:e2e
+2026-11-25T12:25:29.6042348Z > playwright test --reporter=line
+2026-11-25T12:25:29.6042576Z
+2026-11-25T12:25:32.2892022Z
+2026-11-25T12:25:32.2892777Z Running 10 tests using 1 worker
+2026-11-25T12:25:32.2893208Z
+2026-11-25T12:25:32.8487506Z [1/10] auth.spec.ts:8:5 › TEST-08 bad credentials show the server's error and stay on /login
+2026-11-25T12:25:33.6898315Z [2/10] auth.spec.ts:14:5 › TEST-09 owner lands on /owner, keeps identity on reload, and Logout returns to /login
+2026-11-25T12:25:34.4708990Z [3/10] auth.spec.ts:27:5 › TEST-09 respondent lands on /surveys, keeps identity on reload, and Logout returns to /login
+2026-11-25T12:25:35.2385359Z [4/10] journey.spec.ts:33:5 › TEST-40 full Sprint 1 journey: owner publishes, student answers once, owner reads the aggregate
+2026-11-25T12:25:38.5254649Z [5/10] journey.spec.ts:121:5 › TEST-38 the owner summary page shows the empty state, then counts and averages from two respondents
+2026-11-25T12:25:39.7734730Z [6/10] owner-survey.spec.ts:9:5 › TEST-21a an owner creates a two-question survey, sees it as Draft, publishes it and sees Published
+2026-11-25T12:25:41.4576895Z [7/10] owner-survey.spec.ts:47:5 › TEST-21b an empty title shows a message under the title field and creates nothing
+2026-11-25T12:25:42.0952692Z [8/10] respond.spec.ts:7:5 › TEST-32 a respondent submits an identified survey once and sees confirmation
+2026-11-25T12:25:46.2303458Z [9/10] survey-reopen.spec.ts:28:5 › TEST-113 reopening persists history and preserves answers, uniqueness and owner access
+2026-11-25T12:25:48.9843873Z [10/10] survey-reopen.spec.ts:98:5 › TEST-113 stale browser tab keeps reason and requires explicit reload before retry
+2026-11-25T12:25:51.2903437Z   10 passed (21.0s)
