@@ -17,10 +17,12 @@ interface HistoryPage { responses: ResponseHistoryItem[]; nextCursor: string | n
 interface SavedAnswer {
   questionId: number;
   prompt: string;
-  type: "RATING" | "SINGLE_CHOICE";
+  type: "RATING" | "SINGLE_CHOICE" | "TEXT" | "MULTI_CHOICE";
   ratingValue?: number;
   optionId?: number;
   optionLabel?: string;
+  textValue?: string;
+  selectedOptions?: Array<{ optionId: number; label: string }>;
 }
 interface SavedResponse {
   id: number;
@@ -131,7 +133,9 @@ export function MyResponsesPage() {
                   <div className="fw-semibold">{answer.prompt}</div>
                   {answer.type === "RATING" ? (
                     <RatingDots name={`saved-response-${detail.id}-question-${answer.questionId}`} value={answer.ratingValue ?? null} readOnly />
-                  ) : <div>{answer.optionLabel}</div>}
+                  ) : answer.type === "TEXT" ? <div>{answer.textValue}</div>
+                    : answer.type === "MULTI_CHOICE" ? <ul>{(answer.selectedOptions ?? []).map(option => <li key={option.optionId}>{option.label}</li>)}</ul>
+                      : <div>{answer.optionLabel}</div>}
                 </li>
               ))}
             </ol>

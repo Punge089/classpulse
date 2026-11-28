@@ -1,0 +1,46 @@
+{
+  "feature": "F-07 independent owner-create slice",
+  "issue": 134,
+  "pr": 137,
+  "baseline_staging": "bed5880c90c760116e06f7c09766018d6901e2c1",
+  "test_file": "server/tests/api/extendedQuestionTypes.test.ts",
+  "test_commit": "9f0e7c5dc818fae37e156ae027471d9f52a75e59",
+  "command": "npm test",
+  "working_directory": "server",
+  "valid_red": {
+    "workflow_run": 46045085095,
+    "job_id": 140662215478,
+    "tested_merge_commit": "0c912a1a860c44d21915cc521276e0568d8be2b3",
+    "test_files_passed": 21,
+    "test_files_failed": 1,
+    "tests_passed": 272,
+    "tests_failed": 2,
+    "tests_skipped": 0,
+    "failing_cases": [
+      "TEST-140 TEXT owner create: expected HTTP 201, received 400",
+      "TEST-140 MULTI_CHOICE owner create: expected HTTP 201, received 400"
+    ],
+    "downstream_steps_skipped": [
+      "Test client",
+      "Build server",
+      "Build client",
+      "Install Chromium",
+      "Reseed synthetic CI accounts",
+      "Test complete browser suite",
+      "Build Docker image",
+      "Post Node.js setup"
+    ]
+  },
+  "invalid_harness_attempt": {
+    "commit": "bc0f61e1fa1072db70f8837d6b159440d4d2d720",
+    "workflow_run": 46044698602,
+    "tested_merge_commit": "4f95c12970b320b7b572dbfd1e17781503123f3d",
+    "tests_passed": 272,
+    "tests_failed": 2,
+    "tests_skipped": 0,
+    "cause": "The tests used the asynchronous login helper without awaiting it; corrected test-only at 9f0e7c5."
+  },
+  "product_code_changed": false,
+  "local_tests_run": false,
+  "local_test_limitation": "No Node dependencies or test DB in isolated worktree; Docker Desktop unavailable."
+}

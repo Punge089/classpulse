@@ -1,5 +1,5 @@
 export type SurveyStatus = "DRAFT" | "PUBLISHED" | "CLOSED";
-export type QuestionType = "RATING" | "SINGLE_CHOICE";
+export type QuestionType = "RATING" | "SINGLE_CHOICE" | "TEXT" | "MULTI_CHOICE";
 
 export interface Course {
   id: number;

@@ -33,7 +33,7 @@ describe("TEST-11 invalid inputs (AC-11), the 18 cases of contract F-03 v1.1", (
     ["7 questions not an array", b => { b.questions = "x"; }, "questions"],
     ["8 prompt empty", b => { b.questions[0].prompt = ""; }, "questions[0].prompt"],
     ["9 prompt of 301 characters", b => { b.questions[0].prompt = text(301); }, "questions[0].prompt"],
-    ["10 unknown type TEXT", b => { b.questions[0].type = "TEXT"; }, "questions[0].type"],
+    ["10 unknown type UNKNOWN", b => { b.questions[0].type = "UNKNOWN"; }, "questions[0].type"],
     ["11 RATING with options", b => { b.questions[0].options = ["a", "b"]; }, "questions[0].options"],
     ["12 SINGLE_CHOICE with 1 option", b => { b.questions[1].options = ["Yes"]; }, "questions[1].options"],
     ["13 SINGLE_CHOICE with 7 options", b => { b.questions[1].options = ["1", "2", "3", "4", "5", "6", "7"]; }, "questions[1].options"],
