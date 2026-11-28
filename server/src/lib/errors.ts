@@ -12,6 +12,8 @@ export type ErrorCode =
   | "DRAFT_HAS_RESPONSES"
   | "SURVEY_NOT_OPEN"
   | "ALREADY_RESPONDED"
+  | "EXPORT_NOT_AVAILABLE"
+  | "EXPORT_TOO_LARGE"
   | "INTERNAL_ERROR";
 
 export interface FieldError {

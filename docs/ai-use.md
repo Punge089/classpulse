@@ -325,3 +325,7 @@ B/book6349 used Codex GPT-6.2 Sol to add TEST-143 and TEST-145 for PostgreSQL-in
 ## Sprint 3 F-12 CSV export contract — Student A, 28 November 2026
 
 A/Punge089 used Codex GPT-6.2 Sol to draft the proposal and map FR-17, access controls, anonymous dependencies and the identified-only first slice to AC/TEST-240–248 on #138. B/book6349 is the requested independent reviewer. No feature tests or implementation were written and no runtime export was executed in this contract block.
+
+## F-12 identified CSV API slice - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol for the owner-only identified CSV route, bounded read snapshot and encoding. B/book6349 reviewed the contract, and advised using the already scoped owner-summary router after F-07 staged. The same two API assertions from test-only a819fbf ran locally against disposable PostgreSQL after the route was mounted. This checkpoint covers the identified API only. Client download, full answer-type coverage and anonymous export remain open.
