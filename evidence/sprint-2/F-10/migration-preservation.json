@@ -1,0 +1,29 @@
+{
+  "source": "a59851a95a55bbd8a113e2bd51397c0180ae7266",
+  "migration": "20261129000000_section_eligibility",
+  "method": "PostgreSQL 18 loopback disposable classpulse_test. Deploy through F-08, insert a synthetic existing identified response, deploy through F-10 and verify original rows plus cross-course constraints.",
+  "before": {
+    "enrollments": 1,
+    "surveys": 1,
+    "responses": 1,
+    "answers": 1,
+    "savedValue": 4,
+    "savedAt": "2026-11-28T03:01:00",
+    "status": "PUBLISHED"
+  },
+  "after": {
+    "enrollments": 1,
+    "surveys": 1,
+    "responses": 1,
+    "answers": 1,
+    "savedValue": 4,
+    "savedAt": "2026-11-28T03:01:00",
+    "status": "PUBLISHED"
+  },
+  "legacyEnrollmentSectionNull": true,
+  "legacyResponseSectionNull": true,
+  "legacyTargetRows": 0,
+  "crossCourseEnrollmentRejected": true,
+  "crossCourseSurveyTargetRejected": true,
+  "sameCourseEnrollmentAndTargetAccepted": true
+}
