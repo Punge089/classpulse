@@ -1,8 +1,10 @@
 # Sprint 2 / D2 handoff
 
-## Current checkpoint - 27 November 2026
+## Current checkpoint - 28 November 2026
 
-B's next review action is to independently check out the exact head of F-06 PR #93, run the scoped verification and record C7. The 7f19aaf source/CI reading is already recorded. A keeps the head stable. B confirmed #134/F-07 as driver with A C3; F-10 #135 is unassigned. #130 asks B for the paired F-08 reopen contract decision, and its shared implementation slot follows F-07. Use #86 to agree the Sprint 3 working slice and any change to ownership.
+Staging ac630fb includes reviewed F-06 #93 and F-09 #119. B's F-07 #137 at b2e8073 has CI 46060855990 green and A's C7 requesting an input-validation fix. B also approved docs-only #142 at 7e26743, with CI 46065056361 green, and owns its merge. After F-07, A owns F-08 and F-10 in that order. B approved F-10 v1.0 on #135, and A must scope exact paths before tests.
+
+A is prioritizing the identified F-12 export as the D2 Sprint 3 slice. The test-only RED is preserved; B's route-split decision remains on #138. B approved F-11 and F-13 contracts on #140/#124. F-13 implementation depends on accepted F-07/F-10 fields. The interim #143 release deployed at 8316f27; the integrated D2 candidate, complete workflow checks and PDF review remain pending.
 
 At the start of a D2 work round, inspect open Issues and PRs marked waiting-on for your account and direct review requests. Work the highest-priority actionable D2 item to a verifiable handoff and update the next person after posting the evidence. Lab 7 retains its separate report, scope and review queue.
 
@@ -26,7 +28,7 @@ Work as Student B (`book6349`) in one coordinating chat for Lab 7 + Sprint 2, as
 
 First review D2 planning PR #91 for #86 and accept or propose changes to allocation. Review Lab7 planning separately under #94. Review A's #87 Lab 7 contract and #90 F-06 contract at their exact pushed commits; post genuine C3 findings/decision only after reading old/new requirements, AC and STS. The newer announcement removes individual instructor/TA approval, but team selection and peer contract review remain. Then start your #88 F-09 contract, post C2 and wait for A C3 before tests. Issue #89 belongs to the separate Lab7 track; it is not D2 report content. Do not claim unrun candidate tests or final acceptance.
 
-Proposed later B work is F-07, F-10, F-11/F-12 contracts and current System SDS, each with a separate scoped Issue and A review. These are proposals until B accepts. A will review B's actual contracts/PRs; do not use A's credentials or manufacture A/B conversation. Keep GitHub as the shared handoff record; no timer/automation is enabled by this plan.
+B drives F-07. A drives F-10 and the F-11/F-12 contracts; B is the reviewer. The current System SDS still needs separately scoped ownership and review. Keep GitHub as the shared handoff record and use each student's verified account.
 
 ## Before each feature work block
 
