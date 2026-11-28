@@ -1,20 +1,20 @@
 # Sprint 2 and Deliverable 2 execution plan
 
-Version 1.5, 28 November 2026. Issue #86. Owner: Bannasorn Thongkorn (67070503420, A/Punge089), assisted by Codex GPT-6. Reviewer: Papangkorn Jitvoottikrai (67070503421, B/book6349). B approved the earlier planning head of PR #91. This revision awaits review.
+Version 1.6, 28 November 2026. Issue #86. Owner: Bannasorn Thongkorn (67070503420, A/Punge089), assisted by Codex GPT-6. Reviewer: Papangkorn Jitvoottikrai (67070503421, B/book6349). B approved the earlier planning head of PR #91. This revision awaits review.
 
 ## Current execution checkpoint - 28 November 2026
 
-Staging is [ac630fb4](https://github.com/Punge089/classpulse/commit/ac630fb4a7e465a5410beb2cccb24f91255d8cd0). Interim main release #143 is 8316f27. Deploy run 46050688714 passed migration/update and read-only smoke. The integrated D2 release and deployed journey are pending.
+Staging is [bd77c46](https://github.com/Punge089/classpulse/commit/bd77c46829d78dd983a8abed892fc79de3570c91). Interim main release #143 is 8316f27. Deploy run 46050688714 passed migration/update and read-only smoke. The integrated D2 release and deployed journey are pending.
 
 | Work | Actual evidence | Next gate |
 |---|---|---|
 | F-06 #90 / PR #93 | B approved 6aa7b21. Merged to staging at 4f1f03a and included in interim main. | Demonstrate on the D2 candidate. B must merge approved compatibility addendum #142 at 7e26743. |
-| F-07 #134 / PR #137 | B drives implementation. CI 46060855990 passed 292 server, 27 client and 13 browser tests with 0 failures/skips. A independently reviewed exact head b2e8073 and found a reproducible HTTP 500 for a text answer containing a zero character. | B fixes and verifies the invalid-input regression. A reviews the new head before staging merge. |
-| F-08 #96 / PR #97 | B reviewed the cutoff and paired reopen contracts. TEST-180–182 ran test-only in CI 46076042447 at merge 361c581: 272 passed, 3 expected absent-route failures, 0 skipped tests and 8 downstream skips. Evidence retained at f87039c. | A implements after F-07. B reviews docs-only #131 separately from working application behavior. |
+| F-07 #134 / PR #137 | B fixed the invalid TEXT input found by A. A approved exact ed9e11f after an independent run; CI 46106869657 passed 294/27/13, no failures/skips. Merged to staging bd77c46. | Rerun on the integrated D2 candidate. |
+| F-08 #96 / PR #97 | B reviewed the cutoff and paired reopen contracts. TEST-180–182 ran test-only in CI 46076042447 at merge 361c581: 272 passed, 3 expected absent-route failures, 0 skipped tests and 8 downstream skips. Evidence retained at f87039c. | Server checkpoint 7b823a0 passed 297 server, 27 client and 13 browser checks in CI 46108983921. UI and expanded boundary checks remain open. |
 | F-09 #88 / PR #119 | A reviewed and merged to staging at f46805f, included in interim main. | Demonstrate persisted history on the D2 candidate. |
-| F-10 #135 / PR #136 | A drives and B reviews. B approved contract v1.0 in C3 [7232904938](https://github.com/Punge089/classpulse/issues/135#issuecomment-7232904938). | A records exact paths before tests. Shared implementation follows F-07/F-08. |
+| F-10 #135 / PR #136 | A drives and B reviews. B approved contract v1.0 in C3 [7232904938](https://github.com/Punge089/classpulse/issues/135#issuecomment-7232904938). | TEST-200 RED retained at 41eb32a. Shared implementation follows F-08. |
 | F-11 #140 / PR #141 | B approved privacy contract v1.0 in C3 [7232906862](https://github.com/Punge089/classpulse/issues/140#issuecomment-7232906862). | A scopes exact files before tests. Anonymous behavior is pending. |
-| F-12 #138 / PR #139 | B approved the identified-only slice. CI 46058262944 retained TEST-240/242 RED with 272 passes, 2 expected failures, 0 skipped tests and 8 downstream skips. Isolated data-helper checks are preliminary. | A prioritizes identified CSV as the D2 working slice. The export route split awaits B; HTTP GREEN and candidate verification remain open. |
+| F-12 #138 / PR #139 | B approved the identified-only slice. CI 46058262944 retained TEST-240/242 RED with 272 passes, 2 expected failures, 0 skipped tests and 8 downstream skips. Isolated data-helper checks are preliminary. | The identified CSV workflow passed 296 server, 27 client and 14 browser tests in CI 46109115975 at 580cf35. Peer review and candidate verification remain open. |
 | F-13 #124 / PR #125 | B approved contract v1.0 in C3 [7232908860](https://github.com/Punge089/classpulse/issues/124#issuecomment-7232908860). | A pins accepted fields from F-07/F-10 before scoped tests. |
 | F-14 #98 / PR #99 | Contract C3, isolated 49.0904 ms p95 measurement and mobile baseline; CI 46069525698 passed 282 server, 23 client and 19 browser tests. | Recheck integrated candidate and complete coverage review. |
 
@@ -64,11 +64,11 @@ The Lab 6 chat owns its actual case records and acceptance decision. Preparation
 | D2 planning and evidence map | A / B | #86 / PR #91 | Document-only PR; B checks D2 allocation and missing work | 25 Nov |
 | F-09 my responses | B / A | #88 / PR #119 | Merged to staging at f46805f; candidate readback pending | Candidate validation |
 | F-06 draft editing | A / B | #90 / PR #93 | B approved 6aa7b21 and merged 4f1f03a | Candidate validation |
-| F-07 TEXT/MULTI_CHOICE | B / A, confirmed | #134 | A C7 requires a regression fix at the next head | Highest-priority shared dependency |
+| F-07 TEXT/MULTI_CHOICE | B / A, confirmed | #134 | Corrected, independently reviewed, and merged to staging | Candidate validation |
 | F-08 scheduled closing | A / B | #96 / draft PR #97 | Cutoff/reopen C3 and RED recorded. Owner/response-file slot follows F-07 | After F-07 |
 | F-10 sections + response rate | A / B | #135 / PR #136 | C3 recorded. Scope tests before RED; shared implementation follows F-08 | After F-08 |
 | F-11 anonymous mode contract | A / B | #140 / PR #141 | Reviewed privacy design; scope exact files before tests | Contract reviewed |
-| F-12 export contract | A / B | #138 / PR #139 | Identified CSV RED retained. Confirm isolated route placement, then run endpoint GREEN | D2 working slice |
+| F-12 export contract | A / B | #138 / PR #139 | Identified API and browser GREEN observed; B reviews the final exact head | D2 working slice |
 | F-13 analysis contract + working slice | A / B | #124 / PR #125 | Reviewed owner-only text answers and section filtering depend on F-07/F-10 | Pin accepted fields before tests |
 | F-14 hardening contract | A / B | #98 / draft PR #99 | B C3 on4ca7cd1 exists. Measured and browser-tested a baseline; repeat checks on integrated candidate | Candidate validation |
 | Current SRS/features/traceability | A / B | To scope | Integrate actual accepted per-feature changes, complete all baseline rows | 28 Nov |
@@ -114,3 +114,5 @@ v1.3,25Nov2026,A/Codex GPT-6.1 Sol: record actual scoped B C3/C2 participation, 
 v1.4, 27 November 2026, A/Codex GPT-6: retain the prior assessment plan and record the current evidence, actual F-07 ownership, unassigned F-10 implementation and exact-head reviewer bottleneck. Resolve the staging disclosure conflict. No product work moved between sprints.
 
 v1.5, 28 November 2026, A/Codex GPT-6.2 Sol: address PR #91 review with current staging and interim main, F-07 review outcome, A's F-10 assignment and C3s, and the identified F-12 slice and release dependencies. Preserve earlier checkpoint history in Git.
+
+v1.6, 28 November 2026, A/Codex GPT-6.2 Sol: record F-07 staging and current F-08, F-10 and F-12 test evidence. Keep candidate and submission gates open.

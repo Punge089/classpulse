@@ -2,9 +2,9 @@
 
 ## Current checkpoint - 28 November 2026
 
-Staging ac630fb includes reviewed F-06 #93 and F-09 #119. B's F-07 #137 at b2e8073 has CI 46060855990 green and A's C7 requesting an input-validation fix. B also approved docs-only #142 at 7e26743, with CI 46065056361 green, and owns its merge. After F-07, A owns F-08 and F-10 in that order. B approved F-10 v1.0 on #135, and A must scope exact paths before tests.
+Staging bd77c46 includes reviewed F-06 #93, F-09 #119 and F-07 #137. A verified B's corrected F-07 head ed9e11f and merged it after CI 46106869657. B owns the merge of refreshed docs-only #142 after review. A owns F-08 and F-10 in that order. F-08 has passing backend tests and F-10 has retained TEST-200 RED.
 
-A is prioritizing the identified F-12 export as the D2 Sprint 3 slice. The test-only RED is preserved; B's route-split decision remains on #138. B approved F-11 and F-13 contracts on #140/#124. F-13 implementation depends on accepted F-07/F-10 fields. The interim #143 release deployed at 8316f27; the integrated D2 candidate, complete workflow checks and PDF review remain pending.
+A is prioritizing the identified F-12 export as the D2 Sprint 3 slice. The test-only RED and green identified browser/API checks are retained; B confirmed use of the existing owner-summary router after F-07. B approved F-11 and F-13 contracts on #140/#124. F-13 implementation depends on accepted F-07/F-10 fields. The interim #143 release deployed at 8316f27; the integrated D2 candidate, complete workflow checks and PDF review remain pending.
 
 At the start of a D2 work round, inspect open Issues and PRs marked waiting-on for your account and direct review requests. Work the highest-priority actionable D2 item to a verifiable handoff and update the next person after posting the evidence. Lab 7 retains its separate report, scope and review queue.
 
