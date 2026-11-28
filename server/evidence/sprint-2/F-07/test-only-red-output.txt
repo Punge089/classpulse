@@ -1,0 +1,175 @@
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v2.1.9 C:/Users/Jitvoottikrai/.codex/worktrees/f07-test-red/classpulse-git/server
+
+ ❯ tests/unit/responseValidation.test.ts (21 tests | 8 failed) 17ms
+   × F-07 TEST-143/144 text and multi-choice answer validation > accepts trimmed text and multiple distinct options while leaving optional blanks omitted 7ms
+     → expected { ok: false, …(1) } to deeply equal { ok: true, …(1) }
+   × F-07 TEST-143/144 text and multi-choice answer validation > rejects blank required text with the specific field 2ms
+     → expected [ 'answers[0]', 'answers[1]' ] to include 'answers[0].textValue'
+   × F-07 TEST-143/144 text and multi-choice answer validation > rejects text longer than 500 code points with the specific field 0ms
+     → expected [ 'answers[0]', 'answers[1]' ] to include 'answers[0].textValue'
+   × F-07 TEST-143/144 text and multi-choice answer validation > rejects unpaired surrogate with the specific field 0ms
+     → expected [ 'answers[0]', 'answers[1]' ] to include 'answers[0].textValue'
+   × F-07 TEST-143/144 text and multi-choice answer validation > rejects duplicate multi-choice option with the specific field 0ms
+     → expected [ 'answers[0]', 'answers[1]' ] to include 'answers[1].optionIds'
+   × F-07 TEST-143/144 text and multi-choice answer validation > rejects foreign-question option with the specific field 0ms
+     → expected [ 'answers[0]', 'answers[1]' ] to include 'answers[1].optionIds'
+   × F-07 TEST-143/144 text and multi-choice answer validation > rejects empty required multi-choice with the specific field 0ms
+     → expected [ 'answers[0]', 'answers[1]' ] to include 'answers[1].optionIds'
+   × F-07 TEST-143/144 text and multi-choice answer validation > accepts 500 Unicode code points and omits a blank optional text answer 1ms
+     → expected false to be true // Object.is equality
+ ❯ tests/unit/summary.test.ts (8 tests | 2 failed) 15ms
+   × F-07 TEST-147 text and multi-choice aggregate summaries > reports text answeredCount and per-option counts without exposing text values or response IDs 8ms
+     → expected { questionId: 40, …(3) } to deeply equal { questionId: 40, …(3) }
+   × F-07 TEST-147 text and multi-choice aggregate summaries > retains zero counts for unanswered extended questions 2ms
+     → expected { questionId: 60, …(3) } to match object { type: 'TEXT', …(1) }
+(4 matching properties omitted from actual)
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > accepts trimmed text and multiple distinct options while leaving optional blanks omitted
+AssertionError: expected { ok: false, …(1) } to deeply equal { ok: true, …(1) }
+
+- Expected
++ Received
+
+  Object {
+-   "ok": true,
+-   "value": Array [
++   "details": Array [
+      Object {
+-       "questionId": 40,
+-       "textValue": "useful examples",
++       "field": "answers[0]",
++       "message": "Answer has fields that do not match the question",
+      },
+      Object {
+-       "optionIds": Array [
+-         51,
+-         53,
+-       ],
+-       "questionId": 42,
++       "field": "answers[1]",
++       "message": "Answer has fields that do not match the question",
+      },
+    ],
++   "ok": false,
+  }
+
+ ❯ tests/unit/responseValidation.test.ts:97:20
+     95|       ]
+     96|     });
+     97|     expect(result).toEqual({ ok: true, value: [
+       |                    ^
+     98|       { questionId: 40, textValue: "useful examples" },
+     99|       { questionId: 42, optionIds: [51, 53] }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > rejects blank required text with the specific field
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > rejects text longer than 500 code points with the specific field
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > rejects unpaired surrogate with the specific field
+AssertionError: expected [ 'answers[0]', 'answers[1]' ] to include 'answers[0].textValue'
+ ❯ tests/unit/responseValidation.test.ts:113:72
+    111|     const result = validateAnswers(extended, body);
+    112|     expect(result.ok).toBe(false);
+    113|     if (!result.ok) expect(result.details.map(detail => detail.field))…
+       |                                                                        ^
+    114|   });
+    115| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > rejects duplicate multi-choice option with the specific field
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > rejects foreign-question option with the specific field
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > rejects empty required multi-choice with the specific field
+AssertionError: expected [ 'answers[0]', 'answers[1]' ] to include 'answers[1].optionIds'
+ ❯ tests/unit/responseValidation.test.ts:113:72
+    111|     const result = validateAnswers(extended, body);
+    112|     expect(result.ok).toBe(false);
+    113|     if (!result.ok) expect(result.details.map(detail => detail.field))…
+       |                                                                        ^
+    114|   });
+    115| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  tests/unit/responseValidation.test.ts > F-07 TEST-143/144 text and multi-choice answer validation > accepts 500 Unicode code points and omits a blank optional text answer
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/responseValidation.test.ts:121:23
+    119|       answers: [{ questionId: 40, textValue: text }, { questionId: 42,…
+    120|     });
+    121|     expect(result.ok).toBe(true);
+       |                       ^
+    122|     if (result.ok) expect(result.value[0]).toEqual({ questionId: 40, t…
+    123|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  tests/unit/summary.test.ts > F-07 TEST-147 text and multi-choice aggregate summaries > reports text answeredCount and per-option counts without exposing text values or response IDs
+AssertionError: expected { questionId: 40, …(3) } to deeply equal { questionId: 40, …(3) }
+
+- Expected
++ Received
+
+  Object {
++   "choice": Object {
++     "options": Array [],
++   },
+    "prompt": "What helped?",
+    "questionId": 40,
+-   "text": Object {
+-     "answeredCount": 2,
+-   },
+-   "type": "TEXT",
++   "type": "SINGLE_CHOICE",
+  }
+
+ ❯ tests/unit/summary.test.ts:110:33
+    108|     ] as unknown as SummaryAnswer[];
+    109|     const result = summarize([text, multi], answers, 3);
+    110|     expect(result.questions[0]).toEqual({ questionId: 40, prompt: "Wha…
+       |                                 ^
+    111|     expect(result.questions[1]).toEqual({ questionId: 41, prompt: "Whi…
+    112|       { optionId: 51, label: "Examples", count: 1 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  tests/unit/summary.test.ts > F-07 TEST-147 text and multi-choice aggregate summaries > retains zero counts for unanswered extended questions
+AssertionError: expected { questionId: 60, …(3) } to match object { type: 'TEXT', …(1) }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "text": Object {
+-     "answeredCount": 0,
+-   },
+-   "type": "TEXT",
++   "type": "SINGLE_CHOICE",
+  }
+
+ ❯ tests/unit/summary.test.ts:123:33
+    121|     const multi = { ...choiceQuestion(61), type: "MULTI_CHOICE" } as S…
+    122|     const result = summarize([text, multi], [], 0);
+    123|     expect(result.questions[0]).toMatchObject({ type: "TEXT", text: { …
+       |                                 ^
+    124|     expect(result.questions[1]).toMatchObject({ type: "MULTI_CHOICE", …
+    125|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ Test Files  2 failed (2)
+      Tests  10 failed | 19 passed (29)
+   Start at  02:08:22
+   Duration  724ms (transform 61ms, setup 36ms, collect 66ms, tests 32ms, environment 0ms, prepare 225ms)
+

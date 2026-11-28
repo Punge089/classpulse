@@ -1,0 +1,30 @@
+F-07 test-only RED evidence
+Baseline sprint-2-staging: bed5880c90c760116e06f7c09766018d6901e2c1
+Test commit with corrected harness: 9f0e7c5dc818fae37e156ae027471d9f52a75e59
+CI tested merge commit: 0c912a1a860c44d21915cc521276e0568d8be2b3
+Command: (server) npm test
+
+Attempt 1 — CI 46044698602, test commit bc0f61e1fa1072db70f8837d6b159440d4d2d720, merge 4f95c12970b320b7b572dbfd1e17781503123f3d
+This was a harness failure and is not accepted as the feature RED. Both tests failed before the request because the test called the asynchronous login helper without awaiting it; Vitest also recorded an unhandled login rejection. The fix is test-only and is committed at 9f0e7c5.
+
+  TEST-140 an owner creates a TEXT question with no options
+    TypeError: owner(...).post is not a function
+  TEST-140 an owner creates a MULTI_CHOICE question with persisted option order
+    TypeError: owner(...).post is not a function
+  Test Files: 1 failed, 21 passed (22)
+  Tests: 2 failed, 272 passed (274)
+  Downstream client/build/browser/Docker steps were skipped after the server failure.
+
+Attempt 2 — CI 46045085095, corrected test commit 9f0e7c5, merge 0c912a1
+This is the valid preimplementation RED. Both requests reached the current owner-create handler. It rejected the new question types with HTTP 400 while the contract assertions expect successful creation (201).
+
+  TEST-140 an owner creates a TEXT question with no options
+    AssertionError: expected 400 to be 201
+  TEST-140 an owner creates a MULTI_CHOICE question with persisted option order
+    AssertionError: expected 400 to be 201
+  Test Files: 1 failed, 21 passed (22)
+  Tests: 2 failed, 272 passed (274)
+  Tests skipped: 0
+  Eight downstream workflow steps were skipped after the server failure; specifically client tests, both builds, Chromium setup, browser tests and Docker did not run.
+
+No product code, schema or migration was changed. No local test command was run: this isolated checkout had no Node dependencies or test database, and Docker Desktop was unavailable. CI initialized its own PostgreSQL service and ran the full server suite.

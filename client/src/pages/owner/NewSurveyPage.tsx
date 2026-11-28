@@ -67,7 +67,7 @@ export function NewSurveyPage() {
             prompt: q.prompt,
             type: q.type,
             required: q.required,
-            ...(q.type === "SINGLE_CHOICE" ? { options: q.options } : {})
+          ...(q.type === "SINGLE_CHOICE" || q.type === "MULTI_CHOICE" ? { options: q.options } : {})
           }))
         })
       });
@@ -156,6 +156,8 @@ export function NewSurveyPage() {
                 >
                   <option value="RATING">Rating (1 to 5)</option>
                   <option value="SINGLE_CHOICE">Single choice</option>
+                  <option value="TEXT">Text</option>
+                  <option value="MULTI_CHOICE">Multiple choice</option>
                 </select>
               </div>
               <div className="col-sm-6 form-check ms-sm-0 ps-sm-4">
@@ -167,7 +169,7 @@ export function NewSurveyPage() {
               </div>
             </div>
 
-            {question.type === "SINGLE_CHOICE" && (
+            {(question.type === "SINGLE_CHOICE" || question.type === "MULTI_CHOICE") && (
               <div className="mt-3">
                 {question.options.map((option, oIndex) => (
                   <div key={oIndex} className="input-group mb-2">

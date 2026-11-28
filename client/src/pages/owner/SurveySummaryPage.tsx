@@ -20,12 +20,19 @@ type ChoiceQuestionSummary = {
   type: "SINGLE_CHOICE";
   choice: { options: Array<{ optionId: number; label: string; count: number }> };
 };
+type MultiChoiceQuestionSummary = {
+  questionId: number;
+  prompt: string;
+  type: "MULTI_CHOICE";
+  multiChoice: { answeredCount: number; options: Array<{ optionId: number; label: string; count: number }> };
+};
+type TextQuestionSummary = { questionId: number; prompt: string; type: "TEXT"; text: { answeredCount: number } };
 
 type Summary = {
   surveyId: number;
   status: string;
   responseCount: number;
-  questions: Array<RatingQuestionSummary | ChoiceQuestionSummary>;
+  questions: Array<RatingQuestionSummary | ChoiceQuestionSummary | MultiChoiceQuestionSummary | TextQuestionSummary>;
 };
 
 export function SurveySummaryPage() {
@@ -81,25 +88,29 @@ export function SurveySummaryPage() {
                       ))}
                     </dl>
                   </div>
+                ) : question.type === "TEXT" ? (
+                  <p className="mb-0">Answered: <strong>{question.text.answeredCount}</strong></p>
                 ) : (
-                  <ul className="list-unstyled mb-0">
-                    {question.choice.options.map(option => {
-                      const width = summary.responseCount === 0
-                        ? 0
-                        : Math.min(100, Math.round((option.count / summary.responseCount) * 100));
-                      return (
-                        <li className="mb-3" key={option.optionId}>
-                          <div className="d-flex justify-content-between gap-3">
-                            <span>{option.label}</span>
-                            <strong>{option.count}</strong>
-                          </div>
-                          <div className="progress" role="img" aria-label={`${option.label}: ${option.count} responses`}>
-                            <div className="progress-bar" style={{ width: `${width}%` }} />
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  (() => {
+                    const choice = question.type === "MULTI_CHOICE" ? question.multiChoice : question.choice;
+                    const denominator = question.type === "MULTI_CHOICE" ? question.multiChoice.answeredCount : summary.responseCount;
+                    return <ul className="list-unstyled mb-0">
+                      {choice.options.map(option => {
+                        const width = denominator === 0 ? 0 : Math.min(100, Math.round((option.count / denominator) * 100));
+                        return (
+                          <li className="mb-3" key={option.optionId}>
+                            <div className="d-flex justify-content-between gap-3">
+                              <span>{option.label}</span><strong>{option.count}</strong>
+                            </div>
+                            <div className="progress" role="img" aria-label={`${option.label}: ${option.count} responses` }>
+                              <div className="progress-bar" style={{ width: `${width}%` }} />
+                            </div>
+                          </li>
+                        );
+                      })}
+                      {question.type === "MULTI_CHOICE" && <li className="cp-muted small">Answered: {question.multiChoice.answeredCount}</li>}
+                    </ul>;
+                  })()
                 )}
               </article>
             ))}

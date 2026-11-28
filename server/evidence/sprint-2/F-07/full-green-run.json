@@ -1,0 +1,76 @@
+{
+  "headCommit": "37e0214bad863cc5c95c927f6e5930b3c65ab6fa",
+  "ciMergeCommit": "81da3ae6c5dc4f8fe855e6bb295ec3ff22453461",
+  "stagingBase": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+  "workflowRun": 46060277302,
+  "command": "GitHub Actions: cd server && npm test; cd client && npm test; npx playwright test; Prisma migrations; server/client builds; docker build --tag classpulse-ci:ci .",
+  "server": {
+    "filesPassed": 22,
+    "tests": 292,
+    "passed": 292,
+    "failed": 0,
+    "skipped": 0
+  },
+  "client": {
+    "filesPassed": 5,
+    "tests": 27,
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "totalTests": 332,
+  "totalPassed": 332,
+  "totalFailed": 0,
+  "totalSkipped": 0,
+  "migrations": "passed",
+  "serverBuild": "passed",
+  "clientBuild": "passed",
+  "dockerBuild": "passed",
+  "phase": "F-07 exact-head green after staging sync",
+  "supplementalGreenCheckpoints": [
+    {
+      "implementationCommit": "60647da885642788cc3766534754a55c2ce575ba",
+      "testCommit": "8b10f9ad91d96f5b24a196aa14b974262e0e9d5c",
+      "ciMergeCommit": "ed44a88a89d642cfe1b222509b7602e9d1929ddb",
+      "stagingBase": "ac630fb4a7e465a5410beb2cccb24f91255d8cd0",
+      "workflowRun": 46106476724,
+      "server": {
+        "filesPassed": 22,
+        "tests": 294,
+        "passed": 294,
+        "failed": 0,
+        "skipped": 0
+      },
+      "client": {
+        "filesPassed": 5,
+        "tests": 27,
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browser": {
+        "tests": 13,
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0
+      },
+      "totalTests": 334,
+      "totalPassed": 334,
+      "totalFailed": 0,
+      "totalSkipped": 0,
+      "migrations": "passed",
+      "serverBuild": "passed",
+      "clientBuild": "passed",
+      "dockerBuild": "passed",
+      "command": "GitHub Actions: npx prisma migrate deploy; cd server && npm test; cd client && npm test; npx playwright test; server/client builds; docker build --tag classpulse-ci:ci .",
+      "phase": "F-07 C8 regression implementation GREEN",
+      "timestampUtc": "2026-11-28T04:15Z"
+    }
+  ]
+}
