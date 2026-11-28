@@ -1,0 +1,13 @@
+Selected CI checkout and server log lines. ANSI control characters removed.
+
+test-and-docker	Check out source	2026-11-28T03:53:42.1261790Z HEAD is now at 54aff85 Merge 8a19ef04b3364d6574f7195263caa47022b875e4 into ac630fb4a7e465a5410beb2cccb24f91255d8cd0
+test-and-docker	Check out source	2026-11-28T03:53:42.1354814Z 54aff85e2720ce1931cdd44c99871604accc96bb
+test-and-docker	Test server	﻿2026-11-28T03:54:03.7897835Z ##[group]Run npm test
+test-and-docker	Test server	2026-11-28T03:54:40.6472111Z    × TEST-220 creates each supported mode and rejects an unsupported mode 285ms
+test-and-docker	Test server	2026-11-28T03:54:40.6472964Z      → expected 'IDENTIFIED' to be 'ANONYMOUS' // Object.is equality
+test-and-docker	Test server	2026-11-28T03:54:42.3829474Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+test-and-docker	Test server	2026-11-28T03:54:42.3832133Z  FAIL  tests/api/anonymousMode.test.ts > TEST-220 creates each supported mode and rejects an unsupported mode
+test-and-docker	Test server	2026-11-28T03:54:42.3852649Z AssertionError: expected 'IDENTIFIED' to be 'ANONYMOUS' // Object.is equality
+test-and-docker	Test server	2026-11-28T03:54:42.4032694Z       Tests  1 failed | 272 passed (273)
+test-and-docker	Test server	2026-11-28T03:54:42.4078848Z ##[error]AssertionError: expected 'IDENTIFIED' to be 'ANONYMOUS' // Object.is equality
+test-and-docker	Test server	2026-11-28T03:54:42.4357113Z ##[error]Process completed with exit code 1.
