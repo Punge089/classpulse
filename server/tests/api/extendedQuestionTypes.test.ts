@@ -166,4 +166,22 @@ describe("F-07 TEST-145/146 mixed answers and own history", () => {
     expect(await prisma.response.count({ where: { surveyId: survey.id, respondentId: f.student1.id } })).toBe(0);
     expect(examples.id).not.toBe(practice.id);
   });
+
+  test("TEST-145 rejects a text answer with a zero code point before creating a response", async () => {
+    const survey = await makeSurvey({ course: f.cpe334, owner: f.owner1, status: "PUBLISHED" });
+    const text = await prisma.question.create({ data: {
+      surveyId: survey.id, position: 3, prompt: "What helped?", type: "TEXT", required: true
+    } });
+    const student = await loginAs(app, "student1@classpulse.test");
+
+    const rejected = await student.post(`/api/surveys/${survey.id}/responses`).send({ answers: [
+      { questionId: survey.questions[0].id, ratingValue: 4 },
+      { questionId: survey.questions[1].id, optionId: survey.questions[1].options[0].id },
+      { questionId: text.id, textValue: "before\u0000after" }
+    ] });
+
+    expect(rejected.status).toBe(400);
+    expect(rejected.body.error.details.map((detail: { field: string }) => detail.field)).toContain("answers[2].textValue");
+    expect(await prisma.response.count({ where: { surveyId: survey.id, respondentId: f.student1.id } })).toBe(0);
+  });
 });

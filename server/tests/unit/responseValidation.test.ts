@@ -104,6 +104,7 @@ describe("F-07 TEST-143/144 text and multi-choice answer validation", () => {
   test.each([
     ["blank required text", { answers: [{ questionId: 40, textValue: "   " }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
     ["text longer than 500 code points", { answers: [{ questionId: 40, textValue: "x".repeat(501) }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
+    ["text containing a PostgreSQL-incompatible zero code point", { answers: [{ questionId: 40, textValue: "before\u0000after" }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
     ["unpaired surrogate", { answers: [{ questionId: 40, textValue: "\ud800" }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
     ["duplicate multi-choice option", { answers: [{ questionId: 40, textValue: "ok" }, { questionId: 42, optionIds: [51, 51] }] }, "answers[1].optionIds"],
     ["foreign-question option", { answers: [{ questionId: 40, textValue: "ok" }, { questionId: 42, optionIds: [31] }] }, "answers[1].optionIds"],
