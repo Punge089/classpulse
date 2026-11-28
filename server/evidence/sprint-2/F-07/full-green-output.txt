@@ -10,4 +10,4 @@ Supplemental C8 regression GREEN — implementation commit 60647da885642788cc376
 GitHub Actions run: 46106476724 (CI merge ed44a88a89d642cfe1b222509b7602e9d1929ddb; staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0)
 Server `npm test`: 22 files, 294 passed, 0 failed/skipped. Client `npm test`: 5 files, 27 passed, 0 failed/skipped. `npx playwright test`: 13 passed, 0 failed/skipped. Total: 334 passed, 0 failed, 0 skipped.
 Prisma migrations, server/client builds and Docker build passed. GitHub Actions job `test-and-docker` completed successfully.
-Local focused unit run: `DATABASE_URL=postgresql://ci:ci@127.0.0.1:5432/classpulse_test npm test -- --run tests/unit/responseValidation.test.ts` — 1 file, 22 passed, 0 failed/skipped. This URL only passed the repository safety check; no local database-backed test was run.
+Local focused unit run: `DATABASE_URL=[REDACTED_DATABASE_URL] npm test -- --run tests/unit/responseValidation.test.ts` — 1 file, 22 passed, 0 failed/skipped. This URL only passed the repository safety check; no local database-backed test was run.
