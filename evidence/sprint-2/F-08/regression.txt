@@ -1,0 +1,14 @@
+# F-08 server implementation checkpoint
+
+Test source was the implementation in this commit before adding this evidence and its AI declaration, based on branch sync 6fdb05e / staging bd77c468. TEST-180–182 were unchanged from the retained RED.
+
+Command: server npm test (Vitest), with isolated PostgreSQL migrations applied and the TypeScript server build successful.
+
+First run: 296 passed, one failure, zero skipped tests. TEST-20 asserted the exact pre-feature owner-list object. The only differences were the three fields required by the reviewed F-08 contract (closesAt null, acceptingResponses true, closureReason null). #96 scopes the test, and the contract verification note records why its exact expectation was extended. The original owner scope, title, status, course and response-count assertions remain.
+
+Second run, after extending that exact expected object:
+- tests/api/ownerSurveys.test.ts: 10 passed.
+- tests/api/scheduledClosing.test.ts: all three unchanged cases passed.
+- Total: 23 files, 297 tests passed, zero failed/skipped. Disposable database stopped successfully.
+
+CI, client controls, the remaining deadline and concurrency cases, and peer review remain separate.

@@ -141,3 +141,7 @@ Every successful publish, close or reopen sets updatedAt to the greater of the p
 | TEST-198 | AC-183, AC-187 | API/DB. Start with previous responses. Test a deadline denial and an isolated audit insert failure, with a full pre/post comparison of schedule, timestamps, version, answers and audit. |
 
 These additions target the existing scoped file `server/tests/api/scheduledClosing.test.ts`, paired with TEST-184/186–194 and the existing Lab 7 regression. TEST-180 remains the executed independent RED. Affected tests await B C3, and implementation awaits the shared-file slot after F-06/F-07.
+
+### F-08 owner-list verification clarification, 28 November 2026
+
+The reviewed API contract adds three availability fields to the owner list. TEST-20 keeps its exact object comparison, previous fields and ownership/count checks. Its expected legacy published row now also asserts null closesAt, acceptingResponses true and null closureReason. No contract rule changed.
