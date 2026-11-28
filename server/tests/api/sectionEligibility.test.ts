@@ -149,3 +149,69 @@ test("TEST-201/205/206 restricts sections and preserves the section captured wit
     responseCount: 1, responseRate: { respondedEligible: 0, eligible: 0, percent: null }
   });
 });
+
+test("TEST-202/203 atomic audience writes preserve targets and reject a same-token loser", async () => {
+  const courseId = fixture.cpe334.id;
+  const [alpha, beta, foreign] = await Promise.all([
+    prisma.courseSection.create({ data: { courseId, code: "A", label: "Alpha" } }),
+    prisma.courseSection.create({ data: { courseId, code: "B", label: "Beta" } }),
+    prisma.courseSection.create({ data: { courseId: fixture.cpe231.id, code: "A", label: "Foreign section" } })
+  ]);
+  const draft = await makeSurvey({ course: fixture.cpe334, owner: fixture.owner1, status: "DRAFT" });
+  const owner = await loginAs(app, fixture.owner1.email);
+  const second = await loginAs(app, fixture.owner1.email);
+  const surveyPath = `/api/owner/surveys/${draft.id}`;
+  const path = `${surveyPath}/sections`;
+  const payload = (sectionIds: number[], expectedUpdatedAt = draft.updatedAt.toISOString()) => ({ sectionIds, expectedUpdatedAt });
+  const [left, right] = await Promise.all([
+    owner.put(path).send(payload([alpha.id])), second.put(path).send(payload([beta.id]))
+  ]);
+  expect([left.status, right.status].sort()).toEqual([200, 409]);
+  const winner = left.status === 200 ? left : right;
+  const loser = left.status === 409 ? left : right;
+  expect(loser.body.error.code).toBe("STALE_SURVEY");
+  const { updatedAt, sectionIds } = winner.body.survey;
+  expect(Date.parse(updatedAt)).toBeGreaterThan(draft.updatedAt.getTime());
+  expect(winner.body.survey.statusVersion).toBe(draft.statusVersion);
+
+  const readback = () => prisma.survey.findUniqueOrThrow({
+    where: { id: draft.id }, include: { sectionTargets: { orderBy: { sectionId: "asc" } } }
+  });
+  const saved = await readback();
+  expect(saved.sectionTargets.map(target => target.sectionId)).toEqual(sectionIds);
+  const invalid = [
+    payload([alpha.id, alpha.id], updatedAt),
+    payload([2147483647], updatedAt),
+    payload([foreign.id], updatedAt),
+    payload([alpha.id], "2026-11-28T14:00:00+07:00"),
+    { ...payload([alpha.id], updatedAt), extra: true }
+  ];
+  for (const body of invalid) {
+    const denied = await owner.put(path).send(body);
+    expect([denied.status, denied.body.error.code]).toEqual([400, "VALIDATION_ERROR"]);
+    expect(denied.text).not.toContain(foreign.label);
+  }
+  expect(await readback()).toEqual(saved);
+
+  await prisma.$executeRawUnsafe(`CREATE FUNCTION f10_test_target_fault() RETURNS trigger LANGUAGE plpgsql AS $$
+    BEGIN RAISE EXCEPTION 'fixture-only insert failure'; END;
+  $$`);
+  try {
+    await prisma.$executeRawUnsafe(`CREATE TRIGGER f10_test_target_fault BEFORE INSERT ON "SurveySection"
+      FOR EACH ROW EXECUTE FUNCTION f10_test_target_fault()`);
+    const failed = await owner.put(path).send(payload([alpha.id, beta.id], updatedAt));
+    expect([failed.status, failed.body.error.code]).toEqual([500, "INTERNAL_ERROR"]);
+    expect(failed.text).not.toContain("fixture-only insert failure");
+    expect(await readback()).toEqual(saved);
+    expect(await prisma.surveyLifecycleEvent.count({ where: { surveyId: draft.id } })).toBe(0);
+  } finally {
+    await prisma.$executeRawUnsafe('DROP TRIGGER IF EXISTS f10_test_target_fault ON "SurveySection"');
+    await prisma.$executeRawUnsafe("DROP FUNCTION f10_test_target_fault()");
+  }
+
+  const published = await owner.post(`${surveyPath}/publish`);
+  expect(published.status).toBe(200);
+  const forbidden = await owner.put(path).send(payload([], published.body.survey.updatedAt));
+  expect([forbidden.status, forbidden.body.error.code]).toEqual([409, "INVALID_TRANSITION"]);
+  expect((await readback()).sectionTargets.map(target => target.sectionId)).toEqual(sectionIds);
+});

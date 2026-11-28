@@ -7,3 +7,7 @@ F-08 was merged by B at 7ff7d52. F-10 continues from the retained TEST-200 and T
 - Corrected migration keeps the approved nullable Enrollment.sectionId and its composite foreign key. Prisma leaves that column outside the generic enrollment projection, and F-10 uses parameterized SQL under its own transactions. No Lab 6 source, fixtures or guards changed. The migration SQL remained byte-equivalent across the generated-client compatibility change.
 - Corrected isolated PostgreSQL: migrations, TypeScript build and server npm test passed. All 304 tests passed with zero failed/skipped, including same-test RED/GREEN and real targeted eligibility, role/ownership, response storage and section-history checks. Local client npm test passed 27, plus client build.
 - Exact-head CI and dedicated browser journey are separate. Release and deployed checks remain open.
+
+## Supplemental TEST-202 and TEST-203 API coverage
+
+Ran server `npm test` on head 2e195e0 with the test addition in this commit, using a disposable PostgreSQL cluster with all recorded migrations applied. The server build passed and the API and unit suites passed 305/305 across 24 files, with zero failed or skipped. The test verifies that a pair of writes using the same token produces one success and one stale response, invalid and foreign section selections preserve the stored state, a forced fixture-only insert failure rolls back the selection and token, and publication freezes the selection.
