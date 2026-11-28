@@ -2,7 +2,7 @@
 
 Issue #89. Snapshot: 25 November 2026, 18:06:58 Asia/Bangkok. Scope is the maintained ClassPulse Sprint 1 product and the approved Lab 7 change. This is a status review, not a release acceptance. **Overall: NOT READY.**
 
-| Gate | Current evidence and status |
+| Gate | Evidence and status at readback |
 |---|---|
 | Submitted baseline | The immutable original Sprint 1 tag is `v1.0.0-sprint1` at `d4bad74211729032697164f378638efb834a67b6`. It is historical; it does not prove the current accepted Lab 6 baseline. |
 | Accepted Lab 6 version | PENDING final accepted-version and UAT disposition. The checkpoint records incomplete important cases and says a no-genuine-defect conclusion is unsupported. |
@@ -45,3 +45,36 @@ The accepted Lab 6 baseline and independent UAT disposition remain PENDING. Migr
 PR #92 is open/unmerged at exact head `d1b41c3d4fc86361110d5f65357cdef1d89f8aeb`, targeting `sprint-2-staging` at `eeae87524a340b3463866f199cec7e1bb59b1ef9`. GitHub Actions run 45627723318 checked merge commit `43bcdd04900bf995c511d62f3b1b40e81ab4643e` and reports the test-and-docker check successful: server 219/0/0, client 10/0/0, browser 10/0/0; both builds and Docker passed. This is current-base integration evidence. B's exact-head C7 review remains pending; no PR approval or merge by B is claimed.
 
 TEST-111's separate historical-data check passed in disposable CI run 45609911425 on synthetic PostgreSQL 16 data: nine pre-change tables had seeded old values; four survey variants were preserved, statusVersion was initialized to zero, and no audit events were fabricated. This automated test does not verify migration of the final accepted Lab 6 database or deployed production data. The accepted Lab 6 baseline and independent UAT disposition remain pending; release/deployment, production migration verification, serving revision, traffic, and changed/preserved-user checks remain pending. Overall readiness remains NOT READY. Lab 7 remains separate from D2, and no Lab 6 files or live data were changed.
+
+## Candidate and staging readback - 25 November 2026, 22:25:33 Asia/Bangkok
+
+| Gate | Current evidence and status |
+|---|---|
+| Candidate and named tests | PR #92 is open at head `87971f59da5bc63634bd8ce963667f6a5a8efcb9`. Actions run 45638095728 succeeded on synthetic merge `9b74772155143c0526edf213083dfe011d5629ac` against `sprint-2-staging` base `841ad5ca6d62e4f04d8a943d89a4a91e919feeb5`: server 219, client 10 and browser 10 passed; 0 failed and 0 skipped; both builds and Docker passed. |
+| Staging integration | Staging was `9bf820ac98a23b9ffd4924ef48ba77fac1c7fc35`, which includes merged documentation PR #112. The run above predated that merge, so a fresh PR #92 integration check on that staging base was pending. |
+| B review | Exact-head C7 on PR #92 is pending; no B verdict or merge is recorded here. The current `autopilot/approvals.txt` has no `approve C7 PR 92` entry. |
+| Accepted baseline and UAT | PENDING. No final accepted Lab 6 baseline mapping or independent no-defect/UAT disposition is claimed. |
+| Migration and release | Disposable TEST-111 synthetic migration evidence remains distinct from accepted-baseline or deployed production migration verification. Main release, deployed revision, traffic, and changed/preserved user checks remain PENDING. |
+| Readiness | **NOT READY.** Passing exact-head CI does not satisfy the missing current-staging integration, B review, accepted-baseline/UAT, migration, release, or deployment evidence. |
+
+This was a remote check on the stated commit; B did not run local application tests, UAT, a live migration, release, or deployment during this readback. Lab 7 remains separate from D2; no Lab 6 files or live data were changed.
+
+## Final release readiness refresh - 28 November 2026, 02:11 Asia/Bangkok
+
+This is a dated status refresh using main commit 8316f270cb11d47c75f848de3f3d40acefbe8def and the evidence identified in METRIC-REFRESH-2026-11-28. **Overall: NOT READY for submission; the release is deployed, but final report acceptance and human submission are pending.**
+
+| Gate | Current evidence and status |
+|---|---|
+| Accepted baseline | D recorded acceptance of CP-FIX-001 / main bee0d122 on 27 November at 01:35:39 ICT; C's acknowledgment is separately recorded in the report sources. This is the accepted Lab 6 baseline, distinct from the immutable original Sprint 1 tag. |
+| Lab 7 reviewed release | PR #143 was approved by B on exact head 2f99a06 against main bee0d122, then merged with merge commit 8316f270cb11d47c75f848de3f3d40acefbe8def. The merge preserves both parents and the candidate tree. |
+| Automated tests and failures/skips | On main SHA 8316f27, deploy run 46050688714 passed server 272, client 23 and browser 12 tests: 307 passed, 0 failed, 0 skipped. Server/client builds and Docker passed. Historical intentional RED and any earlier failures remain separately documented; none are erased by this green run. |
+| Production deployment and migration | Deploy run 46050688714 completed successfully. A's sanitized Cloud Run readback reports revision classpulse-00008-qlw at 100% traffic before and after; published image digest sha256:7acc661c6f49606a63ad1c536b5657fe46ca72fa2e99c4a139876cdd867ed389 maps to platform manifest sha256:60c23699db69a6badb92f50d638fed23885498d12b9e2e7f9a0d6e3a34ab2b0a. Production job classpulse-migrate-62khg applied migration 20261125110000_survey_lifecycle_audit, 1/1 tasks succeeded, exit code 0. Automated read-only smoke paths /api/health, /api/ready, /, and /api/auth/me passed. |
+| Preserved prior data | A's read-only legacy sample readback found Lab 6 survey 26 / response 15, two answers, original choice and rating intact, HTTP 200. It is one sample and does not imply every historical record was inspected. |
+| Changed and preserved live API checks | A's developer-operated check on synthetic survey 30 passed 14/14 observations: close/reopen retained first publishedAt, moved lifecycle version 2 to 3, and returned a reasoned REOPEN event; response 17/rating 4 and summary count 1/average 4 stayed unchanged; duplicate returned 409 ALREADY_RESPONDED; a different lecturer received 404 for read and reopen; three synthetic sessions logged out with 204. This is not an independent UAT claim. |
+| Independent UAT and defects | PENDING independent UAT disposition. Do not claim zero UAT defects from the 14/14 developer-operated API checks. |
+| Technical debt | The reviewed debt register/status remains as documented in the report sources; this refresh does not reclassify debt as defects or claim no debt. |
+| Configuration and secrets | The deploy workflow's required configuration validation and Workload Identity authentication succeeded. No secret values were copied into the evidence or this refresh; no separate secrets audit is claimed. |
+| Report and setup documentation | A reports 84 source checks passed, 0 failed/skipped, 30 PDF pages structurally checked, and documentation CI run 46053752670 passed on PR #104 head b75f410. The artifact is still a WORKING DRAFT; B's exact-hash PDF review is pending. |
+| Human submission | No LEB2 upload or receipt exists yet. Human submission remains pending. |
+
+The release/deploy gates above are supported by the specific run and sanitized observations; they do not convert the independent UAT gate or the final PDF review into complete. Overall readiness remains **NOT READY**.

@@ -1,0 +1,116 @@
+{
+  "run": 45776429644,
+  "head": "d53a823ed657673277006011c2963a2fd097fb71",
+  "base": "e6043a9843eaeebaa63464aa19e5e8d1e503996a",
+  "tested_merge": "63e722f",
+  "server": [
+    232,
+    0,
+    0
+  ],
+  "client": [
+    10,
+    0,
+    0
+  ],
+  "browser": [
+    10,
+    0,
+    0
+  ],
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install root dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install server dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install client dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Generate Prisma client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Apply database migrations",
+      "conclusion": "success"
+    },
+    {
+      "name": "Seed synthetic test accounts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build server",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build client",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install Chromium for preserved and maintenance browser tests",
+      "conclusion": "success"
+    },
+    {
+      "name": "Reseed synthetic CI accounts for browser tests",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test complete browser suite",
+      "conclusion": "success"
+    },
+    {
+      "name": "Retain browser evidence",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build Docker image locally",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Set up Node.js 24",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Check out source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "output_sha256": "43f46c62b4a7df500ae54d5bb9f99918a652bf0b999aaf8fd453b9076516805c"
+}
