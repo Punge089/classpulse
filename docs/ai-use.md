@@ -321,3 +321,23 @@ B/book6349 used Codex GPT-6.2 Sol to synchronize F-07 with current sprint-2-stag
 ## F-07 null-character validation follow-up — Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6.2 Sol to add TEST-143 and TEST-145 for PostgreSQL-incompatible U+0000 text answers. Test-only commit `8b10f9a` and CI run `46105990128` recorded both expected failures: server 292 passed, 2 failed, 0 skipped; migrations passed and later workflow steps were skipped after the RED. Fix commit `60647da` rejects NUL with a field-level 400 before persistence. The focused validator suite passed 22/22 locally. Exact-code-head CI run `46106476724` tested merge `ed44a88` on staging `ac630fb`: server 294/294, client 27/27, browser 13/13 (334 total), 0 failed/skipped; migrations, both builds and Docker passed. Local database-backed execution remains blocked because this worktree lacks a configured separate `classpulse_test` database. No tests were disabled, focused or weakened.
+
+## Sprint 2 F-08 contract preparation - Student A,25November2026
+
+Under Issue96, A's Codex GPT-6.1 Sol read current shared contracts and deadline-free survey/response routes, then drafted scheduled closing with exact UTC boundaries, locked response admission, owner-only configuration and explicit future-deadline integration with Lab7 reopening. AC180-189 and TEST180-194 are design only. B must review the proposed derived availability behavior and C3 before tests; any affected Lab7 contract revision needs separate scope/review. No new test/schema/application code, runtime result, B agreement, cloud mutation, deployment or PDF submission is claimed. Earlier model declarations describe their own dated work and are preserved.
+
+## F-08 execution inventory after actual C3 - Student A, 25 November 2026
+
+A's Codex GPT-6.1 Sol recorded B's actual C3 7159683176 in F-08 contract v1.1, read the proposed Lab7 implementation d1b41c3 without editing it, and identified the authoritative submission-read/row-lock and shared timestamp integration points. The already-contracted CLOSING_TIME_PASSED discriminant file was added to Issue96's Files list before implementation. A imported reviewed staging documentation, preserving all incoming Lab6/B sources and both complete AI declarations. No F-08 tests, application/schema/workflow, database, cloud or deployment operation was performed. The separate #87 contract addendum/review and serialized integration remain prerequisites; B's initial C3 is not fabricated approval of that future change.
+
+## Sprint 2 F-08 independent RED - Student A, 27 November 2026
+
+A/Punge089 used Codex GPT-6 under Issue #96 to write TEST-180 from B's reviewed test design before implementation. The disposable CI server suite on test-only eb198dd produced 239 passes, one expected missing-route failure, and zero test skips. The assertion output and skipped workflow steps are retained under evidence/sprint-2/F-08. The separate reopen addendum, shared implementation slot, same-test GREEN, B review and release remain pending. F-08 product code, schema and workflows were untouched.
+
+A/Punge089 used Codex GPT-6 on #96 to prepare proposed F-08 contract v1.2 in response to B's #131 review. The new text specifies validation precedence, successful lifecycle updates to the schedule token, both lock orderings and stable TEST-195–198 coverage. TEST-180 and its retained RED were preserved. Integrated C3, dependent tests and product work remain pending.
+
+## F-08 scheduling backend - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol under Issue #96 after B/book6349 reviewed the cutoff and reopen contracts and F-07 staged. A implemented the deadline migration and owner and respondent backend behavior. A retained the original F-08 RED, ran the same tests with disposable PostgreSQL, and extended the exact TEST-20 owner-list object to assert the three contracted fields while preserving every prior assertion. Browser controls and further deadline-boundary, rollback and release verification remain open.
+
+A/Punge089 used Codex GPT-6.2 Sol to implement the F-08 owner closing-time form and respondent deadline display after preserving the browser RED. The form sends a canonical UTC timestamp from the browser's named local time zone and retains input on failed or stale writes. The existing server remains authoritative for submissions.
