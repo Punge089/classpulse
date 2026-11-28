@@ -285,3 +285,9 @@ Under Issue #146, Student A/Punge089 asked Claude Opus 5.5 (Anthropic, in the Cl
 ## Final Lab 7 metrics and readiness refresh - Issue #89, Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6 to reconcile the final Issue #89 metrics, readiness and retrospective with main release 8316f27, deploy run 46050688714, and A's sanitized production receipts from PR #104 head b75f410. B authored the dated metrics evidence file and refreshed the three Issue #89 records. A performed and reported the production API check and GCP Console readbacks; B did not rerun application tests, perform UAT, use GCP, or submit to LEB2. The live developer check is not described as independent UAT. Final PDF review and human LEB2 submission remain pending.
+
+A used Codex GPT-6 to draft the proposed F-13 contract in Issue #124 from staging a3a0424. Dependencies, privacy decisions, stable IDs, implementation files and B review remain open; no feature tests or code were written.
+
+## Sprint 3 F-13 analysis filters contract revision — Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to expand the #124 proposal with the reviewed-data prerequisites, stable AC/TEST-260–267, explicit API, historical section snapshots and privacy boundaries. B/book6349 remains the independent reviewer. No product or test change was performed.
