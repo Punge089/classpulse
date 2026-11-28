@@ -14,3 +14,8 @@ Source `53df47cdd88259b5f4edcf5d4bdb960b6fe29867`, staging `bd77c46`. [CI 461088
 
 - Source `580cf35aa47b3128fbb44cc8315116ff5c39299d`, staging `bd77c46`. [CI 46109115975](https://github.com/Punge089/classpulse/actions/runs/46109115975) tested `a86ce4dd78334fa318253d6780ad7223f9ccbecf`. Server 296, client 27 and Chromium 14 passed, including unchanged TEST-247. Zero failures/skips. Migrations, builds and Docker passed. The keyboard-triggered download succeeded after a simulated temporary failure and contained the real saved rating and synthetic respondent identity.
 - TEST-246 now drives both the export and the intervening optional-answer submission through the real API. A acquired an isolated PostgreSQL table lock, observed the export wait with pg_locks, committed a second response before release and checked that the original snapshot excluded it while a fresh export included it. Server npm test with the new test and unchanged application source passed 297/297 with zero failures/skips. The product code remains byte-identical to the browser GREEN head. Current-head CI covers the added test.
+
+## C7 serializer follow-up RED
+
+B's review 6096345948 identified missing unit coverage for AC-244/245. Test-only head `78124b7`, base `09fa1e8`, checkout `38c1bb8` in [CI 46118916139](https://github.com/Punge089/classpulse/actions/runs/46118916139). Server npm test had 312 passed, two expected failures and zero skipped tests. The decoded fields were missing a protective apostrophe when a tab followed leading whitespace and when a formula followed a zero-width format control. Ordering, supported answer values, Thai text, CRLF, and the direct marker cases already passed.
+Downstream workflow steps skipped: 8.
