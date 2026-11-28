@@ -1,7 +1,7 @@
 F-07 exact-head GREEN after staging sync
 Implementation/test/evidence head: 37e0214bad863cc5c95c927f6e5930b3c65ab6fa
 GitHub Actions run: 46060277302 (CI merge commit 81da3ae; current sprint-2-staging base ac630fb4a7e465a5410beb2cccb24f91255d8cd0)
-Command: GitHub Actions ran Prisma migrations, cd server && npm test; cd client && npm test; npx playwright test; server/client builds; docker build --tag classpulse-ci:ci .
+Command: GitHub Actions ran Prisma migrations, cd server && npm test; cd client && npm test; npx playwright test; server/client builds; docker build --tag classpulse-[REDACTED_DATABASE_AUTH] .
 Results: server 292/292 across 22 files; client 27/27 across 5 files; browser 13/13; total 332 passed, 0 failed, 0 skipped.
 Migrations, both builds and Docker image build passed. Job test-and-docker completed successfully.
 The staging sync brought Lab 6 and Lab 7 records forward. The docs/ai-use.md conflict was resolved with both incoming entries and all F-07 entries preserved.
