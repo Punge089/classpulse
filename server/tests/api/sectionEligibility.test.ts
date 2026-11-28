@@ -1,3 +1,4 @@
+import request from "supertest";
 import { beforeEach, expect, test } from "vitest";
 import { createApp } from "../../src/app";
 import { getPrisma } from "../../src/prisma";
@@ -68,4 +69,23 @@ test("TEST-208 reports current eligibility separately from historical responses"
   expect(emptyRoster.body.summary.responseCount).toBe(1);
   expect(emptyRoster.body.summary.responseRate).toEqual({ respondedEligible: 0, eligible: 0, percent: null });
   expect(await prisma.response.count({ where: { surveyId: survey.id } })).toBe(1);
+});
+
+test("TEST-204 preserves role and ownership denials before validating section targets", async () => {
+  const draft = await makeSurvey({ owner: fixture.owner1, course: fixture.cpe334, status: "DRAFT" });
+  const path = `/api/owner/surveys/${draft.id}/sections`;
+  const respondent = await loginAs(app, fixture.student1.email);
+  const otherOwner = await loginAs(app, fixture.owner2.email);
+  const malformed = { sectionIds: [0], expectedUpdatedAt: "invalid" };
+  const before = await prisma.survey.findUniqueOrThrow({ where: { id: draft.id } });
+
+  const unauthenticated = await request(app).put(path).send(malformed);
+  expect([unauthenticated.status, unauthenticated.body.error.code]).toEqual([401, "UNAUTHENTICATED"]);
+  const wrongRole = await respondent.put(path).send(malformed);
+  expect([wrongRole.status, wrongRole.body.error.code]).toEqual([403, "FORBIDDEN"]);
+  const foreign = await otherOwner.put(path).send(malformed);
+  const missing = await otherOwner.put("/api/owner/surveys/2147483647/sections").send(malformed);
+  expect([foreign.status, missing.status]).toEqual([404, 404]);
+  expect(foreign.body).toEqual(missing.body);
+  expect(await prisma.survey.findUniqueOrThrow({ where: { id: draft.id } })).toEqual(before);
 });
