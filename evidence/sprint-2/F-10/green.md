@@ -11,3 +11,9 @@ F-08 was merged by B at 7ff7d52. F-10 continues from the retained TEST-200 and T
 ## Supplemental TEST-202 and TEST-203 API coverage
 
 Ran server `npm test` on head 2e195e0 with the test addition in this commit, using a disposable PostgreSQL cluster with all recorded migrations applied. The server build passed and the API and unit suites passed 305/305 across 24 files, with zero failed or skipped. The test verifies that a pair of writes using the same token produces one success and one stale response, invalid and foreign section selections preserve the stored state, a forced fixture-only insert failure rolls back the selection and token, and publication freezes the selection.
+
+## C7 follow-up: executable TEST-210 and TEST-211
+
+B requested the two in-scope test files after reviewing source 5c316de. TEST-210 now runs the real earlier migration chain in a uniquely named schema in classpulse_test, seeds legacy rows, applies the actual F-10 migration and verifies preserved rows and snapshots, accepted same-course links and rejected cross-course links. TEST-211 uses the actual owner pages and exercises loading, no sections, pending writes, validation, stale reload, network retry, cancel and the two zero-rate states against saved response totals.
+
+Local PostgreSQL: server `npm test -- tests/db/sectionEligibilityMigration.test.ts` passed 1/1. Client `npm test -- --run tests/sectionEligibility.test.tsx` passed 5/5. Zero failed or skipped. The server and client builds passed. No application behavior changes were needed in the C7 follow-up. The original TEST-200 and TEST-208 RED checkpoints remain in the branch history.
