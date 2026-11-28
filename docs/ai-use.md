@@ -321,3 +321,7 @@ B/book6349 used Codex GPT-6.2 Sol to synchronize F-07 with current sprint-2-stag
 ## F-07 null-character validation follow-up — Student B, 28 November 2026
 
 B/book6349 used Codex GPT-6.2 Sol to add TEST-143 and TEST-145 for PostgreSQL-incompatible U+0000 text answers. Test-only commit `8b10f9a` and CI run `46105990128` recorded both expected failures: server 292 passed, 2 failed, 0 skipped; migrations passed and later workflow steps were skipped after the RED. Fix commit `60647da` rejects NUL with a field-level 400 before persistence. The focused validator suite passed 22/22 locally. Exact-code-head CI run `46106476724` tested merge `ed44a88` on staging `ac630fb`: server 294/294, client 27/27, browser 13/13 (334 total), 0 failed/skipped; migrations, both builds and Docker passed. Local database-backed execution remains blocked because this worktree lacks a configured separate `classpulse_test` database. No tests were disabled, focused or weakened.
+
+## F-06/F-07 draft authoring compatibility - Student A, 28 November 2026
+
+A/Punge089 used Codex GPT-6.2 Sol to append the v1.2 compatibility proposal to the staged F-06 contract under Issue #90, preserving the original evidence. B/book6349 reviewed and merged the earlier standalone F-06 PR #93 and is the requested reviewer of this addendum and driver of F-07. A authored no application, schema or feature tests in this addendum.
