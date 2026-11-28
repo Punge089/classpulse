@@ -12,3 +12,5 @@ Second run, after extending that exact expected object:
 - Total: 23 files, 297 tests passed, zero failed/skipped. Disposable database stopped successfully.
 
 CI, client controls, the remaining deadline and concurrency cases, and peer review remain separate.
+
+Browser test-only RED: source a26be1f, staging bd77c46, actual checkout d72bec3, CI 46109335644. TEST-193 created the draft and reached the schedule form, then failed at the absent "Closing time" field. Browser 13 passed, 1 expected failure, 0 skipped tests, 2 downstream steps skipped.
