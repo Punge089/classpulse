@@ -1,0 +1,20 @@
+{
+  "migration": "server/prisma/migrations/20261128030000_f07_text_and_multi_answers/migration.sql",
+  "reviewedAgainst": "F-07 contract v1.0, section 4",
+  "changeType": "additive",
+  "existingAnswerRowsUpdated": false,
+  "existingAnswerRowsDeleted": false,
+  "existingColumnsChanged": false,
+  "existingRatingAndSingleChoiceColumnsRetained": true,
+  "newObjects": [
+    "nullable Answer.text_value VARCHAR(500) column",
+    "AnswerSelectedOption table with composite answer/question and option/question foreign keys",
+    "composite uniqueness indexes used by the foreign keys",
+    "text length/nonblank and value-column exclusivity constraints"
+  ],
+  "applicationOnlyInvariants": [
+    "The QuestionType-to-answer-kind match is enforced by server-side validateAnswers; no cross-table trigger was added. The database independently enforces scalar-column exclusivity, text bounds and same-question selected-option membership."
+  ],
+  "runtimeOldDataSnapshotRehearsal": "not run locally: the configured local classpulse_test credentials were rejected; GitHub Actions applies migrations to its disposable PostgreSQL database, while the committed migration adds structures without rewriting existing rows",
+  "crossQuestionConstraintTest": "server/tests/db/constraints.test.ts TEST-148 runs against the CI migrated PostgreSQL database"
+}

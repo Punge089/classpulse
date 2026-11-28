@@ -18,6 +18,21 @@ function question(
   } as ValidationQuestion;
 }
 
+function typedQuestion(
+  id: number,
+  type: "TEXT" | "MULTI_CHOICE",
+  required: boolean,
+  options: Array<[number, string]> = []
+): ValidationQuestion {
+  return {
+    id,
+    prompt: "Question " + id,
+    type,
+    required,
+    options: options.map(([optionId, label], index) => ({ id: optionId, position: index + 1, label }))
+  } as ValidationQuestion;
+}
+
 const questions: ValidationQuestion[] = [
   question(10, "RATING", true),
   question(11, "RATING", false),
@@ -62,5 +77,50 @@ describe("TEST-28 valid answer boundaries and optional questions (AC-25, BR-07)"
     });
     expect(result.ok).toBe(true);
     if (result.ok) expect(result.value.map(answer => answer.questionId).sort()).toEqual([10, 12]);
+  });
+});
+
+describe("F-07 TEST-143/144 text and multi-choice answer validation", () => {
+  const extended = [
+    typedQuestion(40, "TEXT", true),
+    typedQuestion(41, "TEXT", false),
+    typedQuestion(42, "MULTI_CHOICE", true, [[51, "A"], [52, "B"], [53, "C"]])
+  ];
+
+  test("accepts trimmed text and multiple distinct options while leaving optional blanks omitted", () => {
+    const result = validateAnswers(extended, {
+      answers: [
+        { questionId: 40, textValue: "  useful examples  " },
+        { questionId: 41, textValue: "   " },
+        { questionId: 42, optionIds: [53, 51] }
+      ]
+    });
+    expect(result).toEqual({ ok: true, value: [
+      { questionId: 40, textValue: "useful examples" },
+      { questionId: 42, optionIds: [51, 53] }
+    ] });
+  });
+
+  test.each([
+    ["blank required text", { answers: [{ questionId: 40, textValue: "   " }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
+    ["text longer than 500 code points", { answers: [{ questionId: 40, textValue: "x".repeat(501) }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
+    ["text containing a PostgreSQL-incompatible zero code point", { answers: [{ questionId: 40, textValue: "before\u0000after" }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
+    ["unpaired surrogate", { answers: [{ questionId: 40, textValue: "\ud800" }, { questionId: 42, optionIds: [51] }] }, "answers[0].textValue"],
+    ["duplicate multi-choice option", { answers: [{ questionId: 40, textValue: "ok" }, { questionId: 42, optionIds: [51, 51] }] }, "answers[1].optionIds"],
+    ["foreign-question option", { answers: [{ questionId: 40, textValue: "ok" }, { questionId: 42, optionIds: [31] }] }, "answers[1].optionIds"],
+    ["empty required multi-choice", { answers: [{ questionId: 40, textValue: "ok" }, { questionId: 42, optionIds: [] }] }, "answers[1].optionIds"]
+  ])("rejects %s with the specific field", (_name, body, field) => {
+    const result = validateAnswers(extended, body);
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.details.map(detail => detail.field)).toContain(field);
+  });
+
+  test("accepts 500 Unicode code points and omits a blank optional text answer", () => {
+    const text = "🙂".repeat(500);
+    const result = validateAnswers(extended, {
+      answers: [{ questionId: 40, textValue: text }, { questionId: 41, textValue: " " }, { questionId: 42, optionIds: [52] }]
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.value[0]).toEqual({ questionId: 40, textValue: text });
   });
 });
